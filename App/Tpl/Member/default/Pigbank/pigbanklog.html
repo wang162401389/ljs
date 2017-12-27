@@ -1,0 +1,38 @@
+<tagLib name="htmlA" />
+<style type="text/css">
+	.operaframe { width: 600px; text-align: left; overflow: hidden; margin-left: -6px; line-height: 27px; padding-left: 28px; float: left; margin-top: 20px; }
+	.operaframe ul { padding: 0px; margin: 0px; text-align: left; overflow: hidden; line-height: 25px; }
+	.operaframe ul li { float: left; line-height: 25px; }
+	.tdContent { line-height: 28px; border: 1px solid #ccc;text-align: center }
+	.tdHeard { border: 1px solid #ccc; }
+	.txtInput{   background-color: #FFFFFF;
+		background-position: right center;
+		background-repeat: no-repeat;
+		border: 1px solid #CCCCCC;
+		font-size: 12px;
+		height: 15px;
+		margin-right: 4px;
+		padding: 2px;
+		text-align: left;
+		vertical-align: middle;
+		width: 95px;
+	}
+</style>
+<div style="width: 100%;">
+	<table id="content" style="width: 897px; margin-left: 24px; float: left;border-collapse: collapse; margin-top: 20px" cellspacing="0">
+		<tbody><tr id="tdHead">
+			<th scope="col" class="tdHeard" style="width: 180px;">
+				收益时间
+			</th>
+			<th scope="col" class="tdHeard" style="width: 180px;">
+				收益金额
+			</th>
+		</tr>
+			<volist name="list" id="list">
+				<tr class="nodatashowtr" >
+					<td class="tdContent">{$list.time}</td>
+					<td class="tdContent" style="color: rgb(51, 51, 51);">{$list.earnings_yesterday}</td>
+				</tr>
+			</volist>
+	</tbody></table>
+</div>

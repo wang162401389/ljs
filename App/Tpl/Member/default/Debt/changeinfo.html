@@ -1,0 +1,45 @@
+<volist name="list" id="vo">
+    <tr>
+        <td>{$vo.id|borrowidlayout1}</td>
+        <td>
+            <!-- <if condition="$vo.type eq 1">
+                <a target="_blank" href="{$vo.id|getInvestUrl=###}" title="{$vo.borrow_name}">{$vo.borrow_name}</a>
+                <else />
+                <a target="_blank" href="/debthome/debtdetail?id=>{$vo.id}" title="{$vo.borrow_name}">{$vo.borrow_name}</a>
+            </if> -->
+            <a target="_blank" href="{$vo.id|getInvestUrl=###}" title="{$vo.borrow_name}">{$vo.borrow_name}</a>
+        </td>
+        <td>{$vo.investor_capital}</td>
+        <td>{$vo.second_verify_time|date="Y-m-d",###}</td>
+        <td class="deadline">{$vo.deadline|date="Y-m-d",###}</td>
+        <td>
+            <if condition="$vo.repayment_type eq '1'">
+                0/1
+                <else/>
+                {$vo.has_pay|default="0"}/{$vo.total}
+            </if>
+        </td>
+        <td>{$vo.borrow_interest_rate}%</td>
+        <td>{$vo.daishou}</td>
+
+        <td class="no_bor_r">
+            <if condition="$flag eq true">
+                <a href="javascript:void(0);" onclick="myconfirm(this, {$vo.id},1,<if condition='$vo.repayment_type eq 1'>0<else/>1</if>)" func="__URL__/sellhtml?id={$vo.id}&type=1&investid={$vo.invest_id}">申请转让</a>
+                <else/>
+                工作日<br/>
+                10:00-17:00可申请转让
+            </if>
+
+        </td>
+    </tr>
+</volist>
+<tr>
+    <td colspan="9">
+        <div id="pager" class="yahoo2">
+            <div class="list_bottom_right">
+                <ul>{$page}</ul>
+            </div>
+            <input type="hidden" id="tendbackingtotal_page" value="{$total_page}" />
+        </div>
+    </td>
+</tr>

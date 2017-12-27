@@ -1,0 +1,66 @@
+<include file="default:Public:_header_common" group="Home" />
+<title>新用户注册-- {$glo.web_name}</title>
+<include file="default:Public:_header_main" group="Home"/>
+<link rel="stylesheet" href="__ROOT__/Style/H/css/registerreset.css" />
+<link rel="stylesheet" href="__ROOT__/Style/H/css/registerstyle.css" />
+<script type="text/javascript">
+	var imgpath="__ROOT__/Style/M/";
+	var curpath="__URL__";
+</script>
+<script type="text/javascript" src="__ROOT__/Style/M/js/reg.js"></script>
+<style>
+	.register_nav li.space2,.register_nav li.space3{ color:#fff;}
+</style>
+<div style="background:#f2f2f2;padding:35px 0 40px;border-bottom: 2px solid #fff;">
+	<div class="register_main" style="position:relative;padding:40px 0 55px;background: #fff;">
+		<!--<div class="register_form">
+            <ul class="register_nav register_navsuccess register_regsuccess">
+                <li class="space1">1.填写账户信息</li>
+                <li class="space2">2.验证信息</li>
+                <li class="space3">3.注册成功</li>
+            </ul>
+            <div style="width:500px; margin:100px auto 100px;">
+
+                            <table style=" margin:10px; font-size:12px; text-align:left; line-height:24px;" id="tips">
+                <tbody><tr>
+                  <td style=" font-size:16px; font-weight:bold;" rowspan="5"><img src="__ROOT__/Style/M/images/zhuce4.gif" style=" margin-right:10px;"></td>
+                  <td style=" font-size:24px; font-weight:bold;">恭喜您{$username}，您已注册成功！!</td>
+                </tr>
+                <tr>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="2">页面将在3秒钟之后跳转至登录前的网页。</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style=" padding-top:10px;"><a href="" style=" color:#45c4f9;">点击这里</a>立即跳转。</td>
+                </tr>
+                </tbody></table>
+
+            </div>
+        </div>-->
+		<p style="position:absolute;left:435px;top:95px;font-size:16px;">获得<span style="color:#fe5846;">2份</span>礼包可在 "<a href="__APP__/member/coupons#fragment-1">我的赠券</a>" 中查看</p>
+		<div style="width:284px; margin:auto"><img src="__ROOT__/Style/H/images/index/regsuccess2.png" width="329px"></div>
+		<!-- <div class="register_tyj">8000元体验金已存入您的账户</div> -->
+		<div style="width:454px;margin:auto;margin-top:20px;text-align: center;font-size: 16px;">现在实名认证还能继续领取<span style="color:#fe5846;">668元</span>礼包哦</div>
+		<div class="register_zdt"><span id="num" style="color:#0000ff;">5S</span> <span>后自动跳转</span><!-- <a onClick="linkhost()">立即进入</a> --></div>
+		<a class="register_tyj" href="__APP__/member/verify?id=1#fragment-1">身份验证</a>
+	</div>
+</div>
+<script language="javascript">
+	$(function() {
+		function jump(count) {
+			window.setTimeout(function(){
+				count--;
+				if(count > 0) {
+					$("#num").html(count + "S");
+					jump(count);
+				} else {
+					location.href = "__APP__/member/verify?id=1#fragment-1";
+				}
+			}, 1000);
+		}
+		jump(5);
+	});
+</script>
+<include file="default:Public:_footer" group="Home" />

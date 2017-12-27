@@ -1,0 +1,104 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+	list-style: none;
+}
+body {
+	background-color: #f0f0f0;
+}
+img {
+	max-width:100%;
+	height:auto;
+}
+#header .bar {
+	background-color: #54c0f2;
+	text-align: center;
+	
+}
+#header .bar .title {
+	color: #fff;
+	font-size: 120%;
+	padding-top: 10px;
+	position: relative;
+	left: -25px;
+}
+#header .bar .title a {
+	color: #fff;
+}
+#header .bar i {
+	float: left;
+	color: #fff;
+	padding: 15px;
+	padding-left: 20px;
+	padding-right: 20px;
+	height: 50px;
+}
+.c_main{width:92%; margin:auto}
+.content .list {
+	/* height: 80px; */
+	background-color: #fff;
+	margin-bottom: 1px;
+	padding: 15px;
+	overflow: hidden;
+}
+.content .list .anno {
+	font-size: 1.2rem;
+	padding-top: 7px;
+	float: left;
+}
+.content .list .date {
+	font-size: 80%;
+	color: #919090;
+	float: right;
+}
+.content .list .count {
+	font-size: 1.2rem;
+	float: right;
+}
+.content .list .out {
+	color: #FFF;
+	background: #54c0f2;
+	width: 30%;
+	text-align: center;
+	padding: 7px 0px;
+	border-radius: 5px;
+}
+.content .list .out1 {
+	color: #FFF;
+	background: #CCC;
+	width: 30%;
+	text-align: center;
+	padding: 7px 0px;
+	border-radius: 5px;
+}
+.content .list .in {
+	color: red;
+}
+.content .list .text {
+	font-size: 90%;
+	color: #919090;
+	margin-top: 5px;
+}
+.content .list .text i {
+	color: #919090;
+	float: right;
+	position: relative;
+	top: -10px;
+}
+.page{
+    text-align: center;
+    background: #fff;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+}
+.mbqr{ font-size:1.2rem; padding:10px 15px; color:#8f8f8f}
+.mbqr div{
+	border-left: 4px solid #8f8f8f;
+    height: 1rem;
+    float: left;
+    margin-top: 0.4rem;
+    margin-right: 10px;}
+.mbqr_title{ color:#4b4949; font-size:1.4rem; text-align:center; margin:20px auto}
+.mbqr_content{font-size:1.2rem; color:#666666; /* padding:0 15px; */line-height: 2rem;}
+.mbqr_button{ width: 100%; /* padding:0 15px; */ background:#54c0f2; color:#fff; font-size:1.4rem; text-align:center; border-radius:5px; margin: 20px auto; padding: 5px 0;}

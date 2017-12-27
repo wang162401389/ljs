@@ -1,0 +1,46 @@
+  <!-------- 搜索游戏 -------->
+  <div id="search_div" style="display:none">
+  <script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+  	<div class="page_tit"><script type="text/javascript">document.write(searchName);</script> [ <a href="javascript:void(0);" onclick="dosearch();">隐藏</a> ]</div>
+	
+	<div class="form2">
+	<form method="post" action="__URL__/{$xaction}">
+  <if condition="$xaction eq 'common1'">
+  <dl class="lineD"><dt>复审时间从：</dt><dd><htmlA:timer id="start_time" style="width:190px" value="{$search.start_time}"  /><span>到：</span><htmlA:timer id="end_time" style="width:190px" value="{$search.end_time}"   /></dd></dl>
+ 
+  <else/>
+  </if>
+    <dl class="lineD">
+        <dt>投资人ID：</dt>
+        <dd>
+            <input name="tuid" style="width:190px" id="title" type="text" value="{$search.tuid}">
+            <span>不填则不限制</span>
+        </dd>
+    </dl>
+    <dl class="lineD">
+        <dt>投资人用户名：</dt>
+        <dd>
+            <input name="tuname" style="width:190px" id="title" type="text" value="{$search.tuid}">
+            <span>不填则不限制</span>
+        </dd>
+    </dl>
+	<dl class="lineD">
+      <dt>推荐人ID：</dt>
+      <dd>
+        <input name="uid" style="width:190px" id="title" type="text" value="{$search.uid}">
+        <span>不填则不限制</span>
+      </dd>
+    </dl>
+    <dl class="lineD">
+      <dt>推荐人名：</dt>
+      <dd>
+        <input name="uname" style="width:190px" id="title" type="text" value="{$search.uname}">
+        <span>不填则不限制</span>
+      </dd>
+    </dl>
+    <div class="page_btm">
+      <input type="submit" class="btn_b" value="确定" />
+    </div>
+	</form>
+  </div>
+  </div>

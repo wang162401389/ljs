@@ -1,0 +1,95 @@
+body{background-color: #ad0a01; overflow-x: hidden}
+.anniver1200{width:1200px; margin: 0 auto; position: relative;}
+.anniver1096{width:1096px; margin: 0 auto; position: relative;}
+.anniver-overflow{overflow: hidden;}
+.anniver-margintop10{margin-top: 10px;}
+
+/*自定义滚动条*/
+.scroolpifu::-webkit-scrollbar {width:18px; height:18px;}
+.scroolpifu::-webkit-scrollbar-button{background-color:#b30b02; visibility: hidden;}
+.scroolpifu::-webkit-scrollbar-track{background:#b30b02;}/*border-radius:4px;*/
+.scroolpifu::-webkit-scrollbar-track-piece {}
+.scroolpifu::-webkit-scrollbar-thumb{background:#e41404; -webkit-border-radius:6px; -moz-border-radius:6px; border-radius:6px;}/*border-radius:4px;*/
+.scroolpifu::-webkit-scrollbar-corner {background:#b30b02; }
+.scroolpifu::-webkit-scrollbar-resizer {background:#b30b02;}
+
+.twoanniver-banner{height:921px; overflow: hidden; background: url(../images/twoanniversary/twoanniver-banner.jpg) center top no-repeat;}
+.tanni-banner{height:921px; position: relative;}
+.anniver-banner-h2{width: 639px; height: 345px; display: block; position: absolute; top:106px; left: 50%; margin-left: -319.5px; background: url(../images/twoanniversary/banner-h2.png) no-repeat;}
+.anniver-banner-gift{width:977px; height: 342px; display: block; position: absolute; top:454px; left: 50%; margin-left: -488.5px; background: url(../images/twoanniversary/anniver-banner-gift.png) no-repeat;}
+.twoanni-p{}
+.twoanni-p .p1-tit{width:762px; height: 146px; display: block; margin: 0 auto; background: url(../images/twoanniversary/p1-tit.png) no-repeat;}
+.twoanni-p .p1-container{width:1096px; height: 574px; color: #fff1b2; margin-top: 78px; padding: 54px 0 0; background: url(../images/twoanniversary/page1-bg.png) no-repeat;}
+.p1-container .p1-nodata{width:474px; height: 407px; margin: 40px auto 0; background: url(../images/twoanniversary/p1-nodata.png) no-repeat;}
+.p1-container .p1-proli{width:896px; height: 172px; margin: 0 auto; border-bottom: 1px solid #ae2922}
+/*.p1-container .p1-proli:last-child{border-bottom: none;}*/
+.p1-proli .p1-c-jiang{width:76px; height: 81px; display: block; float: left; margin: 44px 0 0 32px; background: url(../images/twoanniversary/p1-c-jiang.png) no-repeat;}
+.p1-proli .p1-con-tit{width:319px; height: 38px; line-height: 38px; display: block; overflow: hidden; float: left;  margin: 66px 0 0 16px;}
+.p1-con-tit a{font-size: 24px; color:#fff1b2}
+.p1-con-tit a:hover{color:#fff1b2}
+.p1-proli .p1-con-nhl{width:94px; height: 38px; line-height: 38px; display: block; float: left; font-size: 24px; margin: 66px 0 0 45px; text-align: center;}
+.p1-proli .p1-con-time{width:98px; height: 38px; line-height: 38px; display: block; float: left; font-size: 24px; margin: 66px 0 0 25px; text-align: center;}
+.p1-proli .p1-con-btn{width:154px; height: 62px; line-height: 62px; text-align: center; display: block; float: left; margin: 53px 0 0 23px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; border-radius: 5px;}
+.p1-proli .anniver-invbtn{color: #ad0a01; background: #fff1b2; font-size: 23px; box-shadow:inset 0 -4px 0 0 #e2d59d }
+.p1-proli .anniver-tbreview{color: #666666; background: #e3e1e1; font-size: 23px; box-shadow:inset 0 -4px 0 0 #c8c6c6 }
+
+.twoanni-p .p2-tit{width:505px; height: 146px; display: block; margin: 104px auto 0; background: url(../images/twoanniversary/p2-tit.png) no-repeat;}
+.twoanni-p .p2-container{width:1096px; height: 684px; color: #fff1b2; margin-top: 69px; padding: 54px 0 0; background: url(../images/twoanniversary/page2-bg.png) no-repeat;}
+.p2-con-main{width:1024px; height: 588px; overflow-y: scroll; margin: 5px 0 0 33px;}
+.p2-bangdan-box{margin-bottom: 20px;}
+.p2-bangdan-box .p2-bangdan-title{width:587px; height: 51px; line-height: 51px; font-size: 24px;  color: #fff1b2; text-align: center;margin: 0 auto; background: url(../images/twoanniversary/p2-bangdan.png) center top no-repeat;}
+.p2-bangdan-box .p2-bangdan-title a{ font-size: 24px;  color: #fff1b2; }
+.p2-bangdan-box .p2-bangdan-title a:hover{color: #fff1b2;}
+.p2-bangdan-box ul{margin-top: 10px;}
+.p2-bd-box{width:826px; height: 110px; margin: 0 auto; border-bottom: 1px solid #ae2922;}
+
+.bangdan-tit{width:230px; height: 98px; float: left; display: inline; margin: 10px 0 0 30px; }
+.bangdan-tit1{background: url(../images/twoanniversary/bangdan-tit1.png) no-repeat;}
+.bangdan-tit2{background: url(../images/twoanniversary/bangdan-tit2.png) center center no-repeat;}
+.bangdan-tit3{background: url(../images/twoanniversary/bangdan-tit3.png) center center no-repeat;}
+.bangdan-show{width:302px; height: 30px; color: #fff1b2; font-size: 22px; float:left; display: block;  text-align: center;}
+.bangdan-show1{margin: 42px 0 0 30px;}
+.bangdan-show2{margin: 48px 0 0 30px;}
+.bangdan-show3{margin: 48px 0 0 30px;}
+.bangdan-money{width:218px; height: 70px; float:left; display: block; margin: 14px 0 0 0px; text-align: center; background: url(../images/twoanniversary/bangdan-money.png) no-repeat;}
+.bangdan-money i{font-style: normal; color: #ad0a01; font-size: 22px; display: inline-block; margin: 25px 0px 0px 53px;}
+
+.twoanniver-page3{padding-bottom: 200px;}
+.p3-container{width:1096px; height: 502px; color: #fff1b2; margin-top: 78px; padding: 54px 0 0; background: url(../images/twoanniversary/page3-bg.png) no-repeat;}
+.twoanni-p .p3-tit{width:505px; height: 146px; display: block; margin: 104px auto 0; background: url(../images/twoanniversary/p3-tit.png) no-repeat;}
+.p3-con-left{width:432px; float: left; margin: 82px 0 0 85px; color: #fff1b2; font-size: 17px; }
+.p3-con-left .p3-left-pre{height:78px; padding-left: 100px; position: relative; margin-bottom: 30px; line-height: 38px;}
+.p3-left-pre i{width:69px; height: 82px; display: block; position: absolute; left:0; top:0; background: url(../images/twoanniversary/p3-l-people.png) no-repeat;}
+.p3-left-pre .p3-pre-ico1{background-position: 0 0;}
+.p3-left-pre .p3-pre-ico2{left:4px; background-position: -95px 0;}
+.p3-left-pre .p3-pre-ico3{top:4px; width:80px; background-position: -177px 0;}
+.twoanni-p .p3-con-ruletxt{width:460px; float: left; margin: 56px 0 0 65px; display: inline; color: #fff1b2; font-size: 17px; line-height: 36px;}
+
+/*点缀 图标*/
+.twoanni-p1-ico1{width:96px; height: 61px; display: block; position: absolute; top:103px; left:-119px; background: url(../images/twoanniversary/twoanni-p1-ico1.png) no-repeat;}
+.twoanni-p1-ico2{width:95px; height: 94px; display: block; position: absolute; top:462px; left:-294px; background: url(../images/twoanniversary/twoanni-p1-ico2.png) no-repeat;}
+.twoanni-p1-ico3{width:89px; height: 81px; display: block; position: absolute; top:811px; left:-157px; background: url(../images/twoanniversary/twoanni-p1-ico3.png) no-repeat;}
+.twoanni-p1-ico4{width:186px; height: 108px; display: block; position: absolute; top:156px; right:-219px; background: url(../images/twoanniversary/twoanni-p1-ico4.png) no-repeat;}
+.twoanni-p1-ico5{width:41px; height: 44px; display: block; position: absolute; top:580px; right:-280px; background: url(../images/twoanniversary/twoanni-p1-ico5.png) no-repeat;}
+
+.twoanni-p2-ico1{width:128px; height: 116px; display: block; position: absolute; top:134px; left:-81px; background: url(../images/twoanniversary/twoanni-p2-ico1.png) no-repeat;}
+.twoanni-p2-ico2{width:70px; height: 76px; display: block; position: absolute; top:662px; left:-417px; background: url(../images/twoanniversary/twoanni-p2-ico2.png) no-repeat;}
+.twoanni-p2-ico3{width:87px; height: 80px; display: block; position: absolute; top:74px; right:-104px; background: url(../images/twoanniversary/twoanni-p2-ico3.png) no-repeat;}
+.twoanni-p2-ico4{width:145px; height: 101px; display: block; position: absolute; top:880px; right:-190px; background: url(../images/twoanniversary/twoanni-p2-ico4.png) no-repeat;}
+
+.twoanni-p3-ico1{width:144px; height: 101px; display: block; position: absolute; top:520px; left:-186px; background: url(../images/twoanniversary/twoanni-p3-ico1.png) no-repeat;}
+.twoanni-p3-ico2{width:113px; height: 101px; display: block; position: absolute; top:106px; right:-76px; background: url(../images/twoanniversary/twoanni-p3-ico2.png) no-repeat;}
+.twoanni-p3-ico3{width:95px; height: 94px; display: block; position: absolute; top:829px; right:-65px; background: url(../images/twoanniversary/twoanni-p3-ico3.png) no-repeat;}
+
+
+
+
+
+
+
+
+
+
+
+
+

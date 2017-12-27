@@ -1,0 +1,73 @@
+<include file="default:Public:_header_common" group="Home"/>
+<title>我的账户-- {$glo.web_name}</title>
+<!--{$uclogin}-->
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/JQtip/tip-yellowsimple/tip-yellowsimple.css" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/H/css/confirmation.css" />
+<script language=javascript type="text/javascript" src="__ROOT__/Style/Js/jquery.js"></script>
+<script language="javascript" src="__ROOT__/Style/JQtip/jquery.poshytip.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function(){
+	$('.xtitle').poshytip({
+		className: 'tip-yellowsimple',
+		showOn: 'hover',
+		alignTo: 'target',
+		alignX: 'center',
+		alignY: 'top',
+		offsetX: 0,
+		offsetY: 5
+	});
+});
+
+</script>
+<include file="default:Public:_header_main" group="Home"/>
+<div class="xiantiao"></div>
+
+<div class="c_main">
+	<div class="c_content">
+    	<div class="c_content_title4"> </div>
+        <div class="c_content_middle2">
+       
+        	<table width="100%">
+              <thead>
+                <tr>
+                  <td>标号</td>
+                  <td>标名称</td>
+                  <td>咨询服务费</td>
+                  <td>操作</td>
+                </tr>
+              </thead>
+           
+              <tbody  class="c_c_m" style="display:block;">
+                <foreach name="list" item="vo">
+                <tr>
+                  <td>{$vo.id}</td>
+                  <td ><div class="c_c_d">{$vo.borrow_name}</div></td>
+                  <td>￥{$vo.vouch_money}</td>
+                  <td>
+                    <if condition="$vo.danbaoconfirm_status eq 1">
+                      <a href="__APP__/confirm/index/danbao_agreement?bid={$vo.id}"><div class="c_c_t">确认</div></a>
+                      <else/>
+                      <div class="c_c_t1">已确认</div>
+                    </if>
+                  </td>
+                </tr>
+                </foreach>
+              </tbody>
+           </table>
+		   
+           <div class="c_bottom">共需支付： ￥{$sum}<div class="<if condition="$count eq 0">c_bottom1" onclick="pay()"<else/>c_bottom2"</if>>去支付</div></div>
+            
+        </div>
+    </div>
+</div>
+
+ 
+  
+  <div style="clear:both"></div>
+</div>
+<script>
+  function pay(){
+    location.href="__APP__/confirm/index/paydanbao"
+  }
+</script>
+<include file="default:Public:_footer" group="Home" />

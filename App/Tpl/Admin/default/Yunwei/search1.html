@@ -1,0 +1,15 @@
+<div id="search_div" style="display:none">
+  <script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+    <div class="page_tit"><script type="text/javascript">document.write(searchName);</script> [ <a href="javascript:void(0);" onclick="dosearch();">隐藏</a> ]</div>
+  
+  <div class="form2">
+  <form method="post" action="__URL__/{$xaction}">
+    <dl class="lineD"><dt>时间从：</dt><dd><htmlA:timer id="start_time" style="width:190px" value="{$search.start_time}"  /></dd></dl>
+    <dl class="lineD"><dt>到</dt><dd><htmlA:timer id="end_time" style="width:190px" value="{$search.end_time}"   /></dd></dl>
+    <div class="page_btm">
+      <input type="hidden" name="id" value="{$id}"/> 
+      <input type="submit" class="btn_b" value="确定" />
+    </div>
+  </form>
+  </div>
+  </div>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html style="height:100%;background:#EEEAEA">
+
+<head>
+	 <include file="Pub:header-common" /> 
+	<link rel="stylesheet" href="__ROOT__/Style/Phone/css/account.css" >
+</head>
+
+<body>
+	<div id="header">
+		<div class="bar">
+			<div class="title">{$uname}的账户</div>
+			<!-- <div class="balance">
+				<div class="text price1">{$saving+$balance}</div>
+				<div class="text">账户余额(元)</div>
+			</div> -->
+			<div class="amount">
+        <div class="text"  style="border-right:1px #7ec8ea solid">
+            <div style="font-size:1.2rem; color:#fefef7; opacity:0.8"> 资金总额(元)</div>
+            <div style="font-size:1.5rem; color:#fafafa;"> {:Fmoney($saving+$balance+$capital+$benefit["interest_collection"])}</div>
+
+        </div>
+				<div class="text">
+            <div style="font-size:1.2rem; color:#fefef7; opacity:0.8">账户余额(元)</div>
+            <div style="font-size:1.5rem; color:#fafafa;"> {:Fmoney($saving+$balance)}</div>
+        </div>
+			</div>
+			<div class="amount">
+				<div class="newtext " style="border-right:1px #7ec8ea solid">
+            <div style="font-size:1rem; color:#fefef7; opacity:0.8"> 待收本金(元)</div>
+            
+            <div style="font-size:1.2rem; color:#fafafa;">{:Fmoney($daishoubenjin)}</div>
+            <!-- <div style="font-size:1.2rem; color:#fafafa;">{:Fmoney($capital-$minfo["money_freeze"])}</div> -->
+        </div>
+				<div class="newtext" style="border-right:1px #7ec8ea solid">
+            <div style="font-size:1rem; color:#fefef7; opacity:0.8">待收收益(元)</div>
+            <div style="font-size:1.2rem; color:#fafafa;">{$benefit.interest_collection|Fmoney=###}</div>
+        </div>
+        <div class="newtext">
+            <div style="font-size:1rem; color:#fefef7; opacity:0.8">累计收益(元)</div>
+            <div style="font-size:1.2rem; color:#fafafa;">{:Fmoney($totalmoney)}</div>
+        </div>
+			</div>
+		</div>
+	</div>
+
+	<div class="content">
+		<div class="bar">
+			<div class="button">
+				<a type="button" class="btn btn-info btn-recharge" href="{:U('M/user/pay')}">充 值</a>
+			</div>
+			<div class=" button">
+				<a type="button" class="btn btn-info btn-widthdraw" href="{:U('M/user/cash')}">提 现</a>
+			</div>
+		</div>
+		<p class="p_height"></p>
+        <if condition="$zige eq 1">
+        <div class="bar" style="background-color: #f8e600;">
+           <a href="/M/more/tiyanjin.html#part3"><img src="__ROOT__/Style/M/images/account/prize.png"/ style="width:100%;"></a>
+            <!-- <div class="tiyanjin_content">
+                <span class="btn-info btn-recharge" style="background-color:#f8e600; ">
+                    <if condition="($experiflag eq 0) or ($experiflag eq 1)">
+                           <a href="{:U('M/experience/detail')}"><img src="__ROOT__/Style/M/images/account/tiyanjing.png"/></a>
+                    <else/>
+                          <img src="__ROOT__/Style/M/images/account/tiyanjing1.png"/>
+                    </if>
+                </span>
+            </div>
+            <a href="{:U('M/more/tiyanjin')}">
+            <div class="tiyanjin_content" style="margin-left:20px; ">
+                <span class="btn-info btn-widthdraw" style="background-color:#f8e600;padding-top:5px; font-size: 1.2rem; color:red;">链金豆：{$doucount}个 </span>
+                <span><img src="__ROOT__/Style/M/images/account/tiyanjingjieshao.png"  style="height: 2rem;" /></span>
+            </div></a> -->
+        </div>
+        </if>
+		<div class="account-info">
+			<div class="icon">
+				<div style=" border-right:1px solid #e5e5e5"><img src="__ROOT__/Style/Phone/img/account-img01.png" onclick="location.href='{:U('M/user/invest_list')}'" /></div>
+                <div>投资记录</div>
+			</div>
+			<div class="icon">
+				<div style=" border-right:1px solid #e5e5e5"><img src="__ROOT__/Style/Phone/img/account-img02.png" onclick="location.href='{:U('M/user/records_list')}'"/></div>
+                <div>交易明细</div>
+			</div> 
+			<div class="icon">
+				<div style=" border-right:1px solid #e5e5e5"><img src="__ROOT__/Style/Phone/img/account-img03.png" onclick="location.href='{:U('M/user/card')}'" /></div>
+                <div>银行帐号</div>
+			</div>
+			<div class="icon">
+				<div><img src="__ROOT__/Style/Phone/img/cuq.png" onclick="location.href='{:U('M/user/piggybank')}'" style="margin-bottom: 3px;" /></div>
+                <div>存钱罐</div>
+			</div>
+		</div>
+		<p class="p_height2"></p>
+		<div class="list">
+			<!--<div class="line">
+				<span class="substance" id="profile" onclick="location.href='{:U('M/user/info')}'">个人资料</span><i class="glyphicon glyphicon-menu-right"></i>
+			</div>
+			<div class="line">
+				<span class="substance" id="setting" onclick="location.href='{:U('M/user/setting')}'">账户设置</span><i class="glyphicon glyphicon-menu-right"></i>
+			</div>
+			<!-- <div class="line">
+				<span class="substance" id="invite">邀请好友</span><i class="glyphicon glyphicon-menu-right"></i>
+			</div> 
+			<div class="line">
+				<span class="substance" id="info"  onclick="location.href='{:U('m/user/msg')}'">站内信息</span><i class="glyphicon glyphicon-menu-right"></i>
+			</div>
+			<div class="line" onclick="location.href='{:U('m/pub/logout')}'">
+				<span class="substance" id="invite">退 &nbsp; &nbsp; &nbsp;出</span><i class="glyphicon glyphicon-menu-right"></i>
+			</div>
+			<!--<div class="line" id="profile">个人资料<i class="glyphicon glyphicon-menu-right"></i></div>
+			<div class="line" id="setting">账户设置<i class="glyphicon glyphicon-menu-right"></i></div>
+			<div class="line" id="invite">邀请好友<i class="glyphicon glyphicon-menu-right"></i></div>
+			<div class="line" id="info">站内信息<i class="glyphicon glyphicon-menu-right"></i></div>-->
+		
+        
+        <div class="content_detail mine_btn" data-toggle="{:U('M/user/info')}">
+          <div><img src="__ROOT__/Style/Phone/img/account-img04.png" /></div>
+          <div class="d_middle " >个人资料</div>
+          <i class="glyphicon glyphicon-menu-right c_d_i"></i>
+        </div>
+        <div class="spx"></div>
+        <div class="content_detail mine_btn" data-toggle="{:U('M/user/setting')}">
+          <div><img src="__ROOT__/Style/Phone/img/account-img05.png" /></div>
+          <div class="d_middle">账户设置</div>
+          <i class="glyphicon glyphicon-menu-right c_d_i"></i>
+        </div>
+        <div class="spx"></div>
+        <div class="content_detail mine_btn" data-toggle="{:U('M/user/mycoupons')}">
+          <div><img src="__ROOT__/Style/Phone/img/account-img10.png" /></div>
+          <div class="d_middle">我的赠券</div>
+            <if condition="$count neq 0">
+                <div class="d_middle" style="width:30px;color:#fff; background-image: url('__ROOT__/Style/M/images/account/dou1.png'); background-repeat:no-repeat;background-position: center;">{$count}</div>
+            </if>
+          <i class="glyphicon glyphicon-menu-right c_d_i"></i>
+        </div>
+        <div class="spx"></div>
+        <div class="content_detail mine_btn" data-toggle="<?php if($res==1){ ?>{:U('M/fengxian/result',array('source'=>1))}<?php }else{ ?> {:U('M/fengxian/index',array('source'=>1))} <?php } ?>">
+            <div><img src="__ROOT__/Style/Phone/img/account-img09.png" /></div>
+            <div class="d_middle">风险评估</div>
+            <i class="glyphicon glyphicon-menu-right c_d_i"></i>
+        </div>
+        <div class="spx"></div>
+        <div class="content_detail mine_btn" data-toggle="{:U('m/user/msg')}">
+          <div><img src="__ROOT__/Style/Phone/img/account-img08.png" /></div>
+          <div class="d_middle">站内信息</div>
+          <i class="glyphicon glyphicon-menu-right c_d_i"></i>
+        </div>
+         <?php if($involved) { ?>
+        <div class="spx"></div>
+            <div class="content_detail mine_btn" data-toggle=<?php echo $project_url ?> >
+                <div><img src="__ROOT__/Style/Phone/img/account-img08.png" /></div>
+                <div class="d_middle">活动界面</div>
+                <i class="glyphicon glyphicon-menu-right c_d_i"></i>
+            </div>
+        <?php } ?>
+         <if condition="$event_enable eq 1" >
+             <div class="spx"></div>
+             <div class="content_detail mine_btn" data-toggle={$event_url} >
+                 <div><img src="__ROOT__/Style/Phone/img/account-img08.png" /></div>
+                 <div class="d_middle">{$event_prom}</div>
+                 <i class="glyphicon glyphicon-menu-right c_d_i"></i>
+             </div>
+         </if>
+         <!--
+        <div class="spx"></div>
+		<div class="content_detail mine_btn" data-toggle="{:U('m/user/mycoupons')}">
+			<div><img src="__ROOT__/Style/Phone/img/account-img10.png" /></div>
+			<div class="d_middle">我的赠券</div>
+			<i class="glyphicon glyphicon-menu-right c_d_i"></i>
+		</div>
+		-->
+		<div class="spx"></div>
+        <div class="content_detail " onclick="logout()">
+          <div><img src="__ROOT__/Style/Phone/img/account-img07.png" /></div>
+          <div class="d_middle">退出</div>
+          <i class="glyphicon glyphicon-menu-right c_d_i"></i>
+        </div>
+       
+        
+      </div>
+        
+	</div>
+	<script>
+		function logout(){
+			if(confirm("您确定要退出吗？"))
+			{
+				location.href="{:U('m/pub/logout')}";
+			}
+		}
+	</script>
+	<include file="Pub:footer" /> 
+
+</body>
+
+</html>

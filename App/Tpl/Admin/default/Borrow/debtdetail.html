@@ -1,0 +1,27 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<div class="so_main">
+    <div class="page_tit">原债权比对 </div>
+    <div><span>标号ID:{$borrow_id}</span> <span>上一级标号ID:{$last_borrow_id}</span></div>
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th class="line_l">期数</th>
+                <volist name="total_qishu" id="vg">
+                    <th class="line_l">{$vg}</th>
+                </volist>
+                <th class="line_l">统计</th>
+            </tr>
+            <?php foreach($ot as $key=>$value){ ?>
+            <tr>
+                <?php foreach($value as $mykey=>$myvalue){ ?>
+                <td><?php echo $myvalue['user_name']; ?></td>
+                <td><?php echo $myvalue['money']; ?></td>
+                <?php } ?>
+                <td><?php echo $tongji[$key]['total'];?></td>
+            </tr>
+            <?php } ?>
+        </table>
+    </div>
+</div>
+<include file="Public:_footer" />

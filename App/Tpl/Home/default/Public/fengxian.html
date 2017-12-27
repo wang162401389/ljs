@@ -1,0 +1,211 @@
+<div class="advbox1">
+    <div class="advpic1">
+        <div class="questionnaire_main mymain"></div>
+        <div class="questionnaire_bottom">
+            <span class="js_confirm">确认</span>
+        </div>
+        <div class="closebtn1">
+            <img src="__ROOT__/Style/H/images/member/fxpg_close.png" usemap="#closemap"/>
+            <map name="closemap" id="closemap">
+                <area shape="rect" coords="40,7,68,35" class="closebtn" alt="Venus" />
+            </map>
+        </div>
+    </div>
+</div>
+
+<div class="advbox2">
+    <div class="advpic2">
+        <div class="questionnaire_main">
+            <div class="questionnaire_title">个人投资者风险承受能力调查问卷说明</div>
+            <div class="questionnaire_rule">
+                <h3>一、本调查问卷对个人投资者风险承受能力等级的划分</h3>
+                <p>投资者由于年龄、收入、支出、财产、性格等差异形成不同的投资风险承受能力。将投资者分为保守型、谨慎型、稳健型、积极型四类，风险承受能力逐级递增。</p>
+                <h3>二、本调查问卷评分说明</h3>
+                <p>本调查问卷通过考察投资者的实际年龄、投资期限、投资经验、收入情况、投资目的、财务状况等因素，对投资者的风险承受能力及风险偏好进行调查和评价。问卷由7道标准化选择题组成，其中每题共有四个选项：从第一个选项到第四个选项，得分依次是1分、2分、3分、4分。将投资者各个选项的得分加总，得分越高代表投资者风险承受能力越高。投资者问卷得分与风险承受能力的对应关系见下表：</p>
+                <table>
+                    <thead>
+                    <tr>
+                        <td>投资者分数</td><td>对应风险承受能力</td><td>投资者类型</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>7～12</td><td>风险承受能力极低</td><td>保守型</td>
+                    </tr>
+                    <tr>
+                        <td>13～17</td><td>风险承受能力较低</td><td>谨慎型</td>
+                    </tr>
+                    <tr>
+                        <td>18～23</td><td>风险承受能力一般</td><td>稳健型</td>
+                    </tr>
+                    <tr>
+                        <td>24～28</td><td>风险承受能力较高</td><td>积极型</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h3>三、投资者风险承受能力与投资风险等级匹配关系</h3>
+                <p>根据有关风险评价体系，按风险水平从低到高划分为四个风险等级，即低风险、中低风险、中风险、中高风险。投资者的风险承受能力和不同风险等级理财产品的匹配关系见下表：</p>
+                <table>
+                    <thead>
+                    <tr>
+                        <td>投资者分数</td><td>投资者类型</td><td>对应风险承受能力</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>7～12</td><td>保守型</td><td>低风险</td>
+                    </tr>
+                    <tr>
+                        <td>13～17</td><td>谨慎型</td><td>低风险、中低风险</td>
+                    </tr>
+                    <tr>
+                        <td>18～23</td><td>稳健型</td><td>低风险、中低风险、中风险</td>
+                    </tr>
+                    <tr>
+                        <td>24～28</td><td>积极型</td><td>低风险、中低风险、中风险、中高风险</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div style="height: 30px;"></div>
+            </div>
+
+        </div>
+        <div class="closebtn2">
+            <img src="__ROOT__/Style/H/images/member/ym_close.png"/>
+        </div>
+    </div>
+
+</div>
+
+<div id="MyDiv"></div>
+<div id="fade" class="black_overlay"></div>
+<script type="text/javascript" src="__ROOT__/Style/Js/jquery.cookie.js"></script>
+<script type="text/javascript">
+	var fxpg_popup_status = '{$fxpg_popup_status}';
+    //弹出隐藏层
+    function ShowDiv(show_div,bg_div){
+        document.getElementById(show_div).style.display='block';
+        document.getElementById(bg_div).style.display='block' ;
+        var bgdiv = document.getElementById(bg_div);
+        bgdiv.style.width = document.body.scrollWidth;
+        //bgdiv.style.height = document.body.scrollHeight;
+        $("#"+bg_div).height($(document).height());
+    };
+    //关闭弹出层
+    function CloseDiv(show_div,bg_div)
+    {
+        $(show_div).hide();
+        $(bg_div).hide();
+    };
+
+    function loadwindow(){
+        var thtml = '<div class="loding" style="background-color: black;  z-index:200;  -moz-opacity: 0.8;  opacity:.80;  filter: alpha(opacity=80); "><img src="__ROOT__/Style/Js/006.gif"   align="absmiddle" />题目正在加载中...,如长时间未加载完成，请刷新页面</div>';
+        $(".advbox1").show();
+        $(".mymain").html(thtml);
+        $(".questionnaire_bottom").hide();
+        $(".closebtn1").hide();
+        ShowDiv('MyDiv','fade');
+        $.ajax({
+            url: "__ROOT__/member/index/fengxian",
+            type: "post",
+            dataType: "json",
+            success: function (d) {
+                $(".mymain").html(d.html);
+                $(".questionnaire_bottom").show();
+                $(".closebtn1").show();
+                $(".advbox1").show();
+                ShowDiv('MyDiv','fade');
+            }
+        });
+    }
+    
+    function cancelPopup(status){
+    	$.ajax({url: "__ROOT__/member/index/cancelPopupStatus/status/" + status});
+    }
+
+    $(function(){
+        $(".js_pgnl").click(function () {
+            loadwindow();
+        });
+
+        $(".closebtn1").click(function(){
+        	if(fxpg_popup_status != 2){
+            	cancelPopup(0);
+            }
+        });
+        
+        $(".closebtn").click(function(){
+            $(".advbox1").fadeOut(500);
+            CloseDiv('#MyDiv','#fade');
+        });
+
+        $(".js_sm").click(function () {
+            $(".advbox2").show();
+            ShowDiv('MyDiv','fade');
+        });
+
+        /**
+         * 右上角关闭按钮
+         */
+        $(".closebtn2").click(function(){
+            $(".advbox2").fadeOut(500);
+            CloseDiv('#MyDiv','#fade');
+        });
+
+        /**
+         * 确认按钮题目做完或者放弃
+         */
+        $(".js_confirm").click(function(){
+            var result=$("input[type='radio'][name='wenjuan']:checked").val();
+            if(result){
+                //接受
+                if(result==1){
+                    var flag=true;
+                    var question=[];
+                    $(".myog").find("dl").each(function(){
+                        var $this=$(this);
+                        var an={};
+                        var answer;
+                        answer=$this.find("input[type='radio']:checked").val();
+                        if(answer){
+                            an.answer=answer;
+                            an.problem_id=$this.find("dt").attr("data-id");
+                            question.push(an);
+                        }else{
+                            alert("请选择题目的答案");
+                            flag =false;
+                            return flag;
+                        }
+                    });
+                    if(flag){
+                        $.ajax({
+                            url: "__ROOT__/member/index/answer",
+                            type: "post",
+                            dataType: "json",
+                            data:{"data":question},
+                            success: function (d) {
+                                if(d.ret==0){
+                                    alert(d.message);
+                                   location.reload();
+                                }else{
+                                    alert(d.message);
+                                }
+                            }
+                        });
+                    }
+                }else{
+                	//放弃
+                    $.cookie("touzitype",2,{ expires: 7,path:'/' });
+                    if(fxpg_popup_status != 2){
+                    	cancelPopup(0);
+                    }
+                    $(".advbox1").fadeOut(500);
+                    CloseDiv('#MyDiv','#fade');
+                }
+
+            }else{
+                alert("请选择是否接受问卷调查");
+            }
+        })
+    })
+</script>

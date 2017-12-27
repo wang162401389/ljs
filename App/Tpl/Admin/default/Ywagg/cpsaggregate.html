@@ -1,0 +1,52 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+    var isSearchHidden = 1;
+    var searchName='搜索';
+</script>
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<div class="so_main">
+    <div class="page_tit">各渠道相关数据</div>
+    <!--搜索/筛选会员-->
+    <div id="search_div" style="display:none">
+        <div class="page_tit"><script type="text/javascript">document.write(searchName);</script> [ <a href="javascript:void(0);" onclick="dosearch();">隐藏</a> ]</div>
+        <div class="form2">
+            <form method="post" action="__URL__/{$xaction}" id="ot">
+                <dl class="lineD"><dt>时间从：</dt><dd><htmlA:timer id="startTime" style="width:190px"/><span>到：</span><htmlA:timer id="endTime" style="width:190px"/></dd></dl>
+                <div class="page_btm">
+                    <input type="submit" class="btn_b" value="确定" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--搜索/筛选会员-->
+    <div class="Toolbar_inbox" >
+        <div class="page right">{$pagebar}</div>
+        <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索" style="search_action" />
+    </div>
+    <div class="list">
+        <table style="width:80%">
+            <tr class="title">
+                <th style="font-size: 15px;text-align: center;">注册渠道</th>
+                <th style="font-size: 15px;text-align: center;">注册量</th>
+                <th style="font-size: 15px;text-align: center;">实名人数</th>
+                <th style="font-size: 15px;text-align: center;">使用体验金人数</th>
+                <th style="font-size: 15px;text-align: center;">投资人数</th>
+                <th style="font-size: 15px;text-align: center;">投资金额</th>
+                <th style="font-size: 15px;text-align: center;">投资笔数</th>
+            </tr>
+            <volist name="list" id="vo">
+	            <tr>
+	                <td style="text-align: right;">{$vo.name}</td>
+	                <td style="text-align: center;">{$vo.regNum}</td>
+	                <td style="text-align: center;">{$vo.realnameNum}</td>
+	                <td style="text-align: center;">{$vo.trailNum}</td>
+	                <td style="text-align: center;">{$vo.investHeadCount}</td>
+	                <td style="text-align: right;">{$vo.investAmount}</td>
+	                <td style="text-align: center;">{$vo.investNum}</td>
+	            </tr>
+            </volist>
+        </table>
+    </div>
+</div>
+<include file="Public:_footer" />

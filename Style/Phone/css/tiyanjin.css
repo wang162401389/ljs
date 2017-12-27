@@ -1,0 +1,20 @@
+.tyj_banner img{width: 100%;}
+.tyj_step1>img:first-child{width: 100%;}
+.tyj_step1 a img{margin-top: -6%; width:25%; margin-left: 10%;position: absolute; }
+.tyj_step2>img:first-child{width: 100%;}
+.tyj_step2 a img{margin-top: -8%; width:25%; margin-left: 67%;position: absolute; }
+.tyj_step3>img:first-child{width: 100%;}
+.tyj_step3 a img{margin-top: -9%; width: 41%; margin-left: 30%;position: absolute; }
+.tyj_rule{background: #f9464a; font-size: 1.2rem; color: #f5e303;}
+.tyj_rule img{width: 100%;}
+.tyj_rule div{padding:10px 3% 20px;}
+.tyj_rule div p{line-height: 2rem;}
+.zhuanpan_main{width: 100%;  position:absolute; z-index: 9; margin-top: -23rem}
+.zhuanpan_content{width: 64%; margin: auto; position: relative}
+.zhuanpan_content img{width: 100%; }
+.zhuanpan_content .zpzz_content{width:100%;position: absolute;left: 0rem;  top: 23%;}
+.chance_content{ margin-top: -19%; position: absolute; text-align: center; width: 100%; font-size: 1.2rem; color: #996666; }
+
+/*重置分页效果*/
+.advbox DIV.yahoo2{margin-top: -5px; display: block; float: none}
+.advbox .list_bottom_right ul{ text-align: none}

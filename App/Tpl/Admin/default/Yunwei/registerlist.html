@@ -1,0 +1,46 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+    var delUrl = '__URL__/doDel';
+    var addUrl = '__URL__/add';
+    var isSearchHidden = 1;
+    var searchName='搜索';
+</script>
+<div class="so_main">
+    <div class="page_tit">邀请注册详情</div>
+    <!--搜索/筛选会员-->
+   <include file="search1" />
+    <!--搜索/筛选会员-->
+    <div class="Toolbar_inbox" >
+        <div class="page right">{$pagebar}</div>
+        <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索" style="search_action" />
+    </div>
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th>会员ID</th>
+                <th>会员名称</th>
+                <th>推荐注册时间</th>
+                <th>推荐人</th>
+                <th>推荐人ID</th>
+            </tr>
+            <?php foreach($list as $key=>$val) { ?>
+            <tr>
+                <td><?php echo $val['id'] ?></td>
+                <td><?php echo $val['user_name'] ?></td>
+                <td><?php echo $val['reg_time'] ?></td>
+                <td><?php echo $val['recommendname'] ?></td>
+                <td><?php echo $val['recommend_id'] ?></td>
+            </tr>
+            <?php } ?>
+
+        </table>
+        <div class="Toolbar_inbox" style="overflow: hidden">
+           <htmlA:commonBtn type="href"  class="page left"  action="__URL__/registerlist?{$query}" value="将当前条件下数据导出为Excel"/> 
+            <div class="page right">{$pagebar}</div>
+        </div>
+    </div>
+
+</div>
+
+<include file="Public:_footer" />

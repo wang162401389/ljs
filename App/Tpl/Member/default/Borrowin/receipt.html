@@ -1,0 +1,156 @@
+<html>
+<style type="text/css">
+body{width: 794px;margin: 0 auto;}
+.tg  {width: 100%;font-size:10px;}
+</style>
+    <body>
+        <div class="content">
+        <h2 style="text-align: center;">链金所平台扣项回单</h2>
+        <div style="height: 30px;width: 100%">
+            <span>币别：人民币&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;单位： 元</span>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <if condition="$sort_order neq 0">
+                <span>{$list.repayment_time|date="Y",###} 年 {$list.repayment_time|date="m",###} 月 {$list.repayment_time|date="d",###}日</span>
+                <else/>
+                <span>{$list.completetime|date="Y",###} 年 {$list.completetime|date="m",###} 月 {$list.completetime|date="d",###}日</span>
+            </if>
+
+        </div>
+        <table class="tg" cellpadding="0" cellspacing="1" bgcolor="#000">
+        <tr>
+        <td style="width:8%;text-align:center;line-height:122px;" rowspan="4" bgcolor="#fff" valign="middle">基本信息</td>
+        <td style="width:9%;text-align:center;line-height:61px;" rowspan="2" bgcolor="#fff" valign="middle">付款人</td>
+        <td style="width:9%;text-align:center;line-height:30px;" bgcolor="#fff" valign="middle">户名</td>
+        <td style="width:24%;text-align:center;line-height:30px;" bgcolor="#fff" valign="middle">{$list.company_name}</td>
+        <td style="width:15%;text-align:center;line-height:61px;" rowspan="2" bgcolor="#fff" valign="middle">收款人</td>
+        <td style="width:9%;text-align:center;line-height:30px;" bgcolor="#fff" valign="middle">户名</td>
+        <td style="width:26%;text-align:center;line-height:30px;" colspan="2" bgcolor="#fff" valign="middle">综合服务费收入</td>
+        </tr>
+        <tr>
+        <td style="width:9%;text-align:center;line-height:30px;" bgcolor="#fff" valign="middle">帐号</td>
+        <td style="width:24%;text-align:center;line-height:30px;" bgcolor="#fff" valign="middle">20151008{$list.borrow_uid}</td>
+        <td style="width:9%;text-align:center;line-height:30px;" bgcolor="#fff" valign="middle">帐号</td>
+        <td style="width:26%;text-align:center;line-height:30px;" colspan="2" bgcolor="#fff" valign="middle">新浪账户</td>
+        </tr>
+        <tr>
+        <td style="width:18%;text-align:center;line-height:30px;" colspan="2" bgcolor="#fff" valign="middle">金额</td>
+        <td style="width:24%;text-align:center;line-height:30px;" bgcolor="#fff" valign="middle">
+            <if condition="$sort_order neq 0">
+                {$list['capital'] + $list['interest'] +  $list['expired_money']|receipt_format=###}
+                <else/>
+                {$list.fee|receipt_format=###}
+            </if>
+        </td>
+        <td style="width:24%;text-align:center;line-height:30px;" colspan="2" bgcolor="#fff" valign="middle">代扣代付帐号</td>
+        <td style="width:26%;text-align:center;line-height:30px;" colspan="2" bgcolor="#fff" valign="middle"></td>
+        </tr>
+        <tr>
+        <td style="width:18%;text-align:center;line-height:30px;" colspan="2" bgcolor="#fff" valign="middle">线 上 标 号</td>
+        <td style="width:24%;text-align:center;" bgcolor="#fff" valign="middle">{$list.borrow_name}（{$list.borrow_id|borrowidlayout1}）</td>
+        <td style="width:24%;text-align:center;line-height:30px;" colspan="2" bgcolor="#fff" valign="middle">借 款 周 期</td>
+        <td style="width:26%;text-align:center;line-height:30px;" colspan="2" bgcolor="#fff" valign="middle">{$list.borrow_duration_txt}
+            <if condition="$sort_order neq 0">
+                （{$sort_order}/{$list.total}）
+            </if>
+        </td>
+        </tr>
+        <tr>
+        <td style="width:8%;text-align:center;line-height:92px;" rowspan="3" bgcolor="#fff" valign="middle">代扣本息</td>
+        <td style="width:18%;text-align:center;line-height:30px;" colspan="2" bgcolor="#fff" valign="middle">起息日期</td>
+        <td style="width:24%;text-align:center;line-height:30px;" bgcolor="#fff" valign="middle">止息日期</td>
+        <td style="width:15%;text-align:center;line-height:30px;" bgcolor="#fff" valign="middle">代扣代付本金</td>
+        <td style="width:9%;text-align:center;line-height:30px;" bgcolor="#fff" valign="middle">利率</td>
+        <td style="width:13%;text-align:center;line-height:30px;" bgcolor="#fff" valign="middle">代扣利息</td>
+        <td style="width:13%;text-align:center;line-height:30px;" bgcolor="#fff" valign="middle">本息合计</td>
+        </tr>
+        <tr>
+        <td style="width:18%;text-align:center;line-height:30px;" colspan="2" bgcolor="#fff" valign="middle">
+            <if condition="$sort_order neq 0">
+                {:date("Y年m月d日", strtotime("+".($sort_order-1)." months", strtotime(date("Y-m-d",$list["second_verify_time"]))))}
+                <else/>
+                -
+            </if>
+        </td>
+        <td style="width:24%;text-align:center;line-height:30px;" bgcolor="#fff" valign="middle">
+            <if condition="$sort_order neq 0">
+                <if condition="$list['repayment_type'] eq 1">
+                    {$list.repayment_time|date="Y年m月d日",###}
+                    <else/>
+                    {$list.deadline|date="Y年m月d日",###}
+                </if>
+                <else/>
+                -
+            </if>
+        </td>
+        <td style="width:15%;text-align:center;line-height:30px;" bgcolor="#fff" valign="middle">
+            <if condition="$sort_order neq 0">
+                {$list.capital|receipt_format=###}
+                <else/>
+                -
+            </if>
+        </td>
+        <td style="width:9%;text-align:center;line-height:30px;" bgcolor="#fff" valign="middle">
+            <if condition="$sort_order neq 0">
+                {$list.borrow_interest_rate}%
+                <else/>
+                -
+            </if>
+        </td>
+        <td style="width:13%;text-align:center;line-height:30px;" bgcolor="#fff" valign="middle">
+            <if condition="$sort_order neq 0">
+                {$list['interest'] + $list['expired_money']|receipt_format=###}
+                <else/>
+                -
+            </if>
+        </td>
+        <td style="width:13%;text-align:center;line-height:30px;" bgcolor="#fff" valign="middle">
+            <if condition="$sort_order neq 0">
+                {$list['capital'] + $list['interest'] + $list['expired_money']|receipt_format=###}
+                <else/>
+                -
+            </if>
+        </td>
+        </tr>
+        <tr>
+        <td style="width:18%;text-align:center;line-height:30px;" colspan="2" bgcolor="#fff" valign="middle">合计</td>
+        <td style="width:24%;text-align:center;line-height:30px;" bgcolor="#fff" valign="middle"></td>
+        <td style="width:15%;text-align:center;line-height:30px;" bgcolor="#fff" valign="middle">
+            <if condition="$sort_order neq 0">
+                {$list.capital|receipt_format=###}
+                <else/>
+                -
+            </if>
+        </td>
+        <td style="width:9%;text-align:center;line-height:30px;" bgcolor="#fff" valign="middle"></td>
+        <td style="width:13%;text-align:center;line-height:30px;" bgcolor="#fff" valign="middle">
+            <if condition="$sort_order neq 0">
+                {$list['interest'] + $list['expired_money']|receipt_format=###}
+                <else/>
+                -
+            </if>
+        </td>
+        <td style="width:13%;text-align:center;line-height:30px;" bgcolor="#fff" valign="middle">
+            <if condition="$sort_order neq 0">
+                {$list['capital'] +$list['interest'] + $list['expired_money']|receipt_format=###}
+                <else/>
+                -
+            </if>
+        </td>
+        </tr>
+        <tr>
+        <td style="width:8%;text-align:center;line-height:30px;" bgcolor="#fff" valign="middle">费用明细</td>
+        <td style="width:18%;text-align:center;line-height:30px;" colspan="2" bgcolor="#fff" valign="middle">综合服务费金额 </td>
+        <td style="width:24%;text-align:center;line-height:30px;" bgcolor="#fff" valign="middle">
+            <if condition="$sort_order eq 0">
+                {$list.fee|receipt_format=###}
+                <else/>
+                -
+            </if>
+        </td>
+        <td style="width:24%;text-align:center;line-height:30px;" colspan="2" bgcolor="#fff" valign="middle">盖 章</td>
+        <td style="width:26%;text-align:center;line-height:30px;" colspan="2" bgcolor="#fff" valign="middle"></td>
+        </tr>
+        </table>
+        </div>
+    </body>
+</html>

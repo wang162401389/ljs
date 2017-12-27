@@ -1,0 +1,67 @@
+<include file="Public:_header" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<tagLib name="htmlA" />
+<div class="so_main">
+    <div class="page_tit">月底家具大闯关</div>
+    <div id="search_div">
+        <div class="form2" style="background-color: #d2dbea;">
+            <form method="get" action="__URL__/furniturewin">
+                <table style="width: 80%;height: 80px;">
+                    <tr>
+                        <td>手机号码</td>
+                        <td> <input name="user_phone" style="width:190px" id="user_phone" type="text" value="{$search.user_phone}"></td>
+                        <td>推荐人手机号码：</td>
+                        <td> <input name="cell_phone" style="width:190px" id="rec_user_phone" type="text" value="{$search.cell_phone}"></td>
+                    </tr>
+                    <tr>
+                        <td>注册时间：</td>
+                        <td><htmlA:timer id="startTime" style="width:90px" value="{$search.startTime}"  />&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;
+          					<htmlA:timer id="endTime" style="width:90px" value="{$search.endTime}"   /></td>
+          				<td>投资金额：</td>
+                        <td><span><input name="invest_min" style="width:90px" id="invest_min" type="text" value="{$search.invest_min}">&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;
+          					<input name="invest_max" style="width:90px" id="invest_max" type="text" value="{$search.invest_max}"></span></td>
+                    </tr>
+                    <tr style="text-align: right;">
+                        <td colspan="6">
+                        <span class='chaxun'><input type="submit" value="查询"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th class="line_l">用户id</th>
+                <th class="line_l">手机号码</th>
+                <th class="line_l">真实姓名</th>
+                <th class="line_l">注册时间</th>
+                <th class="line_l">推荐人号码</th>
+                <th class="line_l">累计投资金额</th>
+                <th class="line_l">当前兑换家具奖金</th>
+            </tr>
+            <volist id="vo" name="list">
+                <tr>
+                    <td>{$vo.id}</td>
+                    <td>{$vo.user_phone}</td>
+                    <td>{$vo.real_name}</td>
+                    <td>{$vo.reg_date}</td>
+                    <if condition="$vo.cell_phone eq null">
+                    	<td>无</td>
+                    <else />
+                    	<td>{$vo.cell_phone}</td>
+                    </if>
+                    <td>{$vo.total_invest|default='0.00'}</td>
+                    <td>{$vo.prize_val}</td>
+                </tr>
+            </volist>
+        </table>
+        <div class="Toolbar_inbox" style="overflow: hidden">
+            <htmlA:commonBtn type="href" action="__URL__/{$xaction}?{$query}" value="将当前条件下数据导出为Excel"/>
+            <div class="page right">{$pagebar}</div>
+        </div>
+    </div>
+</div>
+<include file="Public:_footer" />

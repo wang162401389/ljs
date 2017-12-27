@@ -1,0 +1,160 @@
+<include file="Public:_header_common" />
+<title>{$title}</title>
+<meta http-equiv="keywords" content="{$keyword}" />
+<meta http-equiv="description" content="{$description}" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/H/css/detail.css" />
+<script type="text/javascript" src="__ROOT__/Style/H/js/common.js" language="javascript"></script>
+<script type="text/javascript">
+var Transfer_invest_url = "__APP__/tinvest";
+</script>
+<script type="text/javascript" src="__ROOT__/Style/H/js/area.js"></script>
+</head>
+<body>
+<include file="Public:_header_main" />
+<tagLib name="htmlA" />
+
+<div class="xiantiao"></div>
+<div class="bread wrapper">您所在的位置：<a href="__APP__/index">首页</a> > 我要投资</div>
+
+<!--  筛选理财项目  -->
+<div class="list_filter wrapper">
+    <div class="p-list-top clearfix">
+        <span class="plist-timg"></span>
+        <a href="javascript:void(0)" class="plist-ta plist-ta-a plist-ta-curr">散标投资<!-- <i class="plist-right-line"></i> --></a>
+        <!-- <i class="plist-ta-line"></i>
+        <a href="/debthome/debtlists" class="plist-ta plist-ta-b">收益权转让区</a> -->
+    </div>
+    <h2>筛选理财项目</h2>
+    <ul>
+        <li class="saixuanlx">标的状态</li>
+        <php>foreach($searchMap['borrow_status'] as $key=>$v){</php>
+        <php>if($key==$searchUrl['borrow_status']['cur']){</php>
+        <li class="buxz"><a>{$v}</a></li>
+        <php>}else{</php>
+        <li><a href="__URL__/index.html?type=search&{$searchUrl.borrow_status.url}&borrow_status={$key}">{$v}</a></li>
+        <php>}</php>
+        <php>}</php>
+    </ul>
+    <ul>
+        <li class="saixuanlx">借款期限</li>
+        <php>foreach($searchMap['borrow_duration'] as $key=>$v){</php>
+        <php>if($key==$searchUrl['borrow_duration']['cur']){</php>
+        <li class="buxz"><a href="__ROOT__/invest/index.html">{$v}</a></li>
+        <php>}else{</php>
+        <li><a href="__URL__/index.html?type=search&{$searchUrl.borrow_duration.url}&borrow_duration={$key}">{$v}</a></li>
+        <php>}</php>
+        <php>}</php>
+    </ul>
+    <ul>
+        <li class="saixuanlx">标的类型</li>
+        <php>foreach($searchMap['product_type'] as $key=>$v){</php>
+        <php>if($key==$searchUrl['product_type']['cur']){</php>
+        <li class="buxz"><a href="__ROOT__/invest/index.html">{$v}</a></li>
+        <php>}else{</php>
+        <li><a href="__URL__/index.html?type=search&{$searchUrl.product_type.url}&product_type={$key}">{$v}</a></li>
+        <php>}</php>
+        <php>}</php>
+    </ul>
+    <ul>
+        <li class="saixuanlx">预期收益</li>
+        <php>foreach($searchMap['borrow_interest_rate'] as $key=>$v){</php>
+        <php>if($key==$searchUrl['borrow_interest_rate']['cur']){</php>
+        <li class="buxz"><a href="__ROOT__/invest/index.html">{$v}</a></li>
+        <php>}else{</php>
+        <li><a href="__URL__/index.html?type=search&{$searchUrl.borrow_interest_rate.url}&borrow_interest_rate={$key}">{$v}</a></li>
+        <php>}</php>
+        <php>}</php>
+    </ul>
+</div>
+<div class="list_content wrapper">
+	<p class="clock-mark">近期工作日预计发标时间10:30，11:30，16:00，17:00，其余时间随机发标。</p>
+    <p class="attribute"><span>项目名称</span><span>借款总额(元)</span><span>预期年化收益率</span><span>借款期限</span><span>进度</span><span>操作</span></p>
+    <div class="list_box">
+        <volist name="list.list" id="vb">
+            <ul>
+                <li class="titles">
+                    <?php if($vb['is_beginnercontract']==1){ ?>
+                    <img src="__ROOT__/Style/H/images/index/newerb-ico.png">
+                    <?php }else if($vb['product_type']==8){ ?>
+                    <img src="__ROOT__/Style/H/images/index/new_bao.png">
+                    <?php }else if($vb['product_type']==10){ ?>
+                    <img src="__ROOT__/Style/H/images/index/zjb_cj.png">
+                    <?php }else if($vb['product_type']==7){ ?>
+                    <img src="__ROOT__/Style/H/images/index/new_you.png">
+                    <?php } else if($vb['product_type']==6||$vb['product_type']==5){ ?>
+                    <img src="__ROOT__/Style/H/images/index/new_xin.png">
+                    <?php } else if($vb['product_type']==4){ ?>
+                    <img src="__ROOT__/Style/H/images/index/new_rong.png">
+                    <?php } else if($vb['product_type']==3||$vb['product_type']==2||$vb['product_type']==1){ ?>
+                    <img src="__ROOT__/Style/H/images/index/new_zhi.png">
+                    <?php } ?>
+                    <a href="{$vb.id|getInvestUrl=###}" title="{$vb.borrow_name}">{$vb.borrow_name|cnsubstr=###,16}</a> <if condition="!empty($vb['password'])"><span style="float: right;position: absolute;"><img style="width:37px;height:17px" src="__ROOT__/Style/H/images/borrow_vip.png"></span></if>
+                    </li>
+                <li class="total">{$vb.borrow_money|getMoneyFormt=###}元</li>
+                <li class="interest">{$vb.borrow_interest_rate}%<if condition="$vb['jiaxi_rate'] gt 0"><span class="jiaxi">+{$vb['jiaxi_rate']}%</span></if></li>
+                <li class="deadline">
+                    <?php if($vb['borrow_duration_txt']!=''){ ?>
+                    {$vb.borrow_duration_txt}
+                    <?php } else { ?>
+                    {$vb.borrow_duration}
+                    <if condition="$vb.repayment_type eq 1">天
+                        <else/>
+                        个月</if>
+                    <?php } ?>
+                </li>
+                <li class="schedule">
+                    <?php
+              $progress = intval($vb['progress']);
+              if($progress >= 0 and $progress <= 100){
+                  echo "<div class='index_jindu_mid midd1'><div class='middtext'>".$progress."%</div></div>";
+              }
+          ?>
+                </li>
+                <li class="operate">
+                <?php $j =0; ?>
+                    <if condition="$vb.borrow_status eq 3"> <a class="inoperable" href="javascript:;">已流标</a>
+                        <elseif condition="$vb.borrow_status eq 4"/>
+                        <a class="inoperable" href="javascript:;">复审中</a>
+                        <elseif condition="$vb.borrow_status eq 6"/>
+                        <a  class="inoperable" href="javascript:;">还款中</a>
+                        <elseif condition="$vb.borrow_status eq 8"/>
+                        <?php if($j == 0){?>
+                            <script>
+                                var seconds;
+                                var timer=null;
+                                function setLeftTime() {
+                                    waittime = <?php echo $vb["add_time"]-time(); ?>;
+                                    seconds = parseInt(waittime, 10);
+                                    timer = setInterval(showSeconds,1000);
+                                }
+
+                                function showSeconds() {
+                                    if (seconds <= 0) {
+                                        clearInterval(timer);
+                                        location.reload();
+                                    } else {
+                                        console.log("当前剩余："+seconds);
+                                    }
+                                    seconds--;
+                                }
+                                 setLeftTime();
+                            </script>
+                        <?php $j++;}?>
+                        <a href="{$vb.id|getInvestUrl=###}" >{$vb.add_time|date="H:i",###} 开始</a>
+                        <elseif condition="$vb.borrow_status gt 6"/>
+                        <a class="inoperable" href="{$vb.id|getInvestUrl=###}">已完成</a>
+                        <else/>
+                        <a href="{$vb.id|getInvestUrl=###}">我要投标</a> </if>
+                </li>
+            </ul>
+        </volist>
+    </div>
+    <div class="list_bottom_right">
+        <ul>
+            {$list.page}
+        </ul>
+    </div>
+</div>
+
+<!--中部结束-->
+<include file="Public:_footer" />

@@ -1,0 +1,68 @@
+<include file="Public:_header" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<tagLib name="htmlA" />
+<div class="so_main">
+    <div class="page_tit">手动开奖</div>
+    <div id="search_div">
+        <div class="form2" style="background-color: #d2dbea;">
+            <form method="get" action="__URL__/zhaiquancommission">
+            </form>
+        </div>
+    </div>
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th class="line_l">id</th>
+                <th class="line_l">type</th>
+                <th class="line_l">期数</th>
+                <th class="line_l">奖品名称</th>
+                <th class="line_l">剩余可投</th>
+                <th class="line_l">操作</th>
+            </tr>
+            <volist id="vo" name="list">
+                <tr>
+                    <td>{$vo.id}</td>
+                    <td>{$vo.prize_type}</td>
+                    <td>{$vo.qishu}</td>
+                    <td>{$vo.prize_name}</td>
+                    <td>{$vo.feeds_left}</td>
+                    <td><input type="button" class="reveal" value="开" /></td>
+                </tr>
+            </volist>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $('.reveal').click(setDefault);
+        function setDefault(){
+            var idCol = $(this).closest('tr').children('td').eq(0).text();
+            var typeCol = $(this).closest('tr').children('td').eq(1).text();
+            $.ajax({
+                        url: "/Admin/yunwei/revealwinnermanually",
+                        type: "post",
+                        data: {
+                            "type": typeCol,
+                            "id":  idCol,
+                        },
+                        dataType: "json",
+                        success: function(results){
+                            //code 0 失败 1 成功
+                            var realdata = results || {};
+                            if(realdata.code == 1){
+                                alert('success!');
+                                window.location.reload();
+                            }else{
+                                
+                                alert('failed');
+                                window.location.reload();
+                            } 
+                        },
+                        error:function(results){
+                            debugger;
+                        }
+                    });
+        }
+    })
+</script>
+<include file="Public:_footer" />

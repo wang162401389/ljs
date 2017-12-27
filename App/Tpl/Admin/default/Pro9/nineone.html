@@ -1,0 +1,68 @@
+<include file="Public:_header" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<tagLib name="htmlA" />
+<div class="so_main">
+    <div class="page_tit">送百万现金</div>
+    <div id="search_div">
+
+        <div class="form2" style="background-color: #d2dbea;">
+            <form method="get" action="__URL__/nineone">
+                <table style="width: 80%;height: 80px;">
+                    <tr>
+                        <td>手机号：</td>
+                        <td> <input name="user_phone" style="width:190px" id="tui_phone" type="text" value="{$search.user_phone}"></td>
+                        <td>推荐人手机号码：</td>
+                        <td> <input name="cell_phone" style="width:190px" id="tui_phone" type="text" value="{$search.cell_phone}"></td>
+                    </tr>
+                    <tr>
+                        <td>注册时间：</td>
+                        <td><htmlA:timer id="startTime" style="width:90px" value="{$search.startTime}"  />&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;
+          					<htmlA:timer id="endTime" style="width:90px" value="{$search.endTime}"   /></td>
+                    </tr>
+                    <tr style="text-align: right;">
+                        <td colspan="6">
+                        <span class='chaxun'><input type="submit" value="查询"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th class="line_l">用户id</th>
+                <th class="line_l">手机号码</th>
+                <th class="line_l">真实姓名</th>
+                <th class="line_l">注册时间</th>
+                <th class="line_l">推荐人手机号</th>
+                <th class="line_l">活动期间累计投资</th>
+                <th class="line_l">获得红包金额</th>
+            </tr>
+            <volist id="vo" name="list">
+                <tr>
+                    <td>{$vo.uid}</td>
+                    <td>{$vo.user_phone}</td>
+                    <td>{$vo.real_name}</td>
+                    <td>{$vo.reg_date}</td>
+                    <td>
+	                    <if condition="$vo.cell_phone eq null">
+	                    	无
+	                    <else />
+	                    	{$vo.cell_phone}
+	                    </if>
+                    </td>
+                    <td>{$vo.invest_money}</td>
+                    <td>{$vo.total_red_packet}</td>
+                    
+                </tr>
+            </volist>
+        </table>
+        <div class="Toolbar_inbox" style="overflow: hidden">
+            <htmlA:commonBtn type="href" action="__URL__/{$xaction}?{$query}" value="将当前条件下数据导出为Excel"/>
+            <div class="page right">{$pagebar}</div>
+        </div>
+    </div>
+</div>
+<include file="Public:_footer" />

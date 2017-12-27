@@ -1,0 +1,13 @@
+/*链金豆介绍*/
+.kld_int_main{background: #fae311}
+.kld_int_main .kld_int_head img{width: 100%;}
+.kld_int_main .kld_int_content{background: url(/Style/M/images/account/kuailedou3.png);background-size: 100%;}
+.kld_int_main .kld_int_content dl{width: 80%;margin: auto;}
+.kld_int_main .kld_int_content dl dt{font-size: 1.2rem; color:#ef3b40;padding: 0.5rem 0; }
+.kld_int_main .kld_int_content dl dd{font-size: 1.2rem; color:#333333 }
+.kld_int_main .kld_int_content .k_i_b{text-align: center; font-size: 0.8rem; width: 100%;color:#333333;margin: auto;margin-top: 2rem;}
+.kld_int_main .kld_int_bottom img{width: 100%;}
+.kld_int_main .app_xiazai{width: 70%; border: 2px solid #e63955; padding: 0.5rem 1rem; text-align: center; margin: auto; border-radius: 5px; font-size: 1.2rem; color: #e63955;margin-top: 1rem;}
+.kld_int_main .app_xiazai a{color: #e63955;}
+.kld_int_main .app_img{width:40%; margin: auto; }
+.kld_int_main .app_img img{width: 100%;}

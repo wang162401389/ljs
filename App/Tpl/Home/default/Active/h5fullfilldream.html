@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<base href="/Style/Phone/" />
+    <title>有梦你就来，豪礼不等待</title>
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  	<script src="__ROOT__/Style/Phone/js/jquery-2.1.4.min.js"></script>
+    <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  	<link rel="stylesheet" type="text/css" href="__ROOT__/Style/Phone/css/dream.css">
+    <style type="text/css">
+        body{background-color: #8e17bf;}
+    </style>
+</head>
+<body>
+    <div id='wx_pic' style='margin:0 auto;display: none;'>
+        <img src='https://ccfax.cn/Style/A/images/dream.jpg'>
+    </div>
+    <include file="default:Pub:simple_header" group="M" />
+    
+    <section class="banner">
+        <img src="__ROOT__/Style/Phone/img/dream/banner.jpg" class="banner-img">
+        <img src="__ROOT__/Style/Phone/img/dream/spaceship.png" class="spaceship">
+    </section>
+
+    <section class="dream">
+        <img src="__ROOT__/Style/Phone/img/dream/tit1.png" class="tit-img">
+        <!--- prize 1 -------------->
+        <div class="item">
+            <p class="name overflow">{$prize_1['prize_name']}第{$prize_1['qishu']}期</p>
+            <div class="content">
+                <img src="__ROOT__/Style/Phone/img/dream/prize1.jpg">
+                <div class="right">
+                    <span>总需种子数：{$prize_1['total']}</span>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:{$prize_1['pct']}%"></div>
+                    </div>
+                    <span>已参与：{$prize_1['invested']}</span>
+                    <span>剩余：{$prize_1['remaining']}</span>
+                    <span class="btn js-dreaming" data-prizeid = "{$prize_1.id}" data-qishu = "{$prize_1['qishu']}" data-name="{$prize_1['prize_name']}" data-remain="{$prize_1['remaining']}">马上追梦</span>
+                </div>
+            </div>
+            <if condition="$prize_1['qishu'] eq $prize_1['inventory'] and $prize_1['pct'] eq 100">
+                <div class="fill-bg">
+                    <p>今天的该奖品已全部送出！<br> 请客官明天早点来！</p>
+                </div>
+            <elseif condition="$prize_1['pct'] eq 100" />
+                <div class="fill-bg">
+                    <p>今天的该奖品已全部送出！<br> 请客官明天早点来！</p>
+                </div>
+            </if>
+        </div>
+
+        <!--- prize 2 -------------->
+        <div class="item">
+            <p class="name overflow">{$prize_2['prize_name']}第{$prize_2['qishu']}期</p>
+            <div class="content">
+                <img src="__ROOT__/Style/Phone/img/dream/prize2.jpg">
+                <div class="right">
+                    <span>总需种子数：{$prize_2['total']}</span>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:{$prize_2['pct']}%"></div>
+                    </div>
+                    <span>已参与：{$prize_2['invested']}</span>
+                    <span>剩余：{$prize_2['remaining']}</span>
+                    <span class="btn js-dreaming" data-prizeid = "{$prize_2.id}" data-qishu = "{$prize_2['qishu']}" data-name="{$prize_2['prize_name']}" data-remain="{$prize_2['remaining']}">马上追梦</span>
+                </div>
+            </div>
+            <if condition="$prize_2['qishu'] eq $prize_2['inventory'] and $prize_2['pct'] eq 100">
+                <div class="fill-bg">
+                    <p>今天的该奖品已全部送出！<br> 请客官明天早点来！</p>
+                </div>
+            <elseif condition="$prize_2['pct'] eq 100" />
+                <div class="fill-bg">
+                    <p>今天的该奖品已全部送出！<br> 请客官明天早点来！</p>
+                </div>
+            </if>
+        </div>
+
+        <!--- prize 3 -------------->
+        <div class="item">
+            <p class="name overflow">{$prize_3['prize_name']}第{$prize_3['qishu']}期</p>
+            <div class="content">
+                <img src="__ROOT__/Style/Phone/img/dream/prize3.jpg">
+                <div class="right">
+                    <span>总需种子数：{$prize_3['total']}</span>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:{$prize_3['pct']}%"></div>
+                    </div>
+                    <span>已参与：{$prize_3['invested']}</span>
+                    <span>剩余：{$prize_3['remaining']}</span>
+                    <span class="btn js-dreaming" data-prizeid = "{$prize_3.id}" data-qishu = "{$prize_3['qishu']}" data-name="{$prize_3['prize_name']}" data-remain="{$prize_3['remaining']}">马上追梦</span>
+                </div>
+            </div>
+            <if condition="$prize_3['qishu'] eq $prize_3['inventory'] and $prize_3['pct'] eq 100">
+                <div class="fill-bg">
+                    <p>今天的该奖品已全部送出！<br> 请客官明天早点来！</p>
+                </div>
+            <elseif condition="$prize_3['pct'] eq 100" />
+                <div class="fill-bg">
+                    <p>今天的该奖品已全部送出！<br> 请客官明天早点来！</p>
+                </div>
+            </if>
+        </div>
+    </section>
+
+    <section class="dream">
+        <img src="__ROOT__/Style/Phone/img/dream/tit2.png" class="tit-img">
+        
+        <!---------prize_9  小米移动电源/加湿器（79元）
+                                          power ------------------------>
+        <div class="parent-item">
+            <span class="red-btn">精致梦</span>
+            <div class="item">
+                <p class="name overflow">{$prize_9['prize_name']}第{$prize_9['qishu']}期</p>
+                <div class="content">
+                    <img src="__ROOT__/Style/Phone/img/dream/power.jpg">
+                    <div class="right">
+                        <span>总需种子数：{$prize_9['total']}</span>
+                        <span>单个种子：￥{$prize_9['prize_min_feeds'] * 100}</span>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:{$prize_9['pct']}%"></div>
+                        </div>
+                        <span>已参与：{$prize_9['invested']}</span>
+                        <span>剩余：{$prize_9['remaining']}</span>
+                        <span class="btn js-dreamed" data-prizeid = "{$prize_9.id}" data-unitprice = "{$prize_9['prize_min_feeds'] * 100}" data-qishu = "{$prize_9['qishu']}" data-name="{$prize_9['prize_name']}" data-remain="{$prize_9['remaining']}">马上圆梦</span>
+                    </div>
+                </div>
+                <if condition="$prize_9['pct'] eq 100" >
+                    <div class="fill-bg">
+                        <p>今天的该奖品已全部送出！<br> 请客官明天早点来！</p>
+                    </div>
+                </if>
+            </div>
+        </div>
+
+        <!---------prize_10  小米空气净化器2代（699元）
+                                     airpurifier ------------------------>
+        <div class="parent-item">
+            <span class="red-btn">健康梦</span>
+            <div class="item">
+                <p class="name overflow">{$prize_10['prize_name']}第{$prize_10['qishu']}期</p>
+                <div class="content">
+                    <img src="__ROOT__/Style/Phone/img/dream/airpurifier.jpg">
+                    <div class="right">
+                        <span>总需种子数：{$prize_10['total']}</span>
+                        <span>单个种子：￥{$prize_10['prize_min_feeds'] * 100}</span>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:{$prize_10['pct']}%"></div>
+                        </div>
+                        <span>已参与：{$prize_10['invested']}</span>
+                        <span>剩余：{$prize_10['remaining']}</span>
+                        <span class="btn js-dreamed" data-prizeid = "{$prize_10.id}" data-unitprice = "{$prize_10['prize_min_feeds'] * 100}" data-qishu = "{$prize_10['qishu']}" data-name="{$prize_10['prize_name']}" data-remain="{$prize_10['remaining']}">马上圆梦</span>
+                    </div>
+                </div>
+                <if condition="$prize_10['pct'] eq 100" >
+                    <div class="fill-bg">
+                        <p>今天的该奖品已全部送出！<br> 请客官明天早点来！</p>
+                    </div>
+                </if>
+            </div>
+        </div>
+
+        <!---------prize_11  TCL家用除湿干衣机（899元）
+                                     machine ------------------------>
+        <div class="parent-item">
+            <span class="red-btn">居家梦</span>
+            <div class="item">
+                <p class="name overflow">{$prize_11['prize_name']}第{$prize_11['qishu']}期</p>
+                <div class="content">
+                    <img src="__ROOT__/Style/Phone/img/dream/machine.jpg">
+                    <div class="right">
+                        <span>总需种子数：{$prize_11['total']}</span>
+                        <span>单个种子：￥{$prize_11['prize_min_feeds'] * 100}</span>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:{$prize_11['pct']}%"></div>
+                        </div>
+                        <span>已参与：{$prize_11['invested']}</span>
+                        <span>剩余：{$prize_11['remaining']}</span>
+                        <span class="btn js-dreamed" data-prizeid = "{$prize_11.id}" data-unitprice = "{$prize_11['prize_min_feeds'] * 100}" data-qishu = "{$prize_11['qishu']}" data-name="{$prize_11['prize_name']}" data-remain="{$prize_11['remaining']}">马上圆梦</span>
+                    </div>
+                </div>
+                <if condition="$prize_11['pct'] eq 100" >
+                    <div class="fill-bg">
+                        <p>今天的该奖品已全部送出！<br> 请客官明天早点来！</p>
+                    </div>
+                </if>
+            </div>
+        </div>
+
+        <!---------prize_4  mobile-card 30 RMB 
+                                        or memeber-shipment of qiyi  ------------------------>
+        <div class="parent-item">
+            <span class="red-btn">乐享梦</span>
+            <div class="item">
+                <p class="name overflow">{$prize_4['prize_name']}第{$prize_4['qishu']}期</p>
+                <div class="content">
+                    <if condition="$prize_4['prize_id'] eq 4">
+                        <img src="__ROOT__/Style/Phone/img/dream/prize4.jpg">
+                    <else />
+                        <img src="__ROOT__/Style/Phone/img/dream/prize44.jpg">
+                    </if>
+                    <!-- <img src="__ROOT__/Style/Phone/img/dream/prize44.jpg"> -->
+                    <div class="right">
+                        <span>总需种子数：{$prize_4['total']}</span>
+                        <span>单个种子：￥{$prize_4['prize_min_feeds'] * 100}</span>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:{$prize_4['pct']}%"></div>
+                        </div>
+                        <span>已参与：{$prize_4['invested']}</span>
+                        <span>剩余：{$prize_4['remaining']}</span>
+                        <span class="btn js-dreamed" data-prizeid = "{$prize_4.id}" data-unitprice = "{$prize_4['prize_min_feeds'] * 100}" data-qishu = "{$prize_4['qishu']}" data-name="{$prize_4['prize_name']}" data-remain="{$prize_4['remaining']}">马上圆梦</span>
+                    </div>
+                </div>
+                <if condition="$prize_4['pct'] eq 100" >
+                    <div class="fill-bg">
+                        <p>今天的该奖品已全部送出！<br> 请客官明天早点来！</p>
+                    </div>
+                </if>
+            </div>
+        </div>
+
+        <!---------prize_5  snack package ------------------------>
+        <div class="parent-item">
+			<span class="red-btn">吃货梦</span>
+            <div class="item">
+                <p class="name overflow">{$prize_5['prize_name']}第{$prize_5['qishu']}期</p>
+                <div class="content">
+                    <if condition="$prize_5['prize_id'] eq 5">
+                        <img src="__ROOT__/Style/Phone/img/dream/prize5.jpg">
+                    <else />
+                        <img src="__ROOT__/Style/Phone/img/dream/prize55.jpg">
+                    </if>
+                    <!-- <img src="__ROOT__/Style/Phone/img/dream/prize55.jpg"> -->
+                    <div class="right">
+                        <span>总需种子数：{$prize_5['total']}</span>
+                        <span>单个种子：￥{$prize_5['prize_min_feeds'] * 100}</span>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:{$prize_5['pct']}%"></div>
+                        </div>
+                        <span>已参与：{$prize_5['invested']}</span>
+                        <span>剩余：{$prize_5['remaining']}</span>
+                        <span class="btn js-dreamed" data-prizeid = "{$prize_5.id}" data-unitprice = "{$prize_5['prize_min_feeds'] * 100}" data-qishu = "{$prize_5['qishu']}" data-name="{$prize_5['prize_name']}" data-remain="{$prize_5['remaining']}">马上圆梦</span>
+                    </div>
+                </div>
+                <if condition="$prize_5['pct'] eq 100" >
+                    <div class="fill-bg">
+                        <p>今天的该奖品已全部送出！<br> 请客官明天早点来！</p>
+                    </div>
+                </if>
+            </div>
+        </div>
+
+        <!---------prize_6  Media oven
+                                        jiuyang pot ------------------------>
+        <div class="parent-item">
+            <span class="red-btn">大厨梦</span>
+            <div class="item">
+                <p class="name overflow">{$prize_6['prize_name']}第{$prize_6['qishu']}期</p>
+                <div class="content">
+                    <if condition="$prize_6['prize_id'] eq 6">
+                        <img src="__ROOT__/Style/Phone/img/dream/prize6.jpg">
+                    <else />
+                        <img src="__ROOT__/Style/Phone/img/dream/prize66.jpg">
+                    </if>
+                    <!-- <img src="__ROOT__/Style/Phone/img/dream/prize66.jpg"> -->
+                    <div class="right">
+                        <span>总需种子数：{$prize_6['total']}</span>
+                        <span>单个种子：￥{$prize_6['prize_min_feeds'] * 100}</span>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:{$prize_6['pct']}%"></div>
+                        </div>
+                        <span>已参与：{$prize_6['invested']}</span>
+                        <span>剩余：{$prize_6['remaining']}</span>
+                        <span class="btn js-dreamed" data-prizeid = "{$prize_6.id}" data-unitprice = "{$prize_6['prize_min_feeds'] * 100}" data-qishu = "{$prize_6['qishu']}" data-name="{$prize_6['prize_name']}" data-remain="{$prize_6['remaining']}">马上圆梦</span>
+                    </div>
+                </div>
+                <if condition="$prize_6['pct'] eq 100" >
+                    <div class="fill-bg">
+                        <p>今天的该奖品已全部送出！<br> 请客官明天早点来！</p>
+                    </div>
+                </if>
+            </div>
+        </div>
+
+        <!---------prize_7  gold bar (1500 RMB )
+                                        china gold------------------------>
+        <div class="parent-item">
+            <span class="red-btn">奢华梦</span>
+            <div class="item">
+                <p class="name overflow">{$prize_7['prize_name']}第{$prize_7['qishu']}期</p>
+                <div class="content">
+                    <if condition="$prize_7['prize_id'] eq 7">
+                        <img src="__ROOT__/Style/Phone/img/dream/prize7.jpg">
+                    <else />
+                        <img src="__ROOT__/Style/Phone/img/dream/prize77.jpg">
+                    </if>
+                    <!-- <img src="__ROOT__/Style/Phone/img/dream/prize77.jpg"> -->
+                    <div class="right">
+                        <span>总需种子数：{$prize_7['total']}</span>
+                        <span>单个种子：￥{$prize_7['prize_min_feeds'] * 100}</span>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:{$prize_7['pct']}%"></div>
+                        </div>
+                        <span>已参与：{$prize_7['invested']}</span>
+                        <span>剩余：{$prize_7['remaining']}</span>
+                        <span class="btn js-dreamed" data-prizeid = "{$prize_7.id}" data-unitprice = "{$prize_7['prize_min_feeds'] * 100}" data-qishu = "{$prize_7['qishu']}" data-name="{$prize_7['prize_name']}" data-remain="{$prize_7['remaining']}">马上圆梦</span>
+                    </div>
+                </div>
+                <if condition="$prize_7['pct'] eq 100" >
+                    <div class="fill-bg">
+                        <p>今天的该奖品已全部送出！<br> 请客官明天早点来！</p>
+                    </div>
+                </if>
+            </div>
+        </div>
+
+        <!---------prize_8  iphone 7(128G)
+                                        goldbar (6000 RMB) ------------------------>
+        <div class="parent-item">
+            <span class="red-btn">土豪梦</span>
+            <div class="item">
+                <p class="name overflow">{$prize_8['prize_name']}第{$prize_8['qishu']}期</p>
+                <div class="content">
+                    <if condition="$prize_8['prize_id'] eq 8 and $prize_8['qishu'] eq 10">
+                        <!--每第十期 iPhone7 中国红-->
+                        <img src="__ROOT__/Style/Phone/img/dream/prize8.jpg">
+                    <elseif condition="$prize_8['prize_id'] eq 8 and $prize_8['qishu'] eq 20" />
+                        <!--每第十期 iPhone7 中国红-->
+                        <img src="__ROOT__/Style/Phone/img/dream/prize8.jpg">
+                    <elseif condition="$prize_8['prize_id'] eq 8 and $prize_8['red'] eq 1 " />
+                        <img src="__ROOT__/Style/Phone/img/dream/prize8.jpg">
+                    <elseif condition="$prize_8['prize_id'] eq 8"  />
+                        <img src="__ROOT__/Style/Phone/img/dream/prize888.jpg">
+                    <else />
+                        <img src="__ROOT__/Style/Phone/img/dream/prize88.jpg">
+                    </if>
+                    <div class="right">
+                        <span>总需种子数：{$prize_8['total']}</span>
+                        <span>单个种子：￥{$prize_8['prize_min_feeds'] * 100}</span>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:{$prize_8['pct']}%"></div>
+                        </div>
+                        <span>已参与：{$prize_8['invested']}</span>
+                        <span>剩余：{$prize_8['remaining']}</span>
+                        <span class="btn js-dreamed" data-prizeid = "{$prize_8.id}" data-unitprice = "{$prize_8['prize_min_feeds'] * 100}" data-qishu = "{$prize_8['qishu']}" data-name="{$prize_8['prize_name']}" data-remain="{$prize_8['remaining']}">马上圆梦</span>
+                    </div>
+                </div>
+                <if condition="$prize_8['pct'] eq 100" >
+                    <div class="fill-bg">
+                        <p>今天的该奖品已全部送出！<br> 请客官明天早点来！</p>
+                    </div>
+                </if>
+            </div>
+		</div>
+    </section>
+
+    <section>
+        <a href="/M/invest/lists/ptype/1%2C2%2C3.html" class="big-btn">去投资获得更多种子</a>
+    </section>
+
+    <section class="marquee">
+        <p class="marquee-tit">
+            <span style="width:30%">中奖用户</span>
+            <span style="width:25%">获得奖品</span>
+            <span style="width:16%">期号</span>
+            <span style="width:22%">幸运种子</span>
+        </p>
+        <div id="marquee" style="overflow:hidden;height:10rem;position:relative;width:100%;">
+            <div id="scroll" style="overflow:hidden;position:absolute;width:100%;top:0;">
+                <ul>
+                    <volist id="vo" name="lucky_list">
+                        <li class="marquee-item">
+                            <span style="width:30%">{$vo.mobile}</span>
+                            <span style="width:25%" class="overflow">{$vo.prize_name}</span>
+                            <span style="width:18%">{$vo.qishu}</span>
+                            <span style="width:20%;color:#fff">{$vo.feed_no}</span>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <a href="/home/active/fullfillhistory" class="big-btn">我的种子和奖品</a>
+    </section>
+
+    <section class="rule">
+        <p class="rule-tit">活动规则 <span></span></p>
+        <div>
+            <p>
+            （1）活动适用人群：所有新老用户。新用户为活动期间新注册用户和已注册未投资用户；老用户为在平台有过一次及以上投资记录的用户<br>
+            （2）每位新老用户将免费获得3个追梦种子，任意投向“ 免费送礼区的 ”同一奖品或不同奖品，活动期间内每天限量各送出5份奖品<br>
+            （3）新老用户在活动期间可根据投资额进入不同的梦想专区，消耗一定的金额埋下 圆梦种子，当梦想专区所需要的种子数满额时会自动开出相对应的奖品<br>
+            （4）幸运种子取该期奖品所有抽取时间，按时、分、秒排列取值之和，除以该期奖品总参与人次后取余数 ； 余数加上10000001 即为幸运种子 ；余数是指整数除法中被除数未被除尽部分， 如7÷3 = 2 ......1 <br>
+            （5）如在活动结束时参与种子未满额 ,则在已参与的种子号中按第4条规则的取值之和除以该期奖品的已参与人次后取余数；余数加上10000001 即为幸运种子<br>
+            （6）活动结束后未使用的追梦种子和圆梦额度自动清零<br>
+            （7）奖品安排在活动结束后15个工作日内统一发放,现金将直接发放至用户平台账户<br>
+            （8）iPhone7 128G第十期和第二十期将开出红色iPhone 128G<br>
+            （9）小米充电宝10000mAh/小熊（bear）加湿器只能选其一，在活动结束后的三个工作日内客服会致电确认您所需的具体奖品<br>
+            （10）在法律允许范围内，链金所保留对此活动的最终解释权，如有疑问请联系官方客服4006626985
+            </p>
+        </div>
+    </section>
+
+    <!--弹窗-->
+    <div class="alldiv">
+        <!--去实名-->
+        <div class="box real-name">
+            <span class="close-btn js-close">×</span>
+            <p class="p1"></p>
+            <div class="btn-div">
+                <a href="javascript:void(0);" class="btn js-close">取消</a>
+                <a href="/M/user/verify.html" class="btn">去实名</a>
+            </div>
+        </div>
+        <!--追梦次数-->
+        <div class="box dreaming-num">
+            <input type="hidden" class="prizeid" value=""/>
+            <span class="close-btn js-close">×</span>
+            <p class="p2 overflow"><span class="qishu"></span>期</p>
+            <p class="p3">我想参与：<input type="number" class="num" value=""/> 次</p>
+            <P class="p4" style="padding-left:3rem;">我还有<span class="total-num">0</span>个追梦种子</P>
+            <div class="btn-div">
+                <a href="javascript:void(0);" class="btn js-close">取消</a>
+                <a href="javascript:void(0);" class="btn js-dreamingok">确定</a>
+            </div>
+        </div>
+        <!--追梦种子用完-->
+        <div class="box dreaming-chance">
+            <p class="p1">您的追梦种子已用完！</p>
+        </div>
+        <!--追梦成功/失败-->
+        <div class="box dreaming-success">
+            <p class="p1">恭喜您投资成功！</p>
+        </div>
+        <!--无圆梦种子-->
+        <div class="box invest">
+            <span class="close-btn js-close">×</span>
+            <p class="p1">投资以后才有圆梦种子哦！</p>
+            <div class="btn-div">
+                <a href="javascript:void(0);" class="btn js-close">取消</a>
+                <a href="/M/invest/lists/ptype/1%2C2%2C3.html" class="btn">去投资</a>
+            </div>
+        </div>
+        <!--圆梦次数-->
+        <div class="box dreamed-num">
+            <input type="hidden" class="prizeid" value=""/>
+            <span class="close-btn js-close">×</span>
+            <p class="p2 overflow"><span class="qishu"></span>期</p>
+            <p class="p3">
+                您剩余的圆梦额度为<span class="red money-left"></span><br>
+                该奖品单个种子所需的额度为<span class="red unitprice"></span>
+            </p>
+            <p class="p3">我想参与：<input type="number" class="num js-num" value=""/> 次</p>
+            <P class="p4">您有<span class="total-num">0</span>次机会</P>
+            <div class="btn-div">
+                <a href="javascript:void(0);" class="btn js-close">取消</a>
+                <a href="javascript:void(0);" class="btn js-dreamedok">确定</a>
+            </div>
+        </div>
+        <!--圆梦额度不够-->
+        <div class="box dreamed-chance">
+            <span class="close-btn js-close">×</span>
+            <p class="p1">圆梦额度不够哦！</p>
+            <p class="p3">
+                您剩余的圆梦额度为<span class="red money-left"></span><br>
+                该奖品单个种子所需的额度为<span class="red unitprice"></span>
+            </p>
+            <div class="btn-div">
+                <a href="javascript:void(0);" class="btn js-close">朕知道了</a>
+            </div>
+        </div>
+        <!--园梦成功/失败-->
+        <div class="box dreamed-success">
+            <p class="p1"></p>
+        </div>
+        <!--活动结束-->
+        <div class="box gameover">
+            <p class="p1">活动结束了哦！</p>
+        </div>
+    </div>
+
+    <input type="hidden" id="dreamfeed" value="{$dream_feed}"/>
+    <input type="hidden" id="moneyleft" value="{$dream_investmoney}"/>
+    <input type="hidden" id="uid" value="{$uid}"/>
+    <input type="hidden" id="realnameed" value="{$realnameed}"/>
+    <input type="hidden" id="gameover" value="{$gameover}"/>
+    <script type="text/javascript">
+		var imgUrl = "https://www.ccfax.cn/Style/Phone/img/dream/banner.jpg";
+		var lineLink = window.location.href.split("?")[0];
+		var descContent = '11111111111111111111111111';
+		var shareTitle = '超好资源整理';
+		var appid = 'wx4523f6c280b89aa9';
+		function shareFriend() {
+			WeixinJSBridge.invoke('sendAppMessage',{
+				"appid": appid,
+				"img_url": imgUrl,
+				"img_width": "300",
+				"img_height": "300",
+				"link": lineLink,
+				"desc": descContent,
+				"title": shareTitle
+			}, function(res) {
+			})
+		}
+		function shareTimeline() {
+			WeixinJSBridge.invoke('shareTimeline',{
+				"img_url": imgUrl,
+				"img_width": "300",
+				"img_height": "300",
+				"link": lineLink,
+				"desc": descContent,
+				"title": shareTitle
+			}, function(res) {
+				//_report('timeline', res.err_msg);
+			});
+		}
+		function shareWeibo() {
+			WeixinJSBridge.invoke('shareWeibo',{
+				"content": descContent,
+				"url": lineLink,
+			}, function(res) {
+				//_report('weibo', res.err_msg);
+			});
+		}
+		// 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。
+		document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+			// 发送给好友
+			WeixinJSBridge.on('menu:share:appmessage', function(argv){
+				
+				shareFriend();
+			});
+			// 分享到朋友圈
+			WeixinJSBridge.on('menu:share:timeline', function(argv){
+				shareTimeline();
+			});
+			// 分享到微博
+			WeixinJSBridge.on('menu:share:weibo', function(argv){
+				shareWeibo();
+			});
+		}, false);
+		/*
+		wx.config({
+			debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+			appId: 'wx4523f6c280b89aa9', // 必填，公众号的唯一标识
+			timestamp: null, // 必填，生成签名的时间戳
+			nonceStr: '', // 必填，生成签名的随机串
+			signature: '',// 必填，签名，见附录1
+			jsApiList: ["onMenuShareAppMessage","onMenuShareTimeline","onMenuShareQQ","onMenuShareWeibo","hideOptionMenu","showOptionMenu","closeWindow"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+		});
+		wx.ready(function(){
+			wx.onMenuShareTimeline({
+				title: '有梦你就来，豪礼不等待1', // 分享标题
+				link: window.location.href.split("?")[0], // 分享链接
+				imgUrl: 'https://www.ccfax.cn/Style/Phone/img/dream/banner.jpg', // 分享图标
+				success: function () { 
+					// 用户确认分享后执行的回调函数
+				},
+				cancel: function () { 
+					// 用户取消分享后执行的回调函数
+				}
+			});
+			
+			wx.onMenuShareAppMessage({
+				title: '有梦你就来，豪礼不等待2', // 分享标题
+				desc: '分享内容',
+				link: window.location.href.split("?")[0], // 分享链接
+				imgUrl: 'https://www.ccfax.cn/Style/Phone/img/dream/banner.jpg', // 分享图标
+				type: '',
+				dataUrl: '',
+				success: function () { 
+					// 用户确认分享后执行的回调函数
+				},
+				cancel: function () { 
+					// 用户取消分享后执行的回调函数
+				}
+			});
+		});
+		*/
+		
+        $(function(){
+			if($("#scroll .marquee-item").length > 5){
+				$("#scroll").append($("#scroll ul").clone());
+				var mscroll = setInterval(function(){
+					var mtop = parseInt($("#scroll").css('top')),
+						objheight = parseInt($("#scroll").height())/2;
+					if(mtop < -objheight){
+					   $("#scroll").css('top', '0');
+					}
+					$("#scroll").css('top', (parseInt($("#scroll").css('top')) - 1) + "px");
+				},30);
+			}
+            //scrollTop('marquee','vertical',375,109,30,1);
+            /* 
+            **滚动
+            */
+            // var scroll = setInterval(function(){
+            //     $("#marquee").find("ul:first").animate({
+            //         marginTop: "-2rem"
+            //     },"slow", function() {
+            //         $(this).css({ marginTop: "0" }).find("li:first").appendTo(this);
+            //     });
+            // }, 2000);
+            /* 
+            **弹窗关闭按钮
+            */
+            $('.js-close').click(function(){
+                $('.alldiv').hide();
+                $('.box').hide();
+            });
+            /* 
+            **马上追梦
+            */
+            var dreaming_totalnum = "",
+                dreaming_remain = "";
+            $('.js-dreaming').click(function(){
+                /*活动结束*/
+                var gameover = $("#gameover").val();
+                if(gameover == 1){
+                    $('.alldiv').show();
+                    $('.gameover').show();
+                    var time = setTimeout(function(){
+                        $('.alldiv').fadeOut();
+                        $('.gameover').hide();
+                    }, 1000);
+                    return;
+                }
+
+                var uid = $("#uid").val(),
+                    realname = $("#realnameed").val(),
+                    dreamfeed = $("#dreamfeed").val() || 0,//追梦种子个数
+                    prizeid = $(this).data("prizeid"),
+                    qishu = $(this).data("qishu"),
+                    prizename = $(this).data("name");
+
+                dreaming_totalnum = dreamfeed;
+                dreaming_remain = $(this).data("remain");//奖品剩余种子
+
+                //没有登录
+                if(uid == 0){
+                    window.location.href = "/M/pub/login.html";
+                    return;
+                }
+                //没有实名
+                if(realname == 0){
+                    $('.alldiv').show();
+                    $('.real-name .p1').text("实名后才可以追梦哦！");
+                    $('.real-name').show();
+                    return;
+                }
+                //追梦种子用完
+                if(dreamfeed == 0){
+                    $('.alldiv').show();
+                    $('.dreaming-chance').show();
+                    var time = setTimeout(function(){
+                        $('.alldiv').fadeOut();
+                        $('.dreaming-chance').hide();
+                    }, 1000);
+                    return;
+                }
+                //输入追梦次数
+                if(uid != 0 && realname != 0 && dreamfeed != 0){   
+                    $('.alldiv').show();
+                    $('.dreaming-num').show();
+                    $('.dreaming-num').find('.total-num').text(dreamfeed);
+                    $('.dreaming-num').find('.qishu').text(prizename + "第" + qishu);
+                    $('.dreaming-num').find('.prizeid').val(prizeid);
+                }
+            });
+
+            $('.dreaming-num').find('.num').keyup(function(){
+                var num = $(this).val();
+                if(num > parseInt(dreaming_totalnum) && num > parseInt(dreaming_remain)){
+                    if(parseInt(dreaming_totalnum) >= parseInt(dreaming_remain)){
+                        $(this).val(dreaming_remain);
+                    }else{
+                        $(this).val(dreaming_totalnum);
+                    }
+                    return;
+                }
+                if(num > parseInt(dreaming_totalnum)){
+                    $(this).val(dreaming_totalnum);
+                    return;
+                }
+                if(num > parseInt(dreaming_remain)){
+                    $(this).val(dreaming_remain);
+                    return;
+                }
+                $(this).val(num.replace(/[^\d]/g,""));
+            });  
+
+            $('.js-dreamingok').click(function(){
+                var num = $('.dreaming-num').find('.num').val(),
+                    prizeid = $('.dreaming-num').find('.prizeid').val();
+                if(num){
+                    $.ajax({
+                        url: "/home/active/ajaxInvest",
+                        type: "post",
+                        data: {
+                            "feed_amount": num,
+                            "prize_history_id": prizeid 
+                        },
+                        dataType: "json",
+                        success: function(results){
+                            //code 0 失败 1 成功
+                            var realdata = results || {};
+                            if(realdata.code == 1){
+                                //alert("成功");
+                                $('.dreaming-num').hide();
+                                $('.dreaming-success').show();
+                                $('.dreaming-success').find('.p1').text("恭喜您追梦成功！");
+                            }else{
+                                //alert(realdata.msg);
+                                $('.dreaming-num').hide();
+                                $('.dreaming-success').show();
+                                $('.dreaming-success').find('.p1').text("追梦失败了哦~");
+                            }
+                            var time = setTimeout("window.location.reload()", 1000);
+                        }
+                    });
+                }
+            });
+            /* 
+            **马上圆梦
+            */
+            var dreamed_totalnum = "",
+                dreamed_remain = "";
+            $('.js-dreamed').click(function(){
+                /*活动结束*/
+                var gameover = $("#gameover").val();
+                if(gameover == 1){
+                    $('.alldiv').show();
+                    $('.gameover').show();
+                    var time = setTimeout(function(){
+                        $('.alldiv').fadeOut();
+                        $('.gameover').hide();
+                    }, 1000);
+                    return;
+                }
+
+                var uid = $("#uid").val(),
+                    realname = $("#realnameed").val(),
+                    moneyleft = $("#moneyleft").val() || 0,//剩余投资金额
+                    prizeid = $(this).data("prizeid"),
+                    unitprice = $(this).data("unitprice"),//单个种子金额
+                    qishu = $(this).data("qishu"),
+                    prizename = $(this).data("name");
+
+                //圆梦种子个数
+                var dreamfeed = parseInt(moneyleft/unitprice);
+
+                dreamed_totalnum = dreamfeed;
+                dreamed_remain = $(this).data("remain");//奖品剩余种子
+
+                //没有登录
+                if(uid == 0){
+                    window.location.href = "/M/pub/login.html";
+                    return;
+                }
+
+                //没有实名
+                if(realname == 0){
+                    $('.alldiv').show();
+                    $('.real-name .p1').text("实名后才可以圆梦哦！");
+                    $('.real-name').show();
+                    return;
+                }
+
+                //圆梦额度不够
+                if(moneyleft < unitprice && moneyleft != 0){
+                    $('.alldiv').show();
+                    $('.dreamed-chance').find('.money-left').text(moneyleft);
+                    $('.dreamed-chance').find('.unitprice').text(unitprice);
+                    $('.dreamed-chance').show();
+                    return;
+                }
+
+                //没有圆梦种子
+                if(dreamfeed == 0){
+                    $('.alldiv').show();
+                    $('.invest').show();
+                    return;
+                }
+
+                //输入圆梦次数
+                if(uid != 0 && dreamfeed != 0 && moneyleft >= unitprice){
+                    $('.alldiv').show();
+                    $('.dreamed-num').show();
+                    $('.dreamed-num').find('.num').val("");
+                    $('.dreamed-num').find('.total-num').text(dreamfeed);
+                    $('.dreamed-num').find('.qishu').text(prizename + "第" + qishu);
+                    $('.dreamed-num').find('.money-left').text(moneyleft);
+                    $('.dreamed-num').find('.unitprice').text(unitprice);
+                    $('.dreamed-num').find('.prizeid').val(prizeid);
+                }
+            });
+
+            $('.dreamed-num').find('.num').keyup(function(){
+                var num = $(this).val();
+                if(num >= parseInt(dreamed_totalnum) && num >= parseInt(dreamed_remain)){
+                    if(parseInt(dreamed_totalnum) >= parseInt(dreamed_remain)){
+                        $(this).val(dreamed_remain);
+                    }else{
+                        $(this).val(dreamed_totalnum);
+                    }
+                    return;
+                }
+                if(num > parseInt(dreamed_totalnum)){
+                    $(this).val(dreamed_totalnum);
+                    return;
+                }
+                if(num > parseInt(dreamed_remain)){
+                    $(this).val(dreamed_remain);
+                    return;
+                }
+                $(this).val(num.replace(/[^\d]/g,""));
+            });  
+
+            $('.js-dreamedok').click(function(){
+                var num = $('.dreamed-num').find('.num').val(),
+                    prizeid = $('.dreamed-num').find('.prizeid').val();
+                if(num){
+                    $.ajax({
+                        url: "/home/active/ajaxInvest",
+                        type: "post",
+                        data: {
+                            "feed_amount": num,
+                            "prize_history_id": prizeid 
+                        },
+                        dataType: "json",
+                        success: function(results){
+                            //code 0 失败 1 成功
+                            var realdata = results || {};
+                            if(realdata.code == 1){
+                                $('.dreamed-num').hide();
+                                $('.dreamed-success').show();
+                                $('.dreamed-success').find('.p1').text("恭喜您圆梦成功！");
+                            }else{
+                                //alert(realdata.msg);
+                                $('.dreamed-num').hide();
+                                $('.dreamed-success').show();
+                                $('.dreamed-success').find('.p1').text("圆梦失败了哦~");
+                            } 
+                            var time = setTimeout("window.location.reload()", 1000);
+                        }
+                    });
+                }
+            });
+            /* 
+            **活动规则显示收起                                                      
+            */
+            $('.rule-tit').click(function(){
+                if($('.rule div').css('display') == "none"){
+                    $('.rule-tit span').addClass('active');
+                    $('.rule div').show();
+                }else{
+                    $('.rule-tit span').removeClass('active');
+                    $('.rule div').hide();
+                }
+            });
+        })
+    </script>
+</body>
+
+</html>

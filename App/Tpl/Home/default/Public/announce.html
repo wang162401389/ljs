@@ -1,0 +1,49 @@
+<div class="waiting-project jr_main clearfix">
+    <div class="recpro-ad"></div>
+    <div class="waiting-main jr_content">
+        <table style="margin-left:50px;width:825px">
+            <thead>
+                <tr>
+                    <td style="text-align: left">借款标题</td>
+                    <td>借款总额（元）</td>
+                    <td>预期年化收益率</td>
+                    <td>借款期限</td>
+                    <td>发布时间</td>
+                </tr>
+            </thead>
+            <tbody>
+                <volist name="waitBorrow.list" id="wb">
+                <tr>
+                    <td class="jr_t_1">
+                        <if condition="($wb.product_type eq 1) or ($wb.product_type eq 2) or ($wb.product_type eq 3)">
+                            <img src="__ROOT__/Style/H/images/index/new_zhi.png">&nbsp;
+                            <elseif condition="$wb.product_type eq 8" />
+                            <img src="__ROOT__/Style/H/images/index/new_bao.png">&nbsp;
+                            <elseif condition="$wb.product_type eq 7" />
+                            <img src="__ROOT__/Style/H/images/index/new_you.png">&nbsp;
+                            <elseif condition="$wb.product_type eq 4" />
+                            <img src="__ROOT__/Style/H/images/index/new_rong.png">&nbsp;
+                            <elseif condition="($wb.product_type eq 5) or ($wb.product_type eq 6)" />
+                            <img src="__ROOT__/Style/H/images/index/new_xin.png">&nbsp;
+                            <elseif condition="$wb.product_type eq 10" />
+                            <img src="__ROOT__/Style/H/images/index/zjb_cj.png">&nbsp;
+                        </if>
+                        <a title="{$wb.borrow_name}"  href="{$wb.id|getInvestUrl=###}">{$wb.borrow_name}</a>
+                        <if condition="!empty($wb['password'])"><span style="float: right;position: absolute;"><img style="width:30px" src="__ROOT__/Style/H/images/borrow_vip.png"></span></if>
+                    </td>
+                    <td class="jr_t_2">{$wb.borrow_money|getMoneyFormt=###}元</td>
+                    <td class="jr_t_3">{$wb.borrow_interest_rate}%<if condition="$wb.jiaxi_rate gt 0"><span class="indexjiaxi" style="left: 115px;">+{$wb.jiaxi_rate}%</span></if></td>
+                    <td class="jr_t_4">
+                        <if condition="$wb.borrow_duration_txt neq ''">
+                            {$wb.borrow_duration_txt}
+                            <else/>
+                            {$wb.borrow_duration}<if condition="$wb.repayment_type eq 1">天<else/>个月</if>
+                        </if>
+                    </td>
+                    <td class="jr_t_6"><a href="{$wb.id|getInvestUrl=###}" class="bg_red"> {$wb.add_time|date="H:i",###} 开始</a></td>
+                </tr>
+                </volist>
+        </table>
+        <div class="more_invest_main"><a href="__ROOT__/invest/index.html?type=search&borrow_status=8" id="oggg5">更多撮合项目》</a></div>
+    </div>
+</div>

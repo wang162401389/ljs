@@ -1,0 +1,113 @@
+<include file="Public:_header_common" />
+<title>我的奖品 - 有梦你就来，豪礼不等待</title>
+<meta http-equiv="keywords" content="{$glo.web_keywords}" />
+<meta http-equiv="description" content="{$glo.web_descript}" />
+<link rel="stylesheet" href="/Style/H/css/dreamseed.css" />
+<include file="Public:_header_main" />
+<div class="myseed-banner"></div>
+<div class="g-width1200">
+    <p class="myseed-tit">活动期间内您的总圆梦额度为<span class="color-fc2b0f">{$dream_investmoney_total}</span>元，还剩<span class="color-fc2b0f">{$dream_investmoney}</span>元的额度可以圆梦；还剩余<span class="color-fc2b0f">{$dream_feed}</span>个追梦种子</p>
+</div>
+<!--列表 start-->
+<div class="g-width1200 myseed-wrap">
+    <a class="back-dreamball" href="/active/fullfilldream">
+        <span class="back-dbtxt">返回活动主题页面</span>
+    </a>
+    <div class="myseed-wtit clearfix">
+        <a href="javascript:void(0)" class="ms-tita color-333333 curr js-myseedtit">我的种子</a>
+        <a href="javascript:void(0)" class="ms-tita color-333333 js-myseedtit">我的奖品</a>
+    </div>
+    <!--我的种子 start-->
+    <div class="myseed-main js-myseedtxt" style="display: block;">
+        <div class="myseed-mhr clearfix">
+            <span class="mhr-h-s mhr-h-s1">参与的奖品</span>
+            <span class="mhr-h-s mhr-h-s2">期号</span>
+            <span class="mhr-h-s mhr-h-s3">种子号码</span>
+            <span class="mhr-h-s mhr-h-s4">幸运种子</span>
+        </div>
+        <if condition="sizeof($dream_investhistory) neq 0">
+            <div class="myseed-m-list">
+                <volist id="vo" name="dream_investhistory">
+                    <volist id="vo1" name="vo">
+                    <div class="myseed-m-box clearfix">
+                    <span class="se-list-t se-list-t1">{$vo1.prize_name}</span>
+                    <span class="se-list-t se-list-t2">{$vo1.qishu}</span>
+                        <div class="se-list-t se-list-t3">
+                            <div class="arwardnumber-list clearfix">
+                                <volist id="vo2" name="vo1.arr">
+                                    <span>{$vo2}</span>
+                                </volist>
+                            </div>
+                        </div>
+                    <span class="se-list-t se-list-t4">{$vo1.luck}</span>
+                    </div>
+                    </volist>
+                </volist>
+            </div>
+        <else />
+            <p class="arward-none color-fc2b0f">您还没有参与哦！</p>
+        </if>
+    </div>
+    <!--我的种子 end-->
+    <!--我的奖品 start-->
+    <div class="myseed-main js-myseedtxt">
+        <div class="myseed-mhr clearfix">
+            <span class="mhr-h-s mhr-h-s1">获得的奖品</span>
+            <span class="mhr-h-s mhr-h-s2">期号</span>
+            <span class="mhr-h-s mhr-h-s4">幸运种子</span>
+        </div>
+        <div class="myseed-m-list">
+            <if condition="sizeof($dream_true) neq 0">
+                <volist id="vo" name="dream_true">
+                    <div class="myseed-m-box clearfix">
+                        <span class="se-list-t se-list-t1">{$vo.prize_name}</span>
+                        <span class="se-list-t se-list-t2">{$vo.qishu}</span>
+                        <span class="se-list-t se-list-t4">{$vo.feed_no}</span>
+                    </div>
+                </volist>
+            <else />
+                <p class="arward-none color-fc2b0f">暂无获奖信息！</p>
+            </if>
+        </div>
+    </div>
+    <!--我的奖品 end-->
+</div>
+<!--列表 end-->
+<include file="Public:_footer" />
+<script type="text/javascript">
+    $(function(){
+        /*
+         **选项卡
+         */
+        $("body").on("mouseover",".js-myseedtit",function(){
+            var flg = $(this).index();
+            $(this).addClass("curr").siblings(".js-myseedtit").removeClass("curr");
+            $(".js-myseedtxt").eq(flg).show().siblings(".js-myseedtxt").hide();
+        })
+
+        /*
+        **加载更多
+         */
+        $(".arwardnumber-list").each(function(){
+            var height = $(this).height();
+            if( height > 80){
+                $(this).css("height","80px");
+                $(this).after('<div class="arwardnumber-more js-listup">加载更多<i></i></div>')
+            }
+        })
+
+        var flg = 0;
+        $('body').on("click",".js-listup",function(){
+            var autoHeight = $(this).siblings(".arwardnumber-list").get(0).scrollHeight;
+            if(flg == 0){
+                $(this).siblings(".arwardnumber-list").animate({"height":autoHeight});
+                $(this).html("收起<i class='up-arror'></i>");
+                flg = 1;
+            }else{
+                $(this).siblings(".arwardnumber-list").animate({"height":"80px"});
+                $(this).html('加载更多<i></i>');
+                flg = 0;
+            }
+        })
+    })
+</script>

@@ -1,0 +1,105 @@
+/*体验券页面*/
+.mycoupons dl{ float: left;    width: 304px;    height: 163px;     margin-left: 80px;     margin-bottom: 55px;}
+.m-now-use{background:url(/Style/M/images/coupons-useing.png)no-repeat;}
+.m-invaild{background:url(/Style/M/images/coupons-gameover.png)no-repeat;}
+.mycoupons {    overflow: hidden;}
+.mycoupons dl dt {    float: left;    width: 228px;    height: 100%;    overflow: hidden; position: relative}
+.mycoupons dl dd {    float: left;    height: 100%;    width: 76px;    /* color: white; */}
+.mycoupons dl dt div {    font-size: 14px;    color: white;    line-height: 23px;    padding: 0 0 0 20px;}
+.mycoupons dl dd a {    color: white;    font-size: 19px;    width: 49%;    height: 76%; display: block;    padding-left: 29px;    padding-top: 38px;}
+.mycoupons2 img {    margin: 0 auto;    display: block;}
+.mycoupons dl .coupons_1{font-size:27px; line-height: 42px;margin-top: 8px;float: left;font-weight: bolder}
+.mycoupons dl .coupons_1 span{font-size: 27px}
+.mycoupons dl .coupons_2{float: right;padding: 0px;width:68px;text-align:center;margin-top: 15px; }
+.mycoupons dl .coupons_3{clear: both;font-size: 14px;}
+.mycoupons dl .coupons_4{font-size: 14px;}
+.mycoupons dl .coupons_5{font-size: 12px;float: right;border: 1px solid #fff; border-radius:3px;padding:1px 3px;line-height: 20px;margin-right:7px; margin-top: 8px; cursor: pointer}
+.mycoupons dl .coupons_6{font-size: 12px;float: right;border: 1px solid #fff; border-radius:3px;padding:1px 3px;line-height: 20px;margin-right:7px; margin-top: -2px; cursor: pointer}
+.mycoupons dl dt div.coupons-experience{position: absolute; top:45px; left:0px}
+.mycoupons dl dt div.coupons-user-rule{position: absolute; top:35px; right:0; padding: 1px 3px; font-size: 12px; float: right; border: 1px solid #fff; border-radius: 3px; padding: 1px 3px; line-height: 20px; margin-right: 7px; margin-top: 8px; cursor: pointer;}
+
+.ty_use_main{background: #fff; padding: 10px 15px 25px; }
+.ty_use_main .ty_use_title{text-align: center; font-size: 20px; line-height: 47px; border-bottom: 1px solid #eee;}
+.ty_use_main .ty_use_content{font-size: 14px; line-height: 28px; margin-top: 15px;}
+
+/*体验金页面*/
+.tyj_banner{background:url(/Style/H/images/tiyan/ty_banner.png) 50%; height: 547px; width: 100%; }
+.tyj_main{width: 100%; background: #fef2d4;}
+.tyj_content{width: 962px; background:url("/Style/H/images/tiyan/tiyan11.png") no-repeat; height: 2254px; margin: auto;position: relative}
+.tyj_bottom_banner{background: url(/Style/H/images/tiyan/tiyan4.png) 50%; height:328px; width: 100%; margin-top: -307px; }
+.sm_font{font-size: 20px; color: #996666;}
+.tyj_step1_sm{padding-top: 120px; margin-left: 34px;}
+.tyj_step1_button{margin-top: 313px; margin-left: 61px;}
+.tyj_step2_sm{margin-top: 193px; margin-left: 326px;}
+.tyj_step2_button{margin-top: 315px; margin-left: 677px;}
+.tyj_step3_sm{margin-top: 168px; margin-left: 109px;line-height: 29px;}
+.tyj_step3_button{margin-top: 49px; margin-left: auto;margin-right: auto;width: 337px;}
+.tyj_bottom_rule{font-size: 20px; color: #f5e303; background: #f9464a; width: 100%; padding-bottom: 50px;}
+.tyj_bottom_rule p{width: 960px; margin: auto;line-height: 34px;padding: 3px 0px;}
+.zhuanpan_main{position: relative;width: 478px; height: 532px; margin: 70px auto 0; background: url(/Style/H/images/tyjnew/turntable-feet.png) 0px 407px no-repeat}
+
+.advbox{display:none;z-index:500;position:fixed;width:600px;left:50%;top:50%;margin:-275px 0 0 -300px;background: #fff;  }
+.advbox .advpic{position:relative;height:550px;overflow:hidden;}
+.advbox .advpic dl dt,.advbox .advpic dl dd{float:left;text-align:center}
+.advbox .advpic .closebtn{z-index:150;position:absolute;right:0px;top:15px;width:60px;height:22px;line-height:22px;font-size:15px;color:black;text-indent:12px;overflow:hidden;}
+.black_overlay{  display: none;  position: fixed;  top: 0%;  left: 0%;  width: 100%;  height: 100%;  background-color: black;  z-index:200;  -moz-opacity: 0.8;  opacity:.80;  filter: alpha(opacity=80);  }
+
+/*体验金 2017.7.28*/
+.tyj-banner{width:100%; height: 630px; background: url(/Style/H/images/tyjnew/banner.jpg) center top #f03900 no-repeat; overflow: hidden}
+.banner-polygon{width:493px; height: 503px; display: block; position: absolute; top:23px; left:225px; background: url(/Style/H/images/tyjnew/banner-polygon.png) no-repeat; -webkit-animation:polygonmoving 1s linear; -moz-animation:polygonmoving 1s linear; -ms-animation:polygonmoving 1s linear; animation:polygonmoving 1s linear;}
+.banner-h2{width:790px; height: 298px; display: block; position: absolute; top:104px; left:74px; background: url(/Style/H/images/tyjnew/banner-h2.png) no-repeat; -webkit-animation:h2moving 1s linear; -moz-animation:h2moving 1s linear; -ms-animation:h2moving 1s linear; animation:h2moving 1s linear}
+.banner-redpack{width:156px; height: 117px; display: block; position: absolute; top:175px; left:131px; background: url(/Style/H/images/tyjnew/banner-redpack.png) no-repeat; opacity: 0; -webkit-animation:polygonmoving .5s ease forwards,redpackmoving 1s linear forwards; -ms-animation:polygonmoving .5s ease forwards,redpackmoving 1s linear forwards; -ms-animation:polygonmoving .5s ease forwards,redpackmoving 1s linear forwards; animation:polygonmoving .5s ease forwards,redpackmoving 1s linear forwards; -webkit-animation-delay: 1.8s; -moz-animation-delay: 1.8s; -ms-animation-delay: 1.8s; animation-delay: 1.8s;}
+.ribbon1{width:198px; height: 136px; display: block; position: absolute; top:229px; right:107px; background: url(/Style/H/images/tyjnew/ribbon1.png) no-repeat; opacity: 0; -webkit-animation:polygonmoving 1.5s ease forwards,flagmove 2.5s linear infinite; -moz-animation:polygonmoving 1.5s ease forwards,flagmove 2.5s linear infinite; -ms-animation:polygonmoving 1.5s ease forwards,flagmove 2.5s linear infinite; animation:polygonmoving 1.5s ease forwards,flagmove 2.5s linear infinite;  -webkit-animation-delay: 1.2s; -moz-animation-delay: 1.2s; -ms-animation-delay: 1.2s; animation-delay: 1.2s; }
+.ribbon2{width:747px; height: 160px; display: block; position: absolute; top:323px; left:90px; background: url(/Style/H/images/tyjnew/ribbon2.png) no-repeat; opacity: 0; -webkit-animation:polygonmoving 1.5s ease forwards,flagmove 2.5s linear infinite; -moz-animation:polygonmoving 1.5s ease forwards,flagmove 2.5s linear infinite; -ms-animation:polygonmoving 1.5s ease forwards,flagmove 2.5s linear infinite; animation:polygonmoving 1.5s ease forwards,flagmove 2.5s linear infinite;  -webkit-animation-delay: 1.2s; -moz-animation-delay: 1.2s; -ms-animation-delay: 1.2s; animation-delay: 1.2s; }
+
+.step-box{width:1015px; margin: 0 auto; position: relative; color:#fff; position: relative;}
+.step-box1{margin-bottom:64px; height:1184px; background: url(/Style/H/images/tyjnew/step1-box88.jpg) no-repeat}
+.step-box2{margin-top: 80px; height:847px; margin-bottom:80px; background: url(/Style/H/images/tyjnew/step2-box88.jpg) no-repeat}
+.step-box1-txt{width:865px; position: absolute; top:220px; left:74px; font-size: 22px; line-height: 38px; color:#b2570c}
+.step-box2-txt{width:865px; position: absolute; top:240px; left: 91px; font-size: 22px; line-height: 38px; color:#b2570c}
+.step-box .reg-btn{width:224px; height: 62px; display: block; position: absolute; }
+.step-box .reg-btn1{width:418px; height: 125px; bottom:68px; left:289px; background: url(/Style/H/images/tyjnew/reg-btn1.jpg) no-repeat}
+.step-box .reg-btn2{width:434px; height: 151px; top:665px; left:271px; background: url(/Style/H/images/tyjnew/reg-btn2.jpg) no-repeat}
+
+.turntable-wrap{padding: 70px 0 10px; background: #ffcb99;}
+.width1015{width:1015px; margin: 0 auto;}
+.turntable-h2{width:709px; height: 92px; margin-left:244px; background: url(/Style/H/images/tyjnew/turntable-h2.jpg) no-repeat}
+.turntable-des{font-size: 23px; color:#b25604; line-height: 40px; margin-top: 50px;}
+.look-bumbertimes{height:50px; line-height: 50px; font-size: 24px; color:#b2570c; text-align: center; margin-top: 30px;}
+.look-awardbtn{width:452px; height: 150px; display: block; margin: 0 auto; background: url(/Style/H/images/tyjnew/look-awardbtn.jpg) no-repeat }
+
+.tyj-bottomwrap{margin-top:46px; padding-top: 60px; background: #ffcb99;}
+.tyj-bottomwrap .tyj-bottomtop{height: 184px; padding-top: 1px}
+.tyj-bottomtop .tyjbot-img{width:346px; height: 140px; margin: 0 auto; background: url(/Style/H/images/tyjnew/tyjbot-img.jpg) no-repeat}
+.tyj-bottomain{padding-bottom: 46px;}
+.tyj-bottomain .tyj-bm-main{width:1008px; margin: 0px auto; line-height: 45px; font-size: 22px; color:#642c0e}
+.gift-img{position: absolute; display: block; }
+.gift-img1{width:67px; height: 64px; position: absolute; top:337px; left:-125px; background: url(/Style/H/images/tyjnew/gift-img1.png) no-repeat}
+.gift-img2{width:51px; height: 52px; position: absolute; top:118px; right:-175px; background: url(/Style/H/images/tyjnew/gift-img2.png) no-repeat}
+.gift-img3{width:106px; height: 78px; position: absolute; top:416px; left:-241px; background: url(/Style/H/images/tyjnew/gift-img3.png) no-repeat}
+.gift-img4{width:64px; height: 91px; position: absolute; top:190px; right:-175px; background: url(/Style/H/images/tyjnew/gift-img4.png) no-repeat}
+.gift-img5{width:147px; height: 197px; position: absolute; top:20px; left:-225px; background: url(/Style/H/images/tyjnew/gift-img5.png) no-repeat}
+.gift-img6{width:135px; height: 279px; position: absolute; top:20px; right:-200px; background: url(/Style/H/images/tyjnew/gift-img6.png) no-repeat}
+.gift-imgline{width:167px; height: 125px; position: absolute; top:766px; left:-126px; background: url(/Style/H/images/tyjnew/box1-line.png) no-repeat}
+.gift-img3-new{width:194px; height: 116px; position: absolute; top:456px; left:-270px; background: url(/Style/H/images/tyjnew/gift-img3-new.png) no-repeat}
+.gift-img4-new{width:144px; height: 86px; position: absolute; top:290px; right:-275px; background: url(/Style/H/images/tyjnew/gift-img4-new.png) no-repeat}
+
+@-webkit-keyframes polygonmoving{from{opacity: 0;}to{opacity: 1;}}
+@-moz-keyframes polygonmoving{from{opacity: 0;}to{opacity: 1;}}
+@-ms--keyframes polygonmoving{from{opacity: 0;}to{opacity: 1;}}
+@keyframes polygonmoving{from{opacity: 0;}to{opacity: 1;}}
+
+@-webkit-keyframes h2moving{0%{transform:translateY(-400px);}60%{transform:translateY(30px);}70%{transform:translateY(-30px);}80%{transform:translateY(-10px);}90%{transform:translateY(0px);}100%{transform:translateY(0px);}}
+@-moz-keyframes h2moving{0%{transform:translateY(-400px);}60%{transform:translateY(30px);}70%{transform:translateY(-30px);}80%{transform:translateY(-10px);}90%{transform:translateY(0px);}100%{transform:translateY(0px);}}
+@-ms-keyframes h2moving{0%{transform:translateY(-400px);}60%{transform:translateY(30px);}70%{transform:translateY(-30px);}80%{transform:translateY(-10px);}90%{transform:translateY(0px);}100%{transform:translateY(0px);}}
+@keyframes h2moving{0%{transform:translateY(-400px);}60%{transform:translateY(30px);}70%{transform:translateY(-30px);}80%{transform:translateY(-10px);}90%{transform:translateY(0px);}100%{transform:translateY(0px);}}
+
+@-webkit-keyframes flagmove{0%{opacity:1;}25%{opacity:1;transform:translateY(4px) translateX(8px);}50%{opacity:1;}75%{opacity:1;transform:translateY(-4px) translateX(-5px);}100%{opacity:1;}}
+@-moz-keyframes flagmove{0%{opacity:1;}25%{opacity:1;transform:translateY(4px) translateX(8px);}50%{opacity:1;}75%{opacity:1;transform:translateY(-4px) translateX(-5px);}100%{opacity:1;}}
+@-ms-keyframes flagmove{0%{opacity:1;}25%{opacity:1;transform:translateY(4px) translateX(8px);}50%{opacity:1;}75%{opacity:1;transform:translateY(-4px) translateX(-5px);}100%{opacity:1;}}
+@keyframes flagmove{0%{opacity:1;}25%{opacity:1;transform:translateY(4px) translateX(8px);}50%{opacity:1;}75%{opacity:1;transform:translateY(-4px) translateX(-5px);}100%{opacity:1;}}
+
+@-webkit-keyframes redpackmoving{0%{opacity:1;}25%{opacity:1;transform:translateY(0px) translateX(0px);}50%{opacity:1;}75%{opacity:1;transform:translateY(-30px) translateX(30px);}100%{opacity:1; transform:translateY(-30px) translateX(30px);}}
+@-moz-keyframes redpackmoving{0%{opacity:1;}25%{opacity:1;transform:translateY(0px) translateX(0px);}50%{opacity:1;}75%{opacity:1;transform:translateY(-30px) translateX(30px);}100%{opacity:1; transform:translateY(-30px) translateX(30px);}}
+@-ms-keyframes redpackmoving{0%{opacity:1;}25%{opacity:1;transform:translateY(0px) translateX(0px);}50%{opacity:1;}75%{opacity:1;transform:translateY(-30px) translateX(30px);}100%{opacity:1; transform:translateY(-30px) translateX(30px);}}
+@keyframes redpackmoving{0%{opacity:1;}25%{opacity:1;transform:translateY(0px) translateX(0px);}50%{opacity:1;}75%{opacity:1;transform:translateY(-30px) translateX(30px);}100%{opacity:1; transform:translateY(-30px) translateX(30px);}}

@@ -1,0 +1,113 @@
+<include file="Public:_header_common" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>积分商城-{$glo.web_name}</title>
+<meta http-equiv="keywords" content="{$glo.web_keywords}" />
+<meta http-equiv="description" content="{$glo.web_descript}" />
+<link href="__ROOT__/Style/H/css/shop.css" rel="stylesheet" type="text/css">
+<script  type="text/javascript" src="__ROOT__/Style/H/js/index.js"></script>
+<include file="Public:_header_main" />
+<script type="text/javascript">	
+</script>
+<div class="jf_shop">
+<div id="JS_huanDengs">
+  <volist name=":get_ad(7)" id="va">
+				   <div> <a href="{$va.url}"><img src="__ROOT__/{$va.img}" /></a></div>
+	</volist>
+<!--textarr[{$key+1}] = "{$va.info}";-->
+<ul id="JS_HDmenus"></ul>
+  </div>
+<div class="jf_commodities">
+  <div class="jf_prouct">
+    <div id="puBody">
+      <div class="sLeft">
+        
+        <div class="sidebar_right" style="width:240px;">
+        <div class="g_mod rewards" style="height:340px;">
+          <div class="cj_tit" style="width:230px;"><a class="logback2" id="nav1" onclick="javascript:qiehuan(1)">兑换记录</a>
+          </div>
+          <div id="qh_conn0" class="scrollDiv" style="height:300px;width:220px;">
+            <ul style="margin-top: 0px; width:240px;">
+              <li><span class="cj_time">06-05 09:42</span>恭喜al***cn兑换十二生肖..</li><li><span class="cj_time">06-05 09:52</span>恭喜ji***in兑换十二生肖..</li>            <li><span class="cj_time">06-05 10:04</span>恭喜hon***in兑换十二生肖..</li><li><span class="cj_time">06-05 10:08</span>恭喜qin***ho兑换十二生肖..</li><span class="cj_time">06-05 10:22</span>恭喜al***cn兑换十二生肖..</li><li><span class="cj_time">06-05 10:28</span>恭喜ji***in兑换十二生肖..</li>            <li><span class="cj_time">06-05 10:35</span>恭喜hon***in兑换十二生肖..</li><li><span class="cj_time">06-05 10:56</span>恭喜qin***ho兑换十二生肖..</li><li><span class="cj_time">06-05 11:39</span>恭喜cn***ong兑换十二生肖..</li><li><span class="cj_time">06-05 13:21</span>恭喜sum***123兑换十二生肖..</li><li><span class="cj_time">06-05 14:40</span>恭喜dou***dou兑换十二生肖..</li><li><span class="cj_time">06-05 15:11</span>恭喜xin***net兑换十二生肖..</li><li><span class="cj_time">06-05 16:41</span>恭喜cie***ci兑换十二生肖..</li><li><span class="cj_time">06-05 17:42</span>恭喜fe***ht兑换十二生肖..</li></ul>
+          </div>
+          <div style="display:none" id="qh_conn1" class="scrollDiv2">
+          <marquee width="100%" vspace="0" hspace="50" height="100" onmouseout="this.start();" onmouseover="this.stop();" scrolldelay="1000" scrollamount="20" loop="-1" direction="up" behavior="scroll" align="left">
+            <ul>
+                          </ul>
+           </marquee>
+          </div>
+          <div class="cj_tit">
+           
+        </div>
+        </div>
+        
+        <script language="javascript">
+	 //滚动插件
+    (function($){
+    $.fn.extend({
+		Scroll:function(opt,callback){
+			//参数初始化
+			if(!opt) var opt={};
+			var _this=this.eq(0).find("ul:first");
+			var lineH=_this.find("li:first").height(), //获取行高
+				line=opt.line?parseInt(opt.line,10):parseInt(this.height()/lineH,10), //每次滚动的行数，默认为一屏，即父容器高度
+				speed=opt.speed?parseInt(opt.speed,10):800, //卷动速度，数值越大，速度越慢（毫秒）
+				timer=opt.timer?parseInt(opt.timer,10):5000; //滚动的时间间隔（毫秒）
+			if(line==0) line=1;
+			var upHeight=0-line*lineH;
+			//滚动函数
+			scrollUp=function(){
+				_this.animate({
+						marginTop:upHeight
+				},speed,function(){
+					for(i=1;i<=line;i++){
+						_this.find("li:first").appendTo(_this);
+					}
+					_this.css({marginTop:0});
+				});
+			}
+			//鼠标事件绑定
+			_this.hover(function(){
+					clearInterval(timerID);
+			},function(){
+					timerID=setInterval("scrollUp()",timer);
+			}).mouseout();
+		}
+    })
+    })(jQuery);
+
+    $(document).ready(function(){
+       $(".scrollDiv").Scroll({line:1,speed:500,timer:3000});
+       
+        $(".sina_btn").click(function(){
+            var href = $(this).attr("href");
+            href += "?url=http://n.yongyindai.com/market/lottery&title="+encodeURIComponent($(".gz_share").val());
+            $(this).attr("href",href);
+        });
+    });
+</script>
+        
+      </div>
+      </div>
+      <div class="sRight">
+        <div class="Title"> <span>当前位置：<a href="/">首页</a> &gt; <font>积分商城</font></span>
+          <p>积分商城</p>
+        </div>
+        <div class="List">
+          <ul>
+            <volist id="vo" name="list">
+              <li><a href="{$vo.id|getMarketUrl=###}" target="_blank"><img src="__ROOT__/Style/ajax-image-uploader/images/{$vo.img}" alt="{$vo.name}" title="{$vo.name}" border="0px" width="160" height="160"></a>
+                <p><a href="{$vo.id|getMarketUrl=###}" target="_blank">{$vo.name}</a></p>
+                <p><span>所需积分:<strong>{$vo.cost}</strong></span></p>
+                <p style="height:35px;"><a href="/market/detail?id={$vo.id}" target="_blank" class="btn_duih">点击兑换</a></p>
+              </li>
+            </volist>
+          </ul>
+          <div style=" clear:both"></div>
+          <p></p>
+          <div class="pubPage">{$pagebar}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+<include file="Public:_footer" />

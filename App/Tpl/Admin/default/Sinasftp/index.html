@@ -1,0 +1,58 @@
+<include file="Public:_header" />
+<style type="text/css">
+.alertDiv { margin: 0px auto; background-color: #FEFACF; border: 1px solid green; line-height: 25px; background-image: url(__ROOT__/Style/M/images/info/001_30.png); background-position: 20px 4px; background-repeat: no-repeat; }
+.alertDiv li { margin: 5px 0; list-style-type: decimal; color: #005B9F; padding: 0px; line-height: 20px; }
+.alertDiv ul { text-align: left; list-style-type: decimal; display: block; padding: 0px; margin: 0px 0px 0px 75px; }
+</style>
+<tagLib name="htmlA" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<div class="so_main">
+  <div class="page_tit">对账管理</div>
+  <div class="page_tab"><span data="tab_1" class="active">执行对账</span></div>
+  <div class="form2">
+      <div id="tab_1">
+        <dl class="lineD">
+          <dt>文件时间：</dt>
+          <dd>
+            <htmlA:timer id="action_time" name="action_time" value="" tip='文件上的时间'/>
+          </dd>
+        </dl>
+        <dl class="lineD">
+          <dt>文件类型：</dt>
+          <dd>
+            <htmlA:select datakey="type" id="type" value="key|search.type" style="width:100px"/>
+          </dd>
+        </dl>
+      </div>
+      <!--tab1-->
+      
+      <div class="page_btm">
+        <input type="button" onClick="ftp_api()" class="btn_b" value="确定" />
+        <span style="color:#CCCCCC">(所有方式修改提交一次即可)</span> </div>
+  </div>
+  <script language=javascript type="text/javascript" src="__ROOT__/Style/Js/jquery.js"></script>
+  <script>
+    function ftp_api(){
+      var act_time = $("#action_time").val();
+      var type = $("#type").val();
+      if(act_time == null || act_time == ''){
+        alert("时间不能为空");return;
+      }
+      if(type == null || type == ''){
+        alert("请选择文件类型");return;
+      }
+      $.ajax({
+        url: "__URL__/execut",
+        data: {time:act_time,type:type},
+        timeout: 5000,
+        cache: false,
+        type: "post",
+        dataType: "json",
+        success: function (d) {
+          alert(d.data['message']);
+        }
+      });
+    }
+  </script>
+</div>
+<include file="Public:_footer" />

@@ -1,0 +1,66 @@
+<!-- <volist name="list" id="vo">
+    <div class="zqzr-box">
+        <h2>借款标号：{$vo.id|borrowidlayout1}</h2>
+        <if condition="$flag eq 1">
+            <a href="javascript:void(0);" onclick="myconfirm(this, {$vo.id},1,<if condition='$vo.repayment_type eq 1'>0<else/>1</if>)" func="/M/Debtmember/sellhtml?id={$vo.id}&type=1&investid={$vo.invest_id}"class="zqzr-box-link">申请转让</a>
+        </if>
+        <div class="zqzr-bcontent">
+            <ul>
+                <li>投资金额： ￥{$vo.investor_capital}元</li>
+                <li>待收本息：￥{$vo.daishou}元</li>
+                <li>年化利率： {$vo.borrow_interest_rate}%</li>
+                <li>已还/总期数/(还款期):<if condition="$vo.repayment_type eq '1'">
+                    0/1({$vo.deadline|date="Y-m-d",###})
+                    <else/>
+                    {$vo.has_pay|default="0"}/{$vo.total}({$vo.deadline|date="Y-m-d",###})
+                </if>
+                </li>
+            </ul>
+        </div>
+    </div>
+</volist>
+<input type="hidden" value="{$today}" id="today">
+<script type="text/javascript">
+    /**
+     *
+     债权转让确认
+     * @param obj 对象
+     * @param id 债权编号
+     * @param type 债权类型 1 原始债权转让 2 已转让债权再转让
+     */
+    function myconfirm(obj,id,type,fenqi){
+        var $this=$(obj);
+        var url=$this.attr("func");
+        if(fenqi==1){
+            var date=$.trim($this.parent("td").parent("tr").find(".deadline").html());
+            if($("#today").val()==date){
+                alert("当前还款日不可转让");
+                return ;
+            }
+        }
+        $.ajax({
+            url: "__URL__/zhuanrang",
+            data: {"borrow_id":id,"type":type},
+            type: "post",
+            dataType: "json",
+            success: function (d) {
+                if(d.status==0){
+                    window.location.href=url;
+                }else{
+                    alert(d.msg);
+                }
+            }
+        });
+    }
+</script> -->
+<div class="stop-tips">
+	<img src="/Style/Phone/img/warning.png">
+	<p>尊敬的用户您好！</p>
+	<p class="tips-text">平台积极响应监管要求，收益权转让功能已暂停使用......</p>
+</div>
+<style type="text/css">
+    .stop-tips{text-align: center;margin-top: 3rem;}
+    .stop-tips img{margin: 0 0 1rem;width: 10%;}
+    .stop-tips p{font-size: 1.2rem;color: #000;}
+    .stop-tips .tips-text{font-size: 1rem; color: #666;}
+</style>

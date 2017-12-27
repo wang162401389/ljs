@@ -1,0 +1,44 @@
+@media screen and (min-width:240px){html{font-size:9px;}}
+@media screen and (min-width:320px){html{font-size:12px;}}
+@media screen and (min-width:360px){html{font-size:13px;}}
+@media screen and (min-width:480px){html{font-size:18px;}}
+@media screen and (min-width:640px){html{font-size:24px;}}
+@media screen and (min-width:720px){html{font-size:26px;}}
+@media screen and (min-width:960px){html{font-size:36px;}}
+*{padding:0px;margin:0px;list-style-type: none;}
+body{background:#EFEFEF;font-family: "Microsoft YaHei" ! important;}
+a ,a:link,a:visited,a:hover,a:active{/*color:white;*/text-decoration:none;}
+.seg_footer{height:75px}
+.seg_top{height: 3rem;}
+.navbar{background-color: #54c0f2;border:none;color: #ffffff;text-align: center;min-height: 3rem;height: 3rem;line-height: 3rem;font-size: 1.4rem;}
+/*banner 自定义页面*/
+.content.banner-linkscontent{font-size: 14px; line-height: 24px}
+.banner-linkscontent img{width:100%;}
+.banner-linksh2{font-size: 16px; padding: 0px; margin: 0.5rem 0 1.5rem; font-weight: bold; text-align: center}
+/*错误提示，透明黑色*/
+.pop-bg{background:url(/Style/M/images/anniversary/popbg.png) repeat; position: fixed; width:100%; height:100%; top:0; left:0; bottom:0; right:0;  z-index:100; display: none;}
+.pop-tips{width:220px; height: 36px; line-height: 36px; text-align: center; background: #fff; position: fixed; top:50%; left:50%; margin-left: -100px; margin-top: -15px; border-radius: 5px; color:#2f2f2f; display: none; z-index: 102;}
+
+/*移动端成功 toast消息*/
+.zr-success{width:10rem; height: 10rem; border-radius: 5px; position: fixed; top:50%; left:50%; margin-top: -5rem; color:#fff; margin-left:-5rem; background: rgba(0,0,0,0.7); display: none}
+.zr-success .tick-right{width:66px; height: 47px; display: block; position: absolute; top:1.5rem; left:2.9rem; background: url(/Style/Phone/img/tick-right.png) no-repeat}
+.zr-success .tick-right.tick-error{width:48px; height: 48px; top:1.7rem; left:3.3rem; background: url(/Style/Phone/img/tick-error.png) no-repeat}
+.zr-success .tick-right.tick-loading{width:48px; height: 48px; top:1.7rem; left:3.3rem; background-color: #ffffff;  border-radius: 100%; -webkit-animation-fill-mode: both;  animation-fill-mode: both;  border: 2px solid #ffffff;  border-bottom-color: transparent;  background: transparent !important; animation: roteloading 0.7s linear infinite; }
+@keyframes roteloading{ 0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+@-webkit-keyframes roteloading{ 0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+@-moz-keyframes roteloading{ 0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+.tick-text{width:100%; display: block; text-align: center; font-size: 1.4rem; position: absolute; bottom:1.5rem; left:0;  text-align: center;}
+
+/*loading...动画*/
+.loadingspinner{margin:50px auto;width:50px;height:60px;text-align:center;font-size:10px}
+.loadingspinner>div{display:inline-block;width:5px;margin:0px 2px;height:100%;background-color:#54c0f2;-webkit-animation:stretchdelay 1.2s infinite ease-in-out;animation:stretchdelay 1.2s infinite ease-in-out}
+.loadingspinner .lrect2{-webkit-animation-delay:-1.1s;animation-delay:-1.1s}
+.loadingspinner .lrect3{-webkit-animation-delay:-1s;animation-delay:-1s}
+.loadingspinner .lrect4{-webkit-animation-delay:-.9s;animation-delay:-.9s}
+.loadingspinner .lrect5{-webkit-animation-delay:-.8s;animation-delay:-.8s}
+@-webkit-keyframes stretchdelay{0%,100%,40%{-webkit-transform:scaleY(.4)} 20%{-webkit-transform:scaleY(.8)} }
+@keyframes stretchdelay{0%,100%,40%{-webkit-transform:scaleY(.4);transform:scaleY(.4)} 20%{-webkit-transform:scaleY(.8);transform:scaleY(.8)} }
+
+/*元素 common*/
+.h5-jiaxi{font-size:10px;position:absolute;top:9px;left:75px; line-height: 1.2rem; color:#fff; background: #fc8026; padding: 0.1rem 0.4rem 0; border-radius: 0.2rem; -webkit-border-radius: 0.2rem; -moz-border-radius: 0.2rem; -webkit-text-size-adjust: none;}
+.h5-jiaxi:before{content: "";width:0; height:0; display: block; position: absolute; top:0.42rem; left: -0.5rem; border-top:4px solid transparent; border-bottom:4px solid transparent; border-right:8px solid #fc8026; }

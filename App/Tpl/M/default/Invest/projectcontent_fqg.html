@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <title>项目内容</title>
+    <include file="Pub:header-common" />
+    <link rel="stylesheet" href="css/recharge_detail.css" >
+</head>
+<body style="background: #FFFFFF;">
+    <include file="Pub:simple_header" />
+    <div class="t_allsection">
+    	<table class="t_project" border="1">
+            <tbody>
+                <tr>
+                    <td class="t_recharge">借款方</td>
+                    {:preg_replace("/width=.+?['|\"]/i",'',borrow_info_pares('借款方',$vo['borrow_info']))}
+                </tr>
+                <tr>
+                    <td class="t_recharge">身份证</td>
+                    {:preg_replace("/width=.+?['|\"]/i",'',borrow_info_pares('身份证',$vo['borrow_info']))}
+                </tr>
+                <tr>
+                    <td class="t_recharge">借款金额</td>
+                    {$vo.borrow_info|borrow_info_pares='借款金额',###}
+                </tr>
+                <tr>
+                    <td class="t_recharge">借款期限</td>
+                    {$vo.borrow_info|borrow_info_pares='借款期限',###}
+                </tr>
+                <tr>
+                    <td class="t_title">借款方信息</td>
+                    {$vo.borrow_info|borrow_info_pares='借款方信息',###}
+                </tr>
+                <tr>
+                    <td class="t_title">项目状况</td>
+                    {$vo.borrow_info|borrow_info_pares='项目状况',###}
+                </tr>
+                <tr>
+                    <td class="t_title">还款来源</td>
+                    {$vo.borrow_info|borrow_info_pares='还款来源',###}
+                </tr>
+                <tr>
+                    <td class="t_title">风控措施</td>
+                    {$vo.borrow_info|borrow_info_pares='风控措施',###}
+                </tr>
+                <tr>
+                    <td class="t_title">信息透明度</td>
+                    {$vo.borrow_info|borrow_info_pares='信息透明度',###}
+                </tr>
+            </tbody>
+    	</table>
+    </div>
+    <include file="Pub:footer" />
+</body>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<base href="/Style/Phone/" />
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  	<script src="__ROOT__/Style/Phone/js/jquery-2.1.4.min.js"></script>
+  	<link rel="stylesheet" type="text/css" href="__ROOT__/Style/Phone/css/christmas.css">
+  	<title>我的幸运号详情</title>
+  	<style type="text/css">
+	  	#header .title{font-size: 1.2rem;}
+  	</style>
+</head>
+<body class="bg-red">
+<include file="default:Pub:simple_header" group="M" />
+	<p class="p-tit">我的幸运号详情</p>
+	<volist name="myluckynum" id="vo">
+	<p class="p-txt">{$vo.gift_no}期 &nbsp; &nbsp;{$vo.gift_name} &nbsp; &nbsp;幸运号：{$vo.zhong_num}</p>
+	<div class="myluckyinfo-item">
+		<div>
+			<span>我的许愿码：</span>
+			<p><span>{$vo.luckynum}</span></p>
+		</div>
+	</div>
+	</volist>
+	<!-- <p class="p-txt">1001期 &nbsp; &nbsp;颈部腰部按摩坐垫 &nbsp; &nbsp;幸运号：55555</p>
+	<div class="myluckyinfo-item">
+		<div>
+			<span>我的许愿码：</span>
+			<p><span>00001，</span><span>00001，</span><span>00001，</span><span>00001，</span><span>00001，</span><span>00001，</span><span>00001，</span><span class="cor-orange">555555</span></p>
+		</div>
+	</div> -->
+</body>
+</html>

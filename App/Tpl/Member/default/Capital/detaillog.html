@@ -1,0 +1,73 @@
+<tagLib name="htmlA" />
+<div class="fs14 mt10">温馨提示：只显示用户最近七天的投资，提现、充值、还款交易明细，要查询七天以前明细请点击资金历史记录。</div>
+<!--选择操作-->
+<div class="mt20">
+    <strong>起止日期：</strong>
+    <input type="text" id="start_time" value="<php>if($search['start_time']){echo $search['start_time'];}</php>" readonly="readonly" class="Wdate timeInput_Day" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\\\'end_time\\\')||\\\'2020-10-01\\\'}'})"/>
+    至
+    <input type="text" value="<php>if($search['end_time']){echo $search['end_time'];}</php>" id="end_time" readonly="readonly" class="Wdate timeInput_Day ml5" onfocus="WdatePicker({minDate:'#F{$dp.$D(\\\'start_time\\\')||\\\'2020-10-01\\\'}'})"/>
+    <a href="javascript:void(0);" class="btn btn-blue ml10" onclick="sdetail();">查看</a>
+</div>
+<table width="100%" class="memberTable mt20">
+	<colgroup>
+        <col width="25%">
+        <col width="25%">
+        <col width="25%">
+        <col width="">
+    </colgroup>
+	<thead>
+        <tr>
+			<th>发生日期</th>
+			<th >影响金额</th>
+			<th>状态</th>
+			<th>说明</th>
+		</tr>
+    </thead>
+    <tbody>
+        <volist name="list" id="vo">
+            <tr class="nodatashowtr">
+                <td>{$vo.create_time}</td>
+                <td><if condition="$vo.pay_uid neq ''"><font color="#FF0000">-<else/><font color="#009900">+</if>{$vo.order_money}</font></td>
+                <td>{$vo.order_status}</td>
+                <td><if condition="$vo.order_name eq ''">{$vo.order_note}<else/>{$vo.order_name}</if></td>
+            </tr>
+        </volist>
+	</tbody>
+</table>
+<div data="fragment-1" id="pager" class="yahoo2 ajaxpagebar">{$pagebar}</div>
+<script type="text/javascript">
+function sdetail(){
+	x = makevar(['start_time','end_time']);
+	$.ajax({
+		url: "__URL__/detaillog",
+		data: x,
+		timeout: 5000,
+		cache: false,
+		type: "get",
+		dataType: "json",
+		success: function (d, s, r) {
+			if(d) $("#fragment-1").html(d.html);//更新客户端信息 作个判断，避免报错
+		}
+	});
+}
+
+$('.ajaxpagebar a').click(function(){
+	try{	
+		var geturl = $(this).attr("href");
+		var id = $(this).parent().attr("data");
+		var x={};
+        $.ajax({
+            url: geturl,
+            data: x,
+            timeout: 5000,
+            cache: false,
+            type: "get",
+            dataType: "json",
+            success: function (d, s, r) {
+              	if(d) $("#"+id).html(d.html);//更新客户端信息 作个判断，避免报错
+            }
+        });
+	}catch(e){};
+	return false;
+})
+</script>

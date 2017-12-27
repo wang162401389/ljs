@@ -1,0 +1,410 @@
+<include file="Public:_header_common" />
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>{$vo.borrow_name}-我要投资-{$glo.web_name}</title>
+<meta http-equiv="keywords" content="{$glo.web_keywords}" />
+<meta http-equiv="description" content="{$glo.web_descript}" />
+<link rel="stylesheet" href="__ROOT__/Style/H/css/reset.css" />
+<link rel="stylesheet" href="__ROOT__/Style/H/css/detail.css" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/fancybox/jquery.fancybox-1.3.2.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/H/css/flexslider.css" />  
+<script type="text/javascript" src="__ROOT__/Style/H/js/jquery.flexslider-min.js"></script>
+<script type="text/javascript">
+  $(function() {  
+    $(".flexslider").flexslider({ controlNav: false});
+      if($.cookie("currenttab")==2){
+          //如果是投资记录页面，需要翻页
+          $("a.invest-tab[data-id=2]").addClass("current").parent("li").addClass("active");
+          $("a.invest-tab[data-id=1]").removeClass("current").parent("li").removeClass("active");
+          $(".state_info").find("div[data-id=2]").show();
+          $(".state_info").find("div[data-id=1]").hide();
+      }else{
+          $.cookie("currenttab",null);
+      }
+
+      /**
+       * tab 页面的切换处理
+       */
+      $("a.invest-tab").click(function(){
+          var $this=$(this);
+          if(!$this.hasClass("current")){
+              var idcurrent=$(this).attr("data-id");
+              if(idcurrent==2){
+                  $.cookie("currenttab",idcurrent);//记录当前的是那一个tab页面，如果是投资记录则默认到投资记录页面，防止翻页的跳转
+              }else{
+                  $.cookie("currenttab",null);
+              }
+              $this.parent("li").siblings().each(function(){
+                  $(this).removeClass("active").find("a").removeClass("current");
+                  var id=$(this).find("a").attr("data-id");
+                  $(".state_info").find("div[data-id="+id+"]").hide();
+              })
+              $this.addClass("current").parent("li").addClass("active");
+              $(".state_info").find("div[data-id="+idcurrent+"]").show();
+          }
+      });
+  });
+</script>
+<style>.tb1 th{width:120px; font-size:14px; background:#f4f4f4;text-indent: 0em; text-align:center;border:1px solid #eeeeee;color:gray; letter-spacing:1px; }
+.tb1 td{height:24px; padding:10px;font-size:12px;line-height:24px; width:208px;text-indent: 0em; border:1px solid #eeeeee;color:gray;letter-spacing:0.5px;}
+.tb1 td p{ font-size:12px;text-indent: 0em;color:gray;letter-spacing:0.5px;}
+/*暂时放在这*/
+.use-coupons {    width: 360px;    height: auto; margin: 36px -120px 27px 95px;}
+.use-coupons .item li div {       width: 80%;    height: 40px;    float: left;    _display: none;    position: relative;  left:  -69px;   background: #E66204;    bottom: -26px;}
+.use-coupons .item li a {    width: auto;    height: 40px;    line-height: 40px;    color: #fff;    float: left;    padding: 0 20px;    background: #E66204;    border-radius: 5px;    font-size: 19px;}
+.jbox-title-panel {    background: white!important;    font-size: 19px;    text-align: center;}
+.jbox-title.jbox-title-icon {    font-weight: 100!important;    line-height: 35px!important;    position: absolute;}
+td.jbox-border {    opacity: 1!important;    filter: alpha(opacity=20);    -moz-opacity: 0.2;    background: none repeat scroll 0 0 #FFFFFF!important;}
+.jbox-close{background: url(__ROOT__/Style/H/images/close.png)!important;background-size: 105%!important;z-index: 999;}
+a.center {    margin-left: 100px!important;}
+a.center:hover{    background: #E66204!important;}
+.get_eight_tyj{text-align:center; margin:50px 0px; font-size:19px; color:#333333;}
+.jx_payment{margin-bottom:25px;}
+.tyj_content p{line-height:38px;}
+</style>
+<include file="Public:_header_main" />
+<div class="xiantiao"></div>
+<div class="home_list" style="width:980px;height:25px;margin:0 auto;margin-top:5px;"><a href="__APP__/index">首页</a> > <a href="__APP__/invest">我要投资</a> > 项目详情</div>
+<div class="state_main">
+  <div class="xw_main_state">
+    <div class="state_project">
+    <!-- 基本资料 -->
+      <div class="project_left">
+          <div style="padding:10px 10px 0 20px;width:100%;height:40px;background:#f4f4f4;margin-bottom:15px;font-size:18px; border-bottom:1px solid #d7d7d7">
+          <img src="__ROOT__/Style/H/images/index/index_yb.png"> 
+          <span style="margin-top:5px;margin-left:10px;font-family:"微软雅黑";">{$vo.borrow_name}</span>
+
+          </div>
+
+          <div style="overflow:hidden">
+          <table border="0" cellpadding="0" cellspacing="0" class="b_xq_table">
+            <tr height="50" class="b_xq_tr" >
+              <td>预期年化收益率</td>
+              <td>借款期限</td>
+              <td>已投资人数</td>
+            </tr>
+            <tr class="b_xq_tr">
+              <td height="30" class="strong">{$vo.borrow_interest_rate}%</td>
+              <td class="strong">
+                  {$vo['borrow_duration_txt']}
+              </td>
+              <td class="strong">{$vo.borrow_times}人</td>
+            </tr>
+          </table>
+          </div>
+          <div style="width:90%; margin:auto; margin-top:30px">
+          <table class="b_xq_table1">
+            <tr>
+              <td height="30" width="55%" >
+                  还款方式：&nbsp;&nbsp;&nbsp;购买当日起息 <br>
+                  
+                  
+              </td>
+               <td>
+                  起投金额：&nbsp;&nbsp;&nbsp;{$vo.borrow_min|Fmoney=###}
+              </td>
+            </tr>
+            <tr>
+              <td height="30">
+                  回款方式：&nbsp;&nbsp;&nbsp;到期付息，体验金收回
+                  
+              </td>
+              
+            </tr>
+            
+          </table>
+          </div>
+      </div>
+      <!-- 基本资料 -->
+      <div class="project_right">
+       <div style="width: 100%;height: 50px;background:#f4f4f4;margin-bottom:15px;font-size:16px;margin: auto;line-height: 50px;text-align: center;border-bottom:1px solid #d7d7d7">
+             
+       </div>
+    
+
+        <form method="get" action="" class="tyj_content">
+        <if condition="$UID eq null OR $UID eq ''">
+
+          <div class="get_eight_tyj">送30000元体验金</div>
+           <div id="jx_payment" style="width:45%;float:left" class="jx_payment" onclick="location.href='__APP__/member/common/login'">登录</div> <div id="jx_payment" style="width:45%;float:right"class="jx_payment" onclick="location.href='__APP__/member/common/register'">注册</div>
+          <else/>
+            <if condition="$coupons.money lt 30000">
+             <div class="get_eight_tyj" style="font-size:14px;margin:40px 0px">新手专享<br>仅限新用户使用体验金投资</div>
+             <div id="jx_payment" class="jx_payment" onclick="location.href='__APP__/invest/index.html'">其他投资项目</div>
+            <else/>
+            <p class="jx_end">可用体验金：<span style="color:#fc8026; font-size:16px; font-weight:bolder;">{$coupons.money|default=0.00} 元</span></p>
+            <p class="jx_input"> 投标金额：&nbsp;&nbsp;
+              <input id="enter_value" type="text" value="30000" placeholder="{$vo.borrow_min|Fmoney=###}元起投" style="color:#333" readonly="readonly" /> 元
+            </p>
+            <p style="color:#333333">预期收益：&nbsp;&nbsp;&nbsp;<span class="interest">50.00</span>元</p>
+            <div id="jx_payment" class="jx_payment" onclick="invest({$vo.id});">立即投标</div>
+            </if>
+        </if>
+           <p style="color:#999999; line-height:25px;"><span style="float:left; line-height:34px">分享：</span>
+            <span class="bdsharebuttonbox">
+                            <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信" target="_top"></a>
+                            <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                            <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                            <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+                            <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                            <a href="#" class="bds_more" data-cmd="more" style="font-size:15px;"></a>
+                        </span>
+               <script>
+                   window._bd_share_config={
+                       "common":{
+                           "bdSnsKey":{},
+                           "bdText":"发现一个投资灰常靠谱的平台（链金所），投资时间短，收益快，在上面小赚了一笔，有兴趣的童鞋可以来看看。",
+                           "bdMini":"2",
+                           "bdMiniList":["mshare","qzone","tsina","weixin","renren","kaixin001","tieba","douban","sqq","mail","ty","twi","h163","copy"],
+                           "bdPic":"https://www.ccfax.cn/UF/Uploads/Article/20160329161124.png",
+                           "bdStyle":"1",
+                           "bdSize":"24",
+                       },
+                       "share":{}
+                   };
+            with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='https://o6wg7zsae.qnssl.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+          </script>
+            </p>
+        </form>
+      </div>
+    </div>
+    <div class="clear"></div>
+    <div class="state_info">
+      <ul class="state_info_nav" id="state_info_nav" style="width:100%; background:#f4f4f4;">
+        <li class="active"><a class="invest-tab current" href="javascript:void(0);" data-id="1">项目信息</a></li>
+        <li class=""><a class="invest-tab" href="javascript:void(0);" data-id="2">投资记录</a></li>
+      </ul>
+      <div class="clear"></div>
+      <!-- 项目信息 -->
+      <div class="state_info_con"  id="projectinfo" style="width:940px" data-id="1">
+          <ul class="state_person" >
+              <p style="font-size:14px; text-align:left; line-height:2em;">
+                  {$vo.borrow_info|default="没有添加内容"}
+              </p>
+          </ul>
+         
+      </div>
+
+
+
+      <!-- 投资记录 -->
+      <div class="state_info_con"  id="record" style="display:none;width:940px;padding-bottom: 20px;" data-id="2">
+       <div style="font-size:14px; color:#999999;">已投标成功&nbsp;{$vo.borrow_times|default="0"}次&nbsp;&nbsp;&nbsp;已投标总额&nbsp;{$vo.has_borrow|getMoneyFormt=###}元
+       </div>
+        <div class="bidbox" style="min-height:350px;height:auto;">
+          <table class="bid" cellspacing="0" width="100%">
+            <thead>
+              <tr style="background-color: #f4f4f4;">
+                <th class="" width="200">投标人</th>
+                <th class="" width="192">投标类型</th>
+                <th class="" width="208">投标金额</th>
+                <th class="" width="229">投标时间</th>
+              </tr>
+            </thead>
+              <tbody id="investrecord" class="tender-list" >
+                   <if condition="$list neq null">
+                       <volist name="list" id="vo" key="k" >
+                           <if condition="$k%2 eq 0">
+                               <tr style='background-color: rgb(255, 255, 255);'  class='borrowlist3'>
+                                   <td  width='200' class='txtC'>{$vo['user_phone']}</td>
+                                   <td  width='192' class='txtC'>手动</td>
+                                   <td  width='178' class='txtRight pr30'>{$vo['capital']}元</td>
+                                   <td width='229' class='txtC'>{$vo['add_time']}</td>
+                               </tr>
+                               <else/>
+                               <tr style='background-color: rgb(236, 249, 255);'  class='borrowlist5'>
+                                   <td  width='200' class='txtC'>{$vo['user_phone']}</td>
+                                   <td  width='192' class='txtC'>手动</td>
+                                   <td  width='178' class='txtRight pr30'>{$vo['capital']}元</td>
+                                   <td width='229' class='txtC'>{$vo['add_time']}</td>
+                               </tr>
+
+                           </if>
+                       </volist>
+                       <tr>
+                           <td colspan="4">
+                               <div class="pages" style="width:829px; margin-left:0;">{$page}</div>
+                               <input type="hidden" id="total_page" value={$total_page} />
+                           </td>
+                       </tr>
+                       <else/>
+                       <tr >
+                           <td colspan="4"> 暂时没有投资记录</td>
+                       </tr>
+                   </if>
+              </tbody>
+          </table>
+        </div>
+     
+      </div>
+    
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+			  var lilenth = $(".list-h li").length+1;
+			  $(".list-h").css("width", lilenth * 160);
+			  var leftpos = 0;
+			  var leftcount = 0;
+
+			  $("#imgLeft").attr("src", "__ROOT__/Style/H/images/left_g.gif");
+			  $("#spec-left").css("cursor", "default");
+
+			  if (lilenth > 1) {
+				  $(function() {
+					  $("#spec-right").click(function() {
+						  if (leftcount >= 0) {
+							  $("#imgLeft").attr("src", "__ROOT__/Style/H/images/scroll_left.gif");
+							  $("#spec-left").css("cursor", "pointer");
+						  }
+						  if (lilenth - leftcount < 3) {
+							  $("#imgRight").attr("src", "__ROOT__/Style/H/images/right_g.gif");
+							  $("#spec-right").css("cursor", "default");
+						  }
+						  else {
+							  leftpos = leftpos - 160;
+							  leftcount = leftcount + 1;
+							  $(".list-h").animate({ left: leftpos }, "slow");
+							  if (lilenth - leftcount < 2) {
+								  $("#imgRight").attr("src", "__ROOT__/Style/H/images/right_g.gif");
+								  $("#spec-right").css("cursor", "default");
+							  }
+						  }
+
+					  });
+				  });
+
+				  $(function() {
+					  $("#spec-left").click(function() {
+						  if (lilenth - leftcount > 2) {
+							  $("#imgRight").attr("src", "__ROOT__/Style/H/images/scroll_right.gif");
+							  $("#spec-right").css("cursor", "pointer");
+						  }
+
+						  if (leftcount < 1) {
+							  $("#imgLeft").attr("src", "__ROOT__/Style/H/images/left_g.gif");
+							  $("#spec-left").css("cursor", "default");
+						  }
+						  else {
+							  leftpos = leftpos + 160;
+							  leftcount = leftcount - 1;
+							  $(".list-h").animate({ left: leftpos }, "slow");
+							  if (leftcount < 1) {
+								  $("#imgLeft").attr("src", "__ROOT__/Style/H/images/left_g.gif");
+								  $("#spec-left").css("cursor", "default");
+							  }
+						  }
+
+					  }
+					  )
+				  })
+			  }
+			  else {
+				  $("#imgRight").attr("src", "__ROOT__/Style/H/images/right_g.gif");
+				  $("#spec-right").css("cursor", "default");
+			  }
+			  $(function() {
+				  var width = $("#preview").width();
+				  $("#spec-list").css("width", 530).css("margin-right", 8);
+
+			  });
+
+			  $(function() {
+				  $("#spec-list img").bind("mouseover", function() {
+					  $(this).css({
+						  "border": "2px solid #FFFFFF",
+						  "padding": "1px"
+					  });
+				  }).bind("mouseout", function() {
+					  $(this).css({
+						  "border": "1px solid #ccc",
+						  "padding": "2px"
+					  });
+				  });
+			  })
+	</script>
+<script type="text/javascript" src="__ROOT__/Style/fancybox/jquery.fancybox-1.3.2.js"></script>
+<script type="text/javascript" src="__APP__/Style/Js/jquery.cookie.js"></script>
+<style>
+#fancybox-title-over img{
+  float: right;
+  margin-right: 15px;
+}
+</style>
+<script type="text/javascript">
+	$(function() {
+        $("a[rel=img_group]").fancybox({
+            'transitionIn': 'none',
+            'transitionOut': 'none',
+            'titlePosition': 'over',
+            'titleFormat': function (title, currentArray, currentIndex, currentOpts) {
+                return '<span id="fancybox-title-over">Image ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '<img src="__ROOT__/Style/H/img/small.png" width="25px" onclick="small()" style="cursor:pointer"/><img id="big" src="__ROOT__/Style/H/img/big.png" width="25px" onclick="biga()" style="cursor:pointer"/></span>';
+            }
+        });
+        $(".borrowlist5").hover(function(){
+            $(this).css("background", "#c9edff");
+        },function(){
+            $(this).css("background", "#ecf9ff");
+        });
+
+        $(".borrowlist3").hover(function(){
+            $(this).css("background", "#c9edff");
+        },function(){
+            $(this).css("background", "#ffffff");
+        })
+	});
+
+  // 放大
+   function biga(){
+    var photoWidth = parseInt($('#fancybox-content').css("width"));
+    var w = photoWidth + 10;
+    var photoHeight = parseInt($('#fancybox-content').css("height"));
+    var h = photoHeight + 10;
+      $('#fancybox-content').css('width',w+'px');
+      $('#fancybox-content').css('height',h+'px');
+      $('#fancybox-img').css('width',w+'px');
+      $('#fancybox-img').css('height',h+'px');
+      $('#fancybox-title').css('width',w+'px');
+    };
+  
+  //缩小
+   function small(){
+        var photoWidth = parseInt($('#fancybox-content').css("width"));
+        var w = photoWidth - 10;
+        var photoHeight = parseInt($('#fancybox-content').css("height"));
+        var h = photoHeight - 10;
+          $('#fancybox-content').css('width',w+'px');
+          $('#fancybox-content').css('height',h+'px');
+          $('#fancybox-img').css('width',w+'px');
+          $('#fancybox-img').css('height',h+'px');
+          $('#fancybox-title').css('width',w+'px');
+    };
+</script>
+<input id="hid" type="hidden" value="{$vo.lefttime}" />
+<include file="Public:_footer" />
+<script language="javascript" src="__ROOT__/Style/H/js/index.js"></script>
+<script language="javascript" src="__ROOT__/Style/H/js/borrow.js"></script>
+<script type="text/javascript">
+    // 立即投标
+    function invest(id){
+        var status="{$status}"||0;
+        var num = $('#enter_value').val();
+        if(status==0){
+           //实名认证
+           // $.jBox("get:__ROOT__/member/verify?id=1#fragment-1",{title:"去实名认证",buttons: false});
+            location.href="__ROOT__/member/verify?id=1#fragment-1";
+        }else if(status==1){
+            //设置密码
+            $.jBox("get:__URL__/set_paypass",{title:"设置支付密码",buttons: false});
+        }else{
+            location.href="__URL__/investmoney?borrow_id="+id+"&money="+num;
+        }
+    }
+   
+    $(document).ready(function(){
+      $("#extra>p>img").css('width','600px');
+      $("#extra>p>img").css('margin-bottom','30px');
+    });
+</script>
+<script>
+    
+</script>

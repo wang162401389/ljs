@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html style="height:100%;background:#EEEAEA">
+
+<head>
+	 <include file="Pub:header-common" /> 
+	<link rel="stylesheet" href="__ROOT__/Style/Phone/css/account.css" >
+	<script type="text/javascript" src="__ROOT__/Style/Phone/js/jquery-2.1.4.min.js"></script>
+</head>
+
+<body>
+	<div id="header">
+		<div class="bar">
+			<div class="cqgtitle cqgf14">我的存钱罐</div>
+			<div class="balance">
+				<div class="cqgfont" style="opacity: 0.6;">昨日收益（元）</div>
+				<div class="cqgfont1"><?php if(empty($zrshouyi)){echo '0.00';}else{echo $zrshouyi;} ?></div>
+				<div class="cqgfont" style="margin-top: 15px;opacity: 0.6;">累计收益（元）</div>
+				<div class="cqgfont cqgf14"><?php if(empty($zonshouyi)){echo '0.00';}else{echo $zonshouyi;} ?></div>
+				<?php if($regtime>strtotime($start)){ ?>
+				<?php }else{ ?>
+				<!--<div class="cqgfont" style="opacity: 0.6;">({$start}起)</div>-->
+				<?php } ?>
+			</div>
+			<div style="height: 5px;"></div>
+		</div>
+	</div>
+
+	<div class="content">
+		<div class="bar">
+			<div class="cqgcon"><div class="cqgcondiv cqgf12" style="border-right: 1px solid #e5e5e5"><div>万份收益（元）</div><div><?php echo $thousandsincome; ?></div></div></div>
+			<div class="cqgcon"><div class="cqgcondiv cqgf12"><div>7日年化收益率</div><div><?php echo $yields; ?>%</div></div></div>
+		</div>
+	<div class="cqgcome">
+		<div class="cqgcom">每日收益</div>
+		<div class="cqgcomediv">
+			<ul>
+			<?php $j=0; ?>
+				<volist name="list" id="list">
+				<li <?php if($j++>9) echo 'style="display:none"' ?>>
+					<div style="float: left;">{$list.time}</div><div  style="float: right;">{$list.earnings_yesterday}</div>
+				</li>
+				</volist>
+			</ul>
+		</div>
+	</div>
+	</div>
+
+	<include file="Pub:footer" /> 
+<script type="text/javascript">
+	function show_next_item(name,total,cur){
+         if(total==cur){
+             html='<li id="all" style="text-align: center">已经全部显示</li>';
+			 if($("#all").length == 0){
+				 $(name).children("ul").append(html);
+				 return 1;
+			 }
+             
+         }else{
+             diff=total-cur;
+             if(diff>10) diff=10;
+             $li_list=$(name).find("li");
+             j=0;
+             $li_list.each(function(i,item){
+                 if(($(item).css("display")=="none")&&(j<diff)){
+                     $(item).show();
+                     j++;
+                 }
+             })
+             return diff;
+         }
+     }	
+	$(document).ready(function(){ 
+		cqgcomediv_list = $('.cqgcomediv').find('li');
+		cqgcomediv_num = cqgcomediv_list.length;
+		if(cqgcomediv_num>10) cqgcomediv_cur_num=10;
+        else cqgcomediv_cur_num=cqgcomediv_num;
+        console.log(cqgcomediv_cur_num);
+        loading=0;
+    	$(window).scroll(function(){
+	        console.log($(window).scrollTop());
+	        console.log($(window).height());
+	        console.log($(document).height());
+	        if( ((($(window).scrollTop() + $(window).height()) ) >= $(document).height())&&(loading==0))
+	        {
+	        	loading=1;
+	            html='<li class="loading" style="text-align: center">加载中....</li>';
+	            $(".cqgcomediv").children("ul").append(html);
+	            setTimeout(function(){
+	            	add=show_next_item(".cqgcomediv",cqgcomediv_num,cqgcomediv_cur_num);
+	                cqgcomediv_cur_num+=add;
+	            	$(".loading").remove();
+	                loading=0;
+	            },1000);
+	        }
+        });	
+	});
+</script>
+
+</body>
+
+</html>

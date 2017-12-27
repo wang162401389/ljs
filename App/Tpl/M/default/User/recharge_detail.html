@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <include file="Pub:header-common" />
+    <link rel="stylesheet" href="css/recharge_detail.css" >
+</head>
+<body style="background: #FFFFFF;">
+    <include file="Pub:simple_header" />
+    <ul class="prop">
+    	<li>充值成功(元)</li><li>充值失败(元)</li>
+    	<li class="money">￥{$success_money}</li><li class="money">￥{$fail_money}元</li>
+    </ul>
+    <table border="1" cellspacing="0" class="money_state">
+        <tr>
+            <td>充值时间</td>
+            <td >充值金额</td>
+	        <td>充值状态</td>
+        </tr>
+        <volist name="list" id="vo">
+            <tr>
+                <td>{$vo['addtime']|date="Y-m-d H:i:s",###}</td>
+                <td class="money_orange">￥{$vo['money']}</td>
+                <td>{$vo['status']}</td>
+             </tr>
+        </volist>
+    </table>
+    <include file="Pub:footer" />
+</body>
+<script>
+    loading=0;
+    cur_item=6;
+    function show_next_info(){
+        setTimeout(function(){
+            $(".loading").remove();
+            if(cur_item==total){
+                html='<li style="text-align: center">已经全部显示</li>';
+                $("#content").append(html);
+            }else{
+                diff=total-cur_item;
+                if(diff>6) diff=6;
+                j=0;
+                $("#content").children("li").each(function(){
+                    if(($(this).css("display")=="none")&&(j<diff)) {
+                        $(this).show();
+                        j++;
+                    }
+                })
+                cur_item=cur_item+diff;
+                loading=0;
+            }
+        },1000)
+
+
+    }
+    $(function(){
+        total= $("#content").children().length;
+        $(window).scroll(function(){
+            if( ((($(window).scrollTop() + $(window).height()) ) >= $(document).height())&&(loading==0))
+            {
+                loading=1;
+                html_info='<li class="loading" style="text-align: center">加载中....</li>';
+                $("#content").append(html_info);
+                show_next_info();
+            }
+        });
+    })
+</script>

@@ -1,0 +1,27 @@
+    <div class="questionnaire_title">
+        个人投资者风险承受能力调查问卷
+    </div>
+    <div class="questionnaire_rule">
+        <p>填写须知</p>
+        <p>依据《网络借贷信息中介机构业务活动管理暂行办法》第二十六条之规定，链金所需对投资者进行风险承受能力评估。以下问题可在您选择合适的产品前，协助评估您的风险承受能力、理财方式及投资目标</p>
+        <p>本人已经认真阅读了上述调查问卷填写须知，并决定：</p>
+        <p>
+            <span>1.接受问卷调查<input type="radio"  value="1" id="jieshou" name="wenjuan"/></span>
+            <span>2.放弃问卷调查<input type="radio"  value="2" id="fangqi" name="wenjuan"/></span>
+        </p>
+    </div>
+    <div class="fxpg_question myog">
+        <?php foreach($data as $key => $va){?>
+            <dl>
+                <dt data-id="<?php echo $va['id'];?>">Q<?php echo ($key+1) ;?>：<?php echo $va['question'];?>？</dt>
+                 <?php foreach($va["answer"] as $mykey=> $value){?>
+                     <dd><input type="radio" name="age<?php echo $va['id'];?>" id="<?php echo $va['answerid'][$mykey]; ?>" value="<?php echo $va['answerid'][$mykey]; ?>"
+                         <?php if($va['answer_id']==$va['answerid'][$mykey]){ echo "checked='checked'";} ?> />
+                         <label><?php echo ($mykey+1); ?>.&nbsp;<?php echo $value ;?></label>
+                     </dd>
+                 <?php }?>
+            </dl>
+       <?php
+         }
+       ?>
+</div>

@@ -1,0 +1,185 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+    var delUrl = '__URL__/doDel';
+    var addUrl = '__URL__/add';
+    var isSearchHidden = 1;
+    var searchName='搜索';
+</script>
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<div class="so_main">
+    <div class="page_tit">运营推广数统计</div>
+    <!--搜索/筛选会员-->
+    <div id="search_div" style="display:none">
+        <div class="page_tit"><script type="text/javascript">document.write(searchName);</script> [ <a href="javascript:void(0);" onclick="dosearch();">隐藏</a> ]</div>
+        <div class="form2">
+            <form method="post" action="__URL__/{$xaction}" id="ot">
+            	<dl class="lineD">
+                    <dt>id：</dt>
+                    <dd>
+                        <input name="id" style="width:190px" id="id" type="text"  />
+                    </dd>
+                </dl>
+                <dl class="lineD">
+                  <dt>身份：</dt>
+                  <dd>
+                   <htmlA:radio id="is_vip" value="key|search.is_vip" default="all|全部,yes|借款人,no|投资人" tip="不填则不限制"/>
+                  </dd>
+                </dl>
+                <dl class="lineD">
+                    <dt>手机号：</dt>
+                    <dd>
+                        <input name="user_phone" style="width:190px" id="user_phone" type="text"  />
+                    </dd>
+                </dl>
+                <dl class="lineD">
+                    <dt>真实姓名：</dt>
+                    <dd>
+                        <input name="real_name" style="width:190px" id="real_name" type="text"  />
+                    </dd>
+                </dl>
+                <dl class="lineD">
+			      <dt>籍贯：</dt>
+			      <dd>
+			      <htmlA:select datakey="jg" id="jg" value="key|search.jg" style="width:100px"/>
+			        <span>不填则不限制</span>
+			      </dd>
+			    </dl>
+			    <!-- <dl class="lineD">
+			      <dt>是否揭阳地区：</dt>
+			      <dd>
+			      <htmlA:select datakey="is_jieyang" id="is_jieyang" value="key|search.is_jieyang" style="width:100px"/>
+			        <span>不填则不限制</span>
+			      </dd>
+			    </dl>
+                <dl class="lineD">
+                    <dt>推荐人：</dt>
+                    <dd>
+                        <input name="recommend" style="width:190px" id="test" type="text"  />
+                    <span>不填则不限制</span>
+                    </dd>
+                </dl> -->
+                <dl class="lineD">
+                  <dt>注册渠道：</dt>
+                  <dd>
+                   <htmlA:radio id="equipment" value="key|search.equipment" default="PC|PC,APP|APP,WeChat|WeChat,fengche|fengche,fubaba|fubaba,yinqiao|yinqiao,souli|souli,huotou|huotou" tip="不填则不限制"/>
+                  </dd>
+                </dl>
+                <dl class="lineD"><dt>注册时间从：</dt><dd><htmlA:timer id="start_time" style="width:190px"/><span>到：</span><htmlA:timer id="end_time" style="width:190px"/></dd></dl>
+                <dl class="lineD"><dt>首投时间从：</dt><dd><htmlA:timer id="invest_start_time" style="width:190px"/><span>到：</span><htmlA:timer id="invest_end_time" style="width:190px"/></dd></dl>
+                <dl class="lineD">
+                  <dt>是否实名：</dt>
+                  <dd>
+                   <htmlA:radio id="is_realname" value="key|search.is_realname" default="all|全部,yes|是,no|否" tip="不填则不限制"/>
+                  </dd>
+                </dl>
+                <dl class="lineD">
+                  <dt>是否已投资：</dt>
+                  <dd>
+                   <htmlA:radio id="is_invest" value="key|search.is_invest" default="all|全部,yes|是,no|否" tip="不填则不限制"/>
+                  </dd>
+                </dl>
+                <dl class="lineD">
+                  <dt>是否使用体验金：</dt>
+                  <dd>
+                   <htmlA:radio id="is_used_experience_money" value="key|search.is_used_experience_money" default="all|全部,yes|是,no|否" tip="不填则不限制"/>
+                  </dd>
+                </dl>
+                <div class="page_btm">
+                    <input type="submit" class="btn_b" value="确定" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--搜索/筛选会员-->
+    <div class="Toolbar_inbox" >
+        <div class="page right">{$pagebar}</div>
+        <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索" style="search_action" />
+    </div>
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th>ID</th>
+                <th>身份</th>
+                <th>用户名</th>
+                <th>手机号</th>
+                <th>真实姓名</th>
+                <th>籍贯</th>
+                <!-- <th>揭阳地区</th>
+                <th>推荐人</th> -->
+                <!-- <th>注册渠道</th> -->
+                <th>注册时间</th>
+                <th>最后登录时间</th>
+                <th>是否实名</th>
+                <th>投资金额</th>
+                <th>使用体验金时间</th>
+                <th>投资券即将过期时间</th>
+                <th>首次投资时间</th>
+                <th>首次投资</th>
+                <th>首次投资当月总投资</th>
+            </tr>
+            <?php foreach($list as $key => $val) { ?>
+            <tr>
+                <td><?php echo $val['id']; ?></td>
+                <td><?php if($val['is_vip'] == 1){echo '投资人/借款人';}else{echo '投资人';} ?></td>
+                <td><?php echo $val['user_name']; ?></td>
+                <td><?php echo $val['user_phone']; ?></td>
+                <td><?php echo $val['real_name']; ?></td>
+                <td><?php echo $val['jiguan']; ?></td>
+                <!-- <td><?php if($val['is_jieyang'] == 1){echo '是';}else{echo '否';} ?></td>
+                <td><?php echo $val['recommend_name']; ?></td> -->
+                <!-- <td><?php echo $val['equipment']; ?></td> -->
+                <td><?php echo date('Y-m-d',$val["reg_time"]); ?></td>
+                <td><?php if($val['last_log_time'] != 0){echo date('Y-m-d',$val["last_log_time"]);} ?></td>
+                <td><?php if($val['id_status'] == 1){echo '是';}else{echo '否';} ?></td>
+                
+                <td><a href="{:U('Yunwei/countdetail', array('uid' => $val['id'], 'type' => 'invest'))}"><?php echo $val['invest_total']; ?></td>             
+                <td><?php if($val['tiyanjin_time'] != 0){echo date('Y-m-d',$val["tiyanjin_time"]);} ?></td>
+                <td><?php if($val['co_min_endtime'] != 0){echo date('Y-m-d',$val["co_min_endtime"]);} ?></td>
+                <if condition="empty($val['first_invest_time']) eq true">
+                    <td>尚未投资</td>
+                    <td>无</td>
+                    <td>无</td>
+                <else />
+                    <td><?php if($val['first_invest_time']){echo date('Y-m-d',$val["first_invest_time"]);} ?></td>
+                    <td><?php echo $val['first_invest_amount']; ?></td>
+                    <td><?php echo $val['firstmonth_invest_amount']; ?></td>
+                </if>
+                
+            </tr>
+            <?php } ?>
+        </table>
+        <div class="Toolbar_inbox" style="overflow: hidden">
+            <htmlA:commonBtn type="href" action="__URL__/generalcount?{$query}" value="将当前条件下数据导出为Excel"/>
+            <div class="page right">{$pagebar}</div>
+        </div>
+    </div>
+    <!-- <div class="page_tit">数据统计</div>
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th>注册人数</th>
+                <th>PC注册人数</th>
+                <th>APP注册人数</th>
+                <th>微信注册人数</th>
+                <th>风车注册人数</th>
+                <th>实名人数</th>
+                <th>使用体验金人数</th>
+                <th>投资人数</th>
+                <th>投资金额</th>
+            </tr>
+            <tr>
+                <td><?php echo $total_count; ?></td>
+                <td><?php echo $pc_reg_count; ?></td>
+                <td><?php echo $app_reg_count; ?></td>
+                <td><?php echo $wechat_reg_count; ?></td>
+                <td><?php echo $fc_reg_count; ?></td>
+                <td><?php echo $realname_count; ?></td>
+                <td><?php echo $experienced_count; ?></td>
+                <td><?php echo $investor_count; ?></td>
+                <td><?php echo $investor_money; ?></td>
+            </tr>
+        </table>
+    </div> -->
+</div>
+<include file="Public:_footer" />

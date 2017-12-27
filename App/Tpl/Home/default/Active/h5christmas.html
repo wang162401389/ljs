@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<base href="/Style/Phone/" />
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  	<script src="__ROOT__/Style/Phone/js/jquery-2.1.4.min.js"></script>
+  	<script src="__ROOT__/Style/Phone/js/marquee.js"></script>
+  	<link rel="stylesheet" type="text/css" href="__ROOT__/Style/Phone/css/christmas.css">
+  	<style type="text/css">
+	  	#header .title{font-size: 1.2rem;}
+  	</style>
+</head>
+<body>
+
+<include file="default:Pub:simple_header" group="M" />
+	<div class="n-banner" style="margin-top: 50px;">
+		<img src="__ROOT__/Style/Phone/img/newyear/nbanner1.jpg">
+		<img src="__ROOT__/Style/Phone/img/newyear/nbanner2.jpg">
+		<p class="time">活动时间 12月13日—1月18日</p>
+	</div>
+
+	<div class="n-item">
+		<ul>
+			<li class="<if condition='$first_gift eq 1 OR $first_gift eq 0 OR $first_gift eq 6'>bg1<else/>cardbg1-grey</if>">
+				<span class="span1">1‰返现</span>
+				<span class="span2">5万元以下</span>
+			</li>
+			<li class="<if condition='$first_gift eq 2 OR $first_gift eq 0'>bg2<else/>bg3</if>">
+				<span class="span1">京东50元E卡1张</span>
+				<span class="span2">5万元（含）</span>
+			</li>
+			<li class="<if condition='$first_gift eq 3 OR $first_gift eq 0'>bg2<else/>bg3</if>">
+				<span class="span1">京东100元E卡1张</span>
+				<span class="span2">10万元（含）</span>
+			</li>
+			<li style="margin-left: 16.6%;" class="<if condition='$first_gift eq 4 OR $first_gift eq 0'>bg2<else/>bg3</if>">
+				<span class="span1">京东200元E卡1张</span>
+				<span class="span2">20万元（含）</span>
+			</li>
+			<li class="<if condition='$first_gift eq 5 OR $first_gift eq 0'>bg2<else/>bg3</if>">
+				<span class="span1">京东500元E卡1张</span>
+				<span class="span2">50万元（含）</span>
+			</li>
+		</ul>
+		<if condition="$is_login eq 1">
+		<!-- 已登录 -->
+		<p class="invest-info">
+			您已累计投资{$invest_money}元<br>
+			<if condition="$next_have neq 0 AND $next_have neq 1">
+			获得{$first_have}，离下一礼品还差<br>
+			{$next_have}元
+			<elseif condition="$next_have eq 1"/>
+			暂未获得礼品，新年礼物在向您招手！
+			<else/>
+			获得{$first_have}
+			</if>
+		</p>
+		<else/>
+		<!-- 未登录 -->
+		<p class="invest-info">您好！<a href="__APP__/M/pub/login.html">登录</a>后可查看获得的礼品</p>
+		</if>
+		<a href="__APP__/M/invest/lists.html" class="n-btn">立即投资</a>
+	</div>
+
+	<div class="n-item1">
+		<p class="n-banner"><img src="__ROOT__/Style/Phone/img/newyear/nbanner3.jpg"></p>
+		<p class="n-tips">
+			<span>每许愿1次可以获得1个许愿码</span>
+			<span>达到许愿人次即时开出幸运号获得礼物</span>
+		</p>
+		<if condition="$is_login eq 1">
+		<p class="n-item1-tit"><img src="__ROOT__/Style/Phone/img/newyear/gift.png"> <span style="margin-right: 9.5rem;">剩余许愿机会{$xu_count}次！</span></p>
+		<else/>
+		<p class="n-item1-tit"><img src="__ROOT__/Style/Phone/img/newyear/gift.png"><span>您好！登录后可查看相应数据！<a href="__APP__/M/pub/login.html">立即登录</a></span></p>
+		</if>
+		<ul>
+			<li>
+				<img class="giftitem-img" src="__ROOT__/Style/H/images/christmas/gift1.jpg">
+				<div class="dleft">
+					<p class="gift-name"><if condition="$kaodian['is_open'] eq 1">（{$kaodian.qi}期）</if>颈部腰部肩部按摩椅垫</p>
+					
+	                <if condition="$kaodian['is_open'] eq 0">
+	                <div class="n-inline">
+						<span>{$kaodian.gift_number}/{$kaodian.gift_number}人次</span>
+						<div class="progress">
+	                        <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:100%"></div>
+	                    </div>
+	                </div>
+					<!--gameover start-->
+					<img class="gameover-ico" src="/Style/H/images/christmas/gameover.png">
+					<a href="javascript:void(0);" class="wish-btn gameover-wish-btn">向TA许愿</a>
+					<!--gameover start-->
+					<else/>
+					<div class="n-inline">
+						<span>{$kaodian.send_number}/{$kaodian.gift_number}人次</span>
+						<div class="progress">
+	                        <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:{$kaodian.jindu}%"></div>
+	                    </div>
+	                </div>
+					<a href="javascript:void(0);" class="wish-btn js-wish" data="{$kaodian.gift_id}">向TA许愿</a>
+					</if>
+				</div>
+			</li>
+			<li>
+				<img class="giftitem-img" src="__ROOT__/Style/H/images/christmas/gift2.jpg">
+				<div class="dleft">
+					<p class="gift-name"><if condition="$xiaomi['is_open'] eq 1">（{$xiaomi.qi}期）</if>小米空气净化器</p>
+					
+	                <if condition="$xiaomi['is_open'] eq 0">
+	                <div class="n-inline">
+						<span>{$xiaomi.gift_number}/{$xiaomi.gift_number}人次</span>
+						<div class="progress">
+	                        <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:100%"></div>
+	                    </div>
+	                </div>
+					<!--gameover start-->
+					<img class="gameover-ico" src="/Style/H/images/christmas/gameover.png">
+					<a href="javascript:void(0);" class="wish-btn gameover-wish-btn">向TA许愿</a>
+					<!--gameover start-->
+					<else/>
+					<div class="n-inline">
+						<span>{$xiaomi.send_number}/{$xiaomi.gift_number}人次</span>
+						<div class="progress">
+	                        <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:{$xiaomi.jindu}%"></div>
+	                    </div>
+	                </div>
+					<a href="javascript:void(0);" class="wish-btn js-wish" data="{$xiaomi.gift_id}">向TA许愿</a>
+					</if>
+				</div>
+			</li>
+			<li>
+				<img class="giftitem-img" src="__ROOT__/Style/H/images/christmas/gift3.jpg">
+				<div class="dleft">
+					<p class="gift-name"><if condition="$jianeng['is_open'] eq 1">（{$jianeng.qi}期）</if>佳能EOS 700D 单反套机</p>
+					
+	                <if condition="$jianeng['is_open'] eq 0">
+	                <div class="n-inline">
+						<span>{$jianeng.gift_number}/{$jianeng.gift_number}人次</span>
+						<div class="progress">
+	                        <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:100%"></div>
+	                    </div>
+	                </div>
+					<!--gameover start-->
+					<img class="gameover-ico" src="/Style/H/images/christmas/gameover.png">
+					<a href="javascript:void(0);" class="wish-btn gameover-wish-btn">向TA许愿</a>
+					<!--gameover start-->
+					<else/>
+					<div class="n-inline">
+						<span>{$jianeng.send_number}/{$jianeng.gift_number}人次</span>
+						<div class="progress">
+	                        <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:{$jianeng.jindu}%"></div>
+	                    </div>
+	                </div>
+					<a href="javascript:void(0);" class="wish-btn js-wish" data="{$jianeng.gift_id}">向TA许愿</a>
+					</if>
+				</div>
+			</li>
+			<li>
+				<img class="giftitem-img" src="__ROOT__/Style/H/images/christmas/gift4.jpg">
+				<div class="dleft">
+					<p class="gift-name"><if condition="$apple['is_open'] eq 1">（{$apple.qi}期）</if>iPhone 7 （128g颜色随机）</p>
+					
+	                <if condition="$apple['is_open'] eq 0">
+	                <div class="n-inline">
+						<span>{$apple.gift_number}/{$apple.gift_number}人次</span>
+						<div class="progress">
+	                        <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:100%"></div>
+	                    </div>
+	                </div>
+					<!--gameover start-->
+					<img class="gameover-ico" src="/Style/H/images/christmas/gameover.png">
+					<a href="javascript:void(0);" class="wish-btn gameover-wish-btn">向TA许愿</a>
+					<!--gameover start-->
+					<else/>
+					<div class="n-inline">
+						<span>{$apple.send_number}/{$apple.gift_number}人次</span>
+						<div class="progress">
+	                        <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:{$apple.jindu}%"></div>
+	                    </div>
+	                </div>
+					<a href="javascript:void(0);" class="wish-btn js-wish" data="{$apple.gift_id}">向TA许愿</a>
+					</if>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+	<div class="n-item2">
+
+		<p class="marquee-item marquee-tit">
+			<span style="width:25%">投资额度</span>
+			<span style="width:25%">用户手机号</span>
+			<span style="width:50%">获得礼品</span>
+		</p>
+		
+		<div id="marquee" style="overflow:hidden;height:109px;">
+			<ul>
+				<volist name="zhonglist" id="vo">
+					<li class="marquee-item">
+						<span class="cor-yellow" style="width:25%">{$vo.have_invest_money}</span>
+						<span style="width:25%">{:hidecard($vo['user_phone'], 2)}</span>
+						<span style="width:50%"><span>{$vo.gift_name}<if condition="$vo.is_xu eq 1">（{$vo.gift_no}期  幸运号{$vo.have_number}）</if></span></span>
+					</li>
+				</volist>
+				<!-- <li class="marquee-item">
+					<span class="cor-yellow" style="width:25%">100000.00</span>
+					<span style="width:25%">138****1234</span>
+					<span style="width:50%"><span>200元京东E卡1张</span><span>空气净化器（2003期  幸运号123004）</span></span>
+				</li>
+				
+				<li class="marquee-item">
+					<span class="cor-yellow" style="width:25%">300000.00</span>
+					<span style="width:25%">138****1234</span>
+					<span style="width:50%"><span>200元京东E卡1张</span></span>
+				</li>
+				<li class="marquee-item">
+					<span class="cor-yellow" style="width:25%">400000.00</span>
+					<span style="width:25%">138****1234</span>
+					<span style="width:50%"><span>200元京东E卡1张</span></span>
+				</li> -->
+			</ul>
+		</div>
+			
+		<a href="__APP__/M/invest/lists.html" class="n-btn">获取许愿机会</a>
+
+		<div class="value-table">
+			<p>后续积分兑换投资款与奖品价值表如下</p>
+			<table cellspacing="0">
+				<tr>
+					<td width="30%">投资金额</td>
+					<td width="25%">奖项价值</td>
+					<td width="25%">许愿份额</td>
+					<td width="20%">级别</td>
+				</tr>
+				<tr>
+					<td>1万以下</td>
+					<td>58元</td>
+					<td>40份</td>
+					<td>普通</td>
+				</tr>
+				<tr>
+					<td>1万~5万</td>
+					<td>88元</td>
+					<td>80份</td>
+					<td>高级</td>
+				</tr>
+				<tr>
+					<td>5万~10万</td>
+					<td>128元</td>
+					<td>100份</td>
+					<td>钻石</td>
+				</tr>
+				<tr>
+					<td>10万以上</td>
+					<td>168元</td>
+					<td>120份</td>
+					<td>皇冠</td>
+				</tr>
+			</table>
+			<p>备注：许愿的资格与投资金额相对应，级别高的可以许愿对应奖项或以下奖项，具体已平台公告为主，敬请关注。</p>
+		</div>
+
+		<div class="rule-txt">
+			<p class="rule-tit">活动规则</p>
+			<p>
+				1. 用户投资每达到1000元，可获得一次许愿机会，多投多得；<br>
+				2. 用户向心仪的商品许愿，同一商品可许愿多次，许愿1次将获得1个许愿码。许愿码构成规则：4位随机码+用户手机号末位2位；<br>
+				3. 每期礼物达到规定的许愿人次时即时开出幸运号，可在【新年幸运号】查看；<br>
+				4. 幸运号计算规则：许愿码平均值=当期许愿码累加总和/许愿人次,取与许愿码平均值最接近的许愿码为幸运号，如出现与许愿码平均值差额均等情况，则以许愿时间先者为幸运号；<br>
+				5. 如在活动结束时许愿人次未满额，则在已许愿的许愿码中按第4条规则计算出幸运号；<br>
+				6. 我获得的礼物及我的许愿码可登录活动页查看；<br>
+				7. 活动结束后未使用的许愿机会自动清零；<br>
+				8. 奖品安排在活动结束15个工作日内统一发放；<br>
+				9. 返现金在活动结束15个工作日以充值的方式充入投资者账户；<br>
+				10. 在法律允许范围内，链金所保留对此次活动的最终解释权，如有疑问，请联系官方客服400-662-6985。
+			</p>
+		</div>
+	</div>
+	
+	<div class="n-footer">
+		<ul>
+			<li><a href="/home/active/mynewyears"><img src="__ROOT__/Style/Phone/img/newyear/icon1.png"></a></li>
+			<li><a href="/home/active/mywish"><img src="__ROOT__/Style/Phone/img/newyear/icon2.png"></a></li>
+			<li><a href="/home/active/myluckynum"><img src="__ROOT__/Style/Phone/img/newyear/icon3.png"></a></li>
+		</ul>
+	</div>
+    
+    <!--弹窗-->
+	<div class="alldiv">
+		<div class="box box1">
+			<span class="close-btn js-close">×</span>
+			<p class="p1">我要许愿</p>
+			<img src="__ROOT__/Style/Phone/img/newyear/cardbg1.jpg" class="circle-img">
+			<p class="p2" id="towish_name">礼物名称礼物名称</p>
+			<p class="p3">许愿次数：<input type="number" class="num js-num" value=""/> 次</p>
+			<P class="p4">您当前有<span id="towish_num">10</span>次许愿机会</P>
+			<input type="hidden" id="towish_giftid" value="" />
+			<a href="javascript:void(0);" class="b-btn js-mywish">愿望成真</a>
+		</div>
+		<div class="box box2">
+			<span class="close-btn js-close">×</span>
+			<p class="p1">我的许愿码</p>
+			<p class="p2" id="wish_giftname">礼物名称礼物名称（1001期）</p>
+			<p class="p3">
+				<span>许愿码：</span><br>
+				<span id="wish_luckycode">001234, 001234, 001234, 001234, 001234, 001234, 001234, 001234, 001234,</span>
+			</p>
+			<a href="javascript:void(0);" class="b-btn js-close" onclick="location.reload()">知道了</a>
+		</div>
+	</div>
+<input type="hidden" id="islogin" value="{$is_login}" />
+	<script type="text/javascript">
+		$(function(){
+			var islogin = $("#islogin").val();
+			scrollTop('marquee','vertical',375,109,30,1);
+
+			/** 
+			*向他许愿
+			*/
+			$('.js-wish').on("click",function(){
+				if(islogin == 0){
+					location.href = "/M/pub/login.html";
+				}else{
+					$.ajax({
+	                    url:"__URL__/wishtoit",
+	                    type:"post",
+	                    data:{"gift_id":$(this).attr("data")},
+	                    dataType:"json",
+	                    success:function(d){
+	                        $("#towish_name").html(d.data["gift_name"]);
+	                        $("#towish_num").html(d.data["xu_count"]);
+	                        $("#towish_giftid").val(d.data["gift_id"]);
+	                        $('.alldiv').show();
+							$('.box1').show();
+	                    }
+	                });
+				}
+			});
+
+			/** 
+			*输入许愿次数
+			*/
+			$("body").on("keyup", ".js-num", function(){
+				var val = $(this).val(),
+					maxNum = parseInt($("#towish_num").text()) || "";
+				if(maxNum && parseInt(val) > maxNum){
+					$(this).val(val.substr(0,val.length-1));
+					return;
+				}
+				$(this).val(val.replace(/[^\d]/g,""));
+			});
+
+			/** 
+			*愿望成真按钮
+			*/
+			$('.js-mywish').click(function(){
+				var wishchange = parseInt($("#towish_num").text());
+				var val = $('.js-num').val();
+				if(!val){
+					alert('请输入许愿次数！');
+				}
+				else if(parseInt($('.js-num').val()) > wishchange){
+					alert('你许愿次数不足！');
+				}else{
+					$.ajax({
+		                url:"__URL__/wish",
+		                type:"post",
+		                data:{"gift_id":$("#towish_giftid").val(),"wish_count":$('.js-num').val()},
+		                dataType:"json",
+		                success:function(d){
+		                	if(d.status == -1){
+		                		alert(d.data);
+		                	}else{
+		                		$("#wish_giftname").html(d.data["gift_name"]);
+			                    $("#wish_luckycode").html(d.data["luckynum"]);
+			                    $('.box1').hide();
+								$('.box2').show();
+		                	}
+		                }
+		            });
+				}
+			});
+
+			/** 
+			*弹窗关闭按钮
+			*/
+			$('.js-close').click(function(){
+				$('.alldiv').hide();
+				$('.box1').hide();
+				$('.box2').hide();
+			});
+		})
+	</script>
+</body>
+
+</html>

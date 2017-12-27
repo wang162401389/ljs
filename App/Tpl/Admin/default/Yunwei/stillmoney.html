@@ -1,0 +1,90 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+    var delUrl = '__URL__/doDel';
+    var addUrl = '__URL__/add';
+    var isSearchHidden = 1;
+    var searchName='搜索';
+</script>
+<style type="text/css">
+    .chaxun input{
+        width:50px;
+        border: 1px solid #d2dbea;
+        border-bottom:1px solid #c8cfda;
+        border-radius: 3px;
+        background-color: #fcfcfc;
+        background:#d2dbea url(/Style/A/images/btn_a.gif) no-repeat;padding:5px; color: #333;cursor:pointer;
+    }
+</style>
+<div class="so_main">
+    <div class="page_tit">站岗资金</div>
+    <!--搜索/筛选会员-->
+   <div id="search_div">
+  <script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+    
+    <div class="form2" style="background-color: #d2dbea;">
+    <form method="post" action="__URL__/{$xaction}">
+    <table style="width: 80%;height: 80px;">
+        <tr>
+          <td>ID</td>
+          <td><input name="id" style="width:190px" id="id" type="text" value="{$search.id}"></td>
+          <td>姓名:</td>
+          <td> <input name="user_name" style="width:190px" id="user_name" type="text" value="{$search.user_name}"></td>
+        </tr>
+        <tr>
+          <td>手机号：</td>
+          <td><input name="user_phone" style="width:190px" id="title" type="text" value="{$search.user_phone}"></td>
+          <td>推荐人</td>
+          <td> <input name="recommend_id" style="width:190px" id="title" type="text" value="{$search.recommend_id}"></td>
+        </tr>
+        <tr>
+          <td>查询时间:</td>
+          <td><htmlA:timer id="query_time" style="width:90px" value="{$search.query_time}"  />
+          </td>
+<!--
+            <td>查询时间：</td>
+            <td><label>{$time|date='m月d日H时i分s秒',###}</label></td>
+-->
+        </tr>
+        <tr style="text-align: right;"><td></td><td></td><td></td><td></td><td></td><td>
+        <span class='chaxun'><input type="submit" value="查询"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class='Toolbar_inbox'><htmlA:commonBtn type="href"  action="__URL__/{$xaction}?{$query}" value="数据导出"/></span></td></tr>
+    </table>
+    </form>
+  </div>
+  </div>
+    <!--搜索/筛选会员-->
+    <div style="width: 100%;height: 10px;"></div>
+    <div class="Toolbar_inbox" >
+        <div class="page" style="text-align: right;">{$pagebar}</div>
+    </div>
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th>ID</th>
+                <th>姓名</th>
+                <th>手机号</th>
+                <th>账户可用余额</th>
+                <th>日期</th>
+                <th>推荐人</th>
+            </tr>
+            <volist name="list" id="list">
+            <tr>
+                <td>{$list.id}</td>
+                <td>{$list.real_name}</td>
+                <td>{$list.user_phone}</td>
+                <td>{$list.available_balance}</td>
+                <td>{$list.time|date="Y-m-d",###}</td>
+                <td>{$list.real_name2}</td>
+            </tr>
+            </volist>
+        </table>
+        <div class="Toolbar_inbox" style="overflow: hidden">
+            <div class="page right">{$pagebar}</div>
+        </div>
+    </div>
+
+</div>
+
+
+<include file="Public:_footer" />

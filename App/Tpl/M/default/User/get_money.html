@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <include file="Pub:header-common" />
+    <link rel="stylesheet" href="css/get_money.css" >
+</head>
+<body>
+    <include file="Pub:simple_header" />
+    <ul  id="content">
+
+    </ul>
+    <include file="Pub:footer" />
+</body>
+<script>
+    page=1;
+    loading=0;
+    function get_new_info(page){
+        $.post("/M/user/ajax_get_money",{page:page},function(data){
+            $(".loading").remove();
+            if(data.indexOf("end")!=-1){
+                html='<li class="end" style="text-align: center">已全部显示</li>';
+                $("#content").append(html);
+            }
+            else{
+                $("#content").append(data);
+                loading=0;
+            }
+
+        })
+    }
+    $(function(){
+        get_new_info(1);
+        $(window).scroll(function(){
+            if( ((($(window).scrollTop() + $(window).height()) ) >= $(document).height())&&(loading==0))
+            {
+                loading=1;
+                html='<li class="loading" style="text-align:left; margin-left:.05rem; margin-right:0.5rem;">加载中....</li>';
+                $("#content").append(html);
+                get_new_info(++page);
+
+            }
+        });
+    })
+
+</script>

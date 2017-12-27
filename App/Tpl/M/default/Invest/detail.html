@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<include file="Pub:header-common" /> 
+    <link rel="stylesheet" href="css/detail.css">
+    <script type="text/javascript" src="js/tab.js"></script>
+    <script type="text/javascript">
+    <if condition="$vo.borrow_status eq 8">
+        var seconds;
+        var timer=null;
+        function setLeftTime() {
+            waittime = {:$vo["add_time"]-time()};
+            seconds = parseInt(waittime, 10);
+            timer = setInterval(showSeconds,1000);
+        }
+
+        function showSeconds() {
+            if (seconds <= 0) {
+                clearInterval(timer);
+                location.reload();
+            } else {
+                console.log("当前剩余："+seconds);
+            }
+            seconds--;
+        }
+        setLeftTime();
+    </if>
+    </script>
+</head>
+<body>
+
+<include file="Pub:simple_header" />
+<div class="content">
+    <div class="list">
+        
+        <div>
+            <div class="cost">
+                <div>借款总额(元)</div>
+                <div>{$vo.borrow_money|MFormt=###}</div>
+             </div>
+            <div class="price11">
+            	<div class="price_sx">
+                	<div>可投金额</div>
+                    <div>{$vo.need|MFormt=###}</div>
+                </div>
+                <div class="price_yj">
+                    <div>已投金额</div>
+                    <div>{$vo.has_borrow}</div>
+                </div>
+            	
+            </div>
+             <div class="price12">
+            	<div class="price_sx">
+                    <if condition="$vo.jiaxi_rate gt 0"><span class="h5-jiaxi" style="top:21px;left: 61%;">+{$vo.jiaxi_rate}%</span></if>
+                	<div>预期年化收益率</div>
+                    <div class="<if condition='$vo.jiaxi_rate gt 0'>price-hasjiaxi</if>">{$vo.borrow_interest_rate}<span style="font-size:1rem">%</span></div>
+                </div>
+                <div class="price_yj">
+                    <div>借款期限</div>
+                    <if condition="$vo.borrow_duration_txt eq null" >
+                    <div>{$vo.borrow_duration}<span style="font-size:1rem"><if condition="$vo.repayment_type eq 1">天<else/>个月</if></span></div>
+                    <else />
+                    <div>{$vo.borrow_duration_txt}<span style="font-size:1rem"></span></div>
+                    </if>
+                </div>
+            	
+            </div>
+            <div class="ts">满标复审之日起息，坐享稳健收益</div>
+           <!-- <div class="dsqt">
+            	<div>投资金额</div>
+                <div>{$vo.borrow_min|MFormt=###}元起</div>
+            </div>-->
+            <if condition = "$vo['borrow_status'] eq 2">
+              <if condition="empty(session('u_id'))">
+            		<div class="mine_btn lj_btn" data-toggle="{:U('M/pub/login')}" >立即投资</div>
+                <elseif condition="$fxpg_popup_status eq 1 "/>
+                	<div class="mine_btn lj_btn" data-toggle="__ROOT__/M/fengxian/index/source/4" >立即投资</div>
+                  <else/>
+                  <?php if(!empty($vo['password'])){ ?>
+                  <div class="mine_btn lj_btn" onMousedown="alert('您好，这是定投标请在PC端上进行投资')">立即投资</div>
+                  <?php }else{ ?>
+                	<div class="mine_btn lj_btn" data-toggle="__ROOT__/M/invest/invest/bid/{$vo.id}">立即投资</div>
+                  <?php }?>
+                </if>
+            <elseif condition = "$vo['borrow_status'] eq 4"/>
+            <div class="lj_btn" style="background:#ccc;border-color:#ccc" > 复审中</div>
+            <elseif condition = "$vo['borrow_status'] eq 6"/>
+            <div class="lj_btn" style="background:#ccc;border-color:#ccc" > 还款中</div>
+            <elseif condition = "$vo['borrow_status'] eq 7"/>
+            <div class="lj_btn" style="background:#ccc;border-color:#ccc" > 已完成</div>
+            <elseif condition = "$vo['borrow_status'] eq 8"/>
+            <div class="lj_btn" style="background:#ccc;border-color:#ccc" >{$vo.add_time|date="H:i",###} 开始</div>
+            </if>
+            <div style="overflow:hidden">
+            <div class="spx"></div>
+            <div class="content_detail">
+              <div><img src="__ROOT__/Style/Phone/img/xmmc.png" /></div>
+              <div class="d_middle">项目名称</div>
+              <div>{$vo.borrow_name}</div>
+            </div>
+            <div class="spx"></div>
+            <div class="content_detail mine_btn" data-toggle="{:U('M/invest/projectcontent', array('id'=>$vo['id']))}">
+              <div><img src="__ROOT__/Style/Phone/img/xmxx.png" /></div>
+              <div class="d_middle">项目信息</div>
+              <i class="glyphicon glyphicon-menu-right c_d_i"></i>
+            </div>
+            <?php if($vo['product_type']==6){ ?>
+            <div class="spx"></div>
+            <div class="content_detail mine_btn" data-toggle="{:U('M/invest/projectspeak', array('id'=>$vo['id']))}">
+              <div><img src="__ROOT__/Style/Phone/img/fxkz.png" /></div>
+              <div class="d_middle">风控措施</div>
+              <i class="glyphicon glyphicon-menu-right c_d_i"></i>
+            </div>
+            <?php } else { ?>
+           <!--
+            <div class="spx"></div>
+            <div class="content_detail mine_btn" data-toggle="{:U('M/invest/projectspeak', array('id'=>$vo['id']))}">
+              <div><img src="__ROOT__/Style/Phone/img/xmcs.png" /></div>
+              <div class="d_middle">项目阐述</div>
+              <i class="glyphicon glyphicon-menu-right c_d_i"></i>
+            </div>
+            -->
+            <div class="spx"></div>
+            <div class="content_detail mine_btn" data-toggle="{:U('M/invest/riskcontrol', array('id'=>$vo['id']))}">
+              <div><img src="__ROOT__/Style/Phone/img/fxkz.png" /></div>
+              <div class="d_middle">风险控制</div>
+              <i class="glyphicon glyphicon-menu-right c_d_i"></i>
+            </div>
+            <?php } ?>
+            <?php if(empty($vo['password'])){ ?>
+            <div class="spx"></div>
+            <div class="content_detail mine_btn" data-toggle="{:U('M/invest/bidhistory', array('borrow_id'=>$vo['id']))}">
+              <div><img src="__ROOT__/Style/Phone/img/tbjl.png" /></div>
+              <div class="d_middle">投资记录</div>
+              <i class="glyphicon glyphicon-menu-right c_d_i"></i>
+            </div>
+            <?php } ?>
+            <div class="spx"></div>
+            </div>
+           
+        </div>
+       
+</div>
+    <div style="text-align: center; color:#9d9d9d; margin-top: 1rem">投资有风险，理财需谨慎</div>
+<include file="Pub:footer" />
+
+
+ <script type="text/javascript">
+//     SetTab('.statuspdttabitem', '.statuspdttab', { e: 'click' });
+//     page=0;
+//     total_page=$("#total_page").val();
+//     $(function(){
+//         ajax_show(1);
+//         page=1;
+//     })
+//     function ajax_show(p)
+//     {
+//         if(p==0){
+//             page--;
+//             if(page<1) page=1;
+//         }else if(p==2){
+//             page++;
+//             if(page>total_page) page=total_page;
+//         }else{
+//             page=p;
+//         }
+//         $.get("__URL__/investRecord?borrow_id={$borrow_id}&p="+page, function(data){
+//             $("#investrecord").html(data);
+//         });
+
+
+//     }
+ </script>
+</body>
+</html>

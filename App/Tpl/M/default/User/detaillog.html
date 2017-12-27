@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<include file="Pub:header-common" /> 
+	<link rel="stylesheet" href="__ROOT__/Style/Phone/css/record.css">
+</head>
+
+<body>
+	<include file="Pub:simple_header" />
+	<div class="content">
+	<volist name="list" id="vo">
+		<div class="list">
+			<div><span class="anno"><if condition="$vo.order_name eq ''">{$vo.order_note}<else/>{$vo.order_name}</if></span><span class="count out"><if condition="$vo.pay_uid neq ''"><font color="#FF0000">-<else/><font color="#009900">+</if>{$vo.order_money}</font></span></div>
+			<div class="text">状态：<font>{$vo.order_status}</font><!-- ，冻结：<span>{$vo.freeze_money|MFormt=###}</span><待收：<font>{$vo.collect_money|MFormt=###}</font>--><span class="date">{$vo.create_time}</span></div>
+		</div>
+	</volist>
+	</div>
+</body>
+</html>

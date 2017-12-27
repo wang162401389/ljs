@@ -1,0 +1,155 @@
+<tagLib name="htmlA" />
+<style type="text/css">
+.selecttime span{margin-right:25px}
+.btnselect{color:#2daee4;}
+.back{width:950px;height:137px;margin:30px 0;background: url(/Style/M/images/forback.png) no-repeat;}
+.back h3{float:left;width:42%;margin-top:100px;text-align:center;font-size:20px;font-weight:bold;}
+.question{position:relative;width:20px;height:20px;margin-left:10px;background:url(__ROOT__/Style/H/images/question.png) no-repeat center;vertical-align:middle;}
+.question span{display:none;position:absolute;top:-12px;left:19px;width:100px;line-height:18px;padding:2px 10px;border:solid 1px #dedede;background-color:#e7e7e7;}
+.question:hover span{display:inline;}
+</style>
+<div class="selecttime fs14">
+    <span>时间：</span>
+    <span class="pointer <if condition='$timetype eq "all"'>btnselect</if>" onclick="searchtype('all')">全部</span>
+    <span class="pointer <if condition='$timetype eq "tomonth"'>btnselect</if>" onclick="searchtype('tomonth')">本月</span>
+    <span class="pointer <if condition='$timetype eq "threemonth"'>btnselect</if>" onclick="searchtype('threemonth')">最近三个月</span>
+    <span class="pointer <if condition='$timetype eq "toyear"'>btnselect</if>" onclick="searchtype('toyear')">今年</span>
+    <input type="text" id="start_time" value="<php>if($search['start_time']){echo date('Y-m-d',$search['start_time']);}</php>" readonly="readonly" class="Wdate timeInput_Day" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\\\'end_time\\\')||\\\'2020-10-01\\\'}'})"/>
+    <label class="cor-gray">—</label>
+    <input type="text" value="<php>if($search['end_time']){echo date('Y-m-d',$search['end_time']);}</php>" id="end_time" readonly="readonly" class="Wdate timeInput_Day" onFocus="WdatePicker({minDate:'#F{$dp.$D(\\\'start_time\\\')||\\\'2020-10-01\\\'}'})"/>
+    <a id="btn_search" class="btn btn-blue ml10" onclick="sdetail()">查询</a>
+</div>
+<div class="back">
+	<h3 class="benjin">¥{$benjin|default='0.00'}</h3>
+    <h3 class="shouyi">¥{$shouyi|default='0.00'}</h3>
+</div>
+<!-- <div style="color: red; margin-left:35%;"> 不包含以债转的借款，查看债转项目请点击 <a href="/member/debt#fragment-3" style="color:red;">债权转让</a>></div> -->
+<table width="100%" class="memberTable mt20">
+	<colgroup>
+        <col width="10%">
+        <col width="16%">
+        <col width="16%">
+        <col width="15%">
+        <col width="15%">
+        <col width="15%">
+        <col width="">
+    </colgroup>
+    <thead>
+        <tr>
+            <th>借款标号</th>
+            <th>项目名称</th>
+            <th>预期年化收益率</th>
+            <th>已收本金</th>
+            <th>已收利息</th>
+            <th>还款时间</th>
+            <th>逾期罚息</th>
+        </tr>
+    </thead>
+	<tbody id="tropppp">
+        <volist name="list" id="vo">
+            <tr>
+                <td>
+                    <if condition="$vo.bid eq 'TY1'">
+                        <a href="__APP__/home/experience/detail" title="{$vo.borrow_name}" target="_blank">{$vo.bid}</a>
+                    <elseif condition="$vo.bid eq 'TY2'" />
+                            {$vo.bid}
+                    <else/>
+                        <if condition="$vo.debt_id eq 0">
+                            <a href="{$vo.borrow_id|getInvestUrl=###}" title="{$vo.borrow_name}" target="_blank">{$vo.borrow_id|borrowidlayout1}</a>
+                            <else/>
+                            <a href="/debthome/debtdetail?id={$vo.debt_id}" title="{$vo.debt_name}" target="_blank">ZQ{$vo.debt_id}</a>
+                        </if>
+
+                    </if>
+                </td>
+                <td>
+                    <if condition="$vo.bid eq 'TY1'">
+                        <a href="__APP__/home/experience/detail" title="{$vo.borrow_name}" target="_blank">{$vo.borrow_name}</a>【{$vo.is_auto}】
+                    <elseif condition="$vo.bid eq 'TY2'" />
+                            {$vo.borrow_name}
+                    <else/>
+                        <if condition="$vo.debt_id eq 0">
+                            <a href="{$vo.borrow_id|getInvestUrl=###}" title="{$vo.borrow_name}" target="_blank">{$vo.borrow_name}</a>【{$vo.is_auto}】
+                            <else/>
+                            <a href="/debthome/debtdetail?id={$vo.debt_id}" title="{$vo.debt_name}" target="_blank">{$vo.debt_name}</a>【{$vo.is_auto}】
+                        </if>
+                    </if>
+                </td>
+                <td>{$vo['borrow_interest_rate']+$vo['jx_rate']+$vo['jiaxi_rate']}%<if condition="($vo.jx_rate gt 0) OR ($vo.jiaxi_rate gt 0)"><span class="question"><span><if condition="$vo.jx_rate gt 0">平台加息{$vo.jx_rate}%<br /></if><if condition="$vo.jiaxi_rate gt 0">使用加息券{$vo.jiaxi_rate}%</if></span></span></if></td>
+                <td>¥{$vo.receive_capital}元</td>
+                <td>¥{$vo['receive_interest']+$vo['jiaxi_money']}元</td>
+                <td><?php if(empty($vo['repaytime'])){ echo "";}else{echo date('Y-m-d',$vo['repaytime']);}?></td>
+                <td>{$vo.myexpired_money}</td>
+            </tr>
+        </volist>
+        <tr>
+            <td colspan="6">
+                <div id="pager" class="yahoo2 ajaxpagebar">
+                    <div class="list_bottom_right">
+                        <ul>{$pagebar}</ul>
+                    </div>
+                </div>
+                <input type="hidden" id="tendonetotal_page" value="{$total_page}" />
+            </td>
+        </tr>
+    </tbody>
+</table>
+<script type="text/javascript">
+function searchtype(name){
+	$.ajax({
+		url: "__URL__/tenddone",
+		data: {'timetype':name},
+		timeout: 5000,
+		cache: false,
+		type: "get",
+		dataType: "json",
+		success: function (d, s, r) {
+			if(d) $("#fragment-5").html(d.html);//更新客户端竞拍信息 作个判断，避免报错
+		}
+	});
+}
+function sdetail(){
+	var x = makevar(['start_time','end_time']);
+	$.ajax({
+		url: "__URL__/tenddone",
+		data: x,
+		timeout: 5000,
+		cache: false,
+		type: "get",
+		dataType: "json",
+		success: function (d, s, r) {
+			if(d) $("#fragment-5").html(d.html);//更新客户端竞拍信息 作个判断，避免报错
+		}
+	});
+}
+
+var page=1;
+var total_page=$("#tendonetotal_page").val();
+function init(){
+	$(".list_bottom_right ul").find("[page=1]").each(function(){
+		$(this).css({"background-color":"#33aaff","color":"#fff"}).siblings("a").css({"background-color":"#EEEEEE","color":"#848484"});
+	});
+}
+
+function ajax_show(p) {
+	if(p<1){
+		page=1;
+	}else{
+		if(p>total_page){
+			page=total_page;
+		}else{
+			page=p;
+		}
+	}
+	$.get("__URL__/tenddoneinfo?p="+page, function(data){
+		$("#tropppp").html(data);
+		$(".list_bottom_right ul").find("[page="+page+"]").each(function(){
+			$(this).css({"background-color":"#33aaff","color":"#fff"}).siblings("a").css({"background-color":"#EEEEEE","color":"#848484"});
+		})
+	});
+}
+
+$(function(){
+	init();
+});
+</script>

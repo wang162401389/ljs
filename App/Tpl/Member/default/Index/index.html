@@ -1,0 +1,374 @@
+<include file="Public:_header_common"/>
+<title>我的账户-- {$glo.web_name}</title>
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/JQtip/tip-yellowsimple/tip-yellowsimple.css" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/H/css/member.css" />
+<script language=javascript type="text/javascript" src="__ROOT__/Style/Js/jquery.js"></script>
+<script language="javascript" src="__ROOT__/Style/JQtip/jquery.poshytip.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function(){
+	$('.xtitle').poshytip({
+		className: 'tip-yellowsimple',
+		showOn: 'hover',
+		alignTo: 'target',
+		alignX: 'center',
+		alignY: 'top',
+		offsetX: 0,
+		offsetY: 5
+	});
+});
+</script>
+<include file="default:Public:_header_main" group="Home"/>
+<include file="default:Public:_xiantiao" group="Home"/>
+<!--中部开始-->
+<div class="Cmm" style="margin-top:10px">
+  <include file="Public:_left" />
+  <div id="hy_right">
+      <ul class="user-money-content">
+        <li>
+            <img src="/Style/H/images/new/user-sum-money.png">
+            <div class="fs18 mt10">账户总资产</div>
+            <div class="cor-orange fs20 mt10">{:Fmoney($sinabalance+$sinasaving+$total+$benefit["interest_collection"])}元</div>
+        </li>
+        <li class="border-right"></li>
+        <li>
+            <img src="/Style/H/images/new/user-sum-money2.png">
+            <div class="fs18 mt10">累计净赚收益</div>
+            <div class="cor-orange fs20 mt10">￥{$totalmoney}元</div>
+        </li>
+        <li style="text-align: left; padding-left: 70px;">
+          <div class="user-right-money">待收收益：{$benefit.interest_collection|Fmoney=###}元</div>
+          <div class="user-right-money">待收本金：{:Fmoney($daishoubenjin)}元</div>
+          <div class="user-right-money">冻结资金：{$minfo.money_freeze|Fmoney=###}元</div>
+          </li>
+      </ul>
+       <!--现在的版本 end -->
+
+      <div class="member-tyj-ad">
+          <?php if($investnum<=0){?>
+          <php>if($explist['status']==0&&$explist['endtime']>time()){</php>
+          <!--未使用体验金 start-->
+          <div class="membertyj-ad membertyj-ad-tyj">
+              <a href="/home/security/tiyanjin.html"></a>
+          </div>
+          <!--<div class="membertyj-ad membertyj-ad-a">-->
+              <!--<if condition="$ID_SET eq 1">-->
+                  <!--<a href="/home/experience/detail/{$expinfo.id}" target="_blank" class="button-tyjadlink"></a>-->
+                  <!--<else/>-->
+                  <!--<a href="{$go_id}" target="_blank" class="button-tyjadlink"></a>-->
+              <!--</if>-->
+              <!--<div class="tyj-ada-right">-->
+                  <!--<div class="tyj-adljd-h2">链金豆：<span class="beanop">&#45;&#45;</span> 个</div>-->
+                  <!--<p class="tyj-adljd-des">首次投资后送500链金豆，可参与抽iPhone7大奖!</p>-->
+                  <!--<a href="{$tsykgurl}" target="_blank" class="tyj-adljd-button"></a>-->
+              <!--</div>-->
+          <!--</div>-->
+          <!--未使用体验金 end-->
+          <php>}else{</php>
+          <!--使用过体验金 start-->
+          <div class="membertyj-ad membertyj-ad-tyj">
+              <a href="/home/security/tiyanjin.html"></a>
+          </div>
+          <!--<div class="membertyj-ad membertyj-ad-b">-->
+              <!--<div class="tyj-adb-text">-->
+                  <!--<div class="tyj-adljd-h2">链金豆：<span class="beanop">&#45;&#45;</span> 个</div>-->
+                  <!--<p class="tyj-adljd-des">首次投资后送500链金豆，可参与抽iPhone7大奖!</p>-->
+                  <!--<a href="{$tsykgurl}" target="_black" class="tyj-adljd-button"></a>-->
+              <!--</div>-->
+          <!--</div>-->
+          <!--使用过体验金 end-->
+          <php>}</php>
+          <?php }else{ ?>
+          <!--使用过体验金 start-->
+          <div class="membertyj-ad membertyj-ad-tyj">
+              <a href="{$tsykgurl}"></a>
+          </div>
+          <!--<div class="membertyj-ad membertyj-ad-b">-->
+              <!--<div class="tyj-adb-text">-->
+                  <!--<div class="tyj-adljd-h2">链金豆：<span class="beanop">&#45;&#45;</span> 个</div>-->
+                  <!--<p class="tyj-adljd-des">首次投资后送500链金豆，可参与抽iPhone7大奖!</p>-->
+                  <!--<a href="{$tsykgurl}" target="_black" class="tyj-adljd-button"></a>-->
+              <!--</div>-->
+          <!--</div>-->
+          <!--使用过体验金 end-->
+          <?php } ?>
+      </div>
+
+  <?php if($explist['status']==0&&$explist['endtime']>time()){ ?>
+    <div class="experience" style="border: 1px solid #DCDCDC;">
+  <?php }else{ ?>
+   <div class="experience" style="display: none;">
+  <?php } ?>
+    <div class="title_container" style="border-bottom: 2px solid #E0E0E0;margin-left: 20px;margin-right: 20px;">
+        <div class="title" style="border-bottom: 2px solid #000000;width:85px;height:44px;line-height:44px;font-size: 16px;font-weight: 700;margin-bottom: -2px;">新用户专享</div>
+    </div>
+    <div class="invest_main" >
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr class="diyige borrowlistl" >
+                <td width="240" class="listbg">项目名称</td>
+                <td width="175" class="listbg">预期年化收益</td>
+                <td width="188" class="listbg">期限</td>
+                <td width="191" class="listbg">状态</td>
+            </tr>
+                <tr height="100" class="borrowlist borrowlistl" >
+                <td width="257" align="left" style="text-align:left;border: none;">
+                    <!-- {:getIco($expinfo)} -->
+                    <div style="float:left">
+                        <img src="__ROOT__/Style/H/images/index/index_yb12.png" style="width: 43px;margin-top: 12px;margin-right: 12px">
+                    </div>
+                    <a href="/home/experience/detail/{$expinfo.id}"title="{$expinfo.borrow_name}" class="BL_name">{$expinfo.borrow_name|cnsubstr=###,9}</a>
+                </td>
+                <td class="dengji" width="95" style="border: none;"><span class="BL_time" style="color: #fa9401">{$expinfo.borrow_interest_rate}%</span></td>
+
+                <td class="dengji" width="170" style="border: none;">
+                           <span class="BL_time">
+                               <span style="font-size:23px;" class="BL_time">{$expinfo.borrow_duration_txt}</span>
+                           </span>
+                </td>
+                <td class="dengji" width="220" style="border: none;">
+                    <a href="/home/experience/detail/{$expinfo.id}" class="btn btn-blue">加入</a>
+                </td>
+                </tr>
+        </table>
+    </div>
+    </div>
+ 
+      <if condition="$cqgsy eq 1" > 
+        <div class="piggybank">
+        <div class="title"><img  src="/Style/H/images/new/user_piggybank.png"/>我的存钱罐</div>
+          <ul>
+            <li>
+              &nbsp;昨日收益&nbsp;&nbsp; ￥<?php if(empty($zrshouyi)){echo '0.00';}else{echo $zrshouyi;} ?>&nbsp;&nbsp;元
+              </li>
+              <li>
+              &nbsp;万份收益&nbsp;&nbsp; ￥{$thousandsincome}&nbsp;&nbsp;元
+              </li>
+              <li>
+              &nbsp;7日年化收益率&nbsp;&nbsp;{$yields}% 
+            </li>
+          </ul>
+          <ul>
+            <li>
+              &nbsp;累计收益&nbsp;&nbsp; ￥<?php if(empty($zonshouyi)){echo '0.00';}else{echo $zonshouyi;} ?>&nbsp;&nbsp;元
+               <?php if($minfo['reg_time']>strtotime($start)){ ?>
+                <?php }else{ ?><span style="font-size:14px;opacity: 0.6;">(累计显示自{$start}起总收益)</span><?php } ?>
+            </li><li></li><li></li>
+          </ul>
+        </div>
+      </if>  
+
+      <if condition="$touzi eq 1 " >
+          <div class="touzi">
+              <div class="title">我的借款</div>
+              <ul>
+                  <li>
+                     &nbsp;累计借款总额&nbsp;&nbsp; ￥{$borrow_total}&nbsp;&nbsp;元
+                  </li>
+                  <li>
+                      &nbsp;累计实还总额&nbsp;&nbsp; ￥{$return_total}&nbsp;&nbsp;元
+                  </li>
+                  <li>
+                      最近还款日期&nbsp;<a href="{$return_url}" style="color: #8CE3FE">&nbsp; {$last_time} 详情</a>
+                  </li>
+                  <li>
+                      &nbsp;待还款总额&nbsp;&nbsp; ￥{:round($left_total,2)}&nbsp;&nbsp;元
+                  </li>
+                  <li>
+                      &nbsp;待还本金&nbsp;&nbsp; ￥{$left_capital}&nbsp;&nbsp;元
+                  </li>
+                  <li>
+                      &nbsp;待还利息&nbsp;&nbsp; ￥{$left_interest}&nbsp;&nbsp;元
+                  </li>
+              </ul>
+          </div>
+      </if>
+      <div id="tuijian">
+          <div class="mine_container invest"></div>
+      </div>
+      <!--invest-->
+      <!--recharge-->
+   </div>
+  <div style="clear:both"></div>
+  <script type="text/javascript">
+      $('#dwtipkff').click(function(){
+          $(this).parent().hide();
+      });
+
+    function huandong(a){
+        var a1=$(a).children('ul').children();
+        var a2=$(a).children('div').children();
+
+        a1.click(function(){
+        var index=$(this).index();
+        $(this).addClass('on').siblings().removeClass("on");
+        a2.hide().eq(index).show();
+        });
+    }
+huandong('#dw_huadong');
+function jfun_dogetpaypass(){
+	var ux = $("#payemailname").val();
+	if(ux==""){
+		$.jBox.tip('请输入用户名或者邮箱','tip');
+		return;
+	}
+	$.jBox.tip("邮件发送中......","loading");
+	$.ajax({
+		url: "__URL__/dogetpaypass",
+		data: {"u":ux},
+		//timeout: 5000,
+		cache: false,
+		type: "post",
+		dataType: "json",
+		success: function (d, s, r) {
+			if(d){
+				if(d.status==1){
+					$.jBox.tip("发送成功，请去邮箱查收",'success');
+					$.jBox.close(true);
+				}else{
+					$.jBox.tip("发送失败，请重试",'fail');
+				}
+			}
+		}
+	});
+
+}
+
+function getpaypassword() {
+	$.jBox("get:__URL__/getpaypassword", {
+		title: "找回支付密码",
+		width: "auto",
+		buttons: {'发送邮件':'jfun_dogetpaypass()','关闭': true }
+	});
+}
+</script>
+
+    <div id="bg">
+        <div id="modify_name">
+            <div class="modify_contianer">
+                <div class="title">用户名设置</div>
+                <div class="name_container">
+                    <label class="name_lable">用户名</label><input id="modify_user_name"  name="user_name"  placeholder="请输入您的用户名" />
+                </div>
+                <div class="button_group">
+                    <div class="width:50%;float:left">
+                        <input type="button" value="提交"  onclick="do_modify(this)">
+                    </div>
+                    <div class="width:50%;float:left" >
+                        <input type="button" value="取消" onclick="do_cancel()">
+                    </div>
+                </div>
+            </div>
+        </div>
+   </div>
+   
+   <!--提醒 start-->
+	<div class="advbox-tips">
+	    <div class="advbox-close"><img src="__ROOT__/Style/H/images/member/ym_close.png"/></div>
+	    <p class="advtips-text">尊敬的用户，您还未完成个人风险承受能力评估，请尽快完成，以便我们能更好的了解您的风险承受能力和意愿！</p>
+	    <a href="javascript:void(0)" class="btn btn-orange ml20 advbox-button">去评估</a>
+	</div>
+	<!--提醒 end-->
+	
+<script>
+
+    function do_cancel(){
+        $(".promp").remove();
+        document.getElementById("bg").style.display ='none';
+    }
+    function show_modify_name(){
+        document.getElementById("bg").style.display ="block";
+    }
+    function do_modify(object){
+        modify_name=$("#modify_user_name").val();
+        if($(".error").html() != null){
+          $(".error").html("");
+        }
+        if(modify_name.length<4){
+            content="<span class='error promp'>用户名必须大于4位</span>";
+            $(".name_container").append(content);
+            return;
+        }
+        if(modify_name.length>20){
+            content="<span class='error promp'>用户名必须小于20</span>";
+            $(".name_container").append(content);
+            return;
+        }
+
+        if(!isNaN(modify_name))
+        {
+           content="<span class='error promp'>用户名不能为纯数字</span>";
+            $(".name_container").append(content);
+            return;
+        }
+
+        if(!(/^[\u4e00-\u9fa5a-z0-9]+$/gi.test(modify_name))){
+          content="<span class='error promp'>用户名格式错误</span>";
+            $(".name_container").append(content);
+            return;
+        }
+        user_name="{$minfo.user_name}";
+        $(object).attr("disabled","disabled");
+        $(object).val("提交中");
+        $(object).css("background","#CCC");
+        $.post("__URL__/modify",{"modify_name":modify_name,"user_name":user_name},function(result){
+            if(result.data=="OK"){
+                $(object).val("提交成功");
+                setTimeout(function(){
+                    window.location.href=window.location.href;
+                },1000);
+            }else{
+                var content="<span class='error promp'>"+result.data+"</span>";
+                $(".name_container").append(content);
+                $(object).removeAttr("disabled");
+                $(object).val("提交");
+                $(object).css("background","#05B4E9");
+            }
+        },'json')
+    }
+
+</script>
+<script>
+	var fxpg_popup_status = '{$fxpg_popup_status}';
+
+	//弹窗有效
+	if(fxpg_popup_status == 0){
+		$(".black_overlay,.advbox-tips").show();
+		$(".black_overlay").css("height","2230px");
+	}else{
+		//弹窗无效
+		$(".black_overlay,.advbox-tips").hide();
+	}
+
+    $(function(){
+    	$(".advbox-close").on("click",function(){
+        	cancelPopup(2);
+            $(".advbox-tips").fadeOut(500);
+            CloseDiv('#MyDiv','#fade');
+        });
+
+        $(".advbox-button").on("click",function(){
+        	cancelPopup(2);
+            $(".advbox-tips").fadeOut(500);
+            $(".js_pgnl").click();
+        });
+        
+        $.ajax({
+            'url':"__URL__/investor",
+            cache: true,
+            type: "get",
+            dataType: "json",
+            success: function (d) {
+                if(d)
+                {
+                    if(d.total){
+                        $(".mine_container").html(d.html);
+                    }else{
+                        $("#tuijian").css("display","none");
+                    }
+                    $(".beanop").html(d.bean);
+                }
+            }
+        })
+    })
+</script>
+</div>
+<include file="default:Public:_footer" group="Home" />

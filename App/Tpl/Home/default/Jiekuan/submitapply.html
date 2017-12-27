@@ -1,0 +1,205 @@
+<include file="Public:_header_common" />
+<title>{$title}</title>
+<meta http-equiv="keywords" content="{$keyword}" />
+<meta http-equiv="description" content="{$description}" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/H/css/detail.css" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/H/css/jiekuan.css" />
+<script type="text/javascript" src="__ROOT__/Style/H/js/common.js" language="javascript"></script>
+<script type="text/javascript" src="__ROOT__/Style/Js/sea.js" language="javascript"></script>
+</head>
+<body>
+<include file="Public:_header_main" />
+<div class="xiantiao"></div>
+<div class="bread wrapper">您所在的位置：<a href="__APP__/index">首页</a> &gt; 我要借款</div>
+<div class="apply-banner">
+	<div class="wrapper">
+        <h2>个人借款申请流程</h2>
+        <div class="apply-step">
+            <p class="icon-line">
+                <i class="jiekuan-spr ic-approve"></i>
+                <i class="jiekuan-spr ic-write ic-write"></i>
+                <i class="jiekuan-spr ic-submit ic-submit"></i>
+            </p>
+            <p class="wire-line cf">
+            	<i class="jiekuan-spr circle circle-on"></i>
+                <i class="wire wire-on"></i>
+                <i class="wire wire-on"></i>
+                <i class="jiekuan-spr circle circle-on"></i>
+                <i class="wire wire-on"></i>
+                <i class="wire wire-on"></i>
+                <i class="jiekuan-spr circle circle-on"></i>
+            </p>
+            <p class="text-line cf">
+            	<span class="text-on">1、实名认证</span>
+                <span class="m text-on">2、填写资料</span>
+                <span class="text-on">3、提交申请</span>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="wrapper submit-apply">
+	<h2>您的借款申请提交成功，审核中...</h2>
+    <p>请保持手机畅通，方便我司工作人员与您核对资料！</p>
+    <p class="mt25"><a href="__APP__/index" class="apply-btn-info">首页</a></p>
+    <!-- <p class="tit">补充如下资料可以获取更高额度：</p> -->
+</div>
+<!-- <div class="apply-bar" style="margin-top:0;">
+	<div class="tit-line cf">
+    	<a href="javascript:void(0);"  id="creditsaveFileBtn" class="apply-btn-info fr js-saveApply">保存</a>
+    	<a href="javascript:void(0);"  id="creditFileBtn" class="apply-btn fr">上传征信报告</a>
+        <h3>征信报告 <a href="javascript:void(0);" class="fs18 cor-orange js-whatCredit">何谓征信</a></h3>
+    </div>
+    <div id="creditFileList" class="credit-confirm cf"></div>
+    <h4 class="wale">征信报告说明：</h4>
+    <dl class="explain">
+    	<dt class="fs18">无征信报告，获取征信报告方式：</dt>
+        <dd>第一步：登录人民银行征信系统（<a href="https://ipcrs.pbccrc.org.cn/" class="cor-orange" target="_blank">https://ipcrs.pbccrc.org.cn/</a>）完成征信报告的获取</dd>
+        <dd>第二步：将获取的征信报保存为图片格式上传</dd>
+    </dl>
+</div>
+<div class="apply-bar">
+	<div class="tit-line cf">
+    	<a href="javascript:void(0);" id="banksaveFileBtn" class="apply-btn-info fr js-saveCredit">保存</a>
+    	<a href="javascript:void(0);" id="bankFileBtn" class="apply-btn fr">上传银行流水信息</a>
+        <h3>银行流水信息</h3>
+    </div>
+    <div id="bankFileList" class="credit-confirm cf"></div>
+    <h4 class="wale">银行流水说明：</h4>
+    <dl class="explain">
+    	<dt class="fs18">无银行流水，获取银行流水账单方式：</dt>
+        <dd>方式一：登录网上银行，对银行流水截屏（必须包含：持卡人姓名，卡号，近6个月的银行流水）</dd>
+        <dd>方式二：携带身份证，银行卡去银行打印流水并盖章，并将流水拍照或扫描成图片请保证图片清晰完整</dd>
+    </dl>
+</div> -->
+<div class="pop-bg"></div>
+<!--何谓征信 弹窗s -->
+<div class="jiekuan-pop credit-pop js-creditPop">
+    <a href="javascript:void(0)" class="jiekuan-close js-popclose"></a>
+	<h2>征信</h2>
+    <div class="txt">
+    	<p>征信就是专业化的、独立的第三方机构为个人或企业建立信用档案，依法采集、客观记录其信用信息，并依法对外提供信用信息服务的一种活动，它为专业化的授信机构提供了信用信息共享的平台。</p>
+        <p>用户在向银行借钱时，银行就需要了解用户是谁；需要判断用户是否能按时还钱；以前是否借过钱，是不是有过借钱不还的记录等。征信出现前，用户要向银行提供一系列的证明材料：单位证明工资证明等；银行的信贷员也要打电话给用户单位上门拜访。两星期甚至更长的时间后，银行才会告诉用户是否给用户借钱。</p>
+        <p>征信的出现让银行了解用户信用状况的方式变简单：他们把各自掌握的关于用户的信用信息交给一个专门的机构汇总，由这个专门的机构给用户建立一个信用档案（即个人信用报告），再提供给各家银行使用。这种银行之间通过第三方机构共享信用信息的活动就是征信，为的是提高效率，节省时间，快点儿给用户办事。有了征信机构的介入，有了信用报告，用户再向银行借钱时，银行信贷员征得用户的同意后，可以查查用户的信用报告，再花点时间重点核实一些问题，便会很快告诉用户银行是否提供给用户借款。银行省事，用户省心。在中国，中国人民银行征信中心（以下简称征信中心）是建立用户的"信用档案"，并为各商业银行提供个人信用信息的专门机构。</p>
+    </div>
+    <div class="btn-line"><a href="javascript:void(0);" class="apply-btn-info js-popclose">关闭</a></div>
+</div>
+<!--何谓征信 弹窗e -->
+<include file="Public:_footer" />
+<script type="text/javascript">
+(function($){
+    define("jiekuan/submitapply",function(require, exports, module){
+		require("layer/layer");
+        var main = require("main");
+		var upload = require("webuploader/upload");
+        var Module = {
+            init: function(){
+				//何谓征信-弹窗
+				$("body").on("click", ".js-whatCredit", function(){
+					$(".pop-bg").show();
+					$(".js-creditPop").show();
+				});
+				//关闭弹窗
+				$("body").on("click", ".js-popclose", function(){
+					$(this).closest(".jiekuan-pop").hide();
+					$(".pop-bg").hide();
+				});
+
+                //保存银行流水报告图片
+                $("#banksaveFileBtn").click(function(){
+                    var data={};
+                    var og=[];
+                    $("#bankFileList img").each(function(){
+                        var bank_state={};
+                        bank_state.s_pic=$(this).attr("src") || "";
+                        bank_state.m_pic=$(this).data("rel") || "";
+                        if( bank_state.s_pic==""||  bank_state.m_pic==""){
+                           ;
+                        }else{
+                            og.push(bank_state);
+                        }
+
+                    });
+                    if(og.length==0){
+                        $.wrongMsg("请上传银行流水报告");
+                        return;
+                    }
+                    data.bank_state=og;
+                    main.getApi("/home/jiekuan/submitapply", data, function(result){
+                        var result = result || {},
+                                url = result.url || "";
+                        if(url){
+                            setTimeout(function(){
+                                location.href = url;
+                            },2000);
+                        }else{
+                            $.wrongMsg("上传成功",1);
+                        }
+
+                    });
+                });
+
+                //保存征信报告图片
+                $("#creditsaveFileBtn").click(function(){
+                    var data={};
+                    var og=[];
+                    $("#creditFileList img").each(function(){
+                        var zhengxin_pic={};
+                        zhengxin_pic.s_pic=$(this).attr("src") || "";
+                        zhengxin_pic.m_pic=$(this).data("rel") || "";
+                        if( zhengxin_pic.s_pic==""||  zhengxin_pic.m_pic==""){
+                            ;
+                        }else{
+                            og.push(zhengxin_pic);
+                        }
+
+                    });
+                    if(og.length==0){
+                        $.wrongMsg("请上传征信报告");
+                        return;
+                    }
+                    data.zhengxin_pic=og;
+                    main.getApi("/home/jiekuan/submitapply", data, function(result){
+                        var result = result || {},
+                                url = result.url || "";
+                        if(url){
+                            setTimeout(function(){
+                                location.href = url;
+                            },2000);
+                        }else{
+                            $.wrongMsg("上传成功",1);
+                        }
+                    });
+                });
+				/*
+				* 上传征信报告
+				* */
+                upload.base({
+                    pickID: "creditFileBtn",
+                    objID: "creditFileList",
+					fileSingleSizeLimit: "1000",
+                    thumbnailWidth: "200",
+                    thumbnailHeight: "115",
+                    fileNumLimit: "300",
+                    storage: "jiekuan"
+                });
+				 /*
+                 * 上传流水说明
+                 * */
+                upload.base({
+                    pickID: "bankFileBtn",
+                    objID: "bankFileList",
+					fileSingleSizeLimit: "1000",
+                    thumbnailWidth: "200",
+                    thumbnailHeight: "115",
+                    fileNumLimit: "300",
+                    storage: "jiekuan"
+                });
+			}
+        };
+        module.exports = Module;
+    });
+    seajs.use("jiekuan/submitapply", function(module){
+        module.init();
+    });
+})($);
+</script>

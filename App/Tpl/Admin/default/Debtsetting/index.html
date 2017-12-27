@@ -1,0 +1,51 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<div class="so_main">
+    <div class="page_tit">债权转让参数设置</div>
+
+    <div class="list">
+        <form method="post" action="__URL__/index">
+            <input type="hidden" value="sub" name="sub">
+            <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <th class="line_l">序号</th>
+                    <th class="line_l">功能</th>
+                    <th class="line_l">操作</th>
+                    <th class="line_l">说明</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>债转审核方式</td>
+                    <td>
+                        <label>自动</label>
+                        <input type="radio" id="mytype1" name="zhuantype" value="2" <if condition="$zhaiquantype.value eq 2"> checked="checked"</if>  >
+                        <label>手动</label>
+                        <input type="radio" id="mytype2" name="zhuantype" value="1" <if condition="$zhaiquantype.value eq 1"> checked="checked"</if> >
+                    </td>
+                    <td>
+                        债权转让的方式
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>每日债转总笔数</td>
+                    <td>
+                        <input type="text" id="mytype3" name="debt_count"value="{$zhuanrang_count.value}" >
+                    </td>
+                    <td>
+                        每日债转总笔数
+                    </td>
+                </tr>
+                <tr style="border-width: 0px ;">
+                   <td colspan="4">
+                       <div class='chaxun'  style="float:right; margin-right:20%;"><input type="submit" value="保存" style="padding:5px;width:80px;"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                   </td>
+                </tr>
+            </table>
+     </form>
+    </div>
+</div>
+
+
+<include file="Public:_footer" />

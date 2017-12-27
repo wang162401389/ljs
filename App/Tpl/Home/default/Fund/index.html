@@ -1,0 +1,131 @@
+<include file="Public:_header_common" />
+<title>{$glo.index_title}</title>
+<meta http-equiv="keywords" content="{$glo.web_keywords}" />
+<meta http-equiv="description" content="{$glo.web_descript}" />
+<script type="text/javascript" src="__ROOT__/Style/H/js/area.js"></script>
+<script type="text/javascript" src="__ROOT__/Style/H/js/common.js" language="javascript"></script>
+<script type="text/javascript">
+var Transfer_invest_url = "__APP__/tinvest";
+</script>
+<include file="Public:_header_main" />
+<link href="__ROOT__/Style/H/css/fund.css" rel="stylesheet" type="text/css">
+<tagLib name="htmlA" />
+<div class="doc doc-711-234 mgt" >
+<table width="940" border="0" cellspacing="0" cellpadding="0" style="margin:0 auto;">
+    <tr>
+      <td><div class="dingtaobaonew1" style="margin:0 auto;">
+          <table width="900" border="0" align="center" cellpadding="0" cellspacing="1" style="margin:0 auto; ">
+            <tr>
+              <td height="45" align="left" valign="bottom"><span class="gay f22">投资效果</span></td>
+            </tr>
+            <tr>
+              <td valign="top"><table width="850" border="0" cellspacing="0" cellpadding="0" style="margin:0 auto; margin-top:10px; margin-bottom:10px;">
+                  <tr>
+                    <td background="/style/H/images/new/tubing.jpg" height="85"><table width="850" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td width="81" rowspan="2">&nbsp;</td>
+                          <td width="248" align="left" class="f14 gay fya1"> 加入用户数 </td>
+                          <td width="271" align="left"><span class="f14 gay fya1"> 累计总金额(￥) </span></td>
+                          <td width="173" align="left"><span class="f14 gay fya1"> 已为用户赚取(￥) </span></td>
+                          <td width="77" align="left">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td height="43" align="left" class="f22 fya1 gay">{$invest_num}</td>
+                          <td width="271" align="left"><span class="f22 fya1 gay">{$invest_total}</span></td>
+                          <td width="173" align="left"><span class="f22 fya1 gay">{$invest_interest}</span></td>
+                          <td width="77" align="left">&nbsp;</td>
+                        </tr>
+                      </table></td>
+                  </tr>
+                </table></td>
+            </tr>
+          </table>
+          <a href="#" > </a> </div></td>
+    </tr>
+  </table>
+<table width="980" border="0" cellspacing="0" cellpadding="0" style="margin:0 auto; margin-top:15px;">
+    <tr>
+      <td><div class="dingtaobaonew_list" style="margin:0 auto;">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" class="dingcenter">
+            <tr>
+              <td width="65" height="53" align="center"><img src="/Style/H/images/new/dingtaobao.jpg" width="31" height="32" /></td>
+              <td width="636" align="left"><table width="724" border="0" cellspacing="1" cellpadding="0">
+                  <tr>
+                    <td width="90"><span class="f24 fya1 blues">定投宝</span></td>
+                    <td width="371" align="left" class="fya1 f14"><span class="f15 fya1 gay" style="padding-left:10px;"> <span class="f15">省时省心，不用抢标的理财计划！</span></span></td>
+                    <td width="450" align="right"><span class="f15 fya1 gay" style="padding-left:0px; "><span class="f15"><font style="color:red;"><!--每周一至周六上午10点发布，如有增发，微信通知。 --></font></span></span></td>
+                    <td width="0" class="fya1 f14 gay">&nbsp;</td>
+                  </tr>
+                </table></td>
+              <td width="100" align="left">&nbsp;<a class="dingfont" href="/fund/index" style="text-decoration:underline;"></a></td>
+            </tr>
+            <tr>
+              <td height="1" colspan="4" align="center" class="dingline"></td>
+            </tr>
+          </table>
+          <volist name="list.list" id="vb">
+          
+          <div class="dingkuang">
+            <table width="900" border="0" align="center" cellpadding="0" cellspacing="0" >
+              <tr >
+                <td width="258" height="99" rowspan="4" align="center" background="images/dinghot.png" valign="middle" class="fya1 f18 "><table width="257" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td height="50" align="right"><span class="blues" style =" font-size: 20px;"">{$vb.borrow_interest_rate}</span><span class="blues">%</span><span class="blues f18" style="margin-left:5px; margin-right:5px; ">-</span><span class="blues" style =" font-size: 20px;"">{$vb.shouyi}</span><span class="blues">%</span></td>
+                      <td align="center"><span class="gay f18"> </span>
+                        <table width="80" height="30" border="1" cellpadding="0" cellspacing="1" bordercolor="#CCCCCC" bgcolor="#CCCCCC">
+                          <tr>
+                            <td align="center" bgcolor="#EEEEEE"><span class="f22">{$vb.borrow_duration}</span><span class="f14">个月</span></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                    <tr>
+                      <td width="156" height="35" align="right"><span class="f13 gay">预期年化收益率</span></td>
+                      <td width="101" align="center" valign="middle"><span class="f13 gay">期 限</span></td>
+                    </tr>
+                  </table></td>
+                <td width="19" rowspan="4" align="center" valign="middle" class="fya1 f18 ding_line_1"></td>
+                <td height="40" colspan="2" align="left" valign="middle"><a href="{$vb.id|getFundUrl=###}"><span class="fya1 zhigay" ><span class="f18">定投宝</span>（{$vb.borrow_name|cnsubstr=###,50}）</span></a></td>
+                <td colspan="3" align="right" valign="middle"><div id="divTwelve"></div></td>
+              </tr>
+              <tr>
+                <td colspan="5" valign="top" class="dingline1"></td>
+              </tr>
+              <tr>
+                <td width="64" height="29" valign="middle"><span class="gay fya1 f14">当前进度 </span></td>
+                <td width="215" valign="middle">
+                    <span class='investlistspeed'><span class='isbg' style='width:{$vb.progress}%'></span><span class='ispoint' style='left:{$vb['progress']-3}%; top:-4px;'></span></span>
+                    <span class='percspan'>{$vb.progress}<small>%</small></span>
+                </td>
+                <td width="22" height="29" valign="middle"><span class="ran"><img src="/Style/H/images/new/okyes.png" alt="" width="14" height="16" border="0" /></span></td>
+                <td width="222" height="29" valign="middle"><span class="ran fya1">100%本息保障</span></td>
+                <td width="100" rowspan="2" valign="middle">
+                <if condition="$vb['transfer_out']-$vb['transfer_total'] eq 0">
+                  <div class="mybtn_2t_ok"><a><span class="zhibai">已满</span></a></div>
+                <elseif condition="$vb['online_time'] lt time()+300 and $vb['online_time'] gt time()" />
+                  <div class="mybtn_2t_ok"><a><span class="zhibai">更新中</span></a></div>
+                <elseif condition="$vb['online_time'] lt time()" />
+                  <div class="mybtn_2t"><a href="{$vb.id|getFundUrl=###}"><span class="zhibai">加入</span></a></div>
+                </if>
+                </td>
+              </tr>
+              <tr>
+                <td height="28" colspan="2" valign="middle"><span class="fya1 f14 gay">总金额 ￥{$vb.borrow_money|getMoneyFormt=###}元</span></td>
+                <td height="27" colspan="2" align="left" valign="middle"><span class="fya f14 gay ">{$vb.investornum}人次已加入</span></td>
+              </tr>
+            </table>
+          </div>
+          
+          </volist>
+          </div></td>
+    </tr>
+  </table>
+<div class="list_bottom">
+  <div class="list_bottom_right">
+    <ul>
+      {$list.page}
+    </ul>
+  </div>
+</div>
+
+</div>
+<include file="Public:_footer" />

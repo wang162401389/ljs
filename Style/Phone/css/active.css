@@ -1,0 +1,34 @@
+/*活动规则*/
+.active-help-main{margin: auto; width: 94%; color: #3a3a3a}
+.active-help-head{font-size: 1.5rem; text-align: center; margin: 20px 0;}
+.active-help-title{font-size: 1.4rem; margin-bottom: 10px; margin-top: 20px;}
+.active-help-content{margin-bottom: 10px;}
+.active-help-content p{ line-height: 2rem; }
+.active-help-content ol li{text-indent:1.5em;line-height: 2rem;}
+
+/*我的赠券*/
+.active-invest-main{margin: auto; width: 90%; color: #fff}
+.active-invest-img:first-child {    margin-top: 0;}
+.active-invest-img{margin-top: 2rem;margin-bottom: 20px;}
+.active-invest-img img{ width: 100%;}
+.active-invest-content{margin-left: 1.5rem;position: relative;margin-top: -10rem;}
+.active-invest-content table tr td{color: #fff; }
+.active-invest-content table tr td div:first-child{font-size: 2.2rem; font-weight: bolder; line-height: 3.2rem }
+.active-invest-content table tr td div:nth-child(3){font-size: 1rem; line-height: 1.8rem;}
+.active-invest-content table tr td div:nth-child(4){font-size: 1rem; line-height: 1.8rem;}
+.active-invest-content table tr td div:nth-child(5){font-size: 1rem; line-height: 1.8rem;}
+.active-invest-content .coupons_2{font-size: 1rem;float: right;text-align:center;margin-top: -2.2rem;position: absolute;left: 11rem;}
+
+/*投资记录*/
+.active-log-main{}
+.active-log-head{font-size: 1.5rem; color: #434343; margin: 17px auto; text-align: center; }
+.active-log-content{margin-top:-120px; }
+.active-log-content table{width: 100%;}
+.active-log-content table td{width: 50%; text-align: center;color: #434343;padding: 5px 0px;}
+.active-log-content table thead tr {background: #cb7302; font-size: 1.3rem; }
+.active-log-content table tbody tr {background: #cb7302; font-size: 1rem;}
+.active-log-content table tbody tr:nth-child(odd){background: rgba(203,115,2,0.6)}
+.active-log-bottom{margin-top: 150px;}
+.active-log-bottom .bottom-erm{width: 40%; margin: auto;}
+.active-log-bottom .bottom-erm img{width: 100%}
+.active-log-bottom .bottom-font{font-size:1.1rem;color:#434343; text-align: center; width: 100%; margin-top: 15px; line-height: 2rem; }

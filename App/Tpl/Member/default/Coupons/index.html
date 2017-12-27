@@ -1,0 +1,34 @@
+<include file="Public:_header_common" />
+<title>我的投资券-- {$glo.web_name}</title>
+<include file="default:Public:_header_main" group="Home"/>
+<include file="default:Public:_xiantiao" group="Home"/>
+<!--中部开始-->
+<div class="wrap2">
+  <div id="hy_left"> <include file="Public:_left" /> </div>
+  <div id="hy_right">
+    <div class="box">
+      <div class="Menubox1" id="rotate">
+        <div style="height:40px;">
+        	<div style="font-size:18px; margin-top:4px; margin-bottom:5px;">我的赠券</div>
+        </div>
+        <ul class="menu ajaxdata">
+          <li><a href="#fragment-1" ajax_href="__URL__/mycoupons?type=0&time=<php>echo time();</php>"  get='0' data-id='0'>未使用</a></li>
+          <li><a href="#fragment-2" ajax_href="__URL__/mycoupons?type=1&time=<php>echo time();</php>"  get='0' data-id='1'>已使用</a></li>
+          <li><a href="#fragment-3" ajax_href="__URL__/mycoupons?type=2&time=<php>echo time();</php>"  get='0' data-id='2'>已失效</a></li>
+        </ul>
+      </div>
+      <div class="contentright">
+        <div id="fragment-1" style="display:none">
+          <!--自动投标-->
+        </div>
+         <div id="fragment-2" style="display:none">
+          <!--自动投标-->
+        </div>
+         <div id="fragment-3" style="display:none">
+          <!--自动投标-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<include file="default:Public:_footer" group="Home" />

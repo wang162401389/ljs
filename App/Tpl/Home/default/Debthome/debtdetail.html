@@ -1,0 +1,362 @@
+<include file="Public:_header_common" />
+<title>{$title}</title>
+<meta http-equiv="keywords" content="{$keyword}" />
+<meta http-equiv="description" content="{$description}" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/H/css/detail.css" />
+<link rel="stylesheet" type="text/css" href="/Style/H/css/jquery.webui-popover.css">
+<script type="text/javascript" src="__ROOT__/Style/H/js/common.js" language="javascript"></script>
+<script type="text/javascript" src="/Style/H/js/jquery.webui-popover.min.js"></script>
+<script type="text/javascript">
+    var Transfer_invest_url = "__APP__/tinvest";
+</script>
+</head>
+<body>
+<include file="Public:_header_main" />
+<div class="xiantiao"></div>
+<div class="bread wrapper">您所在的位置：<a href="__APP__/index">首页</a> > <a href="__APP__/debthome/debtlists">债权转让</a> > 项目详情</div>
+<div class="detail_main wrapper">
+    <div class="detail_project clearfix" style="height:auto">
+        <div class="detail_project_left">
+            <div class="title">
+                <img src="__ROOT__/Style/H/images/index/new_zhuan.png">
+                <if condition="$zhaiquanlist.product_type eq 6">
+                    <img src="__ROOT__/Style/H/images/index/index_yb1.png">
+                <else/>
+                    <img src="__ROOT__/Style/H/images/index/index_yb.png">
+                </if>
+                {$zhaiquanlist.borrow_name}
+                <a href="__APP__/invest/{$zhaiquanlist['old_borrow_id']}.html" class="link-recouse-progress">查看原项目</a>
+                <a href="__APP__/borrow/zqagreement.html" class="link-xieyi" target="_blank">《债权转让协议》</a>
+            </div>
+            <ul class="parameter" style="padding-bottom: 24px">
+                <li><span>预期年化收益率</span>{$zhaiquanlist.borrow_interest_rate}%</li>
+                <li><span>剩余期限</span>{$zhaiquanlist.borrow_duration_txt}</li>
+                <li><span>转让金额</span>￥{$zhaiquanlist.borrow_money}元</li>
+            </ul>
+            <ul class="parameter" style="padding:0 0 20px 0;">
+                <li><span>债权价值<a href="javascript:void(0)" class="tip-ico tip-zqjz" data-content="剩余本金与当期利息之和" data-placement="top">?</a></span>￥{$zhaiquanlist.totalmoney}元</li>
+                <li><span>折价率</span>{$zhaiquanlist.debt_rate}%</li>
+            </ul>
+            <ul class="info clearfix">
+                <li>还款方式：&nbsp;&nbsp;&nbsp;{$bconfig['REPAYMENT_TYPE'][$zhaiquanlist['repayment_type']]}</li>
+                <li>借款用途：&nbsp;&nbsp;&nbsp;
+                    <if condition="$zhaiquanlist.product_type eq 9">
+                    {$zhaiquanlist['borrow_use_desc']}
+                    <else/>
+                    {$gloconf['BORROW_USE'][$zhaiquanlist['borrow_use']]}
+                    </if>
+                </li>
+                <li>发布时间：&nbsp;&nbsp;&nbsp;{$zhaiquanlist.add_time|date="Y-m-d H:i",###}</li>
+                <li>起投金额：&nbsp;&nbsp;&nbsp;{$zhaiquanlist.borrow_min|Fmoney=###}</li>
+                <li>
+                    <div style="float:left;">投标进度：&nbsp;&nbsp;&nbsp;</div>
+                    <div class="b_progress"><span class="b_progress-bar" style="width:{$zhaiquanlist.progress|intval}%;"></span></div>
+                    <div style="float:left;">&nbsp;&nbsp;{$zhaiquanlist.progress|intval}%</div>
+                </li>
+            </ul>
+        </div>
+        <div class="detail_project_right">
+            <div class="content">
+                <div class="timing">
+                    <div> <img src="__ROOT__/Style/H/images/index/djs.png"> <span  id="loan_time">剩余--天--小时--分--秒</span> </div>
+                </div>
+
+                <form method="get" action="">
+                    <ul class="info_s">
+                        <li>
+                            <if condition="$zhaiquanlist.borrow_status gt 5"> 已满标
+                                <else/>
+                                可投金额：&nbsp;&nbsp;&nbsp;<span style="color:#fc8026; font-size:14px; font-weight:bolder;">{$zhaiquanlist.need}元</span> </if>
+                        </li>
+                        <li>可用余额：
+                            <if condition="$islogin eq 0"> <span style="margin-left:9px;">请先<a class="tologin" href="__APP__/member/common/login?type=2">登录</a></span>
+                                <else/>
+                                <span style="margin-left:9px;">{$zhaiquanlist.account_money}元</span> <a class="tocharge" href="__APP__/member/charge#fragment-1" >【充值】</a> </if>
+                        </li>
+                        <li>投标金额：&nbsp;&nbsp;
+                            <if condition="session('u_id') ==''">
+                                <input type="text" class="jx_input_disabled" disabled="disabled" value="请先登录"/>
+                                <elseif condition="$zhaiquanlist.borrow_status eq 0"/>
+                                <input type="text" class="jx_input_disabled" disabled="disabled" value="审核中"/>
+                                <elseif condition="$zhaiquanlist.borrow_status eq 3"/>
+                                <input type="text" class="jx_input_disabled" disabled="disabled" value="已流标"/>
+                                <elseif condition="$zhaiquanlist.borrow_status eq 4"/>
+                                <input type="text" class="jx_input_disabled" disabled="disabled" value="复审中"/>
+                                <elseif condition="$zhaiquanlist.borrow_status eq 6"/>
+                                <input type="text" class="jx_input_disabled" disabled="disabled" value="还款中"/>
+                                <elseif condition="$zhaiquanlist.borrow_status egt 7"/>
+                                <input type="text" class="jx_input_disabled" disabled="disabled" value="已完成"/>
+                                <else/>
+                                <input id="enter_value" type="text" value="" placeholder="{$zhaiquanlist.borrow_min|Fmoney=###}元起投" onkeyup="get_interest(this);"/>
+                            </if>
+                            元 </li>
+                        <li class="jx_notice" id="jx_notice"></li>
+                        <li>预期收益：&nbsp;&nbsp;&nbsp;<span class="interest">0.00</span>元</li>
+                        <li>
+                            <if condition="$zhaiquanlist.borrow_status eq 0">
+                                <div class="jx_payment jx_payment_disabled">审核中</div>
+                                <elseif condition="$zhaiquanlist.borrow_status eq 3"/>
+                                <div class="jx_payment jx_payment_disabled">已流标</div>
+                                <elseif condition="$zhaiquanlist.borrow_status eq 4"/>
+                                <div class="jx_payment jx_payment_disabled">复审中</div>
+                                <elseif condition="$zhaiquanlist.borrow_status eq 6"/>
+                                <div class="jx_payment jx_payment_disabled">还款中</div>
+                                <elseif condition="$zhaiquanlist.borrow_status egt 7"/>
+                                <div class="jx_payment jx_payment_disabled">已完成</div>
+                                <else/>
+                                <div id="jx_payment" class="jx_payment" onclick="invest({$zhaiquanlist.id});">立即投标</div>
+                                <div style="position: absolute; margin-top: 46px;">
+                                    <input type="checkbox" id="agreen" checked>
+                                    &nbsp;&nbsp;已阅并同意<a href="/borrow/zqagreement.html" style="color:#999999">《债权转让协议》</a></div>
+                            </if>
+                        </li>
+                    </ul>
+                    <p style="color:#666;">
+                        <span style="float:left; line-height:34px">分享：</span>
+                        <span class="bdsharebuttonbox">
+                            <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信" target="_top"></a>
+                            <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                            <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                            <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+                            <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                            <a href="#" class="bds_more" data-cmd="more" style="font-size:15px;"></a>
+                        </span>
+                        <script>
+                            window._bd_share_config={
+                                "common":{
+                                    "bdSnsKey":{},
+                                    "bdText":"发现一个投资灰常靠谱的平台（链金所），投资时间短，收益快，在上面小赚了一笔，有兴趣的童鞋可以来看看。",
+                                    "bdMini":"2",
+                                    "bdMiniList":["mshare","qzone","tsina","weixin","renren","kaixin001","tieba","douban","sqq","mail","ty","twi","h163","copy"],
+                                    "bdPic":"https://www.ccfax.cn/UF/Uploads/Article/20160329161124.png",
+                                    "bdStyle":"1",
+                                    "bdSize":"24",
+                                },
+                                "share":{}
+                            };
+                            with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='https://o6wg7zsae.qnssl.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                        </script>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="detail_info">
+        <ul class="state_info_nav" id="state_info_nav">
+            <li class="active"><a class="invest-tab current" href="javascript:void(0)">投资记录({$zhaiquanlist.borrow_times|default="0"})</a></li>
+        </ul>
+        <div class="clear"></div>
+        <!-- 投资记录 -->
+        <div class="state_info_con">
+            <div style="font-size:14px; color:#999999;">已投标成功&nbsp;{$zhaiquanlist.borrow_times|default="0"}次&nbsp;&nbsp;&nbsp;已投标总额&nbsp;{$zhaiquanlist.has_borrow}元 </div>
+            <div class="bidbox" style="min-height:300px" id="recode">
+                {$html}
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<div class="state_main">
+    <div class="xw_main_state">
+        <div class="state_info">
+        </div>
+    </div>
+</div>
+<input id="hid" type="hidden" value="{$zhaiquanlist.lefttime}" />
+<input type="hidden" id="process" value="{$zhaiquanlist.progress}" />
+<input type="hidden" id="balance" value="{$zhaiquanlist.account_money}" />
+<input type="hidden" id="need_max" value="{$zhaiquanlist.need}" />
+<input type="hidden" id="borrow_max" value="0" />
+<input type="hidden" id="borrow_min" value="{$zhaiquanlist.borrow_min}" />
+<input type="hidden"  id="sta" value="{$zhaiquanlist.borrow_status}" />
+<include file="default:Public:fengxian" group="Home"/>
+<script type="text/javascript">
+    $('.tip-zqjz').webuiPopover({trigger:'hover'});
+
+    var seconds;
+    var pers =$("#process").val();
+        pers=pers||0;
+        pers=parseInt(pers)/100;
+    var timer=null;
+    var _validate_enter_flag = false;
+
+    function setLeftTime() {
+        seconds = parseInt($("#hid").val(), 10);
+        timer = setInterval(showSeconds,1000);
+    }
+
+    function showSeconds() {
+        var day1 = Math.floor(seconds / (60 * 60 * 24));
+        var hour = Math.floor((seconds - day1 * 24 * 60 * 60) / 3600);
+        var minute = Math.floor((seconds - day1 * 24 * 60 * 60 - hour * 3600) / 60);
+        var second = Math.floor(seconds - day1 * 24 * 60 * 60 - hour * 3600 - minute * 60);
+        if (day1 < 0) {
+            clearInterval(timer);
+            $("#loan_time").html("投标已经结束！");
+            <if condition="$zhaiquanlist.borrow_status eq 2">
+            $("#enter_value").val("已流标");
+            $("#enter_value").addClass("jx_input_disabled");
+            $("#enter_value").attr("disabled","disabled");
+            $(".jx_payment").addClass("jx_payment_disabled");
+            $(".jx_payment").html("已流标");
+            </if>
+        } else if (pers >= 1) {
+            clearInterval(timer);
+            $("#loan_time").html("投标已经结束！");
+            <if condition="$zhaiquanlist.borrow_status eq 2">
+            $("#enter_value").val("已流标");
+            $("#enter_value").addClass("jx_input_disabled");
+            $("#enter_value").attr("disabled","disabled");
+            $(".jx_payment").addClass("jx_payment_disabled");
+            $(".jx_payment").html("已流标");
+            </if>
+        } else {
+            $("#loan_time").html(" 剩余 " +'<span style="color:#fc6d04">'+day1+'</span>' + " 天 " +'<span style="color:#fc6d04">'+ hour +'</span>'+ " 小时 " + '<span style="color:#fc6d04">'+minute +'</span>'+ " 分 " + '<span style="color:#fc6d04">'+second +'</span>'+ " 秒");
+        }
+        seconds--;
+    }
+
+    function init(){
+        if (pers >= 1) {
+            $("#loan_time").html("投标已经结束！");
+        }else{
+            var sta=$("#sta").val();
+            if(sta<4){
+                setLeftTime();
+            }else{
+                $(".timing").hide();
+            }
+
+        }
+    }
+    /**
+     * 投标检测
+     *@param touzivalue 投资金额
+     **/
+    function validate_enter(touzivalue){
+        var balance = $("#balance").val()||0;//账户余额
+            balance=parseFloat(balance);
+           touzivalue=parseFloat(touzivalue);
+        var need_max =$("#need_max").val()||0;;//可投金额
+        var borrow_max=$("#borrow_max").val()||0;//最大投资金额
+             borrow_max=parseInt(borrow_max);
+        var borrow_min=$("#borrow_min").val()||0; //最小投资金额
+             borrow_min=parseFloat(borrow_min);
+        var allow_max=borrow_max==0?need_max:borrow_max;
+        var max = Math.min(need_max, allow_max);
+        var  $notice=$('#jx_notice');
+        var $jx_payment=$("#jx_payment");
+        if(!touzivalue){
+            $notice.addClass("jx_error").html("投资金额不能为空");
+            _validate_enter_flag=false;
+            return _validate_enter_flag;
+        }
+        if(isNaN(touzivalue)){
+            $notice.addClass("jx_error").html("投资金额不正确");
+            _validate_enter_flag=false;
+            return _validate_enter_flag;
+        }
+        if(touzivalue>max){
+            $notice.addClass("jx_error").html("投标金额不能大于最大可投金额");
+            _validate_enter_flag=false;
+            return _validate_enter_flag;
+        }
+       if(touzivalue< borrow_min){
+           $notice.addClass("jx_error").html("投标金额不能小于起投金额");
+           _validate_enter_flag=false;
+           return _validate_enter_flag;
+       }
+       if(touzivalue > balance){
+            $notice.addClass("jx_error").html("余额不足，请先充值！");
+           _validate_enter_flag=false;
+           return _validate_enter_flag;
+       }
+        $notice.html("");
+        $jx_payment.addClass("jx_payment");
+        _validate_enter_flag=true;
+        return _validate_enter_flag;
+    }
+
+    // 立即投标
+    function invest(id){
+        var num = $('#enter_value').val();
+        var flag = validate_enter(num);
+        if($("#agreen").attr("checked") == null){
+            alert("请确认借款协议");
+            return false;
+        }
+        if(_validate_enter_flag==false || flag==false){
+            return false ;
+        }
+        location.href="__URL__/investmoney?borrow_id="+id+"&money="+num;
+    }
+
+    /**
+     * 检测并且计算预期收益
+     * @param object
+     */
+    function get_interest(object){
+        if(object.value==" "){
+            $(".interest").html("0.00");return;
+        }
+        var check = validate_enter(object.value);
+        if(check){
+            var borrow_id="{$zhaiquanlist.id}";
+            $.post("__URL__/get_interest",{"money":object.value,"id":borrow_id},function(result){
+                result= JSON.parse(result);
+                $('#jx_notice').removeClass("jx_error").html("");
+                if(result.status==0){
+                    $(".interest").html(result.data.shouyi);
+                }else{
+                    $('#jx_notice').addClass("jx_error").html(result.msg);
+                    _validate_enter_flag=false;
+
+                }
+            });
+        }else{
+            $(".interest").html("0.00");
+            _validate_enter_flag=false;
+        }
+        return  _validate_enter_flag ;
+    }
+
+
+
+    $(function(){
+        var page=1;
+        var total_page_1=$("#total_page").val();
+        init();
+
+        function ajax_show(p)
+        {
+            if(p<1){
+                page=1;
+            }else{
+                if(p>total_page_1){
+                    page=total_page_1;
+                }else{
+                    page=p;
+                }
+            }
+            $.get("__URL__/investRecord?borrow_id={$borrow_id}&p="+page, function(data){
+                $("#currentpage").val(page);
+                $("#recode").html(data);
+                $(".list_bottom_right ul").find("[page="+page+"]").each(function(){
+                    $(this).css({"background-color":"#33aaff","color":"#fff"}).siblings("a").css({"background-color":"#EEEEEE","color":"#848484"});
+                })
+            });
+        }
+
+
+
+        $('#enter_value').on('focus', function (){
+            $('#jx_notice').removeClass("jx_error").html("");
+            $(this).css("background-color","#ffffff").val("");
+        });
+    });
+</script>
+<script language="javascript" src="__ROOT__/Style/H/js/index.js"></script>
+<script language="javascript" src="__ROOT__/Style/H/js/borrow.js"></script>
+<include file="Public:_footer" />
+
+

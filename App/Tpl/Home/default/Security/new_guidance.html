@@ -1,0 +1,138 @@
+<include file="Public:_header_common" />
+<title>{$title}-{$glo.index_title}</title>
+<meta http-equiv="keywords" content="{$glo.web_keywords}" />
+<meta http-equiv="description" content="{$glo.web_descript}" />
+<script type="text/javascript">
+var Transfer_invest_url = "__APP__/tinvest";
+</script>
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/H/css/security.css" />
+<style type="text/css">
+    /*.auout_banner img{width: 100%;height: 100%;}*/
+</style>
+<include file="Public:_header_main" />
+<tagLib name="htmlA" />
+    <div class="auout_banner" style="height:840px; background:url(__ROOT__/Style/H/images/security/xszy_banner.jpg) center no-repeat"></div>
+    <!-- 新手指引 -->
+    <div class="guidance_main1">
+        <div class="guidance_content1">
+            <p>
+                链金所（www.ccfax.cn）是基于供应链“物流、商流、信息流、资金流”四流合一的产业链融通体系，以“产融结合”为基本指导理念，集齐解决投资、融资双向需求，创新性提出以国际货运提单为质押担保物的互联网金融投融平台。平台以木材为核心，依托高效的互联网信息发布渠道，为数以万家木材贸易商及家具工厂提供专业、个性化的金融服务，同时为网贷投资人提供搭建了一个安全、高效、便捷的互联网网贷投资理财中心。
+            </p>
+        </div>
+    </div>
+    <!-- 解析平台模式 -->
+    <div class="guidance_main2">
+        <div class="guidance_content2"></div>
+    </div>
+    <!-- 新手投资流程 -->
+    <div class="guidance_main3">
+        <div class="guidance_content3">
+            <div class="v_out v_out_p">
+                <div class="prev"><a href="javascript:void(0)"></a></div>
+                <div class="v_show">
+                    <div class="v_cont">
+                        <ul>
+                            <li index="0"><img src="__ROOT__/Style/H/images/security/xs1.png"></li>
+                            <li index="1"><img src="__ROOT__/Style/H/images/security/xs2.jpg"></li>
+                            <li index="2"><img src="__ROOT__/Style/H/images/security/chongzhi.jpg" width="866" height="536"></li>
+                            <li index="3"><img src="__ROOT__/Style/H/images/security/xs3.jpg"></li>
+                            <li index="4"><img src="__ROOT__/Style/H/images/security/xs4.jpg"></li>
+                            <li index="5"><img src="__ROOT__/Style/H/images/security/xs5.png"></li>
+                            <li index="6"><img src="__ROOT__/Style/H/images/security/shouyi.jpg" width="866" height="536"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="next"><a href="javascript:void(0)"></a> </div>
+                <ul class="circle">
+                    <li class="circle-cur">注 册</li>
+                    <li>实名认证</li>
+                    <li>平台充值</li>
+                    <li style="width:142px;">设置新浪支付密码</li>
+                    <li>新浪充值</li>
+                    <li>投 资</li>
+                    <li>获得收益</li>
+                </ul>
+            </div>
+            <div class="divwk" style="width:881px;">
+                <img src="/Style/H/images/security/help_tu10.png" style="margin-top:0px; width:881px; margin-left: 186px;">
+            </div>
+            <div class="guidance_btn"><a href="__APP__/member/common/register/">立即注册</a></div>
+        </div>
+    </div>
+<include file="Public:_footer" />
+
+<script type="text/javascript">
+    $(function(){
+        /*======next======*/
+        $(".next a").click(function(){ nextscroll() });
+        function nextscroll(){
+            var vcon = $(".v_cont ");
+            var offset = ($(".v_cont li").width())*-2;
+            vcon.stop().animate({left:offset},"slow",function(){
+                var firstItem = $(".v_cont ul li").first();
+                vcon.find("ul").append(firstItem);
+                $(this).css("left","0px");
+                circle()
+            });
+        };
+        function circle(){
+            var currentItem = $(".v_cont ul li").first();
+            var currentIndex = currentItem.attr("index");
+            $(".circle li").removeClass("circle-cur");
+            $(".circle li").eq(currentIndex).addClass("circle-cur");
+        }
+        //setInterval(nextscroll,2000)
+        /*======prev======*/
+        $(".prev a").click(function(){
+            var vcon = $(".v_cont ");
+            var offset = ($(".v_cont li").width()*-2);
+            var lastItem = $(".v_cont ul li").last();
+            vcon.find("ul").prepend(lastItem);
+            vcon.css("left",offset);
+            vcon.animate({left:"0px"},"slow",function(){
+                circle()
+            })
+        });
+        /*======btn====circle======*/
+        var animateEnd = 1;
+        $(".circle li").click(function(){
+            if(animateEnd==0){return;}
+            $(this).addClass("circle-cur").siblings().removeClass("circle-cur");
+            var nextindex = $(this).index();
+            var currentindex = $(".v_cont li").first().attr("index");
+            var curr = $(".v_cont li").first().clone();
+            if(nextindex > currentindex){
+                for (var i = 0; i < nextindex - currentindex; i++) {
+                    var firstItem = $(".v_cont li").first();
+                    $(".v_cont ul").append(firstItem);
+                }
+                $(".v_cont ul").prepend(curr);
+                var offset = ($(".v_cont li").width())*-1;
+                if(animateEnd==1){
+                    animateEnd=0;
+                    $(".v_cont").stop().animate({left:offset},"slow",function(){
+                        $(".v_cont ul li").first().remove();
+                        $(".v_cont").css("left","0px");
+                        animateEnd=1;
+                    });
+                }
+            }else{
+                var curt = $(".v_cont li").last().clone();
+                for (var i = 0; i < currentindex - nextindex; i++) {
+                    var lastItem = $(".v_cont li").last();
+                    $(".v_cont ul").prepend(lastItem);
+                }
+                $(".v_cont ul").append(curt);
+                var offset = ($(".v_cont li").width())*-1;
+                $(".v_cont").css("left",offset);
+                if(animateEnd==1){
+                    animateEnd=0;
+                    $(".v_cont").stop().animate({left:"0px"},"slow",function(){
+                        $(".v_cont ul li").last().remove();
+                        animateEnd=1;
+                    });
+                }
+            }
+        });
+    })
+</script>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<include file="Pub:header-common" /> 
+	<link rel="stylesheet" href="css/more.css" >
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">更多</div>
+    </nav>
+    <div class="seg_top"></div>
+
+  <div class="content">
+
+    <div>
+      <a href="/M/more/announcement.html">网站公告<i class="glyphicon glyphicon-menu-right"></i></a>
+    </div>
+    <div>
+      <a href="/M/more/about.html">关于我们<i class="glyphicon glyphicon-menu-right"></i></a>
+    </div>
+    <div>
+      <a href="/M/more/help.html">帮助中心<i class="glyphicon glyphicon-menu-right"></i></a>
+    </div>
+    <!-- <div>
+      <a href="tel:400-6626985">客服电话<i class="glyphicon glyphicon-menu-right"></i><span class="phone">400-6626985</span></a>
+    </div> -->
+     <div>
+     <?php $peceptionid = peception(); ?>
+     <?php $u_name= session('u_user_name');?>
+                <php>$userinfo = getuserinfo($u_name);</php>
+      <a onclick="NTKF.im_openInPageChat('{$peceptionid}')">在线客服<i class="glyphicon glyphicon-menu-right"></i></a>
+    </div>
+    <hr />
+    <!-- <div>
+      <a href="#">推荐好友<i class="glyphicon glyphicon-menu-right"></i></a>
+    </div>
+    <div>
+      <a href="#">意见反馈<i class="glyphicon glyphicon-menu-right"></i></a>
+    </div>
+    <div>
+      <a href="#">检查更新<i class="glyphicon glyphicon-menu-right"></i><span class="version">可更新版本12.5</span></a>
+    </div> -->
+
+  </div>
+
+  <include file="Pub:footer" />
+  <!--集成脚本加载 -->
+  <script language="javascript" type="text/javascript">
+    NTKF_PARAM = {
+      siteid:"kf_9372",               //企业ID，为固定值，必填
+      settingid:"{$peceptionid}",  //接待组ID，为固定值，必填
+      uid:"{$userinfo.id|default=''}",                    //用户ID
+      uname:"{$u_name|default=''}",        //用户名
+      isvip:"{$userinfo.isvip}",                          //是否为vip用户，0代表非会员，1代表会员
+      userlevel:"1",                    //网站自定义会员级别，0-N，可根据选择判断
+      erpparam:"erpparam"                      //erpparam为erp功能的扩展字段，可选
+      } 
+  
+</script>
+ <!--基础脚本加载 -->
+<script type="text/javascript" src="https://dl.ntalker.com/js/xn6/ntkfstat.js?siteid=kf_9372" charset="utf-8"></script>
+
+
+</body>
+
+</html>

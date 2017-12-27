@@ -1,0 +1,105 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+	list-style: none;
+}
+body {
+	background-color: #f0f0f0;
+}
+img {
+	max-width:100%;
+	height:auto;
+}
+#header .bar {
+	background-color: #54c0f2;
+	text-align: center;
+	
+}
+#header .bar .title {
+	color: #fff;
+	font-size: 120%;
+	padding-top: 10px;
+	position: relative;
+	left: -25px;
+}
+#header .bar .title a {
+	color: #fff;
+}
+#header .bar i {
+	float: left;
+	color: #fff;
+	padding: 15px;
+	padding-left: 20px;
+	padding-right: 20px;
+	height: 50px;
+}
+.c_main{width:92%; margin:auto}
+.content .list {
+	/* height: 80px; */
+	background-color: #fff;
+	margin-bottom: 5px;
+	padding:10px 15px;
+	overflow: hidden;
+}
+.content .list .anno {
+	font-size: 1.2rem;
+	/* padding-top: 7px; */
+	float: left;
+}
+.content .list .date {
+	font-size: 80%;
+	color: #919090;
+	float: right;
+}
+.content .list .count {
+	font-size: 1.2rem;
+	float: right;
+}
+.content .list .out {
+	color: #FFF;
+	background: #54c0f2;
+	width: 30%;
+	text-align: center;
+	padding: 7px 0px;
+	border-radius: 5px;
+}
+.content .list .out1 {
+	color: #FFF;
+	background: #CCC;
+	width: 30%;
+	text-align: center;
+	padding: 7px 0px;
+	border-radius: 5px;
+}
+.content .list .in {
+	color: red;
+}
+.content .list .text {
+	font-size: 90%;
+	color: #4b4949;
+    margin-top:10px;
+	float:left;
+	width: 100%;
+}
+
+.page{
+    text-align: center;
+    background: #fff;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+}
+.mbqr{ font-size:1.2rem; padding:10px 15px; color:#8f8f8f}
+.mbqr div{
+	border-left: 4px solid #8f8f8f;
+    height: 1rem;
+    float: left;
+    margin-top: 0.4rem;
+    margin-right: 10px;}
+.bxq{ float:left; font-size:1rem; }
+.bxq div{ height:2rem;}
+.bxq div span{color:#ff6e00}
+.last_confirm{ background:#fff; padding: 20px 0;}
+.lc_f{ text-align:center;font-size: 1.2rem;}
+.lc_l{ width: 91%; /* padding:0 15px; */ background:#54c0f2; color:#fff; font-size:1.4rem; text-align:center; border-radius:5px; margin: 15px auto 0px; padding: 5px 0;}
+.lc_l1{ width: 91%; /* padding:0 15px; */ background:#CCC; color:#fff; font-size:1.4rem; text-align:center; border-radius:5px; margin: 15px auto 0px; padding: 5px 0;}

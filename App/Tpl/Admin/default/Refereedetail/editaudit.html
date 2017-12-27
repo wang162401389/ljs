@@ -1,0 +1,148 @@
+<include file="Public:_header" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<tagLib name="htmlA" />
+<script type="text/javascript">
+  var delUrl = '__URL__/doDel';
+  var addUrl = '__URL__/add';
+  var isSearchHidden = 1;
+  var searchName = "搜索/筛选会员";
+</script>
+<style>
+#auditpass{
+  margin-left: 100px;
+}
+#nopass{
+  margin-left: 100px;
+}
+.autd{
+  width: 150px;
+}
+.autd1{
+  width: 80px;
+}
+.autd2{
+  width: 80px;
+}
+</style>
+<div class="so_main">
+  <div class="page_tit">审核</div>
+<!--搜索/筛选会员-->
+  <include file="search" />
+<!--搜索/筛选会员-->
+
+  <div class="list">
+  <table id="area_list" width="85%" height="400" border="0" height="200" cellspacing="0" cellpadding="0">
+  <tr>
+     <td colspan="2"><input type="submit" value="返回" onclick="back()" style="margin-left: 800px;"></td></td>
+   </tr>
+     <td style="width: 100px;">ID：</td><td>{$list.uid}</td>
+   </tr>
+   <tr>
+     <td>用户名：</td><td>{$list.user_name}</td>
+   </tr>
+   <tr>
+     <td>当前推荐人：</td><td>{$list.recomname}</td>
+   </tr>
+   <tr>
+     <td>新推荐人：</td><td>{$list.newrecomname}({$list.user_phone})</td>
+   </tr>
+   <tr>
+     <td>修改原因：</td><td>{$list.content}</td>
+   </tr>
+   <tr>
+     <td>审核意见：</td><td><textarea id="content" rows="5" cols="50" onKeyDown="textdown(event)"
+        onKeyUp="textup()" onfocus="if(value=='请填写审核意见'){value='';this.style.color='#000'}" style="color:#999999">请填写审核意见</textarea></td>
+   </tr>
+   <tr>
+     <td colspan="2"><input type="submit" id="auditpass" value="通过" onclick="pass(this,{$list.id})">
+     <input type="submit" id="nopass" value="不通过" onclick="nopass(this,{$list.id})"></td>
+   </tr>
+  </table>
+  <input type="hidden" id="uid" value="{$list.uid}">
+  <input type="hidden" id="recomid" value="{$list.recomid}">
+  </div>
+  <div style="height: 30px;border: 1px solid;width: 800px;margin-left: 100px;line-height: 30px;"><span style="margin-left: 30px;color: 14px;">审核日志</span></div>
+  <table width="800" style="border: 1px solid;margin-left: 100px;">
+    <volist id="res" name="res">
+      <tr style="height: 30px;">
+        <td class="autd">{$res.time}</td>
+        <td class="autd1">{$res.user_name}</td>
+        <td class="autd2"><?php if($res['status']==0) echo '提交';else if($res['status']==6||$res['status']==8) echo '不通过';else if($res['status']==2) echo '一审通过';else if($res['status']==4) echo '通过'; ?></td>
+        <td>{$res.content}</td>
+      </tr>
+    </volist>
+  </table>
+</div>
+<script type="text/javascript">
+function textdown(e) {
+    textevent = e;
+    if (textevent.keyCode == 8) {
+        return;
+    }
+    if (document.getElementById('content').value.length >= 40) {
+        alert("大侠，手下留情，此处限字40")
+        if (!document.all) {
+            textevent.preventDefault();
+        } else {
+            textevent.returnValue = false;
+        }
+    }
+}
+function textup() {
+    var s = document.getElementById('content').value;
+    //判断ID为content的文本区域字数是否超过40个 
+    if (s.length > 40) {
+        document.getElementById('content').value = s.substring(0, 40);
+    }
+}
+function pass(object,id){
+  var content = document.getElementById('content').value;
+  if(content == "请填写审核意见"){
+    alert("请填写审核意见");return;
+  }
+  var uid = document.getElementById('uid').value;
+  var recomid = document.getElementById('recomid').value;
+       $parent=$(object).parent();
+       $parent.children("input").attr("disabled","disabled");
+        $.post("/Admin/Refereedetail/doeditaudit",{id:id,status:1,content:content,recomid:recomid,uid:uid},function(result){
+            if(result=="ok"){
+                window.location="/Admin/Refereedetail/audit";
+            }else if(result=="no"){
+              alert('审核意见不能为空');
+              $parent.children("input").removeAttr("disabled");
+            }else if(result=="not"){
+              alert('审核失败');
+              $parent.children("input").removeAttr("disabled");
+            }else{
+                $parent.children("input").removeAttr("disabled");
+                $(object).val("通过");
+            }
+        })
+    }
+
+function nopass(object,id){
+  var uid = document.getElementById('uid').value;
+  var recomid = document.getElementById('recomid').value;
+  var content = document.getElementById('content').value;
+  if(content == "请填写审核意见"){
+    alert("请填写审核意见");return;
+  }
+    $parent=$(object).parent();
+    $parent.children("input").attr("disabled","disabled");
+    $.post("/Admin/Refereedetail/doeditaudit",{id:id,status:2,content:content,recomid:recomid,uid:uid},function(result){
+        if(result=="ok"){
+            window.location="/Admin/Refereedetail/audit";
+        }else if(result=="no"){
+              alert('审核意见不能为空');
+              $parent.children("input").removeAttr("disabled");
+            }else{
+            $parent.children("input").removeAttr("disabled");
+            $(object).val("不通过");
+        }
+    })
+}
+function back(){
+  window.location="__URL__/audit";
+}
+</script>
+<include file="Public:_footer" />

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<include file="default:Pub:header-common" group="M"/>
+    <script type="text/javascript">
+    $(document).ready(
+	function() 
+	{
+		$(".menuTitle").click(function(){
+			$(this).next("div").slideToggle("slow")
+			.siblings(".menuContent:visible").slideUp("slow");
+			$(this).toggleClass("activeTitle");
+			$(this).siblings(".activeTitle").removeClass("activeTitle");
+		});
+	});
+
+    </script>
+	<link rel="stylesheet" href="__ROOT__/Style/Phone/css/mbqr.css">
+</head>
+
+<body>
+	<include file="default:Pub:simple_header" group="M"/>
+	<div class="content">
+        <div class="mbqr_tip">*请您先支付综合服务费以便进行提现或投资</div>
+	    <div class="mbqr"><div></div>综合服务费</div>
+        <div class="content">
+            <foreach name="list" item="vo">
+            <div class="menuTitle"><div style="float:left">{$vo.borrow_name}</div><div style="float:right">{$vo.fee}元</div> </div>
+            <div class="menuContent">
+                <table cellpadding="2">
+                  <tr>
+                    <td colspan="2">标名：{$vo.borrow_name}</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">标号：{$vo.id|borrowidlayout1=###}}</td>
+                  </tr>
+                  <tr>
+                    <td width="55%">借款金额：{$vo.borrow_money|getMoneyFormt=###}元</td>
+                    <td>借款期限：{$vo.borrow_duration_txt}</td>
+                  </tr>
+                  <tr>
+                    <td>综合服务费：{$vo.fee}元</td>
+                    <td class="mb_blue" ontouchstart="zhxy()">《综合服务费支付协议》</td>
+                  </tr>
+                 
+                </table>
+            </div>
+            </foreach>
+        </div>
+    <div class="mb_total"><div style=" float:left">合计（总服务费）</div><div style="float:right; padding-right:2.5%">{$fee}元</div> </div>
+    <div class="mb_red">注明：您支付的服务费将从您的借款总额中进行扣取。</div>
+	<div class="lc_l" ontouchstart="pay()">确认支付</div> 
+     
+	</div>
+	<script>
+      function zhxy(){
+        location.href="__APP__/confirm/index/protocol"
+      }
+
+      function pay(){
+        location.href="__APP__/confirm/index/payfee"
+      }
+    </script>
+</body>
+
+</html>

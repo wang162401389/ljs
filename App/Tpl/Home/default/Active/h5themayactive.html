@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<base href="/Style/Phone/" />
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  	<script src="__ROOT__/Style/Phone/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="__ROOT__/Style/Js/jquery.rotate.min.js "></script>
+    <script src="__ROOT__/Style/Phone/js/clipboard.min.js"></script>
+    <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  	<link rel="stylesheet" type="text/css" href="__ROOT__/Style/Phone/css/mayactive.css">
+</head>
+<body>
+	<include file="default:Pub:simple_header" group="M" />
+
+	<section class="banner">
+        <img src="__ROOT__/Style/Phone/img/themayactive/banner.png">
+        <p>活动时间：5月4日-5月31日</p>
+    </section>
+
+    <section class="part part1">
+        <img src="__ROOT__/Style/Phone/img/themayactive/211.png" class="tit-img">
+        <div class="item">
+            <img src="__ROOT__/Style/Phone/img/themayactive/one_1.png">
+            <p>
+                <i class="dot"></i>
+                可获得1000元体验金，用于投资年化利率12%、期限5天的标的，到期后体验金本金部分平台收回，利息现金部分直接发送至您的平台账户内。<br>
+                可获得现金为：1000×12%÷360×5=1.67元
+            </p>
+        </div>
+        <div class="item">
+            <img src="__ROOT__/Style/Phone/img/themayactive/one_2.png">
+            <p>
+                <i class="dot"></i>
+                不再享受1000元体验金奖励，而是每增加一位好友注册实名即获得5元投资券，投资券使用期限为领取之日起的15天内使用。
+            </p>
+
+        </div>
+        <div class="item">
+            <img src="__ROOT__/Style/Phone/img/themayactive/one_3.png">
+            <p>
+                <i class="dot"></i>
+                特设累计推荐注册实名总量前三名奖励，在活动结束后3个工作日内发放至获奖人账户内。<br>
+               （注：推荐注册实名总量不低于10人，推荐人数相同时，以成功推荐时间为核算，先到先得）
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <div class="invest">
+			<if condition="$UID">
+				<p>
+	                <span class="title">您的邀请链接是：</span><br>
+                    <span id="urltext">{$recommend_url}</span>
+	                <!-- <input type="text" id="urltext" value="{$recommend_url}" readonly="readonly"/> --> <button class="copy js-copy" data-clipboard-action="copy" data-clipboard-target="#urltext">复制链接邀请</button>
+	            </p>
+	            <p class="pd1">※当您分享给您的好友注册并实名后，您就可以获得活动相应的体验金或者投资券奖励。</p>
+	            <p>您总共获得体验金{$total_count}张，目前剩余{$remaining_count}张</p>
+				<else/>
+            	<p><span class="title">您的邀请链接是：</span>请<a href="/M/pub/login.html" class="red">登录</a>后查看</p>
+			</if>
+            <div class="invest-table">
+                <table border="0" cellspacing="0">
+                    <tr>
+                        <th width="25%">标题</th>
+                        <th width="30%">预期年化收益</th>
+                        <th width="15%">期限</th>
+                        <th rowspan="2" width="25%"><span class="js-invest">我要投标</span></th>
+                    </tr>
+                    <tr>
+                        <td>活动体验标</td>
+                        <td class="red-big">12.00%</td>
+                        <td class="red-big">5天</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="part part2">
+        <img src="__ROOT__/Style/Phone/img/themayactive/3.png" class="tit-img">
+        <div class="item">
+            <img src="__ROOT__/Style/Phone/img/themayactive/tow_1.png">
+            <p>注册实名≥50个，人人投资且推荐投资量≥50万，就可得到iphone7 32G一台，限1人，以投资时间为核算，先到先得，送完即止。</p>
+        </div>
+        <div class="item">
+            <img src="__ROOT__/Style/Phone/img/themayactive/tow_2.png">
+            <p>①  注册实名≥20个，且推荐投资量≥8万，送现金338元，限10人。<br>
+               ②  注册实名≥8个，且推荐投资量≥3万，送现金138元，限20人。<br>
+               注：以上奖励以投资时间为核算，先到先得。
+            </p>
+        </div>
+        <div class="item">
+            <img src="__ROOT__/Style/Phone/img/themayactive/tow_3.png">
+            <p>注册实名≥1个，好友投资≥500元可免费获得抽奖1次，每增加一个，获得额外一次抽奖。</p>
+        </div>
+        <div class="rule">
+            <p>
+                <span class="title">活动规则：</span><br>
+                跑腿免单只限深圳地区，获奖用户将由跑腿商家在抽到奖后的3个工作日内联系您，非深圳地区的用户抽到跑腿免单将用35元投资券替换，3个工作日内发送至您的平台内账户内。
+            </p>
+        </div>
+        <div class="turntable">
+            <!--转盘 start-->
+            <img src="__ROOT__/Style/Phone/img/themayactive/turntablenew.png" class="turntable-img" id="pointer">
+            <img src="__ROOT__/Style/Phone/img/themayactive/turntablebgnew.png" class="turntable-img2">
+            <img src="__ROOT__/Style/Phone/img/themayactive/turntable_b.png" class="turntableb-img">
+            <img src='__ROOT__/Style/Phone/img/themayactive/btn.png' id="turntable-btn" class="js-btn">
+            <!--转盘 end-->
+        </div>
+        <div class="announcement">
+            <img src="__ROOT__/Style/Phone/img/themayactive/announcement_tit.png" class="tit">
+			<if condition="$UID">
+					<p class="pd"><span class="title">您还有的抽奖机会：</span><span class="span1">共<i class="total-count">{$total_lucky}</i>次<br>（剩余<i class="remain_lucky">{$remaining_lucky}</i>次）</span></p>
+				<else/>
+				<p class="pd"><span class="title">您还有的抽奖机会：</span><a href="/M/pub/login.html" class="red">登录查看</a></p>
+			</if>
+
+            <div class="show">
+                <p class="tab js-tab">
+                    <span class="active" style="border-right:1px solid #ff9600;">今日中奖名单</span>
+                    <span>我的抽奖记录</span>
+                </p>
+                <div class="win-list">
+                    <p class="marquee-tit">
+                        <span>获奖用户</span>
+                        <span>获得奖励</span>
+                    </p>
+                    <div id="marquee" style="overflow:hidden;height:10rem;position:relative;width:100%;">
+                        <div id="scroll" style="overflow:hidden;position:absolute;width:100%;top:0;">
+                            <ul>
+								<volist id="wl" name="winner_list">
+									<li class="marquee-item">
+	                                    <span>{$wl.user_phone}</span>
+	                                    <span>{$wl.prize_name}</span>
+	                                </li>
+								</volist>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="lottery-list" id="style-1">
+                    <ul>
+						<volist id="mw" name="my_winner">
+							<li>{$mw.prize_name}</li>
+						</volist>
+                    </ul>
+                </div>
+                <img src="__ROOT__/Style/Phone/img/themayactive/money.png" class="money-img">
+            </div>
+        </div>
+    </section>
+
+    <section class="part part3">
+        <img src="__ROOT__/Style/Phone/img/themayactive/4.png" class="tit-img">
+        <p class="formula">
+            返利计算公式：返利=好友投资额*0.8%*投资天数/360
+        </p>
+        <div class="item">
+            <p>
+                <span class="red tltle">邀请方式一</span>
+                 通过复制链接发送给您的好友注册，即邀请成功。
+            </p>
+            <img src="__ROOT__/Style/Phone/img/themayactive/three_1.png">
+        </div>
+        <div class="item">
+            <p>
+                <span class="red tltle">邀请方式二</span>
+
+                好友在PC端注册时在推荐人那里填写您的手机号，即邀请成功。
+            </p>
+            <img src="__ROOT__/Style/Phone/img/themayactive/three_2.png">
+        </div>
+        <p class="item3"><img src="__ROOT__/Style/Phone/img/themayactive/three_3.png" ></p>
+
+        <p class="title mg" Style="font-size:1rem;">
+            邀请好友注册实名并投资后，可以到PC端的我的账户 <img src="__ROOT__/Style/Phone/img/themayactive/arrow.png" align="absmiddle"> 邀请好友 <img src="__ROOT__/Style/Phone/img/themayactive/arrow.png" align="absmiddle"> 邀请结果去查看统计的结果和返利的明细。
+        </p>
+        <p class="mg">
+            当您的好友成功投资并复审后返利金额将在当天发送至您的平台账户内
+        </p>
+    </section>
+
+    <section class="part part4">
+        <img src="__ROOT__/Style/Phone/img/themayactive/info_tit.png" class="tit-img">
+        <div>
+            <p><i class="dot"></i>（活动一的投资券（使用比例为1：100，使用期限为领取之日起的15天内）直接推荐成功后发送至推荐人账户；推荐排名前三的现金奖励在活动结束后的3个工作日内发放至推荐人账户。</p>
+            <p><i class="dot"></i> 活动二的独占鳌头奖和普利奖、尊享将和普利奖可同时享有。以上奖励加息券和投资券在推荐人抽到后及时发放至其账户，爱奇艺会员、星巴克、跑腿免单和1000元现金在抽到后的三个工作日内发放，其余奖励在活动结束后的5个工作日内发放给用户。</p>
+            <p><i class="dot"></i> 活动三长期有效，具体以官方公告为准。</p>
+            <p><i class="dot"></i> 本活动最终解释权归链金所所有。</p>
+        </div>
+    </section>
+
+    <!--弹窗-->
+    <div class="alldiv">
+        <!--确定取消-->
+        <div class="box confirm">
+            <span class="close-btn js-close">×</span>
+            <p class="p1">您当前未使用的活动体验金共<span class="remain-count"></span>张<br>活动体验金可投总额<span class="remain-money"></span>元</p>
+            <div class="btn-div">
+                <a href="javascript:void(0);" class="btn btn-blue js-close">取消</a>
+                <a href="javascript:void(0);" class="btn btn-red js-close js-ok">确定</a>
+            </div>
+        </div>
+        <!--去实名、去设置-->
+        <div class="box go">
+            <span class="close-btn js-close">×</span>
+            <p class="p1"></p>
+            <div class="btn-div">
+                <a href="" class="btn btn-red"></a>
+            </div>
+        </div>
+        <!--自动消失-->
+        <div class="box disappear">
+            <span class="close-btn js-close">×</span>
+            <p class="p1"></p>
+        </div>
+    </div>
+
+    <input type="hidden" value="{$UID|default='0'}" id="uid"/>
+    <input type="hidden" id="isgameover" value="{$active_open|default=0}">
+
+    <script type="text/javascript">
+    	$(function(){
+            /*
+            **提示弹窗
+            */
+            $.tips = function(txt){
+                $('.alldiv').show();
+                $('.disappear .p1').text(txt);
+                $('.disappear').show();
+                var time = setTimeout(function(){
+                    $('.alldiv').fadeOut();
+                    $('.disappear').hide();
+                }, 1000);
+            }
+
+            /*
+            **复制链接
+            */
+            var clipboard = new Clipboard('.copy');
+            clipboard.on('success', function(e) {
+                $.tips("复制成功！");
+            });
+            clipboard.on('error', function(e) {
+                $.tips("复制失败，请手动选择复制！");
+            });
+
+            /*
+            **我要投标
+            */
+            //显示剩余金额和剩余张数
+            $('.js-invest').click(function(){
+                if($('#isgameover').val() == 1){
+                    $.tips("活动已结束！");
+                    return;
+                }
+                $.ajax({
+                    url: "/home/active/invest_borrow",
+                    type: "post",
+                    data: {type: "confirm"},
+                    dataType: "json",
+                    success: function (results) {
+                        //console.log(results)
+                        var realdata = results || {};
+                        if(realdata.status == 0 && realdata.data.remaining_count != 0){
+                            var	tokenval    	= realdata.data.token;
+                            $(".js-ok").attr("data-token",tokenval);
+                            $('.remain-money').text(realdata.data.remaining_money);
+                            $('.remain-count').text(realdata.data.remaining_count);
+                            $('.alldiv').show();
+                            $('.confirm').show();
+                        }
+                        else if(realdata.status == 0 && realdata.data.remaining_count == 0){
+                            $.tips("您当前没有体验金可投！");
+                        }
+                        else if(realdata.status == -3){
+                            $('.go a').attr('href', '/M/user/verify.html');
+                            $('.go a').text('去实名');
+                            $('.go .p1').text(realdata.info);
+                            $('.alldiv').show();
+                            $('.go').show();
+                        }
+                        else if(realdata.status == -4){
+                            $('.go a').attr('href', '/M/user/sinapass.html');
+                            $('.go a').text('去设置');
+                            $('.go .p1').text(realdata.info);
+                            $('.alldiv').show();
+                            $('.go').show();
+                        }
+                        else if(realdata.status == -6){
+                            $.tips("请刷新页面！");
+                        }
+                        else if(realdata.status == -7){
+                            $.tips("账号异常,请联系客服！");
+                        }
+                        else if(realdata.status == 100){
+                            $.tips("活动还未开始！");
+                        }
+                        else if(realdata.status == 101){
+                            $.tips("活动已结束！");
+                        }
+                        else{
+                            window.location.href = "/M/pub/login.html";
+                        }
+                    }
+                })
+            });
+
+            //确定投标
+            $('.js-ok').click(function(){
+                var money = parseInt($('.remain-money').text());
+                var token = $(this).attr("data-token");        //获取真实的token
+                if($('#isgameover').val() == 1){
+                    $.tips("活动已结束！");
+                    return;
+                }
+                $.ajax({
+                    url: "/home/active/invest_borrow",
+                    type: "post",
+                    data: {
+                        type: "invest",
+                        invest_money: money,
+                        token:token
+                    },
+                    dataType: "json",
+                    success: function (results) {
+                        var realdata = results || {};
+                        if(realdata.status == 0){
+                            $.tips("投标成功！");
+                            setTimeout(function(){
+                                window.location.reload();
+                            },2000);
+                        }
+                        else if(realdata.status == -3){
+                            $('.go a').attr('href', '/M/user/verify.html');
+                            $('.go a').text('去实名');
+                            $('.go .p1').text(realdata.info);
+                            $('.alldiv').show();
+                            $('.go').show();
+                        }
+                        else if(realdata.status == -4){
+                            $('.go a').attr('href', '/M/user/sinapass.html');
+                            $('.go a').text('去设置');
+                            $('.go .p1').text(realdata.info);
+                            $('.alldiv').show();
+                            $('.go').show();
+                        }
+                        else if(realdata.status == -5){
+                            $.tips("您当前没有体验金可投！");
+                        }
+                        else if(realdata.status == -6){
+                            $.tips("请刷新页面！");
+                        }
+                        else if(realdata.status == -7){
+                            $.tips("账号异常,请联系客服！");
+                        }
+                        else if(realdata.status == 100){
+                            $.tips("活动还未开始！");
+                        }
+                        else if(realdata.status == 101){
+                            $.tips("活动已结束！");
+                        }
+                        else{
+                            $.tips("投标失败！");
+                        }
+                    }
+                })
+            });
+
+            /*
+            **转盘抽奖
+            */
+            if($('#isgameover').val() == 1){
+                $(".js-invest").text("活动结束").addClass("isgameover");
+                $('.js-btn').attr('src', '__ROOT__/Style/Phone/img/themayactive/btn_over.png');
+                //$('.js-btn').addClass('disabled');
+            }
+            var click = true;
+            $(".js-btn").click(function () {
+                if($('#isgameover').val() == 1){
+                    $.tips("活动已结束！");
+                    return;
+                }
+                else if (!click) {
+                    //console.log(click +"不能抽奖！");
+                    return false;
+                }else{
+                    //console.log(click + "可以抽奖");
+                    click = false;
+                    $.ajax({
+                        url: "/home/active/themayprize",
+                        type: "post",
+                        dataType: "json",
+                        success: function (results) {
+                            var realdata = results || {};
+                            //没登录
+                            if (realdata.status == -1) {
+                                window.location.href = "/M/pub/login.html";
+                                return;
+                            }
+                            //抽奖次数不够
+                            else if (realdata.status == -2) {
+                                $.tips("您的抽奖次数已用完！");
+                                click = true;
+                                return;
+                            }
+                            else if(realdata.status == 100){
+                                $.tips("活动还未开始！");
+                            }
+                            else if(realdata.status == 101){
+                                $.tips("活动已结束！");
+                            }
+                            var prize_id = realdata.data.p_id,
+                                prize_name = "",
+                                rotatedeg = 0;
+                            if(prize_id == 1){
+                                rotatedeg = 0;
+                                prize_name = "1000元现金";
+                            }else if(prize_id == 2){
+                                rotatedeg = 160;
+                                prize_name = "爱奇艺一月会员";
+                            }else if(prize_id == 3){
+                                rotatedeg = 240;
+                                prize_name = "10元话费";
+                            }else if(prize_id == 4){
+                                rotatedeg = 320;
+                                prize_name = "1%加息券";
+                            }else if(prize_id == 5){
+                                rotatedeg = 280;
+                                prize_name = "50元投资券";
+                            }else if(prize_id == 6){
+                                rotatedeg = 120;
+                                prize_name = "20元投资券";
+                            }else if(prize_id == 7){
+                                rotatedeg = 200;
+                                prize_name = "10元投资券";
+                            }else if(prize_id == 8){
+                                rotatedeg = 80;
+                                prize_name = "跑腿免单";
+                            }else if(prize_id == 9){
+                                rotatedeg = 40;
+                                prize_name = "谢谢参与";
+                            }
+
+                            $('#pointer').rotate({
+                                duration: 8000,//转动时间间隔（转动速度）
+                                angle: 0,  //开始角度
+                                animateTo: 1800 + rotatedeg, //转动角度，10圈
+                                callback: function () {
+                                    //是否中奖
+                                    if(prize_id == 9){
+                                        $.tips("抱歉，您未中奖！");
+                                    }else{
+                                        //给今日中奖名单和我的抽奖记录添加数据
+                                        $('#scroll ul').append('<li class="marquee-item"><span>' + realdata.data.user_phone + '</span><span>' + prize_name + '</span></li>');
+
+                                        $('.lottery-list ul').append('<li>' + prize_name + '</li>');
+
+                                        $.tips('恭喜您中了"' +prize_name + '"！');
+                                    }
+                                    //剩余次数
+                                    $('.remain_lucky').text(realdata.data.remain_count);
+                                    click = true;
+                                }
+                            });
+                        }
+                    })
+                }
+            })
+
+            /*
+            **中奖公告切换
+            */
+    		$('.js-tab span').click(function(){
+                var index = $(this).index(),
+                    uid = $('#uid').val();
+                $(this).addClass('active');
+                $(this).siblings().removeClass('active');
+                if(index == 0){
+                    $('.win-list').show();
+                    $('.lottery-list').hide();
+                }else{
+                    if(uid != 0){
+                        $('.win-list').hide();
+                        $('.lottery-list').show();
+                    }else{
+                        window.location.href = "/M/pub/login.html";
+                    }
+                }
+            });
+
+            /*
+            **中奖名单滚动
+            */
+            if($("#scroll .marquee-item").length > 5){
+                $("#scroll").append($("#scroll ul").clone());
+                var mscroll = setInterval(function(){
+                    var mtop = parseInt($("#scroll").css('top')),
+                        objheight = parseInt($("#scroll").height())/2;
+                    if(mtop < -objheight){
+                       $("#scroll").css('top', '0');
+                    }
+                    $("#scroll").css('top', (parseInt($("#scroll").css('top')) - 1) + "px");
+                },30);
+            };
+
+            /*
+            **弹窗关闭按钮
+            */
+            $('.js-close').click(function(){
+                $('.alldiv').hide();
+                $('.box').hide();
+            });
+    	})
+    </script>
+    <script>
+wx.config({
+    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    appId: '{:C("WEIXIN.appid")}', // 必填，公众号的唯一标识
+    timestamp: {$timestamp}, // 必填，生成签名的时间戳
+    nonceStr: '{$noncestr}', // 必填，生成签名的随机串
+    signature: '{$signature}',// 必填，签名，见附录1
+    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+});
+
+wx.ready(function() {
+    // 分享朋友圈
+    wx.onMenuShareTimeline({
+        title: '邀请好友，广开财路！', // 分享标题
+        link: window.location.href, // 分享链接
+        imgUrl: '{$img_url}', // 分享图标
+        success: function () {
+            // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+        }
+    });
+    //分享给朋友
+    wx.onMenuShareAppMessage({
+        title: '邀请好友，广开财路！', // 分享标题
+        desc: '#链金所#五万元体验金等你来拿！我出本金，您享收益！', // 分享描述
+        link: window.location.href, // 分享链接
+        imgUrl: '{$img_url}', // 分享图标
+        type: 'link', // 分享类型,music、video或link，不填默认为link
+        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+        success: function () {
+            // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+        }
+    });
+    wx.onMenuShareQQ({
+        title: '邀请好友，广开财路！', // 分享标题
+        desc: '#链金所#五万元体验金等你来拿！我出本金，您享收益！', // 分享描述
+        link: window.location.href, // 分享链接
+        imgUrl: '{$img_url}', // 分享图标
+        success: function () {
+           // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+           // 用户取消分享后执行的回调函数
+        }
+    });
+    wx.onMenuShareQZone({
+        title: '邀请好友，广开财路！', // 分享标题
+        desc: '#链金所#五万元体验金等你来拿！我出本金，您享收益！', // 分享描述
+        link: window.location.href, // 分享链接
+        imgUrl: '{$img_url}', // 分享图标
+        success: function () {
+           // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+        }
+    });
+});
+</script>
+</body>
+
+</html>

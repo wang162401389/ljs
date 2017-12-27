@@ -1,0 +1,520 @@
+<include file="Public:_header_common" />
+<title>贺A轮融资、送豪礼</title>
+<meta http-equiv="keywords" content="{$glo.web_keywords}" />
+<meta http-equiv="description" content="{$glo.web_descript}" />
+<link rel="stylesheet" href="/Style/H/css/financing.css" />
+<script type="text/javascript">
+     var imgpath="__ROOT__/Style/M/";
+     var curpath = "__APP__/member/common";
+</script>
+<include file="Public:_header_main" />
+<div class="fina-banner">
+     <div class="fina-overflow fina1182">
+          <div class="fina-h2"></div>
+          <div class="fina-time"></div>
+     </div>
+</div>
+<div class="fin-page fin-page-newer">
+     <div class="fina1182">
+          <div class="fin-newertit"></div>
+          <div class="fin-newerdes"></div>
+          <p class="fin-newer-fanli">
+               <if condition="$UID">
+                    我的返利金额：<span class="js-fanli-money">{$ret}</span>元
+               <else/>
+                    <span class="fin-nologin-tips">请<a href="/member/common/login/">登录</a>后查看我的返利金额！</span>
+               </if>
+          </p>
+          <div class="fin-newertxt clearfix">
+               <ul class="fin-newer-ul fin-newer-ula">
+                    <li class="ula-title">累计投资</li>
+                    <li>100-999元</li>
+                    <li>1000-4999元</li>
+                    <li>5000-19999元</li>
+                    <li>20000元以上</li>
+               </ul>
+               <ul class="fin-newer-ul fin-newer-ulb">
+                    <li class="ula-title">返现金额</li>
+                    <li>5元</li>
+                    <li>15元</li>
+                    <li>25元</li>
+                    <li>35元</li>
+               </ul>
+          </div>
+          <a href="/invest/index.html" class="fin-newerbtn"></a>
+          <div class="fin-newerrule">
+               <p>活动规则：</p>
+               1、以上板块只针对新用户参加；<br>
+               2、新用户：活动期间新注册用户、未投资过的用户（包含使用体验金的用户）；<br>
+               <span style="color:#ef2d1e">3、新用户在链金所进行投资30天以上标的（小于等于30天标的无法参与本次活动）；</span><br>
+               4、每位新用户只享受一次返利机会；<br>
+               5、活动奖励在活动结束15天内，转入用户账户余额，届时将会有短信提醒；<br>
+               6、在法律允许范围内，链金所保留对此活动的最终解释权，如有疑问请联系官方客服<br>400-6626-985。
+          </div>
+     </div>
+</div>
+<div class="fin-pagenewer-bottom"></div>
+<div class="fin-page fin-page-older">
+     <div class="fina1182">
+          <div class="fin-oldertit"></div>
+          <div class="fin-olderdes"></div>
+          <div class="fin-newer-fanli">
+               <if condition="$UID">
+                    我的抽奖次数：<span class="js-lottery-times">{$left}</span>次
+               <else/>
+                    <span class="fin-nologin-tips">请<a href="/member/common/login/">登录</a>后查看我的抽奖次数！</span>
+               </if>
+          </div>
+          <div class="fin-turntable-wrap">
+               <div class="turntable-circle"></div>
+               <div class="turntable-light"></div>
+               <div class="turntable-main" id="rotate"></div>
+               <div class="turntable-point platemoving"></div>
+               <div class="turntable-shadows"></div>
+          </div>
+          <a href="/invest/index.html" class="fin-olderbtn"></a>
+          <div class="fin-newerrule">
+               <p>活动规则：</p>
+               1、本活动适用人群：所有老用户（老用户为在平台有过一次及以上投资记录的用户）；<br>
+               <span style="color:#ef2d1e">2、活动期间每位老用户，只要任意投资一次30天以上标的（小于等于30天标的无法参与本次活动）均获得一次大转盘抽奖机会；</span><br>
+               3、活动结束后未使用的抽奖次数自动清零；<br>
+               4、您的中奖金额将直接发放至您的平台账户中；<br>
+               5、在法律允许范围内，链金所保留对此活动的最终解释权，如有疑问请联系官方客服<br>400-6626-985。
+          </div>
+     </div>
+</div>
+<div class="fin-pageolder-bottom"></div>
+<div class="fin-page fin-page-all">
+     <div class="fina1182">
+          <div class="fin-alltit"></div>
+          <div class="fin-alldes"></div>
+          <div class="fin-all-recommend">
+               <div class="fin-recommend-main">
+                    <div class="rec-tabtit">
+                         <span class="r-tabtit-a">我推荐的小伙伴</span>
+                         <span class="r-tabtit-b">是否投资</span>
+                         <span class="r-tabtit-c">返现金额</span>
+                    </div>
+                    <if condition="$UID">
+                         <div class="rec-tab-main" id="reclist-demo"></div>
+                    <else/>
+                         <!--未登录 start-->
+                         <div class="remcomend-login rec-nologin">请<a href="/member/common/login/">登录</a>后查看！</div>
+                         <!--未登录 end-->
+                    </if>
+               </div>
+          </div>
+          <p class="fin-rem-tit">我的推荐码</p>
+          <if condition="$UID">
+               <!--登录 start-->
+               <div class="fin-qcode-wrap"><img class="rec-qcode" src="__ROOT__/Home/active/create_qr" width="346" height="346" /></div>
+               <!--登录 end-->
+          <else/>
+               <!--未登录 start-->
+               <div class="fin-rem-content">
+                    <div class="remcomend-login">请<a href="/member/common/login/">登录</a>获取</div>
+                    <div class="remcomend-loginimg"></div>
+               </div>
+               <!--未登录 end-->
+          </if>
+
+          <div class="fin-newerrule">
+               <p>活动规则：</p>
+               1、此板块活动新老用户均可参加；<br>
+               <span style="color:#ef2d1e">2、您推荐的用户投资成功30天以上标的（小于等于30天标的无法参与本次活动）以后，推荐奖励会记录在上方；</span><br>
+               3、推荐者每推荐一位新用户注册并成功投资后可获得5元返利；<br>
+               4、每位推荐人最多可获得四位推荐用户的投资奖励，最高奖励金额20元；<br>
+               5、您的返利金额将直接发放至您的平台账户中；<br>
+               6、在法律允许范围内，链金所保留对此活动的最终解释权，如有疑问请联系官方客服<br>400-6626-985。
+          </div>
+     </div>
+</div>
+<div class="fin-pagenewer-bottom"></div>
+<div class="fin-page fin-page-gift">
+     <div class="fina1182">
+          <div class="fin-giftdes"></div>
+          <p class="fin-newer-fanli">
+               <if condition="$UID">
+                    我的累计投资额：<span class="js-investtotal">{$investTotal}</span>元
+               <else/>
+                    <span class="fin-nologin-tips">请<a href="/member/common/login/">登录</a>后查看我的累计投资额！</span>
+               </if>
+
+          </p>
+          <div class="fin-gift-main clearfix">
+               <ul>
+                    <li>
+                         <div class="gift-boxli">
+                              <img src="/Style/H/images/financing/gift-boximg1.jpg" width="324" height="216" />
+                              <div class="gift-boxtxt">
+                                   <p class="gift-boxtit fin-margintop10">MacBook Air 13.3英寸 256GB</p>
+                                   <p class="gift-investmoney">累计投资：150万元</p>
+                              </div>
+                              <div class="gift-price">市场价：<span class="price-money">￥7999元</span></div>
+                         </div>
+                    </li>
+                    <li>
+                         <div class="gift-boxli">
+                              <img src="/Style/H/images/financing/gift-boximg2.jpg" width="324" height="216" />
+                              <div class="gift-boxtxt">
+                                   <p class="gift-boxtit fin-margintop10">iphone7 plus 128GB</p>
+                                   <p class="gift-investmoney">累计投资：100万元</p>
+                              </div>
+                              <div class="gift-price">市场价：<span class="price-money">￥6599元</span></div>
+                         </div>
+                    </li>
+                    <li>
+                         <div class="gift-boxli">
+                              <img src="/Style/H/images/financing/gift-boximg3.jpg" width="324" height="216" />
+                              <div class="gift-boxtxt">
+                                   <p class="gift-boxtit fin-margintop10">iphone7 128GB</p>
+                                   <p class="gift-investmoney">累计投资：80万元</p>
+                              </div>
+                              <div class="gift-price">市场价：<span class="price-money">￥5799元</span></div>
+                         </div>
+                    </li>
+                    <li>
+                         <div class="gift-boxli">
+                              <img src="/Style/H/images/financing/gift-boximg4.jpg" width="324" height="216" />
+                              <div class="gift-boxtxt">
+                                   <p class="gift-boxtit fin-margintop10">华为 Mate9 月光版 4GB+32GB</p>
+                                   <p class="gift-investmoney">累计投资：60万元</p>
+                              </div>
+                              <div class="gift-price">市场价：<span class="price-money">￥3099元</span></div>
+                         </div>
+                    </li>
+                    <li>
+                         <div class="gift-boxli">
+                              <img src="/Style/H/images/financing/gift-boximg5.jpg" width="324" height="216" />
+                              <div class="gift-boxtxt">
+                                   <p class="gift-boxtit fin-margintop10">iPad  WLAN版 9.7寸 32GB</p>
+                                   <p class="gift-investmoney">累计投资：40万元</p>
+                              </div>
+                              <div class="gift-price">市场价：<span class="price-money">￥2519元</span></div>
+                         </div>
+                    </li>
+                    <li>
+                         <div class="gift-boxli">
+                              <img src="/Style/H/images/financing/gift-boximg6.jpg" width="324" height="216" />
+                              <div class="gift-boxtxt">
+                                   <p class="gift-boxtit fin-margintop10">CHANEL 邂逅香水</p>
+                                   <p class="gift-investmoney">累计投资：20万元</p>
+                              </div>
+                              <div class="gift-price">市场价：<span class="price-money">￥1098元</span></div>
+                         </div>
+                    </li>
+                    <li>
+                         <div class="gift-boxli">
+                              <img src="/Style/H/images/financing/gift-boximg-sweeprobot.jpg" width="324" height="216" />
+                              <div class="gift-boxtxt">
+                                   <p class="gift-boxtit fin-margintop10">科沃斯地宝魔镜扫地机器人</p>
+                                   <p class="gift-investmoney">累计投资：20万元</p>
+                              </div>
+                              <div class="gift-price">市场价：<span class="price-money">￥1099元</span></div>
+                         </div>
+                    </li>
+                    <li>
+                         <div class="gift-boxli">
+                              <img src="/Style/H/images/financing/gift-boximg-bicycle.jpg" width="324" height="216" />
+                              <div class="gift-boxtxt">
+                                   <p class="gift-boxtit fin-margintop10">喜德盛24速自行车黑红色17寸</p>
+                                   <p class="gift-investmoney">累计投资：10万元</p>
+                              </div>
+                              <div class="gift-price">市场价：<span class="price-money">￥899元</span></div>
+                         </div>
+                    </li>
+                    <li>
+                         <div class="gift-boxli">
+                              <img src="/Style/H/images/financing/gift-boximg7.jpg" width="324" height="216" />
+                              <div class="gift-boxtxt">
+                                   <p class="gift-boxtit fin-margintop10">小米空气净化器2代</p>
+                                   <p class="gift-investmoney">累计投资：10万元</p>
+                              </div>
+                              <div class="gift-price">市场价：<span class="price-money">￥699元</span></div>
+                         </div>
+                    </li>
+                    <li>
+                         <div class="gift-boxli">
+                              <img src="/Style/H/images/financing/gift-boximg-airpurifier.jpg" width="324" height="216" />
+                              <div class="gift-boxtxt">
+                                   <p class="gift-boxtit fin-margintop10">海尔车载空气净化器</p>
+                                   <p class="gift-investmoney">累计投资：5万元</p>
+                              </div>
+                              <div class="gift-price">市场价：<span class="price-money">￥339元</span></div>
+                         </div>
+                    </li>
+                    <li>
+                         <div class="gift-boxli">
+                              <img src="/Style/H/images/financing/gift-boximg-electricfan.jpg" width="324" height="216" />
+                              <div class="gift-boxtxt">
+                                   <p class="gift-boxtit fin-margintop10">艾美特(Airmate)静音电风扇</p>
+                                   <p class="gift-investmoney">累计投资：5万元</p>
+                              </div>
+                              <div class="gift-price">市场价：<span class="price-money">￥299元</span></div>
+                         </div>
+                    </li>
+                    <li>
+                         <div class="gift-boxli">
+                              <img src="/Style/H/images/financing/gift-boximg8.jpg" width="324" height="216" />
+                              <div class="gift-boxtxt">
+                                   <p class="gift-boxtit fin-margintop10">300元京东购物卡</p>
+                                   <p class="gift-investmoney">累计投资：5万元</p>
+                              </div>
+                              <div class="gift-price">市场价：<span class="price-money">￥300元</span></div>
+                         </div>
+                    </li>
+                    <li>
+                         <div class="gift-boxli">
+                              <img src="/Style/H/images/financing/gift-boximg-sportstowels.jpg" width="324" height="216" />
+                              <div class="gift-boxtxt">
+                                   <p class="gift-boxtit fin-margintop10">大朴（DAPU）32支纯棉健身巾</p>
+                                   <p class="gift-investmoney">累计投资：1万元</p>
+                              </div>
+                              <div class="gift-price">市场价：<span class="price-money">￥49元</span></div>
+                         </div>
+                    </li>
+                    <li>
+                         <div class="gift-boxli">
+                              <img src="/Style/H/images/financing/gift-boximg9.jpg" width="324" height="216" />
+                              <div class="gift-boxtxt">
+                                   <p class="gift-boxtit fin-margintop10">手机话费充值50元</p>
+                                   <p class="gift-investmoney">累计投资：1万元</p>
+                              </div>
+                              <div class="gift-price">市场价：<span class="price-money">￥50元</span></div>
+                         </div>
+                    </li>
+               </ul>
+          </div>
+          <a href="/invest/index.html" class="fin-giftbtn"></a>
+          <div class="fin-newerrule fin-giftrule">
+               <p>活动规则：</p>
+               1、此板块活动新老用户均可参加；<br>
+               <span style="color:#ef2d1e">2、兑换额度指活动期间累计投资30天以上标的（小于等于30天标的无法参与本次活动）的金额；（具体累计金额计算时间：8月4日-8月31日）；</span><br>
+               3、当活动结束后，所兑换的奖品以最高累计金额为准，自动匹配能够兑换的奖品；<br>
+               4、每位用户根据自身的累计投资额度，只能选择兑换一款商品；<br>
+               5、活动结束后未使用的兑换额度自动清零；<br>
+               6、奖品安排在活动结束后15个工作日内统一发放，届时请注意物流动态信息；<br>
+               7、在法律允许范围内，链金所保留对此活动的最终解释权，如有疑问请联系官方客服400-6626-985。
+          </div>
+     </div>
+</div>
+<div class="fin-pagegift-bottom"></div>
+<div class="floatlayer">
+     <a class="flo-lay flo-lay-newer js-jumo-newerpage" href="javascript:void(0)"></a>
+     <a class="flo-lay flo-lay-older js-jumo-olderpage" href="javascript:void(0)"></a>
+     <a class="flo-lay flo-lay-all js-jumo-allpage" href="javascript:void(0)"></a>
+</div>
+<!--中奖 弹窗start-->
+<div class="financing-pop winner-pop js-winner-pop">
+     <a href="javascript:void(0)" class="closebtn winner-btn js-closebtn"></a>
+     <div class="winner-text">中奖金额：<span class="winner-price">--</span>元</div>
+</div>
+<!--中奖 弹窗end-->
+<!--谢谢参与 start-->
+<div class="financing-pop dotwin-pop js-dotwin-pop">
+     <a href="javascript:void(0)" class="closebtn dotwin-btn js-closebtn"></a>
+     <div class="dotwin-text">很遗憾，差一点点呢</div>
+</div>
+<!--谢谢参与 end-->
+<div class="invite-tips js-errortips">操作失败！</div>
+<input type="hidden" id="islogin" value="{$UID|default=0}">
+<input type="hidden" value="{$token}" id="token" name="token">
+<script type="text/javascript" src="__ROOT__/Style/H/js/awardRotate.js"></script>
+<script type="text/javascript">
+     var islogin	= $("#islogin").val();
+     //投资排行版滚动
+     function AutoScroll(obj) {
+          $(obj).find("ul:first").animate({
+               marginTop: "-74px"
+          }, 500, function() {
+               $(this).css({ marginTop: "0px" }).find("li:first").appendTo(this);
+          });
+     }
+
+     $(document).ready(function() {
+          /*转盘css3动画*/
+          $(".fin-turntable-wrap").hover(function(){
+               $(".turntable-point").removeClass("platemoving");
+          },function(){
+               $(".turntable-point").addClass("platemoving");
+          })
+
+          //侧边浮层
+          $(window).scroll(function ()
+          {
+               var st = $(this).scrollTop();
+               if(st > 999){
+                    $(".floatlayer").fadeIn("slow");
+               }
+               else{
+                    $(".floatlayer").fadeOut("fast");
+               }
+          });
+          $("body").on("click",".js-jumo-newerpage",function(){
+               $('body,html').animate({scrollTop:1000},500);
+          })
+          $("body").on("click",".js-jumo-olderpage",function(){
+               $('body,html').animate({scrollTop:2900},500);
+          })
+          $("body").on("click",".js-jumo-allpage",function(){
+               $('body,html').animate({scrollTop:4935},500);
+          })
+
+          /*大转盘*/
+          var rotateTimeOut = function (){
+               $('#rotate').rotate({
+                    angle:0,
+                    animateTo:2160,
+                    duration:8000,
+                    callback:function (){
+                         $(".js-errortips").text("网络超时，检查您的网络！").fadeIn().delay(2000).fadeOut();
+                    }
+               });
+          };
+          var bRotate = false;
+
+          var rotateFn = function (awards, angles, txt, leftimes,ret,token){
+               bRotate = !bRotate;
+               $('#rotate').stopRotate();
+               $('#rotate').rotate({
+                    angle:0,
+                    animateTo:angles+1800,
+                    duration:8000,
+                    callback:function (){
+                         $(".pop-bg").show();
+                         if( awards == 3){
+                              $(".js-dotwin-pop").show();
+                              $(".dotwin-text").text("很遗憾，差一点点呢");
+                         }
+                         else{
+                              $(".js-winner-pop").show();
+                              $(".winner-price").text(txt);
+                         }
+                         $(".js-lottery-times").text(leftimes);
+                         $(".js-fanli-money").text(ret);
+                         $("#token").val(token);
+                         bRotate = !bRotate;
+                    }
+               })
+          };
+
+          $("body").on("click",".turntable-point",function (){
+               var tokenval = $("#token").val();
+               if(browser=="Microsoft Internet Explorer" && (b_version.match(/7./i)=="7." || b_version.match(/8./i)=="8." ))
+               {
+                    alert("建议您升级浏览器再使用转盘抽奖，使用IE9以上体验更舒畅哦~~");
+                    $(".pop-bg,.js-turntablepop").show();
+                    return;
+               }
+               if(bRotate)return;
+               $.ajax({
+                    url: '__URL__/getResult',
+                    type: 'POST',
+                    data: {token: tokenval},
+                    timeout: 5000,
+                    dataType: 'json',
+                    beforeSend: function () {
+                         $(".js-errortips").after('<div class="loadingspinner"><div class="lrect1"></div><div class="lrect2"></div><div class="lrect3"></div><div class="lrect4"></div><div class="lrect5"></div></div>');
+                    },
+                    success: function (d){
+                         //console.log(d);
+                         $(".loadingspinner").remove();
+                         if( d.status == 1 ){
+                              $(".js-errortips").text("您未登录，请先登录！").fadeIn().delay(2000).fadeOut();
+                              return;
+                         }
+                         else if( d.code == 0 ){
+                              $(".js-errortips").text("您抽奖机会已经用完，请再接再厉！").fadeIn().delay(2000).fadeOut();
+                              return;
+                         }
+                         else{
+                              var angle = d.data.angle;
+                              var item = angle/60;
+                              switch (item) {
+                                   //[5元，15元，25元，谢谢参与，55元，1元]
+                                   case 0:
+                                        rotateFn(0, 360, d.message,d.data.left, d.data.ret, d.data.token);
+                                        break;
+                                   case 1:
+                                        rotateFn(1, 60, d.message,d.data.left, d.data.ret, d.data.token);
+                                        break;
+                                   case 2:
+                                        rotateFn(2, 120, d.message,d.data.left, d.data.ret, d.data.token);
+                                        break;
+                                   case 3:
+                                        rotateFn(3, 180, d.message,d.data.left, d.data.ret, d.data.token);
+                                        break;
+                                   case 4:
+                                        rotateFn(4, 240, d.message,d.data.left, d.data.ret, d.data.token);
+                                        break;
+                                   case 5:
+                                        rotateFn(5, 300, d.message,d.data.left, d.data.ret, d.data.token);
+                                        break;
+                              }
+                         }
+                    },
+                    error:function(){
+                         $(".js-errortips").text("请求异常，稍后重试！").fadeIn().delay(2000).fadeOut();
+                         setTimeout("window.location.reload()",2000);
+                    }
+               })
+          });
+
+          /*转盘抽奖-关闭按钮*/
+          $("body").on("click",".js-closebtn",function(){
+               $(".pop-bg,.financing-pop").hide();
+          })
+
+          listname();
+     });
+
+     /*我的推荐名单列表*/
+     function listname(){
+          $.ajax({
+               url: '__URL__/getrecom',
+               type: 'get',
+               data: '',
+               timeout: 5000,
+               dataType: 'json',
+               success: function (d){
+                    var thisData = d.data.list;
+                    //console.log(d);
+                    if( d.code == 1){
+                         if( d.data.list.length < 1 ){
+                              $("#reclist-demo").html('<div class="remcomend-login rec-nologin">无推荐记录！</div>');
+                         }
+                         else{
+                              $("#reclist-demo").empty();
+                              var htmlresult = '';
+                              for(var i = 0; i < thisData.length; i++){
+                                   var isinvested = thisData[i].isInvested ? "已投资" : "未投资";
+                                   var classname = i%2 ? "tab-main-box2" : "";
+                                   htmlresult += '<li class="tab-main-box ' + classname + '"><span class="main-box-a">'+ thisData[i].user_phone +'</span>'
+                                   + '<span class="main-box-b">' + isinvested +'</span>'
+                                   + '<span class="main-box-c">' + thisData[i].money +'元'
+                                   + '</span></li>';
+                              }
+                              //console.log(htmlresult);
+                              $("#reclist-demo").append("<ul>"+htmlresult+"</ul>");
+
+                              //推荐小伙伴滚动
+                              if($('#reclist-demo ul li').length > 4 ){
+                                   var a = setInterval('AutoScroll("#reclist-demo")', 2000);
+                                   $('#reclist-demo').mouseleave(function(){
+                                        a = setInterval('AutoScroll("#reclist-demo")', 2000);
+                                   })
+                                   $('#reclist-demo').mouseenter(function(){
+                                        clearInterval(a);
+                                   })
+                              }
+                         }
+                    }
+               },
+               error:function(){
+                    $(".js-errortips").text("请求异常，稍后重试！").fadeIn().delay(2000).fadeOut();
+                    setTimeout("window.location.reload()",2000);
+               }
+          })
+     }
+</script>
+<include file="Public:_footer" />

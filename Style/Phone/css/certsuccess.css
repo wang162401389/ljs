@@ -1,0 +1,86 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+	list-style: none;
+}
+body {
+	margin-bottom: 50px;
+	background-color: #f0f0f0;
+}
+img {
+	max-width:100%;
+	height:auto;
+}
+.bottom {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+#bottomNav a {
+	color: #727171;
+	font-size: 80%;
+}
+#bottomNav a.active {
+	color: #25b4e9;
+}
+#header .bar {
+	background-color: #54c0f2;
+	text-align: center;
+	height: 50px;
+}
+#header .bar .title {
+	color: #fff;
+	font-size: 120%;
+	padding-top: 10px;
+}
+.content {
+	text-align: center;
+	padding: 20px;
+}
+.content .red{color: #f7583e;font-style: normal;}
+.content .success{margin: 2rem 0;}
+.content .success .text {
+	display: block;
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+.content .text1 {
+	margin:2rem 0 1rem;
+}
+.content .text1 span{
+	display: block;
+	line-height: 2rem;
+}
+.content .packetimg{width: 80%;margin-bottom: 2rem; pointer-events: none;}
+.regcon p{ width: 54%;margin: 0 auto;line-height: 2rem;}
+
+.content table td {
+    padding: 5px;
+}
+.content table td img {
+    width: 80%;
+    padding-bottom: 10px;
+}
+.content table td .finished {
+    color: #04aae6;
+}
+.content .text3{    font-size: .8rem;margin-top: 1rem; }
+.content .confirm a {
+	background-color: #54c1f3;
+	display: block;
+	width: 95%;
+    margin: 3rem auto 0;
+    padding: .7rem 0;
+}
+/*新人红包弹窗*/
+.alldiv{ position: fixed;top: 0;left: 0;width: 100%;height:100%;background-color: rgba(0,0,0,.4);z-index: 1050;}
+.box{ text-align: center;width: 85%;margin: 0 auto;background: url(/Style/Phone/img/index/packet2.png);background-size: 100% 100%; position: relative;top:50%;padding: 1rem 0;transform: translate(0,-50%);}
+.box .close-btn{font-size: 1.5rem;color: #fff;border: 1px solid;display: block;position: absolute;width: 2rem;height: 2rem;line-height: 1.8rem;border-radius: 50%;top: -2.5rem;right: 0rem;cursor: pointer;}
+.box .btn-div{ margin-top: 30rem; margin-bottom: 1rem;}
+.box .btn-div a{width: 60%;margin: 0 auto;color: #812f02;background-color: #ffe101;border-radius: 25px;text-align: center;    display: block;}
+
+@media screen and (min-width:320px){.box .btn-div{ margin-top: 22rem;}}
+@media screen and (min-width:375px){.box .btn-div{ margin-top: 24rem;}}
+@media screen and (min-width:414px){.box .btn-div{ margin-top: 28rem;}}
+@media screen and (min-width:640px){.box .btn-div{ margin-top: 35rem;}}
+@media screen and (min-width:720px){.box .btn-div{ margin-top: 40rem;}}

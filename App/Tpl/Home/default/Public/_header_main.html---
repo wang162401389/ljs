@@ -1,0 +1,348 @@
+<script type="text/javascript" src="__ROOT__/Style/H/js/top.js"></script>
+<style>
+dl,dd,dt{margin:0;padding:0;}
+a{ text-decoration:none;}
+.floating_ck{position:fixed;right:10px;top:60%;z-index:99}
+.floating_ck dl dd{position:relative;width:53px;height:50px;background-color:#b6b6b6;border-bottom:solid 1px #ffffff;text-align:center;background-repeat:no-repeat;background-position:center 45%;cursor:pointer;}
+.floating_ck dl dd:hover{background-color:#54c0f2;border-bottom:solid 1px #54c0f2;}
+.floating_ck dl dd:hover .floating_left{display:block;}
+.consult,.words{background-image:url(__ROOT__/Style/H/kefu/icon0701/zxicon.png);}
+.quote{background-image:url(__ROOT__/Style/H/kefu/icon0701/kficon.png);}
+.qq{background-image:url(__ROOT__/Style/H/kefu/icon0701/kefu11.png);  }
+.qrcord{background-image:url(__ROOT__/Style/H/kefu/icon0701/erweima.png);}
+.return{background-image:url(__ROOT__/Style/H/kefu/icon0701/fanhui.png);}
+.floating_ck dd span{display:block;padding-top:54px;}
+.floating_left{position:absolute;left:-161px;top:0px;width:160px;background-color:#fff;border-bottom:solid 1px #ccc;border-top:solid 1px #ccc;border-left:solid 1px #ccc;display:none;}
+.w_weibo{height:49px;left:-161px;background-color:#fff;border-bottom:solid 1px #ccc;border-top:solid 1px #ccc;border-left:solid 1px #ccc;}
+.qq_ys{height:50px;left:-161px;background-color:#fff;border-bottom:solid 1px #ccc;border-top:solid 1px #ccc;border-left:solid 1px #ccc; text-align:center;font-size: 12px;}
+.fw{font-size: 13px;line-height: 25px; height:150px;}
+.fw1{font-size: 13px;line-height: 25px; font-weight:bold;}
+.floating_ewm{height:118px;top:-40px;}
+.floating_ewm i{background-image:url(__ROOT__/Style/H/kefu/ccfaxcode105.png);display:block;width:105px;height:105px;margin:auto;margin-top:7px;}
+.floating_ewm p{color:#fff;margin-top:5px;}
+.floating_ewm .qrcord_p01{font-size:12px;line-height:20px;}
+.floating_ewm .qrcord_p02{font-size:18px;}
+
+</style>
+<script type="text/javascript">
+function videoverify(){
+	$.jBox.confirm("申请视频认证后会直接从帐户扣除认证费用{$glo.fee_video|default=0}元，然后客服会联系您进行认证。<br/><font style='color:red'>确定要申请认证吗?</font>", "视频认证", dovideo, { buttons: { '确认申请': true, '暂不申请': false} });
+}
+function dovideo(v, h, f) {
+	if (v == true){
+        $.ajax({
+            url: "__APP__/common/video",
+            data: {},
+            timeout: 5000,
+            cache: false,
+            type: "get",
+            dataType: "json",
+            success: function (d, s, r) {
+              	if(d){
+					if(d.status==1) $.jBox.tip(d.message, 'success');
+					else $.jBox.tip(d.message, 'fail');
+				}
+            }
+        });
+	}
+	return true;
+};
+// 自定义按钮
+function faceverify(){
+	$.jBox.confirm("<font style='color:red'>确定要申请现场认证吗?</font>", "现场认证", doface, { buttons: { '确认申请': true, '暂不申请': false} });
+}
+function doface(v, h, f) {
+	if (v == true){
+        $.ajax({
+            url: "__APP__/common/face",
+            data: {},
+            timeout: 5000,
+            cache: false,
+            type: "get",
+            dataType: "json",
+            success: function (d, s, r) {
+              	if(d){
+					if(d.status==1) $.jBox.tip(d.message, 'success');
+					else $.jBox.tip(d.message, 'fail');
+				}
+            }
+        });
+	}
+	return true;
+};
+  $(function  () {
+   	 var xiaowei_p= $("#xiaowei li");
+   	 if(true)
+   	 {
+   	   xiaowei_p.parent().parent().css('background','url(__ROOT__/Style/H/images/hover_bg.gif) no-repeat center right');
+
+
+   	 }
+	 //图库弹出层
+
+   })
+
+  
+</script>
+<script type=text/javascript>
+<!--//--><![CDATA[//><!--
+function menuFix() {
+var ele_ = document.getElementById("nav");
+	if(!ele_) return;
+var sfEls = ele_.getElementsByTagName("li");
+for (var i=0; i<sfEls.length; i++) {
+sfEls[i].onmouseover=function() {
+this.className+=(this.className.length>0? " ": "") + "sfhover";
+}
+sfEls[i].onMouseDown=function() {
+this.className+=(this.className.length>0? " ": "") + "sfhover";
+}
+sfEls[i].onMouseUp=function() {
+this.className+=(this.className.length>0? " ": "") + "sfhover";
+}
+sfEls[i].onmouseout=function() {
+this.className=this.className.replace(new RegExp("( ?|^)sfhover\\b"),
+"");
+}
+}
+}
+window.onload=menuFix;
+//--><!]]></script>
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/H/css/home.css" />
+</head><body>
+<!--头部开始-->
+<if condition="$UID gt '0'"> 
+  <include file="default:Common:afterlogin" group="Member"/>
+  <script type="text/javascript">
+	$(function(){
+		$("#regbanner").hide();
+		
+	})
+
+	</script>
+  <else/>
+  <include file="default:Common:beforelogin" group="Member"/>
+</if>
+<script type="text/javascript">
+  function  erji(a, b, c, d) {
+        $(a).children(b).each(function() {
+            var a1 = $(this).children(c),
+             b2 = $(this).children(d),
+             index=$(this).index();
+            if (a1.html()) $(this).hover(function() {
+                a1.show();
+                
+            index==0 && $(this).css({'background-position':'0px -62px'});
+            index==1 && $(this).css({'background-position':'0px -124px'});
+                b2.css({
+
+                    'color':'#cfcfcf'
+                });
+            }, function() {
+                a1.hide();
+                 index==0 && $(this).css({'background-position':'0px -31px'});
+            index==1 && $(this).css({'background-position':'0px -93px'});
+                b2.css({
+
+                    'color':'#b1b1b1'
+                });
+            });
+        });
+    }
+    erji('#erji','li','div','h1');
+</script>
+<div class="Nav">
+  <div class="contain">
+    <div class="N_logo"><a href="/">{:get_ad(1)}</a></div>
+    <div class="Nav_nav">
+      <div class="menu">
+          <ul class="navigation-list" id="dw_ul"  style="width:700px;" >
+              <php>$typelist = getTypeList(array('type_id'=>0,'limit'=>9)); foreach($typelist as $vtype=> $va){ </php>
+              <li class="navigation-item "> <a href="{$va.turl}" class="navigation-item-name">{$va.type_name}
+                  <php>$sontypelist = getTypeList(array('type_id'=>$va['id'],'limit'=>8,'notself'=>true)); if($sontypelist != null){</php>
+                  <span class="ym"></span>
+                  <php>}</php>
+              </a>
+                  <div class="navigation-list-two-con" id="dw_ul2">
+                      <div class="navigation-list-two">
+                          <php>$sontypelist = getTypeList(array('type_id'=>$va['id'],'limit'=>8,'notself'=>true)); if($sontypelist != null){</php>
+                          <span class="loanImg nav-sanjiao"></span>
+                          <php>}</php>
+                          <ul class="navigation-two-list" id="erji_nav">
+                              <php>$sontypelist = getTypeList(array('type_id'=>$va['id'],'limit'=>8,'notself'=>true)); foreach($sontypelist as $sonvtype){</php>
+                              <li><a href="{$sonvtype.turl}"  >{$sonvtype.type_name}</a></li>
+                              <php>}</php>
+                          </ul>
+                      </div>
+                  </div>
+              </li>
+              <php>}</php>
+              <if condition="$UID gt '0'">
+                  <else/>
+                  <!-- <li class="navigation-right  "> <a class="" href="__APP__/member/common/register/">注册</a> </li> -->
+                  <li class="navigation-right"> <a class="first" href="__APP__/member/common/login/">我的账户</a> </li>
+              </if>
+              <if condition="$UID gt '0'">
+                  <li id="ui-nav-item-link"  class="ui-nav-item ui-nav-item-x" >
+                      <a  class="ui-nav-item-link rrd-dimgray ui-nav-username fn-text-overflow" href="__APP__/member/" >
+                          <?php
+                 $dws= session('u_user_name');
+            ?>
+                          <span id="jieduan">我的账户<!-- 您好，{$dws|cnsubstr=###,10} --></span>
+                          <span class="arrow-down"></span>
+                      </a>
+                      <ul class="ui-nav-dropdown" id="ui-nav-dropdown" style="display: none;">
+                          <li class="ui-nav-dropdown-angle"><span></span></li>
+                          <li class="ui-nav-dropdown-item"><a class="rrd-dimgray" href="__APP__/member/charge#fragment-1">充值</a></li>
+                          <li class="ui-nav-dropdown-item"><a class="rrd-dimgray" href="__APP__/member/withdraw#fragment-1">提现</a></li>
+                          <li class="ui-nav-dropdown-separator"></li>
+                          <li class="ui-nav-dropdown-item"><a class="rrd-dimgray" href="__APP__/member/capital#fragment-2">资金明细</a></li>
+                          <li class="ui-nav-dropdown-item"><a class="rrd-dimgray" href="__APP__/member/charge#fragment-2">充值记录</a></li>
+                          <li class="ui-nav-dropdown-item"><a class="rrd-dimgray" href="__APP__/member/withdlog#fragment-1">提现记录</a></li>
+                          <li class="ui-nav-dropdown-item"><a class="rrd-dimgray" href="__APP__/member/promotion/checkissetpwd?i=2">新浪支付密码</a></li>
+                          <li class="ui-nav-dropdown-separator"></li>
+                          <li class="ui-nav-dropdown-item"><a class="rrd-dimgray" href="__APP__/member/common/actlogout">退出</a></li>
+                      </ul>
+                  </li>
+              </if>
+        </ul>
+      </div>
+    </div>
+
+      <!--快捷通道end-->
+
+    <script language="javascript">
+          $(document).ready(function(){
+					$("#ui-nav-item-link").mouseover(function(){
+						$("#ui-nav-dropdown").show()
+						}).mouseout(function(){
+							$("#ui-nav-dropdown").hide()
+							});
+						$(".ui-nav-dropdown-item").mouseover(function(){
+							$(this).css({"background":"#fc8026"}).mouseout(function(){
+								$(this).css({"background":"#fff"})
+									});
+							})
+					  })
+//			var str=$("#jieduan").html();
+//				if(len(str)>6){
+//					str=
+//			}
+     </script>
+  </div>
+</div>
+
+  <!-- 客服代码 -->
+ <div class="floating_ck">
+        <dl>
+            <dt></dt>
+            <dd class="quote">
+                <div class="floating_left fw" ><div style="text-align:center;color:#555; margin-top:10px;margin-bottom:5px;font-size:14px;">客服热线</div><div style="font-weight:bolder;text-align:center;color:#555; font-size:18px;">400-6626-985</div>
+                 <div style="margin-top:10px; margin-bottom:10px; height:1px; border-bottom:1px dashed #ccc; margin-left:auto; margin-right:auto; width:90%;"></div>
+               <div style="text-align:center;color:#555;">服务时间<br>早9:00-晚19:30</div>
+            </div>
+            </dd>
+          
+            <dd class="qq">
+             <div class="floating_left qq_ys">
+                   <!-- <div style="text-align:center;color:#54c0f2; font-size:20px; margin-top:15px;">链金所CCFAX</div>
+                    <div style="margin-top:15px; margin-bottom:5px; height:1px; border-bottom:1px dashed #ccc; margin-left:auto; margin-right:auto; width:90%;"></div>
+                    <a href="http://crm2.qq.com/page/portalpage/wpa.php?uin=4006626985&amp;f=1&amp;ty=1&amp;aty=0&amp;a=&amp;from=6" target="_blank"> <div style="text-align:center;color:#555; font-size:16px; margin-top:10px; line-height:30px;"><img src="__ROOT__/Style/H/kefu/icon0701/icon.png"  style="margin-right:20px;"/>在线客服</div> </a>
+                 
+                  
+                   <div style="margin-top:15px; margin-bottom:10px; height:1px; background:#cccccc; margin-left:auto; margin-right:auto; width:90%;"></div>
+                   <div style="margin-top:10px; margin-bottom:10px; height:1px; border-bottom:1px dashed #ccc; margin-left:auto; margin-right:auto; width:90%;"></div>
+                   <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=2e2765fa726782349d2c95556a84c47af85c182ac46b368c7218bc8ab8d1c1d5"><div style="color:#555;text-align:center;font-size:14px"> 咨询群：118691376</div></a>
+                    <div style="margin-top:5px; margin-bottom:10px; height:1px; border-bottom:1px dashed #ccc; margin-left:auto; margin-right:auto; width:90%;"></div>
+                   <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=0615a41be4cc50441d52ed7a421d997dc342d8e348be0977090bb6e6883be608"><div style="color:#555;text-align:center; font-size:14px; margin-bottom:8px;"> 投资群：118597330</div></a>
+                </div> -->
+                <!-- <div class="floating_left qq">
+                    <volist name=":get_qq(0)" id="vq">
+                     <a class="icoTc" href="tencent://Message/?Uin={$vq.qq_num}&amp;websiteName={$vq.qq_title}&amp;Menu=ye"><img border="0" src="http://wpa.qq.com/pa?p=2:{$vq.qq_num}:52" alt="点击这里给我发消息" title="点击这里给我发消息"/>&nbsp;{$vq.qq_title|cnsubstr=###,6,0,"utf-8",false}</a>
+                    </volist>
+                </div> -->
+                <!-- 小能客服 -->
+                <?php $peceptionid = peception(); ?>
+                <?php $u_name= session('u_user_name');?>
+                <php>$userinfo = getuserinfo($u_name);</php>
+               <span style="padding:0;height:50px;text-align:center;line-height:50px;font-size: 13px; font-weight:bold;" onClick="NTKF.im_openInPageChat('{$peceptionid}')">在线客服</span>
+               </div>
+               <span onClick="NTKF.im_openInPageChat('{$peceptionid}')"></span>
+              </dd>
+           
+            <dd class="consult">
+                <div class="floating_left w_weibo">
+               <a href="http://weibo.com/ccfax" target="_blank"><div style="text-align:center; font-size:16px;  line-height:30px;"><img src="__ROOT__/Style/H/images/index/weibo.png"/></div></a>
+                </div>
+            </dd>
+            <dd class="qrcord">
+                <div class="floating_left floating_ewm">
+                    <i></i>
+                </div>
+            </dd>
+            <dd class="return">
+				<div class="floating_left fw1">
+					<span style="padding:0;height:50px;text-align:center;line-height:50px;" onClick="gotoTop();return false;">返回顶部</span>
+				</div>
+                <span onClick="gotoTop();return false;"></span>
+            </dd>
+        </dl>
+  </div>
+
+<!--集成脚本加载 -->
+<script language="javascript" type="text/javascript">
+var name = '{$u_name}';
+var page = '{$userinfo.url.1}';
+var bid = '{$userinfo.url.2}';
+if(page == 'invest' && bid == 'index'){
+  NTKF_PARAM = {
+            siteid:"kf_9372",               
+            settingid:"{$peceptionid}",  
+            uid:"{$userinfo.id|default=''}",                  
+            uname:"{$u_name|default=''}",        
+            isvip:"{$userinfo.isvip}",                         
+            userlevel:"1",                    
+            erpparam:"erpparam",
+            ntalkerparam:{
+                  category:"质金链;融金链;信金链;优金链",    //分类名称，多分类可以用分号(;)分隔， 长路径父子间用冒号(:)分割
+                  brand:"无"                //品牌名称，多品牌可以用分号(;)分隔
+            }
+          }
+}else if(page == 'invest' && bid != 'index' ){
+        NTKF_PARAM = {
+        siteid:"kf_9372",               
+        settingid:"{$peceptionid}",  
+        uid:"{$userinfo.id|default=''}",                  
+        uname:"{$u_name|default=''}",        
+        isvip:"{$userinfo.isvip}",                         
+        userlevel:"1",                    
+        erpparam:"erpparam",
+        itemid:bid,    //(必填)商品ID
+        itemparam:"ccfax",    //(选填)itemparam为商品接口扩展字段，用于商品接口特殊要求集成
+        }
+}else if(name == ''){
+      NTKF_PARAM = {
+        siteid:"kf_9372",               //企业ID，为固定值，必填
+        settingid:"{$peceptionid}",  //接待组ID，为固定值，必填
+        uid:"",                    //用户ID
+        uname:"",        //用户名
+        isvip:"",                          //是否为vip用户，0代表非会员，1代表会员
+        userlevel:"1",                    //网站自定义会员级别，0-N，可根据选择判断
+        erpparam:"erpparam"                      //erpparam为erp功能的扩展字段，可选
+        } 
+}else{
+      NTKF_PARAM = {
+        siteid:"kf_9372",               //企业ID，为固定值，必填
+        settingid:"{$peceptionid}",  //接待组ID，为固定值，必填
+        uid:"{$userinfo.id|default=''}",                    //用户ID
+        uname:"{$u_name|default=''}",        //用户名
+        isvip:"{$userinfo.isvip}",                          //是否为vip用户，0代表非会员，1代表会员
+        userlevel:"1",                    //网站自定义会员级别，0-N，可根据选择判断
+        erpparam:"erpparam"                      //erpparam为erp功能的扩展字段，可选
+        } 
+}
+</script>
+
+<!--基础脚本加载 -->
+<script type="text/javascript" src="https://dl.ntalker.com/js/xn6/ntkfstat.js?siteid=kf_9372" charset="utf-8"></script>
+

@@ -1,0 +1,324 @@
+<style>
+    .content{
+        width:100%;
+        background-color: #F2F2F2;
+        min-height: 380px;
+        padding:10px 0px;
+        font-size: 16px;
+        height: auto;
+    }
+    .search{
+        background-color: #ffffff;
+        height: 48px;
+        line-height: 48px;
+        overflow: hidden;
+        width:98%;
+        margin: 0 auto;
+    }
+    .search>div:first-child{
+        float: left;
+        margin-left: 50px;
+    }
+    .main{
+        min-height: 240px;
+        width:98%;
+        margin: 0 auto;
+        background-color: #ffffff;
+        margin-top: 12px;
+    }
+    ul{
+        list-style-type: none;
+    }
+    .tab{
+        list-style-type: none;
+        overflow: hidden;
+        margin-top: 12px;
+        margin-left: 12px;
+        margin-right: 12px;
+        boder:1px dashed #999999;
+    }
+    .tab li{
+        float: left;
+        border: 1px;
+        width: 70px;
+        text-align: center;
+    }
+    .tab li div{
+        border: 1px solid #F2F2F2;
+        width: 60px;
+        height: 24px;
+        line-height:24px ;
+        margin: 0 auto;
+    }
+    .select{
+        background-color: #24B3E5;
+        color: #ffffff;
+    }
+    .all_info{
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 10px;
+    }
+    .all_info>li{
+        margin-top: 10px;
+        border-bottom: 1px solid #F2F2F2 ;
+        overflow: hidden;
+        padding-bottom: 10px;
+    }
+    .all_info>li>div:first-child{
+        float: left;
+        margin-left: 10px;
+    }
+    .all_info>li>div:last-child{
+        margin-right:200px;
+        float: right;
+    }
+    .all_info>li:first-child{
+        border-bottom: 1px dashed #F2F2F2;
+    }
+    .detail_info{
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 10px;
+    }
+	.detail_info th{padding-top:2px; padding-bottom:2px;}
+	.detail_info td{padding-top:2px; padding-bottom:2px; font-size:15px;}
+    .btn_group{
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+        margin-top: 20px;
+    }
+    .btn_group  input{
+        background-color: #ffffff;
+        border: 1px solid #f2f2f2;
+        width: 80px;
+        height: 30px;
+        line-height: 30px;
+        margin-bottom: 10px;
+    }
+</style>
+<div class="content">
+    <div class="search">
+        <div>注册时间</div>
+        <div style="float: right;width: 600px">
+            <div style="float: left"><strong>起止日期：</strong> </div>
+            <div  style="float: left">
+                <input type="text" id="start_time1" value="<php>if($search['start_time1']){echo date('Y-m-d',$search['start_time1']);}</php>" readonly="readonly" class="Wdate timeInput_Day" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\\\'end_time1\\\')||\\\'2020-10-01\\\'}'})"/>
+                至
+                <input type="text" value="<php>if($search['end_time1']){echo date('Y-m-d',$search['end_time1']);}</php>" id="end_time1" readonly="readonly" class="Wdate timeInput_Day" onFocus="WdatePicker({minDate:'#F{$dp.$D(\\\'start_time1\\\')||\\\'2020-10-01\\\'}'})"/>
+            </div>
+            <!-- <a style="float: left;width: 80px;text-align: center;margin-left: 10px;" onclick="do_search()" >查找</a> -->
+        </div>
+        
+    </div>
+    <div class="search">
+        <div>复审时间</div>
+        <div style="float: right;width: 600px">
+            <div style="float: left"><strong>起止日期：</strong> </div>
+            <div  style="float: left">
+                <input type="text" id="start_time2" value="<php>if($search['start_time2']){echo date('Y-m-d',$search['start_time2']);}</php>" readonly="readonly" class="Wdate timeInput_Day" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\\\'end_time2\\\')||\\\'2020-10-01\\\'}'})"/>
+                至
+                <input type="text" value="<php>if($search['end_time2']){echo date('Y-m-d',$search['end_time2']);}</php>" id="end_time2" readonly="readonly" class="Wdate timeInput_Day" onFocus="WdatePicker({minDate:'#F{$dp.$D(\\\'start_time2\\\')||\\\'2020-10-01\\\'}'})"/>
+            </div>
+            <a style="float: left;width: 80px;text-align: center;margin-left: 10px;" onclick="do_search()" >查找</a>
+            <a style="float: left;width: 80px;text-align: center;margin-left: 10px;" onclick="do_search2()" >导出</a>
+        </div>
+    </div>
+    <div class="main">
+        <ul class="tab">
+            <li>
+                <div id="all" <?php if($tag=="all") { ?>class="select" <?php } ?> name="all" onclick="show_tab(this)">汇总</div>
+            </li>
+            <li>
+                <div name="detail" id="detail" <?php if($tag=="detail") { ?> class="select" <?php } ?>  onclick="show_tab(this)">明细</div>
+            </li>
+        </ul>
+        <div class="all" <?php if($tag=="detail") { ?> style="display: none" <?php } ?> >
+            <ul class="all_info"   >
+                <li><div style="float: left; font-weight:bolder">统计结果</div></li>
+                <li>
+                    <div style="font-size:15px">推荐用户注册</div>
+                    <div><span style="color: #7FCCFF;">{$person_num}</span>人</div>
+                </li>
+                <li>
+                    <div style="font-size:15px">推荐用户实名</div>
+                    <div><span style="color: #7FCCFF">{$real_name_num}</span>人</div>
+                </li>
+                <li>
+                    <div style="font-size:15px">推荐用户投资总额</div>
+                    <div><span style="color: #7FCCFF">{$investor_num}</span>元</div>
+                </li>
+            </ul>
+        </div>
+        <div class="detail"  <?php if($tag=="all") { ?> style="display: none" <?php } ?> >
+            <table class="detail_info" style="text-align:center">
+                <tr style="background-color: #B3E2F9;">
+                    <th style="text-align:center">会员名单</th>
+                    <th style="text-align:center">会员姓名</th>
+                    <th style="text-align:center">注册时间</th>
+                    <th style="text-align:center">投资标的</th>
+                    <th style="text-align:center">复审时间</th>
+                    <th style="text-align:center">投资金额</th>
+                    <th style="text-align:center">投资期限</th>
+                    <th style="text-align:center">返利</th>
+                </tr>
+                <?php foreach($list as $key=>$vo) { ?>
+                <?php if($key%2==0){ ?>
+                <tr style="background-color: #F2F2F2" >
+                    <?php } else { ?>
+                <tr>
+                    <?php } ?>
+                    <td>{$vo.user_name}</td>
+                    <td>{$vo.real_name}</td>
+                    <td>{$vo.reg_time|date="Y-m-d",###}</td>
+                    <td>{$vo.borrow_name}</td>
+                    <td>{$vo.second_verify_time|date="Y-m-d",###}</td>
+                    <td>{$vo.investor_capital}</td>
+                    <td>{$vo.borrow_duration_txt}</td>
+                    <td>{$vo.profit_money|default='0.00'}</td>
+                </tr>
+                <?php } ?>
+                 <tr id="last">
+                    <td>合计</td>
+                    <td>/</td>
+                    <td>/</td>
+                    <td>/</td>
+                    <td>/</td>
+                    <td id="investtotal">0.00</td>
+                    <td>/</td>
+                    <td id="returntotal">0.00</td>
+                </tr>
+            </table>
+            <div class="btn_group">
+                <input type="button" value="上一页"  onclick="do_before()" style="margin-right: 10px; background-color: #ffffff;" />
+                <span class="cur">1</span>/<span class="total">{:sizeof($list)/8>1?sizeof($list)/8:1;}</span>
+                <input type="button" value="下一页"  onclick="do_next()" style="margin-left: 10px; background-color: #ffffff" />
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function show_tab(object){
+        name=$(object).attr("name");
+        console.log(name);
+        $("#all").removeClass("select");
+        $("#detail").removeClass("select");
+        $(object).addClass("select");
+        $(".all").hide();
+        $(".detail").hide();
+        $("."+name).show();
+
+    }
+</script>
+<script>
+    total=8;
+    function show_page(page){
+        totalpage=parseInt($(".total").html());
+        investtotal = 0;
+        returntotal = 0;
+        console.log(page);
+        tr=$(".detail_info").find("tr");
+        start=(page-1)*total+1;
+        end=start+(total-1);
+        tr.each(function(i,item){
+            console.log(item);
+            if(((i>=start)&&(i<=end))||(i==0)){
+                $(item).show();
+                if(page==totalpage){
+
+                    if (!isNaN(parseInt($(item).find("td").eq(5).html(), 10))) {
+                            investtotal += parseFloat($(item).find("td").eq(5).html(), 10);
+                    }
+                    if (!isNaN(parseInt($(item).find("td").eq(7).html(), 10))) {
+                            returntotal += parseFloat($(item).find("td").eq(7).html(), 10);
+                    }
+                }
+            }else{
+                if(page==totalpage)
+                {
+                    if (!isNaN(parseInt($(item).find("td").eq(5).html(), 10))) {
+                            investtotal += parseFloat($(item).find("td").eq(5).html(), 10);
+                    }
+                    if (!isNaN(parseInt($(item).find("td").eq(7).html(), 10))) {
+                            returntotal += parseFloat($(item).find("td").eq(7).html(), 10);
+                    }
+                }    
+                if(page==totalpage){
+                    if(item.id=="last"){
+
+                    }else{
+                        $(item).hide();    
+                    }    
+                }else{
+                    $(item).hide();    
+                }
+                
+                
+            }
+        })
+        $('#investtotal').html(parseFloat(Math.round(investtotal * 100) / 100).toFixed(2));
+        $('#returntotal').html(parseFloat(Math.round(returntotal * 100) / 100).toFixed(2));
+    }
+    $(function(){
+        tr=$(".detail_info").find("tr");
+        count=Math.ceil((tr.length-1)/total);
+        $(".total").html(count);
+        show_page(1);
+    })
+
+    function do_before(){
+        cur=parseInt($(".cur").html());
+        if(cur>1){
+            cur--;
+            show_page(cur);
+            $(".cur").html(cur);
+        }
+    }
+    function do_next(){
+        cur=parseInt($(".cur").html());
+        page=parseInt($(".total").html());
+        if(cur<page){
+            cur++;
+            show_page(cur);
+            $(".cur").html(cur);
+        }
+    }
+    function do_search(){
+        start=$("#start_time1").val();
+        end=$("#end_time1").val();
+
+        start2 = $("#start_time2").val();
+        end2 = $("#end_time2").val();
+
+        name=$(".select").attr("name");
+
+        start=$("#start_time1").val(start);
+        end=$("#end_time1").val(end);
+
+        start2 = $("#start_time2").val(start2);
+        end2 = $("#end_time2").val(end2);
+
+        href="__URL__/promotionresult?"+"start="+start+"&end="+end+"&start2="+start2+"&end2="+end2+"&tag="+name;
+        data = {};
+        data['start'] = $("#start_time1").val();
+        data['end'] = $("#end_time1").val();
+        data['start2'] = $("#start_time2").val();
+        data['end2'] = $("#end_time2").val();
+        ajaxGetData(href,'fragment-3', data);
+    }
+    function do_search2(){
+        start=$("#start_time1").val();
+        end=$("#end_time1").val();
+
+        start2 = $("#start_time2").val();
+        end2 = $("#end_time2").val();
+
+        name=$(".select").attr("name");
+        href="__URL__?"+"start="+start+"&end="+end+"&start2="+start2+"&end2="+end2+"&excel="+1+"&tag="+name;
+        window.location=href;
+        //ajaxGetData(href,'fragment-3')
+    }
+</script>

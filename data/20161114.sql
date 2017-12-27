@@ -1,0 +1,21 @@
+CREATE TABLE `lzh_borrow_auto` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `uid` int(10) unsigned NOT NULL COMMENT '用户id',
+  `money` decimal(10,2) NOT NULL COMMENT '单笔最低投标额',
+  `borrow_type` tinyint(3) NOT NULL COMMENT '投标种类：0不限 8保金链 1质金链 4融金链 6信金链 7优金链',
+  `repayment_type` tinyint(3) unsigned NOT NULL COMMENT '还款方式：0不限 1到期还本付息 2等额本息',
+  `is_borrow_day` tinyint(3) DEFAULT '0' COMMENT '天标选择0关闭 1开启',
+  `day_start` tinyint(3) unsigned DEFAULT NULL COMMENT '天标开始时间',
+  `day_end` tinyint(3) unsigned DEFAULT NULL COMMENT '天标结束时间',
+  `is_borrow_month` tinyint(3) DEFAULT '0' COMMENT '月标选择0关闭 1开启',
+  `month_start` tinyint(3) unsigned DEFAULT NULL COMMENT '月标开始时间',
+  `month_end` tinyint(3) unsigned DEFAULT NULL COMMENT '月标结束时间',
+  `rate_start` tinyint(3) unsigned DEFAULT NULL COMMENT '年利率开始时间',
+  `rate_end` tinyint(3) unsigned DEFAULT NULL COMMENT '年利率结束时间',
+  `ticket_type` tinyint(3) DEFAULT '0' COMMENT '使用投资券 1金额大的优先 2即将过期的优先 3不使用',
+  `open_type` tinyint(3) DEFAULT '0' COMMENT '自动投标开启状态:0禁用 1已开启 2已保存未开通代扣',
+  `update_time` int(11) DEFAULT NULL COMMENT '更新时间',
+  `create_time` int(11) NOT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`),
+  KEY `uid` (`uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='自动投标设置表'

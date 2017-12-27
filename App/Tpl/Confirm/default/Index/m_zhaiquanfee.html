@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <include file="default:Pub:header-common" group="M"/>
+    <link rel="stylesheet" href="__ROOT__/Style/Phone/css/service_fee.css">
+</head>
+
+<body>
+<include file="default:Pub:simple_header" group="M"/>
+<div class="content">
+    <div class="mbqr"><div></div>债权手续费</div>
+    <volist name="list" id="vo">
+        <div class="list">
+            <div class="anno">{$vo.borrow_name}</div>
+            <div class="text">
+                <div class="bxq">
+                    <div>标号：ZQ{$vo.id}</div>
+                    <div>债权手续费：<span>￥{$vo.colligate_fee}</span></div>
+                    <div>转让价格：<span>￥{$vo.borrow_money}</span></div>
+                </div>
+                <!-- <div class="count <if condition="$vo.secondconfirm_status eq 1">out" onclick="location.href='__APP__/confirm/index/protocol?bid={$vo.id}'">确认<else/>out1">已确认</if></div> -->
+        </div>
+    </volist>
+</div>
+<div class="last_confirm">
+    <div class="lc_f">共需支付：￥ <if condition='$fee gt 0'>{$fee}元</if></div>
+    <if condition="$fee gt 0">
+        <div class="lc_l" onclick="pay()">确认支付</div>
+        <else />
+        <div class="lc_l1"> 已经支付</div>
+    </if>
+</div>
+
+</div>
+<script>
+    function pay(){
+        location.href="__APP__/confirm/index/pay_zhaiquanfee";
+    }
+</script>
+</body>
+
+</body>
+</html>

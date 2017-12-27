@@ -1,0 +1,48 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<style>
+    #area_list {padding-left: 15px;text-align: center;}
+    .quan tr th,input{text-align:center}
+</style>
+<div class="so_main">
+    <div class="page_tit">奖品概率设置</div>
+    <form method="post" action="__URL__/themayprizeset" id="touzi_form">
+        <div id="search_div">
+            <div class="form2" style="background-color: #d2dbea;">
+                <table style="width: 80%;height: 80px;">
+                    <tr>
+                        <td style="width: 330px;">抽奖总数：{$total_count}</td>
+                        <td>抽奖剩余数：{$remaining_count}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="list">
+            <table class="quan" id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <th>奖品名称</th>
+                    <th>总数量</th>
+                    <th>剩余数量</th>
+                    <th>概率</th>
+                </tr>
+                <volist id="vo" name="list">
+                    <tr>
+                        <td style="vertical-align: top;">{$vo.prize_name}<input type="hidden" name="id[]" value="{$vo.id}"></td>
+                        <td><input type="text" name="prize_count[]" value="{$vo.prize_count}"></td>
+                        <td>{$vo['prize_count']-$vo['send_count']}</td>
+                        <td><input type="text" name="prize_probability[]" value="{:$vo['prize_probability']}">%</td>
+                    </tr>
+                </volist>
+                <tr>
+                    <td colspan="4">
+                    <input id="sendBt" style="margin-left:45%;float:left;width:100px;height:25px;font-size:14px" type="submit" value="确认修改">
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </form>
+</div>
+<include file="Public:_footer" />

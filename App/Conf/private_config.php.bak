@@ -1,0 +1,148 @@
+<?php
+    return array(
+        //数据库配置
+        // 'DB_TYPE'           => 'mysql',
+        // 'DB_HOST'           =>'115.159.114.87',
+        // 'DB_NAME'           =>'sp2p',
+        // 'DB_USER'           =>'lianjinsuo8899',
+        // 'DB_PWD'            =>'ccfaxtest87',
+        // 'DB_PORT'           =>'3306',
+        // 'DB_PREFIX'         =>'lzh_',
+
+        'DB_TYPE'           => 'mysql',
+        'DB_HOST'           =>'172.16.20.42',
+        'DB_NAME'           =>'sp2p',
+        'DB_USER'           =>'php_admin',
+        'DB_PWD'            =>'happyadmin@8888',
+        'DB_PORT'           =>'3306',
+        'DB_PREFIX'         =>'lzh_',
+
+        /**
+        'DB_TYPE'           => 'mysql',
+        'DB_HOST'           =>'localhost',
+        'DB_NAME'           =>'sp2p',
+        'DB_USER'           =>'root',
+        'DB_PWD'            =>'',
+        'DB_PORT'           =>'3306',
+        'DB_PREFIX'         =>'lzh_',
+         **/
+        // 'DB_TYPE'           => 'mysql',
+        // 'DB_HOST'           =>'192.168.0.5',
+        // 'DB_NAME'           =>'sp2p',
+        // 'DB_USER'           =>'root',
+        // 'DB_PWD'            =>'root',
+        // 'DB_PORT'           =>'3306',
+        // 'DB_PREFIX'         =>'lzh_',
+
+        'REDIS_INFO'=>array(
+            'host'=>'115.159.114.87',
+            'auth'=>'tesu@365.com',
+        ),
+        'ADD_FUNCTION'=>array(
+            'repayment'=>array('enable'=>1,'account'=>'18022222222','tel'=>'13760280546',"account1"=>'13580130321','tel1'=>'13760280546'),
+            'friend_invest'=>array('enable'=>0),
+            'borrow_expired'=>array('enable'=>1),
+        ),
+        'START_FLAG'=>array(
+            'break_point_1'=>'700',//新合同起始ID
+            'break_point_2'=>'750',//第2版本的合同起始ID
+            'break_point_3'=>'780',//第3版本的合同起始ID
+        ),
+        'EVENT_INFO'=>array(
+            'enable'=>0,
+            'mobile_url'=>"https://offline.ccfax.cn/members/apr",
+            "mobile_banner"=>"img/banner/6.png",
+            'index_url'=>"https://offline.ccfax.cn/members/apr",
+            "mobile_prom"=>"四月活动"
+        ),
+        'Frind_INFO'=>array(
+            'enable'=>1,
+        ),
+
+        'SINA_FILE'=>"rsa_public.pem",
+        'SINA_RSAFILE'=>array(
+            'private' => 'rsa_sign_private.pem',
+            'public' => 'rsa_sign_public.pem',
+            ),
+        'ANCUN'=>array(
+            'apiAddress' => 'http://openapi-test1.51cunzheng.com',
+            'partnerKey' => '819a2266dd907d5fc88f2a73a977c3a0',
+            'secret'     => 'a1c2da7ef8df971232e6035209fe35b0f8c18ce2',
+        ),
+        'V_INVEST'=>array(
+            'enable'=>0,
+            'db'=>array(
+                'db_type'           => 'mysql',
+                'db_host'           =>'115.159.114.87',
+                'db_name'           =>'vp2p',
+                'db_user'           =>'liaozhaohui',
+                'db_pwd'            =>'lzb921220',
+                'db_port'           =>'3306',
+                'db_prefix'         =>'lzh_',
+            ),
+            'v_url'=>'v.p2p.com',
+        ),
+        'CCFAX_USER'=>array(
+            1869,1858,1849,2522,2539,2522,2551,2715,16493,16496,16497
+        ),
+        'NOTICE_TEL'=>array(
+            "chu"=>'13760280546',
+            "fu"=>'13760280546',
+            'fengkong'=>'13760280546',
+            'caiwu'=>'13760280546',
+            'cunqianguan'=>'13760489226' //存钱罐下载失败发送通知
+        ),
+        'UNIFY_INTERFACE'=>array(
+            'enable'=>1,
+            //'url'=>'http://115.159.54.52:8080',//正式服务
+            'url'=>'http://121.201.66.7:8080',//测试服
+            //'url'=>'http://172.16.20.40:8080',//测试服
+        ),
+        'UPLOAD_ZIP'=> array(
+            'strServer' => "222.73.39.37",
+            'strServerUsername' => "200004595271",
+            'strServerprivatekey' => "id_rsa1",
+            'strServerpublickey' => "id_rsa1.pub",
+            'UPLOAD_PATH' => "/data001/www/site/git_ccfax_dev",
+             ),
+        'RENUMBER_BORROW' =>array(
+            'new_grade' => '757',//标号重新编排起始ID
+            'enable' => 1,//开启标号编排
+        ),
+        'SINGLE_LOGIN'=>array(
+            'enable'=>1
+        ),
+        'EARNINGS' =>array(
+            'starting' => '2016-07-01'//存钱罐收益起始日
+        ),
+        'DISTRIBUTION'=>array(
+            //'url' => 'http://115.159.208.43:8080/tscps_foreground/', //分销系统测试服URL
+        ),
+        'TS1KG'=>array (
+            'enable'=>1,
+            'host' => 'http://2kg.muyouguanxi.com',
+            'key'=> '0c355fd6ad99f5605813d4e7859fac77'
+        ),
+        'RECEPTION'=>array(
+        'id' => 'kf_9372_1470295269297', //测试客服接待组ID
+        //'id' => 'kf_9372_1470212593293', //正式客服接待组ID
+        ),
+
+        'ALLWOOD_ORDER'=>array(
+            'URL'=>'http://121.201.66.7:8080/credit_money_background/user/setAllwoodCollectMoney.do',
+            'DONG_URL'=>'http://121.201.66.7:8080/credit_money_background/user/setAllwoodFrostMoney.do',
+            'uid'=>"15793",
+        ),
+        'CCFAXAPI_SINA'=>'http://121.201.66.9:8087/sina/sinaauto/handexecute',
+		'CCFAX_JAVA'=>'http://121.201.66.7:8080',
+        'SHANG_URL'=>'http://121.201.66.7:8080',
+        'SHANG_HETONG'=>'1811',
+        'SHANG_CCFAXURL'=>'http://121.201.66.7:8080',
+        'FK_BORROW' => 1857,
+        'CCFAXAPI_URL' => "http://121.201.66.9:8087",
+        'PIGGY' => "000397",
+        'OFFLINE_UID' => array('15871','16531'),
+    );
+
+
+?>

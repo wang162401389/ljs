@@ -1,0 +1,60 @@
+<include file="Public:_header" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<tagLib name="htmlA" />
+<div class="so_main">
+    <div class="page_tit">邀请好友投资返0.8%</div>
+    <div id="search_div">
+
+        <div class="form2" style="background-color: #d2dbea;">
+            <form method="get" action="__URL__/index">
+                <table style="width: 80%;height: 80px;">
+                    <tr>
+                        <td>邀请人手机：</td>
+                        <td> <input name="parent_cell_phone" style="width:190px" id="parent_cell_phone" type="text" value="{$search.parent_cell_phone}"></td>
+                    </tr>
+                    <tr>
+                        <td>被邀请人手机：</td>
+                        <td> <input name="cell_phone" style="width:190px" id="cell_phone" type="text" value="{$search.cell_phone}"></td>
+                    </tr>
+                    <tr style="text-align: right;">
+                        <td colspan="6">
+                        <span class='chaxun'><input type="submit" value="查询"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th class="line_l">邀请人手机</th>
+                <th class="line_l">邀请人姓名</th>
+                <th class="line_l">被邀请人手机号吗</th>
+                <th class="line_l">注册时间</th>
+                <th class="line_l">被邀请人姓名</th>
+                <th class="line_l">投资时间</th>
+                <th class="line_l">投资金额</th>
+                <th class="line_l">返利金额</th>
+            </tr>
+            <volist id="vo" name="list">
+                <tr>
+                    <td>{$vo.parent_cell_phone}</td>
+                    <td>{$vo.parent_real_name}</td>
+                    <td>{$vo.cell_phone}</td>
+                    <td>{$vo.create_time|date="Y-m-d H:i",###}</td>
+                    <td>{$vo.real_name}</td>
+                    <td>{$vo.invest_time|date="Y-m-d H:i",###}</td>
+                    <td>{$vo.invest}</td>
+                    <td>{$vo.rebate}</td>
+                </tr>
+            </volist>
+        </table>
+        <div class="Toolbar_inbox" style="overflow: hidden">
+            <htmlA:commonBtn type="href" action="__URL__/{$xaction}?{$query}" value="将当前条件下数据导出为Excel"/>
+            <div class="page right">{$pagebar}</div>
+        </div>
+    </div>
+</div>
+<include file="Public:_footer" />

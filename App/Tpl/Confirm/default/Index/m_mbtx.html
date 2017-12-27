@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<include file="default:Pub:header-common" group="M"/>
+	<link rel="stylesheet" href="__ROOT__/Style/Phone/css/mbqr.css">
+</head>
+
+<body>
+	<include file="default:Pub:simple_header" group="M"/>
+	<div class="content">
+	    <div class="mbqr"><div></div>你可提现的标如下</div>
+        <div class="mb_table">
+        <table>
+         <thead>
+          <tr>
+            <td width="30%">标名</td>
+            <td>标号</td>
+            <td width="20%">借款金额</td>
+            <td width="20%">借款期限</td>
+            <td width="20%">资金去向</td>
+          </tr>
+         </thead>
+         <tbody>
+         <foreach name="list" item="vo">
+          <tr>
+            <td class="btitle">{$vo.borrow_name}</td>
+            <td>{$vo.id|borrowidlayout1=###}</td>
+            <td>{$vo.borrow_money|getMoneyFormt=###}元</td>
+            <td>{$vo.borrow_duration_txt}</td>
+            <td><if condition="$vo.is_tocard eq 0">余额<else/>绑定卡</if></td>
+          </tr>
+        </foreach>
+         </tbody>
+        </table>
+        </div>
+		<div class="lc_l" onclick="location.href='__APP__/Confirm/index/<if condition="$fee_count gt 0">m_zhfw<else/>m_zxfw</if>'">下一步</div>
+       
+       
+     
+	</div>
+    <script>
+     $(function(){
+        var name=$(".btitle");
+        var lenth = name.length;
+        name.each(function() {
+            var str = $(this).html();
+            var i = str.indexOf("：");
+            var str1 = str.substring(0,i+1);
+            var str2 = str.substring(i+1,str.length);
+            var txt = str1+"<br>"+str2;
+            $(this).html(txt);
+        });
+     })
+    </script>
+</body>
+
+</html>

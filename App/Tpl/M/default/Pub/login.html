@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+  <include file="Pub:header-common" /> 
+   <link rel="stylesheet" href="css/login.css" >
+   <script type="text/javascript" src="/Style/apprise/apprise-v2.js"></script>
+   <link rel="stylesheet" href="/Style/apprise/apprise-v2.css" type="text/css">
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">账户登录</div>
+    </nav>
+    <div class="seg_top"></div>
+
+    <div class="content">
+      <form  action="" method="post" name="loginForm" id="loginForm">
+      <div class="line">
+		  <div class="text">账户</div><input type="text"  name='username'  id="username"  placeholder="用户名/手机号"/>
+	  </div>
+	  <div class="line">
+      <div class="text">密码</div><input type="password"  name="password"  id="password" placeholder="请输入6位以上密码"/>
+    </div>
+          <input type="hidden" value={$token}  id="token" name="token" />
+          <input type="hidden" value={$logintype}  id="logintype" name="logintype" />
+    <div class="button">
+      <input type="button" class="btn btn-info butt" value="立即登录">
+    </div>
+      </form>
+    <div class="help">
+      <a href="{:U('M/pub/forget')}">忘记密码</a>
+      <a href="{:U('M/pub/regist')}">新用户注册</a>
+    </div>
+    <hr />
+    <div class="img">
+      <img src="img/login-img01.png" />
+    </div>
+  </div>
+  <include file="Pub:footer" />
+</body>
+
+</html>
+<script language="javascript">
+    $(function(){
+        $(".butt").click(function(){
+            if($.trim($("#username").val())==''){
+                alert('请输入用户名！');
+                return false;
+            }
+            if($.trim($("#password").val())==''){
+                alert('请输入密码！');
+                return false;
+            }
+            // if($.trim($("#verify").val())==''){
+            //     Apprise('<font color=red>请输入验证码！</font>');
+            //     return false;
+            // }
+            //supertoast(2,"加载中...")
+            $("#loginForm").submit();
+        })
+    })
+</script>

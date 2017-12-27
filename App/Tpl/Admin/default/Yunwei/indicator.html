@@ -1,0 +1,63 @@
+<include file="Public:_header" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<tagLib name="htmlA" />
+<div class="so_main">
+    <div class="page_tit">异常奖品</div>
+    <div id="search_div">
+        <div class="form2" style="background-color: #d2dbea;">
+            <form method="get" action="__URL__/zhaiquancommission">
+            </form>
+        </div>
+    </div>
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th class="line_l">id</th>
+                <th class="line_l">type</th>
+                <th class="line_l">期数</th>
+                <th class="line_l">奖品名称</th>
+                <th class="line_l">剩余可投</th>
+                <th class="line_l">min</th>
+                <th class="line_l">max</th>
+                <th class="line_l">total</th>
+                <th class="line_l">total_feed</th>
+            </tr>
+            <volist id="vo" name="list">
+                <tr>
+                    <td>{$vo.id}</td>
+                    <td>{$vo.prize_type}</td>
+                    <td>{$vo.qishu}</td>
+                    <td>{$vo.prize_name}</td>
+                    <td>{$vo.feeds_left}</td>
+                    <td>{$vo.min}</td>
+                    <td>{$vo.max}</td>
+                    <td>{$vo.total}</td>
+                    <td>{$vo.total_feeds}</td>
+                </tr>
+            </volist>
+        </table>
+    </div>
+
+     <p>异常配置</p>
+     <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th class="line_l">id</th>
+                <th class="line_l">type</th>
+                <th class="line_l">奖品名称</th>
+                <th class="line_l">inventory</th>
+                <th class="line_l">should</th>
+            </tr>
+            <volist id="vo" name="notright">
+                <tr>
+                    <td>{$vo.id}</td>
+                    <td>{$vo.type}</td>
+                    <td>{$vo.name}</td>
+                    <td>{$vo.inventory}</td>
+                    <td>{$vo.right}</td>
+                </tr>
+            </volist>
+        </table>
+    </div>
+</div>
+<include file="Public:_footer" />

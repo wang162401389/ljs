@@ -1,0 +1,146 @@
+<include file="Public:_header" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<tagLib name="htmlA" />
+<script type="text/javascript">
+	var delUrl = '__URL__/doDel';
+	var addUrl = '__URL__/add';
+	var isSearchHidden = 1;
+	var searchName = "搜索/筛选会员";
+</script>
+<div class="so_main">
+  <div class="page_tit">审核列表</div>
+<!--搜索/筛选会员-->
+     <!-------- 搜索游戏 -------->
+  <div id="search_div">
+    <!-- <div class="page_tit"><script type="text/javascript">document.write(searchName);</script> [ <a href="javascript:void(0);" onclick="dosearch();">隐藏</a> ]</div> -->
+  
+  <div class="form2" style="background-color: #d2dbea;">
+  <form method="get" action="__URL__/audit">
+    <table style="width: 80%;">
+        <tr>
+          <td>ID：</td>
+          <td><input name="id" style="width:190px" id="title" type="text" value="{$search.uid}"></td>
+          <td>用户名：</td>
+          <td><input name="runame" style="width:190px" id="title" type="text" value="{$search.runame}"></td>
+          <td>手机号：</td>
+          <td> <input name="userphone" style="width:190px" id="title" type="text" value="{$search.userphone}"></td>
+          <td><input type="submit" class="btn_b" value="查询" /></td>
+        </tr>
+        <tr>
+        <td>状态：</td><td><if condition="$search.status eq 1">
+          <select name="status">
+            <option value="0">全部</option>
+            <option value="1" selected="selected">待审核</option>
+            <option value="2">审核中</option>
+            <option value="3">通过</option>
+            <option value="4">不通过</option>
+          </select>
+          <elseif condition="$search.status eq 2"/>
+          <select name="status">
+            <option value="0">全部</option>
+            <option value="1" >待审核</option>
+            <option value="2" selected="selected">审核中</option>
+            <option value="3">通过</option>
+            <option value="4">不通过</option>
+          </select>
+          <elseif condition="$search.status eq 3"/>
+          <select name="status">
+           <option value="0">全部</option>
+            <option value="1" >待审核</option>
+            <option value="2">审核中</option>
+            <option value="3" selected="selected">通过</option>
+            <option value="4">不通过</option>
+          </select>
+          <elseif condition="$search.status eq 4"/>
+          <select name="status">
+            <option value="0">全部</option>
+            <option value="1" >待审核</option>
+            <option value="2">审核中</option>
+            <option value="3">通过</option>
+            <option value="4" selected="selected">不通过</option>
+          </select>
+          <else/>
+          <select name="status">
+            <option value="0">全部</option>
+            <option value="1" >待审核</option>
+            <option value="2">审核中</option>
+            <option value="3">通过</option>
+            <option value="4">不通过</option>
+          </select>
+          </if></td></tr>
+      </table>
+
+  </form>
+  </div>
+  </div>
+<!--搜索/筛选会员-->
+<div style="width: 100%;height: 10px;"></div>
+  <div class="Toolbar_inbox">
+  	<div class="page" style="text-align: right;">{$pagebar}</div>
+  </div>
+  
+  <div class="list">
+  <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+     <tr>
+      <th class="line_l">ID</th>
+      <th class="line_l">用户名</th>
+      <th class="line_l">手机号</th>
+      <th class="line_l">原推荐人</th>
+      <th class="line_l">新推荐人</th>
+      <th class="line_l">申请人</th>
+      <th class="line_l">申请时间</th>
+      <th class="line_l">状态</th>
+      <th class="line_l">当前审批人</th>
+      <th class="line_l">操作</th>
+    </tr>
+    <volist id="list" name="list">
+    <tr>
+      <td>{$list.uid}</td>
+      <td>{$list.user_name}</td>
+      <td>{$list.user_phone}</td>
+      <td>{$list.recomname}</td>
+      <td>{$list.newrecomname}</td>
+      <td>{$list.appname}</td>
+      <td>{$list.application_time}</td>
+      <td><php>if($list['status']==0)echo '待审核';else if($list['status']==2)echo '审核中';else if($list['status']==6||$list['status']==8)echo '不通过';if($list['status']==4)echo '通过';</php></td>
+      <td><php>if($list['status']==0)echo $first_trial;else if($list['status']==2)echo $second_trial;</php></td>
+      <td>
+      <?php if($permissions==1&&$list['status']==0){ ?>
+      <a href="__URL__/delaudit/?id={$list.id}" onclick="return delaud();">撤销</a>
+      <span>|</span>
+      <a href="javascript:;" onclick="auditlog('__URL__/auditlog?id={$list.id}','审核日志');">日志</a>
+      <?php }else if($permissions==2 && $list['status']==0){ ?>
+      <a href="__URL__/editaudit?id={$list.id}">审核</a>
+      <span>|</span>
+      <a href="javascript:;" onclick="auditlog('__URL__/auditlog?id={$list.id}','审核日志');">日志</a>
+      <?php }else if($permissions==3 && $list['status']==2){ ?>
+      <a href="__URL__/editaudit?id={$list.id}">审核</a>
+      <span>|</span>
+      <a href="javascript:;" onclick="auditlog('__URL__/auditlog?id={$list.id}','审核日志');">日志</a>
+      <?php }else{ ?>
+      <a href="javascript:;" onclick="auditlog('__URL__/auditlog?id={$list.id}','审核日志');">日志</a>
+      <?php } ?>
+      </td>
+    </tr>
+    </volist>
+  </table>
+  
+  </div>
+  
+  <div class="Toolbar_inbox">
+  	<div class="page" style="text-align: right;">{$pagebar}</div>
+  </div>
+</div>
+<script type="text/javascript">
+function auditlog(url,Title){
+  ui.box.load(url, {title:Title});
+}
+function delaud(){
+  if(confirm("确定撤销吗？")){
+    return true;
+  }else{
+    return false;
+  }
+}
+</script>
+<include file="Public:_footer" />

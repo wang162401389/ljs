@@ -1,0 +1,77 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+    var delUrl = '__URL__/doDel';
+    var addUrl = '__URL__/add';
+    var isSearchHidden = 1;
+    var searchName='搜索';
+</script>
+<style type="text/css">
+	.chaxun input{
+		width:50px;
+		border: 1px solid #d2dbea;
+		border-bottom:1px solid #c8cfda;
+		border-radius: 3px;
+	    background-color: #fcfcfc;
+		background:#d2dbea url(/Style/A/images/btn_a.gif) no-repeat;padding:5px; color: #333;cursor:pointer;
+	}
+</style>
+<div class="so_main">
+    <div class="page_tit">活动信息</div>
+    <!--搜索/筛选会员-->
+   <div id="search_div">
+  <script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+    
+    <div class="form2" style="background-color: #d2dbea;">
+    <form method="post" action="__URL__/{$xaction}">
+    <table style="width: 80%;height: 80px;">
+        <tr>
+          <td>手机号：</td>
+          <td><input name="userphone" style="width:190px" id="title" type="text" value="{$search.userphone}"></td>
+          <td>提交日期：</td>
+          <td><htmlA:timer id="start_time" style="width:90px" value="{$search.start_time}"  />&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;
+          <htmlA:timer id="end_time" style="width:90px" value="{$search.end_time}"   /></td>
+          <td>竞猜金牌数：</td>
+          <td> <input name="goldnum" style="width:190px" id="title" type="text" value="{$search.goldnum}"></td>
+          
+        </tr>
+        <tr style="text-align: right;"><td></td><td></td><td></td><td></td><td></td><td>
+        <span class='chaxun'><input type="submit" value="查询"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class='Toolbar_inbox'><htmlA:commonBtn type="href"  action="__URL__/olympicactivity?{$query}" value="数据导出"/></span></td></tr>
+    </table>
+    </form>
+  </div>
+  </div>
+    <!--搜索/筛选会员-->
+    <div style="width: 100%;height: 10px;"></div>
+    <div class="Toolbar_inbox" >
+        <div class="page" style="text-align: right;">{$pagebar}</div>
+    </div>
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th>序号</th>
+                <th>手机号</th>
+                <th>竞猜金牌数</th>
+                <th>提交日期</th>
+                <th>用户ID号</th>
+            </tr>
+            <volist name="list" id="list">
+            <tr>
+                <td>{$key}</td>
+                <td>{$list.user_phone}</td>
+                <td>{$list.gold_num}</td>
+                <td>{$list.updatetime}</td>
+                <td>{$list.id}</td>
+            </tr>
+            </volist>
+        </table>
+        <div class="Toolbar_inbox" style="overflow: hidden">
+            <div class="page right">{$pagebar}</div>
+        </div>
+    </div>
+
+</div>
+
+
+<include file="Public:_footer" />

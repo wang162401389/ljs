@@ -1,0 +1,14 @@
+<volist name="list" id="vo">
+    <div class="zqzr-box" >
+        <h2>借款标号：ZQ{$vo.id}</h2>
+        <div class="zqzr-bcontent">
+            <ul>
+                <li>转让价格： ￥{$vo.borrow_money}元</li>
+                <li>债权价值：￥{$vo.totalmoney}元</li>
+                <li>实际收入： ￥{$vo['borrow_money']-$vo['colligate_fee']}</li>
+                <li>手续费：{$vo.colligate_fee}</li>
+                <li>转让时间:{$vo.add_time|date="Y-m-d",###}</li>
+            </ul>
+        </div>
+    </div>
+</volist>

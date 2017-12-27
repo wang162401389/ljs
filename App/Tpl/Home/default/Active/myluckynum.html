@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<base href="/Style/Phone/" />
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  	<script src="__ROOT__/Style/Phone/js/jquery-2.1.4.min.js"></script>
+  	<link rel="stylesheet" type="text/css" href="__ROOT__/Style/Phone/css/christmas.css">
+  	<title>新年幸运号</title>
+  	<style type="text/css">
+	  	#header .title{font-size: 1.2rem;}
+  	</style>
+</head>
+<body class="bg-red">
+<include file="default:Pub:simple_header" group="M" />
+	<p class="p-tit">新年幸运号</p>
+	<ul class="u-tab">
+		<li <if condition="$gift_set eq 1">class="active"</if> onclick="location.href='__APP__/Home/active/myluckynum?gift_set=1'">按摩椅垫</li>
+		<li <if condition="$gift_set eq 2">class="active"</if> onclick="location.href='__APP__/Home/active/myluckynum?gift_set=2'">空气净化器</li>
+		<li <if condition="$gift_set eq 3">class="active"</if> onclick="location.href='__APP__/Home/active/myluckynum?gift_set=3'">单反套机</li>
+		<li <if condition="$gift_set eq 4">class="active"</if> onclick="location.href='__APP__/Home/active/myluckynum?gift_set=4'">iPhone7</li>
+	</ul>
+	<table class="n-table" cellspacing="0">
+		<thead>
+			<tr>
+				<th width="20%">期数</th>
+				<th width="20%">幸运号</th>
+				<th width="30%">梦想成真用户</th>
+				<th width="25%">操作</th>
+			</tr>
+		</thead>
+		<tbody id="newsluckynum">
+		<volist name="lucknumlist" id="vo">
+			<tr>
+				<td>{$vo.gift_no}期</td>
+				<td>{$vo.have_number}</td>
+				<td>{$vo.user_phone}</td>
+				<td><a href="/home/active/luckyhnuminfo?gift_set={$vo.id}"  class="cor-orange">查看详情</a></td>
+			</tr>
+			</volist>
+		</tbody>
+	</table>
+
+	<script type="text/javascript">
+		$(function(){
+			$('.u-tab li').click(function(){
+				$('.u-tab li').removeClass('active');
+				$(this).addClass('active');
+			});
+		})
+	</script>
+</body>
+</html>

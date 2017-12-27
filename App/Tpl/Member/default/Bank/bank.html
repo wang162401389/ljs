@@ -1,0 +1,54 @@
+<tagLib name="htmlA" />
+<style type="text/css">
+.tdTitle { text-align: right; padding-left: 10px; font-size: 12px; height: 36; line-height: 36px; vertical-align: middle; width: 160px; border: #E9E8E7 solid 1px; }
+.tdContent { text-align: left; padding-left: 10px; font-size: 12px; height: 36; line-height: 36px; vertical-align: middle; width: 535px; border: #E9E8E7 solid 1px; }
+.alertDiv { margin: 0px auto; background-color: #FEFACF; border: 1px solid green; line-height: 25px; background-image: url(__ROOT__/Style/M/images/info/001_30.png); background-position: 20px 4px; background-repeat: no-repeat; }
+.alertDiv li { margin: 5px 0; list-style-type: decimal; color: #005B9F; padding: 0px; line-height: 20px; }
+.alertDiv ul { text-align: left; list-style-type: decimal; display: block; padding: 0px; margin: 0px 0px 0px 75px; }
+.btnsubupdate { width: 86px; height: 30px; background-image: url(__ROOT__/Style/M/images/btnsubupdate.jpg); background-repeat: no-repeat; border: none; cursor: pointer; }
+.btncancel { height: 30px; margin-left: 10px; width: 60px; background-image: url(__ROOT__/Style/M/images/btncancel.jpg); border: none; background-repeat: no-repeat; cursor: pointer; }
+.tdContent{text-align:left}
+</style>
+<div style="width: 753px; margin-top: 10px; margin-bottom: 5px; margin-left: 24px;">
+	<table style="width: 753px; float: left; margin: 0px;
+		padding: 0px; border-collapse: collapse; text-align: center;" id="formTb" cellpadding="0" cellspacing="0">
+		<tbody>
+			<tr>
+				<td class="tdContent">
+					银行名称
+				</td>
+				<td class="tdContent">
+					是否为安全卡
+				</td>
+				<td class="tdContent">
+					卡类型
+				</td>
+				<td class="tdContent">
+					银行卡号
+				</td>
+				<td class="tdContent">
+					操作
+				</td>
+			</tr>
+		<volist name="card" id="c">
+			<tr>
+				<td class="tdContent" style="padding-left: 0px;">
+					<img src="__ROOT__/Style/M/images/bank_logo/{$c[1]}.gif" />
+				</td>
+				<td class="tdContent">
+					<if condition="$c[8] eq 'Y'"><img width="40px" src="__ROOT__/Style/Phone/img/card/safecard.png" /></if>
+				</td>
+				<td class="tdContent">
+					{$c[4]}
+				</td>
+				<td class="tdContent">
+					{$c[2]}
+				</td>
+				<td class="tdContent">
+					<a type="button" href="__URL__/unbindingcard?cardid={$c[0]}" class="btn btn-info">取消绑定</a>
+				</td>
+			</tr>
+		</volist>
+		</tbody>
+	</table>
+</div>

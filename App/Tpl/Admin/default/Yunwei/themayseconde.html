@@ -1,0 +1,61 @@
+<include file="Public:_header" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<tagLib name="htmlA" />
+<div class="so_main">
+    <div class="page_tit">抽奖结果</div>
+    <div id="search_div">
+
+        <div class="form2" style="background-color: #d2dbea;">
+            <form method="get" action="__URL__/themayseconde">
+                <table style="width: 80%;height: 80px;">
+                    <tr>
+                        <td>邀请人手机号：</td>
+                        <td> <input name="tui_phone" style="width:190px" id="tui_phone" type="text" value="{$search.tui_phone}"></td>
+                    </tr>
+                    <tr style="text-align: right;">
+                        <td colspan="6">
+                        <span class='chaxun'><input type="submit" value="查询"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th class="line_l">邀请人手机号</th>
+                <th class="line_l">用户名</th>
+                <th class="line_l">奖项</th>
+                <th class="line_l">中奖时间</th>
+                <th class="line_l">操作</th>
+            </tr>
+            <volist id="vo" name="list">
+                <tr>
+                    <td>{$vo.user_phone}</td>
+                    <td><htmlA:user id="vo.id" uname="vo.user_name" /></td>
+                    <td>
+                        <if condition="$vo['prize_type'] eq 1">
+                                独占鳌头奖(iphone7)
+                            <elseif condition="$vo['prize_type'] eq 2"/>
+                                尊享奖(338元)
+                            <elseif condition="$vo['prize_type'] eq 3"/>
+                                普利奖(138元)
+                        </if>
+                    </td>
+                    <td>{$vo.add_time|date="Y-m-d H:i:s",###}</td>
+                    <td>
+                        <if condition="$vo['send_status'] eq 0 AND  $vo['prize_type'] neq 1">
+                            <a href="/admin/yunwei/sendmoney?id={$vo.p_id}">发放</a>
+                        </if>
+                    </td>
+                </tr>
+            </volist>
+        </table>
+        <div class="Toolbar_inbox" style="overflow: hidden">
+            <div class="page right">{$pagebar}</div>
+        </div>
+    </div>
+</div>
+<include file="Public:_footer" />

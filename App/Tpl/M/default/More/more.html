@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<include file="Pub:header-common" /> 
+	<link rel="stylesheet" href="css/more.css" >
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">更多</div>
+    </nav>
+    <div class="seg_top"></div>
+
+  <div class="content">
+
+    <div>
+      <a href="/M/more/announcement.html">网站公告<i class="glyphicon glyphicon-menu-right"></i></a>
+    </div>
+    <div>
+      <a href="/M/more/about.html">关于我们<i class="glyphicon glyphicon-menu-right"></i></a>
+    </div>
+    <div>
+      <a href="/M/more/help.html">帮助中心<i class="glyphicon glyphicon-menu-right"></i></a>
+    </div>
+    <!-- <div>
+      <a href="tel:400-6626985">客服电话<i class="glyphicon glyphicon-menu-right"></i><span class="phone">400-6626985</span></a>
+    </div> -->
+     <div>
+     <?php $peceptionid = peception(); ?>
+     <?php $u_name= session('u_user_name');?>
+     <php>$userinfo = getuserinfo($u_name);</php>
+      <!-- <a onclick="NTKF.im_openInPageChat('{$peceptionid}')">在线客服<i class="glyphicon glyphicon-menu-right"></i></a> -->
+      <a href="tel:400-888-6633">在线客服<i class="glyphicon glyphicon-menu-right"></i></a>
+    </div>
+    <!-- <div id="xiaoshi">
+      <a onclick="WoodpeckerViewController.pushToVC()">人体动态验证<i class="glyphicon glyphicon-menu-right"></i></a>
+    </div> -->
+      <div id="xiaoshi">
+          <a href="/M/more/report.html" style="display: block">运营报告<i class="glyphicon glyphicon-menu-right"></i></a>
+      </div>
+      <!-- <div id="zhibo">
+          <a href="/M/more/shuidi.html">实时直播<i class="glyphicon glyphicon-menu-right"></i></a>
+      </div> -->
+    <hr />
+    <!-- <div>
+      <a href="#">推荐好友<i class="glyphicon glyphicon-menu-right"></i></a>
+    </div>
+    <div>
+      <a href="#">意见反馈<i class="glyphicon glyphicon-menu-right"></i></a>
+    </div>
+    <div>
+      <a href="#">检查更新<i class="glyphicon glyphicon-menu-right"></i><span class="version">可更新版本12.5</span></a>
+    </div> -->
+
+  </div>
+
+  <include file="Pub:footer" />
+  <!--集成脚本加载 -->
+  <script language="javascript" type="text/javascript">
+  var name = '{$u_name}';
+  if(name == ''){
+     NTKF_PARAM = {
+        siteid:"kf_9372",               //企业ID，为固定值，必填
+        settingid:"{$peceptionid}",  //接待组ID，为固定值，必填
+        uid:"",                    //用户ID
+        uname:"",        //用户名
+        isvip:"",                          //是否为vip用户，0代表非会员，1代表会员
+        userlevel:"1",                    //网站自定义会员级别，0-N，可根据选择判断
+        erpparam:"erpparam"                      //erpparam为erp功能的扩展字段，可选
+        } 
+  }else{
+    NTKF_PARAM = {
+      siteid:"kf_9372",               //企业ID，为固定值，必填
+      settingid:"{$peceptionid}",  //接待组ID，为固定值，必填
+      uid:"{$userinfo.id|default=''}",                    //用户ID
+      uname:"{$u_name|default=''}",        //用户名
+      isvip:"{$userinfo.isvip}",                          //是否为vip用户，0代表非会员，1代表会员
+      userlevel:"1",                    //网站自定义会员级别，0-N，可根据选择判断
+      erpparam:"erpparam"                      //erpparam为erp功能的扩展字段，可选
+      } 
+  }
+  
+</script>
+ <!--基础脚本加载 -->
+<script type="text/javascript" src="https://dl.ntalker.com/js/xn6/ntkfstat.js?siteid=kf_9372" charset="utf-8"></script>
+
+<script type="text/javascript">
+  var browser={
+    versions:function(){
+            var u = navigator.userAgent, app = navigator.appVersion;
+            return {         //移动终端浏览器版本信息
+                trident: u.indexOf('Trident') > -1, //IE内核
+                presto: u.indexOf('Presto') > -1, //opera内核
+                webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+                iPhone: u.indexOf('iPhone') > -1 , //是否为iPhone或者QQHD浏览器
+                iPad: u.indexOf('iPad') > -1, //是否iPad
+                webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+            };
+         }(),
+         language:(navigator.browserLanguage || navigator.language).toLowerCase()
+}
+if((browser.versions.ios == false || browser.versions.ios == true) && browser.versions.webApp == false){
+    // $("#xiaoshi").hide();
+}
+  </script>   
+</body>
+
+</html>

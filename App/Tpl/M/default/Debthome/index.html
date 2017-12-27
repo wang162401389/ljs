@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>债权转让-投资列表</title>
+    <include file="Pub:header-common" />
+    <link rel="stylesheet" href="/Style/Phone/css/list.css" />
+    <style>
+        body{background: #f0f0f0};
+        .header{position:relative;height:4rem;background:#54c0f2;vertical-align:middle;margin-top:auto;margin-bottom:auto; position: relative}
+        .header ul{text-align:center;margin:auto;width:82%;background:#54c0f2;height:2.3rem;line-height:2.3rem;background:#54c0f2;border-bottom:1px solid #fff;border-top:1px solid #fff;border-radius:2px;border-left:1px solid #fff;border-right:1px solid #fff}
+        .header .tab{float:left;width:20%;font-size:1.2rem;color:#fff;border-left:1px solid #fff}
+        .header .current{background-color:#fff;color:#54c0f2;height:2.2rem}
+        .navleft{width:2.5rem; height: 4rem; display: block; line-height: 4rem; font-size: 2rem; color:#fff; position: absolute; top:0px; left:0px; text-align: center; background:url(/Style/Phone/img/arrowleft.png) center center no-repeat; z-index: 222 }
+        .zqlist-box{display: none;}
+    </style>
+</head>
+<body>
+<!--头部 start-->
+<div class="header">
+    <a class="navleft js-backgo" href="javascript:history.back(-1);"></a>
+    <div class="js-zqzrtab" style="padding-top: 0.9rem;" >
+        <ul>
+            <li class="tab current" data-id="1"><div class="li11">质金链</div></li>
+            <li class="tab" data-id="2"><div class="li33">保金链</div></li>
+            <li class="tab" data-id="3"><div class="li44">融金链</div></li>
+            <li class="tab" data-id="4"><div class="li44">信金链</div></li>
+            <li class="tab" data-id="5"><div class="li44">优金链</div></li>
+        </ul>
+    </div>
+</div>
+<!--头部 end-->
+
+<!--列表 start-->
+<div class="container">
+    <div class="zqlist-box" style="display: block">
+        <ul class="myzqlist-box">
+            <volist name="list" id="vo">
+            <li class="list" >
+            <div style="color:#4a4949;font-size:1.2rem; border-bottom:1px dashed #dcdcdc; height:3.2rem;line-height:3.2rem; " class="mine_btn" >{$vo.borrow_name}</div>
+            <div class="info_container">
+                <div class="cost">{$vo.borrow_interest_rate}<span style="font-size:1rem;">&nbsp;%</span></div>
+                <div class="percent">{$vo.borrow_duration_txt}<span style="font-size:1rem;"></span></div>
+            </div>
+            <div class="inline">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:{$vo.progress}%;">
+                        </div>
+                    </div>
+                    {$vo|zhaiquan_borrow_status}
+             </div>
+            <div class="show_info">
+                <span class="start">剩{$vo.left}/{$vo.borrow_money}</span><span class="last">100元起投</span>
+            </div>
+            </li>
+            </volist>
+        </ul>
+    </div>
+</div>
+<!--列表 end-->
+<include file="Pub:footer" />
+<script>
+    $(document).ready(function() {
+        //选项卡
+        $(".js-zqzrtab .tab").on("click", function () {
+            var indcurrent = $(this).attr("data-id");
+            $(this).addClass("current").siblings(".tab").removeClass("current");
+            var url="__URL__/content";
+            if(indcurrent == 1){
+                $(".myzqlist-box").html("");
+                $.ajax({
+                    url:url,
+                    data:{"type":1},
+                    type:"post",
+                    dataType:"json",
+                    success:function(d){
+                        $(".zqlist-box .loadingspinner").remove();
+                        $(".myzqlist-box").html(d.data.html);
+                    },
+                    beforeSend:function(){
+                        $(".zqlist-box .loadingspinner").remove();
+                        $(".zqlist-box").append('<div class="loadingspinner"><div class="lrect1"></div><div class="lrect2"></div><div class="lrect3"></div><div class="lrect4"></div><div class="lrect5"></div></div>');
+                    }
+                });
+            }
+            else if(indcurrent == 2){
+                $(".myzqlist-box").html("");
+                $.ajax({
+                    url:url,
+                    type:"post",
+                    data:{"type":2},
+                    dataType:"json",
+                    success:function(d){
+                        $(".zqlist-box .loadingspinner").remove();
+                        $(".myzqlist-box").html(d.data.html);
+                    },
+                    beforeSend:function(){
+                        $(".zqlist-box .loadingspinner").remove();
+                        $(".zqlist-box").append('<div class="loadingspinner"><div class="lrect1"></div><div class="lrect2"></div><div class="lrect3"></div><div class="lrect4"></div><div class="lrect5"></div></div>');
+                    }
+                });
+            }
+            else if(indcurrent== 3){
+                $(".myzqlist-box").html("");
+                $.ajax({
+                    url:url,
+                    type:"post",
+                    data:{"type":3},
+                    dataType:"json",
+                    success:function(d){
+                        $(".zqlist-box .loadingspinner").remove();
+                        $(".myzqlist-box").html(d.data.html);
+                    },
+                    beforeSend:function(){
+                        $(".zqlist-box .loadingspinner").remove();
+                        $(".zqlist-box").append('<div class="loadingspinner"><div class="lrect1"></div><div class="lrect2"></div><div class="lrect3"></div><div class="lrect4"></div><div class="lrect5"></div></div>');
+                    }
+                });
+            }
+            else if(indcurrent== 4){
+                $(".myzqlist-box").html("");
+                $.ajax({
+                    url:url,
+                    type:"post",
+                    data:{"type":4},
+                    dataType:"json",
+                    success:function(d){
+                        $(".zqlist-box .loadingspinner").remove();
+                        $(".myzqlist-box").html(d.data.html);
+                    },
+                    beforeSend:function(){
+                        $(".zqlist-box .loadingspinner").remove();
+                        $(".zqlist-box").append('<div class="loadingspinner"><div class="lrect1"></div><div class="lrect2"></div><div class="lrect3"></div><div class="lrect4"></div><div class="lrect5"></div></div>');
+                    }
+                });
+            }
+            else{
+                $(".myzqlist-box").html("");
+                $.ajax({
+                    url:url,
+                    type:"post",
+                    data:{"type":5},
+                    dataType:"json",
+                    success:function(d){
+                        $(".zqlist-box .loadingspinner").remove();
+                        $(".myzqlist-box").html(d.data.html);
+                    },
+                    beforeSend:function(){
+                        $(".zqlist-box .loadingspinner").remove();
+                        $(".zqlist-box").append('<div class="loadingspinner"><div class="lrect1"></div><div class="lrect2"></div><div class="lrect3"></div><div class="lrect4"></div><div class="lrect5"></div></div>');
+                    }
+                });
+            }
+        });
+    })
+</script>
+</body>
+
+</html>
+

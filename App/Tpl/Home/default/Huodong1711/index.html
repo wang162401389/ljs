@@ -1,0 +1,201 @@
+<include file="Public:_header_common" />
+<title>双11理财、1200元现金轻松拿</title>
+<meta http-equiv="keywords" content="{$glo.web_keywords}" />
+<meta http-equiv="description" content="{$glo.web_descript}" />
+<include file="Public:_header_main" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/H/css/rebatestorm.css">
+<div class="rebatebanner-wrap">
+    <div class="rebatebanner-main w1200"><div class="rebatebanner-time">活动时间：<span>2017.11.6-11.30</span></div></div>
+</div>
+<div class="rebatestorm-wrap">
+    <div class="rebat-wrap clearfix">
+        <i class="rebspi-a"></i>
+        <i class="rebspi-b"></i>
+        <i class="rebspi-c"></i>
+        <i class="rebspi-d"></i>
+        <!--福利 一 start-->
+        <div class="rebate-fl">
+            <!--main start-->
+            <div class="rebate-main rebate-main1">
+                <div class="rebmain-m">
+                    <h2 class="rebm-tit rebm-tit1"><img src="__ROOT__/Style/H/images/rebatestorm/num1.png">怎么拿奖？</h2>
+                    <div class="rebm-howtext">
+                        1、让好友扫描您的专属二维码，好友投资后就可拿奖啦；<br>
+                        2、奖励规则：好友的投资金额*投资天数/360天*0.8%；
+                    </div>
+                    <p class="reb-tiptext">举个栗子</p>
+                    <p><img src="__ROOT__/Style/H/images/rebatestorm/exampleimg.jpg"></p>
+                    <p class="exampleimg-des">隔壁老王奖励：50000*90/360*0.8%=100（元）</p>
+
+                    <h2 class="rebm-tit rebm-tit2"><img src="__ROOT__/Style/H/images/rebatestorm/num2.png">邀请方法</h2>
+                    <div class="ercode-wrap">
+                        <if condition="$UID">
+                            <img src="__ROOT__/Home/active/create_qr" width="125" height="125">
+                        <else/>
+                            <div class="ercode-nologin"><a href="/member/common/login/">登录</a>查看<br>我的专属邀请码</div>
+                        </if>
+                    </div>
+
+                    <p class="ercode-title">我的专属邀请码</p>
+                    <p class="ercode-note">注：让好友扫描您的专属邀请码进行注册即可；</p>
+
+                    <h2 class="rebm-tit rebm-tit1"><img src="__ROOT__/Style/H/images/rebatestorm/num3.png">我邀请的好友</h2>
+                    <div class="invite-firendlist">
+                        <div class="invfri-th-wrap clearfix">
+                            <span class="invfri-tht invfri-tht-a">好友<br>用户名</span>
+                            <span class="invfri-tht invfri-tht-b">好友<br>注册时间</span>
+                            <span class="invfri-tht invfri-tht-c">好友<br>投资金额</span>
+                            <span class="invfri-tht invfri-tht-d">我的返利</span>
+                        </div>
+                        <div class="invfri-list-wrap js-invlist1">
+                            <if condition="$UID">
+                                <ul>
+                                    <volist name="totallist" id="t" empty="$empty">
+                                        <li class="invfri-li clearfix">
+                                            <span class="invfri-tl invfri-tl-a">{$t.user_phone}</span>
+                                            <span class="invfri-tl invfri-tl-b">{$t.reg_time}</span>
+                                            <span class="invfri-tl invfri-tl-c">{$t.invest}</span>
+                                            <span class="invfri-tl invfri-tl-d">{$t.rebate}</span>
+                                        </li>
+                                    </volist>
+                                </ul>
+                            <else/>
+                                <p class="invfri-nologin"><a href="/member/common/login/">登录</a>查看我的邀请记录</p>
+                            </if>
+                        </div>
+                    </div>
+                    <p class="invfri-more"><a href="/member/promotion#fragment-3" ajax_href="__URL__/promotionresult/">查看更多邀请记录>></a></p>
+                </div>
+            </div>
+            <!--main end-->
+            <!--规则 start-->
+            <div class="rebatem-rule1">
+                <span class="rebrule-tit rebrule-tit1"></span>
+                <div class="rebrule-txt">
+                    <p>1、活动时间：2017.11.06-2017.11.30；</p>
+                    <p>2、好友通过您的专属邀请码进行注册后，您即成为好友的推荐人，好友投资后您可以拿相应现金奖励；</p>
+                    <p>3、奖励金额规则：邀请的好友的投资金额*投资天数/360天*0.8%；</p>
+                    <p>4、现金奖励于邀请的好友完成投资标满复审后实时发放；</p>
+                    <p>5、在法律范围内链金所保留对本次活动的最终解释权。</p>
+                </div>
+            </div>
+            <!--规则 end-->
+        </div>
+        <!--福利一 end-->
+        <!--福利 二 start-->
+        <div class="rebate-fr">
+            <div class="rebate-main rebate-main2">
+                <div class="rebmain-m">
+                    <h2 class="rebm-tit rebm-tit1"><img src="__ROOT__/Style/H/images/rebatestorm/num1.png">多少奖励？</h2>
+                    <div class="reward-list">
+                        <h2 class="rewardlist-h2">邀请好友“首次投资”奖励规则</h2>
+                        <div class="reward-listname">
+                            <ul>
+                                <li class="reward-listbox">
+                                    <span class="reward-listb reward-listb-a">好友的首投金额</span>
+                                    <span class="reward-listb reward-listb-b">我的现金奖励（元）</span>
+                                </li>
+                                <li class="reward-listbox">
+                                    <span class="reward-listb reward-listb-a">5千≤首投＜1万</span>
+                                    <span class="reward-listb reward-listb-b">30</span>
+                                </li>
+                                <li class="reward-listbox">
+                                    <span class="reward-listb reward-listb-a">1万≤首投＜2万</span>
+                                    <span class="reward-listb reward-listb-b">60</span>
+                                </li>
+                                <li class="reward-listbox">
+                                    <span class="reward-listb reward-listb-a">2万≤首投＜5万</span>
+                                    <span class="reward-listb reward-listb-b">200</span>
+                                </li>
+                                <li class="reward-listbox">
+                                    <span class="reward-listb reward-listb-a">5万≤首投＜10万</span>
+                                    <span class="reward-listb reward-listb-b">500</span>
+                                </li>
+                                <li class="reward-listbox reward-listlast">
+                                    <span class="reward-listb reward-listb-a">首投≥10万</span>
+                                    <span class="reward-listb reward-listb-b">1200</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h2 class="rebm-tit rebm-tit2" style="margin-top: 57px;"><img src="__ROOT__/Style/H/images/rebatestorm/num2.png">邀请方法</h2>
+                    <div class="ercode-wrap">
+                        <if condition="$UID">
+                            <img src="__ROOT__/Home/active/create_qr" width="125" height="125">
+                            <else/>
+                            <div class="ercode-nologin"><a href="/member/common/login/">登录</a>查看<br>我的专属邀请码</div>
+                        </if>
+                    </div>
+                    <p class="ercode-title">我的专属邀请码</p>
+                    <p class="ercode-note">注：让好友扫描您的专属邀请码进行注册即可；</p>
+
+                    <h2 class="rebm-tit rebm-tit1"><img src="__ROOT__/Style/H/images/rebatestorm/num3.png">我的返利金额</h2>
+                    <div class="invite-firendlist">
+                        <div class="invfri-th-wrap clearfix">
+                            <span class="invfri-tht invfri-tht-a">好友<br>用户名</span>
+                            <span class="invfri-tht invfri-tht-b">好友<br>注册时间</span>
+                            <span class="invfri-tht invfri-tht-c">好友<br>首投金额</span>
+                            <span class="invfri-tht invfri-tht-d">我的返利</span>
+                        </div>
+                        <div class="invfri-list-wrap js-invlist2">
+                            <if condition="$UID">
+                                <ul>
+                                    <volist name="firstlist" id="v" empty="$empty">
+                                        <li class="invfri-li clearfix">
+                                            <span class="invfri-tl invfri-tl-a">{$v.user_phone}</span>
+                                            <span class="invfri-tl invfri-tl-b">{$v.reg_time}</span>
+                                            <span class="invfri-tl invfri-tl-c">{$v.first_invest}</span>
+                                            <span class="invfri-tl invfri-tl-d">{$v.rebate}</span>
+                                        </li>
+                                    </volist>
+                                </ul>
+                                <else/>
+                                <p class="invfri-nologin"><a href="/member/common/login/">登录</a>查看我的邀请记录</p>
+                            </if>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--规则 start-->
+            <div class="rebatem-rule1">
+                <span class="rebrule-tit rebrule-tit2"></span>
+                <div class="rebrule-txt">
+                    <p>1、活动时间：2017.11.06-2017.11.30；</p>
+                    <p>2、邀请好友注册（包含活动期间邀请的好友，及以往邀请未投资的好友），在活动期间内首次投资金额达到相应的额度，邀请人可享受对应级别的奖励；</p>
+                    <p>3、现金奖励于邀请的好友完成首次投资标满复审后实时发放；</p>
+                    <p>4、在法律范围内链金所保留对本次活动的最终解释权。</p>
+                </div>
+            </div>
+            <!--规则 end-->
+        </div>
+        <!--福利二end-->
+    </div>
+</div>
+<script>
+    //投资排行版滚动
+    function AutoScroll(obj) {
+        if( $(obj).find("li").length > 3 ){
+            $(obj).find("ul:first").animate({
+                marginTop: "-51px"
+            }, 500, function() {
+                $(this).css({ marginTop: "0px" }).find("li:first").appendTo(this);
+            });
+        }
+    }
+    var a1 = setInterval('AutoScroll(".js-invlist1")', 2000);
+    $('.js-invlist1').mouseleave(function(){
+        a1 = setInterval('AutoScroll(".js-invlist1")', 2000);
+    })
+    $('.js-invlist1').mouseenter(function(){
+        clearInterval(a1);
+    })
+    var a2 = setInterval('AutoScroll(".js-invlist2")', 2000);
+    $('.js-invlist2').mouseleave(function(){
+        a2 = setInterval('AutoScroll(".js-invlist2")', 2000);
+    })
+    $('.js-invlist2').mouseenter(function(){
+        clearInterval(a2);
+    })
+</script>
+<include file="Public:_footer" />

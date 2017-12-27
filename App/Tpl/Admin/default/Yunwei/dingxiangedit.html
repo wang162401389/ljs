@@ -1,0 +1,41 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<style>
+    table td{text-align: center;}
+    .title{height: 40px;}
+</style>
+<div class="so_main">
+    <div class="page_tit">{$info['name']}&nbsp;&nbsp;修改规则</div>
+    <if condition="$info['type_name'] eq 'birthday'">
+        说明：自动识别老用户的生日，并在生日当日10:00赠送投资券
+        <else/>
+        说明：未登录用户指在设置的时间内未登录过的用户，赠送相应面值的投资券
+    </if>
+    <div class="list">
+        <form method="post" action="__URL__/dingxiangedit">
+            <input type="hidden" name="id" value="{$info.id}">
+            <table style="width:50%">
+                <tr>
+                    <td style="text-align:right">赠送投资券金额（元）：</td>
+                    <td style="text-align:left"><input type="text" name="money" value="{$info.money}"></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right">有效期（天）：</td>
+                    <td style="text-align:left"><input type="text" name="days" value="{$info.days}"></td>
+                </tr>
+                <if condition="$info['type_name'] eq 'notlogin'">
+                    <tr>
+                        <td style="text-align:right">未登录天数（天）：</td>
+                        <td style="text-align:left"><input type="text" name="nologin_days" value="{$info.nologin_days}"></td>
+                    </tr>
+                </if>
+                <tr>
+                    <td colspan="2">
+                        <input  style="margin-left:250px;float:left;width:200px;height:50px;font-size:20px" type="submit" value="保存规则">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+<include file="Public:_footer" />

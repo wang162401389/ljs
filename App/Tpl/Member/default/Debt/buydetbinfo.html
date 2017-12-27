@@ -1,0 +1,25 @@
+<volist name="list" id="vo">
+    <tr>
+        <td>ZQ{$vo.id}</td>
+        <td>
+            <a target="_blank" href="/debthome/debtdetail?id={$vo.id}" title="{$vo.borrow_name}">{$vo.borrow_name}</a>
+        </td>
+        <td>{$vo.debt_captial}</td>
+        <td>{$vo.totalmoney}</td>
+        <td>{$vo.borrow_money}</td>
+        <td>{$vo.debt_rate}%</td>
+        <td>{$vo.add_time|date="Y-m-d",###}</td>
+        <td>{$vo['borrow_money']-$vo['colligate_fee']}</td>
+        <td>{$vo.colligate_fee}</td>
+    </tr>
+</volist>
+<tr>
+    <td colspan="9">
+        <div id="myuopager" class="yahoo2">
+            <div class="list_bottom_right">
+                <ul>{$page}</ul>
+            </div>
+            <input type="hidden" id="tendbackingtotal_page" value="{$total_page}" />
+        </div>
+    </td>
+</tr>

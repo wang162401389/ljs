@@ -1,0 +1,139 @@
+<tagLib name="htmlA" />
+<div class="debt_step_exp"></div>
+<table width="100%" class="memberTable mt10">
+	<colgroup>
+        <col width="8%">
+        <col width="12%">
+        <col width="12%">
+        <col width="12%">
+        <col width="12%">
+        <col width="11%">
+        <col width="10%">
+        <col width="10%">
+        <col width="">
+    </colgroup>
+	<thead>
+        <tr>
+            <th>标号</th>
+            <th>项目名称</th>
+            <th>待收本金(元)</th>
+            <th>债权价值(元)</th>
+            <th>转让价格(元)</th>
+            <th>折价率</th>
+            <th>申请时间</th>
+            <th>当前状态</th>
+            <th>操作</th>
+        </tr>
+     </thead>
+     <tbody>
+        <volist name="list" id="vo">
+            <tr data-id="{$vo.id}">
+                <td>ZQ{$vo.id}</td>
+                <td>
+                <if condition="$vo.borrow_status eq 0">
+                    <a href="javascript:void(0)">{$vo.borrow_name}</a>
+                    <else/>
+                    <a target="_blank" href="/debthome/debtdetail?id={$vo.id}" title="{$vo.borrow_name}">{$vo.borrow_name}</a>
+                </if>
+                  
+                </td>
+                <td>{$vo.debt_captial}</td>
+                <td>{$vo.totalmoney}</td>
+                <td>{$vo.borrow_money}</td>
+                <td>{$vo.debt_rate}%</td>
+                <td>{$vo.add_time|date="Y-m-d",###}</td>
+                <td>
+                    <if condition="$vo.borrow_status eq 0">
+                        审核中
+                        <elseif condition="$vo.borrow_status eq 2"/>
+                        募集中
+                        <elseif condition="$vo.borrow_status eq 4"/>
+                        待复审
+                    </if>
+                </td>
+                <td class="no_bor_r"><a href="javascript:void(0)" class="js-undo" onclick="cancel({$vo.id})">撤销转让</a></td>
+            </tr>
+        </volist>
+        <tr>
+            <td colspan="9">
+                <div id="mypager" class="yahoo2">
+                    <div class="list_bottom_right">
+                        <ul>{$page}</ul>
+                    </div>
+                    <input type="hidden" id="tendbackingtotal_page" value="{$total_page}" />
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div id="cancelTransfer" class="confirm_pop">
+	<a href="javascript:void(0);" class="cls js-clsPop">X</a>
+    <p class="fs18 cor-black tc">是否撤销转让？</p>
+    <p class="control">
+        <input type="hidden" id="hid" >
+    	<a href="javascript:void(0);" class="btn btn-orange js-confirmBtn">确认</a>
+        <a href="javascript:void(0);" class="btn ml40 js-cancelBtn">取消</a>
+    </p>
+</div>
+<script type="text/javascript">
+
+    function cancel(id){
+        $("#cancelTransfer").show();
+        $("#hid").val(id);
+    }
+
+    $(function(){
+        /*确认按钮*/
+        $(".js-confirmBtn").click(function(){
+            $(this).closest(".confirm_pop").hide();
+            var id=$("#hid").val();
+            $.ajax({
+                url: "__URL__/cancel",
+                data: {"borrow_id":id},
+                type: "post",
+                dataType: "json",
+                success: function (d) {
+                    if(d.status==0){
+                        window.location.reload();
+                    }else{
+                        alert(d.msg);
+                    }
+                }
+            });
+        });
+
+        /*取消/关闭弹窗*/
+        $(".js-clsPop, .js-cancelBtn").click(function(){
+            $(this).closest(".confirm_pop").hide();
+        });
+
+        var ohpage=1;
+        var ohtotal_page=$("#tendbackingtotal_page").val();
+        function init(){
+            $(".list_bottom_right ul").find("[page=1]").each(function(){
+                $(this).css({"background-color":"#33aaff","color":"#fff"}).siblings("a").css({"background-color":"#EEEEEE","color":"#848484"});
+            });
+        }
+
+        function ajax_show(p) {
+            if(p<1){
+                ohpage=1;
+            }else{
+                if(p>ohtotal_page){
+                    ohpage=ohtotal_page;
+                }else{
+                    ohpage=p;
+                }
+            }
+            $.get("__URL__/onbondsinfo?p="+ohpage, function(data){
+                $("#dfopppp").html(data);
+                $(".list_bottom_right ul").find("[page="+ohpage+"]").each(function(){
+                    $(this).css({"background-color":"#33aaff","color":"#fff"}).siblings("a").css({"background-color":"#EEEEEE","color":"#848484"});
+                })
+            });
+        }
+
+      init();
+    });
+
+</script>

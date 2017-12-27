@@ -1,0 +1,14 @@
+<volist name="list" id="vo">
+    <dl style="border-bottom:1px dashed #dcdcdc;height:2.2rem;line-height:2.2rem;">
+        <dd style="width:46%;">{$vo.time}</dd>
+        <dd style="width:46%;">{$vo.goodsname}</dd>
+    </dl>
+</volist>
+<div>
+    <div id="pager" class="yahoo2">
+        <div class="list_bottom_right">
+            <ul>{$page}</ul>
+        </div>
+        <input type="hidden" id="tendbackingtotal_page" value="{$total_page}" />
+    </div>
+</div>

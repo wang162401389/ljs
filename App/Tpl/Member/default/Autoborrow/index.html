@@ -1,0 +1,338 @@
+<include file="Public:_header_common" />
+<title>我的账户-- {$glo.web_name}</title>
+<include file="default:Public:_header_main" group="Home"/>
+<include file="default:Public:_xiantiao" group="Home"/>
+<!--中部开始-->
+<div class="wrap2">
+    <div id="hy_left">
+        <include file="Public:_left" />
+    </div>
+    <div id="hy_right">
+        <!--自动投标 start-->
+        <div class="autotender-h2">
+            <span class="autoh2-tit">自动投标</span>
+				<span class="autoh2-state">
+					目前状态：<b class="state-tit">
+                        <switch name="auto_info.open_type">
+                        <case value="0">已禁用</case>
+                        <case value="1">已开启</case>
+                        <case value="2">已保存未开启</case>
+                        <default />未设置
+                        </switch></b>
+				</span>
+        </div>
+
+        <div class="tender-main">
+            <div class="tender-lbox clearfix">
+                <span class="tender-labtit">单笔最低投标额</span>
+                <div class="tender-labtxt">
+                    <input type="text" class="tender-text js-lowestmoney" placeholder="范围100-{$min_money}" value="{$auto_info.money}" data-max="{$min_money}"/>元
+                </div>
+                <div class="tender-tips tbr-tips"></div>
+            </div>
+            <div class="tender-lbox clearfix">
+                <span class="tender-labtit">投标种类</span>
+                <div class="tender-labtxt">
+                    <select class="tender-select js-tbtype">
+                        <option value="0" <php>echo $auto_info['borrow_type'] == 0?'selected':''</php>>不限</option>
+                        <option value="1" <php>echo $auto_info['borrow_type'] == 1?'selected':''</php>>质金链</option>
+                        <option value="6" <php>echo $auto_info['borrow_type'] == 6?'selected':''</php>>信金链</option>
+                        <option value="4" <php>echo $auto_info['borrow_type'] == 4?'selected':''</php>>融金链</option>
+                        <option value="8" <php>echo $auto_info['borrow_type'] == 8?'selected':''</php>>保金链</option>
+                        <option value="7" <php>echo $auto_info['borrow_type'] == 7?'selected':''</php>>优金链</option>
+                    </select>
+                </div>
+                <div class="tender-tips tbzl-tips"></div>
+            </div>
+            <div class="tender-lbox clearfix">
+                <span class="tender-labtit">还款方式</span>
+                <div class="tender-labtxt">
+                    <select class="tender-select js-hktype">
+                        <option value="0" <php>echo $auto_info['repayment_type'] == 0?'selected':''</php>>不限</option>
+                        <option value="2" <php>echo $auto_info['repayment_type'] == 2?'selected':''</php>>等额本息</option>
+                        <option value="1" <php>echo $auto_info['repayment_type'] == 1?'selected':''</php>>到期还本付息</option>
+                    </select>
+                </div>
+                <div class="tender-tips hkfs-tips"></div>
+            </div>
+            <div class="tender-lbox clearfix"  style="padding: 26px 0 24px;">
+                <span class="tender-labtit">借款期限</span>
+                <div class="tender-labtxt">
+                    <div class="tb-label tb-label-a">
+                        <span class="lab-che"><b class="tb-lcheck month-check <php> echo $auto_info['is_borrow_month'] ==1?'tb-lcheck-tick':''</php>"></b>月标</span>
+                        范围：<b style="padding-left: 8px;"></b>
+                        <!--<span class="lab-radio js-labradio-type lab-monthradio "><b class="lab-radiv"></b>不限</span>-->
+                        <b class="lab-yue1">月</b><b class="lab-yue2">月</b>
+                        <input type="text" class="tender-text tender-text110 js-startmonth" maxlength="2" value="<php>echo empty($auto_info)||empty($auto_info['month_start'])?1:$auto_info['month_start'];</php>" placeholder="1-12"/> - <input type="text" class="tender-text tender-text110 m-left10 js-endmonth" maxlength="2" value="<php>echo empty($auto_info)||empty($auto_info['month_end'])?12:$auto_info['month_end'];</php>" placeholder="1-12"/>
+                        <span class="tblabel-tips">最大不超过12月</span>
+                    </div>
+                    <div class="tb-label tb-label-b">
+                        <span class="lab-che"><b class="tb-lcheck day-check <php> echo $auto_info['is_borrow_day'] ==1?'tb-lcheck-tick':'';</php>"></b>天标</span>
+                        </b>范围：<b style="padding-left: 8px;"></b>
+                        <!--<span class="lab-radio js-labradio-type lab-dayradio "><b class="lab-radiv"></b>不限</span>-->
+                        <b class="lab-tian1">天</b><b class="lab-tian2">天</b>
+                        <input type="text" class="tender-text tender-text110 js-startday" maxlength="3" value="<php>echo empty($auto_info)||empty($auto_info['day_start'])?1:$auto_info['day_start'];</php>" placeholder="小于180"/> - <input type="text" class="tender-text tender-text110 m-left10 js-endday" maxlength="3" value="<php>echo empty($auto_info)||empty($auto_info['day_end'])?180:$auto_info['day_end'];</php>" placeholder="小于180"/>
+                        <span class="tblabel-tips">最大不超过180天</span>
+                    </div>
+                </div>
+                <div class="tender-tips jkqx-tips"></div>
+            </div>
+            <div class="tender-lbox clearfix">
+                <span class="tender-labtit">预期年化收益率</span>
+                <div class="tender-labtxt">
+                    <!--<span class="lab-radio lab-shouyiradio"><b class="lab-radiv"></b>不限</span>-->
+                    <b class="lab-bf1">%</b><b class="lab-bf2">%</b>
+                    <input type="text" class="tender-text tender-text110 js-startnhl" placeholder="小于15" value="<php>echo empty($auto_info)?1:$auto_info['rate_start'];</php>" maxlength="2" /> - <input type="text" class="tender-text tender-text110 m-left10 js-endnhl" placeholder="小于15" value="<php>echo empty($auto_info)?15:$auto_info['rate_end'];</php>" maxlength="2" />
+                    <span class="tblabel-tips">最大不超过15%</span>
+                </div>
+                <div class="tender-tips nhsy-tips"></div>
+            </div>
+            <div class="tender-lbox clearfix">
+                <span class="tender-labtit">使用投资卷</span>
+                <div class="tender-labtxt">
+                    <span class="lab-radio lab-tzq <php>echo $auto_info['ticket_type']==1?'tzq-radiotick':'';</php>" data-value="1"><b class="lab-radiv"></b>金额大的优先</span>
+                    <span class="lab-radio lab-tzq <php>echo $auto_info['ticket_type']==2||empty($auto_info['ticket_type'])?'tzq-radiotick':'';</php>" data-value="2"><b class="lab-radiv"></b>即将过期的优先</span>
+                    <span class="lab-radio lab-tzq <php>echo $auto_info['ticket_type']==3?'tzq-radiotick':'';</php>" data-value="3"><b class="lab-radiv"></b>不使用</span>
+                </div>
+                <div class="tender-tips tzj-tips"></div>
+            </div>
+            <div class="tender-button">
+                <input type="submit" class="tender-submit" value="保存并开启" />
+                <if condition="!empty($auto_info)&&$auto_info['open_type']!=0">
+                    <a href="javascript:void(0)" class="tender-disable" id="jinyong">禁用</a>
+                <else />
+                    <a href="javascript:void(0)" class="tender-disable" id="jinyong" style="display: none;">禁用</a>
+                </if>
+            </div>
+            <div class="tender-wxts">
+                <h2>温馨提示：</h2>
+                1.排名规则：以客户最近30天日均资产，日均资产=日均余额+日均待收，按数值大小排序<br />
+                2.系统将根据用户设置条件进行筛选，符合条件且账户可用余额满足设置的最低投标额时依照排名规则自动投标。<br />
+                3.单个借款标的额度50%可用于自动投标，其余标的额度限手动投资。<br />
+                4.单个借款标项目每用户只能自动投标一次，同一项目客户仍可手动参与投标。<br />
+                5.每个客户参与单个借款标的自动投标上限以平台提示为准。<br />
+                6.债权转让中的标的不支持自动投标。<br />
+            </div>
+        </div>
+        <!--自动投标 end-->
+    </div>
+</div>
+<!--自动投标协议 start-->
+<div class="autotb-popxieyi pop-div">
+    <div href="javascript:void(0)" class="popdiv-close js-popclose"></div>
+    <h2 class="popxieyi-h2">您正在开通自动投标功能</h2>
+    <div class="popxieyi-content">
+        <p style="text-align: center; margin: 10px 0px;font-weight: bold;font-size: 16px">第一章 基础说明</p>
+        <p style="margin: 10px 0px;font-weight: bold;">第1条：</p>
+        深圳市链金所互联网金融服务有限公司（简称“链金所”）依据本协议的规定在链金所网站上（链金所平台系基于供应链“物流、商流、信息流、资金流”四流合一的产业链融通体系，以“产融结合”为基本理念，以木材为核心，专注解决木材贸易商及家具工厂企业的投资、融资需求提供借贷交易居间服务的互联网平台；网址：<a href="http://www.ccfax.cn">www.ccfax.cn</a>，简称“链金所”）为链金所出借人（简称“出借人”）提供自动投标服务。本协议在出借人和链金所平台间具有法律效力。<br />
+        <p style="margin: 10px 0px;font-weight: bold;">第2条：</p>
+        链金所建议您谨慎阅读本协议，并在充分理解各条款内容后再选择是否接受本协议。除非您接受本协议所有条款，否则无权使用链金所于本协议项下所提供的自动投标服务。您一经选定自动投标服务即视为完全接受本协议的全部条款。<br />
+        <p style="text-align: center; margin: 10px 0px;font-weight: bold;font-size: 16px">第二章 自动投标服务说明</p>
+        <p style="margin: 10px 0px;font-weight: bold;">第3条：</p>
+        本协议中的“投标”即为“出借”之意。<br />
+        <p style="margin: 10px 0px;font-weight: bold;">第4条：</p>
+        自动投标服务是链金所平台为方便出借人而提供的一个智能投标委托代理工具，注册用户参与单个借款标的自动投标上限为1万元。<br />
+        <p style="margin: 10px 0px;font-weight: bold;">第5条：</p>
+        每个借款标发出后(债权转让中的标的不支持自动投标)链金所将根据所设置条件进行筛选，符合条件且账户可用金额超过该借款标最低投标额的自动投标规则将根据排名的前后顺序依次投标。<br />
+        <p style="margin: 10px 0px;font-weight: bold;">第6条：</p>
+        自动投标触发后，被触发规则的排名将自动排到队尾，未投到标的规则排名自动前进相应位数。未能投到标时，排名将始终保持前进。<br />
+        <p style="margin: 10px 0px;font-weight: bold;">第7条：</p>
+        单个借款标项目只能自动投标一次，同一借款标的项目，自动投标完成后，客户可手动参与投标,单个借款标的额度50%可用于自动投标，其余标的额度需手动投资。<br />
+        <p style="margin: 10px 0px;font-weight: bold;">第8条：</p>
+        启用自动投标服务，出借人可以设定投标方案。（您可以对每个自动投标规则设置金额、期限、标种、利率等条件，符合条件才会触发投标行为）链金所平台会根据出借人设定的方案筛选合适的标的进行自动出借。<br />
+        <p style="margin: 10px 0px;font-weight: bold;">第9条：</p>
+        自动投标的对象为链金所平台上的质金链、信金链、融金链、保金链、优金链，出借人启用自动投标服务，即视为同意并接受链金所平台《注册服务协议》 、《三方借款协议》 、《风险提示告知书》（质金链）、（信金链）、（融金链）、（保金链）、（优金链）及其他相关限定。<br />
+        <p style="margin: 10px 0px;font-weight: bold;">第10条：</p>
+        出借人在此不可撤销的授权链金所平台、链金所平台已同意接受其授权代出借人通过链金所的自动投标服务将出借人的账户余额进行投标。<br />
+        <p style="margin: 10px 0px;font-weight: bold;">第11条：</p>
+        出借人应知悉自动投标服务无法保证不错过任何满足其定制条件的标的。由此产生的损失，链金所平台不承担任何责任。<br />
+        <p style="margin: 10px 0px;font-weight: bold;">第12条：</p>
+        自动投标发生后，链金所会向出借人的注册手机号或邮箱发送通知。邮件从链金所发出时即视为已送达，出借人不会以任何理由否认该笔出借。<br />
+        <p style="margin: 10px 0px;font-weight: bold;">第13条：</p>
+        客户设置自动投标规则后，7日内未触发，系统将会发送注册用户站内信和手机短信通知。（尊敬的链金所用户！您设置的自动投标功能暂未匹配到合适标的，我们将尽快为您匹配，如需调整，请登录后台重新设置规则，也可详询客服中心：400-6626-985）<br />
+        <p style="text-align: center; margin: 10px 0px;font-weight: bold;font-size: 16px">第三章 其他说明</p>
+        <p style="margin: 10px 0px;font-weight: bold;">第14条：</p>
+        链金所平台拥有对本协议的修改权及最终解释权。
+    </div>
+    <a href="#" class="popxieyi-button js-popclose">确定</a>
+</div>
+<!--自动投标协议 end-->
+<script  src="__ROOT__/Style/JBox/jquery.jBox-2.3.min.js" type="text/javascript"></script>
+<script  src="__ROOT__/Style/JBox/jquery.jBoxConfig.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function(){
+        //借款期限月/天  - 模拟复选框
+        $(".lab-che").on("click",function(){
+            if($(this).find(".tb-lcheck").hasClass("tb-lcheck-tick")){
+                $(this).find(".tb-lcheck").removeClass("tb-lcheck-tick");
+                //$(this).siblings(".lab-radio").removeClass("lab-radiotick");
+                //$(this).siblings(".tender-text").removeAttr("disabled").val("");
+                //$(this).siblings(".tender-text").val("");
+            }
+            else{
+                $(this).find(".tb-lcheck").addClass("tb-lcheck-tick");
+            }
+        })
+
+        /*借款期限不限 - 模拟单选框
+        $(".js-labradio-type").on("click",function(){
+            if($(this).siblings(".lab-che").find(".tb-lcheck").hasClass("tb-lcheck-tick")){
+                if($(this).hasClass("lab-radiotick")){
+                    $(this).removeClass("lab-radiotick");
+                    $(this).siblings(".tender-text").removeAttr("disabled");
+                }
+                else{
+                    $(this).addClass("lab-radiotick");
+                    $(this).siblings(".tender-text").val("").attr("disabled","disabled");
+                }
+                $(".jkqx-tips").html("");
+            }
+            else{
+                $(".jkqx-tips").html("请勾选月标或者天标！");
+            }
+        })*/
+
+        /*预期年化收益不限 - 模拟单选框
+        $(".lab-shouyiradio").on("click",function(){
+            if($(this).hasClass("lab-radiotick")){
+                $(this).removeClass("lab-radiotick");
+                $(this).siblings(".tender-text").removeAttr("disabled");
+            }
+            else{
+                $(this).addClass("lab-radiotick");
+                $(this).siblings(".tender-text").val("").attr("disabled","disabled");
+            }
+        })*/
+
+        //勾选投资券
+        $(".lab-tzq").on("click",function(){
+            $(this).addClass("tzq-radiotick").siblings(".lab-tzq").removeClass("tzq-radiotick");
+        })
+
+        //提交表单
+        $(".tender-submit").on("click",function(){
+            var lowmoney = $(".js-lowestmoney").val();
+            var maxmoney = $(".js-lowestmoney").data('max');
+            var borrow = $(".js-tbtype").val();
+            var hk = $(".js-hktype").val();
+            var mb=0;//月表
+            var db=0;//天标
+            var startmonth = $(".js-startmonth").val();
+            var endmonth = $(".js-endmonth").val();
+            var startday = $(".js-startday").val();
+            var endday = $(".js-endday").val();
+            var startnhl = $(".js-startnhl").val();
+            var endnhl = $(".js-endnhl").val();
+            var usejuan = $('.tzq-radiotick').attr("data-value");
+            //var usejuan = $('input:radio[name="tzjuan"]:checked').val();
+
+            //投标额校正
+            if( lowmoney == "" || lowmoney == null){
+                $(".tbr-tips").html("单笔最低投标额不能为空！");
+                return;
+            }
+            if(lowmoney<100 || lowmoney>maxmoney){                
+                $(".tbr-tips").html('输入范围为100-'+maxmoney+'元');
+                return;
+            }
+            $(".tbr-tips").html("");
+            /*if(borrow == '不限'|| borrow === ''){
+                $(".tbzl-tips").html('请选择投标种类！');
+                return;
+            }
+            $(".tbzl-tips").html('');
+
+            if(hk == '不限'|| hk === ''){
+                $(".hkfs-tips").html('请选择还款方式！');
+                return;
+            }
+            $(".hkfs-tips").html('');*/
+            
+            //月标校正
+            if($(".month-check").hasClass("tb-lcheck-tick")){
+                mb = 1;
+                if( startmonth == "" || startmonth == null ||  endmonth == "" || endmonth == null ){
+                    $(".jkqx-tips").html("月标借款期限不能为空！");
+                    return;
+                }
+                if( Number(endmonth) <=  Number(startmonth) || startmonth <1 || startmonth >12 || endmonth <1  || Number(endmonth) > 12 ){
+                    $(".jkqx-tips").html("请输入正确的月标范围1-12月,且开始月数必须小于结束月数！");
+                    return;
+                }
+                $(".jkqx-tips").html("");
+            }
+
+            //天标校正
+            if($(".day-check").hasClass("tb-lcheck-tick")){
+                db=1;
+                if( startday == "" || startday == null  ||  endday == "" || endday == null  ){
+                    $(".jkqx-tips").html("天标借款期限不能为空！");
+                    return;
+                }
+                if( Number(endday) <=  Number(startday) || startday<1 || startday>180 ||  endday<1 || Number(endday) > 180 ){
+                    $(".jkqx-tips").html("请输入正确的天标范围1-180天，且开始天数必须小于结束天数！");
+                    return;
+                }
+                $(".jkqx-tips").html("");
+            }
+
+            //请至少选择一种借款期限类型
+            if(!$(".month-check").hasClass("tb-lcheck-tick") &&  !$(".day-check").hasClass("tb-lcheck-tick")){
+                $(".jkqx-tips").html("请至少选择一种借款期限类型！");
+                return;
+            }
+            $(".jkqx-tips").html("");
+
+            //年化收益率校正
+            if(!$(".lab-shouyiradio").hasClass("lab-radiotick")){
+                if( startnhl == "" || startnhl == null || startnhl == "0" || endnhl == "" || endnhl == null || endnhl == "0" ){
+                    $(".nhsy-tips").html("年化收益率不能为空！");
+                    return;
+                }
+                $(".nhsy-tips").html("");
+                if( Number(endnhl) <= Number(startnhl)){
+                    $(".nhsy-tips").html("年化收益率开始值必须小于结束值！");
+                    return;
+                }
+                if( Number(endnhl) > 15 || Number(endnhl)<1){
+                    $(".nhsy-tips").html("请输入正确范围1%-15%！");
+                    return;
+                }
+            }
+            $(".nhsy-tips").html("");
+
+            var url = "{:U('member/Autoborrow/autoBorrowSet')}";
+            $.post(url,{lowmoney:lowmoney,borrow:borrow,hk:hk,db:db,startday:startday,endday:endday,startmonth:startmonth,endmonth:endmonth,mb:mb,startnhl:startnhl,endnhl:endnhl,usejuan:usejuan},function(result){
+                if(result.status){
+                    if(result.is_open == 0){
+                        $(".state-tit").text("已保存未开启");
+                    }else{
+                        $(".state-tit").text("已开启");
+                    }
+                    $("#jinyong").show();
+//                    alert('保存成功!');
+                }
+                if(result.is_open == 0){
+                    $(".popxieyi-button").text("开通代扣");
+                    $(".popxieyi-button").attr('href',result.url);
+                }
+                //弹窗-自动投标协议
+                $(".pop-bg").show();
+                $(".pop-div").show();
+            },'json');            
+        })
+        $("#jinyong").on("click",function(){
+            var url = "{:U('member/Autoborrow/stopAutoBorrow')}";
+            $.post(url,{},function(result){
+                if(result.status){
+                    $(".state-tit").text("禁用");
+                    $("#jinyong").hide();
+                    alert(result.message);
+                }
+
+            },'json'); 
+        });
+    })
+</script>
+
+<include file="default:Public:_footer" group="Home" />

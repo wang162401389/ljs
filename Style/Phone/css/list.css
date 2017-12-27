@@ -1,0 +1,170 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+	list-style: none;
+}
+body {
+	margin-bottom: 50px;
+	background-color: #f0f0f0;
+}
+img {
+	max-width:100%;
+	height:auto;
+}
+.container {
+	padding: 0px;
+}
+
+.container ul .list {
+    background-color: #fff;
+    padding: 0rem 1rem 1rem 1rem;
+    margin-bottom: 5px;
+    border: 1px solid #e5e5e5;
+	margin-top:5px;
+}
+.progress {
+	width: 70%;
+	height: 6px;
+	margin: 0px;
+	float: left;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	background:#f0f0f0;
+	border-radius:5px;
+	border:1px solid #f0f0f0;
+}
+.progress .progress-bar {
+	background-color: #54c0f2;
+	border:1px solid #54c0f2;
+}
+.inline {
+	height: 15px;
+}
+.btn {
+	width: 25%;
+	float: left;
+	margin-left: 5%;
+	margin-top: -16px;
+	line-height:20px;
+	height:32px;
+	
+}
+.btn-info1{ background:#fff; color:#fa4622; border:1px solid #fa4622;}
+.cost {
+    color: #ff6f00;
+    width:55%;
+    float:left;
+	font-size:1.8rem;
+	position: relative;
+}
+.percent{
+    color: #ff6f00;
+    width:25%;
+    float:left;
+	font-size:1.5rem;
+}
+.days{
+   
+    float: right;
+	font-size:1rem;
+	
+}
+.info_container{
+	height:1.5rem;
+	line-height:1.5rem;
+	width:80%;
+}
+.show_info{
+    width: 70%;
+    overflow: hidden;
+    font-size: 1rem;
+	color:#6b6a6a;
+	
+}
+.show_info span:first-child{
+    float:left;
+}
+.show_info span:last-child{
+    float:right;
+}
+.bottom {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+#bottomNav a {
+	color: #727171;
+	font-size: 80%;
+}
+#bottomNav a.active {
+	color: #25b4e9;
+}
+.top {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.header  {
+    position:relative;
+	height:4rem;
+	background:#54c0f2;
+	vertical-align:middle;
+	margin-top:auto;
+	margin-bottom:auto;
+
+	}
+.header  ul {
+	text-align: center;
+	margin: auto;
+	background:#54c0f2;
+	/*border-bottom:1px solid #fff;
+	border-top:1px solid #fff;
+	border-radius:2px;
+	border-left:1px solid #fff;
+	border-right:1px solid #fff;*/
+	display: flex;
+	height: 4rem;
+	width: 135%;
+	position: relative;
+	left: 0;
+}
+.header  .tab {
+	font-size:1.2rem;
+	color:#fff;
+    width: 15%;
+	    margin-top: 1rem;
+}
+
+.header  .current {
+	border-bottom:2px solid #fff;
+	
+
+
+}
+.header  .tab a {
+	color: #8e8d8d;
+	text-decoration: none;
+	color: #fff;
+}
+.header  .current a {
+	color: #585858;
+	color: #fff;
+    
+}
+.container .tabPage {
+	display: none;
+	overflow:hidden
+}
+.container .active {
+	display: block;
+}
+.list>div:first-child>a {
+    color: #4b4949;
+}
+.list>div:first-child{
+    margin-bottom: 1rem;
+}
+.spx{ background:#f0f0f0; width:100%; border-bottom:1px dashed #f0f0f0; margin-bottom:15px; margin-top:10px;}
+
+/*加息*/
+.jiaxi{font-size:1rem;position:relative;top:0.5rem;left:5.8rem;float: left;line-height:0}

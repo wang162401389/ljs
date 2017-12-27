@@ -1,0 +1,18 @@
+<style type="text/css">
+.msgbox{padding:20px; line-height:25px; text-indent:20px; width:500px}
+</style>
+<div class="msgbox">
+{$msg}
+<span id="test"></span>
+<input type="hidden"    value="{$count}"  id="total">
+<input type="hidden"    value="{$read}"  id="read">
+<input type="hidden"    value="{$unread}"  id="unread">
+</div>
+<script type="text/javascript">
+var mid = "{$mid}";
+$("#msg_"+mid).find("img").attr("src",readimg);
+var unread = parseInt($("#unread").val());
+var read = parseInt($("#read").val());
+$("#spSysMsgCountUn").html(unread);
+$("#spSysMsgCountRead").html(read);
+</script>

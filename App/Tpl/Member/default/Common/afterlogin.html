@@ -1,0 +1,40 @@
+<div class="first_top">
+    <div class="dv_header top ">
+        <!--迷你导航-->
+
+        <div class="dw_bgx dw_mini">
+            <div class="Cmml00">
+                <?php
+ $dws= session('u_user_name');
+?>
+                <div class="fl" style="margin-right:20px; display: none">特速集团旗下品牌</div>
+                <div class="fl dw_Cbg zuo">
+                    <div class="fl" >客服热线：<?php $dw_kefu=get_qq(2);echo("<em>".$dw_kefu[0]["qq_num"]."</em>"); ?>&nbsp;&nbsp;</div>
+                   <!-- <span class="d_color"><a href="__APP__/aboutus/zhgl.html">帮助中心</a></span>-->
+                </div>
+                <div class="fr">
+
+                    <div class="fl">
+                        <a class="right_a" href="__APP__/member/" >我的账户</a>
+                    </div>
+                    <div class="fl">
+                        <a  class="right_a" href="__APP__/member/msg#fragment-1" >消息({$unread|default=0})</a>
+                    </div>
+                    <div class="fl">
+                        <a  class="right_a" href="__APP__/member/common/actlogout" >退出</a>
+                    </div>
+                    <div class="fl">
+                        <a href="__APP__/Home/bangzhu/phone.html"><img src="__ROOT__/Style/M/images/phone.png" style="height:16px;padding-right: 5px; vertical-align:middle;"/>手机APP</a>
+                    </div>
+                    <div class="fl" style="cursor: pointer;">
+                        <?php $peceptionid = peception(); ?>
+                        <?php $u_name= session('u_user_name'); ?>
+                        <php>$userinfo = getuserinfo($u_name);</php>
+                         <a href="__APP__/aboutus/zhgl.html" style="color:#fc8026;">帮助中心</a> 
+                        <!--<a onclick="NTKF.im_openInPageChat('{$peceptionid}')"><img src="__ROOT__/Style/M/images/kefu001.png" style="height:16px;padding-right: 5px; vertical-align:middle;cursor:pointer;margin-top: -2px;"/>在线客服</a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

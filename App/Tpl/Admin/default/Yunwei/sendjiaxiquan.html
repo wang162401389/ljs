@@ -1,0 +1,133 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<style>
+    #area_list {padding-left: 15px;text-align: right;}
+    .quan tr th,input{text-align:center}
+</style>
+<div class="so_main">
+    <div class="page_tit">定向用户加息券</div>
+    <form method="post" action="__URL__/dojiaxiquan" id="jiaxi_form">
+        <div id="search_div">
+            <div class="form2" style="background-color: #d2dbea;">
+            <span class="page_tit" style="margin-left:105px">目标用户</span>
+                <table style="width: 80%;height: 80px;">
+                    <tr>
+                        <td><input name="send_type[]" id="regtime" type="checkbox" value="regtime"></td>
+                        <td style="width: 330px;">注册时间：
+                            <htmlA:timer id="start_time" style="width:90px" value="{$search.start_time}"  />&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;
+                            <htmlA:timer id="end_time" style="width:90px" value="{$search.end_time}"   />
+                        </td>
+                        <td>且满足</td>
+                        <td>
+                            <lable><input type="radio" name="type" value="0" checked="checked">未实名用户</lable>
+                            <lable><input type="radio" name="type" value="1">未投资用户</lable>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top;"><input name="send_type[]" type="checkbox" value="phonelist" id="send_user"></td>
+                        <td colspan="3">
+                            <div style="float:left">
+                                <span>发放用户：</span>
+                            </div>
+                            <div style="float:left">
+                                <textarea cols="50" rows="5" id="phone" name="phone" style="resize: none;" placeholder="请输入用户ID/用户名/手机号，用英文分号（;）分割"></textarea>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="list">
+            <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td>赠券有效期至：<td>
+                    <td style="text-align:left"><htmlA:timer id="quan_end_time" style="width:150px" value="" /><td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: top;">加息券发放：<td>
+                    <td style="float:left;text-align:center">
+                        <table class="quan">
+                            <tr>
+                                <th>加息</th>
+                                <th>张数</th>
+                            </tr>
+                            <tr>
+                                <td><input name="money[]" value="0.5">%</td>
+                                <td><input name="number[]" value="0"></td>
+                            </tr>
+                            <tr>
+                                <td><input name="money[]" value="1">%</td>
+                                <td><input name="number[]" value="0"></td>
+                            </tr>
+                        </table>
+                        <input id="newrow" type="button" value="新增">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                    <input  id="sendBt" style="margin-left:250px;float:left;width:200px;height:50px;font-size:20px" type="button" value="确认发送">
+                    </td>
+                </tr>
+            </table>
+            
+        </div>
+    </form>
+</div>
+<script>
+    $("#newrow").click(function(){
+        var text = "<tr><td><input name='money[]' value='0'>%</td><td><input name='number[]' value='0'></td></tr>"
+        $(".quan").append(text);
+    })
+    $("#sendBt").click(function(){
+        var now_time = new Date().getTime();
+        var q_time =  $("#quan_end_time").val();
+        
+        if($("#regtime").is(':checked')){
+            if($("#start_time").val()==''){
+                alert('请填开始时间！');
+                $("#start_time").focus();
+                return ;
+            }
+            if($("#end_time").val()==''){
+                alert('请填结束时间！');
+                $("#end_time").focus();
+                return ;
+            }
+            var start_time = new Date($("#start_time").val()).getTime();
+            var end_time = new Date($("#end_time").val()).getTime();
+            if(start_time > now_time || end_time>now_time){
+                alert('注册开始时间或注册结束时间不能超过当前时间！');
+                return ;
+            }
+            if(start_time > end_time){
+                alert('注册开始时间必须小于结束时间！');
+                return ;
+            }
+        }
+        
+        if($("#send_user").is(':checked')){
+            if($("#phone").val()==''){
+                alert('请填写要发放的用户！');
+                $("#phone").focus();
+                return ;
+            }
+        }else{
+            alert('请勾选发放用户！');
+            return ;
+        }
+        
+        if(q_time ==''){
+            alert('请选择赠券有效期');
+            return ;
+        }
+        var q_time1 = new Date(q_time).getTime();
+        if(now_time > q_time1){
+             alert('赠券有效期不能小于现在发送时间！');
+             return ;
+        }        
+        $("#jiaxi_form").submit();
+    });
+</script>
+<include file="Public:_footer" />

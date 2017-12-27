@@ -1,0 +1,116 @@
+<tagLib name="htmlA" />
+<style type="text/css">
+.question{position:relative;width:20px;height:20px;margin-left:10px;background:url(__ROOT__/Style/H/images/question.png) no-repeat center;vertical-align:middle;}
+.question span{display:none;position:absolute;top:-12px;left:19px;width:100px;line-height:18px;padding:2px 10px;border:solid 1px #dedede;background-color:#e7e7e7;}
+.question:hover span{display:inline;}
+</style>
+<div class="fs14 mt10">您目前竞标中的投资总额是：￥{$total|default="0.00"}，共{$num|default="0"}笔投标。</div>
+<table width="100%" class="memberTable mt20">
+	<colgroup>
+        <col width="10%">
+        <col width="22%">
+        <col width="10%">
+        <col width="12%">
+        <col width="13%">
+        <col width="10%">
+        <col width="13%">
+        <col width="">
+    </colgroup>
+    <thead>
+        <tr>
+            <th>借款标号</th>
+            <th>项目名称</th>
+            <th>投标日期</th>
+            <th>借款金额</th>
+            <th>预期年化收益率</th>
+            <th>借款期限</th>
+            <th>我的投资金额</th>
+            <th>预期本息</th>
+        </tr>
+    </thead>
+    <tbody id="tyopppp">
+        <volist name="list" id="vo">
+            <tr><td>
+                    <if condition="$vo.bid eq 'TY1'">
+                        <a href="__APP__/home/experience/detail" title="{$vo.borrow_name}" target="_blank">{$vo.bid}</a>
+                    <else/>
+                        <if condition="$vo.debt_id eq 0">
+                            <a href="{$vo.borrow_id|getInvestUrl=###}" title="{$vo.borrow_name}" target="_blank">{$vo.borrow_id|borrowidlayout1}</a>
+                            <else/>
+                            <a href="/debthome/debtdetail?id={$vo.debt_id}" title="{$vo.debt_name}" target="_blank">ZQ{$vo.debt_id}</a>
+                        </if>
+
+                    </if>
+                </td>
+                <td>
+                    <if condition="$vo.debt_id eq 0">
+                        <a href="{$vo.borrow_id|getInvestUrl=###}" title="{$vo.borrow_name}" target="_blank">{$vo.borrow_name}</a>【{$vo.is_auto}】
+                        <else/>
+                        <a href="/debthome/debtdetail?id={$vo.debt_id}" title="{$vo.debt_name}" target="_blank">{$vo.debt_name}</a>【{$vo.is_auto}】
+                    </if>
+
+                </td>
+                <td>{$vo.invest_time|date="Y-m-d",###}</td>
+                <td>¥
+                    <if condition="$vo.debt_id eq 0">
+                    {$vo.borrow_money}
+                    <else/>
+                    {$vo.debt_money}
+
+                </if>元</td>
+                <td><php>echo $vo['borrow_interest_rate']+$vo['jx_rate']+$vo['jiaxi_rate']</php>%<if condition="($vo.jx_rate gt 0) OR ($vo.jiaxi_rate gt 0)"><span class="question"><span><if condition="$vo.jx_rate gt 0">平台加息{$vo.jx_rate}%<br /></if><if condition="$vo.jiaxi_rate gt 0">使用加息券{$vo.jiaxi_rate}%</if></span></span></if></td>
+                <td>
+                    <if condition="$vo.debt_id eq 0">
+                    {$vo.borrow_duration}<if condition="$vo.repayment_type eq 1">天<else/>个月</if>
+                    <else/>
+                    {$vo.debt_date}
+
+                </if>
+                </td>
+                <td>¥{$vo.investor_capital}元</td>
+                <td>¥{$vo['investor_capital'] + $vo['investor_interest'] +$vo['jiaxi_money']}元</td>
+            </tr>
+        </volist>
+        <tr>
+            <td colspan="7">
+                <div id="pager" class="yahoo2 ajaxpagebar">
+                    <div class="list_bottom_right">
+                        <ul>{$pagebar}</ul>
+                    </div>
+                </div>
+                <input type="hidden" id="tendingtotal_page" value="{$total_page}" />
+            </td>
+        </tr>
+    </tbody>
+</table>
+<script type="text/javascript">
+var mypage=1;
+var mytotal_page=$("#tendingtotal_page").val();
+function init(){
+	$(".list_bottom_right ul").find("[page=1]").each(function(){
+		$(this).css({"background-color":"#33aaff","color":"#fff"}).siblings("a").css({"background-color":"#EEEEEE","color":"#848484"});
+	});
+}
+
+function ajax_show(p) {
+	if(p<1){
+		mypage=1;
+	}else{
+		if(p>mytotal_page){
+			mypage=mytotal_page;
+		}else{
+			mypage=p;
+		}
+	}
+	$.get("__URL__/tendinginfo?p="+mypage, function(data){
+		$("#tyopppp").html(data);
+		$(".list_bottom_right ul").find("[page="+mypage+"]").each(function(){
+			$(this).css({"background-color":"#33aaff","color":"#fff"}).siblings("a").css({"background-color":"#EEEEEE","color":"#848484"});
+		})
+	});
+}
+
+$(function(){
+	init();
+});
+</script>

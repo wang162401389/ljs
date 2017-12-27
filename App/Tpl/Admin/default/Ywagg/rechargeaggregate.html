@@ -1,0 +1,49 @@
+<include file="Public:_header" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<tagLib name="htmlA" />
+<div class="so_main">
+    <div class="page_tit">充值回款数据</div>
+    <div id="search_div">
+
+        <div class="form2" style="background-color: #d2dbea;">
+            <form method="post" action="__URL__/rechargeaggregate">
+                <table style="width: 80%;height: 80px;">
+                    <tr>
+                        <td>用户ID：</td>
+                        <td> <input name="uid" style="width:190px" id="uid" type="text" value="{$search.uid}"></td>
+                        <td>姓名：</td>
+                        <td><input name="real_name" style="width:190px" id="real_name" type="text" value="{$search.real_name}"></td>
+                        <td>起止时间：</td>
+                        <td><htmlA:timer id="start_time" style="width:90px" value="{$search.start_time}"  />&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;
+          					<htmlA:timer id="end_time" style="width:90px" value="{$search.end_time}"   /></td>
+                    </tr>
+                    <tr style="text-align: right;">
+                        <td colspan="6">
+                        	<span class='chaxun'><input type="submit" value="查询"/></span>
+                    	</td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th class="line_l">用户ID</th>
+                <th class="line_l">姓名</th>
+                <th class="line_l">充值金额</th>
+                <th class="line_l">回款金额</th>
+            </tr>
+            <volist id="vo" name="list">
+                <tr>
+                    <td>{$vo.uid}</td>
+                    <td>{$vo.real_name}</td>
+                    <td>{$vo.charge_money|default=0}</td>
+                    <td>{$vo.receive_money|default=0}</td>
+                </tr>
+            </volist>
+        </table>
+    </div>
+</div>
+<include file="Public:_footer" />

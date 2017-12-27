@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<base href="/Style/Phone/" />
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  	<script src="__ROOT__/Style/Phone/js/jquery-2.1.4.min.js"></script>
+  	<link rel="stylesheet" type="text/css" href="__ROOT__/Style/Phone/css/christmas.css">
+  	<title>我的新年礼物</title>
+  	<style type="text/css">
+	  	#header .title{font-size: 1.2rem;}
+  	</style>
+</head>
+<body class="bg-red">
+<include file="default:Pub:simple_header" group="M" />
+	<p class="p-tit">我的新年礼物</p>
+	<p class="newyearp">
+		{$usr_info.user_name}，您好！<br><br>
+	    <span>您已累计投资￥{$usr_info.invest_money}</span>
+	    <if condition="$usr_info.invest_money eq 0">
+	    <span>暂未获得礼品，新年礼物在向你招手！</span>
+	    <else/>
+	    <volist name="list" id="vo">
+	     	<span>获得{$vo.gift_name}<if condition="$vo.gift_no gt 0">（{$vo["gift_no"]}期  幸运号{$vo["have_number"]}）</if></span>
+	    </volist>
+	    </if>
+	    
+	</p>
+</body>
+</html>

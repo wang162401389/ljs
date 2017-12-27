@@ -1,0 +1,785 @@
+<include file="Public:_header_common" />
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>{$vo.borrow_name}-我要投资-{$glo.web_name}</title>
+<meta http-equiv="keywords" content="{$glo.web_keywords}" />
+<meta http-equiv="description" content="{$glo.web_descript}" />
+<link rel="stylesheet" href="__ROOT__/Style/H/css/reset.css" />
+<link rel="stylesheet" href="__ROOT__/Style/H/css/detail.css" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/fancybox/jquery.fancybox-1.3.2.css" media="screen" />
+<include file="Public:_header_main" />
+<div class="xiantiao"></div>
+<div class="bread wrapper">您所在的位置：<a href="__APP__/index">首页</a> > <a href="__APP__/invest">我要投资</a> > 项目详情</div>
+<div class="detail_main wrapper">
+    <div class="detail_project">
+        <div class="detail_project_left">
+            <div class="title">
+                <?php if($vo['product_type']==6){ ?>
+                	<img src="__ROOT__/Style/H/images/index/index_yb1.png">
+                <?php } else { ?>
+                	<img src="__ROOT__/Style/H/images/index/index_yb.png">
+                <?php } ?>
+                {$vo.borrow_name} <span><a href="__APP__/borrow/agreement?id={$vo.id}" target="_blank"><if condition="$vo['borrow_use'] neq 9">《三方借款协议》<else/>《借款协议》</if></a></span><if condition="!empty($vo['password'])"><span><img style="width:37px;height:17px" src="__ROOT__/Style/H/images/borrow_vip.png"></span></if> </div>
+            <ul class="parameter">
+                <li><span>预期年化收益率</span>{$vo.borrow_interest_rate}%<if condition="$vo.jiaxi_rate gt 0"><span class="udel-jiaxi" style="top:33px; left:96px">+{$vo.jiaxi_rate}%</span></if></li>
+                <li><span>借款期限</span>
+                    <?php if($vo['borrow_duration_txt']=='') { ?>
+                    {$vo.borrow_duration}
+                    <if condition="$vo.repayment_type eq 1">天
+                        <else/>
+                        个月</if>
+                    <?php } else {
+                    echo $vo['borrow_duration_txt'];
+                    }?>
+                </li>
+                <li><span>借款金额</span>￥{$vo.borrow_money|getMoneyFormt=###}元</li>
+            </ul>
+            <ul class="info">
+                <li>还款方式：&nbsp;&nbsp;&nbsp;{$Bconfig['REPAYMENT_TYPE'][$vo['repayment_type']]}</li>
+                <li>借款用途：&nbsp;&nbsp;&nbsp;<if condition="$vo['borrow_use'] neq 9">{$gloconf['BORROW_USE'][$vo['borrow_use']]}<else/>{$vo['borrow_use_desc']}</if></li>
+                <li>发布时间：&nbsp;&nbsp;&nbsp;{$vo.add_time|date="Y-m-d H:i",###}</li>
+                <li><if condition="empty($vo['password'])">起投金额：&nbsp;&nbsp;&nbsp;{$vo.borrow_min|Fmoney=###}</if></li>
+                <li>
+                    <div style="float:left;">投标进度：&nbsp;&nbsp;&nbsp;</div>
+                    <div class="b_progress"><span class="b_progress-bar" style="width:{$vo.progress|intval}%;"></span></div>
+                    <div style="float:left;">&nbsp;&nbsp;{$vo.progress|intval}%</div>
+                </li>
+                <if condition="$vo.danbao neq 0">
+                    <li>
+                        担保机构：&nbsp;&nbsp;&nbsp;{$vo.company_name}
+                    </li>
+                </if>
+                <if condition="$vo.is_beginnercontract eq 1">
+                    <li>投资规则：新用户专享，限投5万，限投1次</li>
+                </if>
+            </ul>
+        </div>
+        <div class="detail_project_right">
+            <div class="content">
+                <div class="timing">
+                    <div> <img src="__ROOT__/Style/H/images/index/djs.png"> <span  id="loan_time">剩余--天--小时--分--秒</span> </div>
+                </div>
+
+                <div>
+                    <ul class="info_s">
+                        <li>
+                            <if condition="$vo.borrow_status gt 5 AND $vo.borrow_status neq 8"> 已满标
+                                <else/>
+                                可投金额：&nbsp;&nbsp;&nbsp;<span style="color:#fc8026; font-size:14px; font-weight:bolder;">{$vo.need|getMoneyFormt=###}元</span> </if>
+                        </li>
+                        <li>可用余额：
+                            <if condition="session('u_id') ==''"> <span style="margin-left:9px;">请先<a class="tologin" href="__APP__/member/common/login?type=1">登录</a></span>
+                                <else/>
+                                <span style="margin-left:9px;">{$investinfo['account_money']}元</span> <a class="tocharge" href="__APP__/member/charge#fragment-1" >【充值】</a> </if>
+                        </li>
+                        <li>投标金额：&nbsp;&nbsp;
+                            <if condition="session('u_id') ==''">
+                                <input type="text" class="jx_input_disabled" disabled="disabled" value="请先登录"/>
+                                <elseif condition="$vo.borrow_status eq 3"/>
+                                <input type="text" class="jx_input_disabled" disabled="disabled" value="已流标"/>
+                                <elseif condition="$vo.borrow_status eq 4"/>
+                                <input type="text" class="jx_input_disabled" disabled="disabled" value="复审中"/>
+                                <elseif condition="$vo.borrow_status eq 6"/>
+                                <input type="text" class="jx_input_disabled" disabled="disabled" value="还款中"/>
+                                <elseif condition="$vo.borrow_status gt 6"/>
+                                <input type="text" class="jx_input_disabled" disabled="disabled" value="<if condition="$vo.borrow_status eq 8">待发标<else />已完成</if>"/>
+                                <else/>
+                                <input id="enter_value" type="text" class='<if condition="$vo.is_beginnercontract eq 1">js-newer-moneyinp</if>' value="" <if condition="empty($vo['password'])">placeholder="{$vo.borrow_min|Fmoney=###}元起投"</if> onkeyup="get_interest(this);"/>
+                            </if>
+                            元 </li>
+                        <li class="jx_notice" id="jx_notice"></li>
+                        <li>预期收益：&nbsp;&nbsp;&nbsp;<span class="interest">0.00</span>元</li>
+                        <li>
+                            <if condition="$vo.borrow_status eq 3">
+                                <div class="jx_payment jx_payment_disabled">已流标</div>
+                                <elseif condition="$vo.borrow_status eq 4"/>
+                                <div class="jx_payment jx_payment_disabled">复审中</div>
+                                <elseif condition="$vo.borrow_status eq 6"/>
+                                <div class="jx_payment jx_payment_disabled">还款中</div>
+                                <elseif condition="$vo.borrow_status gt 6"/>
+                                <div class="jx_payment jx_payment_disabled"><if condition="$vo.borrow_status eq 8">{$vo.add_time|date="H:i",###} 开始<else />已完成</if></div>
+                                <else/>
+                                <div id="jx_payment" class='jx_payment <if condition="$vo.is_beginnercontract eq 1">js-newer-paybtn</if>' onclick="invest({$vo.id});">立即投标</div>
+                                <div style="position: absolute; margin-top: 46px;">
+                                    <input type="checkbox" id="agreen" checked>
+                                    &nbsp;&nbsp;已阅并同意<a href="/borrow/agreement?id={$vo.id}" style="color:#999999">《三方借款协议》</a></div>
+                            </if>
+                        </li>
+                    </ul>
+                    <p style="color:#666;">
+                        <span style="float:left; line-height:34px">分享：</span>
+                        <span class="bdsharebuttonbox">
+                            <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信" target="_top"></a>
+                            <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                            <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                            <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+                            <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                            <a href="#" class="bds_more" data-cmd="more" style="font-size:15px;"></a>
+                        </span>
+                        <script>
+       				 	    window._bd_share_config={
+								"common":{
+								"bdSnsKey":{},
+								"bdText":"发现一个投资灰常靠谱的平台（链金所），投资时间短，收益快，在上面小赚了一笔，有兴趣的童鞋可以来看看。",
+								"bdMini":"2",
+								"bdMiniList":["mshare","qzone","tsina","weixin","renren","kaixin001","tieba","douban","sqq","mail","ty","twi","h163","copy"],
+								"bdPic":"https://www.ccfax.cn/UF/Uploads/Article/20160329161124.png",
+								"bdStyle":"1",
+								"bdSize":"24",
+								},
+								"share":{}
+							};
+							with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='https://o6wg7zsae.qnssl.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                        </script>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <if condition="$vo.is_beginnercontract eq 1">
+        <div class="newer-product-ad" style="margin: 0 0 20px 50px"><img src="__ROOT__/Style/H/images/ad/new-product-ad.jpg"></div>
+    </if>
+    
+    <div class="detail_info">
+    	<ul class="state_info_nav" id="state_info_nav">
+            <?php if($vo['borrow_type']==1){ ?>
+	            <li class="active"><a class="invest-tab current" href="#001" onclick="showTail('picintro',this);">项目信息</a></li>
+	            <li class=""><a class="invest-tab" href="#003" onclick="showTail('picintro',this);">风控措施</a></li>
+	            <?php if(empty($vo['password'])){ ?>
+	            	<li class=""><a class="invest-tab" href="#004" onclick="showTail('record',this);">投资记录<if  condition="session('u_user_name') neq ''">({$touzicount})</if></a></li>
+	            <?php } ?>
+            <?php }else { ?>
+	            <li class="active"><a class="invest-tab current" href="#001" onclick="showTail('picintro',this);">项目信息</a></li>
+	            <li class=""><a class="invest-tab" href="#002" onclick="showTail('picintro',this);">项目阐述</a></li>
+	            <li class=""><a class="invest-tab" href="#003" onclick="showTail('picintro',this);">风控措施</a></li>
+	            <?php if($vo["product_type"]<=3) { ?>
+	            	<li class=""><a class="invest-tab" href="#003" onclick="showTail('tracking',this);">质押跟踪</a></li>
+	            <?php } ?>
+	            <?php if(empty($vo['password'])){ ?>
+	            	<li class=""><a class="invest-tab" href="#004" onclick="showTail('record',this);">投资记录<if  condition="session('u_user_name') neq ''">({$touzicount})</if></a></li>
+	            <?php }?>
+	            <li class=""><a class="invest-tab" href="#005" onclick="showTail('extra',this);">补充资料</a></li>
+            <?php } ?>
+        </ul>
+
+         <div class="clear"></div>
+        <!-- 项目信息 -->
+        <div class="state_info_con"  id="picintro" style="display:block;">
+            <if  condition="session('u_user_name') neq ''">
+                <if condition="$vo['updata'] neq NULL">
+                    <div style="margin-bottom:20px;height:24px;">
+                        <div style="font-size:16px;color:#FF6300;text-indent:0em;height:24px;"> 资料证明</div>
+                    </div>
+                    <table style="width:99%">
+                        <tr>
+                            <td>
+                            	<div style="float:left;" id="preview">
+                                    <div id="spec-n5">
+                                        <div class="spec-button spec-left" id="spec-left" style="cursor: default;"> <img id="imgLeft" src="__ROOT__/Style/H/images/left_g.gif"></div>
+                                        <div id="spec-list">
+                                            <div class="bot06">
+                                                <ul class="list-h bot07">
+                                                    <php> if($vo['product_type'] != 5 && $vo["id"] <= C("FK_BORROW")){</php>
+                                                    <php>$i=0;foreach(unserialize($vo['updata']) as $v){ $i++;</php>
+                                                    <li id="display2"> <a href="__ROOT__/<php>echo $v['img'];</php>" title="<php>echo $v['info'];</php>" rel="img_group"> <img  title="<php>echo $v['info'];</php>" src="__ROOT__/<php>echo get_thumb_pic($v['img']);</php>"> </a> <span>
+                                                        <php>echo $v['info'];</php>
+                                                        </span> </li>
+                                                    <php>}}else{</php>
+                                                    <php> $img = explode("|", $vo['updata']);foreach ($img as $i) {</php>
+                                                    <li id='display2'> <a href="<php>echo $i;</php>" rel='img_group'><img src="<php>echo $i;</php>"> </a> </li>
+                                                    <php>}}</php>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="spec-button" id="spec-right" style="cursor: default;"> <img id="imgRight" src="__ROOT__/Style/H/images/scroll_right.gif"></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </if>
+                <ul class="state_person">
+                    <if condition="session('u_user_name') eq ''">
+                        <p style="margin-bottom:500px;">您还没有登录,请登录查看详细信息</p>
+                    <else/>
+                        <p>{$vo.borrow_info|default="没有添加内容"}</p>
+                    </if>
+                </ul>
+           <else/>
+                <p style="font-size:18px; text-align:center; line-height:3em;">您还没有登录,请<a href="/member/common/login">登录</a>查看详细信息</p>
+            </if>
+
+        </div>
+        <!-- 风控设置 -->
+        <div class="state_info_con"  id="riskcontrol" style="display:none;">
+            <ul class="state_person">
+                <p style="font-size:14px; text-align:left; line-height:2em;"> {$vo.borrow_riskcontrol|default="没有添加内容"} </p>
+            </ul>
+            <!-- 右侧内容 -->
+            <div class="totalAmount posa fn-clear" id="totalAmount" style="left:676px;"> {:get_ad(13)} </div>
+            <!-- 右侧内容 -->
+        </div>
+        <!-- 投资记录 -->
+        <div class="state_info_con"  id="record" style="display:none;">
+            <if  condition="session('u_user_name') neq ''">
+            <div style="font-size:14px; color:#999999;">已投标成功&nbsp;{$vo.borrow_times|default="0"}次&nbsp;&nbsp;&nbsp;已投标总额&nbsp;{$vo.has_borrow|getMoneyFormt=###}元 </div>
+            <div class="bidbox" style="min-height:300px" id="recode">
+                {$html}
+            </div>
+            <input type="hidden" id="touzitype" value="{$touzitype}" />
+            <else/>
+                <p style="font-size:18px; text-align:center; line-height:3em;">您还没有登录,请<a href="/member/common/login">登录</a>查看详细信息</p>
+            </if>
+        </div>
+        <!------补充材料---->
+        <div class="state_info_con"  id="extra" style="display:none;">
+        <?php if(session('u_user_name') != ''){ ?>
+            <?php if($p_type==2){ ?>
+            <?php echo $extra_info ?>
+            <?php } else { ?>
+            <p style="margin-bottom:500px;text-align: center">无</p>
+            <?php } ?>
+         <?php }else{ ?>
+                <p style="font-size:18px; text-align:center; line-height:3em;">您还没有登录,请<a href="/member/common/login">登录</a>查看详细信息</p>
+       <?php } ?>
+        </div>
+
+        <!-- 质押跟踪 -->
+        <div class="state_info_con"  id="tracking" style="display:none;">
+        <?php if(session('u_user_name') != ''){ ?>
+            <if condition="$productty eq 1">
+            <div class="bidbox genzong_t" style="margin-top:20px;margin-left:30px;">
+                <else />
+                <div class="bidbox genzong" style="margin-top:20px;margin-left:30px;">
+                    </if>
+                    <table width="495" border="0" cellpadding="0" cellspacing="0">
+                        <if condition="$p_type eq 1">
+                            <if condition="$listcount eq 0"> <img src="__ROOT__/Style/H/images/genzong/tdqs.gif"> <br>
+                                <img src="__ROOT__/Style/H/images/genzong/xz.gif" style="margin-left:40px;margin-top:30px;"> </if>
+                            <volist name="list" id="vb">
+                                <tr style="height:110px; float:left;">
+                                    <td rowspan="2" valign="top" width="150" height="110"><if condition="$vb.remark_type eq 1"> <img src="__ROOT__/Style/H/images/genzong/tdqs.gif"> <br>
+                                            <img src="__ROOT__/Style/H/images/genzong/xz.gif" style="margin-left:40px;margin-top:30px;">
+                                            <elseif condition="$vb.remark_type eq 2"/>
+                                            <img src="__ROOT__/Style/H/images/genzong/zjg.gif"> <br>
+                                            <img src="__ROOT__/Style/H/images/genzong/xz.gif" style="margin-left:40px;margin-top:30px;">
+                                            <elseif condition="$vb.remark_type eq 3"/>
+                                            <img src="__ROOT__/Style/H/images/genzong/gqg.gif"> <br>
+                                            <img src="__ROOT__/Style/H/images/genzong/xz.gif" style="margin-left:40px;margin-top:30px;">
+                                            <elseif condition="$vb.remark_type eq 4"/>
+                                            <img src="__ROOT__/Style/H/images/genzong/tg.gif">
+                                            <else/>
+                                        </if></td>
+                                    <td style="vertical-align:top;" ><!-- 到达时间：{$vb.add_time|date="Y-m-d H:i:s",###} <br/> -->备注：{$vb.remark} </td>
+                                </tr>
+                            </volist>
+                            <else />
+                            <tr>
+                                <td  valign="top" width="150" height="110"><img src="__ROOT__/Style/H/images/genzong/tdqs.gif"> <br>
+                                    <img src="__ROOT__/Style/H/images/genzong/xz.gif" style="margin-left:40px;margin-top:30px;"></td>
+                                <td><div style="width:510px; height:110px;">&nbsp;</div></td>
+                            </tr>
+                            <tr>
+                                <td  valign="top" width="150" height="110"><img src="__ROOT__/Style/H/images/genzong/zjg.gif"> <br>
+                                    <img src="__ROOT__/Style/H/images/genzong/xz.gif" style="margin-left:40px;margin-top:30px;"></td>
+                                <td><div style="width:510px; height:110px;">&nbsp;</div></td>
+                            </tr>
+                            <tr>
+                                <td valign="top" width="150" height="110"><img src="__ROOT__/Style/H/images/genzong/gqg.gif"> <br>
+                                    <img src="__ROOT__/Style/H/images/genzong/xz.gif" style="margin-left:40px;margin-top:30px;"></td>
+                                <td><div style="width:510px; height:110px;">&nbsp;</div></td>
+                            </tr>
+                            <tr>
+                                <td valign="top" width="150" height="110"><img src="__ROOT__/Style/H/images/genzong/tg.gif"> <br>
+                                    <img src="__ROOT__/Style/H/images/genzong/xz.gif" style="margin-left:40px;margin-top:30px;"></td>
+                                <td><div style="width:510px; height:110px;">&nbsp;</div></td>
+                            </tr>
+                            <tr>
+                                <td  valign="top" width="150" height="110"><img src="__ROOT__/Style/H/images/genzong/rc.gif"></td>
+                                <td><div style="width:510px; height:110px;">&nbsp;</div></td>
+                            </tr>
+                        </if>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <?php }else{ ?>
+                <p style="font-size:18px; text-align:center; line-height:3em;">您还没有登录,请<a href="/member/common/login">登录</a>查看详细信息</p>
+       <?php } ?>
+    </div>
+</div>
+<div class="state_main">
+    <div class="xw_main_state">
+        <div class="state_info">
+        </div>
+    </div>
+</div>
+<!--- beginner contract variables -->
+<input type="hidden" id="is_beginnercontract" name="is_beginnercontract" value="{$vo.is_beginnercontract}">
+<input type="hidden" id="is_newhand" name="is_newhand" value="{$is_newhand}">
+<input type="hidden" id="dingxiangbiao" name="dingxiangbiao" value="{$vo.password}">
+<div class="invite-tips js-errortips">操作失败！</div>
+
+<include file="default:Public:fengxian" group="Home"/>
+<script type="text/javascript">
+			  var lilenth = $(".list-h li").length+1;
+			  $(".list-h").css("width", lilenth * 160);
+			  var leftpos = 0;
+			  var leftcount = 0;
+
+			  $("#imgLeft").attr("src", "__ROOT__/Style/H/images/left_g.gif");
+			  $("#spec-left").css("cursor", "default");
+
+			  if (lilenth > 1) {
+				  $(function() {
+					  $("#spec-right").click(function() {
+						  if (leftcount >= 0) {
+							  $("#imgLeft").attr("src", "__ROOT__/Style/H/images/scroll_left.gif");
+							  $("#spec-left").css("cursor", "pointer");
+						  }
+						  if (lilenth - leftcount < 3) {
+							  $("#imgRight").attr("src", "__ROOT__/Style/H/images/right_g.gif");
+							  $("#spec-right").css("cursor", "default");
+						  }
+						  else {
+							  leftpos = leftpos - 160;
+							  leftcount = leftcount + 1;
+							  $(".list-h").animate({ left: leftpos }, "slow");
+							  if (lilenth - leftcount < 2) {
+								  $("#imgRight").attr("src", "__ROOT__/Style/H/images/right_g.gif");
+								  $("#spec-right").css("cursor", "default");
+							  }
+						  }
+
+					  });
+				  });
+
+				  $(function() {
+					  $("#spec-left").click(function() {
+						  if (lilenth - leftcount > 2) {
+							  $("#imgRight").attr("src", "__ROOT__/Style/H/images/scroll_right.gif");
+							  $("#spec-right").css("cursor", "pointer");
+						  }
+
+						  if (leftcount < 1) {
+							  $("#imgLeft").attr("src", "__ROOT__/Style/H/images/left_g.gif");
+							  $("#spec-left").css("cursor", "default");
+						  }
+						  else {
+							  leftpos = leftpos + 160;
+							  leftcount = leftcount - 1;
+							  $(".list-h").animate({ left: leftpos }, "slow");
+							  if (leftcount < 1) {
+								  $("#imgLeft").attr("src", "__ROOT__/Style/H/images/left_g.gif");
+								  $("#spec-left").css("cursor", "default");
+							  }
+						  }
+					     }
+					  )
+				  });
+			  }
+			  else {
+				  $("#imgRight").attr("src", "__ROOT__/Style/H/images/right_g.gif");
+				  $("#spec-right").css("cursor", "default");
+			  }
+			  $(function() {
+				  var width = $("#preview").width();
+				  $("#spec-list").css("width", 950).css("margin-right", 8);
+
+			  });
+
+			  $(function() {
+				  $("#spec-list img").bind("mouseover", function() {
+					  $(this).css({
+						  "border": "2px solid #FFFFFF",
+						  "padding": "1px"
+					  });
+				  }).bind("mouseout", function() {
+					  $(this).css({
+						  "border": "1px solid #ccc",
+						  "padding": "2px"
+					  });
+				  });
+			  })
+</script>
+<script type="text/javascript" src="__ROOT__/Style/fancybox/jquery.fancybox-1.3.2.js"></script>
+<style>
+#fancybox-title-over img{
+  float: right;
+  margin-right: 15px;
+}
+</style>
+<script type="text/javascript">
+    var page=1;
+    var total_page_1=$("#total_page").val();
+
+    //此处记录当前页面为上次访问的详情页面，登陆后可以直接跳转回来
+    var borrorid="{$borrow_id}";
+	$(document).ready(function() {
+		$("a[rel=img_group]").fancybox({
+			'transitionIn'		: 'none',
+			'transitionOut'		: 'none',
+			'titlePosition' 	: 'over',
+			'titleFormat'		: function(title, currentArray, currentIndex, currentOpts) {
+				return '<span id="fancybox-title-over">Image ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '<img src="__ROOT__/Style/H/img/small.png" width="25px" onclick="small()" style="cursor:pointer"/><img id="big" src="__ROOT__/Style/H/img/big.png" width="25px" onclick="biga()" style="cursor:pointer"/></span>';
+			}
+		});
+		ajax_show(1);
+	});
+	function ajax_show(p)
+	{
+        if(p<1){
+            page=1;
+        }else{
+            if(p>total_page_1){
+                page=total_page_1;
+            }else{
+                page=p;
+            }
+        }
+	   $.get("__URL__/investRecord?borrow_id={$borrow_id}&p="+page, function(data){
+          $("#currentpage").val(page);
+		  $("#recode").html(data);
+          $(".list_bottom_right ul").find("[page="+page+"]").each(function(){
+              $(this).css({"background-color":"#33aaff","color":"#fff"}).siblings("a").css({"background-color":"#EEEEEE","color":"#848484"});
+          })
+	   });
+	}
+
+
+	$(function() {
+		$(".borrowlist5").bind("mouseover", function(){
+			$(this).css("background", "#c9edff");
+		})
+
+		$(".borrowlist5").bind("mouseout", function(){
+			$(this).css("background", "#ecf9ff");
+		})
+
+
+		$(".borrowlist3").bind("mouseover", function(){
+			$(this).css("background", "#c9edff");
+		})
+
+		$(".borrowlist3").bind("mouseout", function(){
+			$(this).css("background", "#fff");
+		})
+
+
+	});
+
+  // 放大
+   function biga(){
+    var photoWidth = parseInt($('#fancybox-content').css("width"));
+    var w = photoWidth + 10;
+    var photoHeight = parseInt($('#fancybox-content').css("height"));
+    var h = photoHeight + 10;
+      $('#fancybox-content').css('width',w+'px');
+      $('#fancybox-content').css('height',h+'px');
+      $('#fancybox-img').css('width',w+'px');
+      $('#fancybox-img').css('height',h+'px');
+      $('#fancybox-title').css('width',w+'px');
+    };
+
+  //缩小
+   function small(){
+    var photoWidth = parseInt($('#fancybox-content').css("width"));
+    var w = photoWidth - 10;
+    var photoHeight = parseInt($('#fancybox-content').css("height"));
+    var h = photoHeight - 10;
+      $('#fancybox-content').css('width',w+'px');
+      $('#fancybox-content').css('height',h+'px');
+      $('#fancybox-img').css('width',w+'px');
+      $('#fancybox-img').css('height',h+'px');
+      $('#fancybox-title').css('width',w+'px');
+    };
+
+</script>
+<input id="hid" type="hidden" value="{$vo.lefttime}" />
+<script type="text/javascript">
+	function showht(){
+		var status = '{$invid}';
+		if(status=="no"){
+			$.jBox.tip("您未投此标");
+		}else if(status=="login"){
+			$.jBox.tip("请先登陆");
+		}else{
+			window.location.href="__APP__/member/agreement/downfile?id="+status;
+		}
+	}
+
+	var seconds;
+	var pers ={$vo.progress|default=0}/100;
+	var timer=null;
+    var t = {$vo.borrow_status};
+	function setLeftTime() {
+		seconds = parseInt($("#hid").val(), 10);
+		timer = setInterval(showSeconds,1000);
+	}
+
+	function showSeconds() {
+		var day1 = Math.floor(seconds / (60 * 60 * 24));
+		var hour = Math.floor((seconds - day1 * 24 * 60 * 60) / 3600);
+		var minute = Math.floor((seconds - day1 * 24 * 60 * 60 - hour * 3600) / 60);
+		var second = Math.floor(seconds - day1 * 24 * 60 * 60 - hour * 3600 - minute * 60);
+		if (day1 < 0) {
+			clearInterval(timer);
+            if(t == 8){
+                location.reload();
+            }else{
+                $("#loan_time").html("投标已经结束！");
+            }
+		} else if (pers >= 1) {
+			clearInterval(timer);
+			$("#loan_time").html("投标已经结束！");
+		} else {
+			$("#loan_time").html(" 剩余 " +'<span style="color:#fc6d04">'+day1+'</span>' + " 天 " +'<span style="color:#fc6d04">'+ hour +'</span>'+ " 小时 " + '<span style="color:#fc6d04">'+minute +'</span>'+ " 分 " + '<span style="color:#fc6d04">'+second +'</span>'+ " 秒");
+		}
+		seconds--;
+	}
+	if (pers >= 1) {
+		$("#loan_time").html("投标已经结束！");
+	}else{
+		setLeftTime();
+	}
+	$(document).ready(function(){
+		if($("#display2").length>0){
+			$('#display1').show();
+		}
+
+	});
+</script>
+<include file="Public:_footer" />
+<script language="javascript" src="__ROOT__/Style/H/js/index.js"></script>
+<script language="javascript" src="__ROOT__/Style/H/js/borrow.js"></script>
+<script>
+    // 立即投标
+    var coupons="{$coupons}"||"0";
+    /*投标-提交按钮*/
+    function invest(id){
+    	var flag = validate_enter();
+        var num = $('#enter_value').val();
+        var is_dingxiangbiao = $('#dingxiangbiao').val();
+        var is_beginnercontract = $('#is_beginnercontract').val();
+        var is_newhand = $('#is_newhand').val();
+        // risk evaluation 
+        var fxpg_popup_status = "{$fxpg_popup_status}";
+        var is_white_investor = "{$is_white_investor}";
+        var dxbpassword = $("#dingxiangbiao").val();
+        coupons=parseInt(coupons);
+
+        if($("#agreen").attr("checked") == null){
+            $(".js-errortips").text("请确认借款协议！").fadeIn().delay(2000).fadeOut();
+            return false;
+        }
+    	
+    	if(!_validate_enter_flag || !flag){
+            return;
+    	}else if(is_beginnercontract == 1){
+            if(is_newhand == 0 && is_white_investor == 0){
+            	$(".js-errortips").text("此标的只针对新用户开放！").fadeIn().delay(2000).fadeOut();
+                return;
+            }
+            if(parseInt(num) > 50000){
+            	$(".js-errortips").text("新手标的一次限投5万元！").fadeIn().delay(2000).fadeOut();
+                return;
+            }
+        }
+    	
+        /**
+         * 投资问卷调查状态：0未登录    1 已经登录未填写   2 已经登录但是忽略 3已经填写
+         * fxpgpopup 0：没有
+         * @touzitype{*|jQuery}
+         */
+
+        var touzitype;
+        if($.cookie("touzitype")){
+            touzitype=$.cookie("touzitype");
+        }else{
+            touzitype=$("#touzitype").val();
+        }
+        if(fxpg_popup_status == 1){
+            loadwindow();
+            return;
+        }else if (dxbpassword !=''){
+            $.jBox("get:__URL__/ajax_invest?id="+id+'&num='+num, {title: "立即投标",buttons: false});
+        }else{
+            if(is_beginnercontract==1){
+                location.href="__URL__/investmoney?borrow_id="+id+"&money="+num;
+            }else{
+                if(coupons > 0){
+                    $.jBox("get:__URL__/use_coupons?borrow_id="+id+"&money="+num,{title:false,width:500,buttons: false});
+                }else{
+                    location.href="__URL__/investmoney?borrow_id="+id+"&money="+num;
+                }
+            }
+        }
+    }
+
+    var investmoney = 0;
+    var borrowidMS = 0;
+    var borrow_min = 0;
+    var borrow_max = 0;
+    function PostData() {
+    	// var pin = $("#pin").val(),					// 支付密码
+    		money = $("#enter_value").val(),		// 输入投资金额
+    		borrow_id = $('#borrow_id').val(),		// 投标编号
+    		borrow_pass = $("#borrow_pass");		// 定向标密码
+    		// if(!pin){
+    		// 	$.jBox.tip("请输入支付密码");
+    		// 	return false;
+    		// }
+
+    		if(borrow_pass.length && !borrow_pass.val()){
+                $(".js-errortips").text("请输入定向标密码！").fadeIn().delay(2000).fadeOut();
+    			return false;
+    		}
+
+    		var flag = validate_enter();
+    			if(!flag){
+    				return;
+    			}
+      $.ajax({
+    	  url: "__URL__/investcheck",
+    	  type: "post",
+    	  dataType: "json",
+    	  data: {"money":money,'borrow_id':borrow_id,"borrow_pass":borrow_pass.val()},
+    	  success: function(d) {
+    			  if (d.status == 1) {
+
+    			  		investmoney = money;
+    			  // var content = '<div class="jbox-custom"><p>'+ d.message +'</p><div class="jbox-custom-button"><span onclick="$.jBox.close()">取消</span><span onclick="isinvest(true)">确定投标</span></div></div>';
+    			  // 	$.jBox(content, {title:'会员投标提示'});
+                   if(coupons > 0){
+                    // $.jBox("get:__URL__/ajax_invest?id="+id+'&num='+num, {title: "立即投标"});
+                    $.jBox("get:__URL__/use_coupons?borrow_id="+borrow_id+"&money="+investmoney,{title:false,width:500,buttons: false});
+                }else{
+                    location.href="__URL__/investmoney?borrow_id="+borrow_id+"&money="+investmoney;
+                    // $.jBox("get:__URL__/ajax_invest?id="+id+'&num='+num, {title: "立即投标"});
+                }
+    			  }
+    			  else if(d.status == 2)// 无担保贷款多次提醒
+    			  {
+    				  var content = '<div class="jbox-custom"><p>'+ d.message +'</p><div class="jbox-custom-button"><span onclick="$.jBox.close()">取消</span><span onclick="ischarge(true)">去充值</span></div></div>';
+    				  	$.jBox(content, {title:'会员投标提示'});
+    			  }
+    			  else if(d.status == 3)// 无担保贷款多次提醒
+    			  {
+    				  $.jBox.tip(d.message);
+    			  }else{
+    				  $.jBox.tip(d.message,'error');
+    			  }
+    	  }
+      });
+    }
+
+
+    // 提交支付当前要投标表单
+    function isinvest(d){
+    	if(d===true) document.forms.investForm.submit();
+    }
+    // 充值
+    function ischarge(d){
+    	if(d===true) location.href='/member/charge#fragment-1';
+    }
+
+    // 是否验证成功 默认不允许投钱
+    $('#enter_value').on('focus', function (){
+    	var notice = document.getElementById('jx_notice');
+    	notice.innerHTML = '';
+    	notice.className = 'jx_notice';
+        $(this).css("background-color","#ffffff").val("");
+      });
+
+    var _validate_enter_flag = false;
+    //立即投前验证
+    function validate_enter(){
+		var getId = function (ele){return document.getElementById(ele);};
+		var need_max = {$vo.need};
+		var allow_max = ({$vo.borrow_max} == 0 ? need_max : {$vo.borrow_max});
+		var allow_min = {$vo.borrow_min};
+		var notice = getId('jx_notice');
+		var owner = getId('enter_value');
+		var payment = getId('jx_payment');
+      	var balance = "{$investinfo['account_money']}"||0;
+        var is_beginnercontract = $('#is_beginnercontract').val();
+        var is_newhand = $('#is_newhand').val();
+      	balance=parseInt(balance);
+      	var value;
+		if(!owner){
+			return null; // 在金额输入框为禁用状态
+		}else{
+			value = owner.value;
+		}
+
+		if(isNaN(value)){ // 不是数字
+			notice.innerHTML = '投资金额不正确'
+			notice.className = 'jx_notice jx_error';
+			payment.className = 'jx_payment';
+			owner.value = allow_min;
+			_validate_enter_flag = false;
+		}else{
+			var max = Math.min(need_max, allow_max),
+			int = parseInt(value);
+
+
+          	if(int%100 != 0){
+				notice.innerHTML = '投标金额为100的整数倍';
+				notice.className = 'jx_notice jx_error';
+				_validate_enter_flag = false;
+               
+            } else{
+				if(int > max){
+					notice.innerHTML = '投标金额不能大于可投金额';
+					notice.className = 'jx_notice jx_error';
+					_validate_enter_flag = false;
+				}else if(int < allow_min){
+					notice.innerHTML = '投标金额不能小于可投金额';
+					notice.className = 'jx_notice jx_error';
+					_validate_enter_flag = false;
+				}else if(int > balance){
+			         notice.innerHTML = '余额不足，请先充值！';
+			         notice.className = 'jx_notice jx_error';
+			         _validate_enter_flag = false;
+				}else {
+					_validate_enter_flag = true;
+					notice.className = 'jx_notice jx_success';
+					notice.innerHTML = '';
+					payment.className = 'jx_payment';
+				}
+			}
+		}
+
+		return _validate_enter_flag;
+    }
+
+    $("body").on("keyup",".js-newer-moneyinp",function(){
+        var newermoney = parseInt($(this).val());
+        var is_beginnercontract = $('#is_beginnercontract').val();
+        if(newermoney%100 != 0){
+            $("#jx_notice").text("").removeClass("jx_success").addClass("jx_error").text("投标金额为100的整数倍");
+            return;
+            _validate_enter_flag = false;
+        } else if (newermoney > 50000 && is_beginnercontract == 1){
+            $("#jx_notice").text("").removeClass("jx_success").addClass("jx_error").text("新手标的一次限投5万元");
+            return;
+            _validate_enter_flag = false;
+        }
+    })
+
+    function get_interest(object){
+        if(object.value==" "){
+          $(".interest").html("0.00");return;
+        }
+        var check = validate_enter();
+        if(check){
+          var borrow_id="{$vo.id}";
+          $.post("__URL__/get_interest",{"money":object.value,"id":borrow_id},function(result){
+                  $(".interest").html(result);
+          });
+        }
+    }
+    $(document).ready(function(){
+      $("#extra>p>img").css('width','600px');
+      $("#extra>p>img").css('margin-bottom','30px');
+    });
+</script>

@@ -1,0 +1,75 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+    var delUrl = '__URL__/doDel';
+    var addUrl = '__URL__/add';
+    var isSearchHidden = 1;
+</script>
+<div class="so_main">
+    <div class="page_tit">借款信息</div>
+    <!--搜索/筛选会员-->
+    <include file="search" />
+    <!--搜索/筛选会员-->
+
+    <div class="Toolbar_inbox" >
+        <div class="page right">{$pagebar}</div>
+        <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索" style="search_action" />
+    </div>
+
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th style="width:30px;">
+                    <input type="checkbox" id="checkbox_handle" onclick="checkAll(this)" value="0">
+                    <label for="checkbox"></label>
+                </th>
+                <th>标号</th>
+                <th>用户名</th>
+                <th>标题</th>
+                <th>预计天数</th>
+                <th>借款金额</th>
+                <th>借款利率</th>
+                <th>顾问利率</th>
+                <th>借款期限</th>
+                <th>满标日</th>
+                <th>复审日</th>
+                <th>借款到期日</th>
+                <th>转现货时间</th>
+                <th>提单利率</th>
+                <th>提单顾问费利率</th>
+                <th>提单天数</th>
+                <th><?php echo $last_des ?></th>
+            </tr>
+            <?php foreach($info as $key=>$val) { ?>
+            <tr>
+                <td><input type="checkbox" name="checkbox" id="checkbox2" onclick="checkon(this)" value="{$vo.id}"></td>
+                <td><a href="{$val.id|getInvestUrl=###}"  target="_blank"><?php echo $val['bid'] ?></a></td>
+                <td><htmlA:user id="val.borrow_uid" uname="val.user_name" /></td>
+                <td><?php echo $val['bname'] ?></td>
+                <td><?php echo $val['dur_text'] ?></td>
+                <td><?php echo $val['borrow_money'] ?></td>
+                <td><?php echo $val['borrow_interest_rate'] ?></td>
+                <td><?php echo $val['colligate_fee'] ?></td>
+                <td><?php echo $val['borrow_duration'] ?></td>
+                <td><?php echo $val['full_time'] ?></td>
+                <td><?php echo $val['second_verify_time'] ?></td>
+                <td><?php echo $val['end'] ?></td>
+                <td><?php echo $val['change_data'] ?></td>
+                <td><?php echo $val['before_interest_rate'] ?></td>
+                <td><?php echo $val['before_server'] ?></td>
+                <td><?php echo $val['before_during'] ?></td>
+                <td><?php echo $val['cost']."元" ?></td>
+            </tr>
+            <?php } ?>
+
+        </table>
+
+    </div>
+    <div class="Toolbar_inbox" style="overflow: hidden">
+        <div class="page right">{$pagebar}</div>
+        <div>本页显示，总还款金额为{$total}元</div>
+    </div>
+</div>
+
+
+<include file="Public:_footer" />

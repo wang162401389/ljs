@@ -1,0 +1,92 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<script type="text/javascript">
+	var delUrl = '__URL__/doDel';
+	var addUrl = '__URL__/add';
+	var editUrl = '__URL__/edit';
+	var editTitle = '自动投标设置';
+	var isSearchHidden = 1;
+	var searchName = "自动投标设置";
+</script>
+<div class="so_main">
+  <div class="page_tit">自动投标设置</div>
+<!--搜索-->
+  <include file="search" />
+<!--搜索-->
+<div class="Toolbar_inbox">
+</div>
+    <table id="" width="75%" border="0" height="200" cellspacing="0" cellpadding="0">
+        <tr>
+            <td>自动投标占标的总额百分比：</td><td><input type="text" name="auto_borrow_limit" data-num="{$auto_borrow_limit.number}" value="{$auto_borrow_limit.value}">%<span style="color: red">（*自动投标总额不超过该标的金额x%）</span></td>
+        </tr>
+        <tr>
+            <td>用户设置投标限额上限：</td><td><input type="text" name="user_borrow_max" data-num="{$user_borrow_max.number}"  value="{$user_borrow_max.value}"><span style="color: red">（*用户前台可设置的投标金额上限）</span></td>
+        </tr>
+        <tr>
+            <if condition="$auto_borrow_isopen.value eq 1">
+                <td>单笔自动投标金额占标的总额百分比：</td><td><input type="radio" name="is_open" data-num="{$auto_borrow_isopen.number}" value='1' checked="checked"> 开启 &nbsp;&nbsp;
+                <input type="radio" name="is_open" data-num="{$auto_borrow_isopen.number}" value='0'> 关闭 <input type="text" id="auto_borrow_value" name="auto_borrow_value" data-num="{$auto_borrow_value.number}"  value="{$auto_borrow_value.value}"><span style="color: red">（*单笔自动投标金额不能超出设置的百分比）</span></td>
+            <else/>
+                <td>单笔自动投标金额占标的总额百分比：</td><td><input type="radio" name="is_open" data-num="{$auto_borrow_isopen.number}" value='1'> 开启 &nbsp;&nbsp;
+                    <input type="radio" name="is_open" data-num="{$auto_borrow_isopen.number}" value='0' checked="checked"> 关闭 <input type="text" id="auto_borrow_value" name="auto_borrow_value" data-num="{$auto_borrow_value.number}"  value="{$auto_borrow_value.value}" style="display: none;"><span id="baifenbi" style="display: none;">%</span><span style="color: red">（*单笔自动投标金额不能超出设置的百分比）</span></td>
+            </if>
+        </tr>
+    </table>
+<div class="Toolbar_inbox">
+</div>
+
+</div>
+<script type="text/javascript">
+    $("input[name='is_open']").click(function(){
+        if($(this).val() == 1){
+            $("#auto_borrow_value").show();
+            $("#baifenbi").show();
+        }else{
+            $("#auto_borrow_value").hide();
+            $("#baifenbi").hide();
+        }
+        var v = $(this).val();
+        var numer = $(this).data('num');
+        var url = "{:U('admin/autoborrow/index')}";
+        var data={num:numer,val:v};
+        mypost(url,data);
+    });
+    $("input[name='auto_borrow_limit'],input[name='user_borrow_max'],input[name='auto_borrow_value']").change(function(){
+        var v = $(this).val();
+        var numer = $(this).data('num');
+        if(numer == 1001 && v>=100){
+            alert('自动投标单笔投标限额必须小于100%！');
+            return false;
+        }
+        if(numer == 1002 && v<100){
+            alert('用户设置投标限额上限必须大于100！');
+            return false;
+        }
+        if(numer == 1004 && v>=100){
+            alert('单笔自动投标金额占标的总额百分比必须小于100%！');
+            return false;
+        }
+        var url = "{:U('admin/autoborrow/index')}";
+        var data={num:numer,val:v};
+        mypost(url,data);
+    });
+    
+    function checkNum(num){
+        var verify = /^\d+(\.\d{1,2})?$/;
+        if(verify.test(num)){
+            return true;
+        }
+        return false;
+    }
+    function mypost(url,data){
+        if(checkNum(data.val)){
+            $.post(url,data,function(result){
+                alert(result.data.msg);
+            },'json');
+        }else{
+            alert('数字格式不正确！');
+        }
+    }
+</script>
+<include file="Public:_footer" />

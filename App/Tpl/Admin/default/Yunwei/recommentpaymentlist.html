@@ -1,0 +1,109 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+    var delUrl = '__URL__/doDel';
+    var addUrl = '__URL__/add';
+    var isSearchHidden = 1;
+    var searchName='搜索';
+</script>
+<style type="text/css">
+    .chaxun input{
+        width:50px;
+        border: 1px solid #d2dbea;
+        border-bottom:1px solid #c8cfda;
+        border-radius: 3px;
+        background-color: #fcfcfc;
+        background:#d2dbea url(/Style/A/images/btn_a.gif) no-repeat;padding:5px; color: #333;cursor:pointer;
+    }
+</style>
+<div class="so_main">
+    <div class="page_tit">回款统计</div>
+    <!--搜索/筛选会员-->
+   <div id="search_div">
+  <script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+    
+    <div class="form2" style="background-color: #d2dbea;">
+    <form method="post" action="__URL__/{$xaction}">
+    <table style="width: 80%;height: 80px;">
+      <tr>
+            <td>ID</td>
+            <td><input name="id" style="width:190px" id="id" type="text" value="{$search.id}"></td>
+            <td>姓名:</td>
+            <td> <input name="user_name" style="width:190px" id="user_name" type="text" value="{$search.user_name}"></td>
+        </tr>
+        <tr>
+            <td>手机号：</td>
+            <td><input name="user_phone" style="width:190px" id="title" type="text" value="{$search.user_phone}"></td>
+            <td>推荐人</td>
+            <td> <input name="recommend_id" style="width:190px" id="title" type="text" value="{$search.recommend_id}"></td>
+        </tr>
+<!--
+        <tr>
+            <td>标号ID：</td>
+            <td><input name="borrow_id" style="width:190px" id="title" type="text" value="{$search.borrow_id}"></td>
+        </tr>
+-->
+           <tr>
+                        <td>标号：</td>
+                        <td>
+                            <select name="b_type">
+                                <option value="0">请选择</option>
+                                <option value="1" <if condition="$search['b_type'] eq 1">selected="selected"</if>>ZJ</option>
+                                <option value="2" <if condition="$search['b_type'] eq 2">selected="selected"</if>>YJ</option>
+                                <option value="3" <if condition="$search['b_type'] eq 3">selected="selected"</if>>RJ</option>
+                                <option value="4" <if condition="$search['b_type'] eq 4">selected="selected"</if>>XJ</option>
+                                <option value="5" <if condition="$search['b_type'] eq 5">selected="selected"</if>>BJ</option>
+                                <option value="6" <if condition="$search['b_type'] eq 6">selected="selected"</if>>FQG</option>
+                                <option value="7" <if condition="$search['b_type'] eq 7">selected="selected"</if>>ZQ</option>
+                            </select>
+                            <input name="bid" style="width:190px" id="bid" type="text" value="{$search.bid}"></td>
+        </tr>
+
+        <tr style="text-align: right;"><td></td><td></td><td></td><td></td><td></td><td>
+        <span class='chaxun'><input type="submit" value="查询"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class='Toolbar_inbox'><htmlA:commonBtn type="href"  action="__URL__/{$xaction}?{$query}" value="数据导出"/></span></td></tr>
+    </table>
+    </form>
+  </div>
+  </div>
+    <!--搜索/筛选会员-->
+    <div style="width: 100%;height: 10px;"></div>
+    <div class="Toolbar_inbox" >
+        <div class="page" style="text-align: right;">{$pagebar}</div>
+    </div>
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th>ID</th>
+                <th>姓名</th>
+                <th>手机号</th>
+                <th>标号</th>
+                <th>标的名称</th>
+                <!--<th>标的zhuangtai</th>-->
+                <th>标的期限</th>
+                <th>投资金额</th>
+                <th>推荐人</th>
+            </tr>
+            <volist name="list" id="list">
+            <tr>
+                <td>{$list.xid}</td>
+                <td>{$list.real_name}</td>
+                <td>{$list.user_phone}</td>
+                <td>{$list.borrow_id|borrowidlayout1}
+                <td>{$list.borrow_name}</td>
+                <!--<td>{$list.borrow_status}</td>-->
+                <td>{$list.borrow_duration_txt}</td>
+                <td>{$list.investor_capital}</td>
+                <td>{$list.real_name2}</td>
+            </tr>
+            </volist>
+        </table>
+        <div class="Toolbar_inbox" style="overflow: hidden">
+            <div class="page right">{$pagebar}</div>
+        </div>
+    </div>
+
+</div>
+
+
+<include file="Public:_footer" />

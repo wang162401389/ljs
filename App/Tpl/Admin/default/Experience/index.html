@@ -1,0 +1,65 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+    var delUrl = '__URL__/doDel';
+    var addUrl = '__URL__/add';
+    var isSearchHidden = 1;
+    var addTitle = '添加分类';
+</script>
+<div class="so_main">
+    <div class="page_tit">投资券管理</div>
+    <include file="search" />
+
+    <div class="Toolbar_inbox">
+        <div class="pages" style="float:right; padding:0px;">{$pagebar}</div>
+        <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索/筛选投资券" style="search_action" />
+        <!--<htmlA:commonBtn type="href" action="__URL__/add" value="添加投资券"/>
+        <htmlA:commonBtn type="jsfun" action="del();" value="删除投资券" />
+        -->
+    </div>
+
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th style="width:30px;">
+                    <input type="checkbox" id="checkbox_handle" onclick="checkAll(this)" value="0">
+                    <label for="checkbox"></label>
+                </th>
+                <th class="line_l">ID</th>
+                <th class="line_l">发送人手机号</th>
+                <th class="line_l">投资券名称</th>
+                <th class="line_l">投资券金额</th>
+                <th class="line_l">到期日期</th>
+                <th class="line_l">状态</th>
+                <th class="line_l">添加时间</th>
+                <th class="line_l">是否是体验标</th>
+            </tr>
+            <volist id="vo" name="list">
+                <tr overstyle='on' id="list_{$vo.id}">
+                    <td><input type="checkbox" name="checkbox" id="checkbox2" onclick="checkon(this)" value="{$vo.id}"></td>
+                    <td>{$vo.id}</td>
+                    <td>{$vo.user_phone}</td>
+                    <td>{$vo.name}</td>
+                    <td>{$vo.money}</td>
+                    <td>{$vo.endtime}</td>
+                    <td>{$vo.status}</td>
+                    <td>{$vo.addtime}</td>
+                    <td>{$vo.isexperience}</td>
+                </tr>
+            </volist>
+        </table>
+
+    </div>
+
+    <div class="Toolbar_inbox">
+        <div class="pages" style="float:right; padding:0px;">{$pagebar}</div>
+        <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索/筛选投资券" style="search_action" />
+        <!--
+        <htmlA:commonBtn type="href" action="__URL__/add" value="添加投资券"/>
+        <htmlA:commonBtn type="jsfun" action="del();" value="删除投资券" />
+        -->
+    </div>
+</div>
+
+
+<include file="Public:_footer" />

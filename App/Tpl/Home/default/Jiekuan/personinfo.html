@@ -1,0 +1,799 @@
+<include file="Public:_header_common" />
+<title>{$title}</title>
+<meta http-equiv="keywords" content="{$keyword}" />
+<meta http-equiv="description" content="{$description}" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/H/css/detail.css" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/H/css/jiekuan.css" />
+<script type="text/javascript" src="__ROOT__/Style/H/js/common.js" language="javascript"></script>
+<script type="text/javascript" src="__ROOT__/Style/Js/sea.js" language="javascript"></script>
+<style type="text/css">
+    .file-progress{left:-5px;}
+</style>
+</head>
+<body>
+<include file="Public:_header_main" />
+<div class="xiantiao"></div>
+<div class="bread wrapper">您所在的位置：<a href="__APP__/index">首页</a> &gt; 我要借款</div>
+<div class="apply-banner">
+	<div class="wrapper">
+        <h2>个人借款申请流程</h2>
+        <div class="apply-step">
+            <p class="icon-line">
+                <i class="jiekuan-spr ic-approve"></i>
+                <i class="jiekuan-spr ic-write ic-write"></i>
+                <i class="jiekuan-spr ic-submit ic-submit-gray"></i>
+            </p>
+            <p class="wire-line cf">
+                <i class="jiekuan-spr circle circle-on"></i>
+                <i class="wire wire-on"></i>
+                <i class="wire wire-on"></i>
+                <i class="jiekuan-spr circle circle-on"></i>
+                <i class="wire wire-on"></i>
+                <i class="wire"></i>
+                <i class="jiekuan-spr circle"></i>
+            </p>
+            <p class="text-line cf">
+                <span class="text-on">1、借款信息</span>
+                <span class="m text-on">2、填写资料</span>
+                <span>3、提交申请</span>
+            </p>
+        </div>
+    </div>
+</div>
+<form action="javascript:void(0);" id="applyForm" method="post" autocomplete="off">
+    <input type="hidden" value="{$key}" id="key" name="key">
+    <input type="hidden" value="{$realflag}" id="realname" name="realname">
+
+    <!--step2 start 2017.2.6 11:25-->
+    <div class="apply-bar">
+        <h2>基本信息<span class="fs14">（必填项目）</span></h2>
+        <ul class="apply-ul">
+            <li class="cf">
+                <label class="cite" for="imgcode"><em class="cor-red">*</em>图形验证码：</label>
+                <input type="text" style="width:151px" id="imgcode" name="imgcode" class="inp js-number"  placeholder="请填写图形验证码" maxlength="2"/>
+                <img class="imgcode-src" src="__URL__/verify" onclick="this.src=this.src+'?t='+Math.random()"/>
+                <span class="wrong-text" id="imgcodetips">请填写正确图形验证码</span>
+            </li>
+            <li class="cf">
+                <label class="cite" for="mobilephone"><em class="cor-red">*</em>借款人手机号码：</label>
+                <input type="text" id="mobilephone" name="mobile_phone" class="inp js-number" style="width:217px" value="{$app_info.mobile_phone}" placeholder="请填写本人常用手机号码" maxlength="11" />
+                <input type="button" disabled="disabled" value="发送验证码" class="sendcode-button" id="sendcodebtn" />
+                <span class="wrong-text" id="phonetips">请填写正确的借款人手机号码</span>
+            </li>
+            <li class="cf" style="margin-top:-15px">如该手机未在链金所注册，则系统将自动为您注册链金所帐号</li>
+            <li class="cf">
+                <label class="cite" for="smscode"><em class="cor-red">*</em>验证码：</label>
+                <input type="text" id="smscode" name="smscode" class="inp js-number" value="{$app_info.mobile_phone}" placeholder="请填写手机验证码" maxlength="6" />
+                <span class="wrong-text" id="smscodetips">请填写正确手机验证码</span>
+            </li>
+            <li class="cf">
+                <label class="cite"><em class="cor-red">*</em>学历：</label>
+                <select class="js-requiredSel" name="xueli">
+                    <option value="0" selected>请选择学历状况</option>
+                    <option value="1">博士</option>
+                    <option value="2">硕士</option>
+                    <option value="3">大学本科</option>
+                    <option value="4">大专</option>
+                    <option value="5">高中（中专）</option>
+                    <option value="6">初中或初中以下</option>
+                    <option value="7"> 不确定</option>
+                </select>
+                <span class="wrong-text">请选择学历</span>
+            </li>
+            <li class="cf">
+                <label class="cite"><em class="cor-red">*</em>婚姻状况：</label>
+                <select class="js-requiredSel" name="marital">
+                    <option value="0" selected>请选择婚姻状况</option>
+                    <option value="1">未婚</option>
+                    <option value="2">已婚未育</option>
+                    <option value="3">已婚已育</option>
+                    <option value="4">丧偶</option>
+                    <option value="5">离异</option>
+                    <option value="6">其他</option>
+                </select>
+                <span class="wrong-text">请选择婚姻状况</span>
+            </li>
+            <li class="cf">
+                <label class="cite"><em class="cor-red">*</em>户籍地：</label>
+                <select id="cmbProvince" name="addr_province" class="js-province" style="width:96px">
+                    <option value="0">选择省份</option>
+                </select>
+                <select id="cmbCity" name="addr_city" class="ml5 js-city" style="width:96px">
+                    <option value="0">选择城市</option>
+                </select>
+                <select id="cmbArea" name="addr_county" class="ml5 js-area js-requiredSel" style="width:97px">
+                    <option value="0">选择地区</option>
+                </select>
+                <span class="wrong-text">请选择完整户籍地</span>
+            </li>
+            <li class="cf">
+                <label class="cite"><em class="cor-red">*</em>现住址：</label>
+                <select id="nowProvince" name="now_province" class="js-province" style="width:96px">
+                    <option value="0">选择省份</option>
+                </select>
+                <select id="nowCity" name="now_city" class="ml5 js-city" style="width:96px">
+                    <option value="0">选择城市</option>
+                </select>
+                <select id="nowArea" name="now_county" class="ml5 js-area js-requiredSel" style="width:97px">
+                    <option value="0">选择地区</option>
+                </select><br>
+                <input type="text" id="now_area" name="now_area" class="inp" placeholder="请填写详细住址" style="margin-top: 10px" />
+                <span class="wrong-text">请填写完整的详细住址</span>
+            </li>
+            <li class="cf">
+                <label class="cite"><em class="cor-red">*</em>现工作单位行业：</label>
+                <select name="profession" class="js-requiredSel">
+                    <option value="0" selected>请选择现工作单位行业</option>
+                    <option value="1">农、林、牧、渔业</option>
+                    <option value="2">采矿业</option>
+                    <option value="3">制造业</option>
+                    <option value="4">电力、热力、燃气及水生产和供应业</option>
+                    <option value="5">建筑业</option>
+                    <option value="6">批发和零售业</option>
+                    <option value="7">交通运输、仓储和邮政业</option>
+                    <option value="8">住宿和餐饮业 </option>
+                    <option value="9">信息传输、软件和信息技术服务业</option>
+                    <option value="10">金融业</option>
+                    <option value="11">房地产业</option>
+                    <option value="12">租赁和商务服务业</option>
+                    <option value="13">科学研究和技术服务业</option>
+                    <option value="14">水利、环境和公共设施管理业</option>
+                    <option value="15">居民服务、修理和其他服务业</option>
+                    <option value="16">教育</option>
+                    <option value="17">卫生和社会工作</option>
+                    <option value="18">文化、体育和娱乐业</option>
+                    <option value="19">公共管理、社会保障和社会组织</option>
+                    <option value="20">国际组织</option>
+                    <option value="21">无职业、学生</option>
+                </select>
+                <span class="wrong-text">请选择现工作单位行业</span>
+            </li>
+            <li class="cf">
+                <label class="cite"><em class="cor-red">*</em>职位：</label>
+                <select name="position" class="js-requiredSel">
+                    <option value="0" selected>请选择职位</option>
+                    <option value="1"> 银行分行行级干部、厅局级干部、大校及以上</option>
+                    <option value="2"> 高级管理人员、总公司总经理</option>
+                    <option value="3">银行支行行长、处级干部、中校、上校</option>
+                    <option value="4">中级管理人员、公司或分公司总经理</option>
+                    <option value="5">科级干部、上尉、少校</option>
+                    <option value="6">一般管理人员、部门经理、中尉、少尉</option>
+                    <option value="7">一般员工、工人、科员；国家机关、事业单位和国有企业离退休人员、士兵</option>
+                    <option value="8"> 待业人员、学生和职位不确定的其他人员</option>
+                </select>
+                <span class="wrong-text">请选择职位</span>
+            </li>
+            <li class="cf">
+                <label class="cite"><em class="cor-red">*</em>现单位工作年限：</label>
+                <select name="year" class="js-requiredSel">
+                    <option value="0"  selected>请选择工作年限</option>
+                    <option value="1">5年以上</option>
+                    <option value="2"> 3～5年（含）</option>
+                    <option value="3">1～3年（含）</option>
+                    <option value="4">1年（含）以下</option>
+                    <option value="5">无单位</option>
+                    <option value="6">不确定</option>
+                </select>
+                <span class="wrong-text">请选择工作年限</span>
+            </li>
+            <li class="cf">
+                <label class="cite"><em class="cor-red">*</em>年收入：</label>
+                <select name="income" class="js-requiredSel">
+                    <option value="0" selected>请选年收入择</option>
+                    <option value="1" >不确定</option>
+                    <option value="2"> 0～3万元</option>
+                    <option value="3">3～6万元</option>
+                    <option value="4">6～11万元</option>
+                    <option value="5">12～19万元</option>
+                    <option value="6">20～29万元</option>
+                    <option value="7">30万元以上</option>
+                </select>
+                <span class="wrong-text">请选择年收入</span>
+            </li>
+            <li class="cf">
+                <label class="cite"><em class="cor-red">*</em>住房情况：</label>
+                <select name="zhufang" class="js-requiredSel">
+                    <option value="0" selected>请选择住房情况</option>
+                    <option value="1">自有</option>
+                    <option value="2">按揭</option>
+                    <option value="3">父母所有</option>
+                    <option value="4">租赁；无房</option>
+                    <option value="5">不确定</option>
+                </select>
+                <span class="wrong-text">请选择住房情况</span>
+            </li>
+            <li class="cf">
+                <label class="cite"><em class="cor-red">*</em>固定资产：</label>
+                <select name="asset" class="js-requiredSel">
+                    <option value="0" selected>请选择固定资产情况</option>
+                    <option value="1" >家庭自有固定资产价值在200万元以上（含）</option>
+                    <option value="2">家庭自有固定资产价值在100万元（含）-200万元（不含）</option>
+                    <option value="3">家庭自有固定资产价值在50万元（含）-100万元（不含）</option>
+                    <option value="4">家庭自有固定资产价值在50万元以下（不含）</option>
+                    <option value="5">无</option>
+                </select>
+                <span class="wrong-text">请选择住房情况</span>
+            </li>
+            <li class="cf">
+                <label class="cite" for="bankcard"><em class="cor-red">*</em>银行卡：</label>
+                <input type="text" id="bankcard" name="bankcard" class="inp js-number" maxlength="21" placeholder="请填写银行卡账号" />
+                <span class="wrong-text">请填写正确的银行卡账号</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="apply-bar">
+        <h2>身份信息</h2>
+        <ul class="apply-ul">
+            <li class="cf">
+                <label class="cite" for="usrname"><em class="cor-red">*</em>真实姓名：</label>
+                <input type="text" id="usrname" name="usrname" class="inp" maxlength="5" placeholder="请填写真实姓名" />
+                <span class="wrong-text">请填写真实姓名</span>
+            </li>
+            <li class="cf">
+                <label class="cite" for="idcard"><em class="cor-red">*</em>身份证号：</label>
+                <input type="text" id="idcard" name="idcard" class="inp js-numletter" maxlength="18" placeholder="请填写身份证号码" />
+                <span class="wrong-text">请填写正确的身份证号码</span>
+            </li>
+        </ul>
+        <input type="hidden" value="{$realflag}" id="realflag" >
+    </div>
+    <div class="apply-bar">
+        <h2>证件上传</h2>
+        <ul class="card-upload cf">
+        	<li>
+            	<h3>1、手持身份证照片</h3>
+                <div id="handCardList" class="cf">
+                    <div class="file-item thumbnail upload-state-done">
+                        <p class="file-panel" style="height: 0px;"><a class="icon-view js-viewImg" title="预览"></a></p>
+                        <img src="__ROOT__/Style/H/images/jiekuan/img01.jpg" width="200" height="115" alt="手持身份证照片" />
+                    </div>
+                </div>
+                <p>1、五官可见</p>
+                <p>2、证件全部信息清晰无遮挡</p>
+                <a href="javascript:void(0);" id="handCardBtn" class="apply-btn">照片上传</a>
+            </li>
+            <li>
+            	<h3>2、身份证正面照片</h3>
+                <div id="cardFrontalList" class="cf">
+                    <div class="file-item thumbnail upload-state-done">
+                        <p class="file-panel" style="height: 0px;"><a class="icon-view js-viewImg" title="预览"></a></p>
+                        <img src="__ROOT__/Style/H/images/jiekuan/img02.jpg" width="200" height="115" alt="手持身份证照片" />
+                    </div>
+                </div>
+                <p>1、图片居中</p>
+                <p>2、证件上文字清晰可见</p>
+                <a href="javascript:void(0);" id="cardFrontalBtn" class="apply-btn">照片上传</a>
+            </li>
+            <li>
+            	<h3>3、身份证反面照片</h3>
+                <div id="cardReverseList" class="cf">
+                    <div class="file-item thumbnail upload-state-done">
+                        <p class="file-panel" style="height: 0px;"><a class="icon-view js-viewImg" title="预览"></a></p>
+                        <img src="__ROOT__/Style/H/images/jiekuan/img03.jpg" width="200" height="115" alt="手持身份证照片" />
+                    </div>
+                </div>
+                <p>1、图片居中</p>
+                <p>2、证件上文字清晰可见</p>
+                <a href="javascript:void(0);" id="cardReverseBtn" class="apply-btn">照片上传</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="apply-bar">
+        <h2>联系人<span class="fs14">（3个必填，需要含一个直系亲属）</span></h2>
+        <ul class="apply-ul">
+            <li class="cf js-contact">
+                <label class="cite"><em class="cor-red">*</em>联系人1：</label>
+                <select class="js-relation" style="width:97px;">
+                    <option value="请选择">关系</option>
+                    <option value="0">配偶</option>
+                    <option value="1">父母</option>
+                    <option value="2">兄弟姐妹</option>
+                    <option value="3">子女</option>
+                    <option value="4">同事</option>
+                    <option value="5">同学</option>
+                    <option value="6">朋友</option>
+                </select>
+                <input type="text" class="inp ml5 js-name" maxlength="5" placeholder="姓名" style="width:96px;" />
+                <input type="text" class="inp ml5 js-number js-phone" maxlength="11" placeholder="联系电话" style="width:96px;" />
+            </li>
+            <li class="cf js-contact">
+                <label class="cite"><em class="cor-red">*</em>联系人2：</label>
+                <select class="js-relation" style="width:97px;">
+                    <option value="请选择">关系</option>
+                    <option value="0">配偶</option>
+                    <option value="1">父母</option>
+                    <option value="2">兄弟姐妹</option>
+                    <option value="3">子女</option>
+                    <option value="4">同事</option>
+                    <option value="5">同学</option>
+                    <option value="6">朋友</option>
+                </select>
+                <input type="text" class="inp ml5 js-name" maxlength="5" placeholder="姓名" style="width:96px;" />
+                <input type="text" class="inp ml5 js-number js-phone" maxlength="11" placeholder="联系电话" style="width:96px;" />
+            </li>
+            <li class="cf js-contact">
+                <label class="cite"><em class="cor-red">*</em>联系人3：</label>
+                <select class="js-relation" style="width:97px;">
+                    <option value="请选择">关系</option>
+                    <option value="0">配偶</option>
+                    <option value="1">父母</option>
+                    <option value="2">兄弟姐妹</option>
+                    <option value="3">子女</option>
+                    <option value="4">同事</option>
+                    <option value="5">同学</option>
+                    <option value="6">朋友</option>
+                </select>
+                <input type="text" class="inp ml5 js-name" maxlength="5" placeholder="姓名" style="width:96px;" />
+                <input type="text" class="inp ml5 js-number js-phone" maxlength="11" placeholder="联系电话" style="width:96px;" />
+            </li>
+        </ul>
+    </div>
+    <!--step2 end 2017.2.6 11:25-->
+
+    <div class="btn-line">
+    	<a href="javascript:void(0);" class="apply-btn-info js-nextBtn">下一步</a>
+    </div>
+</form>
+<include file="Public:_footer" />
+<script type="text/javascript">
+(function($){
+    define("jiekuan/apply",function(require, exports, module){
+		require("layer/layer");
+        var upload = require("webuploader/upload");
+        var main = require("main");
+        var Module = {
+            init: function(){
+				/*
+                 * 手持身份证照
+                 * */
+                upload.base({
+                    pickID: "handCardBtn",
+                    objID: "handCardList",
+                    isSingle: true,
+					fileSingleSizeLimit: "1000",
+                    thumbnailWidth: "200",
+                    thumbnailHeight: "115",
+                    fileNumLimit: "300",
+                    storage: "jiekuan"
+                });
+                /*
+                 * 身份证正面照
+                 * */
+                upload.base({
+                    pickID: "cardFrontalBtn",
+                    objID: "cardFrontalList",
+                    isSingle: true,
+					fileSingleSizeLimit: "1000",
+                    thumbnailWidth: "200",
+                    thumbnailHeight: "115",
+                    fileNumLimit: "300",
+                    storage: "jiekuan"
+                });
+                /*
+                 * 身份证反面照
+                 * */
+                upload.base({
+                    pickID: "cardReverseBtn",
+                    objID: "cardReverseList",
+                    isSingle: true,//是否上传一张
+					fileSingleSizeLimit: "1000",
+                    thumbnailWidth: "200",
+                    thumbnailHeight: "115",
+                    fileNumLimit: "300",
+                    storage: "jiekuan"
+                });
+
+                /*图形验证码*/
+                $("body").on("blur","#imgcode",function(){
+                    var imgval = $(this).val();
+                    if(imgval == "" || imgval == null || imgval.length > 2){
+                        $("#imgcodetips").show();
+                        $("#sendcodebtn").attr("disabled","disabled").removeClass("button-sure");
+                        return;
+                    }else{
+                        $.ajax({
+                            url: "__URL__/ckcode/",
+                            data: {"sVerCode":imgval},
+                            cache: false,
+                            type: "post",
+                            dataType: "json",
+                            success: function (data) {
+                                    if(data == 1){
+                                       $("#imgcodetips").hide();
+                                       $("#sendcodebtn").removeAttr("disabled").addClass("button-sure");
+                                    }else{
+                                       $("#imgcodetips").html('图形验证码错误');
+                                       $("#sendcodebtn").attr("disabled","disabled").removeClass("button-sure");
+                                    }
+                            }
+                        });
+                    }
+                })
+
+                /*发送手机验证码*/
+                $("body").on("click","#sendcodebtn",function(){
+                    var imgval = $("#imgcode").val();
+                    var phoneval = $("#mobilephone").val();
+                    var smsval = $("#smscode").val();
+                    var txt = $("#txtCode").val();
+                    
+                    if(phoneval == "" || phoneval == null || phoneval.length != 11){
+                        $("#phonetips").show();
+                        return;
+                    }
+                    else{
+                        $("#phonetips").hide();
+                        console.log("图形验证码是"+ imgval);
+                        console.log("手机号码是"+ phoneval);
+                        console.log("手机验证码是"+ smsval);
+                        
+                        $.ajax({
+                            url: "__APP__/home/jiekuan/sendphone",
+                            type: "post",
+                            dataType: "json",
+                            data: {"phone":phoneval, "txcode":imgval},
+                            success: function(status) {
+                                if (status == 1) {
+                                	var time = 60;
+                                    var countdown = setInterval(CountDown, 1000);
+                                    layer.msg('短信发送成功', {icon: 1},500);
+                                    function CountDown() {
+                                        $("#sendcodebtn").removeClass("button-sure").attr("disabled", true);
+                                        $("#sendcodebtn").val(time +' '+ '秒后重新发送');
+                                        //时间为零，重新发送
+                                        if (time == 0) {
+                                            $("#sendcodebtn").addClass("button-sure").val("再次发送").removeAttr("disabled");
+                                            clearInterval(countdown);
+                                        }
+                                        time--;
+                                    }
+                                }else if(status == 2) {
+                                    alert("发送失败,请稍后尝试");
+                                }
+                            }
+                        });
+                    }
+                })
+
+                /*
+                 *姓名只能输入中文
+                 **/ 
+                $("#usrname").blur(function(){
+                	var reg = /^[\u4e00-\u9fa5]+$/;
+                		val = $(this).val();
+                	if(!reg.test(val)){
+                		$(this).siblings(".wrong-text").show();
+                	}else{
+						$(this).siblings(".wrong-text").hide();
+					}
+                });
+
+				/*
+                 *身份证号验证
+                 **/ 
+                $("#idcard").blur(function(){
+                	var val = $(this).val();
+                	if(val.length < 15){
+                		$(this).siblings(".wrong-text").show();
+                	}else{
+						$(this).siblings(".wrong-text").hide();
+					}
+                    //var realname = $("#realname").val();
+                    var data = {};
+                    data.phone = $("#mobilephone").val();
+                    data.idcard = $("#idcard").val();
+                    main.getApi("/home/jiekuan/checkIdcardBind", data, function(result){});
+                });
+
+                /*2017.2.6 11:42
+                 * 城市三级联动
+                 * */
+                seajs.use("adarray", function() {
+                    addressInit("cmbProvince", "cmbCity", "cmbArea");
+                });
+                seajs.use("adarray", function() {
+                    addressInit("nowProvince", "nowCity", "nowArea");
+                });
+                /*
+                 *借款人手机号码
+                 **/
+                $("#mobilephone").blur(function(){
+                    var val = $(this).val();
+                    if(val && $.isTelephone(val)){
+                        $(this).siblings(".wrong-text").hide();
+                    }else{
+                        $(this).siblings(".wrong-text").show();
+                    }
+                });
+                /*手机验证码*/
+                $("#smscode").blur(function(){
+                    var val = $(this).val();
+                    var phoneval = $("#mobilephone").val();
+                    if(val=="" || val==null || val.length!=6){
+                        $(this).siblings(".wrong-text").show();
+                    }else{
+                    	$.ajax({
+                            type: "post",
+                            async: false,
+                            url: "/home/jiekuan/validatephonecode/",
+                            dataType: "json",
+                            data: {"code":val, "phone":phoneval},
+                            timeout: 3000,
+                            success: function(status) {
+                                if (status == 1) {
+                                    $("#smscodetips").hide();
+                                }else if(status == 0) {
+                                    $("#smscodetips").show();
+                                }
+                            }
+                        });
+                    }
+                });
+                $("#now_area").blur(function(){
+                    var val = $(this).val();
+                    if(val == "" || val == null){
+                        $(this).siblings(".wrong-text").show();
+                    }else{
+                    	$(this).siblings(".wrong-text").hide();
+                    }
+                });
+                
+                /*
+                 *银行卡
+                 **/
+                $("#bankcard").blur(function(){
+                    var val = $(this).val();
+                    if(!val || val.length < 16 || val.length > 21){
+                        $(this).siblings(".wrong-text").show();
+                    }else{
+                        $(this).siblings(".wrong-text").hide();
+                    }
+                });
+                /*
+                 * 下拉框必选框
+                 * */
+                $(".js-requiredSel").on({
+                    "change": function(){
+                        if($(this).val() == 0){
+                            $(this).siblings(".wrong-text").show();
+                        }else{
+                            $(this).siblings(".wrong-text").hide();
+                        }
+                    }
+                });
+
+				/*
+                 *下一步
+                 **/ 
+                $("body").on("click", ".js-nextBtn", function(){
+                    var me = $(this),
+						id_card_front_pic_s = $("#cardFrontalList img").attr("src") || "",
+						id_card_front_pic_m = $("#cardFrontalList img").data("rel") || "",
+						id_card_reverse_pic_s = $("#cardReverseList img").attr("src") || "",
+						id_card_reverse_pic_m = $("#cardReverseList img").data("rel") || "",
+						handCard_pic_s = $("#handCardList img").attr("src") || "",
+						handCard_pic_m = $("#handCardList img").data("rel") || "",
+                        isPass = true,   //2017.2.6 11:42
+                        family_num = 0,
+                        reg = /^[\u4e00-\u9fa5]+$/, //验证中文
+                        bondsmaninf_list = [],
+                        mobilephone = $.trim($("#mobilephone").val()),
+                        bankcard = $.trim($("#bankcard").val());
+                    if(!$.trim($("#imgcode").val())){
+                        $("#imgcode").focus();
+                        $.wrongMsg("请填写图形验证码");
+                        return;
+                    }
+                    if(!mobilephone  && !$.isTelephone(mobilephone)){
+                        $("#mobilephone").focus();
+                        $.wrongMsg("请填写正确的借款人手机号码");
+                        return;
+                    }
+                    if(!$.trim($("#smscode").val()) || $("#smscode").val().length!=6){
+                        $("#smscode").focus();
+                        $.wrongMsg("请填写正确的手机验证码");
+                        return;
+                    }
+                    //2017.2.6 11:42
+                    if($("select[name=xueli]").val() == 0){
+                        $("select[name=xueli]").focus();
+                        $.wrongMsg("请选择学历");
+                        return;
+                    }
+                    if($("select[name=marital]").val() == 0){
+                        $("select[name=marital]").focus();
+                        $.wrongMsg("请选择婚姻状况");
+                        return;
+                    }
+                    if($("#cmbArea").val() == 0){
+                        $("#cmbArea").focus();
+                        $.wrongMsg("请选择完整户籍地");
+                        return;
+                    }
+                    if($("#nowArea").val() == 0){
+                        $("#cmbArea").focus();
+                        $.wrongMsg("请选择完整现住址");
+                        return;
+                    }
+                    if(!$.trim($("#now_area").val())){
+                        $("#now_area").focus();
+                        $.wrongMsg("请选择完整现住址");
+                        return;
+                    }
+                    if($("select[name=profession]").val() == 0){
+                        $("select[name=profession]").focus();
+                        $.wrongMsg("请选择现工作单位行业");
+                        return;
+                    }
+                    if($("select[name=position]").val() == 0){
+                        $("select[name=position]").focus();
+                        $.wrongMsg("请选择职位");
+                        return;
+                    }
+                    if($("select[name=year]").val() == 0){
+                        $("select[name=year]").focus();
+                        $.wrongMsg("现单位工作年限");
+                        return;
+                    }
+                    if($("select[name=income]").val() == 0){
+                        $("select[name=income]").focus();
+                        $.wrongMsg("请选择年收入");
+                        return;
+                    }
+                    if($("select[name=zhufang]").val() == 0){
+                        $("select[name=zhufang]").focus();
+                        $.wrongMsg("请选择住房情况");
+                        return;
+                    }
+                    if($("select[name=asset]").val() == 0){
+                        $("select[name=asset]").focus();
+                        $.wrongMsg("请选择固定资产情况");
+                        return;
+                    }
+                    if(!bankcard || bankcard.length < 16 || bankcard.length > 21){
+                        $("#bankcard").focus();
+                        $.wrongMsg("请填写正确的银行卡账号");
+                        return;
+                    }
+					if(!$.trim($("#usrname").val())){
+                        $("#usrname").focus();
+                        $.wrongMsg("请填写真实姓名");
+                        return;
+                    }
+					if($("#idcard").val().length < 15){
+                        $("#idcard").focus();
+                        $.wrongMsg("请填写正确的身份证号码");
+                        return;
+                    }
+					if(!id_card_front_pic_s || !id_card_front_pic_m){
+						$.wrongMsg("请上传身份证正面照");
+						return;	
+					}
+					if(!id_card_reverse_pic_s || !id_card_reverse_pic_m){
+						$.wrongMsg("请上传身份证反面照");
+						return;	
+					}
+					if(!handCard_pic_s || !handCard_pic_m){
+						$.wrongMsg("请上传手持身份证面照");
+						return;	
+					}
+					
+					var id_card_front_pic = {
+						s_pic: id_card_front_pic_s,
+						m_pic: id_card_front_pic_m
+					};
+					var id_card_reverse_pic = {
+						s_pic: id_card_reverse_pic_s,
+						m_pic: id_card_reverse_pic_m
+					}
+					var handCard_pic = {
+						s_pic: handCard_pic_s,
+						m_pic: handCard_pic_m
+					}
+
+
+                    $(".js-contact").each(function(){
+                        var phone = $.trim($(".js-phone", this).val());
+                        $(this).siblings(".js-contact").each(function(){
+                            if(phone && phone == $(".js-phone", this).val()){
+                                $.wrongMsg("联系人手机号不能重复");
+                                isPass = false;
+                                return;
+                            }
+                        });
+                        if(!isPass) return;
+                        var rel_usrname = $.trim($(".js-name", this).val()),
+                                relation_id = $.trim($(".js-relation", this).val()),
+                                relation = $.trim($(".js-relation option:selected", this).text());
+                        if(relation_id == "请选择"){
+                            $(".js-relation", this).focus();
+                            $.wrongMsg("请选择与联系人的关系");
+                            isPass = false;
+                            return;
+                        }
+                        if(!rel_usrname  || !reg.test(rel_usrname)){
+                            $(".js-name", this).focus();
+                            $.wrongMsg("请填写正确的联系人的姓名");
+                            isPass = false;
+                            return;
+                        }
+                        if(!phone || !$.isTelephone(phone)){
+                            $(".js-phone", this).focus();
+                            $.wrongMsg("请填写正确的联系人手机号");
+                            isPass = false;
+                            return;
+                        }
+                        if(relation_id == 0 || relation_id == 1 || relation_id == 3) family_num++;
+                        var bondsmaninf_obj = {
+                            rel_usrname: rel_usrname,
+                            relation: relation,
+                            relation_id: relation_id,
+                            rel_mobile_phone: phone
+                        }
+                        bondsmaninf_list.push(bondsmaninf_obj);
+                    });
+                    if(!isPass) return;
+                    if(family_num < 1){
+                        $.wrongMsg("联系人3个必填，需要含一个直系亲属");
+                        return;
+                    }
+
+                    var data = $("#applyForm").serialize();
+                    data = main.serializeJson(data);
+                    data.id_card_front_pic = JSON.stringify(id_card_front_pic);
+                    data.id_card_reverse_pic = JSON.stringify(id_card_reverse_pic);
+                    data.handCard_pic = JSON.stringify(handCard_pic);
+                    data.realflag=$("#realflag").val();
+                    data.marital=$("select[name='marital'] option:selected").text();  //2017.2.6 14:30
+                    data.addr_province=$("select[name='addr_province'] option:selected").text();
+                    data.addr_city=$("select[name='addr_city'] option:selected").text();
+                    data.addr_county=$("select[name='addr_county'] option:selected").text();
+                    data.now_province=$("select[name='now_province'] option:selected").text();
+                    data.now_city=$("select[name='now_city'] option:selected").text();
+                    data.now_county=$("select[name='now_county'] option:selected").text();
+                    data.profession=$("select[name='profession'] option:selected").text();
+                    data.income=$("select[name='income'] option:selected").text();
+                    data.position=$("select[name='position'] option:selected").text();
+                    data.year=$("select[name='year'] option:selected").text();
+                    data.zhufang=$("select[name='zhufang'] option:selected").text();
+                    data.xueli=$("select[name='xueli'] option:selected").text();
+                    data.asset=$("select[name='asset'] option:selected").text();
+                    data.info=bondsmaninf_list;
+                    main.getApi("/home/jiekuan/personinfo", data, function(result){
+                        var result = result || {},
+                                url = result.url || "";
+                        setTimeout(function(){
+                            location.href = url;
+                        },2000);
+                    });
+
+                });
+            },
+			/**
+			 返回包含中文字符的长度
+			 **/
+			strlen: function(str){
+				var len = 0;
+				if(!str) return len;
+				for (var i=0; i<str.length; i++) {
+					var c = str.charCodeAt(i);
+					//单字节加1
+					if ((c >= 0x0001 && c <= 0x007e) || (0xff60<=c && c<=0xff9f)) {
+						len++;
+					}else {
+						len+=2;
+					}
+				}
+				return len;
+			}
+        };
+        module.exports = Module;
+    });
+    seajs.use("jiekuan/apply", function(module){
+        module.init();
+    });
+})($);
+</script>

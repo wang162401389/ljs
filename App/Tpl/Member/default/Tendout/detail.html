@@ -1,0 +1,60 @@
+<div class="pd20">
+	<h4 class="fb">
+        <img src="__ROOT__/Style/H/images/ministar.gif" />
+        ‘{$name}’的还款明细
+	</h4>
+    <table id="content" width="100%" class="memberTable mt20">
+        <thead>
+            <tr>
+                <th>应收日期</th>
+                <th>应收本金</th>
+                <th>应收利息</th>
+                <th>应收手续费</th>
+                <th>应收总额</th>
+                <th>实收本息</th>
+                <th>收款状态</th>
+                <th>当前/总(期)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <volist name="list" id="vo">
+                <tr>
+                    <td>{$vo.deadline|date="Y-m-d",###}</td>
+                    <td>{$vo.capital}</td>
+                    <td>{$vo['interest']+$vo['jiaxi_money']}</td>
+                    <td>{$vo['interest_fee']}</td>
+                    <td>{$vo['capital']+$vo['interest']+$vo['interest_fee']+$vo['jiaxi_money']}</td>
+                    <td><if condition="$vo.repayment_time gt 0">{$vo['receive_interest']+$vo['receive_capital']+$vo['jiaxi_money']}<else />{$vo['receive_interest']+$vo['receive_capital']}</if></td>
+                    <if condition="$vo.bid eq 'TY1'">
+                        <td>等待还款</td>
+                        <td>0/1</a></td>
+                    <else/>
+                        <td><if condition="$vo['deadline'] lt time() && $vo['status'] eq 7">逾期未还<else/>{$status_arr[$vo['status']]}</if></td>
+                        <td>{$vo.sort_order}/{$vo.total}</a></td>
+                    </if>
+                </tr>
+            </volist>
+        </tbody>
+    </table>
+	<div data="fragment-2" id="pager" class="yahoo2 ajaxpagebar">{$pagebar}</div>
+</div>
+<script type="text/javascript">
+function repayment(bid,sort_order){
+	var x = {"bid":bid,"sort_order":sort_order};
+	$.jBox.tip("还款中......",'loading');
+	$.ajax({
+		url: "__URL__/repayment",
+		data: x,
+		timeout: 15000,
+		cache: false,
+		type: "post",
+		dataType: "json",
+		success: function (d, s, r) {
+			if(d){
+				if(d.status==1) $.jBox.tip("还款成功",'success');
+				else $.jBox.tip(d.message,'fail');
+			}
+		}
+	});
+}
+</script>

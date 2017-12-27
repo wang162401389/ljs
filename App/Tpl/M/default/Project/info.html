@@ -1,0 +1,234 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <base href="/Style/Phone/" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link REL="SHORTCUT ICON" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/common.css" />
+        <script src="js/jquery-2.1.4.min.js"></script>
+        <script src="js/common.js"></script>
+        <style>
+            .main{
+                width:100%;
+                position: relative;
+            }
+            .main img{
+                width:100%;
+            }
+            .main .list_pos{
+                position: absolute;
+                top:4rem;
+                width: 100%;
+            }
+            .main .list_pos .list_img_container{
+                width:90%;
+                margin: 0 auto;
+            }
+            .main .list_pos .list_img_container img{
+                width:100%;
+            }
+            .main .person_pos{
+                position: absolute;
+                top:10rem;
+                width: 100%;
+            }
+            .main .person_pos .person_pos_container{
+                width:50%;
+                margin: 0 auto;
+            }
+            .main .person_pos .person_pos_container img{
+                width:100%;
+            }
+
+            .main .money_pos{
+                position: absolute;
+                top:22rem;
+                width: 100%;
+            }
+            .main .money_pos .money_pos_container{
+                width:50%;
+                margin: 0 auto;
+                position: relative;
+            }
+            .main .money_pos .money_pos_container img{
+                width:100%;
+            }
+            .qrcode_pos{
+                position: absolute;
+                top:6.5rem;
+                width:100%;
+            }
+            .qrcode_pos .qrcode_pos_container{
+                width:50%;
+                margin:0 auto;
+            }
+            .qrcode_pos .qrcode_pos_container img{
+                width:100%;
+            }
+            .share{
+                position: absolute;
+                bottom:1rem;
+                width: 100%;
+            }
+            .share .share_contianer{
+                width:160px;
+                margin:0 auto;
+            }
+			.font_container{
+				position: absolute;
+                bottom:5rem;
+                width: 100%;
+				left:2rem;
+				color:#434343;
+				font-size:
+			}
+		    .register{
+                position: absolute;
+                bottom:5rem;
+                width: 100%;
+            }
+            .register .register_contianer{
+                width:80%;
+                margin:0 auto;
+                text-align: center;
+            }
+			.register .register_contianer input{
+				width: 100%;
+				background: #54BFF3;
+				color: white;
+				height: 3rem;
+				line-height: 3rem;
+				border: none;
+				border-radius: 0.6rem;
+			}
+        </style>
+    </head>
+    <body>
+		<?php if($mine==1) { ?>
+		<include file="Pub:simple_header" />
+		<?php } ?>
+        <div class="main" id="main">
+            <img src="/Style/Phone/img/project/a1.jpg" >
+			<?php if($mine==1) { ?>
+			<div class="font_container">
+				<div>让亲友赚钱，我们开心；</div>
+				<div>让亲友在链金所赚钱，我们开心、更放心。</div>
+				<div style="font-weight:900">速去分享，好礼等你！</div>
+			</div>
+			<?php } else { ?>
+			 <div class="register">
+				 <div class="register_contianer">
+					<input type="button" onClick=<?php echo "javascript:window.location.href='".$register."'" ?>  value="快来赚钱吧"/>
+					<div>*本活动最终解释权归链金所所有</div>
+				 </div>
+			  </div>
+			<?php } ?>
+        </div>
+		<?php if($mine==1) {?>
+		<include file="Pub:footer" /> 
+		<?php } ?>
+    </body>
+    <script>
+       window.onload=function(){
+            html=' <div class="list_pos">';
+            html+=' <div  class="list_img_container">';
+            html+='<img src="/Style/Phone/img/project/a4.png">';
+           html+='</div>';
+           html+='</div>';
+           $("#main").append(html);
+
+           person='<div class="person_pos">';
+           person+='<div class="person_pos_container">';
+           person+='<img src="/Style/Phone/img/project/a2.png" >';
+           person+='</div>';
+           person+='</div>';
+           $("#main").append(person);
+
+           moeny='<div class="money_pos">';
+           moeny+='<div class="money_pos_container">';
+           moeny+='<img src="/Style/Phone/img/project/a3.png" >';
+           moeny+='</div>';
+           moeny+='</div>';
+           $("#main").append(moeny);
+
+           qrcode='<div class="qrcode_pos">';
+           qrcode+='<div class="qrcode_pos_container">';
+           qrcode+='<img src=<?php echo "/M/project/create_qr?uid=".$uid ?> >';
+           qrcode+='</div>';
+           qrcode+='</div>';
+           $(".money_pos_container").append(qrcode);
+       }
+    </script>
+    <?php  if($weixin==1) {?>
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script>
+	 wx.config({
+		debug: false,
+		appId: '<?php echo $signPackage["appId"];?>',
+		timestamp: <?php echo $signPackage["timestamp"];?>,
+		nonceStr: '<?php echo $signPackage["nonceStr"];?>',
+		signature: '<?php echo $signPackage["signature"];?>',
+		jsApiList: [
+		  // 所有要调用的 API 都要加到这个列表中
+		  "showMenuItems",
+		  "onMenuShareTimeline",
+		  "onMenuShareAppMessage",
+		  "onMenuShareQQ",
+		]
+	});
+  wx.ready(function () {
+    // 在这里调用 API
+		//朋友圈分享
+		wx.showMenuItems({
+			menuList: ["menuItem:share:appMessage","menuItem:share:timeline","menuItem:share:qq","menuItem:share:weiboApp","menuItem:share:QZone"] // 要显示的菜单项，所有menu项见附录3
+		});
+	
+		wx.onMenuShareTimeline({
+		title: '要朋友有难同当?不如邀请朋友一起赚钱！', // 分享标题
+		link: '', // 分享链接
+		imgUrl: '<?php echo $img_url ?>', // 分享图标
+		success: function () { 
+			// 用户确认分享后执行的回调函数
+		},
+		cancel: function () { 
+			// 用户取消分享后执行的回调函数
+		}
+	});
+	
+	
+	
+	wx.onMenuShareAppMessage({
+    title: '要朋友有难同当?不如邀请朋友一起赚钱！', // 分享标题
+    desc: '有你,有我,有钱,还有链金所。2016年理财新姿势，畅享12%预期年化收益，让钱生钱来的更猛烈些', // 分享描述
+    link: '', // 分享链接
+    imgUrl: '<?php echo $img_url ?>', // 分享图标
+    type: '', // 分享类型,music、video或link，不填默认为link
+    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+    success: function () { 
+        // 用户确认分享后执行的回调函数
+    },
+    cancel: function () { 
+        // 用户取消分享后执行的回调函数
+    }
+});
+
+	wx.onMenuShareQQ({
+		title: '要朋友有难同当?不如邀请朋友一起赚钱！', // 分享标题
+		desc: '有你,有我,有钱,还有链金所。2016年理财新姿势，畅享12%预期年化收益，让钱生钱来的更猛烈些', // 分享描述
+		link: '', // 分享链接
+		imgUrl: '<?php echo $img_url ?>', // 分享图标
+		success: function () { 
+		   // 用户确认分享后执行的回调函数
+		},
+		cancel: function () { 
+		   // 用户取消分享后执行的回调函数
+		}
+	});
+  });
+	</script>
+	<?php } ?>
+
+</html>

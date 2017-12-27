@@ -1,0 +1,326 @@
+<include file="Public:_header_common" />
+<title>红包嘉年华，百万福利欢乐送</title>
+<meta http-equiv="keywords" content="{$glo.web_keywords}" />
+<meta http-equiv="description" content="{$glo.web_descript}" />
+<!--<script type="text/javascript" src="__ROOT__/Style/H/js/common.js" language="javascript"></script>-->
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/H/css/coupons.css" />
+<script type="text/javascript" src="__ROOT__/Style/Js/jquery1.8.3.js"></script>
+<script type="text/javascript" src="__ROOT__/Style/Js/jquery.rotate.min.js "></script>
+<script type="text/javascript" src="__ROOT__/Style/layer/layer.min.js"></script>
+<script type="text/javascript" src="__ROOT__/Style/Js/scroll.js?random=1"></script>
+<style>
+    body{background-color: #ffe5ce}
+    .advbox DIV.yahoo2{margin-top: -5px; display: block; float: none}
+    .advbox .list_bottom_right ul{ text-align: center; padding: 30px 0 0}
+    .advbox .list_bottom_right ul a,.advbox .list_bottom_right ul span.current{padding: 0px 4px; height: 24px; line-height: 24px}
+</style>
+<include file="Public:_header_main" />
+<div class="tyj-banner">
+    <div class="step-box">
+        <span class="banner-polygon"></span>
+        <span class="ribbon1"></span>
+        <span class="banner-h2"></span>
+        <span class="ribbon2"></span>
+    </div>
+</div>
+<div class="step-box step-box1">
+    <span class="gift-img gift-img1"></span>
+    <span class="gift-img gift-img2"></span>
+    <span class="gift-img gift-imgline"></span>
+    <p class="step-box1-txt">
+        活动规则：①、新用户注册立享68元红包，直接充当现金使用；②、送5次抽奖机会，惊天豪礼等你来。
+    </p>
+    <a href="/member/common/register/" class="reg-btn reg-btn1"></a>
+</div>
+<div class="turntable-wrap">
+    <div class="width1015">
+        <div class="turntable-h2"></div>
+        <p class="turntable-des">幸运大抽奖，拿奖拿到手软，新用户注册后，即送5次抽奖机会，iPhone8、金条等豪礼等你带回家。</p>
+        <!--大转盘 start-->
+        <div class="zhuanpan_main">
+            <span class="gift-img gift-img5"></span>
+            <span class="gift-img gift-img6"></span>
+            <img src="/Style/H/images/experiencegold/zhuanpan.png" id="pointer" style="margin-left: 9px;"  />
+            <div style="width: 100%; position: absolute;  top: 103px;margin: auto;cursor: pointer" id="pointer_container">
+                <div style="margin: 0 auto;width: 184px;height: 223px;background:url(__ROOT__/Style/H/images/tiyan/zpzz.png) no-repeat;" id="p_click">
+                </div>
+            </div>
+        </div>
+        <!--大转盘 end-->
+        <div class="look-bumbertimes">
+            <php>if($uid == -1){</php>
+            <a style="color:#9a9a99;font-size: 24px;" href="/member/common/login/">登录</a>查看抽奖次数
+            <php>}else{ </php>
+            您还有的抽奖机会：<span id="tcount">{$left}</span> 次
+            <php>}</php>
+        </div>
+        <a href="javascript:void(0)" class="look-awardbtn" id="getcode1"></a>
+    </div>
+</div>
+<div class="step-box step-box2">
+    <span class="gift-img gift-img3-new"></span>
+    <span class="gift-img gift-img4-new"></span>
+    <p class="step-box2-txt">
+        新用户完成实名认证后即可获得600元红包，投资时抵现金用。
+    </p>
+    <a href="/member/verify?id=1#fragment-1" class="reg-btn reg-btn2"></a>
+</div>
+<div class="tyj-bottomwrap">
+    <div class="tyj-bottomtop">
+        <h2 class="tyjbot-img"></h2>
+    </div>
+    <div class="tyj-bottomain">
+        <div class="tyj-bm-main">
+            1、活动时间：本活动为长期活动，若无新的通知则视为一直有效；<br>
+            2、活动对象：活动期间链金所注册的所有新用户；<br>
+            3、投资券不能直接提现，只能在投资时直接抵扣现金使用，具体使用规则以券面描述为准；<br>
+            4、实物奖品不可折现，中奖后将在15个工作日内为您派送，图片请供参考，请以实物为准；<br>
+            5、在法律允许范围之内，链金所保留本活动最终解释权，如有疑问可关注链金所官方公众号<br>
+            (ccfax2015）后直接咨询，或直接与客服中心联系：400-6626-985。
+        </div>
+    </div>
+</div>
+
+
+
+<!--弹窗- 奖品列表start-->
+<div class="advbox">
+    <div class="advpic">
+        <div style="text-align: center; color:#76509B;margin-top:20px; margin-bottom: 20px;font-size:22px;">我的中奖记录</div>
+        <div style="margin: 0;min-height:200px;">
+            <dl style="height:3rem;line-height:3rem;font-size:22px;">
+                <dt style="width:46%;">时间</dt>
+                <dt style="width:46%;">奖品名称</dt>
+            </dl>
+            <div style="clear:both;"></div>
+            <div style="border:1px solid #ccc; overflow: scroll; height: 440px;" id="getmycode">
+
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <a href="javascript:void(0);" class="closebtn">关闭</a>
+    </div>
+</div>
+<!--弹窗- 奖品列表start-->
+
+<!--弹出层时背景层DIV-->
+<div id="fade" class="black_overlay"></div>
+<div id="MyDiv"></div>
+
+<input type="hidden" value="{$token}" id="ttoken" name="ttoken">
+<input type="hidden" value="{$uid}" id="tuid" name="tuid">
+<include file="Public:_footer" />
+<script type="text/javascript">
+    $(function() {
+        var timeout = 1000;
+        var show_message = "";
+        var flag = true;
+
+        function stop_rotate(angle) {
+            var cur = $("#pointer").getRotateAngle();
+            var num = Math.floor(cur / 360);
+            var target = (num + 2) * 360 + angle;
+            $("#pointer").rotate({animateTo: target});
+        }
+
+        function tip(message){
+            $.layer({
+                closeBtn: [0, false],
+                area: ['auto','auto'],
+                dialog: {
+                    msg: message,
+                    btns: 1,
+                    type: 4,
+                    btn: ['确定'],
+                    closeBtn: [0, false],
+                    yes: function(){
+                        layer.closeAll();
+                        //window.location.href="__ROOT__/security/tiyanjin";
+                        $("#pointer").css("transform","rotate(0deg)");
+                    }
+                }
+            });
+        }
+
+
+        /**
+         * 大转盘
+         */
+        $("#p_click").click(function (e) {
+            var $this=$("#pointer");
+            var uid = $("#tuid").val();
+            if (uid == "-1") {
+                flag = false;
+                var result = confirm("请登录");
+                if (result) {
+                    parent.location.href = "{$login_url}";
+                    return false;
+                } else {
+                    return false;
+                }
+
+            }
+
+            var count = $("#tcount").html();
+            if (count <= 0) {
+                flag = false;
+                tip("您没有抽奖机会！");
+                return false;
+            }
+
+            var index = layer.load(0); //0代表加载的风格，支持0-2
+
+            if (flag) {
+                var token = $("#ttoken").val();
+                $.ajax({
+                    url: "__URL__/getResult",
+                    cache: false,
+                    type: "post",
+                    data: {token: token},
+                    dataType: "json",
+                    success: function (d) {
+                        layer.closeAll('loading');
+
+                        if (d.status == 1) {
+                            flag = false;
+                            result = confirm("请先登录");
+                            if (result) {
+                                window.location.href = "__APP__/member/common/login.html";
+                            }
+                        } else if (d.status == 2|| d.status==3) {
+                            //活动已经结束或者要刷新
+                            show_message = d.message;
+                            flag = false;
+                            tip(show_message);
+                            return false;
+                        } else if(d.status == 4) {
+                            show_message = d.message;
+                            flag = false;
+                            $("#tcount").html(d.data.count);
+                            tip(show_message);
+                            return false;
+                        }
+                        else if (d.status == 5) {
+                            show_message = d.message;
+                            /**
+                             * touken 随机数
+                             */
+                            $("#ttoken").val(d.data.token);
+                            /**
+                             * 投奖次数
+                             */
+                            $("#tcount").html(d.data.count);
+                            /**
+                             * 累计投奖次数
+                             */
+                            $("#info_num").html(d.data.info_num);
+                            $this.rotate({
+                                duration: timeout,//转动时间间隔（转动速度）
+                                angle: 0,  //开始角度
+                                animateTo: 7200+parseInt(d.data.angle), //转动角度，10圈
+                                callback: function () { //回调函数
+                                    if (show_message) {
+                                        tip(show_message);
+                                    } else {
+                                        tip("正好没抽到，再来一次");
+                                    }
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+        });
+    });
+
+</script>
+<script type="text/javascript">
+    //弹出隐藏层
+    function ShowDiv(show_div,bg_div){
+        document.getElementById(show_div).style.display='block';
+        document.getElementById(bg_div).style.display='block' ;
+        var bgdiv = document.getElementById(bg_div);
+        bgdiv.style.width = document.body.scrollWidth;
+        // bgdiv.style.height = $(document).height();
+        $("#"+bg_div).height($(document).height());
+    };
+    //关闭弹出层
+    function CloseDiv(show_div,bg_div)
+    {
+        document.getElementById(show_div).style.display='none';
+        document.getElementById(bg_div).style.display='none';
+    };
+    var ohpage=1;
+    var ohtotal_page=$("#tendbackingtotal_page").val();
+
+    function init(){
+        ajax_show(ohpage);
+        $(".list_bottom_right ul").find("[page=1]").each(function(){
+            $(this).css({"background-color":"#33aaff","color":"#fff"}).siblings("a").css({"background-color":"#EEEEEE","color":"#848484"});
+        });
+    }
+
+    function ajax_show(p) {
+        if(p<1){
+            ohpage=1;
+        }else{
+            if(p>ohtotal_page){
+                ohpage=ohtotal_page;
+            }else{
+                ohpage=p;
+            }
+        }
+        $.get("__URL__/getrecode?p="+ohpage, function(data){
+            var da=$.parseJSON(data);
+            $("#getmycode").html(da.data);
+            $(".list_bottom_right ul").find("[page="+ohpage+"]").each(function(){
+                $(this).css({"background-color":"#33aaff","color":"#fff"}).siblings("a").css({"background-color":"#EEEEEE","color":"#848484"});
+            })
+        });
+    }
+
+    $(document).ready(function(){
+
+        $("#getcode1").click(function () {
+            var uid = $("#tuid").val();
+            if (uid == "-1") {
+                var result = confirm("请登录");
+                if (result) {
+                    parent.location.href = "{$login_url}";
+                    return false;
+                } else {
+                    return false;
+                }
+            }else {
+                var $getmycode=$("#getmycode");
+                $.ajax({
+                    url: "__URL__/getrecode",
+                    cache: false,
+                    type: "post",
+                    dataType: "json",
+                    success: function (d) {
+                        if(d.status==0){
+                            $getmycode.html(d.data);
+                            ohpage=1;
+                            $(".list_bottom_right ul").find("[page="+ohpage+"]").each(function(){
+                                $(this).css({"background-color":"#33aaff","color":"#fff"}).siblings("a").css({"background-color":"#EEEEEE","color":"#848484"});
+                            })
+                        }
+                        ShowDiv('MyDiv', 'fade');
+                        $(".advbox").show();
+                        $(".advbox").animate({top: "50%"}, 1000);
+                    }
+                });
+
+            }
+        });
+
+        $(".closebtn").click(function(){
+            $(".advbox").fadeOut(500);
+            CloseDiv('MyDiv','fade');
+        });
+    })
+</script>
+
+</body>
+</html>

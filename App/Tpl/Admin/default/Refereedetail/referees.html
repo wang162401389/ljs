@@ -1,0 +1,81 @@
+<include file="Public:_header" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<tagLib name="htmlA" />
+<script type="text/javascript">
+  var delUrl = '__URL__/doDel';
+  var addUrl = '__URL__/add';
+  var isSearchHidden = 1;
+  var searchName = "搜索";
+</script>
+<div class="so_main">
+  <div class="page_tit">推荐人列表</div>
+<!--搜索/筛选会员-->
+    <!-------- 搜索游戏 -------->
+  <div id="search_div">
+   <!--  <div class="page_tit"><script type="text/javascript">document.write(searchName);</script> [ <a href="javascript:void(0);" onclick="dosearch();">隐藏</a> ]</div> -->
+  
+  <div class="form2" style="background-color: #d2dbea;">
+  <form method="get" action="__URL__/referees">
+      <table style="width: 80%;">
+        <tr>
+          <td>ID：</td>
+          <td><input name="id" style="width:190px" id="title" type="text" value="{$search.id}"></td>
+          <td>用户名：</td>
+          <td><input name="runame" style="width:190px" id="title" type="text" value="{$search.runame}"></td>
+          <td>手机号：</td>
+          <td> <input name="userphone" style="width:190px" id="title" type="text" value="{$search.userphone}"></td>
+          <td><input type="submit" class="btn_b" value="查询" /></td>
+        </tr>
+      </table>
+  </form>
+  </div>
+  </div>
+<!--搜索/筛选会员-->
+<div style="width: 100%;height: 10px;"></div>
+  <div class="Toolbar_inbox">
+    <div class="page" style="text-align: right;">{$pagebar}</div>
+  </div>
+  
+  <div class="list">
+  <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <th class="line_l">ID</th>
+      <th class="line_l">用户名</th>
+      <th class="line_l">真实姓名</th>
+      <th class="line_l">手机号</th>
+      <th class="line_l">注册时间</th>
+      <th class="line_l">推荐人</th>
+      <th class="line_l">操作</th>
+    </tr>
+    <volist name="list" id="list">
+    <tr>
+      <td>{$list.id}</td>
+      <td><htmlA:user id="list.id" uname="list.user_name" /></td>
+      <td>{$list.real_name|default="&nbsp;"}</td>
+      <td>{$list.user_phone}</td>
+      <td>{$list.reg_time}</td>
+      <td><htmlA:user id="list.recomid" uname="list.recommendname" /></td>
+      <?php if($list['num']==1||$permissions!=1){ ?><td>
+      <a href="javascript:;" onclick="recom('__URL__/refereeslog?id={$list.id}','日志');">日志</a>
+      </td>
+      <?php }else{ ?>
+      <td><a href="javascript:;" onclick="recom('__URL__/refereemodify?id={$list.id}','修改');">修改</a>
+      &nbsp;&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;&nbsp;
+      <a href="javascript:;" onclick="recom('__URL__/refereeslog?id={$list.id}','日志');">日志</a>
+      </td><?php } ?>
+    </tr>
+    </volist>
+  </table>
+
+  </div>
+  
+  <div class="Toolbar_inbox">
+    <div class="page" style="text-align: right;">{$pagebar}</div>
+  </div>
+</div>
+<script type="text/javascript">
+function recom(url,Title){
+  ui.box.load(url, {title:Title});
+}
+</script>
+<include file="Public:_footer" />

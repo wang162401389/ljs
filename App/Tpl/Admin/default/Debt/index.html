@@ -1,0 +1,84 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<div class="so_main">
+  <div class="page_tit">债权转让</div>
+  <div class="Toolbar_inbox">
+      <div class="form2" style="background-color: #d2dbea;">
+          <form method="post" action="__URL__/index">
+              <table style="width: 80%;height: 80px;">
+                  <tr>
+                      <td>标号ID：</td>
+                      <td> <input name="borrow_id" style="width:190px" id="borrow_id" type="text" value="{$search.borrow_id}"></td>
+                      <td>转让人：</td>
+                      <td><input name="uname" style="width:190px" id="uname" type="text" value="{$search.uname}"></td>
+                      <td><dl class="lineD">
+                             <dt>转让成功时间：</dt>
+                              <dd>
+                                  <htmlA:timer id="start_time" style="width:190px"  value="{$search.start_time}" />
+                                 <span>到：</span>
+                                  <htmlA:timer id="end_time" style="width:190px" value="{$search.end_time}"/>
+                              </dd>
+                          </dl>
+                      </td>
+                      <td>
+                          <div class='chaxun'><input type="submit" value="查询" style="padding:5px;width:80px;"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                      </td>
+                  </tr>
+              </table>
+          </form>
+      </div>
+  </div>
+  
+  <div class="list">
+  <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th class="line_l">标号ID</th>
+    <th class="line_l">转让人</th>
+    <th class="line_l">项目名称</th>
+    <th class="line_l">投资金额</th>
+    <th class="line_l">年化利率</th>
+    <th class="line_l">待收期数/天数</th>
+    <th class="line_l">转让期数/天数</th>
+    <th class="line_l">总期数/天数</th>
+    <th class="line_l">待收本金</th>
+    <th class="line_l">待收利息</th>
+    <th class="line_l">债权价值</th>
+    <th class="line_l">转让价格</th>
+    <th class="line_l">折价率</th>
+    <th class="line_l">转让成功时间</th>
+    <th class="line_l">手续费（元）</th>
+  </tr>
+  <volist id="vo" name="list">
+      <tr>
+        <td>{$vo.id}</td>
+        <td>{$vo.user_name}</td>
+        <td>{$vo.borrow_name}</td>
+        <td>{$vo.investor_capital}</td>
+        <td>{$vo.borrow_interest_rate}</td>
+        <td>{$vo.daishu_qishu}</td>
+        <td>{$vo.daishu_qishu}</td>
+        <td>{$vo.daishu_total}</td>
+        <td>{$vo.daishou_benjin}</td>
+        <td>{$vo.daishou_lixi}</td>
+        <td>{$vo.debt_totalmoney}</td>
+        <td>{$vo.debt_price}</td>
+        <td>{$vo.debt_rate}</td>
+        <td>{$vo.second_verify_time}</td>
+        <td>{$vo.debt_fee}</td>
+      </tr>
+  </volist>
+  </table>
+
+  </div>
+  
+  <div class="Toolbar_inbox" style="overflow: hidden;">
+      <span class='Toolbar_inbox'>
+            <htmlA:commonBtn type="href"  action="__URL__/index?{$query}" value="数据导出"/>
+      </span>
+      <div class="page right">{$page}</div>
+  </div>
+</div>
+
+
+<include file="Public:_footer" />

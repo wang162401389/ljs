@@ -1,0 +1,78 @@
+.msafe-banner{box-sizing: border-box; text-align: center; position: relative;}
+.msafe-banner img{max-width: 100%; text-align: center;}
+
+.mpart1{padding:1rem 0; background: #fff}
+.part-h2{width:100%; height: 52px; line-height: 38px; margin: 0px auto; text-align: center; font-size: 1.2rem; color:#55595c; position: relative;}
+.part-h2 .part-h2line{width:50%; height: 1px; position: absolute; bottom:0px; left:50%; margin-left: -25%; background: #dcdcdc;}
+.maprt1-main{display: -webkit-box; padding: 3%; margin-top:1rem}
+.maprt1-main .maprt1-box{width:25%; -webkit-box-flex: 1; box-flex: 1; text-align: center;}
+.maprt1-box img{width:42%;}
+.maprt1-box .maprt1-tit{display: block; text-align: center; margin-top: 1rem; font-size: 1rem; padding: 0 3%; color: #8d8b8b;}
+
+.mpart2{background: #f3f7fa; padding: 1.5rem 0;}
+.mpart2-ico{text-align: center; margin: 1rem 0 5px;}
+.mpart2-ico img{width:8%;}
+.mpart2-ico1-tit{text-align: center; font-size: 1.1rem; color:#4aa7f5; margin-bottom: 1rem;}
+.mpart2-ico1-des,.mpart4-p,.mpart5-des{padding: 0 3%; font-size: 1rem; line-height: 1.5rem; color:#5f5e5e}
+.mpart2-tophead{width:48%; height: 30px; margin: 5px auto 0; border-top:1px solid #4aa7f5; border-left:1px solid #4aa7f5; border-right:1px solid #4aa7f5}
+
+.mpart3{background: #4aa7f5; color:#fff; padding: 1.5rem 0 3rem; position: relative;}
+.mpart3 .part-h2{color:#fff}
+.mpart3 .part-h2line{background: #fff;}
+.mpart3-img1{text-align: center; margin: 1.3rem 0;}
+.mpart3-img1 img{width:40%}
+.mpart3-p1text,.mpart3-p2text,.mpart3-p3text{padding: 0px 3%; font-size: 1rem; line-height: 1.5rem;}
+.mpart3-img2{padding: 0 0 0 3%; margin-top: 1rem;}
+.mpart3-img3{text-align: center; margin: 1.3rem 0;}
+.mpart3-img3 img{width:21%}
+
+.mpart4{background: #fff; padding: 1.5rem 0 2rem; position: relative;}
+.mpart4-img1{ margin: 2rem 0; text-align: center;}
+.mpart4-img1 img{width:70%;}
+.mpart4-p2,.mpart4-p3{ margin-top: 1.5rem; }
+.mpart4-pnumber{display: inline-block; width:30px; height: 30px; line-height: 30px; font-size: 18px; font-weight: bold; text-align: center; border:1px solid #4aa7f5; color:#4aa7f5; border-radius: 30px; margin-right: 0.3rem;}
+
+.mpart5{background: #f3f7fa; padding: 1.5rem 0; position: relative;}
+.mpart5-title{font-size: 1.1rem; color: #4aa7f5; margin: 1rem 0; text-align: center;}
+.mpart5-des a{color:#4aa7f5; font-size: 1rem;}
+
+.mpart2-5youshi{position: relative; height: 746px;}
+.part2-box{width:48%; position: absolute; top:0; }
+.part2-box1{left:50%; margin-left: -25%;}
+.part2-box1-blue{color:#4aa7f5}
+.part2-box1-green{color:#98bf40}
+.part2-blue-bg{width:100%; position:absolute; top:0; left:0}
+.p2-boxnum{width:31px; height: 31px; line-height: 31px; text-align: center; font-size: 20px; border:1px solid #4aa7f5; border-radius: 22px; display: block; margin: 24px auto 0;}
+.p2-boxnum.p2-boxnum-green{border:1px solid #98bf40;}
+.p2-boxtit{display: block; text-align: center; font-size: 1.2rem; margin-top: 0.5rem; font-weight: bold;}
+.p2-boxdes{width:82%; margin: 0.5rem auto 0;  font-size: 1.14rem;}
+
+.part2-box2{left:5px; top:242px;}
+.part2-box3{right:5px; top:242px;}
+.part2-box4{left:5px; top:486px;}
+.part2-box5{right:5px; top:486px;}
+
+/*iphone 6*/
+@media only screen and (min-width : 320px) and (max-width : 413px){
+	.mpart2-5youshi{height: 700px;}
+	.p2-boxdes{font-size: 1.1rem; line-height: 1.4rem;}
+	.part2-box2{left:5px; top:220px;}
+	.part2-box3{right:5px; top:220px;}
+	.part2-box4{left:5px; top:446px;}
+	.part2-box5{right:5px; top:446px;}
+
+}
+/*iphone 5 以及以下*/
+@media only screen and (max-width: 320px) {
+	.mpart2-5youshi{height: 600px;}
+	.p2-boxnum{width:24px; height: 24px; line-height: 24px; text-align: center; font-size: 20px; margin: 18px auto 0;}
+	.p2-boxtit{font-size: 1rem;}
+	.p2-boxnum{margin-top: 0.8rem;}
+	.p2-boxdes{margin: 0.3rem auto 0;}
+	.p2-boxdes{font-size: 1.1rem;}
+	.part2-box2{left:5px; top:194px;}
+	.part2-box3{right:5px; top:194px;}
+	.part2-box4{left:5px; top:392px;}
+	.part2-box5{right:5px; top:392px;}
+	.mpart5-h2{font-size: 1.1rem;}
+}

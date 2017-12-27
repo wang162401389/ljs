@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<include file="Pub:header-common" /> 
+	<link rel="stylesheet" href="__ROOT__/Style/Phone/css/record.css">
+</head>
+
+<body>
+	<include file="Pub:simple_header" />
+	<div class="content">
+	<volist name="list" id="vo">
+		<div class="list">
+			<div><span class="anno">{$vo.dec}</span><span class="count out"><if condition="$vo.money lt 0"><font color="#FF0000"><else/><font color="#009900"></if>{$vo.money}</font></span></div>
+			<div class="text">可用：<font>{$vo.det_yue}</font><!-- ，冻结：<span>{$vo.freeze_money|MFormt=###}</span><待收：<font>{$vo.collect_money|MFormt=###}</font>--><span class="date">{$vo.addtime}</span></div>
+		</div>
+	</volist>
+	</div>
+	<div class="page">
+		<if condition="$totalpage neq 0">
+			<if condition="$page eq 1 AND $page neq $totalpage">
+				<a href="javascript:void(0);" onclick = "nextpage({$page + 1})">下一页</a>
+			<elseif condition="$page neq 1 AND $page neq $totalpage"/>
+				<a href="javascript:void(0);" onclick = "nextpage({$page - 1})">上一页</a><a href="javascript:void(0);" onclick = "nextpage({$page + 1})">下一页</a>
+			<elseif condition="$page neq 1 AND $page eq $totalpage" />
+				<a href="javascript:void(0);" onclick = "nextpage({$page - 1})">上一页</a>
+			</if>
+			<div style="margin-top: 6px;margin-left: 10px;">第{$page}页 共{$totalpage}页</div>
+		</if>
+	</div>
+</body>
+
+	<script>
+		$(function(){
+			if({$totalitem}==0 || {$totalitem} == ''){
+				location.href="__APP__/M/user/detaillog.html";
+			}
+		});
+		function nextpage(page){
+			location.href="__URL__/records?page="+page;
+		}
+	</script>
+</html>

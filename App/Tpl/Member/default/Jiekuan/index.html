@@ -1,0 +1,48 @@
+<include file="Public:_header_common" />
+<title>我的账户-- {$glo.web_name}</title>
+<include file="default:Public:_header_main" group="Home"/>
+<include file="default:Public:_xiantiao" group="Home"/>
+<!--中部开始-->
+<div class="wrap2">
+    <div id="hy_left">
+        <include file="Public:_left" />
+    </div>
+    <div id="hy_right">
+        <div class="box">
+            <div class="autotender-h2" style="border-bottom:1px solid #d9d9d9">
+                <span class="autoh2-tit" style="color:#fc8026">借款申请</span>
+                <span style="margin-left: 44px; font-size: 14px; color:#b0b0b0">客服热线：400-6626-985</span>
+            </div>
+            <div class="contentright">
+                <table width="100%" class="mt20 jiekuan-table">
+                    <tr>
+                        <th width="20%">申请时间</th>
+                        <th width="20%">类型</th>
+                        <th width="20%">申请借款金额</th>
+                        <th width="20%">借款时长</th>
+                        <th width="25%">状态</th>
+                    </tr>
+                    <volist name="list" id="vo">
+	                    <tr>
+	                        <td>{$vo.addtime}</td>
+	                        <td><if condition="$vo.user_type eq 1">个人借款<else />企业借款</if>
+	                        </td>
+	                        <td>{$vo.amount}</td>
+	                        <td>{$vo.deadline}</td>
+	                        <td>
+	                        	<if condition="$vo.status eq 1">
+	                        		<span class="jk-ing">处理中</span>
+	                        	<elseif condition="$vo.status eq 2"/>
+	                        		<span class="jk-success">借款成功</span>
+	                        	<elseif condition="$vo.status eq 4"/>
+	                        		<span class="jk-fail">借款失败</span>
+                        		</if>
+	                        </td>
+	                    </tr>
+                    </volist>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="default:Public:_footer" group="Home" />

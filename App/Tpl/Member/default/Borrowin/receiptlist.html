@@ -1,0 +1,30 @@
+<div class="questionnaire_title">
+    链金所平台扣项回单<br><br>
+    {$borrow_info["borrow_name"]}({$borrow_info.borrow_id})
+</div>
+<br>
+<div class="fxpg_question myog">
+    <table>
+        <tr>
+            <th>服务费及期数</th>
+            <th>操作</th>
+        </tr>
+        <tr>
+            <td>服务费</td>
+            <td><a href="/member/borrowin/receipt?bid={$borrow_info.id}&sort_order=0" target="_blank">下载</a></td>
+        </tr>
+        <for start="1" end="$borrow_info['has_pay']" comparison="elt">
+            <tr>
+                <td>第{$i}期</td>
+                <td><a href="/member/borrowin/receipt?bid={$borrow_info.id}&sort_order={$i}" target="_blank">下载</a></td>
+            </tr>
+        </for>
+    </table>
+</div>
+<style>
+.fxpg_question{text-align: center;padding-bottom: 50px;}
+.fxpg_question table{margin:0 auto;width: 50%;font-size: 16px;border:solid #000; border-width:1px 0px 0px 1px;}
+.fxpg_question table th{text-align: center;border:solid #000; border-width:0px 1px 1px 0px;}
+.fxpg_question table td{text-align: center;border:solid #000; border-width:0px 1px 1px 0px;}
+.fxpg_question table tr{text-align: center;height: 26px}
+</style>

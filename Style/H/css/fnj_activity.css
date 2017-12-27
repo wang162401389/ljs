@@ -1,0 +1,15 @@
+    *{color: #323232;text-align:justify;text-justify:inter-ideograph;}
+    .auout_banner img{width: 100%;height: 100%;}
+    .divcenter{width:100%;margin-left: auto;margin-right: auto; background:#ffdeef;}
+
+    .divwk{width: 1006px; height:666px;margin-left: auto;margin-right: auto; background:url(../images/security/neiye2.png) no-repeat; padding-top:12px; /* margin-top:-12px; */ z-index:999; position:relative;}
+	.divwk .hdjl_content{padding-top:12px;margin-left: 108px;}
+	.divwk table{ width:670px; border-collapse:collapse; }
+	.divwk table thead{ background:#fecbe5;font-weight:bolder;}
+	.divwk table td{ border:1px solid #fdb7da; text-align:center; color:#da0c71; font-size:16px; line-height:25px; height:41px; }
+	.divwk .hd{ font-size:20px; color:#da0c71; margin: 25px 0 25px 108px; font-weight:bolder;}
+	.divwk .ljcj{ background:url(../images/security/neiye3.png); height:50px; width:188px; margin-top:25px; font-size:24px; color:#fff; text-align:center; line-height:50px; margin-left:349px; cursor:pointer}
+	.divwk .hjgz_content{ font-size:16px; color:#da0c71; line-height:30px; margin-left:108px; margin-right:40px;}
+	
+	
+	

@@ -1,0 +1,55 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+    var delUrl = '__URL__/doDel';
+    var addUrl = '__URL__/add';
+    var isSearchHidden = 1;
+    var searchName='搜索';
+</script>
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<div class="so_main">
+  <div class="page_tit">问题编辑</div>
+<!--搜索-->
+  <include file="search" />
+<!--搜索-->
+<div class="Toolbar_inbox">
+  </div>
+
+	<form action="__URL__/doedit" name="form" method="post" onsubmit="return subcheck();">
+		<input type="hidden" id='id' name="id" value="{$id}">
+		
+		<table id="" width="500" border="0" height="100%" cellspacing="0" cellpadding="0" style="margin-top: 30px;margin-bottom: 30px;">
+			<empty name='id'>
+			<tr><td height="50px;">问题：</td><td><input type="text" name="problem" style="width:300px;"/></td></tr>
+			<tr><td height="50px;">答案：</td><td><input type="text" name="answer[]" style="width:300px;"/></td><td><input type="text" name="score[]" readonly value="1" style="width: 30px;"/>分</td></tr>
+			<tr><td height="50px;">答案：</td><td><input type="text" name="answer[]" style="width:300px;" /></td><td><input type="text" name="score[]" readonly value="2" style="width: 30px;" />分</td></tr>
+			<tr><td height="50px;">答案：</td><td><input type="text" name="answer[]" style="width:300px;"/></td><td><input type="text" name="score[]" readonly value="3" style="width: 30px;" />分</td></tr>
+			<tr><td height="50px;">答案：</td><td><input type="text" name="answer[]" style="width:300px;"/></td><td><input type="text" name="score[]" readonly value="4" style="width: 30px;" />分</td></tr>
+			<else/>
+			<tr><td height="50px;">问题：</td><td><input type="text" name="problem" value="{$problem}" style="width:300px;" /></td></tr>
+			<volist name='info' id='vo'>
+			<tr><td height="50px;">答案：</td><td><input type="text" name="answer[]" value="{$vo.answer}" style="width:300px;" /></td><td><input type="text" name="score[]" readonly  value="{$vo.score}" style="width: 30px;" />分</td></tr>
+			<input type="hidden" name="aid[]" value="{$vo.id}">
+			</volist>
+			</empty>
+			<tr>
+				<td></td><td height="50px;"><input type="submit" name="submit" style="cursor:pointer;width: 60px;border-radius: 3px;font-size: 12px;" value="<empty name='id'>添加<else/>修改</empty>">
+				&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" style="cursor:pointer;width: 60px;border-radius: 3px;font-size: 12px;" value="重置" /></td>
+			</tr>
+		</table>
+	</form>
+
+  <div class="Toolbar_inbox">
+  </div>
+
+</div>
+<script type="text/javascript">
+var cansub = true;
+function subcheck(){
+  if(!cansub){
+    alert("请不要重复提交，如网速慢，请等待！");
+    return false; 
+  }
+}
+</script>
+<include file="Public:_footer" />

@@ -1,0 +1,179 @@
+
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<style>
+    .input{
+        font-size: 20px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .input div{
+        margin: 0 auto;
+        margin-top:20px ;
+        margin-bottom: 20px ;
+        width: 70%;
+        overflow: hidden;
+    }
+    .input div>label:first-child{
+        float: left;
+        width: 20%;
+    }
+    .input div>label:last-child{
+        color: red;
+        float: left;
+    }
+    .input div>input{
+        width: 60%;
+        margin-left: 20px;
+        height: 30px;
+        line-height: 30px;
+        float: left;
+        padding: 0 10px;
+    }
+    .input .btn{
+        width:30%;
+        margin: 0 auto;
+        background-color:rgb(62, 136, 199);
+        color: #ffffff;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 10px;
+        border:none;
+    }
+    .result{
+        background-color: #f5f5f5;
+        width:80%;
+        margin:0 auto;
+        padding-bottom: 10px;
+    }
+    .title{
+        height: 40px;
+        line-height: 40px;
+        font-size: 24px;
+        padding-top: 10px;
+    }
+    .item{
+        background-color: #ffffff;
+        width: 90%;
+        overflow: hidden;
+        margin: 10px auto;
+        min-height: 60px;
+        line-height: 60px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .item .suggest{
+        float: left;
+    }
+    .item .score{
+        float: right;
+    }
+    .table_container{
+        background-color: #ffffff;
+        width: 90%;
+        overflow: hidden;
+        margin: 10px auto;
+        min-height: 60px;
+        line-height: 60px;
+        padding:20px;
+    }
+    .row1{
+        width:40%;
+    }
+    .row2{
+        width:20%;
+    }
+    .row3{
+        width:40%;
+    }
+</style>
+<div class="input">
+    <div>同盾贷款信用评估</div>
+    <input type="hidden" id="token" value=<?php echo htmlspecialchars($token)  ?>  >
+    <div><label>客户真实姓名</label><input type="text" id="user_name" name="user_name"  ></div>
+    <div> <label>客户电话</label><input type="text" id="user_tel" name="user_tel"  ></div>
+    <div> <label>客户身份证</label><input type="text" id="user_id" name="user_id" ></div>
+
+    <input  class="btn" type="button" value="查看"  onclick="do_submit()">
+ </div>
+<script>
+   count=0;
+   var user_name;
+   var user_tel;
+   var user_id;
+  function query(){
+      html="<div class='wait'>我们将在<span class='num'>20</span>s后展示结果</div>";
+      $(".input").after(html);
+      i=20;
+      time_id=setInterval(function(){
+          i--;
+          if(i>0)
+              $(".num").html(i);
+          else if(i==0){
+              $(".num").html(i);
+              $.post("/admin/Fengkong/tongdun",{user_name:user_name,user_tel:user_tel,user_id:user_id,method:"query"},function(result){
+                  if(result=="fail"){
+                     if(count<3){
+                         count++;
+                         i=20;
+                         html="第"+count+"次请求失败，我们将在<span class='num'>20</span>s后重新展示结果";
+                         $(".wait").html(html);
+                     }
+                     else{
+                         clearInterval(time_id);
+                         html="请稍后再试";
+                         $(".wait").html(html);
+                         $(".btn").removeAttr("disabled");
+                         $(".btn").css("background","rgb(62, 136, 199)");
+                         $(".btn").val("查看");
+                     }
+                  }else{
+                      clearInterval(time_id);
+                      $(".wait").html(result);
+                      $(".btn").removeAttr("disabled");
+                      $(".btn").css("background","rgb(62, 136, 199)");
+                      $(".btn").val("查看");
+                  }
+
+              })
+          }
+
+      },1000);
+  }
+  function do_submit(){
+      user_name=$("#user_name").val();
+      if(user_name==""){
+          alert("请填写客户姓名");
+          return false;
+      }
+      user_tel=$("#user_tel").val();
+      if(user_tel==""){
+          alert("请填写客户手机号码");
+          return false;
+      }
+      user_id=$("#user_id").val();
+      if(user_id==""){
+          alert("请填写客户身份证号码");
+          return false;
+      }
+      $(".wait").remove();
+      token=$("#token").val();
+      $(".btn").attr("disabled","disabled");
+      $(".btn").css("background","#CCC");
+     $(".btn").val("请等待..");
+      $.post("/admin/Fengkong/tongdun",{token:token,user_name:user_name,user_tel:user_tel,user_id:user_id,method:"submit"},function(result){
+            if(result=="ok"){
+                query();
+            }else{
+                $(".btn").val("提交失败....");
+                setTimeout(function(){
+                    $(".btn").removeAttr("disabled");
+                    $(".btn").css("background","rgb(62, 136, 199)");
+                    $(".btn").val("查看");
+                },3000);
+
+
+            }
+      });
+  }
+</script>

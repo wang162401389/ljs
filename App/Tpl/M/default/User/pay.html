@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<include file="Pub:header-common" /> 
+	<link rel="stylesheet" href="__ROOT__/Style/Phone/css/recharge.css">
+
+  <script type="text/javascript" src="__ROOT__/Style/Js/jquery.js"></script>
+  <script type="text/javascript" src="__ROOT__/Style/Mobile/jquery-global.js"></script> 
+  <script type="text/javascript" src="/Style/apprise/apprise-v2.js"></script>
+  <link rel="stylesheet" href="/Style/apprise/apprise-v2.css" type="text/css">
+
+	<script language="javascript">
+    $(function() {
+        $("#dobutton").click(function() {
+            var e = $("#money").val();
+            if ($.trim(e) == "") return Apprise("<font color=red>请输入充值金额!</font>"), !1;
+            if ($.trim(e) < 100) return Apprise("<font color=red>最低充值金额100元!</font>"), !1;
+        })
+    })
+  </script>
+</head>
+
+<body>
+	<include file="Pub:simple_header" />
+
+
+	<div class="content">
+		<div class="balance">
+			账户余额：<span class="num">{:Fmoney($saving+$balance)}</span>元
+		</div>
+    <form action="__URL__/pay" method="post" name="cashForm" id="cashForm">
+  		<div class="chargecount">
+  			充值金额&nbsp;&nbsp;&nbsp;&nbsp;
+  			<input type="text" id="money" name='money' placeholder="请输入金额">元
+  		</div>
+  		<div class="note">
+  			<div class="text">
+  				最低充值金额100元。充值免手续费！
+  			</div>
+  			<div class="text">
+  				充值成功后资金会立刻划拨到您的帐户。
+  			</div>
+  		</div>
+  		<div class="login">
+  			<input type="submit" class="btn btn-info" id="dobutton" value="登陆新浪支付">
+  		</div>
+    </from>
+	</div>
+
+	<include file="Pub:footer" /> 
+
+</body>
+
+</html>

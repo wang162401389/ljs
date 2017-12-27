@@ -1,0 +1,89 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+
+
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<script type="text/javascript">
+    var delUrl = '__URL__/doDel';
+    var addUrl = '__URL__/add';
+    var isSearchHidden = 1;
+</script>
+
+<div class="so_main">
+  <div class="page_tit">借款明细</div>
+<!--搜索-->
+  <include file="borrow_search" />
+<!--搜索-->
+
+  <div class="Toolbar_inbox" style="overflow: hidden;min-height: 27px">
+  	<div class="page right">{$pagebar}</div>
+  </div>
+  
+  <div class="list">
+  <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+            <th class="line_l">用户ID</th>
+            <th class="line_l">用户类型</th>
+            <th class="line_l">用户名</th>
+            <th class="line_l">真实姓名</th>
+            <th class="line_l">注册时间</th>
+            <th class="line_l">来源渠道</th>
+
+            <th class="line_l">标号</th>
+            <th class="line_l">借款类型</th>
+            <th class="line_l">借款金额</th>
+            <th class="line_l">借款时间</th>
+            <th class="line_l">到期日期</th>
+            <th class="line_l">借款周期</th>
+            <th class="line_l">已还金额</th>
+            <th class="line_l">待还金额</th>
+            <th class="line_l">罚息</th>
+            <th class="line_l">垫付服务费</th>
+            <th class="line_l">综合服务费</th>
+            <th class="line_l">账号余额</th>
+        <!-- <th class="line_l">操作</th> -->
+      </tr>
+  <volist id="vo" name="info">
+      <tr>
+            <td>{$vo.uid}</td>
+            <td>普通用户</td>
+            <td>{$vo.user_name}</td>
+            <td>{$vo.real_name}</td>
+            <td>{$vo.reg_time}</td>
+            <td></td>
+             <td>{$vo.bid}</td>
+             <td>{$vo.product_type}</td>
+            <td>{$vo.borrow_money}元</td>
+            <td>{$vo.second_verify_time}</td>
+            <td>{$vo.return_day}</td>
+            <td>{$vo.borrow_duration_txt}</td>
+            <td>{$vo.has_money}</td>
+             <td>{$vo.none_money}</td>
+            <td>{$vo.expired_money}</td>
+             <td>0</td>
+             <td>{$vo.colligate}</td>
+            <td  class="{$vo.uid}"><a style=" cursor:pointer" onclick="show({$vo.uid})">账号余额</a></td>
+      </tr>
+  </volist>
+  </table>
+  </div>
+  
+  <div class="Toolbar_inbox" style="overflow: hidden;min-height: 27px">
+  	<div class="page right">{$pagebar}</div>
+  </div>
+</div>
+<script>
+    function show(uid){
+        $("."+uid).html("查询中...");
+        $.ajax({
+            url:"__APP__/Admin/Caiwu/showusermoney",
+            data:{"uid":uid},
+            type:"post",
+            dataType:"json",
+            success:function(d){
+                $("."+uid).html("￥"+d.data);
+            }
+        });
+    }
+</script>
+<include file="Public:_footer" />

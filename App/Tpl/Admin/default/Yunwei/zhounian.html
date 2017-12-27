@@ -1,0 +1,59 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<div class="so_main">
+    <div class="page_tit">周年庆活动</div>
+    <div id="search_div">
+
+        <div class="form2" style="background-color: #d2dbea;">
+            <form method="post" action="__URL__/zhounian">
+                <table style="width: 80%;height: 80px;">
+                    <tr>
+                        <td>用户ID：</td>
+                        <td> <input name="uid" style="width:190px" id="suid" type="text" value="{$search.uid}"></td>
+                        <td>真实姓名：</td>
+                        <td><input name="uname" style="width:190px" id="uname" type="text" value="{$search.uname}"></td>
+                        <td>手机号：</td>
+                        <td><input name="phone" style="width:190px" id="uphone" type="text" value="{$search.phone}"></td>
+                    </tr>
+                    <tr style="text-align: right;">
+                        <td colspan="6">
+                        <span class='chaxun'><input type="submit" value="查询"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class='Toolbar_inbox'>
+                            <htmlA:commonBtn type="href"  action="__URL__/zhounian?{$query}" value="数据导出"/>
+                        </span>
+                    </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th class="line_l">用户ID</th>
+                <th class="line_l">真实姓名</th>
+                <th class="line_l">手机号</th>
+                <th class="line_l">注册时间</th>
+                <th class="line_l">活动期间总投资额</th>
+                <th class="line_l">获得奖品</th>
+            </tr>
+            <volist id="vo" name="list">
+                <tr>
+                    <td>{$vo.uid}</td>
+                    <td>{$vo.uname}</td>
+                    <td>{$vo.phone}</td>
+                    <td>{$vo.registertime}</td>
+                    <td>{$vo.money}</td>
+                    <td>
+                        {$vo.goodsname}
+                    </td>
+                </tr>
+            </volist>
+        </table>
+        <div class="Toolbar_inbox" style="overflow: hidden">
+            <div class="page right">{$pagebar}</div>
+        </div>
+    </div>
+</div>
+<include file="Public:_footer" />

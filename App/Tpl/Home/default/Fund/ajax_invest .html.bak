@@ -1,0 +1,48 @@
+<style type="text/css">
+.pop-tb-con{padding-top:0px}.text-red{color:#cc3300}.mar20{margin:20px 0px}INPUT.btn-action{border-bottom:#cc0000 0px solid;text-align:center;border-left:#cc0000 0px solid;line-height:30px;width:80px;display:inline-block;background:url(../bg/btn-red.jpg) #cc0000 0px 0px;height:30px;color:#fff;border-top:#cc0000 0px solid;border-right:#cc0000 0px solid}.pop-tb{border-bottom:#d5d5d5 1px solid;border-left:#d5d5d5 1px solid;background-color:#fff;margin:20px auto;width:700px;height:310px;border-top:#d5d5d5 1px solid;border-right:#d5d5d5 1px solid}.pop-tb-l{border-bottom:#e5e5e5 0px solid;border-left:#e5e5e5 0px solid;background-color:#fdffe5;width:198px;float:left;height:310px;border-top:#e5e5e5 0px solid;border-right:#e5e5e5 1px solid;padding-top:10px}.pop-tb-l UL LI{line-height:30px;padding-left:20px;height:30px}.pop-tb-l UL LI STRONG{color:#ff0000;font-size:14px}.pop-tb-r{padding-left:20px;width:400px;float:right;padding-top:10px}.pop-tb-r UL LI{line-height:30px;height:30px}.pop-tb-r UL LI A{color:#c30;margin-left:30px}
+.invest_input{border:1px solid #CCC; padding:3px}
+</style>
+<div class="pop-tb-con clearfix" sizset="1" sizcache06741904719221702="1">
+<div class="pop-tb-l">
+<ul>
+    
+    <li>总金额：<STRONG>{$vo.borrow_money|getMoneyFormt=###}元</STRONG> </li>
+    <li>年化利率：{$vo.borrow_interest_rate}%</li>
+    <li>总份数：{$vo.transfer_total}份</li>
+    <li>已认购：{$vo.transfer_out}份</li>
+    <li>可认购：{$vo['transfer_total']-$vo['transfer_out']}份</li>
+    <li>投资期限：{$vo.borrow_duration}个月</li>
+	<li>最低认购金额：{$vo.per_transfer}元</li>
+</ul>
+</div>
+
+<div class="pop-tb-r">
+<FORM method="post" name="investForm" id="investForm" action="__URL__/investmoney">
+<input type="hidden" name="T_borrow_id" id="T_borrow_id" value="{$vo.id}" />
+<input type="hidden" name="per_transfer" id="per_transfer" value="{$vo.per_transfer}" />
+<input type="hidden" name="chooseWay" id="chooseWay" value="{$chooseway}" />
+<ul>
+<li>您的可用余额： {$account_money|default=0.00} 元 <A target="_blank" href="__APP__/member/charge#fragment-1">我要充值</A> </li>
+<li>当前年利率：<span id="year_interest">{$vo.borrow_interest_rate}</span>%/年</li>
+<li>认购份数：<INPUT type="text" id="transfer_invest_num" class="invest_input" onkeyup="sumTMoney(this);showFMoney({$vo.borrow_interest_rate},{$vo.reward_rate},{$vo.increase_rate},{$chooseway},{$vo.shouyi4},{$vo.shouyi6});" size="11" name="transfer_invest_num" value="{$num}" />&nbsp;份(最多认购{$vo['transfer_total']-$vo['transfer_out']}份)</li>
+
+<li>认购期限：<span >{$vo.borrow_duration}</span>&nbsp;个月<INPUT type="hidden" id="transfer_invest_month" class="invest_input"  value="{$vo.borrow_duration}" size="11" name="transfer_invest_month"  /></li>
+<li>还款方式：<if condition="$chooseway eq 4">按月还息到期还本<else/>利息复投</if></li>
+<li>认购总金额：￥<span id="total_transfer_money">{$num*$vo['per_transfer']}</span>元</li>
+<li style=" line-height:20px;">预计收益：<span id="except_income"></span>（待收利息：<span id="interest_income"></span>  ）</li>
+<li>支付密码：<if condition="$has_pin eq 'yes'"><INPUT type="password" class="invest_input" id="T_pin" name="T_pin" value="" /><else/>
+<A href="__APP__/member/user#fragment-3" target="_blank"><FONT color="#ff0000">请先设一个支付交易密码</FONT></A></if>
+</li>
+</ul>
+<P class="mar20"><INPUT class="btn-action" type="button" onclick="T_PostData()" value="确认付款" /><span class="text-red" style="margin-left:20px">注意:点击确认表示您将投标金额并同意支付</span></P>
+<P></P>
+</FORM>
+</div>
+</div>
+<script type="text/javascript">
+T_transfer_num = {$vo['transfer_total']-$vo['transfer_out']};
+T_month_min = {$vo.min_month};
+T_month_max = {$vo.borrow_duration};
+//T_month_max = {$vo.deadline|getTransferLeftmonth=###};
+showFMoney({$vo.borrow_interest_rate},{$vo.reward_rate},{$vo.increase_rate},{$chooseway},{$vo.shouyi4},{$vo.shouyi6});
+</script>

@@ -1,0 +1,90 @@
+<include file="default:Public:_header_common" group="Home"/>
+<title>我的账户-- {$glo.web_name}</title>
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/H/css/confirmation.css" />
+<script language=javascript type="text/javascript" src="__ROOT__/Style/Js/jquery.js"></script>
+<script language=javascript type="text/javascript" src="__ROOT__/Style/Js/tablescroll.js"></script>
+<style type="text/css">
+    .demo{width:920px;margin:auto;}
+    .tablescroll td,.tablescroll_wrapper,.tablescroll_head,.tablescroll_foot{}
+    .tablescroll td{padding:5px;}
+    .tablescroll_wrapper{border-left:0;}
+    .tablescroll thead td{border-right:0;border-bottom:0;}
+    .tablescroll tbody td{border-right:0;border-bottom:0;}
+    .tablescroll tbody tr.first td{border-top:0;}
+    .tablescroll tfoot td{border-right:0;border-bottom:0;}
+</style>
+<include file="default:Public:_header_main" group="Home"/>
+<div class="xiantiao"></div>
+
+<div class="confirm_main">
+    <div class="confirm_content">
+        <div class="confirm_content_title_zhaiquan"> </div>
+        <div class="confirm_content_middle">
+            <div class="confirm_tip">*如下标的已成功转让，请支付相关手续费</div>
+            <div class="demo">
+                <table id="thetable" cellspacing="0" cellpadding="0">
+                    <thead>
+                    <tr>
+                        <td width="129">标名</td>
+                        <td width="85">标号</td>
+                        <td width="65">转让金额</td>
+                        <td width="65">债权价值</td>
+                        <td width="55">折价率</td>
+                        <td width="70">转让手续费</td>
+                        <td width="103">债权转让协议</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <volist name="list" id="vo">
+                        <tr>
+                            <td class="btitle">{$vo.borrow_name}</td>
+                            <td>ZQ{$vo.id}</td>
+                            <td>{$vo.borrow_money}元</td>
+                            <td>{$vo.totalmoney}元</td>
+                            <td>{$vo.debt_rate}%</td>
+                            <td>{$vo.colligate_fee}元</td>
+                            <td><a href="__APP__/member/debt/xieyi?bid={$vo.id}" target="_blank">协议</a></td>
+                        </tr>
+                    </volist>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td>总计</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td><if condition='$pay_fee eq 0'>{$fee}元</if><div class="<if condition='$pay_fee neq 0'>confirm_bottom2" style="margin-top:24px; margin-left:10%;">已支付<else/>confirm_bottom" onclick='pay();'>确认支付</if></div></td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+            <div class="confirm_alarm">
+                <br />
+                <span style="font-size:16px;">注：</span><br />
+                1、请您点击蓝色按钮进行支付，以上服务费将只用账户余额支付。
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="clear:both"></div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function($){
+        $('#thetable').tableScroll({
+            width:920,
+            height: 285
+
+        });
+    });
+</script>
+<script>
+    function pay(){
+       location.href="__APP__/confirm/index/pay_zhaiquanfee";
+    }
+</script>
+<include file="default:Public:_footer" group="Home" />

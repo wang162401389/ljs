@@ -1,0 +1,67 @@
+<div class="xiantiao"></div>
+<div class="home_list" style="width:1200px;height:25px;margin:0 auto;margin-top:5px;font-size:15px;font-weight:bold;"><a href="__APP__/index">首页</a> >
+    <span>我的账户</span>
+</div>
+<!-- 下面都是新增的 start-->
+<div class="home_info">
+	<ul>
+		<li style="width: 48%">
+			<?php $info = certification($_SESSION["u_user_name"]);
+			?>
+			<a href="javascript:void(0);" class="user_img">
+				    <?php if($info['user_img']){?>
+					<img src="<?php echo $_SESSION['xieyi'].'://'.$_SERVER['HTTP_HOST'].$info['user_img']; ?>" alt="用户头像" style="width: 136px; height: 136px;">
+					<?php }else{?>
+					<img src="/Style/H/images/member/touxiang_07.png" alt="用户头像">
+				    <?php }?>
+				</if>
+
+			</a>
+			<div class="home_user_info ml20">
+				<span>你好，用户<?php echo $_SESSION["u_user_name"];?></span>
+				<div class="home_user_security">
+					<label class="user-security">账户安全：{$info.level_text}</label>
+					<div class="icon">
+						<a href="javascript:void(0);" style="cursor: default"><img src="/Style/H/images/member/mobile.png" title="手机验证通过" /></a>
+						<if condition="$info.ID_SET eq 1">
+						<a href="javascript:void(0);"  style="cursor: default" ><img src="/Style/H/images/member/id.png" title="实名认证通过" /></a>
+						<else />
+						<a href={$info.go_id}><img src="/Style/H/images/member/un_id.png" title="请实名认证" /></a>
+						</if>
+						<if condition="$info.SINA_SET eq 1">
+						<a href="javascript:void(0);"  style="cursor: default"><img src="/Style/H/images/member/sina.png" title="sina密码已经设置" /></a>
+						<else />
+						<a href={$info.go_sina}><img src="/Style/H/images/member/un_sina.png" title="请设置sina密码" /></a>
+						</if>
+               			<if condition="$info.EMAIL_SET eq 1">
+						<a href="javascript:void(0);"  style="cursor: default"><img src="/Style/H/images/member/email.png" title="邮箱认证已通过" /></a>
+						<else />
+						<a href={$info.go_email}><img src="/Style/H/images/member/un_email.png" title="请邮箱认证" /></a>
+						</if>
+					</div>
+				</div>
+		<li class="fs18" style="margin-top: 20px;width: 20%" >
+			<div>账户余额：￥<?php echo ($info['balance']+$info['saving']);?>元</div>
+			<div>
+				<a href="__APP__/member/charge#fragment-1" class="btn btn-blue ml100" style="margin-left: 0px; margin-top: 20px;">充值</a>
+				<a  href="javascript:void(0)" class="btn btn-orange ml20 js-withdraw-btn" style=" margin-top: 20px;" onclick="withdraw()">提现</a>
+			</div>
+            <input type="hidden" id="tips_withdarw" value="{$tips_withdarw|default='0'}">
+		</li>
+		<li class="fxpg_content" style="float: right;">
+			<div><span class="js_pgnl" style="margin-right: 20px;">风险承受能力评估</span><span class="js_sm">说明</span></div>
+			<div>风险测试结果：{$touzitype}</div>
+
+		</li>
+	</ul>
+</div>
+<!-- 上面都是新增的 end-->
+<div class="pop-div withdraw-pop js-withdraw-pop">
+	<div class="u-popclose-btn js-popclose"><img src="/Style/H/images/member/ym_close.png"></div>
+	<p class="withd-tipstxt">投资非体验标可以获得更多收益哦！</p>
+	<div class="withd-tipsbtn">
+		<a href="/member/withdraw?1#fragment-1" class="btn tipsbtn-again js-popclose">继续提现</a>
+		<a href="/invest/index.html" class="btn tipsbtn-invest js-popclose">去投资</a>
+	</div>
+</div>
+<include file="default:Public:fengxian" group="Home"/>

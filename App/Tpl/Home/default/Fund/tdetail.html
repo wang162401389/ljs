@@ -1,0 +1,260 @@
+<include file="Public:_header_common" />
+<title>{$vo.borrow_name}-我要投资-{$glo.web_name}</title>
+<meta http-equiv="keywords" content="{$glo.web_keywords}" />
+<meta http-equiv="description" content="{$glo.web_descript}" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/fancybox/jquery.fancybox-1.3.2.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/H/css/detail.css" />
+<link href="__ROOT__/Style/H/css/tdetail.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__ROOT__/Style/fancybox/jquery.fancybox-1.3.2.js"></script>
+<script type="text/javascript" src="__ROOT__/Style/H/js/common.js" language="javascript"></script>
+<script type="text/javascript">
+	var Transfer_invest_url = "__APP__/fund";
+</script>
+<include file="Public:_header_main" />
+<div id="wrapper">
+  <div class="invest-title the-toback"> </div>
+  <div class="invest-top">
+    <div class="model-box">
+      <div class="head">
+        <input type="hidden"  value="321" id="idStr">
+        <h2>定投宝 （{$vo.borrow_name|cnsubstr=###,22}）</h2>
+        </div>
+      <div class="profit">
+        <dl class="f">
+          <dt>总额度 </dt>
+          <dd><ins>￥</ins><em>{$vo.borrow_money|getMoneyFormt=###}</em></dd>
+        </dl>
+        <dl class="c">
+          <dt><b>年化收益率</b><a class="icons yhelp ToolTips ToolTipCol" href="javascript:;" data-text="投资定投宝可获得的收益率，以年度百分比表示">帮助</a> &nbsp; </dt>
+          <dd><em><span class="f28">{$vo.borrow_interest_rate}</span></em><span class="f14">%</span>-<em><span class="f26">{$Compound}</span></em><span class="f14">%</span></dd>
+        </dl>
+        <dl>
+          <dt>投资期限 </dt>
+          <dd><em>{$vo.borrow_duration}</em> 个月 </dd>
+        </dl>
+      </div>
+      <div class="repay">
+        <p class="t" style="height:130px; line-height:100px;">定投宝锁定期内本金自动复投，利息可以选择复投、返回账户。锁定结束返还本金和利息。 </p>
+      </div>
+      <div class="expl">
+        <ul>
+          <li>
+            <span class='investlistspeed'><span class='isbg' style='width:{$vo.progress}%'></span><span class='ispoint' style='left:{$vo['progress']-3}%; top:-4px;'></span></span>
+                    &nbsp;&nbsp;<span class='percspan'>{$vo.progress}<small>%</small></span>
+          </li>
+          <li><span style="height:50px;">发布时间： {$vo.add_time|mydate="Y-m-d",###}</span> </li>
+          <li><span class="vouch"><span class="ran"><img src="/style/H/images/new/okyes.png" width="14" height="16" border="0"/> 100%本息保障</span></span> </li>
+        </ul>
+      </div>
+    </div>
+    <form id="plan" method="post">
+      <div class="model-box invest-sum">
+        <div id="divDig"
+
+	style="position: absolute; z-index: 3; display: none; position: absolute; top: 40%; left: 40%"> <img src="images/load.gif" class="load" alt="加载中..." /></div>
+        <if condition="session('u_id') ==''">
+        <div class="head">
+          <h2>投资金额</h2>
+        </div>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" height="310" bgcolor="#B9BDBC" style="font-family:'微软雅黑'">
+          <tr>
+            <td><div class="gain-cont">
+                <h2 class="fya1">定投宝的年化收益</h2>
+                <p class="f">8-13%</p>
+                <p>投资收益是银行定期存款2-4倍</p>
+                <p class="reg"><a href="/member/common/register/">免费注册</a></p>
+                <p class="tar">已有账号? <a href="/member/common/login/">立即登录</a></p>
+              </div></td>
+          </tr>
+        </table>
+       <else/>
+       <div class="head">
+          <h2>投资金额</h2></div>
+          <div  class="remind-infos delline" style=" padding-left:20px; padding-top:20px; padding-right:20px; height:291px;">
+          <div class="institution" style="padding-top:5px; padding-bottom:5px; ">
+                <label>每份金额：</label>
+                <span class="info" >{$vo.per_transfer|getMoneyFormt=###}</span>&nbsp;元 </div>
+              <div class="institution">
+                <label>可投资份数：</label>
+                <span class="info" >{$vo['transfer_total']-$vo['transfer_out']}</span>&nbsp;份 </div>
+                 <div class="institution remain"> <label>您的可用余额：</label>
+             <if condition="session('u_id') ==''">
+                <strong>
+            ￥0.00元
+            <else/> {$investInfo['account_money']+$investInfo['back_money']|getMoneyFormt=###}元</strong>
+            </if>
+            
+            <a class="fRight icon-gree-link f16 mr20" style="padding:3px 15px;" href="__APP__/member/charge#fragment-1" target="_blank">充值</a>
+
+          </div>
+              <div>
+			  <p style="padding-top:12px; padding-bottom:8px;">
+                    <input class="plus" type="button" onclick="minus({$vo.id})" value="-" />
+                    <input class="tnum" type="text" id="tnum_{$vo.id}" value="1份" />
+                    <input class="minus" type="button"  onclick="plus({$vo.id})" value="+" />
+                  </p>
+                  <p style="height:40px; padding-top:13px;">
+                     <input  type="radio" value="4"  name="radios" id="lixireturn" checked="checked"/>
+                     <label for='lixireturn' style='CURSOR:pointer;color:#697268'>按月还息</label>
+                     <input  type="radio" value="6" name="radios" id="lift"/>
+                     <label for='lift' style='CURSOR:pointer;color:#697268'>利息复投</label>
+                     
+                  </p>
+                <if condition="($vo['transfer_out']-$vo['transfer_total'] eq 0) and ($vo['borrow_status'] eq 7)">
+                  <div class="tailttb ptailttb">已完成</div>
+                  <elseif condition="($vo['transfer_out']-$vo['transfer_total'] eq 0) and ($vo['borrow_status'] eq 2)"/>
+                  <div class="tailttb ptailttb">还款中</div>
+                  <else/>
+                  
+				  <if condition="session('u_id') !='' and ($vo['transfer_out']-$vo['transfer_total'] neq 0)">
+                   <div class="iwant-in" ><a id="yxtInvestBtn" class="gbtn"   onclick="FTransfer({$vo.id})" style="cursor:pointer;">立即加入</a></div>
+				  </if>
+                </if>
+              </div>
+              </div>
+        
+       </if>
+      </div>
+    </form>
+  </div>
+  <div class="jTabs">
+    <ul style="LEFT:20px" id="investTabs">
+      <li id="nav0" class="jTab current" onclick=javascript:qiehuan(0)>产品详情</li>
+      <li id="nav1" class="jTab" onclick=javascript:qiehuan(1)>加入记录<SPAN class="r5" 
+
+  id="financePlanInvestorCount">{$investnum}</SPAN></li>
+    </ul>
+  </div>
+  <div id="investPanel" class="model-auto">
+    <div style="DISPLAY: block"  id="qh_conn0" class="jPanel">
+      <DIV class="table-plan f14">
+        <TABLE>
+          <TBODY class="f13">
+            <TR>
+              <TD class="th">名称</TD>
+              <TD class="F14">{$vo.borrow_name|cnsubstr=###,22}</TD>
+            </TR>
+            <TR>
+              <TD class="th">介绍</TD>
+              <TD> {$vo.borrow_breif}</TD>
+            </TR>
+            <TR>
+              <TD class="th">收益方式<BR>
+                及年化收益率</TD>
+              <TD>利息处理方式：a.转入出借人在{$glo.web_name}平台的账户，b.利息复投。<em>{$vo.borrow_interest_rate}</em>% - <em>{$Compound}</em>%年化利率</TD>
+            </TR>
+            <TR>
+              <TD class="th">发布时间</TD>
+              <TD>{$vo.add_time|mydate="Y-m-d",###}</TD>
+            </TR>
+            <TR>
+              <TD class="th">加入条件</TD>
+              <TD> 加入金额 {$vo.per_transfer} 元起，且以 {$vo.per_transfer} 元的倍数递增 </TD>
+            </TR>
+            <TR>
+              <TD class="th">单人最大购买额度</TD>
+
+              <TD><if condition="$vo['borrow_max'] gt 0">￥{$vo['per_transfer']*$vo['borrow_max']}<else/>无限制</if></TD>
+            </TR>
+            <TR>
+              <TD class="th">期限</TD>
+              <TD>{$vo.borrow_duration}个月</TD>
+            </TR>
+          <TR>
+            <TD class="th">保障方式</TD>
+            <TD><DIV><img src="/style/H/images/new/okyes.png" border="0" width="14" height="16" style="padding-top:5px;"><span style="color:#009ADD; font-size:15px;">100%本息保障</span></DIV></TD>
+          </TR>
+            </TBODY>
+        </TABLE>
+      </DIV>
+    </div>
+    <div style="DISPLAY: none"  id="qh_conn1" class="jPanel">
+      <div class="model-box rec-items">
+        <div class="investlist">
+        <table  class="tdBordert" border=0 cellSpacing=0 width="100%" >
+                      <THEAD>
+                        <tr style="background-color:#E4E4E4">
+                          <td height="25" align="left" valign="middle">　认购人
+                            </th>
+                          <td align="left" valign="middle">认购份数
+                            </th>
+                          <td align="left" valign="middle">认购金额
+                            </th>
+                          <td align="left" valign="middle">当前利率
+                            </th>
+                          <td align="left" valign="middle">认购期限
+                            </th>
+                          <td align="left" valign="middle">认购方式
+                            </th>
+                          <td align="left" valign="middle">状态
+                            </th>
+                        </tr>
+                      </THEAD>
+                      <tbody id="investrecord"></tbody>
+         </table>
+         <div class="pages" style="width:930px; margin-left:0;">{$page}</div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+<SCRIPT language=javascript>
+	function qiehuan(num){
+		for(var id = 0;id<=1;id++)
+		{
+			if(id==num)
+			{
+				document.getElementById("qh_conn"+id).style.display="block";
+				
+			    document.getElementById("nav"+id).className = "jTab current";
+			}
+			else
+			{
+				document.getElementById("qh_conn"+id).style.display="none";
+				
+			    document.getElementById("nav"+id).className = "jTab";
+			}
+		}
+	}
+</SCRIPT>
+
+
+<!--页面层容器结束-->
+<script type="text/javascript" language="javascript">
+$(document).ready(function() {
+	ajax_show(1);
+});
+function ajax_show(p)
+{
+   $.get("__URL__/investRecord?borrow_id={$borrow_id}&p="+p, function(data){
+      $("#investrecord").html(data);
+   });
+   $(".pages a").removeClass('current');
+   $(".pages a").eq(p).addClass("current");
+}
+//DIV隐显
+bindpage();
+function bindpage(){
+	$('.ajaxpagebar a').click(function(){
+		try{	
+			var geturl = $(this).attr('href');
+			var id = $(this).parent().attr('data');
+			var x={};
+			$.ajax({
+				url: geturl,
+				data: x,
+				timeout: 5000,
+				cache: false,
+				type: "get",
+				dataType: "json",
+				success: function (d, s, r) {
+					if(d) $("#"+id).html(d.html);//更新客户端竞拍信息 作个判断，避免报错
+				}
+			});
+		}catch(e){};
+		return false;
+	})
+}
+
+</script>
+<include file="Public:_footer" />

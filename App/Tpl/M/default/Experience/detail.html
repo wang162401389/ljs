@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<include file="Pub:header-common" /> 
+    <link rel="stylesheet" href="css/detail.css">
+    <script type="text/javascript" src="js/tab.js"></script>
+</head>
+<body>
+
+<include file="Pub:simple_header" />
+<if condition="($hastouzi eq 0) AND ($zige eq 1) ">
+    <!-- <div style="background-color: #f9e401;height:26px; padding-top:3px; padding-bottom:3px;text-align: center;" id="introduce">
+        <a href="{:U('M/experience/rule')}" style="font-size:0.8em;">首次投资（不含体验标）送500链金豆,可参与抽宝马大奖！</a>
+    </div> -->
+</if>
+<form id="saveform" name="save" method="POST" action="__URL__/save/">
+<div class="content">
+    <div class="list">
+        <div>
+             <div class="price12">
+            	 <div class="price_sx">
+                	<div>预期年化收益</div>
+                    <div>{$vo.borrow_interest_rate}<span style="font-size:1rem">%</span></div>
+                 </div>
+                 <div class="price_yj">
+                    <div>借款期限</div>
+                    <div>{$vo.borrow_duration}<span style="font-size:1rem">天</span></div>
+                 </div>
+                 <div class="price_rs">
+                     <div>已投标人数</div>
+                     <div>{$vo.borrow_times}</div>
+                 </div>
+            	
+            </div>
+            <if condition="$zige eq 1">
+                 <div class="ts">投资当日开始计息，坐享稳健收益</div>  
+                        <if condition = "$flag eq 0">
+                            <input type="hidden" value="{$vo['id']}" name="id" />
+                            <div class="mine_btn lj_btn" id="mydobutton"> 立即投资</div>
+                        <elseif condition = "$flag eq 1"/>
+                            <div class="lj_btn" style="background:#ccc;border-color:#ccc" >已完成</div>
+                        <elseif condition = "$flag eq 2"/>
+                            <a href="{:U('M/user/verify')}" class="btn btn-info" style="color:#fff;font-size: 1rem;">立即投资</a>
+                       <elseif condition = "$flag eq 3"/>
+                            <a href="{:U('M/user/setpaypassword')}" class="btn btn-info" style="color:#fff;font-size: 1rem;">立即投资</a>
+                        </if>
+                <elseif condition="$zige eq 3 "/>
+                    <div class="ts">投资当日开始计息，坐享稳健收益</div>
+                    <a href="{:U('M/user/setpaypassword')}" class="btn btn-info" style="color:#fff;font-size: 1rem;">立即投资</a>
+                <else/>
+                  <div class="ts">仅限新用户使用体验金投资</div>
+                  <a href="{:U('M/invest/lists')}" class="btn btn-info" style="color:#fff;font-size: 1rem;">其他投资项目</a>
+            </if>
+            <div style="overflow:hidden">
+            <div class="spx"></div>
+            <div class="content_detail">
+              <div><img src="__ROOT__/Style/Phone/img/xmmc.png" /></div>
+              <div class="d_middle">项目名称</div>
+              <div>新手体验标</div>
+            </div>
+            <div class="spx"></div>
+            <div class="content_detail mine_btn" data-toggle="{:U('M/experience/projectcontent', array('id'=>$vo['id']))}">
+              <div><img src="__ROOT__/Style/Phone/img/xmxx.png" /></div>
+              <div class="d_middle">项目信息</div>
+              <i class="glyphicon glyphicon-menu-right c_d_i"></i>
+            </div>
+            <div class="spx"></div>
+            <div class="content_detail mine_btn" data-toggle="{:U('M/experience/bidhistory', array('borrow_id'=>$vo['id']))}">
+              <div><img src="__ROOT__/Style/Phone/img/tbjl.png" /></div>
+              <div class="d_middle">投资记录</div>
+              <i class="glyphicon glyphicon-menu-right c_d_i"></i>
+            </div>
+            <div class="spx"></div>
+            </div>
+           
+        </div>
+       
+</div>
+</div>
+</form>
+<include file="Pub:footer" />
+<script language="javascript">
+        $(function() {
+            $("#mydobutton").click(function() {
+                $("#saveform").submit();
+            });
+            var a=$("#introduce")||'';
+            if(a){
+                $(window).load(function(){
+                    setTimeout(function(){
+                        //a.hide("slow");
+                        a.fadeOut();
+                    },4000);//1000毫秒=1秒后执行test方法
+                });
+            }
+        })
+    </script>
+</body>
+</html>

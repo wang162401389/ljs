@@ -1,0 +1,239 @@
+.loadingspinner{position: fixed; top:50%; left: 50%; margin-left: -25px; margin-top: -30px;}
+.invite-tips{width:230px; height: 42px; line-height: 42px; text-align: center; color:#fff; background: rgba(0,0,0,.7); position: fixed; top:50%; left:50%; margin-left: -115px; margin-top: -16px; -webkit-border-radius: 7px; -moz-border-radius: 7px; -ms-border-radius: 7px; border-radius: 7px; z-index: 99999; display: none}
+
+.scroolpifu::-webkit-scrollbar {width:10px; height:10px;}
+.scroolpifu::-webkit-scrollbar-button{background-color:#fff; visibility: hidden;}
+.scroolpifu::-webkit-scrollbar-track{background:#fff; border-radius:4px;}
+.scroolpifu::-webkit-scrollbar-track-piece {}
+.scroolpifu::-webkit-scrollbar-thumb{background:#a75be9;border-radius:4px;}
+.scroolpifu::-webkit-scrollbar-corner {background:#fff; }
+.scroolpifu::-webkit-scrollbar-resizer {background:#fff;}
+
+.w1200{width:1200px; margin: 0 auto; position: relative;}
+.g-brand-banner{width:100%; height: 818px; background: url(../images/brandupgrade/banner.jpg) center top no-repeat;}
+.g-brand-date{width:473px; height: 53px; line-height: 53px; text-align: center; font-size: 27px; color:#ffc4c6; position: absolute; top:622px; left:340px; background:url(../images/brandupgrade/g-banner-date.png) no-repeat}
+
+.brand-page{padding-bottom:100px; background: #2d034f;}
+.page-main{display: none;}
+.page-b-top{width:100%; height: 547px; margin: 0 auto; overflow: hidden; background:url(../images/brandupgrade/page-b-top.png) center top #2d034f no-repeat}
+.page-b-top .page-b-tabtit{width:1200px; margin: 144px auto 0;}
+.page-b-top .page-b-tit{width:189px; height: 250px; float: left; display: inline; margin-left: 74px; cursor: pointer;}
+.page-b-top .page-b-tit-1{margin-left: 104px; background:url(../images/brandupgrade/page-b-tit1.png) no-repeat}
+.page-b-top .page-b-tit-2{background:url(../images/brandupgrade/page-b-tit2.png) no-repeat}
+.page-b-top .page-b-tit-3{background:url(../images/brandupgrade/page-b-tit3.png) no-repeat}
+.page-b-top .page-b-tit-4{background:url(../images/brandupgrade/page-b-tit4.png) no-repeat}
+
+/*送*/
+.redbag-float1{width:194px; height: 283px; display: block; position: absolute; top:138px; left:80px; background: url(../images/brandupgrade/redbag-float1.png) no-repeat;}
+.redbag-float2{width:194px; height: 283px; display: block; position: absolute; top:138px; right:60px; background: url(../images/brandupgrade/redbag-float2.png) no-repeat;}
+.page-send-top{width:1182px; margin: 0 auto; padding-bottom: 70px; margin-top: 114px; color: #fff; position: relative; padding-top: 1px; }
+.tbox-tit{width:100%; height: 125px; position: absolute; top:-86px; left:50px; }
+.tbox-tit .tbox-tcircle{width:128px; height: 125px; float: left; background:url(../images/brandupgrade/tbox-tcircle.png) no-repeat}
+.tbox-tcircle .tcircle-title{ line-height: 88px; display: block; position: absolute; top:10px; left: 30px; font-size:56px; font-weight: bold;}
+.tbox-tdes{width:722px; height: 32px; display:block; float: left; margin: 39px 0 0 20px; background:url(../images/brandupgrade/tbox-tdes.png) no-repeat}
+.tbox2-tdes1{width:361px; height: 33px; display:block; float: left; margin: 39px 0 0 20px; background:url(../images/brandupgrade/tbox2-tdes1.png) no-repeat}
+.tbox2-tdes2{width:472px; height: 31px; display:block; float: left; margin: 39px 0 0 20px; background:url(../images/brandupgrade/tbox2-tdes2.png) no-repeat}
+.tbox3-tdes1{width:595px; height: 33px; display:block; float: left; margin: 39px 0 0 20px; background:url(../images/brandupgrade/tbox3-tdes1.png) no-repeat}
+.tbox4-tdes1{width:307px; height: 32px; display:block; float: left; margin: 39px 0 0 20px; background:url(../images/brandupgrade/tbox4-tdes1.png) no-repeat}
+.redbag-main{width:566px; height: 782px; margin: 80px auto 0; text-align: center; position: relative; overflow: hidden; background: url(../images/brandupgrade/redbag-box.png) no-repeat;}
+.redbag-logo{width:110px; height: 110px; display: block; margin: 80px auto 0; background: url(../images/brandupgrade/tbox-tlogo.png) no-repeat;}
+.redbag-main span{display:block;}
+.redbag-logotit{margin-top:30px; font-size: 35px; display: block; text-align: center;}
+.redbag-logodes{margin-top:40px; font-size: 30px; color:#ed9a97; display: block; text-align: center;}
+.redbag-siantext{margin-top:120px; font-size: 30px; color:#fff}
+.redbag-main .redbag-open{width:174px; height: 179px; display: block; position: absolute; top:515px; left:192px; background: url(../images/brandupgrade/redbag-open.png) no-repeat;}
+.openbag-moving{-webkit-animation:openmoving 2s ease; -moz-animation:openmoving 2s ease; -ms-animation:openmoving 2s ease; animation:openmoving 2s ease;}
+.page-send-rule{width:1072px; page-send-toppx; color:#edd9ae; padding:60px; border:4px solid #5c2682; margin: 70px auto 0; background:#591e8b;}
+.page-send-rule .rule-h2{font-size: 34px; margin-bottom: 24px;}
+.page-send-rule .rule-main{line-height: 36px; font-size: 16px;}
+
+.get-redbag{width:566px; height: 782px; position: absolute; top:80px; left:308px; overflow: hidden; display: none; background: url(../images/brandupgrade/redbag-bg.png) no-repeat;}
+.getbag-congratulations{font-size: 40px; height: 60px; margin-top: 68px; text-align: center; color: #fff;}
+.getredbag-money{margin-top:170px; text-align: center; font-size: 72px; color: #f7e306;}
+.useredbag-title{margin-top: 160px; text-align: center;}
+.useredbag-title a{font-size: 30px; color: #e4a10d; text-decoration: underline;}
+.useredbag-title a:hover{color: #e4a10d;}
+.redbag-content{width:484px; margin: 70px auto 0;}
+.redbag-content li{font-size: 24px; line-height: 74px; color: #f5dfde;}
+.redbag-content li .labtitle{color:#eec709}
+.redbag-content li i{font-style: normal}
+.redbag-invbtn{text-align: center; margin-top: 80px;}
+.redbag-invbtn a{font-size:30px; color: #e4a10d; text-decoration: underline;}
+.redbag-invbtn a:hover{color:#eec709}
+
+.send-pop{width:452px; height: 220px; margin-left:-226px; margin-top: -110px; border-radius: 15px;}
+.send-pop .send-poptext{font-size: 26px; color: #333; text-align: center; margin-top: 50px;}
+.send-pop .send-popbtn{width:226px; height: 62px; line-height: 62px; font-size: 22px; text-align: center; color: #fff; display: block; margin: 30px auto 0; border-radius: 3px; background: #591e8b;}
+
+
+/*耍*/
+.page1-bg{background: #591e8b; position: relative; border:4px solid #5c2682; }
+.page1-bg-send{height:871px;}
+.page2-bg{border:4px solid #a44af3; background: #7509d5;}
+.zha-maintop{width:1128px; height: 300px; margin: 80px auto 0; background: url(../images/brandupgrade/zha-maintop-bg.png) center bottom no-repeat;}
+.zha-maintop ul li{width:220px; height: 285px; float: left; display: inline; margin-left: 48px;}
+.zha-maintop ul li.zha-listli-1{margin-left:54px}
+.zha-maintop ul li img{width:220px; height: 204px; display: block;}
+.zha-maintop ul li .zha-listtitle{width: 100%; height: 40px; line-height: 40px; display: block; font-size: 22px; text-align: center; color:#fff; overflow: hidden; background: #7509d5;}
+.zha-maintop ul li .zha-listprice{width:100%; height: 30px; line-height: 30px; margin-top: 8px; color:#f3302c; display: block; font-size: 22px; text-align: center; overflow: hidden;}
+
+.zha-icebg{width:487px; height: 311px; margin: 80px 0 0 350px; cursor: none; position: relative; background: url(../images/brandupgrade/zha-icebg.png) no-repeat;}
+.zha-bgmoving{-webkit-animation:zabgmove 2s ease infinite; -moz-animation:zabgmove 2s ease infinite; -ms-animation:zabgmove 2s ease infinite; animation:zabgmove 2s ease infinite;}
+.zha-tips{width:110px; height: 96px; display: block; position: absolute; top:0; left: 0; background: url(../images/brandupgrade/zha-tips.png) no-repeat;}
+.hammer{width:123px; height: 125px; display: block; position: absolute; top:0; left: 428px; background: url(../images/brandupgrade/hammer.png) no-repeat;}
+.hammer-moving{-webkit-animation:hammermove 2s ease infinite; -moz-animation:hammermove 2s ease infinite; -ms-animation:hammermove 2s ease infinite; animation:hammermove 2s ease infinite;}
+.hammer-moving2{-webkit-animation:hammermove2 2s ease infinite; -moz-animation:hammermove2 2s ease infinite; -ms-animation:hammermove2 2s ease infinite; animation:hammermove2 2s ease infinite;}
+.zha-icedes{text-align: center; color:#fff; font-size: 22px; margin: 20px 0 40px;}
+.zha-icedes a{color:#e1c54b; text-decoration: underline; font-size: 22px;}
+.zha-icedes a:hover{color:#e1c54b;}
+.zha-icebottom{width:792px; height: 234px; margin: 0 auto;}
+.promotion-code{width:277px; height: 230px; float: left; display: inline; position: relative; background: url(../images/brandupgrade/promotion-code.png) no-repeat;}
+.promotion-code .promotioncode-nologin{width:148px; font-size: 16px; line-height: 26px; position: absolute; top:42px; left:112px; text-align: center; color: #666;}
+.promotion-list{width:387px; height: 232px; float: right;}
+.pro-list-tit{height: 50px; line-height: 50px; color:#f7e306; font-size:17px; text-align: center; background: #5704a1;}
+.pro-list-tit .namelist-li{display:block; float: left;}
+.pro-list-tit .namelist-li-a{width:177px;}
+.pro-list-tit .namelist-li-b{width:210px;}
+.namelist-nologin{height: 179px; text-align: center; background: #8023d2; overflow: hidden; }
+.namelist-logtit{color:#bd9be6; font-size: 16px; margin-top:50px}
+.namelist-logbtn{display:block; width:110px; height: 34px; line-height: 34px; border-radius: 2px; margin: 20px auto 0; color:#8023d2; background: #f7e306;}
+.namelist-logining{height: 134px; overflow: hidden; background: #8023d2;}
+.namelist-logining ul li{height: 45px; line-height: 45px; font-size: 16px; text-align: center;}
+.namelist-logining .namel-txt-t{height: 44px; float:left; display: block; overflow: hidden;}
+.namelist-logining .namel-txt-t-a{width:176px; border-right: 1px solid #6d15bc; border-bottom: 1px solid #6d15bc;}
+.namelist-logining .namel-txt-t-b{width:210px; border-bottom: 1px solid #6d15bc;}
+.promotion-qrcode{width:110px; height: 110px; position: absolute; top:12px; left:131px; overflow: hidden; background: #fff;}
+.promotion-list .namelist-abtn{height: 44px; line-height: 44px; display: block; text-align: center; font-size:16px; margin-top: 10px; color:#fff}
+
+/*抢*/
+.grab-maincontent .grab-today-times{margin: 60px 0 25px; text-align: center; color:#fff; font-size:30px; font-weight: bold;}
+.grab-maincontent .grab-mytimes{text-align: center; font-size: 22px; color:#fff; margin-top: 50px;}
+.grab-mytimes a{font-size: 22px; color:#e1c54b; text-decoration: underline;}
+.grab-mytimes a:hover{color:#e1c54b;}
+.grab-grab-gold{width:605px; height: 412px; margin: 20px auto 0; background: url(../images/brandupgrade/grab-grab-gold.png) no-repeat;}
+.gold-grab-button{width:150px; height: 155px; display: block; margin: 70px auto 0; background: url(../images/brandupgrade/gold-grab-button.png) no-repeat;}
+
+.podium-tit{width:619px; height: 80px; margin: 60px auto 0; position: relative; text-align: center; font-size: 30px; font-weight:bold; color:#f7e306; background: url(../images/brandupgrade/fight-h2title.png) no-repeat;}
+.podium-tit .podium-tit-span{width:73px; height: 73px; line-height: 76px; float: left;}
+.podium-tit .podium-tit-des{width:530px; line-height: 76px; float:left; display: block;  }
+.podium-img{width:893px; height: 522px; margin: 60px auto 0; background: url(../images/brandupgrade/podium-img.png) no-repeat;}
+
+.podium-other{width:896px; margin: 40px auto 0; position: relative;}
+.podium-tabtit{text-align: center; color:#bb8fe2; 40px; font-size: 22px;}
+.podium-money-wrap{text-align: center; margin-top: 35px;}
+.podium-nologin{text-align: center; color:#e4dfeb; font-size: 22px;}
+.podium-nologin a{color:#d9c038; text-decoration: underline; font-size: 22px;}
+.podium-nologin a:hover{color:#d9c038;}
+.podium-nologin i{font-style: normal; margin: 0 5px}
+.podium-other .podium-rulse{color:#f7e306; text-decoration: underline; font-size: 20px; display: inline-block; margin-left: 50px}
+.podium-other .podium-increase-investment{color:#f7e306; text-decoration: underline; font-size: 20px; display: inline-block; margin-left: 50px}
+.fight-namelist-flag{width:424px; height: 64px; line-height: 54px; color:#f6e10b; text-align: center; font-size: 24px; margin: 40px auto 0; background: url(../images/brandupgrade/fight-namelist-flag.png) no-repeat;}
+.fight-namelist-tit{width:956px; height:48px; line-height: 48px; margin: 30px auto 0; background: #410a6f;}
+.fight-namelist-tit .f-nameli-t{display: block; float: left; text-align: center; font-size: 18px; color: #fcf101;}
+.fight-namelist-tit .f-nameli-t-a{width:194px;}
+.fight-namelist-tit .f-nameli-t-b{width:220px;}
+.fight-namelist-tit .f-nameli-t-c{width:244px;}
+.fight-namelist-tit .f-nameli-t-d{width:298px;}
+.fight-namelist-txt{width:956px; height: 254.5px; overflow: hidden; margin: 0 auto; background: #521289;}
+.fight-namelist-txtpeople{height: 509px;}
+.fight-namelist-txt ul li{height:50px; line-height: 50px; overflow: hidden; color:#fff; border-bottom:1px solid #591e8b}
+.fight-namelist-txt .f-nameli-m{display: block; float: left; text-align: center; font-size: 18px; }
+.fight-namelist-txt .f-nameli-m-a{width:194px;}
+.fight-namelist-txt .f-nameli-m-b{width:220px;}
+.fight-namelist-txt .f-nameli-m-c{width:244px;}
+.fight-namelist-txt .f-nameli-m-d{width:298px;}
+.fight-namelist-txt ul li.myinvite-cla{color: #ff223c; font-weight: bold;}
+.podium-img2{width:822px; height: 482px; margin: 60px auto 0; background: url(../images/brandupgrade/podium-img2.png) no-repeat;}
+
+/*战*/
+.brand-pop{position: fixed; top:50%; left:50%; background: #fff; z-index: 99; display: none;}
+.fight-rulepop{width:810px; height: 502px; margin-left: -405px; margin-top: -251px; border-radius: 15px;}
+.rulepop-h2{width:844px; line-height: 62px; color:#fff; text-align: center; font-size: 30px; margin: 30px -17px 0; position: relative; background: #591e8b;}
+.rulepop-arror-left{width:16px; height: 8px; display: block; position: absolute; bottom:-8px; left:0px; background: url(../images/brandupgrade/rulepop-arror-left.png) no-repeat;}
+.rulepop-arror-right{width:16px; height: 8px; display: block; position: absolute; bottom:-8px; right:0px; background: url(../images/brandupgrade/rulepop-arror-right.png) no-repeat;}
+.rulepop-txt{margin-top: 50px; line-height: 39px; padding: 0 40px; font-size:18px; color:#333}
+.rulepop-close{width:52px; height: 52px; display: block; position: absolute; top:-65px; right: 0; background: url(../images/brandupgrade/rulepop-close.png) no-repeat;}
+
+
+/*耍-弹窗*/
+.playbg-pop{width:370px; height: 501px; margin-top: -250.5px; margin-left: -185px; background: url(../images/brandupgrade/play-popbg.png) no-repeat;}
+.playpop-tit{height: 58px; line-height: 58px; text-align: center; color: #ff3a65; font-size: 36px; margin-top: 5px;}
+.playbg-pop-main{height: 330px; overflow: hidden;}
+.playbg-pop-main .nosinapwd-text{text-align: center; line-height: 38px; color: #ff3a65; font-size: 22px; margin-top: 108px;}
+.playpop-btn{width:370px; height: 71px; line-height: 71px; text-align: center; display: block; margin-top: 38px; color: #ff3a65; font-size: 24px;}
+.playpop-btn:hover{color: #ff3a65;}
+.hitice-p1-p{text-align: center; color:#ff3a65; font-size: 24px; margin-top: 30px;}
+.hitice-p2-p{text-align: center; color:#ff3a65; font-size: 18px;  margin-top: 30px;}
+.hitice-p3-p{text-align: center; color:#ff3a65; margin-top: 40px;}
+.hitice-p4-p{text-align: center; color:#ff3a65; font-size: 18px; margin-top: 40px;}
+.hitice-p5-p{text-align: center; color:#ff3a65; margin-top: 30px;}
+.hitice-p3-p a,.hitice-p5-p a{font-size: 24px; color:#ffc025;}
+.hitice-p3-p a:hover,.hitice-p5-p a:hover{color:#ffc025;}
+.award-winimg{width:152px; height: 152px; margin: 40px auto 30px;}
+.award-winning{text-align: center; font-size: 22px; color: #ff3a65; line-height: 32px}
+
+/*抢*/
+.voucher-pop{overflow: hidden;}
+.voucherempty{width:387px; height: 371px; margin-left:-193.5px; margin-top: -185.5px; background: url(../images/brandupgrade/voucherempty.png) no-repeat;}
+.vouchercountsover{width:386px; height: 370px; margin-left:-193px; margin-top: -185px; background: url(../images/brandupgrade/vouchercountsover.png) no-repeat;}
+.vouchernostart{width:386px; height: 370px; margin-left:-193px; margin-top: -185px; background: url(../images/brandupgrade/vouchernostart.png) no-repeat;}
+.vouchernostart-closebtn{width:192px; height: 61px; display: block; margin: 284px auto 0;}
+.vouchercountsover-btn{margin-top:290px}
+.vouchercountsover-closebtn{width:118px; height: 46px; float: left; display: block; margin-left: 43px;}
+.vouchercountsover-recharge{width:118px; height: 46px; float: left; display: block; margin-left: 56px;}
+.vouchertodayover{width:386px; height: 371px; margin-left:-193px; margin-top: -185px; background: url(../images/brandupgrade/vouchertodayover.png) no-repeat;}
+
+
+.vouchersuccess{width:388px; height: 534px; margin-left: -194px; margin-top: -267px; background: url(../images/brandupgrade/vouchersuccess.png) no-repeat;}
+.vouchersuccess-card{width:331px; height: 114px; margin: 257px auto 0; background: url(../images/brandupgrade/vouchersuccess-card.png) no-repeat;}
+.vou-suc-left{width:98px; height: 62px; float: left; display: inline; margin-left: 13px; color:#ff4d22; text-align: center; margin-top: 35px}
+.vou-suc-left .vou-rates-val{font-size: 18px; display: block;}
+.vou-rates-val .ratesval-number{font-size: 28px; font-style:normal;}
+.vou-suc-left .vou-rates-tit{font-size: 18px; display: block; margin-top: 4px;}
+.vou-suc-right{width:198px; height: 62px; float: left; text-indent: 30px; display: inline; font-size: 16px; color:#a88074; margin: 50px 0 0 10px;}
+.vou-suc-right .face-value-p{margin-bottom: 4px;}
+.vouchersuccess-txt{text-align: center; margin-top: 16px; font-size: 20px; color: #fffefe;}
+.vouchersuccess-closebtn{width:186px; height: 55px; display: block; margin: 38px 0 0 94px;}
+
+.invest-empty{text-align:center; margin-top: 100px; font-size: 16px; color: #bb8fe2;}
+.namelist-logining .invest-empty{margin-top:50px;}
+
+.grap-name-pop{width:532px; height: 536px; margin-left: -286px; margin-top: -288px; padding: 20px; background: #fff;}
+.grap-name-pop .rulepop-close{right: -70px;}
+.myprize-list{height:60px; line-height: 60px; border-bottom:1px solid #a75be9;}
+.myprize-list .pri-h2-t{display: block; text-align: left; float: left; color: #262626; font-size: 22px; overflow: hidden;}
+.myprize-list .pri-h2-ta{width:316px;}
+.myprize-list .pri-h2-tb{width:194px;}
+.myprize-listul{ margin-top: 10px; height: 440px; overflow-y: scroll;}
+.myprize-listul ul li{height: 54px; line-height: 54px; border-bottom: 1px solid #e9e9e9}
+.myprize-listul .prize-li-t{display: block; float: left; color: #5a5a5a; font-size: 18px; overflow: hidden;}
+.myprize-listul .prize-li-ta{width:316px;}
+.myprize-listul .prize-li-tb{width:194px;}
+
+/*浮层*/
+.brand-float{width:224px; height: 497px; position: fixed; margin-left: 545px; left: 50%; bottom: 80px; display: none; background: url(../images/brandupgrade/brand-float.png) no-repeat;}
+.brand-float .brafloat-a{width:196px; height: 60px; line-height: 60px; text-indent:66px; color: #fff; font-size: 23px; display: block; margin-top: 16px; margin-left: 26px;}
+.brand-float .brafloat-a-send{margin-top: 160px;}
+.brand-float .brafloat-top{width:196px; height: 40px; line-height: 40px; margin-top: 11px; text-indent:66px; margin-left: 26px; cursor: pointer;}
+.brand-float .brafloat-top .brafloat-top-link{width:196px; height: 40px; color: #792cac; font-size: 23px; text-decoration: underline;}
+
+/*动画*/
+@-webkit-keyframes hammermove{0%{transform:translateX(0px) rotate(0deg);}20%{transform:translateX(-110px) rotate(70deg) scale(1.4);}40%{transform:translateX(-110px) rotate(-70deg) scale(1.4);}60%,100%{transform:translateX(0px) rotate(0deg);}}
+@-moz-keyframes hammermove{0%{transform:translateX(0px) rotate(0deg);}20%{transform:translateX(-110px) rotate(70deg) scale(1.4);}40%{transform:translateX(-110px) rotate(-70deg) scale(1.4);}60%,100%{transform:translateX(0px) rotate(0deg);}}
+@-ms-keyframes hammermove{0%{transform:translateX(0px) rotate(0deg);}20%{transform:translateX(-110px) rotate(70deg) scale(1.4);}40%{transform:translateX(-110px) rotate(-70deg) scale(1.4);}60%,100%{transform:translateX(0px) rotate(0deg);}}
+@keyframes hammermove{0%{transform:translateX(0px) rotate(0deg);}20%{transform:translateX(-110px) rotate(70deg) scale(1.4);}40%{transform:translateX(-110px) rotate(-70deg) scale(1.4);}60%,100%{transform:translateX(0px) rotate(0deg);}}
+
+@-webkit-keyframes hammermove2{0%{transform:translateX(0px) rotate(0deg);}6%{transform:translateX(0px) rotate(70deg) scale(1.4);}30%{transform:translateX(0px) rotate(-70deg) scale(1.4);}60%,100%{transform:translateX(0px) rotate(0deg);}}
+@-moz-keyframes hammermove2{0%{transform:translateX(0px) rotate(0deg);}6%{transform:translateX(0px) rotate(70deg) scale(1.4);}30%{transform:translateX(0px) rotate(-70deg) scale(1.4);}60%,100%{transform:translateX(0px) rotate(0deg);}}
+@-ms-keyframes hammermove2{0%{transform:translateX(0px) rotate(0deg);}6%{transform:translateX(0px) rotate(70deg) scale(1.4);}30%{transform:translateX(0px) rotate(-70deg) scale(1.4);}60%,100%{transform:translateX(0px) rotate(0deg);}}
+@keyframes hammermove2{0%{transform:translateX(0px) rotate(0deg);}6%{transform:translateX(0px) rotate(70deg) scale(1.4);}30%{transform:translateX(0px) rotate(-70deg) scale(1.4);}60%,100%{transform:translateX(0px) rotate(0deg);}}
+
+@-webkit-keyframes zabgmove{0%{background: url(../images/brandupgrade/zha-icebg.png) no-repeat;}28%{background: url(../images/brandupgrade/zha-icebgafter.png) no-repeat;}60%,100%{background: url(../images/brandupgrade/zha-icebgafter.png) no-repeat;}}
+@-moz-keyframes zabgmove{0%{background: url(../images/brandupgrade/zha-icebg.png) no-repeat;}28%{background: url(../images/brandupgrade/zha-icebgafter.png) no-repeat;}60%,100%{background: url(../images/brandupgrade/zha-icebgafter.png) no-repeat;}}
+@-ms-keyframes zabgmove{0%{background: url(../images/brandupgrade/zha-icebg.png) no-repeat;}28%{background: url(../images/brandupgrade/zha-icebgafter.png) no-repeat;}60%,100%{background: url(../images/brandupgrade/zha-icebgafter.png) no-repeat;}}
+@keyframes zabgmove{0%{background: url(../images/brandupgrade/zha-icebg.png) no-repeat;}28%{background: url(../images/brandupgrade/zha-icebgafter.png) no-repeat;}60%,100%{background: url(../images/brandupgrade/zha-icebgafter.png) no-repeat;}}
+
+@-webkit-keyframes openmoving{0%{transform:rotateY(0deg);}100%{transform:rotateY(720deg);}}
+@-moz-keyframes openmoving{0%{transform:rotateY(0deg);}100%{transform:rotateY(720deg);}}
+@-ms-keyframes openmoving{0%{transform:rotateY(0deg);}100%{transform:rotateY(720deg);}}
+@keyframes openmoving{0%{transform:rotateY(0deg);}100%{transform:rotateY(720deg);}}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<include file="default:Pub:header-common" group="M"/>
+	<link rel="stylesheet" href="__ROOT__/Style/Phone/css/confirm.css">
+</head>
+
+<body style=" background:#fff;">
+	<include file="default:Pub:simple_header" group="M"/>
+	<div class="content c_main">
+	    <div class="mbqr_title">满标确认函</div>
+		<div class="mbqr_content">
+			尊敬的用户：<br/>
+你通过深圳市链金所互联网金融服务有限公司（以下简称“链金所”）P2P平台（www.ccfax.cn）借款的第{$info.id}号标，借款金额{$info.borrow_money}元，借款期限{$info.borrow_duration}<if condition="$info.repayment_type eq 1">天<else/>月</if>，借款利息为{$info.borrow_interest}元，现已完成募资。<br/>
+链金所为您此次借款募资提供的相应服务，依据您线下签署《财务顾问协议》以及链金所网站公布的收费内容，您需要向链金所支付综合服务费X元（包括融资咨询费、服务费、借款管理费、信息查询费、数逾期管理费、数字认证费等）。<br/>
+当你点击本函件下方“已阅读并同意”按钮后，即不可撤销的对上述内容予以认可并确认此次借款完成。同时，平台将立即把借款划入您在链金所平台的注册的实名账户中，您即可以进行提现操作。<br/>
+如有任何疑问，请咨询链金所在线客服或致电链金所服务热线 4006626985。
+		</div>
+        <div class="mbqr_button" onclick="submit({$info.id})">同意</div>
+       
+	
+	</div>
+	<script>
+	function submit(id){
+		$.ajax({
+			type:"POST",
+			url:"__APP__/confirm/index/confirmation",
+			data:{bid:id},
+			dataType:"json",
+			success:function(data){
+				if(data){
+					location.href="__APP__/confirm/index/mb_confirm";
+				}else{
+					alert("提交失败");
+				}
+			}
+		})
+	}
+</script>
+</body>
+
+</html>

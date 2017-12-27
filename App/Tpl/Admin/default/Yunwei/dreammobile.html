@@ -1,0 +1,22 @@
+<include file="Public:_header" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<tagLib name="htmlA" />
+<div class="so_main">
+    <div class="page_tit">接盘侠设置 </div>
+    <div id="search_div">
+
+        <div class="form2" style="background-color: #d2dbea;">
+            <form method="post" action="__URL__/dreammobile">
+                <div id="tab_3" style="">
+                <dl class="lineD"><dt>当前接盘侠是：</dt><dd><htmlA:input id="dreammobile" name="dreammobile" value="{$dreammobile}"/></dd></dl>
+                <dl class="lineD"><dt>姓名：</dt><dd><label>{$realname}</label></dd></dl>
+                </div><!--tab3-->
+                <div class="page_btm">
+                    <input type="submit" class="btn_b" value="确定" /><span style="color:#CCCCCC">(所有方式修改提交一次即可)</span>
+                </div>
+            </form>
+        </div>
+    </div>
+   
+</div>
+<include file="Public:_footer" />

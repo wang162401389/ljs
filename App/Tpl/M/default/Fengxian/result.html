@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <include file="Pub:header-common" />
+    <link rel="stylesheet" href="css/account.css" >
+</head>
+<body>
+<include file="Pub:simple_header" />
+<div class="content">
+    <div style="font-size: 1.5rem;color: #313131; margin:5rem 0rem 3rem; text-align: center ">风险测试结果：{$ftype}</div>
+    <div class="fxpg_btn" onclick="window.location.href='{:U('M/fengxian/detail',array('source'=>$source))}'">重新测试</div>
+    <?php if($source == 1){ ?>
+		<div class="fxpg_btn" onclick="window.location.href='/M/user/index.html'">返回</div>
+    <?php }else{ ?>
+		<div class="fxpg_btn" onclick="window.location.href='{:U('M/invest/invest', array('bid'=>$bid))}'">返回</div>
+    <?php } ?>
+</div>
+    <div style="clear: both;"></div>
+<include file="Pub:footer" />
+</body>
+<script type="text/javascript">
+    $().ready(function(){
+        $('.title').css('font-size','1.2rem');
+    });
+</script>
+</html>

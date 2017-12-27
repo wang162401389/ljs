@@ -1,0 +1,184 @@
+<include file="Public:_header_common" />
+<title>月底家具大冲关</title>
+<meta http-equiv="keywords" content="{$glo.web_keywords}" />
+<meta http-equiv="description" content="{$glo.web_descript}" />
+<link rel="stylesheet" href="/Style/H/css/furniture.css" />
+<script type="text/javascript">
+    var imgpath="__ROOT__/Style/M/";
+    var curpath = "__APP__/member/common";
+</script>
+<include file="Public:_header_main" />
+<div class="furniture-page">
+    <div class="furni-banner-wrap">
+        <div class="furni-banner furniture1200">
+            <span class="furni-ban-h2"></span>
+        </div>
+    </div>
+    <div class="furni-banner-membercenter">
+        <div class="furni-memcenter">
+            <p>我的累计投资金额：
+            	<notempty name="uid">
+            		{$my_total_invest}元
+           		<else />
+           			<a href="__APP__/member/common/login.html" class="furni-loginbtn">登录查看</a>
+         		</notempty>
+			</p>
+            <p>我当前获得的家具：<b class="my-prize">{$my_prize}</b></p>
+            <p><a href="javascript:void(0)" class="furni-rules js-fur-rulesbtn">活动规则</a></p>
+        </div>
+    </div>
+    
+    <volist name="list" id="vo">
+	    <div class="fur-pass f-{$key}-pass">
+	        <div class="furni-p-main fur{$key}-p-main furniture1200">
+	        	<p class="fur-p-totalmoney fur{$key}-p-money">
+	            	累计投资
+	            	<if condition="in_array($key, range(1, 7))">
+	            		<span>{$vo.min}-{$vo.max}元</span>
+	            	<else/>
+	            		≥<span>{$vo.min}元</span>
+	            	</if>
+	            </p>
+	            <div class="furni-table-wrap furni{$key}-table">
+	            	<if condition="$key elt (8 - $now_step)">
+        				<a href="javascript:void(0)" class="f-pass-h2"></a>
+					<else/>
+						<notempty name="uid">
+	                        <a href="/invest/index.html" class="f-pass-h2"></a>
+	                     <else />
+		                    <a href="/member/common/login/" class="f-pass-h2"></a>
+	                    </notempty>
+					</if>
+	                <table width="100%" class="fur-xitable" border="0" cellspacing="0" cellpadding="0">
+	                    <tr>
+	                        <th>序号</th>
+	                        <th>用户</th>
+	                        <th>累计投资</th>
+	                    </tr>
+                    </table>
+                    <div class="furni-listwrap js-winningitem js-winningitem{$key}">
+                        <ul>
+                            <volist name="vo.list" id="v" key="k">
+                                <li class="listwrap-name clearfix <if condition="$v.is_me eq 1">curr</if>">
+                                    <span class="listname-n listname-n-a">{$k}</span>
+                                    <span class="listname-n listname-n-b"><if condition="$v.investor_uid eq ''">虚位以待<else/>{$v.invest_name}</if></span>
+                                    <span class="listname-n listname-n-c"><if condition="$v.investor_uid eq ''">{$vo.min}<else/>{$v.sum_invest}</if></span>
+                                </li>
+                            </volist>
+                        </ul>
+                    </div>
+	            </div>
+	        </div>
+	    </div>
+    </volist>
+    
+    <!--底部 start-->
+    <div class="fur-pass f-pass-bottom"></div>
+    <!--底部 end-->
+</div>
+<!--规则 start-->
+<div class="furniture-pop furnit-rulepop js-furnit-rulepop">
+    <a href="javascript:void(0)" class="closebtn js-closebtn"></a>
+    <h2 class="rule-h2title">活动规则</h2>
+    <p class="rule-txt">
+        1、活动时间：10月24日-10月31日 ；<br>
+        2、活动对象：平台全体用户；<br>
+        3、活动期间，用户累计投资额度达到相应的金额，即可获得对应的家具；<br>
+        4、活动期间所获得的家具以最终累计投资额为准，每个用户只能获得一款家具；<br>
+        5、投资所送的家具，于活动结束后会自动换成相应的现金奖励；<br>
+        6、现金奖励将在活动结束后15个工作日内发放，用户可在【我的账户】中进行查看；<br>
+        7、本次活动在法律范围内，链金所保留最终解释权。
+    </p>
+</div>
+<!--规则 end-->
+<script>
+    //投资排行版滚动
+    function AutoScroll(obj) {
+        if( $(obj).find("li").length > 3 ){
+            $(obj).find("ul:first").animate({
+                marginTop: "-44px"
+            }, 500, function() {
+                $(this).css({ marginTop: "0px" }).find("li:first").appendTo(this);
+            });
+        }
+    }
+
+    $(function(){
+        $(".furni-p-main").eq({$now_step}).addClass("pass-over");
+        $(".furni-p-main").each(function(){
+            if($(this).hasClass("pass-over")){
+                $(this).parent(".fur-pass").nextAll(".fur-pass").find(".furni-p-main").addClass("pass-over");
+            }
+        })
+
+        /*弹窗*/
+        $("body").on("click",".js-fur-rulesbtn",function(){
+            $(".pop-bg,.js-furnit-rulepop").show();
+        })
+
+        /*关闭弹窗*/
+        $("body").on("click",".js-closebtn",function(){
+            $(".pop-bg,.js-furnit-rulepop").hide();
+        })
+
+        //滚动
+        var a1 = setInterval('AutoScroll(".js-winningitem1")', 2000);
+        var a2 = setInterval('AutoScroll(".js-winningitem2")', 2000);
+        var a3 = setInterval('AutoScroll(".js-winningitem3")', 2000);
+        var a4 = setInterval('AutoScroll(".js-winningitem4")', 2000);
+        var a5 = setInterval('AutoScroll(".js-winningitem5")', 2000);
+        var a6 = setInterval('AutoScroll(".js-winningitem6")', 2000);
+        var a7 = setInterval('AutoScroll(".js-winningitem7")', 2000);
+        var a8 = setInterval('AutoScroll(".js-winningitem8")', 2000);
+
+        $('.js-winningitem1').mouseleave(function(){
+            a1 = setInterval('AutoScroll(".js-winningitem1")', 2000);
+        })
+        $('.js-winningitem1').mouseenter(function(){
+            clearInterval(a1);
+        })
+        $('.js-winningitem2').mouseleave(function(){
+            a2 = setInterval('AutoScroll(".js-winningitem2")', 2000);
+        })
+        $('.js-winningitem2').mouseenter(function(){
+            clearInterval(a2);
+        })
+        $('.js-winningitem3').mouseleave(function(){
+            a3 = setInterval('AutoScroll(".js-winningitem3")', 2000);
+        })
+        $('.js-winningitem3').mouseenter(function(){
+            clearInterval(a3);
+        })
+        $('.js-winningitem4').mouseleave(function(){
+            a4 = setInterval('AutoScroll(".js-winningitem4")', 2000);
+        })
+        $('.js-winningitem4').mouseenter(function(){
+            clearInterval(a4);
+        })
+        $('.js-winningitem5').mouseleave(function(){
+            a5 = setInterval('AutoScroll(".js-winningitem5")', 2000);
+        })
+        $('.js-winningitem5').mouseenter(function(){
+            clearInterval(a5);
+        })
+        $('.js-winningitem6').mouseleave(function(){
+            a6 = setInterval('AutoScroll(".js-winningitem6")', 2000);
+        })
+        $('.js-winningitem6').mouseenter(function(){
+            clearInterval(a6);
+        })
+        $('.js-winningitem7').mouseleave(function(){
+            a7 = setInterval('AutoScroll(".js-winningitem7")', 2000);
+        })
+        $('.js-winningitem7').mouseenter(function(){
+            clearInterval(a7);
+        })
+        $('.js-winningitem8').mouseleave(function(){
+            a8 = setInterval('AutoScroll(".js-winningitem8")', 2000);
+        })
+        $('.js-winningitem8').mouseenter(function(){
+            clearInterval(a8);
+        })
+    })
+</script>
+<include file="Public:_footer" />

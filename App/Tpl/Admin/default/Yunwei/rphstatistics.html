@@ -1,0 +1,39 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<div class="so_main">
+    <div class="page_tit">rph用户统计</div>
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th>会员ID</th>
+                <th>会员名称</th>
+                <th>注册时间</th>
+                <th>投资时间</th>
+                <th>标的名称</th>
+                <th>投标金额</th>
+                <th>投资期限</th>
+            </tr>
+            <volist name="info" id="vo">
+            <tr>
+                <td>{$vo.id}</td>
+                <td>{$vo.user_name}</td>
+
+                <td>{$vo.reg_time|date='Y-m-d H:i:s',###}</td>
+                <td>{$vo.tou_time}</td>
+                <td>{$vo.borrow_name}</td>
+                <td>{$vo.investor_capital}</td>
+                <td>{$vo.borrow_duration_txt}</td>
+            </tr>
+            </volist>
+
+        </table>
+        <div class="Toolbar_inbox" style="overflow: hidden">
+            <htmlA:commonBtn type="href"  class="page left"  action="__URL__/rphStatistics?execl=execl" value="将当前条件下数据导出为Excel"/>
+            <div class="page right">{$pagebar}</div>
+        </div>
+    </div>
+
+</div>
+
+
+<include file="Public:_footer" />

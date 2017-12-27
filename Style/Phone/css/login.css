@@ -1,0 +1,72 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+	list-style: none;
+}
+body {
+	margin-bottom: 50px;
+	background-color: #f0f0f0;
+}
+img {
+	max-width:100%;
+	height:auto;
+}
+#header .bar {
+	background-color: #54c0f2;
+	text-align: center;
+	height: 50px;
+}
+#header .bar .title {
+	color: #fff;
+	font-size: 120%;
+	padding-top: 10px;
+}
+.content {
+	padding: 20px;
+}
+.content .line {
+	width: 100%;
+	background-color: #fff;
+	padding: 10px;
+	border-radius: 5px;
+	margin: 2px;
+}
+.content .line .text {
+	display: inline-block;
+	width: 30%;
+	font-size: 110%;
+	color: #616161;
+}
+.content .line input {
+	display: inline-block;
+	width: 70%;
+	border: 0px;
+}
+.content .button {
+	text-align: center;
+	padding: 20px;
+	width: 100%;
+}
+.content .button .btn {
+	width: 100%;
+	background-color: #54c0f2;
+}
+.content .help {
+	width: 100%;
+	text-align: center;
+}
+.content .help a {
+	display: inline-block;
+	width: 49%;
+	text-decoration: none;
+	font-size: 1.2rem;
+	color: #616161;
+}
+hr {
+	border-top: 1px solid #c2bfbf;
+	margin: 10px;
+}
+.content .img {
+	text-align: center;
+}

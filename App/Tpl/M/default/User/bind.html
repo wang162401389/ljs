@@ -1,0 +1,76 @@
+<include file="Pub:header" />
+<tagLib name="htmlA" />
+<div class="main">
+ <div class="box7">
+   <div class="box7_title"><a href="javascript:history.back()"><img src="/style/mobile/images/table_but.png"/></a>绑定银行卡</div>
+   {$vobank.bank_num|hidecard=###,3,'还没有登记您的银行账号'}
+  <form action="" method="post" name="cashForm" id="cashForm">
+   <table cellpadding="0" cellspacing="0" border="0">
+   <if condition="$vobank.bank_num gt 10">
+       <tr> 
+        <td class="tdTitle">
+          输入您的当前的银行帐号：
+        </td>
+        <td class="tdContent">
+          <input class="box7_wbk" id="oldaccount" type="text"> (为了您的资金安全，请输入您当前的银行账号)
+        </td>
+      </tr>
+      </if>
+      <tr align="left" height="28"><td>银行预留手机号：</td><td><input type="text" name='phone' id="phone" class="box7_wbk" /></td></tr>
+    <tr align="left" height="28"><td>银行名称：</td><td><htmlA:select id="bank_name" value="key|vobank.bank_name" datakey='bank_list' class="selectStyle" addstr='style="width: 110px;"' /></td></tr>
+    <tr align="left" height="28"><td>开户行省：</td><td><select name="selectp" id="province" style="width: 110px;" class="selectStyle">
+            <option value="0">请选择省份 </option>
+          </select></td></tr>
+    <tr align="left" height="28"><td>开户行市：</td><td><select name="selectc" id="city" style="width: 110px;" class="selectStyle">
+            <option value="0">请选择城市</option>
+          </select></td></tr>
+    <tr align="left" height="28"><td>银行卡号：</td><td><input type="text" name='txt_account' id="txt_account" class="box7_wbk" /></td></tr>
+    <tr align="left" height="28"><td>确认银行卡号：</td><td><input type="text" name='txt_confirmaccount' id="txt_confirmaccount" class="box7_wbk" /></td></tr>
+    <tr align="left" height="28"><td>开户支行：</td><td><input type="text" name='txt_bankName' id="txt_bankName" class="box7_wbk" /></td></tr>
+    <tr align="center" height="54"><td colspan="2"><input type="button" id="dobutton" class="butt" value="提交"/></td></tr>
+   </table>
+   </form>
+ </div>
+ 
+</div>
+<script type="text/javascript" src="__ROOT__/Style/Js/area.js" language="javascript"></script>
+<script type="text/javascript">
+var areaurl="__URL__/getarea/";
+var s = new GetAreaSelect('#province','#city','#district',<empty name="vobank['bank_province']">2<else/>{$vobank.bank_province}</empty>,<empty name="vobank['bank_city']">52<else/>{$vobank.bank_city}</empty>);
+</script>
+<script language="javascript">
+$(function() {
+    $("#dobutton").click(function() {
+        var e = $("#bank_name").val(),
+            t = $("#province").val(),
+            a = $("#city").val(),
+            b = $("#txt_account").val(),
+            c = $("#txt_confirmaccount").val(),
+            f = $("#oldaccount").val(),
+            d = $("#txt_bankName").val(),
+            g = $("#phone").val(),
+            r = "bank_name=" + e + "&province=" + t + "&city=" + a + "&banknum=" + b + "&bank_address=" + d +"&phone=" + g;
+            if ($.trim(f) != "") r= r + "&oldaccount="+f;
+        if ($.trim(e) == "") return Apprise("<font color=red>请选择银行!</font>"), !1;
+        if ($.trim(b) == "") return Apprise("<font color=red>请输入银行卡号!</font>"), !1;
+        if ($.trim(c) == "") return Apprise("<font color=red>请再输入银行卡号!</font>"), !1;
+        if ($.trim(c) != $.trim(b)) return Apprise("<font color=red>两次输入银行卡号不相同!</font>"), !1;
+        if ($.trim(d) == "") return Apprise("<font color=red>请输入开户支行名称!</font>"), !1;
+         
+        $.ajax({
+            type: "POST",
+            url: "",
+            data: r,
+            success: function(e) {
+                e == "TRUE" ? (Apprise("恭喜您成功绑定银行卡！"), $("#apprise-btn-confirm").click(function() {
+                    window.location.href = "{:U('M/user/index')}"
+                })) : location.href=e;
+            },
+            error: function(e) {
+                Apprise("<font color=red>提交发生错误！请重试</font>")
+            }
+        })
+    })
+})
+</script>
+<include file="Pub:footer" /> 

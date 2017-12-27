@@ -1,0 +1,102 @@
+<include file="Public:_header_common" />
+<title>我的账户-- {$glo.web_name}</title>
+<include file="default:Public:_header_main" group="Home"/>
+<!--中部开始-->
+<div class="wrap2">
+	<div id="hy_left">
+		<include file="Public:_left" />
+	</div>
+	<div id="hy_right">
+        <div class="box">
+            <div class="Menubox1">
+                <ul class="menu">
+                    <li><a href="javascript:void(0);" onclick="window.location.href='__URL__#fragment-2';return false;">竞标中的投资</a></li>
+                    <li  class="ui-tabs-selected"><a href="javascript:void(0);" onclick="window.location.href='__URL__#fragment-3';return false;">回收中的投资</a></li>
+                    <li><a href="javascript:void(0);" onclick="window.location.href='__URL__#fragment-4';return false;">逾期的投资</a></li>
+                    <li><a href="javascript:void(0);" onclick="window.location.href='__URL__#fragment-5';return false;">已回收普通标</a></li>
+                </ul>
+            </div> 
+			<div class="contentright">
+                <h4 class="fb mt10">
+                    <img src="__ROOT__/Style/H/images/ministar.gif">
+                    ‘{$name}’的还款明细
+                </h4>
+				<table id="content" width="100%" class="memberTable mt20">
+                    <thead>
+                        <tr>
+                            <th>应收日期</th>
+                            <th>应收本金</th>
+                            <th>应收利息</th>
+                            <th>应收手续费</th>
+                            <th>应收总额</th>
+                            <th>实收本息</th>
+                            <th>收款状态</th>
+                            <th>当前/总(期)</th>
+                        </tr>
+					</thead>
+                    <tbody>
+                        <volist name="list" id="vo">
+                            <tr>
+                                <td>{$vo.deadline|date="Y-m-d",###}</td>
+                                <td>{$vo.capital}</td>
+                                <td>{$vo['interest']}</td>
+                                <td>{$vo['interest_fee']}</td>
+                                <td>{$vo['capital']+$vo['interest']+$vo['interest_fee']}</td>
+                                <td>{$vo['receive_interest']+$vo['receive_capital']}</td>
+                                <if condition="$vo.bid eq 'TY1'">
+                                    <td>等待还款</td>
+                                    <td>0/1</a></td>
+								<else/>
+                                    <td><if condition="$vo['deadline'] lt time() && $vo['status'] eq 7">逾期未还<else/>{$status_arr[$vo['status']]}</if></td>
+                                    <td>{$vo.sort_order}/{$vo.total}</a></td>
+                                </if>
+                            </tr>
+                        </volist>
+					</tbody>
+    			</table>
+				<div data="fragment-2" id="pager" class="yahoo2 ajaxpagebar">{$pagebar}</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+function repayment(bid,sort_order){
+	x = {"bid":bid,"sort_order":sort_order};
+	$.jBox.tip("还款中......",'loading');
+	$.ajax({
+		url: "__URL__/repayment",
+		data: x,
+		timeout: 15000,
+		cache: false,
+		type: "post",
+		dataType: "json",
+		success: function (d, s, r) {
+			if(d){
+				if(d.status==1) $.jBox.tip("还款成功",'success');
+				else $.jBox.tip(d.message,'fail');
+			}
+		}
+	});
+}
+
+$('.ajaxpagebar a').click(function(){
+	try{	
+		var geturl = $(this).attr('href');
+		var id = $(this).parent().attr('data');
+		var x={};
+        $.ajax({
+            url: geturl,
+            data: x,
+            timeout: 5000,
+            cache: false,
+            type: "get",
+            dataType: "json",
+            success: function (d, s, r) {
+              	if(d) $("#"+id).html(d.html);//更新客户端竞拍信息 作个判断，避免报错
+            }
+        });
+	}catch(e){};
+	return false;
+})
+</script>
+<include file="default:Public:_footer" group="Home" />

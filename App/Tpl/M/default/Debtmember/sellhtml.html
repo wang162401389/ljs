@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>债权转让确认页面</title>
+    <include file="Pub:header-common" />
+    <style>
+        body{background: #f0f0f0}
+        i{font-style:normal}
+        .zqzr-cofwrap{width:92%; margin: 1.5rem auto;}
+        .zqzr-cof1 ul li{padding-bottom: 1.8rem;}
+        .zqzr-cof1 .conf-text{width:80px; padding: 5px; border:1px solid #1b1b1b; margin-right: 8px; background: #f0f0f0}
+        .question-wrap{ margin: 0px 0px 0px 6px; width: 18px; height: 18px; display:inline-block; position: relative}
+        .question-wrap .question-fh{width:18px; height: 18px; line-height: 18px; text-align: center; display:inline-block;  border-radius: 15px; color:#fff; background: #fb4934}
+        .question-content{ display: none; height: 22px; line-height: 22px; text-align: center; padding: 0px 10px; position: absolute; top:-24px; border-radius: 2px; color:#fff; background: #a9a7a7}
+        .question-content.question-display{display: inline-block;}
+        .question-content-zjl{width:190px; top:-28px; left:-80px;}
+        .question-content-zqjz{width:180px;  left:-80px;}
+        .question-content-zrl{width:244px; left:-100px}
+        .zqzr-cof1-sub,.zqzr-cof2-sub{ margin-top: 1.5rem; text-align: center}
+        .zqzr-cof1-sub .cof1-submit,.zqzr-cof2-sub .cof2-submit{width:158px; height: 46px; border: none; font-size: 1.2rem; color:#fff; border-radius: 5px; outline: none; background: #54c0f2;}
+
+        .zqzr-cof2{display: none}
+        .confirm2-money{background: #fff; line-height: 2.7rem; font-size: 1.2rem; border-radius: 6px; padding: 2.5rem 1.5rem}
+        .con-moneysumber{color:#fb4934; font-size: 1.4rem}
+        .conf-phonenumber{ margin-top: 2.2rem}
+        .conf-phonenumber .phonenumber-tit{ margin-left: 30px;}
+        .conf-phonenumber .phonenumber-text{width:5.6rem; padding:5px 5px; border:1px solid #1b1b1b; margin-right: 8px; background: #f0f0f0}
+        .conf-phonenumber .phone-code{width:110px; height:34px; border:none; color: #fff; border-radius: 5px; margin-left: 5px; background: #54c0f2}
+        .conf-phonenumber .phone-code.phone-code-blue{color:#909090; background: #cfcfcf}
+        .conf-xieyi{ margin-top: 3rem; text-align: center}
+
+        .pop-bg{background:url(/Style/M/images/anniversary/popbg.png) repeat; position: fixed; width:100%; height:100%; top:0; left:0; bottom:0; right:0;  z-index:100; display: none;}
+        .pop-tips{width:220px; height: 36px; line-height: 36px; text-align: center; background: #fff; position: fixed; top:50%; left:50%; margin-left: -100px; margin-top: -15px; border-radius: 5px; color:#260743; display: none; z-index: 102;}
+        .tb-lcheck{width:14px; height: 14px; display: inline-block; border:1px solid #767676; margin-right: 8px; vertical-align:middle; cursor: pointer;}
+        .tb-lcheck.tb-lcheck-tick{background: url(/Style/H/images/member/tick.png) center center no-repeat;}
+    </style>
+</head>
+
+<body>
+<include file="Pub:simple_header" />
+
+<div class="content">
+    <div class="zqzr-cofwrap ">
+        <!--step1 start-->
+        <div class="zqzr-cof1">
+            <ul>
+                <li>申请折价率：<input type="text" class="conf-text conf-sqzjl" id="apply"/>% <a href="javascript:void(0)" style="margin-top: 6px" class="question-wrap"><i class="question-fh">?</i><i class="question-content question-content-zjl">申请折价率范围为0%-10%</i></a></li>
+                <li>申请转让价格：<span id="applyvalue">{$totalmoney}</span>元</li>
+                <li>转让本金： <span id="benjin">{$investor_capital}</span>元</li>
+                <li>转让债权价值： <span id="opp">{$totalmoney}</span>元 <a href="javascript:void(0)" class="question-wrap"><i class="question-fh">?</i><i class="question-content question-content-zqjz">剩余本金与剩余利息之和</i></a></li>
+                <li>转让服务费：<span id="fuwufei">{$fuwufei}</span>元 <a href="javascript:void(0)" class="question-wrap"><i class="question-fh">?</i><i class="question-content question-content-zrl">服务费为转让金额的0.5%，最低5元</i></a></li>
+                <li>年利率：<span class="c-zqli">{$borrow_interest_rate}%</span></li>
+                <li>转让有效期至：<span class="c-zqli">{$deadline}</span></li>
+            </ul>
+            <div class="zqzr-cof1-sub"><input type="submit" value="下一步" class="cof1-submit" /></div>
+        </div>
+        <!--step1 end-->
+        <!--step2 start-->
+        <div class="zqzr-cof2">
+            <div class="confirm2-money">
+                实际可回收金额： <span class="con-moneysumber" id="realvalue">{$initzhuanrang}</span>  元<br />
+                = 转让价格<span id="applyvalue1">{$totalmoney}</span>-转让服务费{$fuwufei}
+            </div>
+            <div class="conf-phonenumber">
+                <span class="phonenumber-tit">手机验证码：</span>
+                <input type="text" class="phonenumber-text phonenumber-code" maxlength="6" />
+                <input class="phone-code js-getcode" type="button" value="获取验证码" />
+            </div>
+            <p class="conf-xieyi"><i class="tb-lcheck"></i> 我已阅读 <a href="/M/Debtmember/xieyi">债权转让协议（范本）</a></p>
+            <div class="zqzr-cof2-sub">
+                <input type="submit" value="确认转让" class="cof2-submit" />
+                <input type="hidden" value="{$fenqi}"  id="qi">
+                <input type="hidden" value="{$borrow_id}"  id="id">
+                <input type="hidden" value="{$type}"  id="type">
+                <input type="hidden" value="{$token}" id="token">
+                <input type="hidden" value="{$investor_capital}"  id="capital">
+                <input type="hidden" value="{$investor_interest}"  id="interest">
+                <input type="hidden" value="{$invest_id}" id="invest_id" name="investid">
+                <input type="hidden" id="real">
+            </div>
+        </div>
+        <!--step2 end-->
+    </div>
+</div>
+<div class="pop-bg"></div>
+<div class="pop-tips"></div>
+<include file="Pub:footer" />
+<script>
+    /**
+     * 提示
+     * **/
+    $(".question-fh").on("click",function(){
+        $(this).siblings(".question-content").toggleClass("question-display");
+    });
+
+
+    function decimal(num,v)
+    {
+        var vv = Math.pow(10,v);
+        return Math.round(num*vv)/vv;
+    }
+    /**
+     * 计算申请转让价格
+     */
+    $("#apply").keyup(function(){
+        var va=$(this).val();
+        if(va==null || va==''){
+            alert("请填写折价率");
+            return false;
+        }
+        var reg = new RegExp("^([0-9])[0-9]*(\\.\\w*)?$");
+        if (!reg.test(va)){
+            alert("折价率应为数字");
+            return false;
+        }else{
+            va=parseFloat(va);
+            if(va>10 || va <0){
+                alert("折价率范围应该为0~10%之间");
+                return false;
+            }
+            var  a=$("#opp").html();
+            a=parseFloat(a);
+            //债权折价后转让的价格
+            var  b=a*(1-va*0.01);
+            b=decimal(b,2);
+            var fuwufei=$("#fuwufei").html();
+            fuwufei=parseFloat(fuwufei);
+            var left=b-fuwufei;
+            left=decimal(left,2);
+            $("#applyvalue").html(b);
+            $("#applyvalue1").html(b);
+            $("#realvalue").html(left);
+            $("#real").val(left);
+        }
+    });
+
+    /**
+     * 第一步提交
+     */
+    $(".cof1-submit").on("click",function(){
+        var zjl = $(".conf-sqzjl").val();
+        if(zjl == "" || zjl ==null){
+            $(".pop-bg,.pop-tips").fadeIn().delay(1400).fadeOut();
+            $(".pop-tips").empty().text("对不起，申请折价率不能为空！");
+            return;
+        }
+        $(".zqzr-cof1").hide().siblings(".zqzr-cof2").show();
+    })
+
+    //获取验证码
+    $(".js-getcode").on("click",function() {
+        var time = 30;
+        $.ajax({
+            url: "__URL__/sendphone",
+            type: "post",
+            dataType: "json",
+            success: function (d) {
+                if(d.status==0){
+                    var countdown = setInterval(CountDown, 1000);
+                    function CountDown() {
+                        $(".js-getcode").attr("disabled", true);
+                        $(".js-getcode").addClass("phone-code-blue").val(time + " 秒后重新获取");
+                        //时间为零，重新发送
+                        if (time == 0) {
+                            $(".js-getcode").removeClass("phone-code-blue").val("获取验证码").removeAttr("disabled");
+                            clearInterval(countdown);
+                        }
+                        time--;
+                    };
+                    alert(d.msg);
+                }else{
+                    alert(d.msg);
+                }
+            }
+        });
+    });
+
+    /**
+     * 模拟复选框,勾选协议
+     * */
+    $(".tb-lcheck").on("click",function(){
+        if($(this).hasClass("tb-lcheck-tick")){
+            $(this).removeClass("tb-lcheck-tick");
+        }
+        else{
+            $(this).addClass("tb-lcheck-tick");
+        }
+    })
+
+    /**
+     * 第二步提交
+     */
+    $(".cof2-submit").on("click",function(){
+        var code = $(".phonenumber-code").val();//手机验证码
+        var zjl = $(".conf-sqzjl").val();//折价率
+        if(code == "" || code ==null || code==0){
+            $(".pop-bg,.pop-tips").fadeIn().delay(1400).fadeOut();
+            $(".pop-tips").empty().text("对不起，验证码不能为空！");
+            return;
+        }
+        if ( code.length!=6 )
+        {
+            $(".comf-tips").empty().text("手机验证码格式不正确！").fadeIn().delay(1500).fadeOut();
+            return  false ;
+        }
+        if(!$(".tb-lcheck").hasClass("tb-lcheck-tick")){
+            $(".pop-bg,.pop-tips").fadeIn().delay(1400).fadeOut();
+            $(".pop-tips").empty().text("请勾选债转让协议(范本)！");
+            return;
+        }
+        $.ajax({
+            url: "__URL__/confirm",
+            type: "post",
+            data:{
+                "qi":$("#qi").val(),
+                "id":$("#id").val(),
+                "type":$("#type").val(),
+                "zhejialv":zjl,
+                "yzmcode":code,
+                "totalmoney":$("#opp").html(),
+                "fuwufei": $("#fuwufei").html(),
+                "capital":$("#capital").val(),
+                "interest":$("#interest").val(),
+                "huishou":   $("#real").val(),
+                "token":  $("#token").val(),
+                "myvalue":$("#applyvalue").html(),
+                "invest_id":$("#invest_id").val()
+            },
+            dataType: "json",
+            success: function (d) {
+                if(d.status==0){
+                    alert(d.msg);
+                    window.location.href="/M/Debtmember/index";
+                }else{
+                    alert(d.msg);
+                    return false;
+                }
+            }
+        });
+    })
+</script>
+</body>
+
+</html>
+

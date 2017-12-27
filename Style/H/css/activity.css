@@ -1,0 +1,79 @@
+    *{color: #323232;text-align:justify;text-justify:inter-ideograph;}
+    .auout_banner img{width: 100%;height: 100%;}
+    .divcenter{width:100%;margin-left: auto;margin-right: auto;}
+	.divcenter .header{border-radius:70px; height:80px; width:80px; overflow:hidden; margin-top:40px; margin-left:50px; float:left;}
+	.divcenter .h_content{ float:left; margin-top:55px; margin-left:90px; width:420px;} 
+	.divcenter .h_content .h_c_1{ color:#fff; font-size:22px;}
+	.divcenter .h_content .h_c_2{ color:#fff; font-size:16px; margin-top:15px; line-height:25px;}
+    .divwk{width: 1005px;margin-left: auto;margin-right: auto;}
+	.b_k{width:1001px; height:350px; border-radius:5px; background:#ffda25; margin-top:30px; padding:20px 30px;}
+	
+	.b_k_d{ font-size:16px; float:left; height:40px; line-height:40px; border-bottom:1px solid #f37600; text-align:center;color:#313131;}
+	.b_k_d .s_1{ width:190px; float:left; font-size:16px;text-align:center;}
+	.b_k_d .s_2{ width:190px; float:left;font-size:16px;text-align:center;}
+	.b_k_d .s_3{ width:170px; float:left;font-size:16px;text-align:center;}
+	.hj_content{ width:370px; text-align:center; float:left;}
+	.hj_content .c_1{ font-size:22px; color:#313131; text-align:center }
+	.hj_content .c_2{font-size:16px; color:#313131; margin-top:50px; text-align:center}
+	.c_2_input{ border:1px solid #f37600; border-radius:3px; width:150px; height:22px;}
+	.hj_content .c_3{ border-radius:5px; font-size:16px; color:#fff; width:225px;height:40px;  line-height:40px;text-align:center;
+	background:#fc8026; margin:auto; margin-top:30px; cursor:pointer}
+	.c_3_button{ width:100%; height:100%;background:#fc8026; text-align:center; border:1px solid #fc8026;border-radius:5px; font-size:16px; color:#fff;}
+    .img_wk1 img{width: 100%;height: 100%}
+    .fontcss{font-size: 15px;line-height: 25px;}
+
+    *{margin:0px;padding:0px;list-style-type:none;}
+   
+    .v_show{width:343px;position:absolute;height:300px;float:left;margin-left:188.5px;}
+    .v_cont{position:absolute;left:0px;top:0px; margin-left:1px;}
+	
+    .v_cont ul{float:left;}
+    .v_cont ul li{width:300px; height:300px; text-align:center; display:none;}
+	.v_cont img{ height:300px; width:300px;}
+
+    /*---圆圈---*/
+    .v_out_p{position:relative;overflow:visible;margin-left: 35px;}
+    .circle{position:absolute;left: 56px;top: 517px;}
+    .circle li{
+        width:100px;height:40px;float:left;margin-right:43px;background:#ffcc4d;font-size: 16px;text-align: center;
+        font-weight: bold;line-height: 40px;color: #fff;cursor:pointer
+    }
+    .circle .circle-cur{background:#feec61;color: #725e2e;cursor:pointer }
+
+    /*---切换---*/
+    .prev,.next{float:left;margin-top:345px; position:absolute;}
+    .prev a{ background:url(../images/security/fangxiang.png) no-repeat; background-size:30px 40px;}
+    .prev .ico_1{ background:url(input_a.gif) no-repeat 0 -3757px;}
+	.prev{ margin-left:50px}
+	.next{ margin-left:583px;}
+    .next a{background:url(../images/security/fangxiang2.png) no-repeat; background-size:30px 40px;; }
+    .next .ico_2{background:url(input_a.gif) no-repeat right -3757px;}
+    .prev,.prev a,.next,.next a{width:44px;height:85px; display:block}
+	.advbox{
+	  position:relative;top:0;left:50%;z-index:500;
+	}
+	.advbox{width:677px; height:605px;position:fixed;display:none;left:50%;top:0;margin:-215px 0 0 -325px;
+	}
+	.advbox .advpic{position:relative;height:605px;overflow:hidden;}
+	.advbox .advpic .closebtn{display:block;
+	 font-size:15px;
+	  overflow:hidden;position:absolute;right:20px;top:20px;z-index:150;
+	}
+	.closebtn{ padding:5px; border-radius:50px; background:#fff; color:#f34749; line-height:20px; height:20px; width:20px; text-align:center;}
+	.black_overlay{
+	  display: none;
+	  position: absolute;
+	  top: 0%;
+	  left: 0%;
+	  width: 100%;
+	  height: 100%;
+	  background-color: black;
+	  z-index:200;
+	  -moz-opacity: 0.8;
+	  opacity:.80;
+	  filter: alpha(opacity=80);
+  }
+  .choice_img{ margin:auto; width:722.4px; text-align:center; margin-top:320px; overflow:hidden; padding:0; word-spacing:-4.5px; height:82px;}
+  .choice_img li{ display:inline;  padding:0;  word-spacing:0;  }
+  .choice_img li:first-child img{ width:60px; height:60px; padding:10px;border-collapse: collapse;}
+  .choice_img li img{ width:60px; height:60px; padding:10px;border-collapse: collapse;}

@@ -1,0 +1,82 @@
+<div class="recommend-project clearfix">
+    <div class="recpro-ad js-recproAD"></div>
+    <div class="recpro-main jr_content">
+        <table class="recpro-m-table">
+            <thead>
+            <tr>
+                <td  class="tab-tdw tab-tdw1" style="text-align: left">借款标题</td>
+                <td  class="tab-tdw tab-tdw2">借款总额（元）</td>
+                    <td>预期年化收益率</td>
+                <td  class="tab-tdw tab-tdw3">借款期限</td>
+                <td  class="tab-tdw tab-tdw4">进度</td>
+                <td  class="tab-tdw tab-tdw5">我要投标</td>
+            </tr>
+            </thead>
+            <tbody>
+                <volist name="tuijianlist.list" id="vb">
+                    <tr>
+                        <td class="jr_t_1">
+                            <if condition="($vb.product_type eq 1) or ($vb.product_type eq 2) or ($vb.product_type eq 3)">
+                                <img src="__ROOT__/Style/H/images/index/new_zhi.png">&nbsp;
+                                <elseif condition="$vb.product_type eq 10"/>
+                                <img src="__ROOT__/Style/H/images/index/zjb_cj.png">&nbsp;
+                                <elseif condition="$vb.product_type eq 8" />
+                                <img src="__ROOT__/Style/H/images/index/new_bao.png">&nbsp;
+                                <elseif condition="$vb.product_type eq 7" />
+                                <img src="__ROOT__/Style/H/images/index/new_you.png">&nbsp;
+                                <elseif condition="$vb.product_type eq 4" />
+                                <img src="__ROOT__/Style/H/images/index/new_rong.png">&nbsp;
+                                <elseif condition="($vb.product_type eq 5) or ($vb.product_type eq 6)" />
+                                <img src="__ROOT__/Style/H/images/index/new_xin.png">&nbsp;
+                            </if>
+                            <a href="{$vb.id|getInvestUrl=###}" title="{$vb.borrow_name}">{$vb.borrow_name|cnsubstr=###,13}</a>
+                            <if condition="!empty($vb['password'])"><span style="float: right;position: absolute;"><img style="width:30px" src="__ROOT__/Style/H/images/borrow_vip.png"></span></if>
+                        </td>
+                        <td class="jr_t_2">{$vb.borrow_money|getMoneyFormt=###}元</td>
+                        <td class="jr_t_3">{$vb.borrow_interest_rate}%<if condition="$vb.jiaxi_rate gt 0"><span class="indexjiaxi">+{$vb.jiaxi_rate}%</span></if></td>
+                        <td class="jr_t_4">
+                            <?php if($vb['borrow_duration_txt']!=''){ ?>
+                            {$vb.borrow_duration_txt}
+                            <?php } else { ?>
+                            {$vb.borrow_duration}<if condition="$vb.repayment_type eq 1">天<else/>个月</if>
+                            <?php } ?>
+                        </td>
+                        <td class="jr_t_5">
+                            <div>
+                                <?php
+                             $progress = intval($vb['progress']);
+                                     if($progress >= 0 and $progress <= 19){
+                                        echo "<div class='index_jindu_mid midd1'><div class='middtext'>".$progress."%</div></div>";
+                                        }elseif ($progress >= 20 and $progress <= 39) {
+                                        echo "<div class='index_jindu_mid midd2'><div class='middtext'>".$progress."%</div></div>";
+                                        }elseif ($progress >= 40 and $progress <= 59) {
+                                        echo "<div class='index_jindu_mid midd3'><div class='middtext'>".$progress."%</div></div>";
+                                        }elseif ($progress >= 60 and $progress <= 79) {
+                                        echo "<div class='index_jindu_mid midd4'><div class='middtext'>".$progress."%</div></div>";
+                                        }elseif ($progress >= 80 and $progress <= 99) {
+                                        echo "<div class='index_jindu_mid midd5'><div class='middtext'>".$progress."%</div></div>";
+                                        }elseif ($progress = 100) {
+                                        echo "<div class='index_jindu_mid midd6'><div class='middtext'>".$progress."%</div></div>";
+                                        }
+                                        ?>
+                            </div>
+                        </td>
+                        <td class="jr_t_6">
+                            <if condition="$vb.borrow_status eq 3">
+                                <a href="javascript:;" class="bg_gray">已流标</a>
+                                <elseif condition="$vb.borrow_status eq 4"/>
+                                <a href="javascript:;" class="bg_gray">复审中</a>
+                                <elseif condition="$vb.borrow_status eq 6"/>
+                                <a href="javascript:;" class="bg_gray">还款中</a>
+                                <elseif condition="$vb.borrow_status gt 6"/>
+                                <a href="{$vb.id|getInvestUrl=###}" class="bg_red" style="text-decoration: none">已完成</a>
+                                <else/>
+                                <a href="{$vb.id|getInvestUrl=###}" class="bg_red">我要投标</a>
+                            </if>
+                        </td>
+                    </tr>
+                </volist>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<include file="Pub:header-common" /> 
+	<script type="text/javascript" src="__ROOT__/Style/Js/jquery.js"></script>
+	<script type="text/javascript" src="__ROOT__/Style/Mobile/jquery-global.js"></script> 
+	<script type="text/javascript" src="/Style/apprise/apprise-v2.js"></script>
+	<link rel="stylesheet" href="/Style/apprise/apprise-v2.css" type="text/css">
+	<link rel="stylesheet" href="__ROOT__/Style/Phone/css/cashpledge.css" >
+	<style type="text/css">
+		.new_user{color: #959595;    margin: 20px 10px 5px;}
+		.tips{color: #ff0000;margin: 5px 10px;display: none;}
+	</style>
+</head>
+
+<body>
+	<div class="header">
+		<div class="title">
+			<a href="javascript:history.go(-1);"><i class="glyphicon glyphicon-menu-left" style="height: 3rem;line-height: 3rem;float: left;"></i></a>
+			<div>{$borrow_info.borrow_name}</div>
+		</div>
+		<!--<div class="info">
+			<div class="text1">投资总额：{$borrow_info.borrow_money|MFormt=###}元</div>
+			<div class="text2">利率：{$borrow_info.borrow_interest_rate}%/年</div>
+			<div class="text3">{$borrow_info.borrow_duration}天</div>
+		</div>-->
+	</div>
+	<div class="content">
+		<div class="text">您的可用余额：<span class="t_money">{$saving+$balance}</span>元<a href="{:U('M/user/pay')}" type="button" class="btn">充值</a></div>
+		<div class="text">可投余额：{:MFormt($borrow_info['borrow_money']-$borrow_info['has_borrow'])}元</div>
+		<div class="text">起投金额：{$borrow_info.borrow_min|MFormt=###}元</div>
+		<if condition="$is_beginnercontract eq 1">
+			<? echo json_encode($vo.is_beginnercontract); ?>
+			<p class="new_user">新手限投1次，限投金额5万元</p>
+		</if>
+		<input type="text" id="invest_money" placeholder="请输入投资金额">
+		<p class="tips">提示文案</p>
+		<div style="height: 30px;"></div>
+		<!-- <div class="text">客官，您有可使用的优惠卷</div>
+		<div class="text">
+			<input type="radio" id="unuse-coupon" name="use-coupon" checked style="width: 15px; line-height: 14px;padding-top: 13px;height: 10px;"/>
+			<label for="unuse-coupon" style="font-weight: normal">不使用</label>
+		</div>
+		<div class="text">
+			<input type="radio" id="use10-coupon" name="use-coupon"  style="width: 15px; line-height: 14px;padding-top: 13px;height: 10px;"/>
+			<label for="use10-coupon" style="font-weight: normal">满1000元抵扣10元</label>
+		</div>
+		<div class="text">
+			<input type="radio" id="use20-coupon" name="use-coupon"  style="width: 15px; line-height: 14px;padding-top: 13px;height: 10px;"/>
+			<label for="use20-coupon" style="font-weight: normal">满4000元抵扣20元</label>
+		</div> -->
+		<!-- <input type="password" id="paypass" placeholder="请输入平台支付密码"> -->
+		<if condition="$is_beginnercontract neq 1">
+			<if condition="$coupons_count gt 0">
+	            <ul class="coupon">
+	                <li>&nbsp;1. 请选择需要使用的投资券</li>
+	                <li>
+	                	<label style="font-weight: normal;"><input type="radio" name="coupons_money" value="0"/>不使用</label>
+	                </li>
+	                <volist name="coupons" id="q">
+	                	<li>			
+	                		<label style="font-weight: normal;"><input type = "radio" name="coupons_money" alt="{$q.use_money}" value="{$q.money}|{$q.serial_number}">满{$q.use_money}元可抵扣{$q.money}元</label>
+	                	</li>		
+					</volist>
+				</ul>
+			</if>
+	        <if condition="$is_jiaxi eq 1">
+	        <ul class="coupon">
+	        	<li>&nbsp;<?php echo $coupons_count>0?2:1;?>. 请选择需要使用的加息券</li>
+	            <li>
+	                <label style="font-weight: normal;"><input type="radio" name="coupons_interest" value="0"/> 不使用</label>
+	            </li>
+			 	<volist name="jiaxi" id="q">
+	                <li>			
+	                    <label style="font-weight: normal;"><input type ="radio" <eq name="key" value="0">checked</eq> alt="{$q.use_money}" name="coupons_interest" value="{$q.serial_number}"> 加息{$q.money}%</label>
+	                </li>
+				</volist>
+			</ul>
+	        </if>
+	    </if>
+		<div class="confirm">
+			<a type="button" class="btn btn-info" id="dobutton">确定投标</a>
+			<input type="hidden" id="lefttime" name="lefttime">
+			<input type="hidden" id="lefttime" name="lefttime">
+		</div>
+
+	</div>
+	<!-- beginner contract varialbes -->
+	<input type="hidden" id="is_beginnercontract" name="is_beginnercontract" value="{$is_beginnercontract}">
+	<input type="hidden" id="is_newhand" name="is_newhand" value="{$is_newhand}">
+
+	<script language="javascript">
+	$(function() {
+	    $("#dobutton").click(function() {
+			var coupons_count="{$coupons_count}";
+			var is_jx="{$is_jiaxi}";
+			coupons_count=parseInt(coupons_count);
+			var c = $('input[name="coupons_money"]:checked').val();
+			var jx = $('input[name="coupons_interest"]:checked').val();
+	        var t = $("#invest_money").val();
+			var r;
+			if(coupons_count>0 && is_jx){
+				r = "invest_money=" + t + "&coupons_money=" + c + "&jx=" + jx;
+			}else if(coupons_count>0){
+                r = "invest_money=" + t + "&coupons_money=" + c;
+            }else if(jx){
+                r = "invest_money=" + t + "&jx=" + jx;
+            }else{
+				r = "invest_money=" + t;
+			}
+
+			// non-beg can not invest beg-contract
+			var is_beginnercontract = $('#is_beginnercontract').val();
+			var is_newhand = $('#is_newhand').val();
+	        var is_white_investor = "{$is_white_investor}";
+			if(is_beginnercontract == 1  && is_newhand == 0 && is_white_investor == 0){
+				$('.tips').text("此标的只针对新用户开放!");
+	        	$('.tips').show();
+	        	return false;
+			}
+
+	        if ($.trim($("#invest_money").val()) == "") {
+	        	$('.tips').text("请输入投资金额!");
+	        	$('.tips').show();
+	        	return false;
+	        }
+	         
+	        if ($.trim($("#invest_money").val()) > parseInt($('.t_money').text())) {
+	        	$('.tips').text("余额不足，请先充值!");
+	        	$('.tips').show();
+	        	return false;
+	        }
+
+	        if($.trim($("#invest_money").val())%{$borrow_info.borrow_min} != 0) {
+	        	$('.tips').text("投资金额需为起投金额的整数倍！");
+	        	$('.tips').show();
+	        	return false;
+	        }
+
+	        // no more than 50000 when invest in a beginer contract
+	        if ($.trim($("#invest_money").val()) > 50000 && is_newhand == 1 && is_beginnercontract == 1 ) {
+	        	$('.tips').text("新手标的一次限投5万元!");
+	        	$('.tips').show();
+	        	return false;
+	        }
+	        
+	        if ($.trim($("#invest_money").val()) < {$borrow_info.borrow_min|MFormt=###}) {
+	        	$('.tips').text("投资金额至少{$borrow_info.borrow_min|MFormt=###}元!");
+	        	$('.tips').show();
+	        	return false;
+	        }
+
+	       $('.tips').hide();
+
+			if(coupons_count>0){
+				if(c == null&&!is_beginnercontract){
+					alert("请选择是否使用投资券");
+					return false;
+				}
+				var c_money =  parseInt($('input[name="coupons_money"]:checked').attr("alt"));
+				if(parseInt(t) < c_money){
+					alert("投资金额不满足使用投资卷");
+					return false;
+				}
+			}
+	        //if ($.trim($("#paypass").val()) == "") {alert("请输入支付密码！");return false;}
+	        $.ajax({
+	            type: "POST",
+	            url: "__URL__/invest/bid/{$borrow_info.id}",
+	            data: r,
+	            success: function(e) {
+	            	var code = e;
+	            	if(code.indexOf("form") > 0){
+	            		document.write(code);
+	            	}else{
+	            		alert(e);
+	            	}
+	            },
+	            error: function(e) {
+	                alert(e)
+	            }
+	        })
+	    })
+	})
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<style>
+    table td{text-align: center;}
+    .title{height: 40px;}
+</style>
+<div class="so_main">
+    <div class="page_tit">定向用户投资券</div>
+    <div class="list">
+        <table style="width:80%">
+            <tr class="title">
+                <th style="font-size: 15px;text-align: center;width:16%">名称</th>
+                <th style="font-size: 15px;text-align: center;width:16%">投资券面值(元)</th>
+                <th style="font-size: 15px;text-align: center;width:16%">有效天数</th>
+                <th style="font-size: 15px;text-align: center;width:16%">状态</th>
+                <th style="font-size: 15px;text-align: center;width:16%">操作</th>
+            </tr>
+            <volist name="list" id="vo">
+            <tr>
+                <td>{$vo.name}</td>
+                <td>{$vo.money}</td>
+                <td>{$vo.days}</td>
+                <if condition="$vo.is_active eq 1">
+                    <td>已启用</td>
+                    <td>
+                        <a href="__URL__/dingxiangedit?id={$vo['id']}">修改规则</a>&nbsp;&nbsp;
+                        <a href="javascript:void(0)" onclick="changestatus({$vo['id']})">停用</a>
+                    </td>
+                    <else/>
+                    <td>已停用</td>
+                    <td>
+                        <a href="__URL__/dingxiangedit?id={$vo['id']}">修改规则</a> &nbsp; 
+                        <a href="javascript:void(0)" onclick="changestatus({$vo['id']})">启用</a>
+                    </td>
+                </if>
+                
+                
+            </tr>
+            </volist>
+        </table>
+    </div>
+</div>
+<script>
+function changestatus(id){
+    $.ajax({
+      url:"__URL__/editdxstatus",
+      data:{"id":id},
+      type:"post",
+      dataType:"json",
+      success:function(d){
+         location.reload();
+      }
+    });
+}
+</script>
+<include file="Public:_footer" />

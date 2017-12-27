@@ -1,0 +1,113 @@
+<tagLib name="htmlA" />
+<style>
+	.tab_td{
+		width: 100px;
+		text-align: right;
+	}
+	#span{
+		color: red;
+	}
+</style>
+<div class="so_main">
+<div class="form2">
+	<form method="post" action="__URL__/dorefereemodify" onsubmit="return subcheck();">
+	<input type="hidden" name="id" value="{$id}" />
+	<input type="hidden" name="rid" value="{$recom.id}" />
+	<div id="tab_1">
+	
+	<table width="300" height="200">
+		<tr>
+			<td class="tab_td">当前推荐人：</td><td>{$recom.user_name}</td>
+		</tr>
+		<tr><td class="tab_td"></td><td></td></tr>
+		<tr>
+			<td class="tab_td">新推荐人：</td><td><input type="text" id="phone" name="user_phone" onblur="checkphone(event)" value="请输入手机号" onfocus="if(value='请输入手机号'){value ='';this.style.color='#000'}" style="color:#999999">
+		</tr>
+		<tr><td class="tab_td"></td><td><span id="span"></span></td></tr>
+		<tr>
+			<td class="tab_td">昵称：</td><td><span id="usname"></span></td>
+		</tr>
+		<tr><td class="tab_td"></td><td></td></tr>
+		<tr>
+			<td colspan='2' style="text-align: center;"><textarea rows="5" cols="30" id="textarea" name="textarea" onKeyDown="textdown(event)"
+		    onKeyUp="textup()" onfocus="if(value=='请输入修改原因'){value='';this.style.color='#000'}" style="color:#999999">请输入修改原因</textarea></td>
+		</tr>
+		<tr>
+			<td colspan='2' style="text-align: center;"><input type="submit" class="btn_b" value="提交" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="btn_b close" value="关闭"></td>
+		</tr>
+	</table>
+
+	</div><!--tab1-->
+	
+	</form>
+</div>
+
+</div>
+<script type="text/javascript">
+var cansub = true;
+function subcheck(){
+	if(!cansub){
+		alert("请不要重复提交，如网速慢，请等待！");
+		return false;	
+	}
+	if($('#textarea').val()=='请输入修改原因'){
+		alert('请填写修改原因');
+		return false;
+	}
+	if($('#textarea').val()==''){
+		alert('请填写修改原因');
+		return false;
+	}
+}
+$('.close').click(function(){
+	ui.box.close();
+	return false;
+})
+function textdown(e) {
+    textevent = e;
+    if (textevent.keyCode == 8) {
+        return;
+    }
+    if (document.getElementById('textarea').value.length >= 60) {
+        alert("大侠，手下留情，此处限字60")
+        if (!document.all) {
+            textevent.preventDefault();
+        } else {
+            textevent.returnValue = false;
+        }
+    }
+}
+function textup() {
+    var s = document.getElementById('textarea').value;
+    //判断ID为textarea的文本区域字数是否超过60个 
+    if (s.length > 60) {
+        document.getElementById('textarea').value = s.substring(0, 60);
+    }
+}
+function checkphone(pe){
+	var p = document.getElementById('phone').value;
+	if(p.length >= 11){
+		var tel = /^(13[0-9]|14[0-9]|15[0-9]|18[0-9])\d{8}$/;
+		if(tel.test(p)){
+			$.ajax({
+			 	url: "__URL__/refereephone/",
+		             type: "post",
+		             dataType: "json",
+		             data: {"cellphone":p},
+		             success: function(res) {
+		             	if(res.status==1){
+		             		alert('该用户不存在');
+		             		return;
+		             	}else if(res.status==2){
+		             		$("#usname").html(res.user_name);
+		             	}
+		             }
+			});
+		}else{
+			$("#span").html("请输入正确手机号").show(200).delay(2000).hide(200);
+			return false;
+		}
+	}
+}
+
+</script>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	 <include file="Pub:header-common" /> 
+	<link rel="stylesheet" href="__ROOT__/Style/Phone/css/card.css" >
+</head>
+
+<body>
+	<include file="Pub:simple_header" />
+	<div class="content">
+		<div class="bound">
+			<div class="text-bound">已绑定</div>
+			<if condition="$card eq 1">
+				<div class="add">
+					<!-- <div class="text-add">增加绑定</div> -->
+					<div class="card">
+						<div class="bank" style="background-color:#fff">
+							<!-- <div class="icon-add">+</div> -->
+							<div class="text">暂未添加任何银行卡</div>
+						</div>
+					</div>
+					<div class="text-note">
+						添加银行卡，请在充值或提现时在新浪收银台绑定。
+					</div> 
+				</div>
+				<else/>
+				<volist name="card" id="c">
+					<div class="card">
+						<div class="bank" style="background-color:{$c[10]}">
+							<img id="banklogo" src="__ROOT__/Style/Phone/img/card/{$c[1]}.png" />
+							<div class="info">
+								<div class="text-bank">{$c[9]} <if condition="$c[8] eq 'Y'"><img width="50px" height="20px" src="__ROOT__/Style/Phone/img/card/safecard.png" /></if></div>
+								<div class="text-type">{$c[4]}</div>
+								<div class="text-num">{$c[2]}</div>
+							</div>
+						</div>
+						<div class="button">
+							<a type="button" href="__URL__/unbindingcard?cardid={$c[0]}" class="btn btn-info">取消绑定</a>
+						</div>
+					</div>
+					<br/>
+				</volist>
+			</if>
+		</div>
+
+		<!-- <hr />
+		<div class="add">
+			<div class="text-add">增加绑定</div>
+			<div class="card">
+				<div class="bank">
+					<div class="icon-add">+</div>
+					<div class="text">添加银行卡</div>
+				</div>
+			</div>
+			<div class="text-note">
+				请注意新浪支付所支持充值的银行和各个银行的充值额度
+			</div> 
+		</div>-->
+	</div>
+	<include file="Pub:footer" /> 
+</body>
+
+</html>

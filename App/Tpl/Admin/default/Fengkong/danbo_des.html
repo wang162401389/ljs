@@ -1,0 +1,47 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+    var delUrl = '__URL__/doDel';
+    var addUrl = '__URL__/add';
+    var isSearchHidden = 1;
+</script>
+<div class="so_main">
+    <div class="page_tit">担保标详情</div>
+    <!--搜索/筛选会员-->
+    <!--搜索/筛选会员-->
+    <div class="Toolbar_inbox" style="overflow: hidden" >
+        <div class="page right">{$pagebar}</div>
+    </div>
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th>标号ID</th>
+                <th>标名称</th>
+                <th>周期</th>
+                <th>担保金额</th>
+                <th>担保费用</th>
+                <th>复审时间</th>
+            </tr>
+            <?php foreach($info as $key=>$val) { ?>
+            <tr>
+                <td><?php echo $val['id'] ?></td>
+                <td><?php echo $val['borrow_name'] ?></td>
+                <td><?php echo $val['borrow_duration'] ?></td>
+                <td><?php echo $val['borrow_money'] ?></td>
+                <td><?php echo $val['vouch_money'] ?></td>
+                <td><?php echo $val['second_verify_time'] ?></td>
+
+            </tr>
+            <?php } ?>
+
+        </table>
+
+    </div>
+    <div class="Toolbar_inbox" style="overflow: hidden" >
+        <div>共担保<span style="color: red">￥{$total}元</span>,获利<span style="color: red">￥{$vouch_money}元</span></div>
+        <div class="page right">{$pagebar}</div>
+    </div>
+</div>
+
+
+<include file="Public:_footer" />

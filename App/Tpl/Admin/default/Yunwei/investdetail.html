@@ -1,0 +1,76 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+    var delUrl = '__URL__/doDel';
+    var addUrl = '__URL__/add';
+    var isSearchHidden = 1;
+    var searchName='搜索';
+</script>
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<div class="so_main">
+    <div class="page_tit">投资详情</div>
+    <!--搜索/筛选会员-->
+    <div id="search_div" style="display:none">
+        <div class="page_tit"><script type="text/javascript">document.write(searchName);</script> [ <a href="javascript:void(0);" onclick="dosearch();">隐藏</a> ]</div>
+        <div class="form2">
+            <form method="post" action="__URL__/{$xaction}" id="ot">
+            	<dl class="lineD">
+                    <dt>ID：</dt>
+                    <dd>
+                        <input name="id" style="width:190px" id="id" type="text"  />
+                    </dd>
+                </dl>
+                <dl class="lineD">
+                    <dt>用户名：</dt>
+                    <dd>
+                        <input name="username" style="width:190px" id="username" type="text"  />
+                    </dd>
+                </dl>
+                <dl class="lineD">
+                    <dt>手机号：</dt>
+                    <dd>
+                        <input name="user_phone" style="width:190px" id="user_phone" type="text"  />
+                    </dd>
+                </dl>
+                <dl class="lineD"><dt>投资时间从：</dt><dd><htmlA:timer id="start_time" style="width:190px"  /><span>到：</span><htmlA:timer id="end_time" style="width:190px"/></dd></dl>
+                <div class="page_btm">
+                    <input type="submit" class="btn_b" value="确定" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--搜索/筛选会员-->
+    <div class="Toolbar_inbox" >
+        <div class="page right">{$pagebar}</div>
+        <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索" style="search_action" />
+    </div>
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th>ID</th>
+                <th>用户名</th>
+                <th>手机号</th>
+                <th>借款名称</th>
+                <th>投资时间</th>
+                <th>借款期限</th>
+                <th>投资金额</th>
+            </tr>
+            <?php foreach($list as $key => $val) { ?>
+            <tr>
+                <td><?php echo $val['id']; ?></td>
+                <td><?php echo $val['user_name']; ?></td>
+                <td><?php echo $val['user_phone']; ?></td>
+                <td><?php echo $val['borrow_name']; ?></td>
+                <td><?php echo date('Y-m-d',$val["add_time"]); ?></td>
+                <td>{$val.borrow_duration}<if condition="$val.repayment_type eq 1">天<else/>个月</if></td>
+                <td><?php echo $val['investor_capital']; ?></td>
+            </tr>
+            <?php } ?>
+        </table>
+        <div class="Toolbar_inbox" style="overflow: hidden">
+            <htmlA:commonBtn type="href" action="__URL__/{$xaction}?{$query}" value="将当前条件下数据导出为Excel"/>
+            <div class="page right">{$pagebar}</div>
+        </div>
+    </div>
+</div>
+<include file="Public:_footer" />

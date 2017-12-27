@@ -1,0 +1,41 @@
+  <!-------- 搜索游戏 -------->
+  <div id="search_div" style="display:none">
+  	<div class="page_tit"><script type="text/javascript">document.write(searchName);</script> [ <a href="javascript:void(0);" onclick="dosearch();">隐藏</a> ]</div>
+	
+	<div class="form2">
+	<form method="post" action="__URL__/{$xaction}">
+    <dl class="lineD">
+        <dt>投资人ID：</dt>
+        <dd>
+            <input name="tuid" style="width:190px" id="title" type="text" value="{$search.tuid}">
+            <span>不填则不限制</span>
+        </dd>
+    </dl>
+    <dl class="lineD">
+        <dt>投资人名称：</dt>
+        <dd>
+            <input name="tuname" style="width:190px" id="title" type="text" value="{$search.tuid}">
+            <span>不填则不限制</span>
+        </dd>
+    </dl>
+	<dl class="lineD">
+      <dt>推荐人ID：</dt>
+      <dd>
+        <input name="uid" style="width:190px" id="title" type="text" value="{$search.uid}">
+        <span>不填则不限制</span>
+      </dd>
+    </dl>
+    <dl class="lineD">
+      <dt>推荐人名：</dt>
+      <dd>
+        <input name="uname" style="width:190px" id="title" type="text" value="{$search.uname}">
+        <span>不填则不限制</span>
+      </dd>
+    </dl>
+   
+    <div class="page_btm">
+      <input type="submit" class="btn_b" value="确定" />
+    </div>
+	</form>
+  </div>
+  </div>

@@ -1,0 +1,64 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+    var isSearchHidden = 1;
+    var searchName='搜索';
+</script>
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<div class="so_main">
+    <div class="page_tit">投资数据</div>
+    <!--搜索/筛选会员-->
+    <div id="search_div" style="display:none">
+        <div class="page_tit"><script type="text/javascript">document.write(searchName);</script> [ <a href="javascript:void(0);" onclick="dosearch();">隐藏</a> ]</div>
+        <div class="form2">
+            <form method="post" action="__URL__/{$xaction}" id="ot">
+                <dl class="lineD"><dt>时间从：</dt><dd><htmlA:timer id="start_time" style="width:190px"/><span>到：</span><htmlA:timer id="end_time" style="width:190px"/></dd></dl>
+                <div class="page_btm">
+                    <input type="submit" class="btn_b" value="确定" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--搜索/筛选会员-->
+    <div class="Toolbar_inbox" >
+        <div class="page right">{$pagebar}</div>
+        <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索" style="search_action" />
+    </div>
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th>起始日期</th>
+                <th>终止日期</th>
+                <th>投资人数</th>
+                <th>投资笔数</th>
+                <th>发标总额</th>
+                <th>总投资金额</th>
+                <th>投资券使用总额</th>
+                <th>投资总额</th>
+                <th>占比</th>
+                <th>员工投资总额</th>
+                <th>员工占比</th>
+                <th>其他投资总额</th>
+                <th>其他占比</th>
+            </tr>
+            <if condition="isset($start_time) && isset($end_time)">
+	            <tr>
+	                <td><?php echo $start_time; ?></td>
+	                <td><?php echo $end_time; ?></td>
+	                <td><?php echo $investor_p_count; ?></td>
+	                <td><?php echo $investor_n_count; ?></td>
+	                <td><?php echo $total_borrow_money; ?></td>
+	                <td><?php echo $total_invest; ?></td>
+	                <td><?php echo $invest_money_num; ?></td>
+	                <td><?php echo $experience_shop_invest_sum; ?></td>
+	                <td><?php echo number_format(($experience_shop_invest_sum / $m_total) * 100, 2) .'%'; ?></td>
+	                <td><?php echo $inner_invest_sum; ?></td>
+	                <td><?php echo number_format(($inner_invest_sum / $m_total) * 100, 2) .'%'; ?></td>
+	                <td><?php echo $other_invest_sum; ?></td>
+	                <td><?php echo number_format(($other_invest_sum / $m_total) * 100, 2) .'%'; ?></td>
+	            </tr>
+            </if>
+        </table>
+    </div>
+</div>
+<include file="Public:_footer" />

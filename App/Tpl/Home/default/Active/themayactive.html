@@ -1,0 +1,745 @@
+<include file="Public:_header_common" />
+<title>邀请好友，广开财路 - 链金所</title>
+<meta http-equiv="keywords" content="{$glo.web_keywords}" />
+<meta http-equiv="description" content="{$glo.web_descript}" />
+<link rel="stylesheet" href="/Style/H/css/recomactive.css" />
+<script type="text/javascript">
+    var imgpath="__ROOT__/Style/M/";
+    var curpath = "__APP__/member/common";
+</script>
+<include file="Public:_header_main" />
+<!--banner start-->
+<div class="g-inv-banner">
+    <div class="g-width1200">
+        <span class="u-flag"></span>
+        <span class="u-recommendh1"></span>
+        <div class="eye-wrap">
+            <span class="eye-left"><i class="eye-circle"></i></span>
+            <span class="eye-right"><i class="eye-circle"></i></span>
+        </div>
+        <span class="u-people"></span>
+        <span class="u-balloon1"></span>
+        <span class="u-balloon2"></span>
+        <!--<span class="u-purse"></span>-->
+        <p class="g-activetime">活动时间：2017.5.4日-2017.5.31日</p>
+    </div>
+</div>
+<!--banner end-->
+
+<!--一重礼 start-->
+<div class="g-width1200 g-gift g-gift1">
+    <span class="rec-ico rec-pit1"></span>
+    <span class="rec-ico rec-pit2"></span>
+    <div class="box1-top"></div>
+    <div class="box-main box1-main clearfix">
+        <div class="box-step box-step1">
+            <p class="box-step-tit box-step-tit1"></p>
+            <div class="box1-giftimg"></div>
+            <div class="box1-giftxt">
+                可获得1000元体验金，用于投资年化利率12%、期限5天的标的，到期后体验金本金部分平台收回，利息现金部分直接发送至您的平台账户内。<br>可获得现金为：1000×12%÷360×5=1.67元
+            </div>
+        </div>
+        <div class="box-step box-step2">
+            <p class="box-step-tit box-step-tit2"></p>
+            <div class="box2-giftimg"></div>
+            <div class="box1-giftxt box2-giftxt">
+                不再享受1000元体验金奖励，而是每增加一位好友注册实名即获得5元投资券，投资券使用期限为领取之日起的15天内使用。
+            </div>
+        </div>
+        <div class="box-step box-step3">
+            <p class="box-step-tit box-step-tit3"></p>
+            <div class="box3-giftimg clearfix">
+                <p class="box3li-w box3li-w1"></p>
+                <p class="box3li-w box3li-w2"></p>
+                <p class="box3li-w box3li-w3"></p>
+            </div>
+            <div class="box1-giftxt box3-giftxt">
+                特设累计推荐注册实名总量前三名奖励，在活动结束后3个工作日内发放至获奖人账户内。<br>（注：推荐注册实名总量不低于10人，推荐人数相同时，以成功推荐时间为核算，先到先得）
+            </div>
+        </div>
+    </div>
+    <div class="box-bottom"></div>
+</div>
+<!--一重礼 end-->
+
+<if condition="$UID">
+    <!--已登录-->
+    <div class="g-width1200 gift1-onlogin">
+        <div class="onlogin-wrap clearfix">
+            <span class="onlogin-b1">我的邀请码</span>
+            <div class="onlogin-qrcode"><img src="__ROOT__/Home/active/create_qr" width="110" height="110"/></div>
+            <span class="onlogin-b2">社交平台分享</span>
+            <div class="onlogin-sharelist">
+                <div class="bdsharebuttonbox" data-tag="share_1">
+                    <a class="bds_sqq share-ico share-ico-qq" data-cmd="sqq" style="background-position: 0 0; padding-left: 0;"></a>
+                    <a class="bds_tsina share-ico share-ico-sina" data-cmd="tsina" style="background-position: 0 0; padding-left: 0;"></a>
+                    <a class="bds_qzone share-ico share-ico-qqzome" data-cmd="qzone" style="background-position: 0 0; padding-left: 0;"></a>
+                </div>
+            </div>
+        </div>
+        <p class="onlogin-des">※请用微信扫一扫分享至您的朋友圈或者以社交平台分享给您的朋友注册，当您的好友注册并实名后，您就可以获得活动相应的体验金或者投资券奖励。</p>
+        <div class="exp-numberdes">您总共获得体验金 <span class="exp-num js-exptotalnum">{$total_count}</span> 张，目前剩余 <span class="exp-num js-explastnum">{$remaining_count}</span> 张</div>
+    </div>
+    <else/>
+    <!--未登录-->
+    <!--未登录-->
+    <div class="g-width1200 gift1-nologin">
+        <p class="gift1-ltit">您的邀请码：请<a href="javascript:void(0)" class="nologin-href js-nologinbtn">登录</a>后查看</p>
+        <p class="gift1-ldes">※当您分享给您的好友注册并实名后，您就可以获得活动相应的体验金或者奖励了。</p>
+    </div>
+</if>
+
+<!-- 邀请链接 -->
+<input type="hidden" id="recommend_url" value="{$recommend_url}">
+
+<!--体验标 start-->
+<div class="g-width1200 g-expproduct clearfix">
+    <div class="exp-prowrap">
+        <div class="exp-pro-hr">
+            <span class="exp-prot exp-prot1">标题</span>
+            <span class="exp-prot exp-prot2">活动体验金</span>
+            <span class="exp-prot exp-prot3">预期年化收益</span>
+            <span class="exp-prot exp-prot4">期限</span>
+        </div>
+        <div class="exp-pro-data">
+            <span class="exp-prod exp-prod1">活动体验标</span>
+            <span class="exp-prod exp-prod2 js-explastmoney">
+                <if condition="$UID">
+                    {$remaining_money|receipt_format}
+                    <else/>
+                    ------
+                </if>
+            </span>
+            <span class="exp-prod exp-prod3">12.00%</span>
+            <span class="exp-prod exp-prod4">5天</span>
+        </div>
+    </div>
+    <input type="button" class="exp-probtn js-experiencebuy" value="我要投标" />
+</div>
+<!--体验标 end-->
+
+<!--二重礼 start-->
+<div class="g-width1200 g-gift g-gift2">
+    <span class="rec-ico rec-pit3"></span>
+    <span class="rec-ico rec-pit4"></span>
+    <span class="rec-ico rec-pit5"></span>
+    <div class="box2-top"></div>
+    <div class="box-main box2-main clearfix">
+        <!--奖项 start-->
+        <div class="gift1-prizelist">
+            <div class="g-prize-b g-prize-b1">
+                <div class="prize-b-main">
+                    <span class="b-maintit">最高奖励338元</span>
+                    <p class="b-maintxt">①  注册实名≥20个，且推荐投资量≥8万，送现金338元，限10人。<br>②  注册实名≥8个，且推荐投资量≥3万，送现金138元，限20人。</p>
+                    <p class="b-maincare">注：以上奖励以投资时间为核算，<br><span style="padding-left: 2em;;"></span>先到先得。</p>
+                </div>
+                <h2 class="prize-b-num prize-b-num2"></h2>
+            </div>
+            <div class="g-prize-b g-prize-b2">
+                <div class="prize-b-main">
+                    <span class="b-maintit">iPhone7 32G</span>
+                    <p class="b-maintxt">注册实名≥50个，人人投资且推荐投资量≥50万，就可得到iphone7 32G一台，限1人，以投资时间为核算，先到先得，送完即止。</p>
+                </div>
+                <h2 class="prize-b-num prize-b-num1"></h2>
+            </div>
+            <div class="g-prize-b g-prize-b3">
+                <div class="prize-b-main">
+                    <span class="b-maintit">大奖免费抽</span>
+                    <p class="b-maintxt">注册实名≥1个，好友投资≥500元可免费获得抽奖1次，每增加一个，获得额外一次抽奖。</p>
+                </div>
+                <h2 class="prize-b-num prize-b-num3"></h2>
+            </div>
+        </div>
+        <!--奖项 end-->
+        <!--公告和转盘 start-->
+        <div class="noticezp-wrap">
+            <!--notice-->
+            <div class="notice-list">
+                <div class="lottery-number">
+                    <if condition="$UID">
+                        <span class="lottery-total">共<i class="lo-num js-totalcount">{$total_lucky}</i>次</span><br>
+                        <span class="lottery-last">(剩余<i class="lo-num js-remaincount">{$remaining_lucky}</i>次)</span>
+                        <else/>
+                        <!--未登录-->
+                        <a href="javascript:void(0)" class="lottery-login js-nologinbtn">登录查看</a>
+                    </if>
+                </div>
+                <div class="list-name">
+                    <div class="list-nametit clearfix">
+                        <a href="javascript:void(0)" class="nametit-t nametit-t1 nametit-t-curron js-tabtit">今日中奖名单</a>
+                        <a href="javascript:void(0)" class="nametit-t nametit-t2 js-tabtit">我的中奖名单</a>
+                    </div>
+                    <div class="list-namemain">
+                        <div class="namemain-w today-namelist clearfix js-tabmain" style="display: block;">
+                            <div class="today-nametit">
+                                <span class="t-name-h t-name-h1">获奖用户</span>
+                                <span class="t-name-h t-name-h2">获得奖励</span>
+                            </div>
+                            <div class="today-nametxt js-todaylist" id="user-scroll">
+                                <ul>
+                                    <volist id="wl" name="winner_list">
+                                        <li class="clearfix">
+                                            <span class="nametxt-tel">{$wl.user_phone}</span>
+                                            <span class="nametxt-prize">{$wl.prize_name}</span>
+                                        </li>
+    								</volist>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="namemain-w scroolpifu my-prizelist clearfix js-tabmain">
+                            <if condition="$UID">
+                                <ul>
+                                    <volist id="mw" name="my_winner" empty="$empty">
+                                        <li>{$mw.prize_name}</li>
+                                    </volist>
+                                </ul>
+                            <else/>
+                                <!--未登录-->
+                                <a href="javascript:void(0)" class="my-prize-login js-nologinbtn">您未登录，请登录查看！</a>
+                            </if>
+                        </div>
+                    </div>
+                </div>
+                <span class="gold-img"></span>
+            </div>
+            <!--转盘-->
+            <div class="turntable-wrap">
+                <div class="turntable-price" id="js-rotate"></div>
+                <div class="turntable-pointer js-pointer"></div>
+            </div>
+            <!--转盘-->
+        </div>
+        <!--公告和转盘 end-->
+        <div class="turntable-rule">
+            <h2 class="turnt-ruleh2">活动规则：</h2>
+            <div class="turnt-ruledes">
+                跑腿免单只限深圳地区，获奖用户将由跑腿商家在抽到奖后的3个工作日内联系您，非深圳地区的用户抽到跑腿免单将用35元投资券替换，3个工作日内发送至您的平台内账户内。
+            </div>
+        </div>
+    </div>
+    <div class="box-bottom"></div>
+</div>
+<!--二重礼 end-->
+
+<!--三重礼 end-->
+<div class="g-width1200 g-gift g-gift3">
+    <span class="rec-ico rec-pit6"></span>
+    <span class="rec-ico rec-pit7"></span>
+    <span class="rec-ico rec-pit8"></span>
+    <div class="box3-top"></div>
+    <div class="box-main box3-main clearfix">
+        <h2 class="rebate-tit">返利计算公式：返利=好友投资额*0.8%*投资天数/360</h2>
+        <div class="rebate-stepwrap">
+            <div class="stepbox stepbox1">
+                <span class="stepbox-img1"></span>
+                <div class="stepbox-main1">
+                    <h2 class="stepbox-mtit">邀请方式一</h2>
+                    <p class="stepbox-mdes">
+                        通过活动一的扫描邀请码发送给您的好友注册，即邀请成功。
+                    </p>
+                </div>
+            </div>
+            <div class="stepbox stepbox2">
+                <span class="stepbox-img2"></span>
+                <div class="stepbox-main2">
+                    <h2 class="stepbox-mtit">邀请方式二</h2>
+                    <p class="stepbox-mdes">
+                        好友在PC端注册时在推荐人那里填写您的手机号，即邀请成功。
+                    </p>
+                </div>
+            </div>
+            <div class="stepbox stepbox3">
+                <span class="stepbox-img3"></span>
+                <div class="stepbox-main3">
+                    <b class="stepbox-arrow stepbox-arrow1"></b>
+                    <b class="stepbox-arrow stepbox-arrow2"></b>
+                    邀请好友注册实名并投资后，可以到PC端的我的账户<span style="padding-left: 44px"></span>邀请好友<span style="padding-left: 44px"></span>邀请结果去查看统计的结果和返利的明细，或直接点击下方查看我的邀请结果。
+                </div>
+            </div>
+        </div>
+        <p class="rec-descopy">※当您的好友成功投资并复审后返利金额将在当天发送至您的平台账户内。</p>
+    </div>
+    <div class="box-bottom"></div>
+</div>
+<!--三重礼 end-->
+
+<div class="g-width1200 g-recomm-result">
+    <a href="/member/promotion#fragment-3" class="look-recresult"></a>
+</div>
+
+<!--rule start-->
+<div class="g-recomrule-wrap">
+    <div class="g-width1200 g-recomrule">
+        <div class="rule-top"></div>
+        <div class="box-main rule-main clearfix">
+            <ul>
+                <li>
+                    活动一的投资券（使用比例为1：100，使用期限为领取之日起的15天内）直接推荐成功后发送至推荐人账户；推荐排名前三的现金奖励在活动结束后的3个工作日内发放至推荐人账户。
+                </li>
+                <li>
+                    活动二的独占鳌头奖和普利奖、尊享将和普利奖可同时享有。以上奖励加息券和投资券在推荐人抽到后及时发放至其账户，爱奇艺会员、星巴克、跑腿免单和1000元现金在抽到后的三个工作日内发放，其余奖励在活动结束后的5个工作日内发放给用户。
+                </li>
+                <li>活动三长期有效，具体以官方公告为准。</li>
+                <li>本活动最终解释权归链金所所有。</li>
+            </ul>
+        </div>
+        <div class="box-bottom"></div>
+    </div>
+</div>
+<!--rule end-->
+
+<if condition="!$UID">
+<!--登录窗口 start-->
+<div class="recommend-pop recom-login js-recomlogin">
+    <a href="javascript:void(0)" class="login-closebtn js-closebtn"></a>
+    <div class="plogin-h2 clearfix">
+        <span class="plogin-h2tit">登录</span>
+        <span class="plogin-regist"><a href="__APP__/member/common/register/">免费注册</a> 丨 <a href="javascript:getPassWord();">忘记密码？</a></span>
+    </div>
+    <div id="dvUser" class="login-tips"></div>
+    <form action="javascript:void(0);" id="form" class="login-form" method="post">
+        <input type="hidden" id="logintype" value="{$logintype}" name="logintype" />
+        <div class="plog-box clearfix">
+            <span class="pl-box-label">用户名:</span>
+            <div class="pl-box-text">
+                <i class="pl-box-ico pl-box-icouser"></i>
+                <input type="text" id="txtUser" class="pl-box-input" placeholder="用户名/ 邮箱/手机号">
+            </div>
+        </div>
+        <div class="plog-box clearfix">
+            <span class="pl-box-label">密   码:</span>
+            <div class="pl-box-text">
+                <i class="pl-box-ico pl-box-icopas"></i>
+                <input type="password" id="txtPwd" class="pl-box-input" >
+            </div>
+        </div>
+        <div class="plog-box plog-box3 clearfix">
+            <span class="pl-box-label">验证码:</span>
+            <div class="pl-box-text3">
+                <input type="text" id="txtCode" class="pl-box-input" placeholder="计算结果">
+            </div>
+            <img onclick="this.src=this.src+'?t='+Math.random()" class="logimg-code" src="__APP__/member/common/verify2" width="191" height="44" alt="点击换一个校验码" id="vcode" />
+        </div>
+        <input type="submit" id="btnReg" class="pl-box-submit" value="立 即 登 录" onclick="LoginSubmit(this);">
+    </form>
+</div>
+<!--登录窗口 end-->
+</if>
+<!--体验金 start-->
+<div class="recommend-pop exptips-pop js-exptips">
+    <a href="javascript:void(0)" class="exp-closebtn js-closebtn"></a>
+    <div class="expop-h2">提示</div>
+    <div class="expop-main">
+        <p class="expop-main-p">您当前未使用的活动体验金共<span class="js-remcounty">--</span>张<br>
+            活动体验金可投总额<span class="js-remmoney">--</span>元
+        </p>
+        <div class="expop-btnwrap">
+            <a href="javascript:void(0)" class="expbtn-sure js-expbtnsure">确定</a>
+            <a href="javascript:void(0)" class="expbtn-cancel js-closebtn">取消</a>
+        </div>
+    </div>
+</div>
+<!--体验金 end-->
+
+<!--无体验金 start-->
+<div class="recommend-pop exptips-pop js-noexptips">
+    <a href="javascript:void(0)" class="exp-closebtn js-closebtn"></a>
+    <div class="expop-h2">提示</div>
+    <div class="expop-main">
+        <div class="noexp-txt js-exptistxt-tips">您当前没有剩余的体验金可投标！</div>
+    </div>
+</div>
+<!--无体验金 end-->
+
+<!--转盘弹窗 start-->
+<div class="recommend-pop turntable-pop js-turntablepop">
+    <a href="javascript:void(0)" class="exp-closebtn js-closebtn"></a>
+    <div class="expop-h2">提示</div>
+    <div class="expop-main">
+        <p class="turntable-txt js-prizetxt">恭喜您中了 “ -- ” 奖！</p>
+    </div>
+</div>
+<!--转盘弹窗 end-->
+
+<!--tips start-->
+<div class="recommend-pop exptips-pop js-experror-tips">
+    <a href="javascript:void(0)" class="exp-closebtn js-closebtn"></a>
+    <div class="expop-h2">提示</div>
+    <div class="expop-main">
+        <div class="noexp-txt js-exptips-error">请求异常！</div>
+    </div>
+</div>
+<!--tips start-->
+
+<div class="invite-tips js-errortips">操作失败！</div>
+<input type="hidden" id="islogin" value="{$UID|default=0}">
+<input type="hidden" id="isgameover" value="{$active_open|default=0}">
+<script type="text/javascript" src="__ROOT__/Style/M/js/login.js"></script>
+<script type="text/javascript" src="__ROOT__/Style/H/js/awardRotate.js"></script>
+<script type="text/javascript">
+    /*百度分享 自定义插件*/
+    var recommendurl    = $("#recommend_url").val() || window.location.href;
+    window._bd_share_config = {
+        common : {
+            bdText : '邀请好友，广开财路。赚iPhone7+576元现金+0.8%投资返利+无上限抽奖',
+            bdDesc : '#链金所#五万元体验金等你来拿！我出本金，您享收益！',
+            bdUrl : recommendurl,
+            bdPic : '{$img_url}'
+        },
+        share : [{
+            "bdSize" : 16
+        }],
+        /*slide : [{
+            bdImg : 0,
+            bdPos : "right",
+            bdTop : 100
+        }],*/
+        image : [{
+            "tag" : "share_1",
+            viewType : ['share-ico-qq','share-ico-sina','share-ico-qqzome'],
+            viewPos : 'top',
+            viewColor : 'black',
+            viewSize : '16',
+            viewList : ['sqq','tsina','qzone',]
+        }]
+    }
+    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='https://o6wg7zsae.qnssl.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    /*百度分享 自定义插件*/
+
+    var islogin     = $("#islogin").val();
+    var isgameover  = $("#isgameover").val();
+    if(isgameover != 0){
+        $(".js-experiencebuy").val("活动已结束").addClass("isgameover");
+        $(".turntable-pointer").addClass("turntable-isgameover");
+    }
+
+    /*找回密码*/
+    function getPassWord() {
+        $.jBox("get:/member/common/getpassword/", {
+            title: "找回密码",
+            width: "auto",
+            buttons: false,
+        });
+    }
+
+    //滚动
+    function AutoScroll(obj) {
+        $(obj).find("ul:first").animate({
+            marginTop: "-42px"
+        }, 500, function() {
+            $(this).css({ marginTop: "0px" }).find("li:first").appendTo(this);
+        });
+    }
+
+    $(document).ready(function(){
+        /*判断IE浏览器版本*/
+        var browser=navigator.appName ;
+        var b_version=navigator.appVersion ;
+
+        /*登录弹窗*/
+        $("body").on("click",".js-nologinbtn",function(){
+            $(".pop-bg,.js-recomlogin").show();
+        });
+
+        /*黑底关闭弹窗*/
+        $(".pop-bg,.js-closebtn").on("click",function(){
+            $(".recommend-pop").hide();
+            $(".pop-bg").hide();
+            $(".js-experiencebuy").removeAttr("disabled");
+        })
+
+        //向上滚动
+        $('#user-scroll').mouseleave(function(){
+            userscroll = setInterval('AutoScroll("#user-scroll")', 2000);
+        })
+        $('#user-scroll').mouseenter(function(){
+            clearInterval(userscroll);
+        })
+        var userscroll = setInterval('AutoScroll("#user-scroll")', 2000);
+
+        /*中奖选项卡*/
+        $(".js-tabtit").on("click",function(){
+            var index = $(this).index();
+            $(this).addClass("nametit-t-curron").siblings(".nametit-t").removeClass("nametit-t-curron");
+            $(".js-tabmain").eq(index).show().siblings(".js-tabmain").hide();
+            if(index == 1 && islogin==0){
+                $(".pop-bg,.js-recomlogin").show();
+            }
+        })
+
+        //弹窗 - 体验金
+        $("body").on("click",".js-experiencebuy",function(){
+            var exptotalnum     = $(".js-exptotalnum").text();          //体验金总数张
+            var explastnum      = $(".js-explastnum").text();           //剩余体验金张数
+            var explastmoney    = $(".js-explastmoney").text();         //剩余体验金金额
+            if(isgameover != 0){
+                $(".js-errortips").text("活动已结束！").fadeIn().delay(2000).fadeOut();
+                return;
+            }
+            else if(islogin==0){
+                $(".pop-bg,.js-recomlogin").show();
+            }
+//            else if(explastnum <= 0){
+//                $(".pop-bg,.js-noexptips").show();
+//            }
+            else{
+                $.ajax({
+                    url:'/home/active/invest_borrow',
+                    type:'POST',
+                    data:{
+                        type: "confirm"
+                    },
+                    timeout:5000,
+                    dataType:'json',
+                    beforeSend:function(){
+                        $(".js-errortips").after('<div class="loadingspinner"><div class="lrect1"></div><div class="lrect2"></div><div class="lrect3"></div><div class="lrect4"></div><div class="lrect5"></div></div>');
+                    },
+                    success:function(data){
+                        //console.log(data);
+                        $(".loadingspinner").remove();
+                        if(data.status == 0 && data.data.remaining_count != 0){
+                            $(".js-experiencebuy").attr("disabled","disabled");
+                            $(".pop-bg,.js-exptips").show();
+                            var	remainingmoney	= data.data.remaining_money;
+                            var	remainingcount	= data.data.remaining_count;
+                            var	tokenval    	= data.data.token;
+                            $(".js-remcounty").text(remainingcount);
+                            $(".js-remmoney").text(remainingmoney);
+                            $(".js-expbtnsure").attr("data-remmoney",remainingmoney);
+                            $(".js-expbtnsure").attr("data-remcounty",remainingcount);
+                            $(".js-expbtnsure").attr("data-token",tokenval);
+                        }
+                        else if(data.status == 0 && data.data.remaining_count == 0){
+                            $(".js-experiencebuy").attr("disabled","disabled");
+                            $(".pop-bg,.js-noexptips").show();
+                        }
+                        else if(data.status == -3){
+                            $(".js-experiencebuy").attr("disabled","disabled");
+                            var noidtext    = '<p>您还没有实名验证哦！快快实名验证，领取奖励吧！</p><a href="/member/verify?id=1#fragment-1" class="noid-ahref">去实名</a>';
+                            $(".js-exptips-error").html(noidtext);
+                            $(".pop-bg,.js-experror-tips").show();
+                        }
+                        else if(data.status == -4){
+                            $(".js-experiencebuy").attr("disabled","disabled");
+                            var nosinapass    = '<p>您还没有设置支付密码哦！快快设置支付密码，领取奖励吧！</p><a href="/member/promotion/checkissetpwd?i=2" class="noid-ahref">设置支付密码</a>';
+                            $(".js-exptips-error").html(nosinapass);
+                            $(".pop-bg,.js-experror-tips").show();
+                        }
+                        else if(data.status == -6){
+                            $(".js-errortips").text("请刷新页面！").fadeIn().delay(2000).fadeOut();
+                        }
+                        else if(data.status == -7){
+                            $(".js-errortips").text("账号异常,请联系客服！").fadeIn().delay(2000).fadeOut();
+                        }
+                        else if(data.status == 100){
+                            $(".js-errortips").text("活动还未开始！").fadeIn().delay(2000).fadeOut();
+                        }
+                        else if(data.status == 101){
+                            $(".js-errortips").text("活动已结束！").fadeIn().delay(2000).fadeOut();
+                        }
+                        else{
+                            $(".js-errortips").text("请求异常，稍后重试！").fadeIn().delay(2000).fadeOut();
+                            //setTimeout("window.location.reload()",2000);
+                        }
+                    },
+                    error:function(){
+                        $(".js-errortips").text("请求异常，稍后重试！").fadeIn().delay(2000).fadeOut();
+                        setTimeout("window.location.reload()",2000);
+                    }
+                })
+            }
+        })
+
+        var checkflg = false;
+        //提交 - 体验金
+        $("body").on("click",".js-expbtnsure",function(){
+            var explastnum   	= $(this).attr("data-remcounty");     	 //剩余体验金张数
+            var explastmoney   	= $(this).attr("data-remmoney");        //剩余体验金金额
+            var token          	= $(this).attr("data-token");        //剩余体验金金额
+            if(checkflg)return;
+            checkflg = true;
+            $.ajax({
+                url:'/home/active/invest_borrow',
+                type:'POST',
+                data:{
+                    type:"invest",
+                    invest_money:explastmoney,
+                    token:token
+                },
+                timeout:5000,
+                dataType:'json',
+                beforeSend:function(){
+                    $(".js-errortips").after('<div class="loadingspinner"><div class="lrect1"></div><div class="lrect2"></div><div class="lrect3"></div><div class="lrect4"></div><div class="lrect5"></div></div>');
+                },
+                success:function(data){
+                    //console.log(data);
+                    $(".loadingspinner").remove();
+                      if(data.status == 0){
+                          $(".js-errortips").text("恭喜您，投标成功！").fadeIn().delay(2000).fadeOut();
+                          checkflg = true;
+                          setTimeout("window.location.reload()",2000);
+                      }
+                      else if(data.status == -3){
+                          var noidtext    = '<p>您还没有实名验证哦！快快实名验证，领取奖励吧！</p><a href="/member/verify?id=1#fragment-1" class="noid-ahref">去实名</a>';
+                          $(".js-exptips-error").html(noidtext);
+                          $(".pop-bg,.js-experror-tips").show();
+                      }
+                      else if(data.status == -4){
+                          var nosinapass    = '<p>您还没有设置支付密码哦！快快设置支付密码，领取奖励吧！</p><a href="/member/promotion/checkissetpwd?i=2" class="noid-ahref">设置支付密码</a>';
+                          $(".js-exptips-error").html(nosinapass);
+                          $(".pop-bg,.js-experror-tips").show();
+                      }
+                      else if(data.status == -5){
+                          $(".js-experiencebuy").attr("disabled","disabled");
+                          $(".pop-bg,.js-noexptips").show();
+                      }
+                      else if(data.status == -6){
+                          $(".js-errortips").text("请刷新页面！").fadeIn().delay(2000).fadeOut();
+                      }
+                      else if(data.status == -7){
+                          $(".js-errortips").text("账号异常,请联系客服！").fadeIn().delay(2000).fadeOut();
+                      }
+                      else if(data.status == 100){
+                          $(".js-errortips").text("活动还未开始！").fadeIn().delay(2000).fadeOut();
+                      }
+                      else if(data.status == 101){
+                          $(".js-errortips").text("活动已结束！").fadeIn().delay(2000).fadeOut();
+                      }
+                      else{
+                          $(".js-errortips").text("请求异常，稍后重试！").fadeIn().delay(2000).fadeOut();
+                          setTimeout("window.location.reload()",2000);
+                      }
+                },
+                error:function(){
+                    $(".js-errortips").text("请求异常，稍后重试！").fadeIn().delay(2000).fadeOut();
+                    setTimeout("window.location.reload()",2000);
+                }
+            })
+        })
+
+        /*大转盘*/
+        var rotateTimeOut = function (){
+            $('#js-rotate').rotate({
+                angle:0,
+                animateTo:2160,
+                duration:8000,
+                callback:function (){
+                    $(".js-errortips").text("网络超时，检查您的网络！").fadeIn().delay(2000).fadeOut();
+                }
+            });
+        };
+        var bRotate = false;
+
+        var rotateFn = function (awards, angles, txt, phone, totalcount, remaincount){
+            //bRotate = true;
+            $('#js-rotate').stopRotate();
+            $('#js-rotate').rotate({
+                angle:0,
+                animateTo:angles+1800,
+                duration:8000,
+                callback:function (){
+                    var todayitem   = '<li class="clearfix"><span class="nametxt-tel">' + phone + '</span><span class="nametxt-prize">' + txt + '</span></li>';
+                    var myitem      = '<li>' + txt + '</li>'
+                    //奖项为-谢谢参与，不计入数据中
+                    if(awards==1){
+                        $(".js-prizetxt").text(txt);
+                    }
+                    else{
+                        $(".js-prizetxt").text("恭喜您，中了 “" + txt + "”！");
+                        $(".js-todaylist ul").prepend(todayitem);
+                        $(".my-prizelist ul").prepend(myitem);
+                    }
+                    $(".js-totalcount").text(totalcount);
+                    $(".js-remaincount").text(remaincount);
+                    $(".pop-bg,.js-turntablepop").show();
+                    bRotate = false;
+                }
+            })
+        };
+
+        $("body").on("click",".js-pointer",function (){
+                if(browser=="Microsoft Internet Explorer" && (b_version.match(/7./i)=="7." || b_version.match(/8./i)=="8." ))
+                {
+                    $(".js-prizetxt").text("建议您升级浏览器再使用转盘抽奖，使用IE9以上体验更舒畅哦~~");
+                    $(".pop-bg,.js-turntablepop").show();
+                    return;
+                }
+                else if(isgameover != 0){
+                    $(".js-errortips").text("活动已结束！").fadeIn().delay(2000).fadeOut();
+                    return;
+                }
+                if(bRotate)return;
+                $.ajax({
+                    url:'/home/active/themayprize',
+                    type:'POST',
+                    data:'',
+                    timeout:5000,
+                    dataType:'json',
+                    beforeSend:function(){
+                        $(".js-errortips").after('<div class="loadingspinner"><div class="lrect1"></div><div class="lrect2"></div><div class="lrect3"></div><div class="lrect4"></div><div class="lrect5"></div></div>');
+                    },
+                    success:function(d){
+                        //console.log(d);
+                        $(".loadingspinner").remove();
+                        /*未登录*/
+                        if(d.status == -1){
+                            $(".pop-bg,.js-recomlogin").show();
+                            bRotate = false;
+                        }
+                        /*抽奖次数用完*/
+                        else if(d.status == -2){
+                            $(".js-prizetxt").text(d.data);
+                            $(".pop-bg,.js-turntablepop").show();
+                            bRotate = false;
+                        }
+                        else if(d.status == 100){
+                            $(".js-errortips").text("活动还未开始！").fadeIn().delay(2000).fadeOut();
+                        }
+                        else if(d.status == 101){
+                            $(".js-errortips").text("活动已结束！").fadeIn().delay(2000).fadeOut();
+                        }
+                        else{
+                            bRotate = true;
+                            var item = d.data.p_id;
+                            switch (item) {
+                                case 1:
+                                    //var angle = [40, 80, 120, 160, 200, 240, 280, 320, 360];
+                                    rotateFn(0, 360, '1000体验金', d.data.user_phone, d.data.total_count, d.data.remain_count);
+                                    break;
+                                case 2:
+                                    rotateFn(4, 160, '爱奇艺一月会员', d.data.user_phone, d.data.total_count, d.data.remain_count);
+                                    break;
+                                case 3:
+                                    rotateFn(6, 240, '10元话费', d.data.user_phone, d.data.total_count, d.data.remain_count);
+                                    break;
+                                case 4:
+                                    rotateFn(8, 320, '1%加息券', d.data.user_phone, d.data.total_count, d.data.remain_count);
+                                    break;
+                                case 5:
+                                    rotateFn(7, 280, '50元投资券', d.data.user_phone, d.data.total_count, d.data.remain_count);
+                                    break;
+                                case 6:
+                                    rotateFn(3, 120, '20元投资券',  d.data.user_phone, d.data.total_count, d.data.remain_count);
+                                    break;
+                                case 7:
+                                    rotateFn(5, 200, '10元投资券',  d.data.user_phone, d.data.total_count, d.data.remain_count);
+                                    break;
+                                case 8:
+                                    rotateFn(2, 80, '跑腿免单', d.data.user_phone, d.data.total_count, d.data.remain_count);
+                                    break;
+                                case 9:
+                                    rotateFn(1, 40, '谢谢参与', d.data.user_phone, d.data.total_count, d.data.remain_count);
+                                    break;
+                            }
+                            //console.log(item);
+                        };
+                    },
+                    error:function(){
+                        $(".js-errortips").text("请求异常，稍后重试！").fadeIn().delay(2000).fadeOut();
+                        setTimeout("window.location.reload()",2000);
+                    }
+                })
+        });
+    })
+</script>
+<include file="Public:_footer" />

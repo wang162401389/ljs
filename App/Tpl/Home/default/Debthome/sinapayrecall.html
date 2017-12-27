@@ -1,0 +1,41 @@
+<include file="Public:_header_common" />
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>{$vo.borrow_name}-我要投资-{$glo.web_name}</title>
+<style>
+.sinapayrecall_main{width: 100%;background: #f2f2f2; padding: 45px 0px;}
+.sinapayrecall_content{width: 1200px; background: #fff;margin:auto;text-align: center;padding: 110px 0px 140px;}
+.sinapayrecall_content .s_c_1{color: #403b35; font-size: 25px;line-height: 50px; }
+.sinapayrecall_content .s_c_2{color: #403b35; font-size: 16px;line-height: 40px; }
+.sinapayrecall_content .s_c_3{color: #403b35; font-size: 14px;line-height: 35px; }
+.sinapayrecall_content .s_c_4{margin:105px auto 0px;width: 259px; height:40px;text-align: center;background:url(__ROOT__/Style/H/images/sinatj.png);  }
+.sinapayrecall_content .s_c_4 a{color: #fff; font-size: 16px;line-height: 40px;}
+</style>
+<include file="Public:_header_main" />
+<div class="sinapayrecall_main">
+    <div class="sinapayrecall_content">
+        <div class="s_c_1"></div>
+        <if condition="$count eq 1">
+        <div class="s_c_2">首次投资（不含体验标）送500链金豆，可参与抽宝马大奖！</div>
+        </if>
+        <div class="s_c_3"><img src="__ROOT__/Style/H/img/yinzhang2.gif"></div>
+        <div class="s_c_3"><span id="url_jumpTo" style="color: #2daee4">5</span><span style="color: #2daee4">S</span>后自动跳转</div>
+        <div class="s_c_4">
+            <a href="__URL__/debtlists/">其他投资项目</a>
+        </div>
+    </div>
+
+</div>
+<script>
+    function countDown(secs,surl){
+        var jumpTo = document.getElementById('url_jumpTo');
+        jumpTo.innerHTML=secs;
+        if(--secs>0){
+            setTimeout("countDown("+secs+",'"+surl+"')",1000);
+        }
+        else{
+            location.href=surl;
+        }
+    }
+    countDown(5,"__APP__{$url}")
+</script>
+<include file="Public:_footer" />

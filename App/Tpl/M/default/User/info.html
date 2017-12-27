@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<include file="Pub:header-common" /> 
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="stylesheet" href="__ROOT__/Style/Phone/css/profile.css">
+	<script src="__ROOT__/Style/Phone/js/jquery-2.1.4.min.js"></script>
+</head>
+
+<body>
+    <include file="Pub:simple_header" />
+
+
+    <div class="content">
+            <div class="username"><div class="key">用户名：</div><div class="value">{$minfo.user_name}</div></div>
+            <div class="username"><div class="key">投资等级：</div><div class="value">{$minfo.integral|getInvestLeveIco=###,3}</div></div>
+            <div class="username"><div class="key">真实姓名：</div><div class="value">{$minfo.real_name}</div></div>
+            <div class="username"><div class="key">身份证号：</div><div class="value">{:substr_replace($minfo['idcard'],'************',4,12)}</div></div>
+            <div class="username"><div class="key">手机号：</div><div class="value">{$minfo.user_phone}</div></div>
+    </div>
+	<include file="Pub:footer" /> 
+</body>
+
+</html>

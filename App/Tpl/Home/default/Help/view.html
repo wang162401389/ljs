@@ -1,0 +1,120 @@
+<include file="Public:_header_common" />
+<title>{$vo.title}-{$glo.web_name}</title>
+<meta http-equiv="keywords" content="{$vo.art_keyword}" />
+<meta http-equiv="description" content="{$vo.art_info}" />
+<style type="text/css">
+table{max-width: 700px !important;}
+.cms-details img,.cms-details a img{ 
+border:0; 
+margin:0; 
+padding:0; 
+max-width:700spx;
+width:expression(this.width>700?"700px":this.width);
+}
+.cms-details p{ overflow:hidden;}
+.news_right_rmtj{ margin-left: 895px; top:247px;position: absolute}
+.news_right_rmtj div dl{border: 1px #797979 solid;width: 298px;margin-top: 20px; }
+.news_right_rmtj div dl dt{font-size: 14px; color: #666666; text-align: center; background: #f2f2f2;height: 45px; line-height: 45px; }
+.news_right_rmtj div dl dd{padding: 0px 20px; border-bottom: 1px dashed #f2f2f2;display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;width: 268px; height: 50px;line-height: 50px;}
+.bottom_news{margin-top: 20px;}
+.bottom_news dl{border: 1px #797979 solid;width: 700px;margin-top: 20px; }
+.bottom_news dl dt{font-size: 14px; color: #666666; background: #f2f2f2;height: 45px; line-height: 45px; font-weight: bolder;padding-left: 15px; }
+.bottom_news dl dd{padding: 0px 20px; border-bottom: 1px dashed #f2f2f2; display:block;height: 50px;line-height: 50px;}
+.bottom_news dl dd span:first-child{white-space:nowrap; overflow:hidden; display:block;text-overflow:ellipsis;width: 570px;float: left}
+</style>
+<include file="Public:_header_main" />
+<div class="xiantiao"></div>
+<!--中部开始-->
+<div class="cms_page"> <!--{:get_ad(5)}-->
+  <div class="cms_frame cf">
+      <include file="helptop"/>
+    <div class="cms_content" style="width: 1000px">
+      <div class="cms-title-1">
+        <div>
+             <span><a href="__APP__/index/">首页</a>&gt</span>
+             <span><a href="__APP__/{$wo.type_nid}/index.html">{$cname}</a>&gt</span>
+             <span>正文</span>
+        </div>
+      </div>
+      <div class="cms-details">
+        <div class="article-list-wrap mgt">
+          <table width="700" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td height="35" align="center" valign="middle" style="font-size:16px; font-weight:bolder">{$vo.title}</td>
+            </tr>
+            <tr>
+              <td height="37"  valign="middle" style="background-color:#F9F9F9;">
+                <div style="float:left;line-height: 37px; padding-left: 10px;"><span>发布时间：{$vo.art_time|date="Y-m-d",###}<if condition="$vo.source neq ''">
+                 &nbsp;&nbsp;&nbsp;新闻来源：{$vo.source}</if></span>
+                </div>
+                <div  style="float:right;">
+                  <span style="float:left; line-height:37px">分享：</span>
+                  <span class="bdsharebuttonbox">
+                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信" target="_top"></a>
+                    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+                    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                    <a href="#" class="bds_more" data-cmd="more" style="font-size:15px;"></a>
+                  </span>
+                  <script type="text/javascript">
+                    window._bd_share_config={
+                      "common":{
+                        "bdSnsKey":{},
+                        "bdText":"发现一个投资灰常靠谱的平台（链金所），投资时间短，收益快，在上面小赚了一笔，有兴趣的童鞋可以来看看。",
+                        "bdMini":"2",
+                        "bdMiniList":["mshare","qzone","tsina","weixin","renren","tqq","kaixin001","tieba","douban","sqq","mail","ty","twi","h163","copy"],
+                        "bdPic":"https://www.ccfax.cn/UF/Uploads/Article/20160329161124.png",
+                        "bdStyle":"1",
+                        "bdSize":"24",
+                      },
+                      "share":{}
+                    };
+                    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='https://o6wg7zsae.qnssl.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                  </script>
+                </div>
+              </td>
+            </tr>
+            <tr height="40"><td></td></tr>
+            <tr>
+              <td>{$vo.art_content}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <if condition="$remencount gt 0">
+        <div class="bottom_news">
+          <dl>
+              <dt>相关文章</dt>
+              <volist name="zuijinlist" id="vr">
+                <dd>
+                  <a href="{$vr.arturl}" title="{$vr.title}"><span>{$vr.title}</span><span style="float: right">{$vr.art_time|date="Y-m-d",###}</span></a>
+                </dd>
+              </volist>
+
+          </dl>
+        </div>
+      </if>
+    </div>
+      <div class="news_right_rmtj">
+        <a href="{:U('/member/common/register')}"><img src="__ROOT__/Style/H/images/ad/news_zc.jpg" /></a>
+        <div>
+          <dl>
+            <dt>热门文章推荐</dt>
+            <volist name="artist" id="vg">
+              <dd><a href="{$vg.arturl}" title="{$vg.title}">{$vg.title}</a></dd>
+            </volist>
+          </dl>
+        </div>
+      </div>
+  </div>
+</div>
+<div style="clear: both"></div>
+<include file="Public:_footer" />
+<script>
+  $(function () {
+    var h = $(".news_right_rmtj dd").length;
+    h = 50*h+45+300;
+    $(".cms-details").css("minHeight",h+"px")
+  })
+</script>

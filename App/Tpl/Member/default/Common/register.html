@@ -1,0 +1,278 @@
+<include file="default:Public:_header_common" group="Home" />
+	<title>新用户注册-- {$glo.web_name}</title>
+<include file="default:Public:_header_main" group="Home"/>
+<link rel="stylesheet" href="__ROOT__/Style/H/css/registerreset.css" />
+<link rel="stylesheet" href="__ROOT__/Style/H/css/registerstyle.css" />
+<link rel="stylesheet" href="__ROOT__/Style/H/css/keyboard.css" />
+<script type="text/javascript">
+var imgpath="__ROOT__/Style/M/";
+var curpath="__URL__";
+</script>
+<script type="text/javascript" src="__ROOT__/Style/H/js/keyboard.js"></script>
+<script type="text/javascript" src="__ROOT__/Style/M/js/reg.js?v=1.0"></script>
+<script type="text/javascript" src="__ROOT__/Style/Js/strength.js"></script> 
+<script type="text/javascript" src="__ROOT__/Style/Js/autoMail.js"></script>
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+.demo{width:300px;margin:40px auto;}
+/* mailBox */
+#mailBox{background:#fff;border:1px solid #ddd;padding:3px 5px 5px;position:absolute;z-index:9999;display:none;
+    -webkit-box-shadow:0px 2px 7px rgba(0, 0, 0, 0.35);-moz-box-shadow:0px 2px 7px rgba(0, 0, 0, 0.35);
+}
+#mailBox p{width:100%;margin:0;padding:0;height:20px;line-height:20px;clear:both;font-size:12px;color:#ccc;cursor:default;}
+#mailBox ul{padding:0;margin:0;}
+#mailBox li{font-size:12px;height:22px;line-height:22px;color:#939393;font-family:'Tahoma';list-style:none;cursor:pointer;overflow:hidden;}
+#mailBox .cmail{color:#000;background:#e8f4fc;}
+
+</style>
+	<div class="reg_bg">
+	<div class="register_main">
+       
+		<div class="register_form" >
+            <div class="regist_left">
+			<form action="">
+            <span class="xiaozhu"><a href="/security/tiyanjin"></a></span>
+				<!--<p>
+					<span class="require"><b>常用邮箱</b></span>
+                    <input id="txtEmail" type="text" class="register_email email"/>
+				    <div id="dvEmail" class="dv_r_4_3"></div>
+                </p>-->
+                <div style=" clear:both"></div>
+               <!-- <p style="margin-top:5px;margin-bottom:-10px; width:500px">
+                    <span style="margin-left:100px;color:#000000">个人用户</span>
+                    <input type="radio" checked="checked" name="user_regtype" value="1" style="margin-left:18px;" />
+                    <span style="margin-left:20px;color:#000000">企业用户</span>
+                    <input type="radio" name="user_regtype" value="2" style="margin-left:18px;" />
+                    <div id="" class="dv_r_4_3"></div>
+                </p>-->
+                
+				<!--<p>
+					<span class="require"><b>用户名</b></span>
+                    <input id="txtUser" type="text" class="register_name uname"/>
+                    <div id="dvUser" class="dv_r_4_3"></div>
+				</p>-->
+               <!--  <div style=" clear:both"></div> -->
+                <p>
+                    <span class="require"><b>手机号码</b></span>
+                    <input id="txt_phone" type="text" class="txt_phone rphone"/>
+                    <div id="sendSMSTip" class="dv_r_4_3"></div>
+                </p>
+                <p >
+            
+                    <span class="require" style="float: left;"><b>验证码</b></span>
+                    <input id="txtCode" type="text" class="register_check"  placeholder="计算结果" style="float: left; margin-left:4px;"/>
+                    <img src='__URL__/verify2' style="width:130px; height:30px;border: 1px solid #ccc;float: left;margin-left: 10px;" alt="点击换一个校验码" id="imVcode" onclick="this.src=this.src+'?t='+Math.random()" />
+                    <div id="dvCode" class="dv_r_4_3" ></div>
+             
+                </p>
+               <!--  <p style=" margin-top:10px;">
+                  <span class="require"><b></b></span>
+                   
+                    <span>&nbsp;&nbsp;看不清<a href="javascript:document.getElementById('imVcode').onclick();">换一张！</a>&nbsp;</span>
+                </p>-->
+                <div style=" clear:both"></div>
+                <p>
+                    <span class="require"><b>手机验证码</b></span>
+                    <input type="text"  id="txt_smsCode" class="txt_smsCode smscode" />
+                    <input type="button" value="点击获取" id ="phonebtn" onclick="sendMobileValidSMSCode();" class="huoqicode" />
+                    <div id="dvsmsCode" class="dv_r_4_3"></div>
+                </p>
+                <div style=" clear:both"></div>
+				<p>
+					<span class="require"><b>登录密码</b></span>
+                    <input id="txtPwd" type="password" class="register_pass pwdlogo" onKeyUp=pwStrength(this.value) onBlur=pwStrength(this.value) />
+                    <div id="dvPwd" class="dv_r_4_3"></div>
+				</p>
+				<div style=" clear:both"></div>
+                <div style="height:10px;margin-left: 173px; margin-bottom:12px;">
+                    <span class="require"></span>
+                    <table width="100" border="0" cellpadding="0" cellspacing="0"  style="float:left;margin-left:5px;color:#ffffff; margin-top:-8px;"> 
+                        <tr align="center" > 
+                            <td width="30%" id="strength_l" bgcolor="#afafaf" style="text-align:center; font-size:12px;">弱</td> 
+                            <td width="30%" id="strength_m" bgcolor="#afafaf" style="text-align:center; font-size:12px;">中</td> 
+                            <td width="30%" id="strength_h" bgcolor="#afafaf" style="text-align:center; font-size:12px;">强</td> 
+                        </tr> 
+                    </table>
+                    <!--<div  class="dv_r_4_3" ></div>-->
+                </div>
+				<div style=" clear:both"></div>
+				<p>
+					<span class="require"><b>确认密码</b></span>
+                    <input id="txtRepwd" type="password" class="register_pass pwdlogo"/>
+                    <div id="dvRepwd" class="dv_r_4_3"></div>
+				</p>
+                <div style=" clear:both"></div>
+				<p>
+					<span class="require"><b class="no_bg">推荐人(选填)</b></span>
+                    <input type="text" class="register_rec rrec" id="txtRec" placeholder="用户ID/手机号" value = "{$rename}"/>
+                    <div id="dvRec" class="dv_r_4_3"></div>
+				</p>
+                <div style=" clear:both"></div>
+				<p class="teshu">
+					
+				</p>
+                <p style="margin-top:10px;margin-bottom:20px; height:60px;">
+                    <span class="require"></span>
+                    <input type="checkbox" class="register_checkbox" checked="checked" style="left:-29px;"/>
+                    <a href="__APP__/agreement/ruleserver.html" target="_blank" style="margin-left:-27px; color:#000000;">我已阅读并同意链金所《注册协议》条款</a>
+                    <input  id="Img1" type="button"  class="reg-submitpass" onclick="RegSubmit(this);" value="注册" />
+                </p>
+                <p><div class="yesreg"><a href="/member/common/login/" style="color: #00ccff;text-decoration: underline;">已有账户，现在登录</a></div></p>
+				
+			</form>
+            </div>
+		</div>
+	</div>
+</div>
+<div class="pop-bg"></div>
+<!--自动投标协议 start-->
+<div class="reg-xieyi pop-div">
+    <div href="javascript:void(0)" class="popdiv-close js-popclose"></div>
+    <h2 class="reg-xyh2">确认协议</h2>
+    <div class="reg-xycontent">
+        <p class="reg-xydes">温馨提示：根据监管部门要求，提高投资安全性，请阅读并确认以下协议。</p>
+        <div class="reg-xytext">
+            <span class="reg-check reg-check-tick"></span> 我已阅读并接受以下协议：<a href="__APP__/agreement/sanfang.html" target="_blank">《三方借款协议》</a><a href="__APP__/agreement/fengxiantishi.html" target="_blank">《风险提示告知书》</a>
+        </div>
+        <div class="reg-confbutton">
+            <a class="reg-button-sure js-pass" href="javascript:void(0)">确认</a><a class="reg-button-cancle js-popclose" href="javascript:void(0)">取消</a>
+        </div>
+    </div>
+</div>
+<!--自动投标协议 end-->
+<script type="text/javascript">
+    function closeAction(){
+    	window.location.href="__APP__/member/";
+    }
+    function jfun_dogetpass(){
+    	var ux = $("#emailname").val();
+    	if(ux==""){
+    		$.jBox.tip('请输入用户名或者邮箱','tip');
+    		return;
+    	}
+    	$.jBox.tip("邮件发送中......","loading");
+    	$.ajax({
+    		url: "__APP__/member/common/dogetpass/",
+    		data: {"u":ux},
+    		//timeout: 5000,
+    		cache: false,
+    		type: "post",
+    		dataType: "json",
+    		success: function (d, s, r) {
+    			if(d){
+    				if(d.status==1){
+    					$.jBox.tip("发送成功，请去邮箱查收",'success');
+    					$.jBox.close(true);
+    				}else{
+    					$.jBox.tip("发送失败，请重试",'fail');
+    				}
+    			}
+    		}
+    	});
+
+    }
+
+    function getPassWord() {
+    	$.jBox("get:__APP__/member/common/getpassword/", {
+    		title: "找回密码",
+    		width: "auto",
+    		buttons: {'发送邮件':'jfun_dogetpass()','关闭': true }
+    	});   
+    }
+    $(document).ready(function(){
+        $('#txtEmail').autoMail({
+            emails:['qq.com','163.com','126.com','sina.com','sohu.com','yahoo.cn','gmail.com','hotmail.com','live.cn']
+        });
+    });
+</script>
+<script type="text/javascript">
+    var mbTest = /^(13|14|15|18|17)[0-9]{9}$/;
+    var timer = null;
+    var leftsecond = 160; //倒计时
+    var msg = "";
+    var i =0;
+    function sendMobileValidSMSCode() {
+        var txt = $("#txtCode").val();
+        if(i != 0){
+            $("#imVcode").click();
+            $("#dvCode").html(GetP("reg_wrong", arrWrong["dvCode"]));
+        }else{
+            if (txt != null) {
+            //格式正确
+
+            $.ajax({
+                url: "__URL__/ckcode/",
+                data: {
+                    "sVerCode":  txt,
+                },
+                cache: false,
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                        if(data == 1){
+                           SMSCode();
+                        }else{
+                           $("#dvCode").html(GetP("reg_wrong", arrWrong["dvCode"]));
+                        }
+                }
+            });
+            }
+            else {
+                $("#dvCode").html(GetP("reg_wrong", arrWrong["dvCode"]));
+            }
+        }
+        i++;
+        
+    }
+
+    function SMSCode(data) {
+            $("#dvCode").html(GetP("reg_ok", arrOk["dvCode"]));
+            var mobile = $("#txt_phone").val();
+            var txt = $("#txtCode").val();
+            if (mobile == "") {
+                $('#sendSMSTip').html(GetP("reg_wrong", arrWrong["dvPhone0"]));
+                return;
+            }
+            if (mbTest.test(mobile)) {
+                $('#sendSMSTip').html(GetP("reg_ok", arrOk["dvPhone"]));
+                $.ajax({
+                    url: "__URL__/sendphone1/",
+                    type: "post",
+                    dataType: "json",
+                    data: {"cellphone":mobile,"sVerCode":txt},
+                    success: function(d) {
+                        leftsecond = 60;
+                        if (d.status == 1) {
+                            clearInterval(timer);
+                            timer = setInterval(function(){
+                            if(--leftsecond>0){
+                                $("#phonebtn").val(leftsecond+"秒");
+                                $("#phonebtn").attr("disabled","disabled");
+                            }else{
+                                $("#phonebtn").removeAttr("disabled");
+                                $("#phonebtn").val("发送验证码");
+                            }
+
+                            }, 1000, "1");
+
+                            timer = setInterval(setLeftTime, 1000, "1");
+                        }
+                        else if (d.status == 2) {
+                            $('#sendSMSTip').html(GetP("reg_wrong", arrWrong["dvPhone1"]));
+                            $("#txt_phone").removeAttr("readonly");
+                        }else {
+                            msg = "校验码发送失败,请重试";
+                            $("#sendSMSTip").html(GetP("reg_wrong", arrWrong["dvPhone2"]));
+                            //$("#txt_phone").attr("readonly", true);
+                        }
+                    }
+                });
+            }
+            else {
+                
+                $("#sendSMSTip").html(GetP("reg_wrong", arrWrong["dvPhone"]));
+            }
+        
+    }
+</script>
+<include file="default:Public:_footer_nei" group="Home" />

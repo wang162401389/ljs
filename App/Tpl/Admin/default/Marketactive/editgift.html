@@ -1,0 +1,59 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<div class="so_main">
+  <div class="page_tit">礼品赠送</div>
+<!--搜索-->
+  <include file="search" />
+<!--搜索-->
+<div class="Toolbar_inbox">
+  </div>
+
+	<form action="__URL__/doeditgift" name="form" method="post" onsubmit="return subcheck();">
+		<input type="hidden" id='id' name="id" value="{$list.id}">
+		
+		<table id="" width="500" border="0" height="350" cellspacing="0" cellpadding="0">
+			<tr><td></td><td><span style="color: red;">(注：*为不可更改项)</span></td></tr>
+			<tr>
+				<td>奖品名称：</td><td><input type="text" name="info" value="{$list.info}" readonly><span style="color: red;margin-left: 10px">*</span></td>
+			</tr>
+			<tr>
+				<td>奖品类型：</td><td>
+					 <htmlA:select id="type" datakey="typelist" name="type" value="id|list.type"/><span style="color: red;margin-left: 10px">*</span>
+				</td>
+			</tr>
+			<tr>
+				<td>奖品价值：</td><td><input type="text" name="value" value="{$list.value}" readonly><span style="color: red;margin-left: 10px">*</span></td>
+			</tr>
+			<tr>
+				<td>奖品剩余数量：</td><td><input type="text" name="left" value="{$list.left}"></td>
+			</tr>
+			<tr>
+				<td>奖品总数：</td><td><input type="text" name="total" value="{$list.total}"></td>
+			</tr>
+			<tr>
+				<td>概率：</td><td><input type="text" name="odds" value="{$list.odds}" readonly><span style="color: red;margin-left: 10px">*</span></td>
+			</tr>
+			<tr>
+				<td>备注：</td><td><input type="text" name="mark" value="{$list.mark}"></td>
+			</tr>
+			<tr>
+				<td></td><td><input type="submit" name="submit" style="width: 60px;border-radius: 3px;font-size: 12px;" value="修改"></td>
+			</tr>
+		</table>
+	</form>
+
+  <div class="Toolbar_inbox">
+  </div>
+
+</div>
+<script type="text/javascript">
+var cansub = true;
+function subcheck(){
+  if(!cansub){
+    alert("请不要重复提交，如网速慢，请等待！");
+    return false; 
+  }
+}
+</script>
+<include file="Public:_footer" />

@@ -1,0 +1,55 @@
+<include file="Public:_header" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<tagLib name="htmlA" />
+<div class="so_main">
+    <div class="page_tit">单日标的数据</div>
+    <div id="search_div">
+
+        <div class="form2" style="background-color: #d2dbea;">
+            <form method="post" action="__URL__/contractAggregate">
+                <table style="width: 80%;height: 80px;">
+                    <tr>
+                        <td>时间：</td>
+                        <td><htmlA:timer id="search_time" style="width:90px" value="{$search.search_time}"  /></td>
+          					<td>
+          						<span class='chaxun'><input type="submit" value="查询"/></span>
+                    	</td>
+                    </tr>
+                    <tr style="text-align: right;">
+                        <td colspan="6">
+                        
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th class="line_l">日期</th>
+                <th class="line_l">发标总额（万元）</th>
+                <th class="line_l">成交金额（万元）</th>
+                <th class="line_l">投资人数（人）</th>
+                <th class="line_l">借款人数（人）</th>
+                <th class="line_l">综合收益</th>
+                <th class="line_l">平均期限（月）</th>
+            </tr>
+            <volist id="vo" name="list">
+                <tr>
+                    <td>{$vo.days}</td>
+                    <td>{:$vo['borrow_money']/10000}</td>
+                    <td>{:$vo['invest_money']/10000}</td>
+                    <td>{$vo.invest_count|default=0}</td>
+                    <td>{$vo.borrow_man|default=0}</td>
+                    <td>{$vo.borrow_rate|default=0}%</td>
+                    <td>{$vo.borrow_month|default=0}</td>
+                </tr>
+            </volist>
+        </table>
+        <div class="Toolbar_inbox" style="overflow: hidden">
+            <div class="page right">{$pagebar}</div>
+        </div>
+    </div>
+</div>
+<include file="Public:_footer" />

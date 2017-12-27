@@ -1,0 +1,138 @@
+<include file="Public:_header_common" />
+<title>{$title}</title>
+<meta http-equiv="keywords" content="{$keyword}" />
+<meta http-equiv="description" content="{$description}" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/H/css/jiekuan.css" />
+<script type="text/javascript" src="__ROOT__/Style/H/js/common.js" language="javascript"></script>
+<script type="text/javascript" src="__ROOT__/Style/Js/sea.js" language="javascript"></script>
+</head>
+<body>
+<include file="Public:_header_main" />
+<tagLib name="htmlA" />
+<div class="j-banner">
+	<div class="wrapper">
+		<h2>信用借款，快速审批</h2>
+        <ul class="cf">
+        	<li class="b1">
+            	<p class="round"><i class="jiekuan-spr"></i></p>
+                <h3>个人借款 </h3>
+                <a href="javascript:void(0)" class="js-applyBtn" data-type="1">立即申请</a>
+            </li>
+            <li class="b2">
+            	<p class="round"><i class="jiekuan-spr"></i></p>
+                <h3>企业借款 </h3>
+                <a href="javascript:void(0)" class="js-applyBtn" data-type="2">立即申请</a>
+                <p>仅接受珠三角地区木材产业链借款</p>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="feature">
+	<div class="wrapper cf">
+    	<dl class="f1">
+        	<dt>门槛低</dt>
+            <dd class="jiekuan-spr"></dd>
+            <dd>无抵押无担保</dd>
+        </dl>
+        <dl class="f2">
+        	<dt>额度高</dt>
+            <dd class="jiekuan-spr"></dd>
+            <dd>最高可申请20万元</dd>
+        </dl>
+        <dl class="f3">
+        	<dt>到账快</dt>
+            <dd class="jiekuan-spr"></dd>
+            <dd>最快当天可提现</dd>
+        </dl>
+        <dl class="f4">
+        	<dt>费用少</dt>
+            <dd class="jiekuan-spr"></dd>
+            <dd>有机会免手续费</dd>
+        </dl>
+    </div>
+</div>
+<div class="process">
+	<div class="wrapper">
+        <h2>申请流程</h2>
+        <div class="apply-step">
+            <p class="icon-line">
+                <i class="jiekuan-spr ic-approve"></i>
+                <i class="jiekuan-spr ic-write"></i>
+                <i class="jiekuan-spr ic-submit"></i>
+            </p>
+            <p class="wire-line cf">
+            	<i class="jiekuan-spr circle"></i>
+                <i class="wire"></i>
+                <i class="wire"></i>
+                <i class="jiekuan-spr circle"></i>
+                <i class="wire"></i>
+                <i class="wire"></i>
+                <i class="jiekuan-spr circle"></i>
+            </p>
+            <p class="text-line cf">
+            	<span>1、借款信息</span>
+                <span class="m">2、填写申请资料</span>
+                <span>3、提交申请</span>
+            </p>
+        </div>
+    </div>
+</div>
+<!--弹窗s -->
+<div class="jiekuan-pop js-jiekuanPop">
+    <a href="javascript:void(0)" class="jiekuan-close js-popclose"></a>
+	<h2 class="notice js-notice"></h2>
+    <p>如有疑问请联系链金所官方客服400-6626-985</p>
+    <div class="btn-line"><a href="javascript:void(0);" class="apply-btn-info js-popclose">确定</a></div>
+</div>
+<!--弹窗e -->
+<input type="hidden" id="isFull" value="{$full}" />
+<input type="hidden" id="login" value="{$login}" />
+<input type="hidden" id="vo" value="{$vo}" />
+<include file="Public:_footer" />
+<script type="text/javascript">
+(function($){
+    define("jiekuan/index",function(require, exports, module){
+		require("layer/layer");
+        var Module = {
+            init: function(){
+                //会员类型：1为个人，2为企业 3未确定
+				    var login = $("#login").val(),
+						isFull = $("#isFull").val(); //判断满额：0为满额
+				//立即申请
+				$("body").on("click", ".js-applyBtn", function(){
+                    //if(login == 0){
+                        //window.location.href ="/member/common/login";
+                        //return ;
+                    //}
+                    //var vo = $("#vo").val();
+                    //if(vo == 0){
+                        if(isFull <= 0){
+                            $(".js-jiekuanPop .js-notice").html("今日借款申请已满额，请明日再试！");
+                            $(".pop-bg").show();
+                            $(".js-jiekuanPop").show();
+                            return;
+                        }
+                    //}
+					var type = $(this).data("type") || ""; // 1为个人，2为企业
+                    if(type==1){
+                        var locationHref = "/home/jiekuan/borrowinfo?type=1";
+                    }else{
+                        var locationHref = "/home/jiekuan/borrowinfo?type=2";
+                    }
+					window.location.href = locationHref;
+				});
+				
+				//关闭弹窗
+				$("body").on("click", ".js-popclose", function(){
+					$(this).closest(".jiekuan-pop").hide();
+					$(".pop-bg").hide();
+				});
+			}
+        };
+        module.exports = Module;
+    });
+    seajs.use("jiekuan/index", function(module){
+        module.init();
+    });
+})($);
+</script>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <include file="Pub:header-common" /> 
+  <link rel="stylesheet" href="css/list.css">
+</head>
+
+<body>
+   
+
+    <div class="hook">
+    </div>
+    <div class="header">
+    <div style="position:absolute; width:94%;bottom: 0; left:3%; overflow: hidden;">
+      <ul class="line-nav" id="line-nav">
+        <li name="tab1" style="width:17%" class="tab <if condition="$listtab eq 'ZJB'"> current </if>" ><a href="{:U('M/invest/lists','ptype=10')}">质金链(保)</a></li>
+        <li name="tab2" class="tab <if condition="$listtab eq 'ZJ'"> current </if>" ><a href="{:U('M/invest/lists','ptype=1,2,3')}">质金链</a></li>
+        <li name="tab3" class="tab <if condition="$listtab eq 'BJ'"> current </if>" ><a href="{:U('M/invest/lists','ptype=8')}">保金链</a></li>
+        <li name="tab4" class="tab <if condition="$listtab eq 'RJ'"> current </if>" ><a href="{:U('M/invest/lists','ptype=4')}">融金链</a></li>
+        <li name="tab5" class="tab <if condition="$listtab eq 'XJ'"> current </if>" ><a href="{:U('M/invest/lists','ptype=5,6')}">信金链</a></li>
+        <li name="tab6" class="tab <if condition="$listtab eq 'YJ'"> current </if>"><a href="{:U('M/invest/lists','ptype=7')}"> 优金链</a></li>
+      </ul>
+    </div>
+    </div>
+  <div class="container" style="margin-bottom: 9rem;">
+    <div id="tabPage1" class="tabPage active">
+
+    <ul>
+        <?php $j=0; ?>
+        <volist name="list.list" id="vo">
+            
+            <li class="list " <?php if($j++>4) echo 'style="display:none"' ?>  >
+                <div style="color:#4a4949;font-size:1.2rem; border-bottom:1px dashed #dcdcdc; height:3.2rem;line-height:3.2rem; " class="mine_btn" data-toggle="{:U('M/invest/detail', array('id'=>$vo['id']))}" >{$vo.borrow_name|cnsubstr=###,17}
+                <if condition="!empty($vo['password'])"><span style="float: right;position: absolute;"><img style="width:30px;margin-left: 0.5rem;" src="__ROOT__/Style/H/images/borrow_vip.png"></span></if>
+                </div>
+               
+                <div class="info_container">
+                    <div class="cost">{$vo.borrow_interest_rate}<span style="font-size:1rem;">&nbsp;%</span><if condition="$vo.jiaxi_rate gt 0"><span class="h5-jiaxi" style="top:-5px">+{$vo.jiaxi_rate}%</span></if></div>
+                    <div class="percent">{$vo.borrow_duration}<span style="font-size:1rem;"> <php> echo $vo['repayment_type']==1?'天':'个月'</php></span></div>
+                </div>
+                <div class="inline">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:{$vo.progress}%;">
+                        </div>
+                    </div>
+                    {$vo|borrow_status}
+                </div>
+                 <div class="show_info">
+                    <span class="start">剩{$vo.need|MFormt=###}/{$vo.borrow_money}</span><span class="last">{$vo.borrow_min}元起投</span>
+                </div>
+            </li>
+            
+        </volist>
+    </ul>
+    </div>
+
+    <!-- <div id="tabPage2" class="tabPage">
+     <ul>
+        <?php $j=0; ?>
+        <volist name="list8" id="vo">
+             <li class="list mine_btn"  <?php if($j++>4) echo 'style="display:none"'; ?> data-toggle="{:U('M/invest/detail', array('id'=>$vo['id']))}">
+                <div style="color:#4a4949;font-size:1.2rem; border-bottom:1px dashed #dcdcdc; height:3.2rem;line-height:3.2rem; ">{$vo.borrow_name|cnsubstr=###,17}
+                <if condition="!empty($vo['password'])"><span style="float: right;position: absolute;"><img style="width:30px;margin-left: 0.5rem;" src="__ROOT__/Style/H/images/borrow_vip.png"></span></if>
+                </div>
+               
+                <div class="info_container">
+                    <div class="cost">{$vo.borrow_interest_rate}<span style="font-size:1rem;">&nbsp;%</span><if condition="$vo.jiaxi_rate gt 0"><span class="h5-jiaxi" style="top:-5px;">+{$vo.jiaxi_rate}%</span></if></div>
+                        <div class="percent">{$vo.borrow_duration}<span style="font-size:1rem;"> <php> echo $vo['repayment_type']==1?'天':'个月'</php></span></div>
+                </div>
+                <div class="inline">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:{$vo.progress}%;">
+                        </div>
+                    </div>
+                     {$vo|borrow_status}
+                </div>
+                 <div class="show_info">
+                    <span class="start">剩{$vo.need|MFormt=###}/{$vo.borrow_money}</span><span class="last">{$vo.borrow_min}元起投</span>
+                </div>
+            </li>
+        </volist>
+    </ul>
+
+    </div>
+
+<div id="tabPage3" class="tabPage">
+
+    <ul>
+        <?php $j=0; ?>
+        <volist name="list3" id="vo">
+            
+            <li class="list " <?php if($j++>4) echo 'style="display:none"' ?>  >
+                <div style="color:#4a4949;font-size:1.2rem; border-bottom:1px dashed #dcdcdc; height:3.2rem;line-height:3.2rem; " class="mine_btn" data-toggle="{:U('M/invest/detail', array('id'=>$vo['id']))}">{$vo.borrow_name|cnsubstr=###,17}
+                <if condition="!empty($vo['password'])"><span style="float: right;position: absolute;"><img style="width:30px;margin-left: 0.5rem;" src="__ROOT__/Style/H/images/borrow_vip.png"></span></if></div>
+               
+                <div class="info_container">
+                    <div class="cost">{$vo.borrow_interest_rate}<span style="font-size:1rem;">&nbsp;%</span><if condition="$vo.jiaxi_rate gt 0"><span class="h5-jiaxi" style="top:-5px;">+{$vo.jiaxi_rate}%</span></if></div>
+                    <div class="percent">{$vo.borrow_duration}<span style="font-size:1rem;"> <php> echo $vo['repayment_type']==1?'天':'个月'</php></span></div>
+                </div>
+                <div class="inline">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:{$vo.progress}%;">
+                        </div>
+                    </div>
+                    {$vo|borrow_status}
+                </div>
+                 <div class="show_info">
+                    <span class="start">剩{$vo.need|MFormt=###}/{$vo.borrow_money}</span><span class="last">{$vo.borrow_min}元起投</span>
+                </div>
+            </li>
+        </volist>
+    </ul>
+    </div>
+
+<div id="tabPage4" class="tabPage">
+
+    <ul>
+        <?php $j=0; ?>
+        <volist name="list4" id="vo">
+            
+            <li class="list " <?php if($j++>4) echo 'style="display:none"' ?>  >
+                <div style="color:#4a4949;font-size:1.2rem; border-bottom:1px dashed #dcdcdc; height:3.2rem;line-height:3.2rem; "class="mine_btn" data-toggle="{:U('M/invest/detail', array('id'=>$vo['id']))}" >{$vo.borrow_name|cnsubstr=###,17}<if condition="!empty($vo['password'])"><span style="float: right;position: absolute;"><img style="width:30px;margin-left: 0.5rem;" src="__ROOT__/Style/H/images/borrow_vip.png"></span></if></div>
+               
+                <div class="info_container">
+                    <div class="cost">{$vo.borrow_interest_rate}<span style="font-size:1rem;">&nbsp;%</span><if condition="$vo.jiaxi_rate gt 0"><span class="h5-jiaxi" style="top:-5px;">+{$vo.jiaxi_rate}%</span></if></div>
+                    <div class="percent">{$vo.borrow_duration}<span style="font-size:1rem;"> <php> echo $vo['repayment_type']==1?'天':'个月'</php></span></div>
+                </div>
+                <div class="inline">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:{$vo.progress}%;">
+                        </div>
+                    </div>
+                    {$vo|borrow_status}
+                </div>
+                 <div class="show_info">
+                    <span class="start">剩{$vo.need|MFormt=###}/{$vo.borrow_money}</span><span class="last">{$vo.borrow_min}元起投</span>
+                </div>
+            </li>
+        </volist>
+    </ul>
+    </div>
+
+ <div id="tabPage5" class="tabPage">
+
+    <ul>
+        <?php $j=0; ?>
+        <volist name="list5" id="vo">
+           
+            <li class="list " <?php if($j++>4) echo 'style="display:none"' ?>  >
+                <div style="color:#4a4949;font-size:1.2rem; border-bottom:1px dashed #dcdcdc; height:3.2rem;line-height:3.2rem; " class="mine_btn" data-toggle="{:U('M/invest/detail', array('id'=>$vo['id']))}">{$vo.borrow_name|cnsubstr=###,17}</div>
+               
+                <div class="info_container">
+                    <div class="cost">{$vo.borrow_interest_rate}<span style="font-size:1rem;">&nbsp;%</span><if condition="$vo.jiaxi_rate gt 0"><span class="h5-jiaxi" style="top:-5px;">+{$vo.jiaxi_rate}%</span></if></div>
+                    <div class="percent">{$vo.borrow_duration}<span style="font-size:1rem;"> <php> echo $vo['repayment_type']==1?'天':'个月'</php></span></div>
+                </div>
+                <div class="inline">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:{$vo.progress}%;">
+                        </div>
+                    </div>
+                    {$vo|borrow_status}
+                </div>
+                 <div class="show_info">
+                    <span class="start">剩{$vo.need|MFormt=###}/{$vo.borrow_money}</span><span class="last">{$vo.borrow_min}元起投</span>
+                </div>
+            </li>
+            
+        </volist>
+    </ul>
+    </div> -->
+
+  </div>
+    <div style="text-align: center; color:#9d9d9d; margin-top: -9.5rem;">投资有风险，理财需谨慎</div>
+  <include file="Pub:footer" />
+
+</body>
+<script type="text/javascript">
+$(function(){
+    var nav = document.getElementById('line-nav');
+    nav.addEventListener('touchend',function(e){
+        if($("#line-nav").css('left') == '0px'){
+            $("#line-nav").animate({'left': '-24%'});
+        }else{
+            $("#line-nav").animate({'left': '0px'});
+        }
+    });
+   
+});                     
+</script>   
+
+</html>
+<script>
+     function show_next_item(name,total,cur){
+         //alert(total)
+         //alert(cur)
+         if(total==cur){
+             html='<li id="all" style="text-align: center">已经全部显示</li>';
+			 if($("#all").length == 0){
+				 $(name).children("ul").append(html);
+				 return 1;
+			 }
+             
+         }else{
+             diff=total-cur;
+             if(diff>5) diff=5;
+             $li_list=$(name).find("li");
+             j=0;
+             $li_list.each(function(i,item){
+                 if(($(item).css("display")=="none")&&(j<diff)){
+                     $(item).show();
+                     j++;
+
+                 }
+             })
+             return diff;
+         }
+     }
+    $(document).ready(function(){
+        tabPage1_list=$("#tabPage1").find("li");
+        tabPage1_num=tabPage1_list.length;
+        if(tabPage1_num>5) tabPage1_cur_num=5;
+        else tabPage1_cur_num=tabPage1_num;
+
+        //alert(tabPage1_num);
+
+//         tabPage2_list=$("#tabPage2").find("li");
+//         tabPage2_num=tabPage2_list.length;
+//         if(tabPage2_num>5) tabPage2_cur_num=5;
+//         else tabPage2_cur_num=tabPage2_num;
+//
+//         tabPage3_list=$("#tabPage3").find("li");
+//         tabPage3_num=tabPage3_list.length;
+//         if(tabPage3_num>5) tabPage3_cur_num=5;
+//         else tabPage3_cur_num=tabPage3_num;
+//
+//         tabPage4_list=$("#tabPage4").find("li");
+//         tabPage4_num=tabPage4_list.length;
+//         if(tabPage4_num>5) tabPage4_cur_num=5;
+//         else tabPage4_cur_num=tabPage4_num;
+//
+//         tabPage5_list=$("#tabPage5").find("li");
+//         tabPage5_num=tabPage5_list.length;
+//         if(tabPage5_num>5) tabPage5_cur_num=5;
+//         else tabPage5_cur_num=tabPage5_num;
+//
+//        tabPage6_list=$("#tabPage6").find("li");
+//        tabPage6_num=tabPage6_list.length;
+//        if(tabPage6_num>5) tabPage6_cur_num=5;
+//        else tabPage6_cur_num=tabPage6_num;
+
+        loading=0;
+        $(window).scroll(function(){
+
+            if( ((($(window).scrollTop() + $(window).height()) ) >= $(document).height())&&(loading==0))
+            {
+                loading=1;
+                html='<li class="loading" style="text-align: center">加载中....</li>';
+                name=$(".current").attr("name");
+
+                $("#tabPage1").children("ul").append(html);
+
+                //else if(name=="tab2"){
+                //     $("#tabPage2").children("ul").append(html);
+                // }else if(name=="tab3"){
+                //     $("#tabPage3").children("ul").append(html);
+                // }else if(name=="tab4"){
+                //     $("#tabPage4").children("ul").append(html);
+                // }else if(name=="tab5"){
+                //     $("#tabPage5").children("ul").append(html);
+                // }
+                setTimeout(function(){
+                    name=$(".current").attr("name");
+                    console.log(name);
+
+                        //alert("tab1")
+                        add=show_next_item("#tabPage1",tabPage1_num,tabPage1_cur_num);
+                        tabPage1_cur_num+=add;
+
+//                     else if(name=="tab2"){
+//                        alert("tab2")
+//                         add=show_next_item("#tabPage2",tabPage1_num,tabPage1_cur_num);
+//                        tabPage1_cur_num+=add;
+//                     }else if(name=="tab3"){
+//                        alert("tab3")
+//                         add=show_next_item("#tabPage3",tabPage1_num,tabPage1_cur_num);
+//                        tabPage1_cur_num+=add;
+//                     }else if(name=="tab4"){
+//                        alert("tab4")
+//                         add=show_next_item("#tabPage4",tabPage1_num,tabPage1_cur_num);
+//                        tabPage1_cur_num+=add;
+//                     }else if(name=="tab5"){
+//                        alert("tab5")
+//                         add=show_next_item("#tabPage5",tabPage1_num,tabPage1_cur_num);
+//                        tabPage1_cur_num+=add;
+//                     }else if(name=="tab6"){
+//                        alert("tab6")
+//                        add=show_next_item("#tabPage5",tabPage1_num,tabPage1_cur_num);
+//                        tabPage1_cur_num+=add;
+//                    }
+                    $(".loading").remove();
+                    loading=0;
+                },1000);
+
+            }
+        });
+    })
+<if condition="$waittime neq '' OR $waittime neq null ">
+    var seconds;
+    var timer=null;
+    function setLeftTime() {
+        waittime = {:$waittime-time()};
+        seconds = parseInt(waittime, 10);
+        timer = setInterval(showSeconds,1000);
+    }
+    
+    function showSeconds() {
+        if (seconds <= 0) {
+            clearInterval(timer);
+            location.reload();
+        } else {
+            console.log("当前剩余："+seconds);
+        }
+        seconds--;
+    }
+    setLeftTime();
+</if>
+</script>

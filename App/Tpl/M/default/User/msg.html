@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<include file="Pub:header-common" /> 
+	<link rel="stylesheet" href="css/announcement.css" >
+	<style>
+		.page{
+			text-align: center;
+			background: white;
+			padding: 0.5rem;
+		}
+	</style>
+</head>
+
+<body>
+	<include file="Pub:simple_header" />
+
+	<div class="content">
+        <volist name="list" id="vo">
+		<div class="list">
+			<div>{$vo.title}</div>
+			<div class="person">发件人:{$glo.web_name}</div>
+            <div class="date">发件时间:{$vo.send_time|date="Y-m-d",###}</div>
+		</div>
+        </volist>
+		<div class="page">{$pagebar}</div>
+	</div>
+	
+	 <include file="Pub:footer" />
+</body>
+
+</html>

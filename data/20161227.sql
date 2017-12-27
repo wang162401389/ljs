@@ -1,0 +1,1 @@
+alter table lzh_member_info add `card_in_hand` varchar(200) DEFAULT '' COMMENT '手持身份证照片';

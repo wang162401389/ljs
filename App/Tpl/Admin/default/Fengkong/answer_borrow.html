@@ -1,0 +1,99 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+    var delUrl = '__URL__/doDel';
+    var addUrl = '__URL__/add';
+    var isSearchHidden = 1;
+</script>
+<div class="so_main">
+    <div class="page_tit">借款信息</div>
+    <!--搜索/筛选会员-->
+    <!--搜索/筛选会员-->
+
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th style="width:30px;">
+                    <input type="checkbox" id="checkbox_handle" onclick="checkAll(this)" value="0">
+                    <label for="checkbox"></label>
+                </th>
+                <th>标号</th>
+                <th>用户名</th>
+                <th>预计天数</th>
+                <th>借款金额</th>
+                <th>借款利率</th>
+                <th>顾问利率</th>
+                <th>借款期限</th>
+                <th>满标日</th>
+                <th>复审日</th>
+                <th>借款到期日</th>
+                <th>转现货时间</th>
+                <th>提单利率</th>
+                <th>提单顾问费利率</th>
+                <th>提单天数</th>
+                <th>客户查询还款额</th>
+                <th><?php echo $last_des ?></th>
+                <th>操作</th>
+            </tr>
+            <?php foreach($info as $key=>$val) { ?>
+            <tr>
+                <td><input type="checkbox" name="checkbox" id="checkbox2" onclick="checkon(this)" value="{$vo.id}"></td>
+                <td><a href="{$val.id|getInvestUrl=###}"  target="_blank"><?php echo $val['bid'] ?></a></td>
+                <td><htmlA:user id="val.borrow_uid" uname="val.user_name" /></td>
+                <td><?php echo $val['dur_text'] ?></td>
+                <td><?php echo $val['borrow_money'] ?></td>
+                <td><?php echo $val['borrow_interest_rate'] ?></td>
+                <td><?php echo $val['colligate_fee'] ?></td>
+                <td><?php echo $val['borrow_duration'] ?></td>
+                <td><?php echo $val['full_time'] ?></td>
+                <td><?php echo $val['second_verify_time'] ?></td>
+                <td><?php echo $val['end'] ?></td>
+                <td><?php echo $val['change_data'] ?></td>
+                <td><?php echo $val['before_interest_rate'] ?></td>
+                <td><?php echo $val['before_server'] ?></td>
+                <td><?php echo $val['before_during'] ?></td>
+                <td><?php echo $val['apply_info'] ?></td>
+                <td><?php echo $val['cost']."元" ?></td>
+                <td><input type="button" value="审核" class="agreen_bn" onclick="do_agreen(this,{$val.id})">
+                    <input type="button" value="驳回"  class="disagreen_btn" onclick="do_disagreen(this,{$val.id})">
+                </td>
+            </tr>
+            <?php } ?>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+<include file="Public:_footer" />
+<script>
+    function do_agreen(object,id){
+       $parent=$(object).parent();
+       $parent.children("input").attr("disabled","disabled");
+        $(object).val("审核中...");
+        $.post("/Admin/Fengkong/answer_borrow",{id:id,status:1},function(result){
+            if(result=="ok"){
+                $(object).val("已审核");
+            }else{
+                $parent.children("input").removeAttr("disabled");
+                $(object).val("审核");
+            }
+        })
+    }
+
+    function do_disagreen(object,id){
+        $parent=$(object).parent();
+        $parent.children("input").attr("disabled","disabled");
+        $(object).val("驳回中...");
+        $.post("/Admin/Fengkong/answer_borrow",{id:id,status:2},function(result){
+            if(result=="ok"){
+                $(object).val("已驳回");
+            }else{
+                $parent.children("input").removeAttr("disabled");
+                $(object).val("驳回");
+            }
+        })
+    }
+</script>

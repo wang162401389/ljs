@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <include file="Pub:header-common" />
+  <link rel="stylesheet" href="css/index.css" >
+  <script src="js/jquery.event.move.js"></script>
+  <script src="js/jquery.event.swipe.js"></script>
+  <script src="js/unslider.min.js"></script>
+  <script src="js/jquery.marquee.js"></script>
+  <script>
+        $(function() {
+            var unslider= $('.banner').unslider({speed: 300,dots:true});
+            var data = unslider.data('unslider');
+            var slides = jQuery('.banner');
+
+            slides.on('swipeleft', function(e) {
+                data.next();
+                data.start();
+            }).on('swiperight', function(e) {
+                data.prev();
+                data.start();
+            });
+            $("#marquee").marquee({yScroll: "bottom"});
+        });
+    <if condition="$waitBorrowcount gt 0">
+        var seconds;
+        var timer=null;
+        function setLeftTime() {
+            waittime = {:$waitBorrow["list"][0]["add_time"]-time()};
+            seconds = parseInt(waittime, 10);
+            timer = setInterval(showSeconds,1000);
+        }
+
+        function showSeconds() {
+            if (seconds <= 0) {
+                clearInterval(timer);
+                location.reload();
+            } else {
+                console.log("当前剩余："+seconds);
+            }
+            seconds--;
+        }
+        setLeftTime();
+    </if>
+  </script>
+  <style type="text/css">
+        @media screen and (min-width:320px){.box .btn-div{ margin-top: 27rem;}}
+        @media screen and (min-width:375px){.box .btn-div{ margin-top: 29rem;}}
+        @media screen and (min-width:414px){.box .btn-div{ margin-top: 33rem;}}
+        @media screen and (min-width:640px){.box .btn-div{ margin-top: 35rem;}}
+        @media screen and (min-width:720px){.box .btn-div{ margin-top: 40rem;}}
+  </style>
+</head>
+<body>
+    <div class="banner">
+        <ul>
+			<volist name="adlist" id="va">
+				<li><a href="{$va.url}"><img src="__ROOT__/{$va.img}"></a></li>
+			</volist>
+        </ul>
+    </div>
+    <div class="title">
+        <div class="icon">
+            <img src="img/laba.png" alt="" />
+        </div>
+        <div class="title_font">
+            <ul id="marquee" class="marquee">
+                <?php foreach($noticeList as $key=>$val) { ?>
+                    <li class="mine_btn" data-toggle="{$val.arturl|setUrl=###}"><?php echo $val['title'] ?></li>
+                <?php } ?>
+            </ul>
+        </div>
+    </div>
+
+	<div class="mine_container">
+        <!-- <ul class="content">
+            <li class="mine_btn" style="background-color: #fff;">
+                <div id="Methods1" class="tiyan_main">
+                    <div class="tiyan_left" style="height: auto;">
+                        <dl>
+                            <dt>新手专享</dt>
+                            <dt>预期年化率</dt>
+                            <dt>期限</dt>
+                        </dl>
+                        <dl>
+                            <dd>送{$tiyanbiao.borrow_min}元体验金<br/>投资送抽iPhone7机会</dd>
+                            <dd>{$tiyanbiao.borrow_interest_rate}%</dd>
+                            <dd>{$tiyanbiao.borrow_duration_txt}</dd>
+                        </dl>
+                    </div>
+                    <div class="tiyan_right" >
+                    	<a type="button" class="btn btn-info1" style="color:#fa4622" href="{:U('M/experience/detail/')}">
+                    		立即<br/>体验
+                    	</a>
+                	</div>
+                    <div style="clear:both;"></div>
+                </div>
+            </li>
+        </ul> -->
+  
+        <div class="experience_main">
+            <img src="__ROOT__/Style/Phone/img/index/new.png" class="newtitle">
+            <if condition="empty($xsBorrow['list']) eq 1 ">
+                <!-- 无新手标 -->
+                <table cellspacing="0">
+                    <tr>
+                        <td style="width:30%;">预期年化利率</td>
+                        <td>借款期限</td>
+                        <td rowspan="2"  style="width:32%;">
+                            <a class="btn btn-info1 none" href="javascript:;">我要加入</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="color1">11<span class="small_font">%</span></td>
+                        <td class="big_font">30<span class="small_font">天</span></td>
+                    </tr>
+                </table>
+                <div class="ex_status">新手福利正在努力赶来的路上，请稍后...</div>
+            <else />
+            <!-- 有新手标 -->
+                <table cellspacing="0">
+                    <tr>
+                        <td style="width:30%;">预期年化率</td>
+                        <td>借款期限</td>
+                        <td rowspan="2"  style="width:32%;">
+                            <!-- <a class="btn btn-info1" href="{:U('M/experience/detail/')}">我要加入</a> -->
+                            <if condition="$xsBorrow['list'][0]['borrow_status'] eq 3">
+                            <a href="javascript:;" class="btn btn-info1 none">已流标</a>
+                            <elseif condition="$xsBorrow['list'][0]['borrow_status'] eq 4"/>
+                            <a href="javascript:;" class="btn btn-info1 none">复审中</a>
+                            <elseif condition="$xsBorrow['list'][0]['borrow_status'] eq 6"/>
+                            <a href="javascript:;" class="btn btn-info1 none">还款中</a>
+                            <elseif condition="$xsBorrow['list'][0]['borrow_status'] gt 6"/>
+                            <a href="{$xsBorrow['list'][0]['id']|getInvestUrl=###}" class="jbtn btn-info1 none" style="text-decoration: none">已完成</a>
+                            <else/>
+                            <a href="{$xsBorrow['list'][0]['id']|getInvestUrl=###}" class="btn btn-info1">我要投资</a>
+                        </if>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="color1">{$xsBorrow['list'][0]['borrow_interest_rate']}<span class="small_font">%</span></td>
+                        <td class="big_font">
+                            <?php if($xsBorrow['list'][0]['borrow_duration_txt']!=''){ ?>
+                            {$xsBorrow['list'][0]['borrow_duration_txt']}
+                            <?php } else { ?>
+                            {$xsBorrow['list'][0]['borrow_duration']}<span class="small_font"><if condition="$xsBorrow['list'][0]['repayment_type'] eq 1">天<else/>个月</if></span>
+                            <?php } ?>
+                        </td>
+                    </tr>
+                </table>
+                <div class="ex_status">
+                    <span class="ex_left">新手限投一次，限投金额5万元</span>
+                    <div class="ex_right">
+                        <div class="progress">
+                            <span class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:{$xsBorrow['list'][0]['progress']}%;"></span>
+                        </div>
+                        <div class="p_p_s">{$xsBorrow['list'][0]['progress']}%</div>
+                    </div>
+                </div>
+            </if>
+        </div>
+    
+
+        <if condition="$waitBorrowcount gt 0">
+        <div class="des"><img src="img/waiting.png" alt="" /> 发布预告</div>
+        <ul class="content">
+            <volist name="waitBorrow.list" id="wb">
+            <li class="mine_btn" data-toggle="{:U('M/invest/detail', array('id'=>$wb['id']))}">
+                <div>
+                    <div>{$wb.borrow_name|cnsubstr=###,17}<if condition="!empty($vo['password'])"><span style="float: right;position: absolute;"><img style="width:30px;margin-top: 1rem;margin-left: 0.5rem;" src="__ROOT__/Style/H/images/borrow_vip.png"></span></if></div>
+                    <div>
+                        <img src="img/bao.png" >
+                    </div>
+                </div>
+                <div>
+                    <div>{$wb.borrow_interest_rate}<span style=" font-size:1rem;">&nbsp;%</span><if condition="$wb.jiaxi_rate gt 0"><span class="h5-jiaxi">+{$wb.jiaxi_rate}%</span></if></div>
+                    <div>{$wb|borrow_status}</div>
+                </div>
+                <div class="borrow_info">
+                    <div>
+                        <if condition="$wb.borrow_duration_txt eq null" >
+                            {$wb.borrow_duration} <?php echo $wb['repayment_type']==1?'天':'个月'; ?>
+                        <elseif   condition="$wb['repayment_type'] neq 1"  />
+                            {$wb.borrow_duration_txt}
+                        <else />
+                            {$wb.borrow_duration_txt|get_day=### } <?php echo $wb['repayment_type']==1?'天':'个月'; ?>
+                        </if>
+                    </div>
+                    <div>总额：{$wb.borrow_money}元</div>
+                    <div></div>
+                </div>
+            </li>
+            </volist>
+        </ul>
+        </if>
+		<div class="des"><img src="img/recommend.png" alt="" /> 推荐项目</div>
+        <ul class="content">
+            <volist name="list.list" id="vo">
+                <li class="mine_btn" data-toggle="{:U('M/invest/detail', array('id'=>$vo['id']))}">
+                    <div>
+                        <div>{$vo.borrow_name|cnsubstr=###,17}<if condition="!empty($vo['password'])"><span style="float: right;position: absolute;"><img style="width:30px;margin-top: 1rem;margin-left: 0.5rem;" src="__ROOT__/Style/H/images/borrow_vip.png"></span></if></div>
+                        <div>
+                            <img src="img/bao.png" >
+                        </div>
+                    </div>
+                    <div>
+                        <div>{$vo.borrow_interest_rate}<span style=" font-size:1rem;">&nbsp;%</span><if condition="$vo.jiaxi_rate gt 0"><span class="h5-jiaxi">+{$vo.jiaxi_rate}%</span></if></div>
+                        <div>{$vo|borrow_status}</div>
+                    </div>
+                    <div class="borrow_info">
+                        <if condition="$vo.borrow_duration_txt eq null" >
+                            <div>{$vo.borrow_duration} <php> echo $vo['repayment_type']==1?'天':'个月'</php></div>
+                        <elseif   condition="$vo['repayment_type'] neq 1"  />
+                            <div>{$vo.borrow_duration_txt}</div>
+                        <else />
+                            <div>{$vo.borrow_duration_txt|get_day=### } <php> echo $vo['repayment_type']==1?'天':'个月'</php></div>
+                        </if>
+                        <div>总额：{$vo.borrow_money}元</div>
+                        <div>
+                            <div class="progress">
+                                <span class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:{$vo.progress}%;"></span>
+                            </div>
+                            <div class="p_p_s">{$vo.progress}%</div>
+                        </div>
+                    </div>
+                </li>
+            </volist>
+        </ul>
+        <!-- <div class="ind-zqzrlink"><a href="/M/debthome/index.html">收益权转让区</a><i class="ind-zqzrlink-ico"></i></div> -->
+        <div style="text-align: center; color:#9d9d9d; ">投资有风险，理财需谨慎</div>
+	</div>
+
+    <!--弹窗-->
+    <div class="alldiv">
+        <div class="box">
+            <span class="close-btn js-close">×</span>
+            <div class="btn-div">
+                <a href="/M/pub/regist.html" class="btn">立即领取</a>
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" id="xsBorrow" value="{$xsBorrow}">
+
+	<include file="Pub:footer" />
+
+    <script type="text/javascript">
+        $(function(){
+            
+            // $('.alldiv').show();
+            // $('.box').show();
+            //弹窗红包一天只出现一次
+            if(localStorage.getItem("isFirst")){
+                if(new Date().getDate() != localStorage.isFirst){
+                    $('.alldiv').show();
+                    $('.box').show();
+                    localStorage.isFirst = new Date().getDate();
+                }
+            }else{
+                localStorage.setItem("isFirst", new Date().getDate());
+                $('.alldiv').show();
+                $('.box').show();
+            }
+
+            $('.js-close').click(function(){
+                $('.alldiv').hide();
+                $('.box').hide();
+            });
+        })
+    </script>
+</body>
+</html>

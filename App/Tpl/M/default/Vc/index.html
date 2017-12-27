@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="minimal-ui,width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>贺A轮融资、送壕礼</title>
+    <script type="text/javascript" src="__ROOT__/Style/Js/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="__ROOT__/Style/Js/jquery.rotate.min.js "></script>
+    <script type="text/javascript" src="__ROOT__/Style/layer/layer.js"></script>
+    <style>
+        *{margin: 0;padding: 0;}
+        body{background-color: #ffe5ce;margin:0;}
+        ul,li,p{list-style: none;}
+        .red{color: #fe4d3f;}
+        a{text-decoration: none;}
+        .dis-non{display: none;}
+        .banner{position: relative;}
+        .banner img{width:100%;display: block;pointer-events: none;}
+        .banner .banner-text{pointer-events: none;width:0%;position: absolute;left: 50%;top: 40%;transform:translate(-50%,-50%);animation:show 1s ease forwards;}
+        @keyframes show{
+            form{width: 0%;}
+            to{width: 60%;}
+        }
+        .banner .active-time{position: absolute;top: 65%;color: #fff;font-size: 1.2rem;text-align: center;width: 100%;}
+        .part{text-align: center;}
+        .part .user{width: 32%;margin-top: 2rem;}
+        .part .title{width: 80%; display: block;margin: 0 auto;}
+        .part .red{color: #fe4d3f;}
+        .part .btn{font-size: 1.3rem;color: #6f1f0e;background: url(/Style/Phone/img/Augustactive/btn_bg.png) no-repeat; background-size: 100% 100%;line-height: 5rem;padding:0 2rem; display: block;margin: 0 auto;width: 40%;}
+        .part .rule{margin: 2rem 1rem 0;color: #6f1f0e;padding-bottom: 2rem;line-height: 2rem; text-align: left;}
+        .part .line{width: 100%;    display: block;}
+        .part1{background-color: #ffe56b;}
+        .part1 .title{width: 70%;}
+        .part1 .my-money, .count, .rec-nologin{color: #fb8803;    font-size: 1.2rem;}
+        .part1 .table{background: url(/Style/Phone/img/Augustactive/pat1_bg.png) no-repeat; background-size: 100% 100%;padding: 4rem 2rem; width: 90%;margin: 1rem auto;}
+        .part1 .table td{line-height: 1.8rem;}
+        .part2{background-color: #fff0ab;}
+        .part2 .title{width: 80%;}
+        .part3 .title{width: 70%;}
+        .turntable{margin: 1rem 0 4rem;position: relative;text-align: center;}
+        .turntable .turntable-bg{width: 85%;z-index: 1;position: absolute;left: 7.5%;pointer-events: none;}
+        .turntable .turntable-light{animation:light .5s infinite;}
+        @keyframes light{
+            from{opacity: 0;}
+            to{opacity: 1;}
+        }
+        .turntable .turntable-img{pointer-events: none;width: 73%;z-index: 2;position: relative;top: 1.6rem;}
+        .turntable .turntable-btn{position: absolute;top: 56%;left: 50%;transform:translate(-50%,-50%);width: 25%;z-index: 5;}
+        .part3{background-color: #ffe56b;}
+        .part3 .table-div{border: 2px solid #6f1f0e;border-radius: 20px;background-color: #fe4d3f;    margin: 2rem;}
+
+        .part3 .table{border-radius: 20px;background-color: #fdf7c6;margin: 2rem; margin: 6% 5%;width: 90%;  min-height: 10rem;  padding: 1rem .2rem; line-height: 2.5rem;}
+        .part3 .table th{background-color: #fef6b6;}
+        .part3 .table .con{overflow: hidden;height: 12rem;}
+        /*.part3 .table .color td{background-color: #fef6b6;}*/
+        .marquee li{overflow: hidden;}
+        .marquee li{background-color: #fdf7c6;}
+        .marquee li:nth-child(even){background-color: #fef6b6;}
+        .marquee li span{display: inline-block;    float: left;}
+        .marquee li span:nth-child(1){width: 45%;}
+        .marquee li span:nth-child(2){width: 30%;}
+        .marquee li span:nth-child(3){width: 23%;}
+
+        .part3 .qrcode-div span{font-size: 1.2rem;color: #6f1f0e;}
+        .part3 .qrcode-div .qrcode{width: 30%;    display: block;margin: 1rem auto;}
+        .part4{background-color: #fff0ab;}
+        .part4 ul{margin-left: -3%;overflow: hidden;    margin-bottom: 2rem;}
+        .part4 ul li{width: 43%;background-color: #fe4d3f;border: 2px solid #6f1f0e;margin: 2rem 0 0 3%;vertical-align: top;display: inline-block;}
+        .part4 ul li div{background-color: #fff;margin: 1rem;border: 2px solid #6f1f0e;    padding: .5rem;}
+        .part4 ul li div img{height: 5rem; display: block;margin: 0 auto .5rem;}
+        .part4 ul li div span{display: block; text-align: left;   line-height: 2rem;}
+        .part4 ul li div .name, .part4 ul li div .invest-money{color: #6f1f0e; line-height: 1.5rem;}
+        .part4 ul li div .price{color: #fff;background: url(/Style/Phone/img/Augustactive/text_bg.png) no-repeat; background-size: 100% 100%; padding: 0 .5rem;margin: 1rem -.5rem 0;}
+        .part4 ul .first{width: 70%;    margin-left: 6%;margin-top: 1rem;}
+
+        /*弹窗*/
+        .alldiv{display: none; position: fixed;top: 0;left: 0;width: 100%;height:100%;background-color: rgba(0,0,0,.4);z-index: 1050;}
+        .box{display: none; text-align: center;margin: 0 auto;border-radius: 5px;position: relative;top:50%;padding: 1rem 0;transform: translate(0,-50%);}
+        .box .close-btn{font-size: 1.5rem;background-color: transparent; color: #fff; border: 1px solid #fff;display: block;position: absolute;width: 2rem;height: 2rem;line-height: 1.8rem;border-radius: 50%;bottom: -3rem;top: auto; right: 45%;}
+        .box .show-img{width: 100%;}
+        .yes-tips .close-btn{top: 0rem; right: 1rem; }
+        .yes-tips .prize{font-size: 1.3rem;color:#fdd835; margin-top: -10.2rem;}
+        .yes-tips .prize .txt{font-size: 1.5rem;}
+
+        @media screen and (min-width:320px){html{font-size:12px;}}
+        @media screen and (min-width:360px){html{font-size:13px;}}
+        @media screen and (min-width:480px){html{font-size:18px;}}
+        @media screen and (min-width:640px){html{font-size:24px;}}
+        @media screen and (min-width:720px){html{font-size:26px;}}
+    </style>
+</head>
+<body>
+    <section class="banner">
+        <img src="/Style/Phone/img/Augustactive/banner.jpg">
+        <img src="/Style/Phone/img/Augustactive/text.png" class="banner-text">
+        <p class="active-time">活动时间：2017.8.4-2017.8.31</p>
+    </section>
+
+    <section class="part part1">
+        <img src="/Style/Phone/img/Augustactive/new_tit.gif"  class="user">
+        <img src="/Style/Phone/img/Augustactive/tit1.png" class="title">
+        <span class="my-money">我的返利金额：{$ret}元</span>
+        <table class="table" cellspacing="0" border="0">
+            <tbody>
+                <tr>
+                    <th>累计投资</th>
+                    <th>返现金额</th>
+                </tr>
+                <tr>
+                    <td>100-999元</td>
+                    <td class="red">5元</td>
+                </tr>
+                <tr>
+                    <td>1000-4999元</td>
+                    <td class="red">15元</td>
+                </tr>
+                <tr>
+                    <td>5000-19999元</td>
+                    <td class="red">25元</td>
+                </tr>
+                <tr>
+                    <td>20000元以上</td>
+                    <td class="red">35元</td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/M/invest/lists/ptype/1%2C2%2C3.html" class="btn">立即拿返利</a>
+        <div class="rule">
+            活动规则：<br>
+            1、以上板块只针对新用户参加；<br>
+            2、新用户：活动期间新注册用户、未投资过的用户（包含使用体验金的用户）；<br>
+            <span class="red">3、新用户在链金所进行投资30天以上标的（小于等于30天标的无法参与本次活动）</span><br>
+            4、每位新用户只享受一次返利机会；<br>
+            5、活动奖励在活动结束15天内，转入用户账户余额，届时将会有短信提醒；<br>
+            6、在法律允许范围内，链金所保留对此活动的最终解释权，如有疑问请联系官方客服400-6626-985。<br>
+        </div>
+        <img src="/Style/Phone/img/Augustactive/line1.png" class="line">
+    </section>
+    
+    <section class="part part2">
+        <img src="/Style/Phone/img/Augustactive/old_tit.gif"  class="user">
+        <img src="/Style/Phone/img/Augustactive/tit2.png" class="title">
+        <div class="count login-yes">我的抽奖次数：<span id="count">{$left}</span> 次</div>
+        <div class="count login-no"><a href="/M/pub/login.html">登录</a>查看抽奖次数</div>
+        <div class="turntable">
+            <!--转盘 start-->
+            <img src="/Style/Phone/img/Augustactive/light_bg.png" class="turntable-bg">
+            <img src="/Style/Phone/img/Augustactive/lights.png" class="turntable-bg turntable-light">
+            <img src="/Style/Phone/img/Augustactive/prizename.png" class="turntable-img pointer" >
+            <img src='/Style/Phone/img/Augustactive/turntablebtn.png' class="turntable-btn" id="turntable-btn" class="js-btn">
+            <!--转盘 end-->
+        </div>
+        <a href="/M/invest/lists/ptype/1%2C2%2C3.html" class="btn">获取抽奖机会</a>
+        <div class="rule">
+            活动规则：<br>
+            1、本活动适用人群：所有老用户（老用户为在平台有过一次及以上投资记录的用户）；<br>
+            <span class="red">2、活动期间每位老用户，只要任意投资一次30天以上标的（小于等于30天标的无法参与本次活动）均获得一次大转盘抽奖机会；</span><br>
+            3、活动结束后未使用的抽奖次数自动清零；<br>
+            4、您的中奖金额将直接发放至您的平台账户中；<br>
+            5、在法律允许范围内，链金所保留对此活动的最终解释权，如有疑问请联系官方客服400-6626-985。<br>
+        </div>
+        <img src="/Style/Phone/img/Augustactive/line2.png" class="line">
+    </section>
+
+    <section class="part part3">
+        <img src="/Style/Phone/img/Augustactive/newold_tit.gif"  class="user">
+        <img src="/Style/Phone/img/Augustactive/tit3.png" class="title">
+        <div class="table-div">
+            <if condition="$UID">
+                 <table class="table" cellspacing="0">                
+                    <tr>
+                        <th>我推荐的小伙伴</th>
+                        <th>是否投资</th>
+                        <th>返现金额</th>
+                    </tr>
+                    <tbody>
+                        <tr>
+                            <td colspan="3">
+                                <div class="con">
+
+                                    <div  class="marquee">
+                                        <ul>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            <else/>
+                 <!--未登录 start-->
+                 <div class="table rec-nologin">请<a href="/M/pub/login.html">登录</a>后查看！</div>
+                 <!--未登录 end-->
+            </if>
+        </div>
+        <div class="qrcode-div">
+            <span>我的推荐码</span>
+            <a href="/M/pub/login.html" class="login-no dis-non"><img src="/Style/Phone/img/Augustactive/no_qrcode.png" class="qrcode"></a>
+            <div  class="qrcode login-yes" style="display:none;padding: 1rem;background-color: #fe4d3f;border-radius: 25px;"><img src="__ROOT__/Home/active/create_qr" style="width:90%;"></div>
+        </div>
+        <div class="rule">
+            活动规则：<br>
+            1、此板块活动新老用户均可参加；<br>
+            <span class="red">2、您推荐的用户投资成功30天以上标的（小于等于30天标的无法参与本次活动）以后，推荐奖励会记录在上方；</span><br>
+            3、推荐者每推荐一位新用户注册并成功投资后可获得5元返利；<br>
+            4、每位推荐人最多可获得四位推荐用户的投资奖励，最高奖励金额20元；<br>
+            5、您的返利金额将直接发放至您的平台账户中；<br>
+            6、在法律允许范围内，链金所保留对此活动的最终解释权，如有疑问请联系官方客服400-6626-985。<br>
+        </div>
+        <img src="/Style/Phone/img/Augustactive/line1.png" class="line">
+    </section>
+
+    <section class="part part4">
+        <img src="/Style/Phone/img/Augustactive/tit4.png" class="title">
+        <div class="count">我的累计投资金额：<span>{$investTotal}</span> 元</div>
+        <ul>
+            <li>
+                <div>
+                    <img src="/Style/Phone/img/Augustactive/mac.jpg">
+                    <span class="name">MacBook Air <br>13.3英寸 256GB</span>
+                    <span class="invest-money">累计投资：150万元</span>
+                    <span class="price">市场价：￥7999元</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="/Style/Phone/img/Augustactive/iphone7.jpg">
+                    <span class="name">iphone7 plus <br> 128GB</span>
+                    <span class="invest-money">累计投资：100万元</span>
+                    <span class="price">市场价：￥6599元</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="/Style/Phone/img/Augustactive/red_iphone7.jpg">
+                    <span class="name">iphone7 <br>128GB</span>
+                    <span class="invest-money">累计投资：80万元</span>
+                    <span class="price">市场价：￥5799元</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="/Style/Phone/img/Augustactive/mate9.jpg">
+                    <span class="name">华为 Mate9 <br>月光版4GB+32GB</span>
+                    <span class="invest-money">累计投资：60万元</span>
+                    <span class="price">市场价：￥3099元</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="/Style/Phone/img/Augustactive/ipad.jpg">
+                    <span class="name">iPad  WLAN版 <br> 9.7寸 32GB</span>
+                    <span class="invest-money">累计投资：40万元</span>
+                    <span class="price">市场价：￥2519元</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="/Style/Phone/img/Augustactive/chanel.jpg">
+                    <span class="name">CHANEL <br>邂逅香水</span>
+                    <span class="invest-money">累计投资：20万元</span>
+                    <span class="price">市场价：￥1098元</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="/Style/Phone/img/Augustactive/ecovacs.jpg">
+                    <span class="name">科沃斯地宝魔镜<br>扫地机器人</span>
+                    <span class="invest-money">累计投资：20万元</span>
+                    <span class="price">市场价：￥1099元</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="/Style/Phone/img/Augustactive/bycle.jpg">
+                    <span class="name">喜德盛24速自行车 <br>黑红色17寸</span>
+                    <span class="invest-money">累计投资：10万元</span>
+                    <span class="price">市场价：￥899元</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="/Style/Phone/img/Augustactive/mi.jpg">
+                    <span class="name">小米<br>空气净化器2代</span>
+                    <span class="invest-money">累计投资：10万元</span>
+                    <span class="price">市场价：￥699元</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="/Style/Phone/img/Augustactive/hair.jpg">
+
+                    <span class="name">海尔<br>车载空气净化器</span>
+                    <span class="invest-money">累计投资：5万元</span>
+                    <span class="price">市场价：￥339元</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="/Style/Phone/img/Augustactive/airmate.jpg">
+                    <span class="name">艾美特(Airmate)<br>静音电风扇</span>
+                    <span class="invest-money">累计投资：5万元</span>
+                    <span class="price">市场价：￥299元</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="/Style/Phone/img/Augustactive/jd_card.jpg">
+                    <span class="name">京东购物卡<br>300元</span>
+                    <span class="invest-money">累计投资：5万元</span>
+                    <span class="price">市场价：￥300元</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="/Style/Phone/img/Augustactive/dapu.jpg">
+                    <span class="name">大朴（DAPU）<br>32支纯棉健身巾</span>
+                    <span class="invest-money">累计投资：1万元</span>
+                    <span class="price">市场价：￥49元</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="/Style/Phone/img/Augustactive/phone_card.jpg">
+                    <span class="name">手机话费充值<br>50元</span>
+                    <span class="invest-money">累计投资：1万元</span>
+                    <span class="price">市场价：￥50元</span>
+                </div>
+            </li>
+        </ul>
+        <a href="/M/invest/lists/ptype/1%2C2%2C3.html" class="btn">我也想要壕礼</a>
+        <div class="rule">
+            活动规则：<br>
+            1、此板块活动新老用户均可参加；<br>
+            <span class="red">2、兑换额度指活动期间累计投资30天以上标的（小于等于30天标的无法参与本次活动）的金额；（具体累计金额计算时间：8月4日-8月31日）</span><br>
+            3、当活动结束后，所兑换的奖品以最高累计金额为准，自动匹配能够兑换的奖品；<br>
+            4、每位用户根据自身的累计投资额度，只能选择兑换一款商品；<br>
+            5、活动结束后未使用的兑换额度自动清零；<br>
+            6、奖品安排在活动结束后15个工作日内统一发放，届时请注意物流动态信息；<br>
+            7、在法律允许范围内，链金所保留对此活动的最终解释权，如有疑问请联系官方客服4006626985。
+        </div>
+        <img src="/Style/Phone/img/Augustactive/bottom.png" class="line">
+    </section>
+
+    <!--弹窗-->
+    <div class="alldiv">
+        <!--中奖-->
+        <div class="box yes-tips"> 
+            <img src="/Style/Phone/img/Augustactive/yes-box.png" class="show-img">
+            <p class="p1 prize">中奖金额：<span class="txt"></span>元</p>
+            <span class="close-btn js-close">×</span>
+        </div>
+        <!--未中奖-->
+        <div class="box no-tips">
+            <img src="/Style/Phone/img/Augustactive/no-box.png" class="show-img">
+            <span class="close-btn js-close">×</span>
+        </div>
+    </div>
+
+    <input type="hidden" value="{$token}" id="token" name="token">
+    <input type="hidden" value="{$uid}" id="uid" name="uid">
+
+    <script type="text/javascript">
+        $(function () {
+            var timeout = 8000;
+            /*
+            **弹窗
+            */
+            $('.js-close').click(function(){
+                $('.alldiv').hide();
+                $('.box').hide();
+            });
+
+            /*
+            **layer弹窗提示
+            */
+            function tip(message){
+                layer.open({
+                    content: message,
+                    closeBtn: [0, false],
+                    btn: ['确定'],
+                    yes: function(index){
+                        layer.close(index);
+                    }
+                });
+            } 
+
+            /*
+            **推荐人列表
+            */
+            $.ajax({
+                url: '/m/vc/getrecom',
+                dataType: 'json',
+                type: 'get',
+                success: function(d){
+                    var data = d || {};
+                    if(data.code == 1){
+                        var list = data.data.list;
+                        var html = '';
+                        for(var i = 0; i < list.length; i++){
+                            var isInvested = list[i].isInvested ? '已投资' : '未投资';
+                            html += '<li><span>'+ list[i].user_phone +'</span><span>'+ isInvested +'</span><span class="red">'+ list[i].money +'元</span></li>';
+                        }
+                        $('.marquee ul').append(html);
+                        //滚动
+                        if($('.marquee li').length > 5){ 
+                            $('.part3 .table .marquee').append($('.part3 .table .con ul').clone());
+                            var scroll = setInterval(function(){
+                                var top = parseInt($('.marquee').css('margin-top')),
+                                    objheight = parseInt($('.marquee').height())/2;
+                                if(top < -objheight){
+                                    $('.marquee').css('margin-top','0');
+                                }
+                                $('.marquee').css('margin-top', parseInt($('.marquee').css('margin-top')) - 1 + 'px');
+                            }, 30);
+                        }
+                    }
+                }
+            });
+
+            /*
+            **转盘 
+            */
+            var click = true;
+            var uid = $("#uid").val();
+
+            //是否登录
+            if (uid == "-1") {
+                $('.login-yes').hide();
+                $('.login-no').show();
+
+            }else{
+                $('.login-yes').show();
+                $('.login-no').hide();
+            }
+
+            $(".turntable-btn").click(function () {
+                if(click){
+                    var $this = $(".pointer"),
+                        flag = true;;
+
+                    //用户未登录
+                    if (uid == -1) {
+                        flag = false;
+                        window.location.href = "/M/pub/login.html";
+                        return false;
+                    }
+
+                    var count = $("#count").html();
+                    if (count <= 0) {
+                        flag = false;
+                        tip("您没有抽奖机会！");
+                        return false;
+                    }
+
+                    if (flag) {
+                        var token = $("#token").val();
+                        click = false;
+                        $.ajax({
+                            url: "/m/vc/getresult",
+                            cache: false,
+                            type: "post",
+                            data: {token: token},
+                            dataType: "json",
+                            success: function (d) {
+                                var data = d || {};
+                                if (data.code == 0) {
+                                    tip("哦哦，出错了！请从新刷新页面！");
+                                }else if(data.code == 1){
+  
+                                    $this.rotate({
+                                        duration: timeout,//转动时间间隔（转动速度）
+                                        angle: 0,  //开始角度
+                                        animateTo: 3600 + parseInt(data.data.angle), //转动角度，10圈
+                                        callback: function () { //回调函数
+                                            if(data.message == 0){
+                                                $('.alldiv').show();
+                                                $('.box').show();
+                                                $('.no-tips').show();
+                                                $('.yes-tips').hide();
+                                            }else{
+                                                $('.prize .txt').text(data.message);
+                                                $('.alldiv').show();
+                                                $('.box').show();
+                                                $('.yes-tips').show();
+                                                $('.no-tips').hide();
+                                            }
+                                            //token 随机数
+                                            $("#token").val(data.data.token);
+                                            //抽奖次数
+                                            $("#count").html(data.data.left);
+                                            click = true;
+                                        }
+                                    });
+                                }
+                            }
+                        });
+                    }
+                }else{
+                    click = false;
+                }
+            });
+        })
+    </script>
+</body>
+</html>

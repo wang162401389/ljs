@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <base href="/Style/Phone/" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link REL="SHORTCUT ICON" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/index.css" >
+</head>
+<body>
+
+<div class="bar" style="width: 100%;height: 2.4rem;background-color: #48A4CE">
+    <div style="float: right;margin-right: 1rem;color:white;height: 2.4rem;line-height: 2.4rem" onclick="window.location.href='/adminm/Index/logout'">登出</div>
+</div>
+<div class="mine_container">
+    <div class="des">项目复审</div>
+    <ul class="content">
+        <volist name="list" id="vo">
+            <li class="mine_btn" data-toggle="{:U('Adminm/Mborrow/edit', array('id'=>$vo['id']))}">
+                <div>
+                    <div>标号：{$vo.id|borrowidlayout1=###}  {$vo.borrow_name|cnsubstr=###,17}</div>
+                    <div>
+                        <img src="img/bao.png" >
+                    </div>
+                </div>
+                <div>
+                    <div>{$vo.borrow_interest_rate}<span style=" font-size:1rem;">&nbsp;%</div>
+                    <div>{$vo.borrow_status|borrow_status=$vo['id'],###}</div>
+                </div>
+                <div class="borrow_info">
+                    <div>{$vo.borrow_duration} <php> echo $vo['repayment_type']==1?'天':'个月'</php></div>
+                    <div>总额：{$vo.borrow_money}</div>
+                    <div>
+                        <div class="progress">
+                            <span class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:{$vo.progress}%;"></span>
+                        </div>
+                        <div class="p_p_s">{$vo.progress}%</div>
+                    </div>
+                </div>
+            </li>
+        </volist>
+    </ul>
+</div>
+
+
+</body>
+
+</html>

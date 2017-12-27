@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="minimal-ui,width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>月底家具大冲关</title>
+    <script type="text/javascript" src="__ROOT__/Style/Js/jquery-2.2.3.min.js"></script>
+    <link rel="stylesheet" href="/Style/Phone/css/bootstrap.min.css" />
+    <style type="text/css">
+		*{margin: 0;padding: 0;}
+        body{margin:0;}
+        ul,li,p{list-style: none;    margin: 0;}
+        a{text-decoration: none;}
+        .dis-none{display: none;}
+        .bold{font-weight: bold;}
+        i{font-style: normal;}
+
+		.banner{    margin-top: 50px;}
+        .img{width: 100%;    display: block;}
+        .top{position: relative;}
+        .con-text{position: absolute;left: 50%;transform:translate(-50%,-109%);text-align: center;font-size: .85rem;width: 80%;}
+        .con-text p{}
+        .con-text span{display: block;}
+        .con-text .p1{}
+        .con-text .p2{color: #fff;font-size: 1rem;margin-top: 2rem;}
+        .con-text .p2 a{color: #fff;}
+        .con-text .span1{color: #744a24;}
+		.con-text .span2{color: #472b12;}
+		.con-text .span3{color: #744a24;text-decoration: underline;}
+		.level{}
+		.table-bg{position: relative;}
+		.table-bg .img{}
+		.table-bg .table-box{position: absolute;    left: 51%;transform: translate(-50%,-109%); width: 61%;}
+		.table-box .btns{font-size: 1rem;display: block;width: 5rem;text-align: center;line-height: 2rem;background-color: #f5a22a;    color: #fff; border-radius: 3px;margin: 0 auto;}
+		.table-box .btn-pass{background-color: #8d8d8d;}
+		.table-box .pass-img{position: absolute;    width: 30%;right: -5%;bottom: 0;}
+		.table-box .tables{width: 100%;    margin-top: .5rem;}
+		.table-box th{color: #573e0d;font-weight: normal;text-align: center;}
+		.table-box td{}
+		.table-box .marquee-con{overflow: hidden;height: 5.5rem;position: relative;}
+		.marquee-con div{top: 0;position: absolute;width: 100%;}
+		.marquee-con ul{}
+		.marquee-con li{}
+		.marquee-con li span{    line-height: 1.8rem; text-align: center;   display: inline-block;}
+		.alldiv{display: none; z-index: 10; position: fixed;top: 0;left: 0;width: 100%;height:100%;background-color: rgba(0,0,0,.4);}
+		.rule{margin: 2rem 1rem 0;color: #555;line-height: 2rem;text-align: left;border-radius: 5px;position: fixed;top:50%;transform: translate(0,-50%);background-color: #fff;z-index: 20;    color: #642c0e;}
+        .rule div{padding: 1rem;}
+        .rule p{text-align: center;padding: .8rem 0;font-size: 1.5rem;border-top-left-radius: 5px;border-top-right-radius: 5px;}
+        .close-btn{font-size: 1.5rem;background-color: transparent;color: #fff;border: 1px solid #fff;display: block;position: absolute;width: 2rem;height: 2rem;line-height: 1.8rem;border-radius: 50%;top: -3rem;right: 0;text-align: center;}
+        .red{color: #ff0000;}
+        
+		@media screen and (min-width:320px){html{font-size:12px;}}
+        @media screen and (min-width:360px){html{font-size:14px;}}
+        @media screen and (min-width:414px){html{font-size:16px;}}
+        @media screen and (min-width:640px){html{font-size:24px;}}
+        @media screen and (min-width:720px){html{font-size:26px;}}
+    </style>
+</head>
+<body>
+	<include file="default:Pub:simple_header" group="M" />
+    <section class="banner">
+        <img src="/Style/Phone/img/octoberactive/anniversaryb1.jpg" class="img">
+    </section>
+
+    <section class="top">
+        <img src="/Style/Phone/img/octoberactive/anniversaryb2.jpg" class="img">
+        <div class="con-text">
+        	<p class="p1">
+        		<span class="span1">我当前获得的家具</span>
+        		<span class="span2">{$my_prize}</span>
+        		<span class="span3 look-rule">活动规则</span>
+        	</p>
+        	<p class="p2">我的累计投资额：
+                <notempty name="uid">
+                    {$my_total_invest}元
+                <else />
+                    <a href="/M/pub/login.html">登录查看</a>
+                </notempty>
+            </p>
+        </div>
+    </section>
+
+    <section class="level">
+        <foreach name="list" item="vo" key="key">
+        	<div class="table-bg">
+        		<img src="/Style/Phone/img/octoberactive/anniversary{$key}.jpg" class="img">
+        		<div class="table-box table-box{$key}">
+                    <!-- 通过 -->
+                    <if condition="$key elt $now_step">
+        				<a href="javascript:void(0)" class="btns btn-pass">我要冲关</a>
+					<else/>
+                    	<!-- 没通过 -->
+						<notempty name="uid">
+	                        <a href="{:U('/M/invest/lists', ['ptype' => 10])}" class="btns">我要冲关</a>
+	                     <else />
+		                    <a href="{:U('/M/pub/login')}" class="btns">我要冲关</a>
+	                    </notempty>
+					</if>
+        			<table border="0" cellspacing="0" class="tables">
+        				<thead>
+                            <tr>
+                                <th width="20%">序号</th>
+                                <th width="35%">用户</th>
+                                <th width="45%">累计投资</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+	                            <tr>
+	                                <td colspan="3">
+	                                    <div class="marquee-con marquee-con">
+	                                        <div  class="marquee">
+	                                            <ul>
+													<foreach name="vo.list" item="v" key="k">
+		                                                <li <if condition="$v.is_me eq 1">class="red"</if>>
+		                                                    <span class="span1" style="width: 20%">
+		                                                        {$k + 1}
+		                                                    </span>
+		                                                    <span class="span2" style="width: 35%">
+		                                                        <if condition="$v.investor_uid eq ''">虚位以待<else/>{$v.invest_name}</if>
+		                                                    </span>
+		                                                    <span class="span3" style="width: 40%">
+		                                                        <if condition="$v.investor_uid eq ''">{$vo.min}<else/>{$v.sum_invest}</if>
+		                                                    </span>
+		                                                </li>
+													</foreach>
+	                                            </ul>
+	                                        </div>
+	                                    </div>
+	                                </td>
+	                            </tr>
+                        </tbody>
+        			</table>
+                    <!-- 通过 -->
+                    <if condition="$key elt $now_step">
+        				<img src="/Style/Phone/img/octoberactive/pass.png" class="pass-img">
+					</if>
+        		</div>
+        	</div>
+    		<img src="/Style/Phone/img/octoberactive/anniversary{$key}{$key}.jpg" class="img">
+        </foreach>
+    </section>
+
+    <div class="alldiv">
+	    <div class="rule dis-none">             
+	        <span class="close-btn js-close">×</span>
+	        <p>活动规则</p>
+	        <div>
+	            1、活动时间：10月24日-10月31日 ；<br>
+				2、活动对象：平台全体用户；<br>
+				3、活动期间，用户累计投资额度达到相应的金额，即可获得对应的家具；<br>
+				4、活动期间所获得的家具以最终累计投资额为准，每个用户只能获得一款家具；<br>
+				5、投资所送的家具，于活动结束后会自动换成相应的现金奖励；<br>
+				6、现金奖励将在活动结束后15个工作日内发放，用户可在【我的账户】中进行查看；<br>
+				7、本次活动在法律范围内，链金所保留最终解释权。
+	        </div>
+	    </div>
+	</div>
+
+	<script type="text/javascript">
+		$(function(){
+			/*
+            **弹窗
+            */
+            $('.js-close').click(function(){
+                $('.alldiv').hide();
+                $('.rule').hide();
+            });
+            /*
+            **查看活动规则
+            */
+            $('.look-rule').click(function(){
+                $('.alldiv').show();
+                $('.rule').show();
+            });
+			/*
+			**滚动
+			*/
+            function marquee(obj){
+                var $this = $('.' + obj);
+                if($this.find('.marquee ul li').length > 3){
+                    $this.find(".marquee").append($this.find(".marquee ul").clone());
+                    var mscroll = setInterval(function(){
+                        var mtop = parseInt($this.find(".marquee").css('top')),
+                            objheight = parseInt($this.find(".marquee").height())/2;
+                        if(mtop < -objheight){
+                           $this.find(".marquee").css('top', '0');
+                        }
+                        $this.find(".marquee").css('top', (parseInt($this.find(".marquee").css('top')) - 1) + "px");
+                    },30);
+                }
+            }
+            marquee('table-box8');
+			marquee('table-box7');
+            marquee('table-box6');
+            marquee('table-box5');
+            marquee('table-box4');
+            marquee('table-box3');
+            marquee('table-box2');
+            marquee('table-box1');
+		})
+	</script>
+</body>
+</html>

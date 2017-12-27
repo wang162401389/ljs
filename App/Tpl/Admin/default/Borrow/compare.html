@@ -1,0 +1,33 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<div class="so_main">
+    <div class="page_tit">原债权比对 </div>
+    <div><span>标号ID:ZQ{$debt_info.id}</span> <span>上一级标号ID:{$debt_info.old_borrow_id|borrowidlayout1}</span></div>
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th class="line_l">(转让人)债权价值</th>
+                <th class="line_l">(转让人)待收本金</th>
+                <th class="line_l">(转让人)待收利息</th>
+                <th class="line_l">转让标的投标本息总额</th>
+                <th class="line_l">转让标的投标本金</th>
+                <th class="line_l">转让标的投标利息</th>
+                <th class="line_l">转让人</th>
+                <th class="line_l">操作</th>
+            </tr>
+                <tr>
+                    <td>{$debt_info.totalmoney}</td>
+                    <td>{$debt_info.debt_captial}</td>
+                    <td>{$debt_info.debt_interest}</td>
+                    <td>{$invest_info["capital"] + $invest_info["interest"]}</td>
+                    <td>{$invest_info.capital}</td>
+                    <td>{$invest_info.interest}</td>
+                    <td>{$debt_info.real_name}</td>
+                    <td>
+                        <span><a href="__APP__/debthome/debtdetail?id={$debt_info.id}" target="_blank">查看明细</a></span>
+                    </td>
+                </tr>
+        </table>
+    </div>
+</div>
+<include file="Public:_footer" />

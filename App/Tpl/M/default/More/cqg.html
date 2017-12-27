@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <include file="Pub:header-common" />
+    <link rel="stylesheet" href="css/cqg.css" >
+    <script type="text/javascript">
+    $(document).ready(
+	function() 
+	{
+		$(".menuTitle").click(function(){
+			$(this).next("div").slideToggle("slow")
+			.siblings(".menuContent:visible").slideUp("slow");
+			$(this).toggleClass("activeTitle");
+			$(this).siblings(".activeTitle").removeClass("activeTitle");
+		});
+	});
+
+    </script>
+</head>
+<body>
+    <include file="Pub:simple_header" />
+    <div class="content">
+        <div class="menuTitle">为什么平台要增加存钱罐账户？</div>
+        <div class="menuContent">因为链金所为了增加用户的收益，客户在注册充值后，资金便进入存钱罐账户，即使不投标，也同样每天都会有利息产生，不让您的资金有闲置。
+            温馨提示：如果通过网上银行支付，需要先开通网上银行功能。</div>
+        <div class="menuTitle">什么是存钱罐？</div>
+        <div class="menuContent">存钱罐是新浪旗下个人理财产品精选平台微财富携手汇添富基金管理股份有限公司推出的理财增值服务。把钱转入存钱罐，相当于购买了货币基金，每天可获得比银行活期利息高15-18倍的收益。收益自动发放到存钱罐账户中，每天收益计入本金，享受复利收益。资金1分起存，随存随取，天天计息，日日复利。（计算收益方式类似于某额宝、某财通）</div>
+    
+
+        <div class="menuTitle">什么时候能看到收益到账？</div>
+        <div class="menuContent" >
+        <div >收益在转入的对应工作日进行确认，当日的收益会在下个工作日开放。（具体计算收益时间如下）</div>
+        <div class="des">周一15：00后到周二15：00前 购买</div>
+        <ul>
+            <li>周三 开始计算收益时间</li>
+            <li>周四 首次显示收益时间</li>
+        </ul>
+
+        <div class="des">周二15：00后到周三15：00前 购买</div>
+        <ul>
+            <li>周四 开始计算收益时间</li>
+            <li>周五 首次显示收益时间</li>
+        </ul>
+
+        <div class="des">周三15：00后到周四15：00前 购买</div>
+        <ul>
+            <li>周五（可享受周六周日收益）</li>
+            <li>下周一（显示周五周六周日三天收益）</li>
+        </ul>
+
+        <div class="des">周四15：00后到周五15：00前</div>
+        <ul>
+            <li>下周一（不享受周六周日收益）</li>
+            <li>下周二  首次显示收益时间</li>
+        </ul>
+
+        <div class="des">周五15：00后到下周一15：00前</div>
+        <ul>
+            <li>下周二（不享受周六周日收益）</li>
+            <li>下周三  首次显示收益时间</li>
+        </ul>
+    </div>
+
+        <div class="menuTitle">存钱罐账户转出当天有收益吗？</div>
+        <div class="menuContent">当天15：00点前转出是没有收益的，在15：00点后转出可享当天收益。</div>
+  
+
+    
+        <div class="menuTitle">存钱罐账户是否会亏损？</div>
+        <div class="menuContent">货币基金要发生本金亏损，必须同时满足两个条件才有可能发生，而这两种极端情况同时发生的概率非常小：其一，是短期内市场收益率大幅上升，导致券种价格大幅下跌；其二，是货币基金同时发生大额赎回，不能将价格下跌的券种持有到期，抛售券种后造成了实际亏损。货币基金随着持有期的延长，由于市场风险所导致的亏损概率会降到0。从历史数据来看，国内市场上货币基金产生10年来，出现单日亏损的情况屈指可数，两日以上连续亏损的情况前所未有。但同时货币基金不承诺保本，市场有风险，投资需谨慎。</div>
+   
+        <div class="menuTitle">周末与节假日产生收益吗？</div>
+        <div class="menuContent">用户转入存钱罐的资金在第二个工作日由基金公司进行份额确认，对已确认的份额，基金公司是会每天产生收益的。未确认的，不会产生收益。双休日及国家法定假期，基金公司不进行份额确认。注：15:00后转入的资金会顺延1个工作日确认。</div>
+   
+        <div class="menuTitle">存钱罐账户的收益如何计算？</div>
+        <div class="menuContent">货币基金的收益包括但不限于“每万份收益”和“7日年化收益率”，具体来看：“每万份收益”，是表示持有每一万份基金份额可获得的净收益。计算公式如下：每万份收益=[当日基金净收益/当日基金份额总额]*10000（上述收益的精度为0.0001 元，小数点后第五位采用四舍五入的方式。），它是您每天实际上获得的收益。</div>
+   
+        <div class="menuTitle">什么是万份收益？</div>
+        <div class="menuContent">每万份基金净收益是指每1万份基金份额在某一日或者某一时期所取得的基金净收益额。其计算方法为将每日每份额基金净收益乘以10000，具体公式为： 日每万份基金净收益 =(当日基金净收益/当日基金份额总额)×10000； 期间每万份基金净收益 = 期间日每万份基金净收益之和。</div>
+   
+        <div class="menuTitle">什么是最近7日年化收益率？</div>
+        <div class="menuContent">所谓七日年化收益率，是货币基金最近7日的平均收益水平，进行年化以后得出的数据。比如某货币基金当天显示的七日年化收益率是2％，并且假设该货币基金在今后一年的收益情况都能维持前7日的水准不变，那么持有一年就可以得到2％的整体收益。当然，货币基金的每日收益情况都会随着基金经理的操作和货币市场利率的波动而不断变化，因此实际当中不太可能出现基金收益持续一年不变的情况。因此，七日年化收益率只能当作一个短期指标来看，通过它可以大概参考近期的盈利水平，但不能完全代表这只基金的实际年收益。</div>
+    </div>
+
+    <include file="Pub:footer" />
+</body>
+</html>

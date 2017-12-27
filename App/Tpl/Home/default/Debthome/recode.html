@@ -1,0 +1,44 @@
+<table class="bid" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+        <th class="" width="260">投标人</th>
+        <th class="" width="260">投标类型</th>
+        <th class="" width="260">投标金额</th>
+        <th class="" width="260">投标时间</th>
+    </tr>
+    </thead>
+    <tbody id="investrecord" class="tender-list" >
+    <empty name="list">
+        <tr>
+            <td colspan="4">
+                暂时没有投资记录
+            </td>
+        </tr>
+        <else/>
+        <volist name="list" id="vo" key="k" >
+            <if condition="$k%2 eq 0">
+                <tr style='background-color: rgb(236, 249, 255);' class='borrowlist5'>
+                    <td width='260' class='txtC'>{$vo.user_phone}</td>
+                    <td  width='260' class='txtC'>{$vo.is_auto}</td>
+                    <td  width='260' class='txtRight '>{$vo.investor_capital}元</td>
+                    <td width='260' class='txtC'>{$vo.add_time}</td>
+                </tr>
+                <else/>
+                <tr style='background-color: rgb(255, 255, 255);' class='borrowlist3'>
+                    <td width='260' class='txtC'>{$vo.user_phone}</td>
+                    <td  width='260' class='txtC'>{$vo.is_auto}</td>
+                    <td  width='260' class='txtRight '>{$vo.investor_capital}元</td>
+                    <td width='260' class='txtC'>{$vo.add_time}</td>
+                </tr>
+            </if>
+
+        </volist>
+    </empty>
+    </tbody>
+</table>
+<div class="list_bottom">
+    <div class="list_bottom_right">
+        <ul>{$page}</ul>
+    </div>
+</div>
+<input type="hidden" id="total_page" value="{$total_page}"/>

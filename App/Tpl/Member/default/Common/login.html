@@ -1,0 +1,86 @@
+<include file="default:Public:_header_common" group="Home" />
+<title>{$title}</title>
+<include file="default:Public:_header_main" group="Home"/>
+<meta http-equiv="keywords" content="{$keyword}">
+<meta http-equiv="description" content="{$description}">
+<link rel="stylesheet" href="__ROOT__/Style/H/css/registerreset.css" />
+<link rel="stylesheet" href="__ROOT__/Style/H/css/registerstyle.css" />
+<script type="text/javascript">
+var imgpath="__ROOT__/Style/M/";
+var curpath="__URL__";
+</script>
+<script type="text/javascript" src="__ROOT__/Style/M/js/login.js"></script>
+<div class="login_main">
+	<form action="javascript:void(0);" id="form" class= "login_form" method="post">
+        <div class="form">
+            <h2>用户登录
+                <div class="login_register"> 　　　<a href="__APP__/member/common/register/">免费注册</a>&nbsp;｜&nbsp;<a href="javascript:getPassWord();">忘记密码?</a> </div>
+            </h2>
+            <div style="height:40px; width:240px;">
+                <div  id="dvUser"></div>
+            </div>
+            <p> <span>用户名&nbsp;:</span>
+                <input type="text" id="txtUser" class="login_text" placeholder="用户名/邮箱/手机号"/>
+            </p>
+            <p> <span>密&nbsp;&nbsp;&nbsp;码&nbsp;:</span>
+                <input type="password" class="login_pass" id="txtPwd"/>
+            </p>
+            <p> <span>验证码&nbsp;:</span>
+                <input type="text" class="login_check" id="txtCode"   placeholder="计算结果" style="font-size:12px;padding-left:6px" />
+				<input type="hidden" class="login_check" id="logintype"  value="{$logintype}" name="logintype"/>
+                <img onclick="this.src=this.src+'?t='+Math.random()" id="imVcode" alt="点击换一个校验码" style=" width: 110px; height:30px;border: 1px solid #ccc;" src="__URL__/verify2"> <a href="javascript:document.getElementById('imVcode').onclick();">刷新</a> </p>
+            <input type="image" src="__ROOT__/Style/H/images/login_submit.jpg" class="login_submit"  onclick="LoginSubmit(this);" id="btnReg"/>
+            <p style=" text-align:center; height:40px;">
+                <if condition="$loginconfig['qq']['enable'] eq '1'"><img src="__ROOT__/Style/H/images/qq_n.png">&nbsp;<a href="__APP__/member/oauth/qq/">QQ账号登录</a></if>
+                &nbsp;&nbsp;
+                <if condition="$loginconfig['sina']['enable'] eq '1'"><img src="__ROOT__/Style/H/images/sina_n.png">&nbsp;<a href="__APP__/member/oauth/sina/">新浪微博账号登录</a></if>
+            </p>
+        </div>
+    </form>
+</div>
+<script type="text/jscript">
+            $("#m1").attr("class", "dv_header_4");
+            $("#a1").attr("class", "a_h_o");
+            $("#m7").attr("class", "dv_header_2");
+            $("#a7").attr("class", "a_h_m");
+            $("#b1").css("display", "none");      
+        </script> 
+<script type="text/javascript">
+function jfun_dogetpass(){
+	var ux = $("#emailname").val();
+	if(ux==""){
+		$.jBox.tip('请填写用户名/邮箱/手机号','tip');
+		return;
+	}
+	$.jBox.tip("邮件发送中......","loading");
+	$.ajax({
+		url: "__APP__/member/common/dogetpass/",
+		data: {"u":ux},
+		//timeout: 5000,
+		cache: false,
+		type: "post",
+		dataType: "json",
+		success: function (d, s, r) {
+			if(d){
+				if(d.status==1){
+					$.jBox.tip("发送成功，请去邮箱查收",'success');
+					$.jBox.close(true);
+				}else{
+					$.jBox.tip("发送失败，请重试",'fail');
+				}
+			}
+		}
+	});
+
+}
+
+function getPassWord() {
+	$.jBox("get:__APP__/member/common/getpassword/", {
+		title: "找回密码",
+		width: "auto",
+		buttons: false,
+	});   
+}
+
+</script> 
+<include file="default:Public:_footer_nei" group="Home" />

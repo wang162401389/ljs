@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<include file="Pub:header-common" />
+	<script type="text/javascript" src="__ROOT__/Style/Js/jquery.js"></script>
+	  <script type="text/javascript" src="__ROOT__/Style/Mobile/jquery-global.js"></script>
+	  <script type="text/javascript" src="/Style/apprise/apprise-v2.js"></script>
+	  <link rel="stylesheet" href="/Style/apprise/apprise-v2.css" type="text/css">
+	<link rel="stylesheet" href="__ROOT__/Style/Phone/css/certification.css">
+	<link rel="stylesheet" href="__ROOT__/Style/Phone/css/profile.css">
+</head>
+
+<body>
+<include file="Pub:simple_header" />
+ <if condition="$id_status eq 1">
+ 	<div style="margin-top:10px;text-align:center;font-size:16px;color:red">实名已认证</div>
+ 	<div class="content">
+        <div class="username"><div class="key">真实姓名：</div><div class="value">{$minfo.real_name}</div></div>
+        <div class="username"><div class="key">身份证号：</div><div class="value">{:substr_replace($minfo['idcard'],'************',4,12)}</div></div>
+    </div>
+ 	<else/>
+ 	<div class="content">
+		<div class="input-area">
+			<div class="area">
+				姓名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="realname" placeholder="请输入您的真实姓名">
+			</div>
+			<div class="area">
+				身份证号<input type="text" id="idcardno" placeholder="请输入您的身份证号">
+			</div>
+		</div>
+		<div class="confirm">
+			<a type="button" class="btn btn-info" id="dobutton">确认认证</a>
+		</div>
+		<div class="cancel">
+			<a href="{:U('M/user/index')}">取消认证</a>
+		</div>
+	</div>
+ </if>
+
+
+
+	<include file="Pub:footer" />
+
+</body>
+<script language="javascript">
+$(function() {
+	clicktag = 0;
+    $("#dobutton").click(function() {
+        var e = $("#realname").val(),
+            t = $("#idcardno").val(),
+            r = "realname=" + e + "&idcardno=" + t;
+        if ($.trim(e) == "") return Apprise("<font color=red>请输入真实姓名!</font>"), !1;
+        else if ($.trim(t) == "") return Apprise("<font color=red>请输入身份证号!</font>"), !1;
+		else if( clicktag == "1" ){
+			Apprise("<font color=red>请勿频繁点击！</font>");
+			return false;
+		}
+		clicktag = 1;
+        $.ajax({
+            type: "POST",
+            url: "__URL__/verify",
+            data: r,
+            success: function(e) {
+                e == "TRUE" ? (Apprise("恭喜您实名认证成功！"), $("#apprise-btn-confirm").click(function() {
+                    window.location.href = "{:U('M/user/sinapass')}"
+                })) : Apprise("<font color=red>" + e + "</font>")
+            },
+            error: function(e) {
+                Apprise("<font color=red>提交发生错误！请重试</font>")
+            },
+			complete:function(){
+				clicktag = 0;
+			}
+        })
+    })
+})
+</script>
+</html>

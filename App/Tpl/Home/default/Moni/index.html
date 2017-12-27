@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>xxxx</title>
+<style>
+body{margin: 20px auto}
+.search{width: 1280px;margin: 0 auto;text-align: center;}
+.table-c{width: 1280px;margin: 0 auto;}
+.page{width: 1280px;margin: 0 auto;text-align: center;}
+.table-c table{ background:#000;width: 1280px} 
+.table-c table td{ background:#FFF;text-align: center;}
+.table-c table th{ background:#FFF}
+</style>
+</head>
+<body>
+<div class="search">
+	
+</div>
+	<br>
+<div class="table-c">
+	<table>
+		<tr>
+            <th>id</th>
+            <th>name</th>
+            <th>total</th>
+            <th>max</th>
+            <th>winner</th>
+            <th>left</th>
+            <th>duration</th>
+            <th>rate</th>
+        </tr>
+        <volist name="info" id="vo">
+            <tr>
+                <td>{$vo.id}</td>
+                <td>{$vo.borrow_name}</td>
+                <td>{$vo.borrow_money}</td>
+                <td>{$vo.max}</td>
+                <td>{$vo.winner}</td>
+                <td>{$vo.left}</td>
+                <td>{$vo.borrow_duration}</td>
+                <td>{$vo.borrow_interest_rate}</td>
+            </tr>
+        </volist>
+	</table>
+</div>
+	<br>
+	<div class="page">{$pagebar}</div>
+</body>
+</html>

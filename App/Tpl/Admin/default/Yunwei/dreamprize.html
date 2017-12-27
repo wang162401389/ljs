@@ -1,0 +1,82 @@
+<include file="Public:_header" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<tagLib name="htmlA" />
+<div class="so_main">
+    <div class="page_tit">奖品配置</div>
+    <div id="search_div">
+
+        <div class="form2" style="background-color: #d2dbea;">
+        </div>
+    </div>
+
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th class="line_l">prizeid</th>
+                <th class="line_l">奖品名称</th>
+                <th class="line_l">奖品分类</th>
+                <th class="line_l">起投数</th>
+                <th class="line_l">总数</th>
+                <th class="line_l">总期数</th>
+                <th class="line_l">修改时间</th>
+                <th class="line_l">是否默认</th>
+                <th class="line_l">操作</th>
+            </tr>
+            <volist id="vo" name="list">
+                <tr>
+                    <td>{$vo.id}</td>
+                    <td>{$vo.name}</td>
+                    <td>{$vo.type}</td>
+                    <td>{$vo.min_feeds}</td>
+                    <td>{$vo.total_feeds}</td>
+                    <td>{$vo.inventory}</td>
+                    <td>{$vo.create_time|date='Y-m-d H:i:s',###}</td>
+                    <if condition="$vo.default eq 1" >
+                        <td>是</td>
+                    <else />
+                        <td></td>
+                    </if>
+                    <if condition="$vo.default eq 0" >
+                        <td><input type="button" class="defaultBtn" value="下一期开我吧"/></td>
+                    <else />
+                        <td></td>
+                    </if>
+                </tr>
+            </volist>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $('.defaultBtn').click(setDefault);
+        function setDefault(){
+            var idCol = $(this).closest('tr').children('td').eq(0).text();
+            var typeCol = $(this).closest('tr').children('td').eq(2).text();
+            $.ajax({
+                        url: "/Admin/yunwei/dreamprize",
+                        type: "post",
+                        data: {
+                            "type": typeCol,
+                            "id":  idCol,
+                        },
+                        dataType: "json",
+                        success: function(results){
+                            //code 0 失败 1 成功
+                            var realdata = results || {};
+                            if(realdata.code == 1){
+                                alert('success!');
+                                window.location.reload();
+                            }else{
+                                
+                                alert('failed');
+                                window.location.reload();
+                            } 
+                        },
+                        error:function(results){
+                            debugger;
+                        }
+                    });
+        }
+    })
+</script>
+<include file="Public:_footer" />

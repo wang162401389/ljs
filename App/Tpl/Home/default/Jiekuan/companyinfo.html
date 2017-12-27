@@ -1,0 +1,586 @@
+<include file="Public:_header_common" />
+<title>{$title}</title>
+<meta http-equiv="keywords" content="{$keyword}" />
+<meta http-equiv="description" content="{$description}" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/H/css/detail.css" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/H/css/jiekuan.css" />
+<script type="text/javascript" src="__ROOT__/Style/H/js/common.js" language="javascript"></script>
+<script type="text/javascript" src="__ROOT__/Style/Js/sea.js" language="javascript"></script>
+
+<style>
+    #companyphotolist{margin-top: 15px}
+    #companyphotolist .file-item{margin-right: 20px; margin-top: 10px; border:1px solid #cecfcf; padding: 3px; background: #fff}
+</style>
+</head>
+<body>
+<include file="Public:_header_main" />
+<div class="xiantiao"></div>
+<div class="bread wrapper">您所在的位置：<a href="__APP__/index">首页</a> &gt; 我要借款</div>
+<div class="apply-banner">
+    <div class="wrapper">
+        <h2>企业借款申请流程</h2>
+        <div class="apply-step">
+            <p class="icon-line">
+                <i class="jiekuan-spr ic-approve"></i>
+                <i class="jiekuan-spr ic-write ic-write"></i>
+                <i class="jiekuan-spr ic-submit ic-submit-gray"></i>
+            </p>
+            <p class="wire-line cf">
+                <i class="jiekuan-spr circle circle-on"></i>
+                <i class="wire wire-on"></i>
+                <i class="wire wire-on"></i>
+                <i class="jiekuan-spr circle circle-on"></i>
+                <i class="wire wire-on"></i>
+                <i class="wire"></i>
+                <i class="jiekuan-spr circle"></i>
+            </p>
+            <p class="text-line cf">
+                <span class="text-on">1、借款信息</span>
+                <span class="m text-on">2、填写资料</span>
+                <span>3、提交申请</span>
+            </p>
+        </div>
+    </div>
+</div>
+<form action="javascript:void(0);" id="companyForm" method="post" autocomplete="off">
+    <input type="hidden" value="{$key}" id="key" name="key">
+    <div class="apply-bar">
+        <h2>经办人信息</h2>
+        <ul class="apply-ul">
+            <li class="cf">
+                <label class="cite" for="managerimgcode"><em class="cor-red">*</em>图形验证码：</label>
+                <input type="text" style="width:151px" id="managerimgcode" name="managerimgcode" class="inp js-number"  placeholder="请填写图形验证码" maxlength="2" />
+                <img class="imgcode-src" src="__URL__/verify" onclick="this.src=this.src+'?t='+Math.random()"/>
+                <span class="wrong-text" id="mimgcodetips">请填写正确的图形验证码</span>
+            </li>
+            <li class="cf">
+                <label class="cite" for="agent_mobile"><em class="cor-red">*</em>经办人手机号：</label>
+                <input class="inp js-number js-blur" style="width:217px" name="agent_mobile" id="agent_mobile" type="text" maxlength="11" />
+                <input type="button" disabled="disabled" value="发送验证码" class="sendcode-button" id="msendcodebtn" />
+                <span class="wrong-text" id="agent_mobiletips">请填写经办人手机号</span>
+            </li>
+            <li class="cf" style="margin-top:-15px">如该手机未在链金所注册，则系统将自动为您注册链金所帐号</li>
+            <li class="cf">
+                <label class="cite" for="managersmscode"><em class="cor-red">*</em>手机验证码：</label>
+                <input class="inp" name="managersmscode" id="managersmscode" type="text" maxlength="6" />
+                <span class="wrong-text" id="msmscodetips">请填写正确的手机验证码</span>
+            </li>
+            <li class="cf">
+                <label class="cite" for="agent_name"><em class="cor-red">*</em>经办人姓名：</label>
+                <input class="inp js-blur" name="agent_name" id="agent_name" type="text" />
+                <span class="wrong-text">请填写经办人姓名</span>
+            </li>
+            <li class="cf">
+                <label class="cite" for="alicense_no"><em class="cor-red">*</em>经办人身份证号：</label>
+                <input class="inp" name="alicense_no" id="alicense_no" type="text" maxlength="18" />
+                <span class="wrong-text">请填写经办人身份证号</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="apply-bar">
+        <h2>企业基本信息</h2>
+        <ul class="apply-ul">
+            <li class="cf">
+                <label class="cite" for="company_name"><em class="cor-red">*</em>公司名称：</label>
+                <input class="inp js-blur" name="company_name" id="company_name" type="text" />
+                <span class="wrong-text">请填写公司名称</span>
+            </li>
+            <li class="cf">
+                <label class="cite" for="address"><em class="cor-red">*</em>企业地址：</label>
+                <input class="inp js-blur" name="address" id="address" type="text" />
+                <span class="wrong-text">请填写公司企业地址</span>
+            </li>
+            <li class="cf">
+                <label class="cite" for="license_no"><em class="cor-red">*</em>执照号：</label>
+                <input class="inp js-number" name="license_no" id="license_no" type="text" maxlength="15" />
+                <span class="wrong-text">请填写正确的15位执照号</span>
+            </li>
+            <li class="cf">
+                <label class="cite" for="license_expire_date"><em class="cor-red">*</em>执照过期日：</label>
+                <input class="inp laydate-icon" type="text" name="license_expire_date" id="license_expire_date" onclick="laydate()" />
+                <span class="wrong-text">请选择执照过期日</span>
+            </li>
+            <li class="cf">
+                <label class="cite" for="license_address"><em class="cor-red">*</em>营业执照地址：</label>
+                <input class="inp js-blur" name="license_address" id="license_address" type="text" />
+                <span class="wrong-text">请填写营业执照地址</span>
+            </li>
+            <li class="cf">
+                <label class="cite" for="business_scope"><em class="cor-red">*</em>营业范围：</label>
+                <input class="inp js-blur" name="business_scope" id="business_scope" type="text" />
+                <span class="wrong-text">请填写营业范围</span>
+            </li>
+            <li class="cf">
+                <label class="cite" for="summary"><em class="cor-red">*</em>企业简介：</label>
+                <input class="inp js-blur" name="summary" id="summary" type="text" />
+                <span class="wrong-text">请填写企业简介</span>
+            </li>
+            <li class="cf">
+                <label class="cite" for="organization_no"><em class="cor-red">*</em>企业组织机构代码：</label>
+                <input class="inp js-blur" name="organization_no" id="organization_no" type="text" maxlength="10" />
+                <span class="wrong-text">请填写正确的10位数企业组织机构代码</span>
+            </li>
+            <li class="cf">
+                <label class="cite"><em class="cor-red">*</em>上传企业资质：</label>
+                <!--<input type="hidden" id="file" value="0"/>-->
+                <!--<input type="file" style="margin-left: 8px;" id="file_data" accept="application/x-zip-compressed" onchange="readFile();" />-->
+                <!--<span class="wrong-text">请上传企业资质</span>-->
+                <a href="javascript:void(0);" id="companyphotobtn" class="photoupload-btn"></a>
+                <div id="companyphotolist" class="cf">
+
+                </div>
+            </li>
+            <li class="cf" style="padding: 0 0 0 380px;">
+                <p class="cf-companyinfo-zhizhao">（必须上传营业执照，组织机构代码证，税务登记证，单位银行结算账户开户许可证，企业法人证件正反面）</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="apply-bar">
+        <h2>企业银行账户信息</h2>
+        <ul class="apply-ul">
+            <li class="cf">
+                <label class="cite"><em class="cor-red">*</em>银行名称：</label>
+                <select class="js-requiredSel" id="banklist-sel" name="duration">
+                    <option value="0">请选择</option>
+                    <option value="招商银行_CMB">招商银行</option>
+                    <option value="中国银行_BOC">中国银行</option>
+                    <option value="中国工商银行_ICBC">中国工商银行</option>
+                    <option value="中国建设银行_CCB">中国建设银行</option>
+                    <option value="中国农业银行_ABC">中国农业银行</option>
+                    <option value="中国邮政储蓄银行_PSBC">中国邮政储蓄银行</option>
+                    <option value="交通银行_COMM">交通银行</option>
+                    <option value="上海浦东发展银行_SPDB">上海浦东发展银行</option>
+                    <option value="深圳发展银行_SZPAB">深圳发展银行</option>
+                    <option value="中国民生银行_CMBC">中国民生银行</option>
+                    <option value="兴业银行_CIB">兴业银行</option>
+                    <option value="平安银行_SZPAB">平安银行</option>
+                    <option value="北京银行_BCCB">北京银行</option>
+                    <option value="天津银行_">天津银行</option>
+                    <option value="上海银行_BOS">上海银行</option>
+                    <option value="华夏银行_HXB">华夏银行</option>
+                    <option value="光大银行_CEB">光大银行</option>
+                    <option value="广发银行_GDB">广发银行</option>
+                    <option value="中信银行_CITIC">中信银行</option>
+                    <option value="上海农商银行_SHRCB">上海农商银行</option>
+                </select>
+                <span class="wrong-text">请选择银行名称</span>
+            </li>
+            <li class="cf">
+                <label class="cite" for="bank_num"><em class="cor-red">*</em>银行账户：</label>
+                <input class="inp js-number"  type="text" name="bank_num" id="bank_num" maxlength="21" />
+                <span class="wrong-text">请填写正确的银行账户</span>
+            </li>
+            <li class="cf">
+                <label class="cite"><em class="cor-red">*</em>开户行：</label>
+                <select id="cmbProvince" name="addr_province" class="js-province" style="width:112px">
+                    <option value="0">选择省份</option>
+                </select>
+                <select id="cmbCity" name="addr_city" class="ml5 js-city" style="width:112px">
+                    <option value="0">选择城市</option>
+                </select>
+                <select id="cmbqu" style="width:96px; display: none">
+                    <option value="0">选择城市</option>
+                </select>
+                <input  class="inp js-blur" name="txt_bankName" id="txt_bankName" type="text" placeholder="如车公庙支行" style="width:137px; margin-left: 5px">
+                <span class="wrong-text">请填写完整的开户行</span>
+            </li>
+            <li class="cf">
+                <p>（如不能确定，请拨打开户行的客服热线咨询）</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="apply-bar">
+        <h2>企业联系方式</h2>
+        <ul class="apply-ul">
+            <li class="cf">
+                <label class="cite" for="legal_person"><em class="cor-red">*</em>企业法定代表人：</label>
+                <input class="inp js-blur" name="legal_person" id="legal_person" type="text" />
+                <span class="wrong-text">请填写企业法定代表人</span>
+            </li>
+            <li class="cf">
+                <label class="cite" for="telephone"><em class="cor-red">*</em>企业电话：</label>
+                <input class="inp js-blur" name="telephone" id="telephone" type="text" />
+                <span class="wrong-text">请填写企业电话</span>
+            </li>
+            <li class="cf">
+                <label class="cite"  for="legal_person_phone"><em class="cor-red">*</em>法人手机号码：</label>
+                <input class="inp js-number js-telreg" name="legal_person_phone" id="legal_person_phone" type="text" maxlength="11" />
+                <span class="wrong-text">请填写正确的法人手机号码</span>
+            </li>
+            <li class="cf">
+                <label class="cite"  for="email"><em class="cor-red">*</em>企业邮箱：</label>
+                <input class="inp" name="email" id="email" type="text" />
+                <span class="wrong-text">请填写正确的企业邮箱</span>
+            </li>
+            <li class="cf">
+                <label class="cite"  for="cert_no"><em class="cor-red">*</em>企业法人证件号码：</label>
+                <input class="inp js-blur" name="cert_no" id="cert_no" type="text" />
+                <span class="wrong-text">请填写企业法人证件号码</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="btn-line">
+        <a href="javascript:void(0);" class="apply-btn-info js-nextBtn">下一步</a>
+    </div>
+</form>
+
+<include file="Public:_footer" />
+<script type="text/javascript">
+    (function($){
+        define("jiekuan/companyinfo",function(require, exports, module){
+            require("layer/layer");
+            require("laydate/laydate");
+            var upload = require("webuploader/upload");
+            var main = require("main");
+            var Module = {
+                init: function(){
+                    /*
+                     * 手持身份证照
+                     * */
+                    upload.base({
+                        pickID: "companyphotobtn",
+                        objID: "companyphotolist",
+                        fileSingleSizeLimit: "1000",
+                        thumbnailWidth: "200",
+                        thumbnailHeight: "115",
+                        fileNumLimit: "300",
+                        storage: "jiekuan"
+                    });
+
+                    /* 城市三级联动
+                    **/
+                    seajs.use("adarray", function() {
+                        addressInit("cmbProvince", "cmbCity","cmbqu");
+                    });
+
+                    /* 失去焦点
+                    **/
+                    $("body").on("blur",".js-blur",function(){
+                        var val = $(this).val();
+                        if(!val){
+                            $(this).siblings(".wrong-text").show();
+                        }else{
+                            $(this).siblings(".wrong-text").hide();
+                        }
+                    })
+
+                    /*图形验证码*/
+                    $("body").on("blur","#managerimgcode",function(){
+                        var imgval = $(this).val();
+                        if(imgval == "" || imgval == null || imgval.length > 2){
+                            $("#mimgcodetips").show();
+                            $("#msendcodebtn").attr("disabled","disabled").removeClass("button-sure");
+                            return;
+                        }else{
+                            $.ajax({
+                                url: "__URL__/ckcode/",
+                                data: {"sVerCode":imgval},
+                                cache: false,
+                                type: "post",
+                                dataType: "json",
+                                success: function (data) {
+                                    if(data == 1){
+                                        $("#mimgcodetips").hide();
+                                        $("#msendcodebtn").removeAttr("disabled").addClass("button-sure");
+                                    }else{
+                                        $("#mimgcodetips").show();
+                                        $("#msendcodebtn").attr("disabled","disabled").removeClass("button-sure");
+                                    }
+                                }
+                            });
+                        }
+                    })
+
+                    /*发送手机验证码*/
+                    $("body").on("click","#msendcodebtn",function(){
+                        var imgval = $("#managerimgcode").val();
+                        var phoneval = $("#agent_mobile").val();
+                        var smsval = $("#managersmscode").val();
+                        var txt = $("#txtCode").val();
+
+                        if(phoneval == "" || phoneval == null || phoneval.length != 11){
+                            $("#agent_mobiletips").show();
+                            return;
+                        }
+                        else{
+                            $("#agent_mobiletips").hide();
+                            //console.log("图形验证码是"+ imgval);
+                            //console.log("手机号码是"+ phoneval);
+                            //console.log("手机验证码是"+ smsval);
+
+                            $.ajax({
+                                url: "__APP__/home/jiekuan/sendphone",
+                                type: "post",
+                                dataType: "json",
+                                data: {"phone":phoneval, "txcode":imgval},
+                                success: function(status) {
+                                    if (status == 1) {
+                                        var time = 60;
+                                        var countdown = setInterval(CountDown, 1000);
+                                        layer.msg('短信发送成功', {icon: 1},500);
+                                        function CountDown() {
+                                            $("#msendcodebtn").removeClass("button-sure").attr("disabled", true);
+                                            $("#msendcodebtn").val(time +' '+ '秒后重新发送');
+                                            //时间为零，重新发送
+                                            if (time == 0) {
+                                                $("#msendcodebtn").addClass("button-sure").val("再次发送").removeAttr("disabled");
+                                                clearInterval(countdown);
+                                            }
+                                            time--;
+                                        }
+                                    }else if(status == 2) {
+                                        alert("发送失败,请稍后尝试");
+                                    }
+                                }
+                            });
+                        }
+                    })
+
+                    /*手机验证码*/
+                    $("#managersmscode").blur(function(){
+                        var val = $(this).val();
+                        var phoneval = $("#agent_mobile").val();
+                        if(val == "" || val == null || val.length != 6){
+                            $(this).siblings(".wrong-text").show();
+                        }else{
+                            $.ajax({
+                                type: "post",
+                                async: false,
+                                url: "/home/jiekuan/validatephonecode/",
+                                dataType: "json",
+                                data: {"code":val, "phone":phoneval},
+                                timeout: 3000,
+                                success: function(status) {
+                                    if (status == 1) {
+                                        $("#msmscodetips").hide();
+                                    }else if(status == 0) {
+                                        $("#msmscodetips").show();
+                                    }
+                                }
+                            });
+                        }
+                    });
+
+                    /*营业执照*/
+                    $("body").on("blur","#license_no",function(){
+                        var val = $(this).val();
+                        if(!val || val.length!=15){
+                            $(this).siblings(".wrong-text").show();
+                        }else{
+                            $(this).siblings(".wrong-text").hide();
+                        }
+                    })
+
+                    /*银行卡号*/
+                    $("body").on("blur","#bank_num",function(){
+                        var val = $(this).val();
+                        if(!val || val.length < 16 || val.length > 21){
+                            $(this).siblings(".wrong-text").show();
+                        }else{
+                            $(this).siblings(".wrong-text").hide();
+                        }
+                    })
+
+                    /*邮箱*/
+                    $("body").on("blur","#email",function(){
+                        var val = $(this).val();
+                        if(!val || !val.match(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/)){
+                            $(this).siblings(".wrong-text").show();
+                        }else{
+                            $(this).siblings(".wrong-text").hide();
+                        }
+                    })
+
+                    /*手机号*/
+                    $("body").on("blur",".js-telreg",function(){
+                        var val = $(this).val();
+                        if(val && $.isTelephone(val)){
+                            $(this).siblings(".wrong-text").hide();
+                        }else{
+                            $(this).siblings(".wrong-text").show();
+                        }
+                    });
+
+                    /*身份证号码*/
+                    $("body").on("blur","#alicense_no",function(){
+                        var val = $(this).val();
+                        if(!val || val.length<15 || val.length>19){
+                            $(this).siblings(".wrong-text").show();
+                        }else{
+                            $(this).siblings(".wrong-text").hide();
+                        }
+                    });
+
+                    /*
+                     *下一步
+                     **/
+                    $("body").on("click", ".js-nextBtn", function() {
+                        var me = $(this),
+                            email=$("#email").val(),
+                            nameReg = /^[\u4e00-\u9fa5]+$/,
+                            license_pic_arr = [],
+                            ispass = true;
+                        $(".file-item").each(function(){
+                            var license_pic_s = $("img", this).attr("src") || "",
+                                license_pic_m = $("img", this).data("rel") || "";
+                            if(!license_pic_s || !license_pic_m){
+                                $.wrongMsg("企业资质上传失败");
+                                ispass = false;
+                                return;
+                            }
+                            var license_pic = {
+                                    s_pic: license_pic_s,
+                                    m_pic: license_pic_m
+                                };
+                            license_pic_arr.push(license_pic);
+                        });
+
+                        if(!ispass) return;
+
+                        if (!$.trim($("#managerimgcode").val()) || $("#managerimgcode").val().length>2) {
+                            $("#managerimgcode").focus();
+                            $.wrongMsg("请填写正确的图形验证码");
+                            return;
+                        }
+                        if(!$.trim($("#agent_mobile").val()) || $("#agent_mobile").val().length!=11){
+                            $("#agent_mobile").focus();
+                            $.wrongMsg("请填写正确的经办人手机");
+                            return;
+                        }
+                        if(!$.trim($("#managersmscode").val()) || $("#managersmscode").val().length!=6){
+                            $("#managersmscode").focus();
+                            $.wrongMsg("请填写正确的手机验证码");
+                            return;
+                        }
+                        if (!$.trim($("#agent_name").val()) || !nameReg.test($("#agent_name").val())) {
+                            $("#agent_name").focus();
+                            $.wrongMsg("请填写正确的经办人姓名");
+                            return;
+                        }
+                        if($("#alicense_no").val() == null || $("#alicense_no").val() == "" || $("#alicense_no").val().length<15 || $("#alicense_no").val().length>19){
+                            $("#alicense_no").focus();
+                            $.wrongMsg("请填写正确的经办人身份证1");
+                            return;
+                        }
+
+                        if(!$.trim($("#company_name").val())){
+                            $("#company_name").focus();
+                            $.wrongMsg("请填写公司名称");
+                            return;
+                        }
+                        if(!$.trim($("#address").val())){
+                            $("#address").focus();
+                            $.wrongMsg("请填写公司企业地址");
+                            return;
+                        }
+                        if($("#license_no").val().length!=15){
+                            $("#license_no").focus();
+                            $.wrongMsg("请填写正确的15位营业执照号");
+                            return;
+                        }
+                        if(!$.trim($("#license_expire_date").val())){
+                            $("#license_expire_date").focus();
+                            $.wrongMsg("请填写执照过期日");
+                            return;
+                        }
+                        if(!$.trim($("#license_address").val())){
+                            $("#license_address").focus();
+                            $.wrongMsg("请填写营业执照地址");
+                            return;
+                        }
+
+                        if(!$.trim($("#business_scope").val())){
+                            $("#business_scope").focus();
+                            $.wrongMsg("请填写营业范围");
+                            return;
+                        }
+                        if(!$.trim($("#summary").val())){
+                            $("#summary").focus();
+                            $.wrongMsg("请填写企业简介");
+                            return;
+                        }
+                        if($("#organization_no").val().length!=10){
+                            $("#organization_no").focus();
+                            $.wrongMsg("请填写正确的10位数企业组织机构代码");
+                            return;
+                        }
+                        if(license_pic_arr.length < 1){
+                            $.wrongMsg("请上传企业资质");
+                            return;
+                        }
+                        if($("#banklist-sel").val() == 0){
+                            $("#bank_num").focus();
+                            $.wrongMsg("请选择银行名称");
+                            return;
+                        }
+                        if(!$("#bank_num").val() || $("#bank_num").val().length < 16 || $("#bank_num").val().length > 21){
+                            $("#bank_num").focus();
+                            $.wrongMsg("请填写正确的银行账户");
+                            return;
+                        }
+                        if($("#cmbCity").val() == 0){
+                            $("#txt_bankName").focus();
+                            $.wrongMsg("请填写完整的开户行");
+                            return;
+                        }
+                        if(!$.trim($("#txt_bankName").val())){
+                            $("#txt_bankName").focus();
+                            $.wrongMsg("请填写支行银行");
+                            return;
+                        }
+                        if (!$.trim($("#legal_person").val()) || !nameReg.test($("#legal_person").val())) {
+                            $("#legal_person").focus();
+                            $.wrongMsg("请填写正确的企业法定代表人");
+                            return;
+                        }
+                        if(!$.trim($("#telephone").val())){
+                            $("#telephone").focus();
+                            $.wrongMsg("请填写企业电话");
+                            return;
+                        }
+                        if(!$.trim($("#legal_person_phone").val()) || $("#legal_person_phone").val().length!=11){
+                            $("#legal_person_phone").focus();
+                            $.wrongMsg("请填写正确的法人手机号码");
+                            return;
+                        }
+
+                        if(!email.match(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/)){
+                            $("#email").focus();
+                            $.wrongMsg("请填写正确的企业邮箱");
+                            return;
+                        }
+                        if(!$.trim($("#cert_no").val())){
+                            $("#cert_no").focus();
+                            $.wrongMsg("请填写企业法人证件号码");
+                            return;
+                        }
+
+
+                        var data = $("#companyForm").serialize();
+                        data = main.serializeJson(data);
+                        data.addr_province=$("select[name='addr_province'] option:selected").text();
+                        data.addr_city=$("select[name='addr_city'] option:selected").text();
+                        data.license_pic = license_pic_arr;
+
+                        main.getApi("/home/jiekuan/companyinfo", data, function(result){
+                            var result = result || {},
+                                    url = result.url || "";
+                            setTimeout(function(){
+                                location.href = url;
+                            },2000);
+                        });
+
+                    })
+                }
+            };
+            module.exports = Module;
+        });
+        seajs.use("jiekuan/companyinfo", function(module){
+            module.init();
+        });
+    })($);
+</script>

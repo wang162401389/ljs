@@ -1,0 +1,85 @@
+
+    <div class="title_container">
+        <div class="title">推荐项目</div>
+        <a class="all" href="/invest">查看更多》</a>
+    </div>
+    <div class="invest_main" >
+        <table border="0" cellpadding="0" cellspacing="0"  >
+            <tr class="diyige borrowlistl" >
+                <td width="257" class="listbg">项目名称</td>
+                <td width="130" class="listbg">预期年化收益率</td>
+                <td width="171" class="listbg">借款总额(元)</td>
+                <td width="71" class="listbg">借款期限</td>
+                <td width="71" class="listbg">进度</td>
+                <td width="131" class="listbg">操作</td>
+            </tr>
+            <if condition="$isshow eq 1">
+               <!--  <tr height="80" class="borrowlist borrowlistl ">
+                    <td width="257" align="left" style="text-align:left;">
+                        <div style="float:left">
+                            <img src="/Style/H/images/index/new_zhi.png" style="margin-top: 8px;margin-right: 8px">
+                        </div>
+                        <a href="__APP__/home/experience/detail/{$expinfo.id}" class="BL_name" title="新手体验标">新手体验标</a>
+                    </td>
+                    <td class="dengji" width="130"><span class="BL_time" style="color: #fa9401">{$expinfo.borrow_interest_rate}%</span></td>
+                    <td class="dengji" width="171"><span class="BL_time">{$expmoney}元</span></td>
+                    <td class="dengji" width="170">
+                               <span class="BL_time"><span style="font-size:23px;" class="BL_time">{$expinfo.borrow_duration_txt}</span></span>
+                    </td>
+                    <td class="dengji jindu" width="125">
+                        <div class="member-progress">0%</div>
+                    </td>
+                    <td class="dengji" width="220"><a href="__APP__/home/experience/detail/{$expinfo.id}" class="btn btn-orange">我要投标</a></td>
+                </tr> -->
+            </if>
+
+            <volist name="blist" id="vb">
+                <tr height="80" class="borrowlist borrowlistl <if condition="($key+1)%10 eq 0">delline</if>">
+                <td width="257" align="left" style="text-align:left;">
+                    <div style="float:left">
+                        <?php if($vb['product_type']==7){ ?>
+                        <img src="__ROOT__/Style/H/images/index/new_you.png" style="margin-top: 8px;margin-right: 8px">
+                        <?php } else if($vb['product_type']==6||$vb['product_type']==5){ ?>
+                        <img src="__ROOT__/Style/H/images/index/new_xin.png" style="margin-top: 8px;margin-right: 8px">
+                        <?php } else if($vb['product_type']==4){ ?>
+                        <img src="__ROOT__/Style/H/images/index/new_rong.png" style="margin-top: 8px;margin-right: 8px">
+                        <?php } else if($vb['product_type']==3||$vb['product_type']==2||$vb['product_type']==1){ ?>
+                        <img src="__ROOT__/Style/H/images/index/new_zhi.png" style="margin-top: 8px;margin-right: 8px">
+                        <?php } ?>
+                    </div>
+                    <a href="{$vb.id|getInvestUrl=###}"title="{$vb.borrow_name}" class="BL_name">{$vb.borrow_name|cnsubstr=###,9}</a>
+                </td>
+                <td class="dengji" width="130"><span class="BL_time" style="color: #fa9401">{$vb.borrow_interest_rate}%</span></td>
+                <td class="dengji" width="171"><span class="BL_time">{$vb.borrow_money|getMoneyFormt=###}元</span></td>
+
+                <td class="dengji" width="170">
+                           <span class="BL_time">
+                              <?php if($vb['borrow_duration_txt']!=''){ ?>
+                               <span style="font-size:23px;" class="BL_time">{$vb.borrow_duration_txt}</span>
+                               <?php } else { ?>
+                               <span style="font-size:23px;" class="BL_time">{$vb.borrow_duration}<if condition="$vb.repayment_type eq 1">天<else/>个月</if></span>
+                               <?php } ?>
+                           </span>
+                </td>
+                <td class="dengji jindu" width="125">
+                    <?php $progress = intval($vb['progress']);
+                       echo '<div class="member-progress">'.$progress.'%</div>';
+                    ?>
+                </td>
+                <td class="dengji" width="220">
+                    <if condition="$vb.borrow_status eq 3">
+                        <a href="javascript:;" class="btn btn-whitegrey">已流标</a>
+                        <elseif condition="$vb.borrow_status eq 4"/>
+                        <a href="javascript:;" class="btn btn-grey">复审中</a>
+                        <elseif condition="$vb.borrow_status eq 6"/>
+                        <a href="javascript:;" class="btn btn-grey">还款中</a>
+                        <elseif condition="$vb.borrow_status gt 6"/>
+                        <a href="{$vb.id|getInvestUrl=###}" class="btn btn-blue">已完成</a>
+                        <else/>
+                        <a href="{$vb.id|getInvestUrl=###}" class="btn btn-orange">我要投标</a>
+                    </if>
+                </td>
+                </tr>
+            </volist>
+        </table>
+    </div>

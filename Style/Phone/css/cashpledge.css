@@ -1,0 +1,94 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+	list-style: none;
+}
+body {
+	background-color: #f0f0f0;
+}
+img {
+	max-width:100%;
+	height:auto;
+}
+.header {
+	color: #fff;
+	background-color: #54c0f2;
+	height:3rem;}
+.header .title {
+	width: 100%;
+	font-size: 120%;
+	text-align: left;
+	
+}
+.header .title a {
+	display: inline-block;
+	color: #fff;
+	width: 9%;
+	float:left
+}
+.header .title div {
+	display: inline-block;
+	float:left;
+	width: 90%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	height:3rem;
+	line-height:3rem;
+	font-size:1.4rem;
+	text-align:center
+}
+.header .info {
+	text-align: center;
+	font-size: 80%;
+	width: 100%;
+	padding-bottom: 20px;
+}
+.header .info div {
+	display: inline-block;
+}
+.header .info .text1{
+	width: 35%;
+}
+.header .info .text2{
+	width: 30%;
+}
+.header .info .text3{
+	width: 10%;
+}
+.content {
+	padding: 20px;
+}
+.content .text {
+	color: #3a3a3a;
+	margin: 10px;
+}
+.content .text a {
+	color: #fff;
+	background-color: #ff6e01;
+	margin-left: 20px;
+	padding: 2px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.content input {
+	width: 100%;
+	padding: 10px;
+	border: 0px;
+}
+.content .confirm a {
+	background-color: #54c1f3;
+	padding: 10px;
+	width: 100%;
+	padding-left: 35%;
+	padding-right: 35%;
+	font-size: 110%;
+}
+.coupon li{
+	color: #3a3a3a;
+	margin: 10px;
+}
+.coupon li input{
+	width: 40px;
+}

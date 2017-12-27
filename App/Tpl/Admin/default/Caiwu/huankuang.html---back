@@ -1,0 +1,74 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<script type="text/javascript">
+	var delUrl = '__URL__/doDel';
+	var addUrl = '__URL__/add';
+	var editUrl = '__URL__/edit';
+	var editTitle = '还款搜索';
+	var isSearchHidden = 1;
+	var searchName = "还款搜索";
+</script>
+<div class="so_main">
+  <div class="page_tit">还款对账</div>
+<!--搜索-->
+  <include file="search" />
+<!--搜索-->
+
+  <div class="Toolbar_inbox">
+  	<div class="page right">{$pagebar}</div>
+    <htmlA:commonBtn type="jsfun" action="dosearch();" value="还款搜索" style="search_action" />
+  </div>
+  
+  <div class="list">
+  <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th style="width:30px;">
+        <input type="checkbox" id="checkbox_handle" onclick="checkAll(this)" value="0">
+        <label for="checkbox"></label>
+    </th>
+    <th class="line_l">UID</th>  
+    <th class="line_l">会员名</th> 
+    <th class="line_l">标号</th>
+    <th class="line_l">金额</th>
+    <th class="line_l">期号</th>
+    <th class="line_l">还款时间</th>
+    <th class="line_l">还款状态</th>
+    <th class="line_l">单号</th>
+  
+    <!-- <th class="line_l">操作</th> -->
+  </tr>
+  <volist id="vo" name="list">
+      <tr overstyle='on' id="list_{$vo.uid}">
+        <td><input type="checkbox" name="checkbox" id="checkbox2" onclick="checkon(this)" value="{$vo.uid}"></td>
+        <td>{$vo.uid}</td>    
+        <td>
+          <if condition = "$vo['uid'] eq 0">
+            综合服务费
+            <elseif condition="$vo['uid'] eq 1"/>
+            批量还款
+            <else/>
+            <htmlA:user id="vo.uid" uname="vo.uname" />
+          </if>
+          
+        </td>  
+         <td>{$vo.bid}</td>  
+        <td>{$vo.money}</td>
+        <td>{$vo.sort_order}</td>
+        <td><if condition="$vo.addtime eq null">--<else/>{$vo.addtime|date="Y-m-d H:i:s",###}</if></td>
+        <td><if condition="$vo.status eq 1">处理中<elseif condition="$vo.status eq 2"/>已完成<else/>交易失败</if></td>
+        <td><if condition="$vo.order_no eq ''">无<else/>{$vo.order_no}</if></td>
+        <!-- <td>操作</td> -->
+      </tr>
+  </volist>
+  </table>
+  </div>
+  
+  <div class="Toolbar_inbox">
+  	<div class="page right">{$pagebar}</div>
+    <htmlA:commonBtn type="jsfun" action="dosearch();" value="还款搜索" style="search_action" />
+     <htmlA:commonBtn type="href" action="__URL__/{$xaction}?{$query}" value="将当前条件下数据导出为Excel"/>
+  </div>
+</div>
+
+<include file="Public:_footer" />

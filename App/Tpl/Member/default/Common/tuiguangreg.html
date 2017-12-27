@@ -1,0 +1,556 @@
+<include file="default:Public:_header_common" group="Home" />
+	<title>新用户注册-- {$glo.web_name}</title>
+<script type="text/javascript" src="__ROOT__/Style/H/js/top.js"></script>
+<style>
+dl,dd,dt{margin:0;padding:0;}
+a{ text-decoration:none;}
+.floating_ck{position:fixed;right:10px;top:60%;z-index:99}
+.floating_ck dl dd{position:relative;width:53px;height:50px;background-color:#b6b6b6;border-bottom:solid 1px #ffffff;text-align:center;background-repeat:no-repeat;background-position:center 45%;cursor:pointer;}
+.floating_ck dl dd:hover{background-color:#54c0f2;border-bottom:solid 1px #54c0f2;}
+.floating_ck dl dd:hover .floating_left{display:block;}
+.consult,.words{background-image:url(__ROOT__/Style/H/kefu/icon0701/zxicon.png);}
+.quote{background-image:url(__ROOT__/Style/H/kefu/icon0701/kficon.png);}
+.qq{background-image:url(__ROOT__/Style/H/kefu/icon0701/kefu11.png);  }
+.qrcord{background-image:url(__ROOT__/Style/H/kefu/icon0701/erweima.png);}
+.return{background-image:url(__ROOT__/Style/H/kefu/icon0701/fanhui.png);}
+.tip{background-image:url(__ROOT__/Style/H/kefu/icon0701/tips.png);}
+.floating_ck dd span{display:block;padding-top:54px;}
+.floating_ck a:hover{text-decoration:none;}
+.floating_left{position:absolute;left:-161px;top:0px;width:160px;background-color:#fff;border-bottom:solid 1px #ccc;border-top:solid 1px #ccc;border-left:solid 1px #ccc;display:none;}
+.w_weibo{height:49px;left:-161px;background-color:#fff;border-bottom:solid 1px #ccc;border-top:solid 1px #ccc;border-left:solid 1px #ccc;}
+.qq_ys{height:50px;left:-161px;background-color:#fff;border-bottom:solid 1px #ccc;border-top:solid 1px #ccc;border-left:solid 1px #ccc; text-align:center;font-size: 12px;}
+.fw{font-size: 13px;line-height: 25px; height:150px;}
+.fw1{font-size: 13px;line-height: 25px; font-weight:bold;}
+.floating_ewm{height:118px;top:-40px;}
+.floating_ewm i{background-image:url(__ROOT__/Style/H/kefu/ccfaxcode105.png);display:block;width:105px;height:105px;margin:auto;margin-top:7px;}
+.floating_ewm p{color:#fff;margin-top:5px;}
+.floating_ewm .qrcord_p01{font-size:12px;line-height:20px;}
+.floating_ewm .qrcord_p02{font-size:18px;}
+
+</style>
+<script type="text/javascript">
+function videoverify(){
+    $.jBox.confirm("申请视频认证后会直接从帐户扣除认证费用{$glo.fee_video|default=0}元，然后客服会联系您进行认证。<br/><font style='color:red'>确定要申请认证吗?</font>", "视频认证", dovideo, { buttons: { '确认申请': true, '暂不申请': false} });
+}
+function dovideo(v, h, f) {
+    if (v == true){
+        $.ajax({
+            url: "__APP__/common/video",
+            data: {},
+            timeout: 5000,
+            cache: false,
+            type: "get",
+            dataType: "json",
+            success: function (d, s, r) {
+                if(d){
+                    if(d.status==1) $.jBox.tip(d.message, 'success');
+                    else $.jBox.tip(d.message, 'fail');
+                }
+            }
+        });
+    }
+    return true;
+};
+// 自定义按钮
+function faceverify(){
+    $.jBox.confirm("<font style='color:red'>确定要申请现场认证吗?</font>", "现场认证", doface, { buttons: { '确认申请': true, '暂不申请': false} });
+}
+function doface(v, h, f) {
+    if (v == true){
+        $.ajax({
+            url: "__APP__/common/face",
+            data: {},
+            timeout: 5000,
+            cache: false,
+            type: "get",
+            dataType: "json",
+            success: function (d, s, r) {
+                if(d){
+                    if(d.status==1) $.jBox.tip(d.message, 'success');
+                    else $.jBox.tip(d.message, 'fail');
+                }
+            }
+        });
+    }
+    return true;
+};
+  $(function  () {
+     var xiaowei_p= $("#xiaowei li");
+     if(true)
+     {
+       xiaowei_p.parent().parent().css('background','url(__ROOT__/Style/H/images/hover_bg.gif) no-repeat center right');
+     }
+     //图库弹出层
+
+   })
+
+  
+</script>
+<script type=text/javascript>
+<!--//--><![CDATA[//><!--
+function menuFix() {
+var ele_ = document.getElementById("nav");
+    if(!ele_) return;
+var sfEls = ele_.getElementsByTagName("li");
+for (var i=0; i<sfEls.length; i++) {
+sfEls[i].onmouseover=function() {
+this.className+=(this.className.length>0? " ": "") + "sfhover";
+}
+sfEls[i].onMouseDown=function() {
+this.className+=(this.className.length>0? " ": "") + "sfhover";
+}
+sfEls[i].onMouseUp=function() {
+this.className+=(this.className.length>0? " ": "") + "sfhover";
+}
+sfEls[i].onmouseout=function() {
+this.className=this.className.replace(new RegExp("( ?|^)sfhover\\b"),
+"");
+}
+}
+}
+window.onload=menuFix;
+//--><!]]></script>
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/H/css/home.css" />
+</head>
+<body>
+<!--头部开始-->
+<if condition="$UID gt '0'"> 
+  <include file="default:Common:afterlogin" group="Member"/>
+  <script type="text/javascript">
+    $(function(){
+        $("#regbanner").hide();
+        
+    })
+
+    </script>
+  <else/>
+  <include file="default:Common:beforelogin" group="Member"/>
+</if>
+<script type="text/javascript">
+  function  erji(a, b, c, d) {
+        $(a).children(b).each(function() {
+            var a1 = $(this).children(c),
+             b2 = $(this).children(d),
+             index=$(this).index();
+            if (a1.html()) $(this).hover(function() {
+                a1.show();
+                
+            index==0 && $(this).css({'background-position':'0px -62px'});
+            index==1 && $(this).css({'background-position':'0px -124px'});
+                b2.css({
+
+                    'color':'#cfcfcf'
+                });
+            }, function() {
+                a1.hide();
+                 index==0 && $(this).css({'background-position':'0px -31px'});
+            index==1 && $(this).css({'background-position':'0px -93px'});
+                b2.css({
+
+                    'color':'#b1b1b1'
+                });
+            });
+        });
+    }
+    erji('#erji','li','div','h1');
+</script>
+<div class="Nav">
+  <div class="contain">
+    <div class="N_logo"><a href="/">{:get_ad(1)}</a></div>
+    <div class="Nav_nav">
+      <div class="menu">
+          <ul class="navigation-list" id="dw_ul">
+           <li class="navigation-item"> <a href="__APP__/member/common/login/" class="navigation-item-name">登录</a> </li>
+           <li class="navigation-item "> <a href="/aboutus/gsjj.html" class="navigation-item-name">公司简介</a></li>
+            <li class="navigation-item "> <a href="/index.html" class="navigation-item-name">平台首页</a></li>
+        </ul>
+      </div>
+    </div>
+    <!--快捷通道end-->
+
+  </div>
+</div>
+
+<!-- 客服代码 -->
+<div class="floating_ck">
+    <dl>
+        <dt></dt>
+        <dd class="tip">
+            <div class="floating_left fw" >
+              <div style="text-align:center;color:#555; margin-top:10px;margin-bottom:5px;font-size:14px;">收益测算依据与方法<br>仅供参考</div>
+              <div style="margin-top:10px; margin-bottom:10px; height:1px; border-bottom:1px dashed #ccc; margin-left:auto; margin-right:auto; width:90%;"></div>
+              <div style="text-align:center;color:#555;">预期年化收益非<br>实际收益承诺</div>
+            </div>
+        </dd>
+        <dd class="quote">
+            <div class="floating_left fw" >
+                <div style="text-align:center;color:#555; margin-top:10px;margin-bottom:5px;font-size:14px;">客服热线</div>
+                <div style="font-weight:bolder;text-align:center;color:#555; font-size:18px;">400-6626-985</div>
+                <div style="margin-top:10px; margin-bottom:10px; height:1px; border-bottom:1px dashed #ccc; margin-left:auto; margin-right:auto; width:90%;"></div>
+                <div style="text-align:center;color:#555;">服务时间<br>早9:00-晚18:30</div>
+            </div>
+        </dd>
+        <dd class="qq">
+            <div class="floating_left qq_ys">
+                <!-- 小能客服 -->
+                <?php $peceptionid = peception(); ?>
+                <?php $u_name= session('u_user_name');?>
+                <php>$userinfo = getuserinfo($u_name);</php>
+                <span style="padding:0;height:50px;text-align:center;line-height:50px;font-size: 13px; font-weight:bold;" onClick="NTKF.im_openInPageChat('{$peceptionid}')">在线客服</span>
+            </div>
+            <span onClick="NTKF.im_openInPageChat('{$peceptionid}')"></span>
+        </dd>
+        <dd class="counter">
+            <div class="floating_left fw1">
+                <a href="__ROOT__/tools/tool2.html" style="display:block;padding:0;height:50px;text-align:center;line-height:50px;color:#666666;" target="_blank">理财计算器</a>
+            </div>
+            <a href="__ROOT__/tools/tool2.html" style="display:block;width:100%;height:100%;" target="_blank"></a>
+        </dd>
+        <dd class="return">
+            <div class="floating_left fw1">
+                <span style="padding:0;height:50px;text-align:center;line-height:50px;" onClick="gotoTop();return false;">返回顶部</span>
+            </div>
+            <span onClick="gotoTop();return false;"></span>
+        </dd>
+    </dl>
+</div>
+
+<!--集成脚本加载 -->
+<script language="javascript" type="text/javascript">
+var name = '{$u_name}';
+var page = '{$userinfo.url.1}';
+var bid = '{$userinfo.url.2}';
+if(name==''){
+  if(page == 'invest' && bid == 'index'){
+  NTKF_PARAM = {
+            siteid:"kf_9372",               
+            settingid:"{$peceptionid}",  
+            uid:"",                  
+            uname:"",        
+            isvip:"0",                         
+            userlevel:"1",                    
+            erpparam:"erpparam",
+            ntalkerparam:{
+                  category:"质金链;融金链;信金链;优金链",    //分类名称，多分类可以用分号(;)分隔， 长路径父子间用冒号(:)分割
+                  brand:"无"                //品牌名称，多品牌可以用分号(;)分隔
+            }
+          }
+}else if(page == 'invest' && bid != 'index' ){
+        NTKF_PARAM = {
+        siteid:"kf_9372",               
+        settingid:"{$peceptionid}",  
+        uid:"",                  
+        uname:"",        
+        isvip:"0",                         
+        userlevel:"1",                    
+        erpparam:"erpparam",
+        itemid:bid,    //(必填)商品ID
+        itemparam:"ccfax",    //(选填)itemparam为商品接口扩展字段，用于商品接口特殊要求集成
+        }
+}else{
+  NTKF_PARAM = {
+        siteid:"kf_9372",               //企业ID，为固定值，必填
+        settingid:"{$peceptionid}",  //接待组ID，为固定值，必填
+        uid:"",                    //用户ID
+        uname:"",        //用户名
+        isvip:"",                          //是否为vip用户，0代表非会员，1代表会员
+        userlevel:"1",                    //网站自定义会员级别，0-N，可根据选择判断
+        erpparam:"erpparam"                      //erpparam为erp功能的扩展字段，可选
+        } 
+}
+}else{
+  if(page == 'invest' && bid == 'index'){
+  NTKF_PARAM = {
+            siteid:"kf_9372",               
+            settingid:"{$peceptionid}",  
+            uid:"{$userinfo.id|default=''}",                  
+            uname:"{$u_name|default=''}",        
+            isvip:"{$userinfo.isvip}",                         
+            userlevel:"1",                    
+            erpparam:"erpparam",
+            ntalkerparam:{
+                  category:"质金链;融金链;信金链;优金链",    //分类名称，多分类可以用分号(;)分隔， 长路径父子间用冒号(:)分割
+                  brand:"无"                //品牌名称，多品牌可以用分号(;)分隔
+            }
+          }
+}else if(page == 'invest' && bid != 'index' ){
+        NTKF_PARAM = {
+        siteid:"kf_9372",               
+        settingid:"{$peceptionid}",  
+        uid:"{$userinfo.id|default=''}",                  
+        uname:"{$u_name|default=''}",        
+        isvip:"{$userinfo.isvip}",                         
+        userlevel:"1",                    
+        erpparam:"erpparam",
+        itemid:bid,    //(必填)商品ID
+        itemparam:"ccfax",    //(选填)itemparam为商品接口扩展字段，用于商品接口特殊要求集成
+        }
+}else{
+      NTKF_PARAM = {
+        siteid:"kf_9372",               //企业ID，为固定值，必填
+        settingid:"{$peceptionid}",  //接待组ID，为固定值，必填
+        uid:"{$userinfo.id|default=''}",                    //用户ID
+        uname:"{$u_name|default=''}",        //用户名
+        isvip:"{$userinfo.isvip}",                          //是否为vip用户，0代表非会员，1代表会员
+        userlevel:"1",                    //网站自定义会员级别，0-N，可根据选择判断
+        erpparam:"erpparam"                      //erpparam为erp功能的扩展字段，可选
+        } 
+}
+}
+
+</script>
+
+<!--基础脚本加载 -->
+<script type="text/javascript" src="https://dl.ntalker.com/js/xn6/ntkfstat.js?siteid=kf_9372" charset="utf-8"></script>
+
+
+<link rel="stylesheet" href="__ROOT__/Style/H/css/registerreset.css" />
+<link rel="stylesheet" href="__ROOT__/Style/H/css/keyboard.css" />
+<script type="text/javascript">
+var imgpath="__ROOT__/Style/M/";
+var curpath="__URL__";
+</script>
+<script type="text/javascript" src="__ROOT__/Style/H/js/keyboard.js"></script>
+<script type="text/javascript" src="__ROOT__/Style/M/js/tuiguangreg.js?v=1.0"></script>
+<script type="text/javascript" src="__ROOT__/Style/Js/strength.js"></script> 
+<style type="text/css">
+	.generalize{background-color: #ffe772;}
+	.wrapper{width: 1200px;margin: 0 auto;position:relative;height: 743px;}
+	.register-form{top: 30px; position: absolute; right: 0;  padding: 50px 30px; background: rgba(255,255,255,0.8);}
+	.register-form form p{position: relative;margin-bottom: 30px;}
+	.register-form .verify-txt{display: none;color: #ff5555;background-color: #ecece8;padding: 2px 10px;font-size: 12px;width: 280px;    position: absolute;}
+	.smscodeverify{width: 169px;}
+	.codeverify{width: 136px;}
+	.register-form form p input{height: 36px; width: 261px; padding-left: 35px;line-height: 36px;}
+	.register-form form p .huoqicode{background: #ecece8;border: 1px solid #ccc;width: 107px;padding-left: 0; text-align: center;}
+	.register-form form p i{background: url(/Style/H/images/generalize/reg.png) no-repeat; width:20px ;height: 25px;display: inline-block; position: absolute;top: 10px;left: 10px;}
+	.register-form form p .ico-phone{background-position: 0 1px;}
+	.register-form form p .ico-pw{background-position: 0 -22px;  }
+	.register-form form p .ico-smsCode{background-position:0 -52px;}
+	.register-form form p .ico-code{background-position:0 -76px;}
+	.register-form form .notice{margin: 25px 0;    line-height: 35px;}
+	.register-form form .notice input{width: auto;    float: left;    margin: 0 10px;}
+	.register-form .g-btn{font-size: 20px;}
+	.g-banner{background: url(/Style/H/images/generalize/banner.jpg) no-repeat center center;height: 743px;}
+	.g-banner ul{    position: absolute;bottom: 80px;}
+	.g-banner ul li{float: left; border-right: 1px solid #612d13;    padding: 10px 50px;}
+	.g-banner ul .last-li{border-right: none; }
+	.g-banner ul li span{display: block;    margin-bottom: 15px;}
+	.g-banner .g-name{color: #612d13;font-size: 18px;}
+	.g-banner .g-money{color: #ff5555; font-size: 32px;}
+	.g-item{margin: 50px auto; width: 1200px; text-align: center;}
+	.g-item .titimg{margin-bottom: 30px;}
+	.g-btn{display: block; width:210px; text-align: center; padding: 10px 0; border-radius: 25px; background-color: #ff5555; color: #fff; box-shadow: 3px 3px 10px #ff5555;margin: 0 auto;font-size: 20px;}
+	.g-btn:hover{color: #fff;}
+	.g-item p{font-size: 18px;line-height: 35px;color: #612d13;margin-left: 230px;    padding-bottom: 100px;}
+	
+</style>
+<div class="generalize" id="generalize">
+	<div class="g-banner">
+		<div class="wrapper">
+			<div class="register-form">
+				<form>
+					<p>
+						<i class="ico-phone"></i><input id="txt_phone" type="text" placeholder="手机号码"><br>
+						<span class="verify-txt mbverify">请输入正确手机号码</span>
+					</p>
+					
+					<p>
+						<i class="ico-pw"></i><input id="txtPwd" type="password" placeholder="登录密码"><br>
+						<span class="verify-txt pwverify">请输入登录密码</span>
+					</p>
+					
+					<p>
+						<i class="ico-code"></i>
+	                    <input id="txtCode" type="text" placeholder="验证码" style="width: 117px;">
+	                    <img src="__URL__/verify2" style="width:130px; height:30px;border: 1px solid #ccc;margin-left: 10px;margin-top: 4px;course:pointer;" alt="点击换一个校验码" id="imVcode" onclick="this.src=this.src+'?t='+Math.random()"><br>
+	                    <span class="verify-txt codeverify">请输入验证码</span>
+	                </p>
+
+					<p>
+						<i class="ico-smsCode"></i>
+	                    <input type="text" id="txt_smsCode" class="smscode" placeholder="手机验证码"  style="width:150px;course:pointer;">
+	                    <input type="button" value="点击获取" id="phonebtn" onclick="sendMobileValidSMSCode();" class="huoqicode"><br>
+	                    <span class="verify-txt smscodeverify">请输入手机验证码</span>
+	                </p>	
+	                
+	                <p class="notice">
+	                	<input type="checkbox" class="register-checkbox" checked="checked">
+	                	<a href="/agreement/ruleserver.html" target="_blank">我已阅读并同意链金所《注册协议》条款</a>
+	                </p>
+	                <input type="hidden" id="txtRec" value = ""/>
+	                <p style="margin-bottom:0;"><a href="javascript:void(0)" class="g-btn"  onclick="RegSubmit(this);">注册领豪礼</a></p>
+				</form>
+			</div>
+			<ul>
+				<li>
+					<span class="g-name">累计成交额</span>
+					<span class="g-money">{$list.17.money|Fmoney=###}</span>
+				</li>
+				<li>
+					<span class="g-name">累计成交利息总额</span>
+					<span class="g-money">{$list.28.money|Fmoney=###}</span>
+				</li>
+				<li>
+					<span class="g-name">累计注册人数</span>
+					<span class="g-money">{$regnumber}人</span>
+				</li>
+				<li class="last-li">
+					<span class="g-name">合理平稳运营天数</span>
+					<span class="g-money">{$compliance}天</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="g-item">
+		<img src="__ROOT__/Style/H/images/generalize/tit1.jpg" class="titimg">
+		<img src="__ROOT__/Style/H/images/generalize/t1.jpg">
+		<a href="javascript:void(0)" class="g-btn" style="margin: 40px auto 100px;" onclick="gotoTop();return false;">立即注册</a>
+	</div>
+
+	<div class="g-item">
+		<img src="__ROOT__/Style/H/images/generalize/tit2.jpg" class="titimg">
+		<img src="__ROOT__/Style/H/images/generalize/t2.jpg">
+	</div>
+
+	<div class="g-item">
+		<img src="__ROOT__/Style/H/images/generalize/tit3.jpg" class="titimg">
+		<p>
+			1、活动期间注册链金所的新手用户均可参与；<br>
+			2、体验金仅可投资体验标，到期后体验金本金部分由链金所平台收回；<br>
+			3、投资券不能直接提现，只能在投资时直接抵扣现金使用，具体使用规则以券面描述为准；<br>
+			4、抽奖所中奖品不能折现，活动最终解释权归链金所所有。
+		</p>
+	</div>
+</div>
+<!--注册协议 start-->
+<div class="reg-xieyi pop-div">
+    <div href="javascript:void(0)" class="popdiv-close js-popclose"></div>
+    <h2 class="reg-xyh2">确认协议</h2>
+    <div class="reg-xycontent">
+        <p class="reg-xydes">温馨提示：根据监管部门要求，提高投资安全性，请阅读并确认以下协议。</p>
+        <div class="reg-xytext">
+            <span class="reg-check reg-check-tick"></span> 我已阅读并接受以下协议：<a href="__APP__/agreement/sanfang.html" target="_blank">《三方借款协议》</a><a href="__APP__/agreement/fengxiantishi.html" target="_blank">《风险提示告知书》</a>
+        </div>
+        <div class="reg-confbutton">
+            <a class="reg-button-sure js-pass" href="javascript:void(0)">确认</a><a class="reg-button-cancle js-popclose" href="javascript:void(0)">取消</a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var mbTest = /^(13|14|15|18|17)[0-9]{9}$/;
+    var timer = null;
+    var leftsecond = 160; //倒计时
+    var msg = "";
+    var i =0;
+    /*
+    **手机验证
+    */
+    $('#txt_phone').blur(function(){
+    	var phone = $.trim($("#txt_phone").val());
+    	if (mbTest.test(phone)) { 
+    		$('.mbverify').hide();
+    	}else{
+    		$('.mbverify').show();
+    	}
+    });
+
+ 
+    function sendMobileValidSMSCode() {
+        var txt = $("#txtCode").val();
+        if(i != 0){
+            $("#imVcode").click();
+            $(".codeverify").html(GetP("reg_wrong1", arrWrong["dvCode"]));
+            $('.codeverify').show();
+        }else{
+            if (txt != null) {
+            //格式正确
+
+            $.ajax({
+                url: "__URL__/ckcode/",
+                data: {
+                    "sVerCode":  txt,
+                },
+                cache: false,
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                        if(data == 1){
+                           SMSCode();
+                        }else{
+                           $(".codeverify").html(GetP("reg_wrong1", arrWrong["dvCode"]));
+                           $('.codeverify').show();
+                        }
+                }
+            });
+            }
+            else {
+                $(".codeverify").html(GetP("reg_wrong1", arrWrong["dvCode"]));
+                $('.codeverify').show();
+            }
+        }
+        i++;
+        
+    }
+
+    function SMSCode(data) {
+            // $("#dvCode").html(GetP("reg_ok", arrOk["dvCode"]));
+            $(".codeverify").html("");
+            $(".codeverify").hide();
+            $(".mbverify").html("");
+            $(".mbverify").hide();
+            var mobile = $("#txt_phone").val();
+            var txt = $("#txtCode").val();
+            if (mobile == "") {
+                $('.mbverify').html(GetP("reg_wrong1", arrWrong["dvPhone0"]));
+				$('.mbverify').show();
+                return;
+            }
+            if (mbTest.test(mobile)) {
+                // $('#sendSMSTip').html(GetP("reg_ok", arrOk["dvPhone"]));
+                $.ajax({
+                    url: "__URL__/sendphone1/",
+                    type: "post",
+                    dataType: "json",
+                    data: {"cellphone":mobile,"sVerCode":txt},
+                    success: function(d) {
+                        leftsecond = 60;
+                        if (d.status == 1) {
+                            clearInterval(timer);
+                            timer = setInterval(function(){
+                            if(--leftsecond>0){
+                                $("#phonebtn").val(leftsecond+"秒");
+                                $("#phonebtn").attr("disabled","disabled");
+                            }else{
+                                $("#phonebtn").removeAttr("disabled");
+                                $("#phonebtn").val("发送验证码");
+                            }
+
+                            }, 1000, "1");
+
+                            timer = setInterval(setLeftTime, 1000, "1");
+                        }
+                        else if (d.status == 2) {
+                            // $('#sendSMSTip').html(GetP("reg_wrong", arrWrong["dvPhone1"]));
+                            $('.mbverify').html(GetP("reg_wrong1", arrWrong["dvPhone1"]));
+							$('.mbverify').show();
+                            $("#txt_phone").removeAttr("readonly");
+                        }else {
+                            msg = "校验码发送失败,请重试";
+                            // $("#sendSMSTip").html(GetP("reg_wrong", arrWrong["dvPhone2"]));
+                            $('.mbverify').html(GetP("reg_wrong1", arrWrong["dvPhone2"]));
+							$('.mbverify').show();
+                        }
+                    }
+                });
+            }
+            else {
+                // $("#sendSMSTip").html(GetP("reg_wrong", arrWrong["dvPhone"]));
+                $('.mbverify').html(GetP("reg_wrong1", arrWrong["dvPhone"]));
+				$('.mbverify').show();
+            }
+        
+    }
+</script>
+<include file="default:Public:_footer_nei" group="Home" />

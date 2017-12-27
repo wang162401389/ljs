@@ -1,0 +1,154 @@
+<style type="text/css">
+.x_member_form{width:1024px; overflow:hidden}
+.x_member_form .form2{height:auto; overflow:auto;}
+.x_member_form .form2 .lineD{overflow:hidden}
+.x_member_form .form2 .lineD dt{width:150px; color:#9CB8CC; font-weight:bold}
+.x_member_form .form2 .lineD dd{width:200px; float:left; margin-left:0px}
+.x_member_form .form2 .lineD dd.xwidth{width:500px;}
+.x_member_form .form2 .lineD dt.title{color:#F00}
+</style>
+
+<div class="so_main x_member_form">
+<div class="page_tit">用户{$user}详细信息</div>
+<div class="page_tab"><span data="tab_1" class="active">会员资料</span><!--<span data="tab_3">帐户资金</span><span data="tab_2">借款投资</span>--><span data="tab_4" >资金流程</span>
+</div>
+<div class="form2">
+
+	<div id="tab_1">
+	
+		<dl class="lineD"><dt>用户名：</dt><dd>{$vo.user_name}  {$vo.credits|getLeveIco=###,2}</dd><dt>认证情况：</dt><dd>{$vo.id|getVerify=###}</dd></dl>
+		<?php if($vo['user_regtype']==2){ ?>
+			<dl class="lineD"><dt>用户类型：</dt><dd>企业</dd><dt>身份：</dt><dd>{$vo.is_vip}</dd></dl>
+			<dl class="lineD"><dt>推荐人：</dt><?php if(empty($vo['recommendname'])){ ?>
+			<dd>无<a href="/admin/refereedetail/referees?id={$id}" style="color: #3b5999;">[申请修改]</a></dd>
+			<?php }else { ?>
+			<dd>{$vo.recommendname}<a href="/admin/refereedetail/referees?id={$id}" style="color: #3b5999;">[申请修改]</a></dd>
+			<?php } ?><dt>公司名称：</dt><dd>{$vo.company_name}</dd></dl>
+			<dl class="lineD"><dt>经办人姓名：</dt><dd>{$vo.agent_name}</dd><dt>公司地址：</dt><dd>{$vo.address}</dd></dl>
+			<dl class="lineD"><dt>经办人身份证号：</dt><dd>{$vo.alicense_no}</dd><dt>银行名称：</dt><dd>{$vo.bank_name}</dd></dl>
+			<dl class="lineD"><dt>经办人手机号：</dt><dd>{$vo.agent_mobile}</dd><dt>银行卡号：</dt><dd>{$vo.bank_num}</dd></dl>
+			<dl class="lineD"><dt>法人姓名：</dt><dd>{$vo.legal_person}</dd><dt>开户行：</dt><dd>{$vo.bank_address}</dd></dl>
+			<dl class="lineD"><dt>法人身份证号：</dt><dd>{$vo.cert_no}</dd><dt>认证邮箱：</dt><dd>{$vo.email}</dd></dl>
+			<dl class="lineD"><dt>法人手机号：</dt><dd>{$vo.legal_person_phone}</dd></dl>
+			<dl class="lineD"><dt>是否提交资料：</dt><dd><if condition="$company_status == 0">未提交<else/>已提交</if></dd><dt>是否新浪审核状态</dt><dd><if condition="$company_status == 1">审核中<elseif condition="$company_status == 3"/>通过<else />未通过</if></dd></dl>
+		<?php }else{?>
+			<dl class="lineD"><dt>用户类型：</dt><dd>个人</dd><dt>身份：</dt><dd><php>echo $vo['is_vip']</php></dd></dl>
+			<dl class="lineD"><dt>推荐人：</dt><?php if(empty($vo['recommendname'])){ ?>
+			<dd>无<a href="/admin/refereedetail/referees?id=<?php echo $id; ?>" style="color: #3b5999;">[申请修改]</a></dd>
+			<?php }else { ?>
+			<dd>{$vo.recommendname}<a href="/admin/refereedetail/referees?id={$id}" style="color: #3b5999;">[申请修改]</a></dd>
+			<?php } ?><dt>所属客服：</dt><dd>{$vo.customer_name|default="未指定"}</dd></dl>
+			<dl class="lineD"><dt>真实姓名：</dt><dd>{$vo.real_name}</dd><dt>冻结账号：</dt><dd>{$vo.is_ban}</dd></dl>
+			<dl class="lineD"><dt>身份证号：</dt><dd>{$vo.idcard}</dd><dt>认证邮箱：</dt><dd>{$vo.user_email|default="未填"}</dd></dl>
+			<dl class="lineD"><dt>手机号：</dt><dd>{$vo.cell_phone|default="未认证"}</dd></dl>
+		<?php } ?>
+		
+		<dl class="lineD"><dt>是否设置新浪支付密码：</dt><dd><if condition="$issetpaypwd == true">已设置<else/>未设置</if></dd><dt>是否绑卡</dt><dd><if condition="$bind_card == false">未绑定<else/>已绑定</if></dd></dl>
+
+		<!-- <dl class="lineD"><dt>推荐人：</dt>
+		<?php if(empty($vo['recommendname'])){ ?>
+		<dd>无<a href="/admin/refereedetail/referees?id={$id}" style="color: #3b5999;">[申请修改]</a></dd>
+		<?php }else { ?>
+		<dd>{$vo.recommendname}<a href="/admin/refereedetail/referees?id={$id}" style="color: #3b5999;">[申请修改]</a></dd>
+		<?php } ?></dl>
+		<dl class="lineD"><dt>是否冻结：</dt><dd>{$vo.is_ban}</dd><dt>客户类型：</dt><dd>{$vo.user_type}</dd></dl>
+		<dl class="lineD"><dt>所属客服：</dt><dd>{$vo.customer_name|default="未指定"}</dd><dt>真实姓名：</dt><dd>{$vo.real_name}</dd></dl>
+		<dl class="lineD"><dt>性别：</dt><dd>{$vo.sex}</dd><dt>职业：</dt><dd>{$vo.zy}</dd></dl>
+		<dl class="lineD"><dt>邮箱：</dt><dd>{$vo.user_email|default="未填"}</dd><dt>投资积分：</dt><dd>{$vo.integral}</dd></dl>
+		<dl class="lineD"><dt>手机号码：</dt><dd>{$vo.cell_phone|default="未认证"}</dd><dt>年龄：</dt><dd>{$vo.age}</dd></dl>
+		<dl class="lineD"><dt>婚姻状况：</dt><dd>{$vo.marry}</dd><dt>学历：</dt><dd>{$vo.education}</dd></dl>
+		<dl class="lineD"><dt>身份证号：</dt><dd>{$vo.idcard}</dd><dt>月收入：</dt><dd>{$vo.income}</dd></dl>
+		<dl class="lineD"><dt>银行帐号：</dt><dd>{$vo.bank_num}</dd><dt>银行名称：</dt><dd>{$vo.bank_name}</dd></dl>
+		<dl class="lineD"><dt>银行开户行：</dt><dd class="xwidth">{$vo.bank_address}</dd></dl>
+		<dl class="lineD"><dt>籍贯：</dt><dd class="xwidth">{$vo.province}{$vo.city}{$vo.area}</dd></dl>
+		<dl class="lineD"><dt>居住地：</dt><dd class="xwidth">{$vo.province_now}{$vo.city_now}{$vo.area_now}</dd></dl>
+		<dl class="lineD"><dt>个人描述：</dt><dd class="xwidth">{$vo.info}</dd></dl>
+		<dl class="lineD"><dt>身份证：</dt><dd class="xwidth"><a href="__ROOT__/{$vo.card_img}" target="_blank"><img src="__ROOT__/{$vo.card_img}" height="100px" /></a></dd></dl> -->
+
+	</div><!--tab1-->
+
+	<div id="tab_2" style="display:none">
+		<dl class="lineD"><dt class="title">借款金额统计</dt><dd class="xwidth">&nbsp;</dd></dl>
+		<dl class="lineD"><dt>借款总额：</dt><dd>{$pcount.jrje|Fmoney=###}</dd><dt>累计亏盈：</dt><dd>{:Fmoney($benefit['total']-$out['total'])}</dd></dl>
+		<dl class="lineD"><dt>已还总额：</dt><dd>{:Fmoney($out['interest']+$out['capital'])}</dd><dt>待还总额：</dt><dd>{:Fmoney($out['capital_pay']+$out['interest_pay'])}</dd></dl>
+		<dl class="lineD"><dt class="title">借还款次数统计</dt><dd class="xwidth">&nbsp;</dd></dl>
+		<dl class="lineD"><dt>借款成功次数：</dt><dd>{$capitalinfo.tj.jkcgcs|default=0}次</dd><dt>正常还款次数：</dt><dd>{$capitalinfo.repayment.1.num|default=0}次</dd></dl>
+		<dl class="lineD"><dt>提前还款次数：</dt><dd>{$capitalinfo.repayment.2.num|default=0}次</dd><dt>逾期还款次数：</dt><dd>{$capitalinfo.repayment.5.num|default=0}次</dd></dl>
+		<dl class="lineD"><dt>迟还次数：</dt><dd>{$capitalinfo.repayment.3.num|default=0}次</dd><dt>网站代还次数：</dt><dd>{$capitalinfo.repayment.4.num|default=0}次</dd></dl>
+		<dl class="lineD"><dt class="title">投资统计</dt><dd class="xwidth">&nbsp;</dd></dl>
+		<dl class="lineD"><dt>投资总额：</dt><dd>{$pcount.ljtz|Fmoney=###}</dd><dt>投标奖励：</dt><dd>{$benefit.ireward|Fmoney=###}</dd></dl>
+		<dl class="lineD"><dt>已收总额：</dt><dd>{$benefit.capital|Fmoney=###}</dd><dt>待收总额：</dt><dd>{:Fmoney($pcount['ljtz']-$benefit['capital'])}</dd></dl>
+		<dl class="lineD"><dt>推广奖励：</dt><dd>{$benefit.spread_reward|Fmoney=###}</dd><dt>线下充值奖励：</dt><dd>{$benefit.re_reward|Fmoney=###}</dd></dl>
+		<dl class="lineD"><dt>续投奖励：</dt><dd>{$benefit.con_reward|Fmoney=###}</dd><dt>&nbsp;</dt><dd>&nbsp;</dd></dl>
+	</div><!--tab3-->
+	
+	<div id="tab_3" style="display:none">
+		<dl class="lineD"><dt class="title">资金情况</dt><dd class="xwidth">&nbsp;</dd></dl>
+		<dl class="lineD"><dt>帐户总额：</dt><dd>{:Fmoney($minfo['account_money']+$minfo['back_money']+$minfo['money_collect']+$minfo['money_freeze'])}</dd><dt>待收金额：</dt><dd>{$minfo.money_collect|Fmoney=###}</dd></dl>
+		<dl class="lineD"><dt>可用余额：</dt><dd>{:Fmoney($minfo['account_money']+$minfo['back_money'])}</dd><dt>冻结金额：</dt><dd>{$minfo.money_freeze|Fmoney=###}</dd></dl>
+
+		<dl class="lineD"><dt class="title">充值提现</dt><dd class="xwidth">&nbsp;</dd></dl>
+		<dl class="lineD"><dt>充值成功次数：</dt><dd>{$wc.C.num|default=0}次</dd><dt>充值成功金额：</dt><dd>{$wc.C.money|Fmoney=###}</dd></dl>
+		<dl class="lineD"><dt>提现成功次数：</dt><dd>{$wc.W.num|default=0}次</dd><dt>提现成功金额：</dt><dd>{$wc.W.money|Fmoney=###}</dd></dl>
+
+		<dl class="lineD"><dt class="title">额度情况</dt><dd class="xwidth">&nbsp;</dd></dl>
+		<dl class="lineD"><dt>借款信用额度：</dt><dd>{$vo.credit_limit|Fmoney=###}</dd><dt>可用信用额度：</dt><dd>{$vo.credit_cuse|Fmoney=###}</dd></dl>
+	</div><!--tab3-->
+
+    <div id="tab_4" style="display: none">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr style="background-color: #CCC">
+                <th style="width:20%;text-align: center">时间</th>
+                <th style="width:10%;text-align: center">流动资金</th>
+                <th style="width:10%;text-align: center">充值资金</th>
+                <th style="width:10%;text-align: center">回款资金</th>
+                <th style="width:10%;text-align: center">冻结资金</th>
+                <th style="width:10%;text-align: center">待收资金</th>
+                <th style="width:30%;text-align: center">备注</th>
+                <!-- <th class="line_l">操作</th> -->
+            </tr>
+            <?php $j=1; ?>
+            <volist id="vo" name="list">
+                <tr class="list_info" <?php if(++$j%2==1) echo 'style="background-color: #CCC" ' ?> >
+                    <td style="width:20%;text-align: center">{$vo.time}</td>
+                    <td style="width:10%;text-align: center">{$vo.affect_money}</td>
+                    <td style="width:10%;text-align: center">{$vo.account_money}</td>
+                    <td style="width:10%;text-align: center">{$vo.back_money}</td>
+                    <td style="width:10%;text-align: center">{$vo.freeze_money}</td>
+                    <td style="width:10%;text-align: center">{$vo.collect_money}</td>
+                    <td style="width:30%;text-align: center">{$vo.info}</td>
+                    <!-- <td>操作</td> -->
+                </tr>
+            </volist>
+         </table>
+
+        <div class="page" style='text-align: center;margin-top: 1rem;margin-bottom: 1rem' >
+            <a class="btn_a"  style="float: right" href="__URL__/member?id={$id}&execl=execl"><span>将当前条件下数据导出为Excel</span></a>
+            {$page}
+        </div>
+    </div>
+
+    <script>
+        function ajax_show(p)
+        {
+            $.get("__URL__/member?id={$id}&p="+p, function(data){
+              $("#tab_4").html(data);
+            });
+
+            $(".pages a").removeClass('current');
+            $(".pages a").eq(p).addClass("current");
+        }
+    </script>
+
+	<div class="page_btm">
+	  <input type="submit" class="btn_b" value="关闭" onclick="closeui();" />
+	</div>
+</div>
+
+</div>
+<script type="text/javascript">
+function closeui(){
+	ui.box.close();
+}
+</script>
+<script type="text/javascript" src="__ROOT__/Style/A/js/adminbase.js"></script>

@@ -1,0 +1,110 @@
+<include file="Public:_header" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<tagLib name="htmlA" />
+<div class="so_main">
+    <div class="page_tit">提前还款统计</div>
+    <div id="search_div">
+
+        <div class="form2" style="background-color: #d2dbea;">
+            <form method="get" action="__URL__/repaymentinadvance">
+                <table style="width: 80%;height: 80px;">
+                    <tr>
+                        <td>推荐人：</td>
+                        <td> <input name="tui_uid" style="width:190px" id="tui_uid" type="text" value="{$search.tui_uid}"></td>
+                        <td>投资人ID：</td>
+                        <td><input name="tou_uid" style="width:190px" id="tou_uid" type="text" value="{$search.tou_uid}"></td>
+                        <td>投资人：</td>
+                        <td><input name="tou_name" style="width:190px" id="tou_name" type="text" value="{$search.tou_name}"></td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>标号：</td>
+                        <td>
+                            <select name="b_type">
+                                <option value="0" >请选择</option>
+                                <option value="1" <if condition="$search['b_type'] eq 1">selected="selected"</if>>ZJ</option>
+                                <option value="2" <if condition="$search['b_type'] eq 2">selected="selected"</if>>YJ</option>
+                                <option value="3" <if condition="$search['b_type'] eq 3">selected="selected"</if>>RJ</option>
+                                <option value="4" <if condition="$search['b_type'] eq 4">selected="selected"</if>>XJ</option>
+                                <option value="5" <if condition="$search['b_type'] eq 5">selected="selected"</if>>BJ</option>
+                                <option value="6" <if condition="$search['b_type'] eq 6">selected="selected"</if>>FQG</option>
+                                <option value="7" <if condition="$search['b_type'] eq 7">selected="selected"</if>>ZQ</option>
+                            </select>
+                             <input name="bid" style="width:190px" id="bid" type="text" value="{$search.bid}"></td>
+                        <td>复审时间：</td>
+                        <td><htmlA:timer id="start_time" style="width:90px" value="{$search.start_time}"  />&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;
+          					<htmlA:timer id="end_time" style="width:90px" value="{$search.end_time}"   /></td>
+                        
+                    </tr>
+                    <tr>
+                        <td>实际还款时间：</td>
+                        <td><htmlA:timer id="repayment_start_time" style="width:90px" value="{$search.repayment_start_time}"  />&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;
+                            <htmlA:timer id="repayment_end_time" style="width:90px" value="{$search.repayment_end_time}"   /></td>
+                    </tr>
+                     <tr style="text-align: right;">
+                        <td colspan="6">
+                        <span class='chaxun'><input type="submit" value="查询"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class='Toolbar_inbox'>
+                            <htmlA:commonBtn type="href"  action="__URL__/repaymentinadvance?{$query}" value="数据导出"/>
+                        </span>
+                    </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th class="line_l">推荐人</th>
+                <th class="line_l">投资人ID</th>
+                <th class="line_l">投资人</th>
+                <th class="line_l">标号</th>
+                <th class="line_l">项目名称</th>
+                <th class="line_l">复审时间</th>
+                <th class="line_l">计划还款时间</th>
+                <th class="line_l">实际还款时间</th>
+                <th class="line_l">原标期限</th>
+                <th class="line_l">提前还款天数</th>
+                <th class="line_l">投资金额</th>
+                <th class="line_l">返利比例<br>（年化）</th>
+                <th class="line_l">扣项-返利金额</th>
+            </tr>
+            <volist id="vo" name="list">
+                <tr>
+                    <td>{$vo.off_name}</td>
+                    <td>{$vo.uid}</td>
+                    <td>{$vo.tou_name}</td>
+                    <td>{$vo.borrow_id}</td>
+                    <td>{$vo.borrow_name}</td>
+                    <td>{$vo.second_verify_time}</td>
+                    <td>{$vo.deadline}</td>
+                    <td>{$vo.repayment_time}</td>
+                    <td>{$vo.borrow_duration_txt}</td>
+                    <td>{$vo.in_advance}</td>
+                    <td>{$vo.investor_capital}</td>
+                    <td>1.2%</td>
+                    <td>{$vo.return_money}</td>
+                </tr>
+            </volist>
+            <tr>
+                <td>合计</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{$total_capital}</td>
+                <td></td>
+                <td>{$total_return}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<include file="Public:_footer" />

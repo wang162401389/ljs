@@ -1,0 +1,403 @@
+<script type="text/javascript" src="__ROOT__/Style/M/js/amounttochinese.js" language="javascript"></script>
+<script type="text/javascript">
+$(function() {
+	//$("#btnSendMsg").click(sendSMS);
+	$("#txt_Amount").bind("keyup", function() {
+		$this = $(this);
+		$this.val($this.val().toString().replace(/[^(\d|\.)]+/, ""));
+	});
+	$("#txt_Amount").focus(function() {
+		$("#d_money").css("display", "none");
+	});
+	$("#txt_Amount").keyup(function(){
+		var utype = {$vo.user_regtype};
+		if(utype == 1){
+			var fee_fee = {$fee[0]};
+		}else{
+			var max_fee = 200.00;
+			var fee_fee = 0;
+		}
+		var num = '{$num}';
+		var is_vip = {$vo['is_vip']};
+		var fee_txmoney = $('#fee_txmoney').html();
+		var tx_money = $("#txt_Amount").val();
+		var tx_fee = tx_money-fee_txmoney;
+		if(tx_money == '' || tx_money == null && is_vip ==1){
+			$('#fee1').html("0.00");
+		}else if(is_vip==0 && tx_money>={$fee.1} && tx_money<=parseFloat($("#currentMoeny").html())){
+			if(num <= 3){
+				if(tx_fee>0){
+					var fee_money = parseFloat(tx_fee*fee_fee);
+					fee_money = fee_money.toFixed(2);
+					if(utype == 1){
+						if(fee_money<2){
+							$('#fee1').html("0.00");
+						}else{
+							$('#fee1').html(fee_money);
+						}
+					}else{
+						if(fee_money>max_fee){
+							$('#fee1').html(max_fee);
+						}else{
+							$('#fee1').html(fee_money);
+						}
+						
+					}
+				}else{
+					$('#fee1').html("0.00");
+				}
+
+			}else{
+				var fee_money = parseFloat(tx_money*fee_fee);
+				fee_money = fee_money.toFixed(2);
+				if(utype == 1){
+					if(fee_money<2){
+						$('#fee1').html("0.00");
+					}else{
+						$('#fee1').html(fee_money);
+					}
+				}else{
+					if(fee_money>max_fee){
+						$('#fee1').html(max_fee);
+					}else{
+						$('#fee1').html(fee_money);
+					}
+				}
+			}
+		}else if(is_vip==0 && tx_money>={$fee.1} && tx_money>parseFloat($("#currentMoeny").html())){
+			$("#txt_Amount").val(parseFloat($("#currentMoeny").html()));
+			tx_fee = parseFloat($("#currentMoeny").html())-fee_txmoney;
+			if(num <= 3){
+				if(tx_fee>0){
+					var fee_money = parseFloat(tx_fee*fee_fee);
+					fee_money = fee_money.toFixed(2);
+					if(utype == 1){
+						if(fee_money<2){
+							$('#fee1').html("0.00");
+						}else{
+							$('#fee1').html(fee_money);
+						}
+					}else{
+						if(fee_money>max_fee){
+							$('#fee1').html(max_fee);
+						}else{
+							$('#fee1').html(fee_money);
+						}
+					}
+				}else{
+					$('#fee1').html("0.00");
+				}
+
+			}else{
+				var fee_money = parseFloat(parseFloat($("#currentMoeny").html())*fee_fee);
+				fee_money = fee_money.toFixed(2);
+				if(fee_money<2){
+					$('#fee1').html("0.00");
+				}else{
+					$('#fee1').html(fee_money);
+				}
+			}
+		}else if(is_vip==1 && tx_money>={$fee.1} && tx_money>parseFloat($("#currentMoeny").html())){
+			$("#txt_Amount").val(parseFloat($("#currentMoeny").html()));
+		}
+	});
+});
+var suretx = function(d,h,v){
+	if(d===true){
+			$.ajax({
+				url: "__URL__/actwithdraw",
+				type: "post",
+				dataType: "json",
+				data: {"amount":$("#txt_Amount").val(),"phpcode":$("#phpcode").val()},
+				success: function(d) {
+					if(d.status == 3){
+						document.write(d.data);
+					}
+					else if (d.status == 2) {
+						$.jBox.tip(d.message,'fail');
+					}
+					else if(d.status==1) {
+						$.jBox.tip(d.message, "success");
+					} 
+					// else {
+					// 	$.jBox.tip("支付密码错误！", 'fail');
+					// }
+				}
+			});
+	}
+}
+var arrWrong = "<img  src='__ROOT__/Style/M/images/zhuce2.gif'/>&nbsp";
+function SetError(val, cont) {
+		$("#d_money").css("display", "block");
+		$("#d_money").html(val + cont);
+		$("#d_money").attr("class", "reg_wrong");
+}
+
+function drawMoney() {
+   // if(!($("#agreen").prop("checked"))){
+   //     alert("请查阅借款合同");
+   //     return;
+   // }
+	if (testAmount()) {
+
+		// if ($("#txtPassword").val().length < 1) {
+		// 	$.jBox.tip("您好，请输入支付密码后再点击确认提现！", 'tip');
+		// 	return;
+		// }
+		$.jBox.tip("提交中......","loading");
+		if (parseFloat($("#txt_Amount").val()) <= parseFloat($("td.tdContent span").html()) && parseFloat($("#txt_Amount").val()) > 0) {
+			$.ajax({
+				url: "__URL__/validate",
+				type: "post",
+				dataType: "json",
+				data: {"amount":$("#txt_Amount").val()},
+				success: function(d) {
+					$.jBox.closeTip();
+					if (d.status == 2) {
+						$.jBox.tip(d.message,'fail');
+					}
+					else if(d.status==1) {
+						$.jBox.confirm(d.message, "提现确认", suretx, { buttons: { '确认提现': true, '暂不提现': false} });
+					} 
+					// else {
+					// 	$.jBox.tip("支付密码错误！", 'fail');
+					// }
+				}
+			});
+		} 
+	}
+}
+
+function testAmount() {
+	var testreuslt = true;
+
+	if ($("#txt_Amount").val() == '') {
+		SetError(arrWrong, "请输入提现金额，如1000.10。");
+		testreuslt = false;
+	}
+	if (!(/^\d+(.)?\d{1,2}$/.test($("#txt_Amount").val()))) {
+		SetError(arrWrong, "请输入正确的提现金额，如1001.20。");
+		testreuslt = false;
+	}
+	if (parseFloat($("#txt_Amount").val()) < {$fee[1]}) {
+		SetError(arrWrong, "提现金额不能小于{$fee[1]}。");
+		testreuslt = false;
+	}
+	if (parseFloat($("#txt_Amount").val()) > {$fee[2]*10000}) {
+		SetError(arrWrong, "提现金额不能大于{$fee[2]*10000}。");
+		testreuslt = false;
+	}
+	if (parseFloat($("#currentMoeny").html()) < parseFloat($("#txt_Amount").val())) {
+		SetError(arrWrong, "您的账户余额不足以提现。");
+		testreuslt = false;
+	}
+	if (testreuslt) {
+		showChineseAmount();
+	}
+	return testreuslt;
+}
+
+function showChineseAmount() {
+	var regamount = /^(([1-9]{1}[0-9]{0,})|([0-9]{1,}\.[0-9]{1,2}))$/;
+	var reg = new RegExp(regamount);
+	if (reg.test($("#txt_Amount").val())) {
+		var amstr = $("#txt_Amount").val();
+		var leng = amstr.toString().split('.').length;
+		if (leng == 1) {
+			$("#txt_Amount").val($("#txt_Amount").val() + ".00");
+		}
+		$("#d_money").html(Arabia_to_Chinese($("#txt_Amount").val()));
+		$("#d_money").css("display", "");
+		$("#d_money").css("color", "red");
+		$("#d_money").removeClass("reg_wrong");
+	}
+	else {
+		$("#d_money").html("");
+	}
+}
+</script>
+<script>
+$(function(){
+	var t1 = {$vo['token1']};
+	var t2 = {$vo['token2']};
+	$.ajax({
+		url:"__APP__/member/withdraw/checkfee",
+		data:{token:t2},
+		type: "post"
+	});
+	$.ajax({
+		url:"__APP__/member/withdraw/output",
+		data:{token:t1},
+		type: "post",
+		dataType:"json",
+		success:function(d){
+			$("#currentMoeny").html(d.data["all_money"]+"元");
+			$("#fee_txmoney").html(d.data["fee_txmoney"]);
+			if(d.data["num"] != "∞"){
+				$("#fee_count").html("剩余"+d.data["num"]+"次");
+			}else{
+				$("#fee_count").html("免费");
+			}
+		}
+	});
+});
+</script>
+<style type="text/css">
+        .btnEnable { width: 96px; height: 28px; line-height: 25px; text-align: center; cursor: pointer; background-image: url(__ROOT__/Style/M/images/sendMsg.jpg); }
+        a.btnEnable:hover { color: #F4FFFF; }
+        a.btnDisable { color: Gray; }
+        .tdTitle { text-align: right; padding-left: 10px; font-size: 12px; height: 40; line-height: 40px; vertical-align: middle; width: 110px; color: #000; }
+        .tdContent { text-align: left; padding-left: 20px; font-size: 12px; height: 40; line-height: 40px; vertical-align: middle; width: 535px; color: #000; }
+        .reg_wrong { font-size: 12px; background-color: #fff9dd; border: 1px solid #ff0000; color: #ff0000; height: 22px; line-height: 21px; }
+        #vtiplink, #bacctip { width: 115px; border: none; cursor: pointer; display: block; height: 5px; }
+        #formTb { width: 100%; margin: 0px; padding: 0px; border-collapse: collapse; text-align: left; }
+        #currentMoeny { color: Red; font-weight: bold; font-size: 12px; }
+        .titstrong { height: 30px; line-height: 30px; text-indent: 30px; padding-top: 20px; text-align: left; border-bottom: dashed 1px #ccc; margin-bottom: 10px; }
+        .listframe { width: 100%; overflow: hidden; padding: 0px 0px; }
+        .divtitle { height: 20px; line-height: 25px; text-align: left; padding-left: 40px; font-size: 12px; margin-top: 8px; margin-bottom: 1PX; }
+        .listframe td { border: 1px solid #dedede; }
+    </style>
+    <style type="text/css">
+        .dv_header_8 { background-image: url(); }
+        .dv_account_0 { margin-top: 10px; }
+    </style>
+<!-- <div class="divtitle" style="width: 100%; height: 70px; text-indent:0px">
+	1、尊敬的{$vo.real_name}，提现操作涉及您的资金变动，请仔细核对您的提现信息<br>
+	2、一般用户单日提现上限为{$fee.2.1}万元<br>
+	3、涉及到您的资金安全，请仔细操作
+</div> -->
+<div class="listframe" style="clear: both; margin-top: 20px; width: 100%;">
+	<table id="formTb" style="width: 99%;" cellpadding="0" cellspacing="0">
+		<tbody>
+		<!-- <tr>
+			<td class="tdTitle">
+				您的银行账号是：
+			</td>
+			<td class="tdContent">
+				<div style="height: 20px; line-height: 20px;">
+					{$vo.bank_num|hidecard=###,3,'还没有登记您的银行账号'}
+					[<a href="__APP__/member/bank#fragment-1">点此修改</a>]
+				</div>
+				<div style="height: 20px; line-height: 20px;">
+					{$vo.bank_name} -- {$vo.bank_address}
+				</div>
+			</td>
+		</tr> -->
+		<tr>
+			<td class="tdTitle">
+			<if condition="$vo['user_regtype'] eq 1">
+				您的真实姓名：
+				<else/>
+				企业名称：
+			</if>
+			</td>
+			<td class="tdContent">
+				{$vo.real_name}
+				
+			</td>
+		</tr>
+		<tr>
+			<td class="tdTitle">
+				手机号码：
+			</td>
+			<td class="tdContent">
+				{$vo.user_phone|default="还未验证"}
+			</td>
+		</tr>
+		<tr>
+			<td class="tdTitle">
+				提款期限：
+			</td>
+			<td class="tdContent">
+				个人：15点以前提现（T+1）/15点以后提现（T+2）<br>
+				企业：24小时内到账（工作日）
+			</td>
+		</tr>
+		<tr>
+			<td class="tdTitle">
+				提现说明：
+			</td>
+			<td class="tdContent" style="line-height:200%;">
+				<!-- 个人：提现金额在免费提现额度内，每月有3次免费提现机会，超过3次后收取{$fee[0]*1000}‰手续费。<br>
+				提现金额超过免费提现额度时，手续费将按照超过部分的{$fee[0]*1000}‰进行收取；<br>
+				即手续费=（提现金额-免费额度）*{$fee[0]*1000}‰；<br>
+				免费提现额度=可用余额-15天内充值未投资金额。<br>
+				注：手续费最低为2元。<br>
+				企业：提现收取十万分之五手续费，最高单笔提现手续费为200元，由新浪支付收取。<br> -->
+				暂不收费，如有收费，另行公告。
+			</td>
+		</tr>
+		<tr>
+			<td class="tdTitle">
+				可提现金额：
+			</td>
+			<td class="tdContent">
+				[<span id="currentMoeny">计算中...</span>]
+			</td>
+		</tr>
+		<tr>
+			<td class="tdTitle">
+				提现金额：
+			</td>
+			<td class="tdContent">
+				<div style="float: left; line-height: 21px;">
+					<input name="txt_Amount" id="txt_Amount" class="text2" onblur="testAmount();" type="text">
+					<input name="phpcode" id="phpcode" value="{$vo.phpcode}" type="hidden">
+				</div>
+				<div id="d_money" style="width: 250px; height: 20px; line-height: 20px; margin-left: 10px;
+					float: left;">
+				</div>
+			</td>
+		</tr>
+		<if condition="$vo['user_regtype'] eq 1">
+			<!-- <tr>
+				<td class="tdTitle">
+					免费提现额度：
+				</td>
+				<td class="tdContent" style="line-height:200%;">
+					<span id="fee_txmoney">（计算中...）</span>元 （<span id="fee_count">剩余<span id="num" style="color:red"></span>次免费</span>）
+				</td>
+			</tr> -->
+		</if>
+		<tr>
+			<td class="tdTitle">
+				手续费：
+			</td>
+			<td class="tdContent" id="fee" style="line-height:200%;">
+				<span id="fee1">0.00</span>元
+			</td>
+		</tr>
+       <!--  <tr>
+            <td class="tdTitle">&nbsp;
+
+            </td>
+            <td>
+                &nbsp; &nbsp; &nbsp;<input type="checkbox" id="agreen" checked>&nbsp;&nbsp;&nbsp;&nbsp;已阅并同意<a href="/borrow/agreement" style="color:#000">《借款协议》</a>
+            </td>
+        </tr> -->
+		<tr>
+			<td class="tdTitle">&nbsp;
+				
+			</td>
+			<td class="tdContent">
+				<a class="btn btn-orange" onclick="drawMoney()">确认提现</a>
+				<img src="__ROOT__/Style/M/images/sendMsgdis.jpg" style="display: none;">
+			</td>
+		</tr>
+	</tbody></table>
+	<!-- <div style="clear: both; margin-bottom: 30px; padding-left: 20px;">
+	
+	<div style="float: left; height: 84px; width: 20px;">
+		<img src="__ROOT__/Style/M/images/minilogo.gif" style="width: 17px; height: 17px;
+			margin: 3px; margin-top: 6px;">
+	</div>
+	<div style="width: 666px; float: left; padding: 4px; line-height: 20px; font-size: 12px;
+		text-align: left; color: #aaaaaa;">
+		提示：如果您要加快提现速度，请在每日上午提现。{$glo.web_name}周一到周五的提现处理时间在下午2点之后，周末在下午或者晚上。
+		<br>在法定节日期间，用户申请提现，安排支付时间，{$glo.web_name}会以公告形式发布。
+	</div>
+
+
+
+		</div> -->
+</div>

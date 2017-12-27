@@ -1,0 +1,16 @@
+@charset "utf-8";
+/*
+@软键盘style
+*/
+.kbkey,.kbmouseover,#kbclose,#kbback {background:url(../images/keyboard.png) no-repeat;}
+
+.kbdiv { background:#fff; border:3px solid #e25102;font-size:12px;width:120px;padding:2px;font-family:Arial, Helvetica, sans-serif; border-radius:3px;box-shadow:2px 2px 3px #aaa; }
+.kbdiv em {font-style:normal;cursor:pointer;}
+.kbkey {width:20px;height:20px;line-height:20px;display:inline-block;text-align:center;font-size:14px;margin:2px;}
+.kbmouseover {background-position:-21px 0;color:#fff;}
+.kbdiv table {border-collapse:collapse;}
+#kbclose {background-position:0 -22px;width:68px;height:20px;line-height:20px; text-align:center;color:#fff;display:block;font-size:12px;}
+#kbback {background-position:0 -45px;width:44px;height:20px;line-height:20px; text-align:center;color:#fff;display:block;font-size:12px;margin-left:3px;}
+
+
+

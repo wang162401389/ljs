@@ -1,0 +1,48 @@
+<include file="Public:_header" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<tagLib name="htmlA" />
+<script type="text/javascript">
+	var delUrl = '__URL__/doDel';
+	var addUrl = '__URL__/add';
+	var isSearchHidden = 1;
+	var searchName = "搜索/筛选会员";
+</script>
+<div class="so_main">
+  <div class="page_tit">审核权限配置</div>
+<!--搜索/筛选会员-->
+  <include file="search" />
+<!--搜索/筛选会员-->
+
+  <div class="Toolbar_inbox">
+  </div>
+  
+  <div class="list">
+  <table id="area_list" width="75%" border="0" height="200" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="80">申请人员：</td><td><input type="text" style="width: 660px;height: 25px;" readonly="readonly" value="{$applicant}"></td><td style="color: red;">(请使用英文分号区隔)</td>
+    </tr>
+    <tr><td></td><td id="appl"></td><td></td></tr>
+    <tr>
+      <td>一审人员：</td><td><input type="text" style="width: 660px;height: 25px;" readonly="readonly" value="{$first_trial}"></td><td style="color: red;">(请使用英文分号区隔)</td>
+    </tr>
+    <tr><td></td><td id="appl"></td><td></td></tr>
+    <tr>
+      <td>二审人员：</td><td><input type="text" style="width: 660px;height: 25px;" readonly="readonly" value="{$second_trial}"></td><td style="color: red;">(请使用英文分号区隔)</td>
+    </tr>
+    <tr><td></td><td id="appl"></td><td></td></tr>
+    <tr>
+      <td colspan='2' style="text-align: center;"><input type="submit" style="width: 100px;" value="修改" onclick="audit();"></td>
+    </tr>
+  </table>
+
+  </div>
+  
+  <div class="Toolbar_inbox">
+  </div>
+</div>
+<script type="text/javascript">
+function audit(){
+  window.location="/admin/refereedetail/auditconf1";
+}
+</script>
+<include file="Public:_footer" />

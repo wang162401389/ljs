@@ -1,0 +1,78 @@
+<div class="sc_main jr_main">
+    <div class="jr_left"><img src="__ROOT__/Style/H/images/index/zqzr-indexad.png"></div>
+    <div class="jr_right">
+        <div class="jr_head js_zby">
+            <ul>
+                <li style="border-bottom: 1px solid #fdaf29;">收益权转让区</li>
+            </ul>
+        </div>
+        <div class="jr_content">
+            <table>
+                <thead>
+                <tr>
+                    <td style="text-align: left">借款标题</td>
+                    <td>借款总额（元）</td>
+                    <td>年利率</td>
+                    <td>借款期限</td>
+                    <td>进度</td>
+                    <td>我要投标</td>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="zhaiquanlist" id="vb">
+                    <tr>
+                        <td class="jr_t_1"><img src="__ROOT__/Style/H/images/index/new_zhuan.png">&nbsp;
+                            <a href="__ROOT__/debthome/debtdetail?id={$vb.id}" title="{$vb.borrow_name}">{$vb.borrow_name|cnsubstr=###,13}</a>
+                        </td>
+                        <td class="jr_t_2">{$vb.borrow_money}元</td>
+                        <td class="jr_t_3">{$vb.borrow_interest_rate}%</td>
+                        <td class="jr_t_4">
+                            <?php if($vb['borrow_duration_txt']!=''){ ?>
+                            {$vb.borrow_duration_txt}
+                            <?php } else { ?>
+                            {$vb.borrow_duration}<if condition="$vb.repayment_type eq 1">天<else/>个月</if>
+                            <?php } ?>
+                        </td>
+                        <td class="jr_t_5">
+                            <div>
+                                <?php
+                             $progress = intval($vb['progress']);
+                                     if($progress >= 0 and $progress <= 19){
+                                        echo "<div class='index_jindu_mid midd1'><div class='middtext'>".$progress."%</div></div>";
+                                        }elseif ($progress >= 20 and $progress <= 39) {
+                                        echo "<div class='index_jindu_mid midd2'><div class='middtext'>".$progress."%</div></div>";
+                                        }elseif ($progress >= 40 and $progress <= 59) {
+                                        echo "<div class='index_jindu_mid midd3'><div class='middtext'>".$progress."%</div></div>";
+                                        }elseif ($progress >= 60 and $progress <= 79) {
+                                        echo "<div class='index_jindu_mid midd4'><div class='middtext'>".$progress."%</div></div>";
+                                        }elseif ($progress >= 80 and $progress <= 99) {
+                                        echo "<div class='index_jindu_mid midd5'><div class='middtext'>".$progress."%</div></div>";
+                                        }elseif ($progress = 100) {
+                                        echo "<div class='index_jindu_mid midd6'><div class='middtext'>".$progress."%</div></div>";
+                                        }
+                                        ?>
+                            </div>
+                        </td>
+                        <td class="jr_t_6">
+                            <if condition="$vb.borrow_status eq 3">
+                                <a href="javascript:;" class="bg_gray">已流标</a>
+                                <elseif condition="$vb.borrow_status eq 4"/>
+                                <a href="javascript:;" class="bg_gray">复审中</a>
+                                <elseif condition="$vb.borrow_status eq 6"/>
+                                <a href="javascript:;" class="bg_gray">还款中</a>
+                                <elseif condition="$vb.borrow_status gt 6"/>
+                                <a href="__ROOT__/debthome/debtdetail?id={$vb.id}" class="bg_gray" style="text-decoration: none">已完成</a>
+                                <else/>
+                                <a href="__ROOT__/debthome/debtdetail?id={$vb.id}" class="bg_red">我要投标</a>
+                            </if>
+                        </td>
+                    </tr>
+                </volist>
+                </tbody>
+
+            </table>
+        </div>
+
+        <if condition="$zhaiquanlistcount egt 2"><div class="more_invest_main" ><a href="__ROOT__/debthome/debtlists?type=search" id="oggg4">更多投资项目》</a></div></if>
+    </div>
+</div>

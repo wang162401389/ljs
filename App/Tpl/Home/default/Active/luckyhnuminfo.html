@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<base href="/Style/Phone/" />
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  	<script src="__ROOT__/Style/Phone/js/jquery-2.1.4.min.js"></script>
+  	<link rel="stylesheet" type="text/css" href="__ROOT__/Style/Phone/css/christmas.css">
+  	<title>幸运号计算详情</title>
+  	<style type="text/css">
+	  	#header .title{font-size: 1.2rem;}
+  	</style>
+</head>
+<body class="bg-red">
+<include file="default:Pub:simple_header" group="M" />
+	<p class="p-tit">幸运号计算详情</p>
+	<p class="p-txt">{$luckyinfo.gift_no}期 &nbsp; &nbsp;{$luckyinfo.gift_name} &nbsp; &nbsp;幸运号：{$luckyinfo.have_number}</p>
+	<volist name="luckynum" id="vo">
+	<div class="luckyinfo-item">
+		<div>
+			<label>用户手机：</label>
+			<p>{$vo.user_phone}  <span class="dis-block">{$vo.add_time}</span></p>
+		</div>
+		<div>
+			<label>许愿码：</label>
+			<p class="tospan">{$vo.xu_num}</p>
+		</div>
+	</div>
+	</volist>
+	<p class="p-txt">
+		许愿码平均值计算=许愿码累加总和/许愿数<br>
+		={$luckyinfo.avg_number}<br>
+		取与许愿码平均值最接近值为幸运号：{$luckyinfo.have_number}
+	</p>
+	<p class="cor-orange">如出现与许愿码平均值差额均等则以许愿时间先的为幸运号！</p>
+
+	<script type="text/javascript">
+		$(function(){
+			//console.log($('.tospan').text())
+			$(".luckyinfo-item .tospan").each(function(){
+				var arr = $(this).text().split(',');
+				var html = "";
+				for(var i in arr){
+					var span = "<span>" + arr[i] + ",</span>";
+					html += span;
+					//console.log(arr[i]);
+				}
+				$(this).html(html);
+//				var allstr =  $(this).text();
+//				var newallstr = allstr + ',';
+//				$(this).html(newallstr);
+//				console.log(newallstr)
+			})
+
+//			var arr = $('.tospan').text().split(',');
+//			var html = "";
+//			for(var i in arr){
+//				var span = "<span>" + arr[i] + ",</span>";
+//				html += span;
+//			}
+//
+//			$('.tospan').html(html);
+		})
+	</script>
+</body>
+</html>

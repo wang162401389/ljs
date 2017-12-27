@@ -1,0 +1,43 @@
+<style type="text/css">
+	 body { margin: 0; _height:100%;}
+	.divtitle { height: 30px; line-height: 30px; text-align: left; font-size: 12px; font-weight: bold; background-color: #F6F6F6; text-indent: 25px; margin-top: 8px; margin-bottom: 1PX; }
+	.colink { background-image: url(__ROOT__/Style/M/images/btnbg02.gif); width: 98px; font-weight: bold; display: inline-block; line-height: 29px; color: White; text-align: center; }
+	.dv_header_8 {background-image: url(); }
+	a:hover{text-decoration:underline;} 
+</style>
+<script type="text/javascript">
+        var newTitle = '{$glo.web_name}提醒您：';
+        function copyToClipboard(obj) {
+            if (obj) {
+                var clipBoardContent = obj.value;
+                $(obj).select();
+                try {
+					document.execCommand("Copy");
+                    //window.clipboardData.setData("Text", clipBoardContent);
+                    alert("您好，链接复制成功!", newTitle);
+                }
+                catch (e) {
+                    alert("您好，链接复制失败，请手动复制!");
+                }
+            }
+        }
+        $(function() {
+            $("#txt_links").click(function() { $(this).select(); });
+        });
+</script>
+<div style="text-align: left; margin-top: 20px;">
+  <!-- <div style="width: 708px; margin: 0 auto; line-height: 40px; height: 40px; border: #E5E5E5 solid 1px;
+		font-weight: bold; text-indent: 20px; font-size: 14px; color: #555555; background-color: #F6F6F6;"> 每成功邀请一位好友并完成投资，推荐人账户奖励 <span style="color:#FF0000; font-size:24px;">10</span>元现金，赶快行动吧。 </div> -->
+  <div style="height: 160px; width: 708px; margin: 0 auto; line-height: 40px;"> 
+    <div style="margin-left: 35px; height: 25px; line-height: 25px; padding: 12px 0px;"> 您的邀请链接：
+      <input id="txt_links" readonly="readonly" class="text1" value="{:C('WEB_URL')}/member/common/register?invite={:session('u_id')}" type="text">
+      <a href="javascript:" class="btn btn-blue" onclick="copyToClipboard($('#txt_links')[0]);"> 复制链接</a> </div>
+      <span style="margin-left: 127px;    width: 345px;    line-height: 21px;">您可以通过QQ,MSN等IM工具或者微博与邮件把上面的连接告诉您的好友，邀请他们加入进来</span>
+    <!-- <div style="margin-left: 125px; width: 460px; line-height: 100px; color: #666;font-size: 14px"> 
+      邀请详情，请移步特速分销系统查询。
+     <a href="{$url}"style="background-color: #f5f5f5;float: right;width: 80px;height:30px;line-height: 30px;text-align: center;border-radius: 5px;font-size: 14px;border: 1px solid #E5E5E5;margin: 32px 120px 0 0;">查看详情</a>
+    </div> -->
+	<!-- <div style="margin-left: 125px; width: 460px; line-height: 20px; color: red; font-weight:bold"> 在邀请好友前，请确保您已完成实名认证并设置新浪支付密码哦，否则无法获得推荐奖励。<br><span style="letter-spacing:1px;">请点击<a href="__APP__/member/verify#fragment-3" style="color:blue;">实名认证</a>或<a style="color:blue;" href="__URL__/checkissetpwd?i=1">设置新浪支付密码</a></span></div> -->
+  </div>
+</div>
+<div style="clear:both;"></div>

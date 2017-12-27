@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <include file="Pub:header-common" />
+    <meta http-equiv="refresh" content="3;url=/M/user/paypassword.html">
+</head>
+<body>
+    <include file="Pub:simple_header" />
+    <div style="width:90%;margin: 1rem auto 0rem">
+        您需要设置支付密码，才能够进行投资，<font color="#54c0f2"><span class="num">3</span>s内</font>将自动跳转到支付密码设置界面.
+        <div style="margin-top:1rem"><a href="/M/user/paypassword.html" style="color:#54c0f2">如果3s未跳转，请按这里</div>
+    </div>
+</body>
+<script>
+    $(document).ready(function(){
+        i=3;
+        setInterval(function(){
+           i--;
+            if(i<0) i=0;
+            $(".num").html(i);
+        },1000);
+    })
+</script>
+</html>

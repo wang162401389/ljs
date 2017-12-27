@@ -1,0 +1,114 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+    var delUrl = '__URL__/doDel';
+    var addUrl = '__URL__/add';
+    var isSearchHidden = 1;
+    var searchName='搜索';
+</script>
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<div class="so_main">
+    <div class="page_tit">双旦活动</div>
+    <!--搜索/筛选会员-->
+    <div id="search_div" style="display:none">
+        <div class="page_tit"><script type="text/javascript">document.write(searchName);</script> [ <a href="javascript:void(0);" onclick="dosearch();">隐藏</a> ]</div>
+        <div class="form2">
+            <form method="post" action="__URL__/{$xaction}" id="ot">
+            	<dl class="lineD">
+                    <dt>用户ID：</dt>
+                    <dd>
+                        <input name="id" style="width:190px" id="id" type="text"  />
+                    </dd>
+                </dl>
+                <dl class="lineD">
+                    <dt>姓名：</dt>
+                    <dd>
+                        <input name="username" style="width:190px" id="startdate" type="text"  />
+                    </dd>
+                </dl>
+                <dl class="lineD">
+                    <dt>手机号：</dt>
+                    <dd>
+                        <input name="user_phone" style="width:190px" id="user_phone" type="text"  />
+                    </dd>
+                </dl>
+                <div class="page_btm">
+                    <input type="submit" class="btn_b" value="确定" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--搜索/筛选会员-->
+    <div class="Toolbar_inbox" >
+        <div class="page right">{$pagebar}</div>
+        <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索" style="search_action" />
+    </div>
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th>用户ID</th>
+                <th>姓名</th>
+                <th>手机号</th>
+                <th>注册时间</th>
+                <th>活动期间总投资额</th>
+                <th>已抽奖次数</th>
+                <th>未使用抽奖次数</th>
+                <th>获得奖品</th>
+            </tr>
+            <volist name="list" id="vo">
+            <tr>
+                <td>{$vo.id}</td>
+                <td>{$vo.real_name}</td>
+                <td>{$vo.user_phone}</td>
+                <td>{$vo.reg_time|date="Y-m-d H:i:s",###}</td>
+                <td>{$vo.investor_money}</td>
+                <td>{$vo.xu_count}</td>
+                <td>{$vo.no_xu}</td>
+                <td>{$vo.gift}</td>
+            </tr>
+            </volist>
+        </table>
+        <div class="Toolbar_inbox" style="overflow: hidden">
+            <htmlA:commonBtn type="href" action="__URL__/index?{$query}" value="将当前条件下数据导出为Excel"/>
+            <div class="page right">{$pagebar}</div>
+        </div>
+    </div>
+</div>
+<div class="so_main">
+    <div class="page_tit">投资活动返现</div>
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th>返现总额</th>
+                <th>人数</th>
+                <th>操作</th>
+            </tr>
+            <tr>
+                <td>{$fan_money}</td>
+                <td>{$fan_count}</td>
+                <td><input type="button" id="fa" <if condition="$is_fan eq 0"> disabled='disabled' value="未到活动结束时间"<elseif condition="$is_fan eq 1"/>onclick="shuangdan_fan()" value="发放"<else/>disabled='disabled' value="发放完成"</if>></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script>
+  function shuangdan_fan(){
+    $("#fa").attr("disabled","disabled");
+    $("#fa").val("发放中");
+    $.ajax({
+      url:"__URL__/shuangdanfan",
+      type:"post",
+      dataType:"json",
+      success:function(d){
+         if(d.data == "success"){
+            $("#fa").val("发放完成");
+            alert("发放成功");
+            location.reload();
+         }else{
+            alert("失败");
+         }
+      }
+    });
+  }
+</script>
+<include file="Public:_footer" />

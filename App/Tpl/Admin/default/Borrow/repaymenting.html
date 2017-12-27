@@ -1,0 +1,117 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+	var delUrl = '__URL__/doDel';
+	var addUrl = '__URL__/add';
+	var isSearchHidden = 1;
+</script>
+<div class="so_main">
+  <div class="page_tit">还款中的借款</div>
+<!--搜索/筛选会员-->
+  <include file="search" />
+<!--搜索/筛选会员-->
+
+  <div class="Toolbar_inbox">
+  	<div class="page right">{$pagebar}</div>
+	<htmlA:commonBtn type="href" action="__URL__/doweek?isShow=1" value="一周内到期标"/>
+    <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索/筛选借款" style="search_action" />
+    <htmlA:commonBtn type="href" action="__URL__/repaymenting?{$query}" value="将当前条件下数据导出为Excel"/>
+  </div>
+  
+  <div class="list" style=" overflow:scroll">
+  <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th style="width:30px;">
+        <input type="checkbox" id="checkbox_handle" onclick="checkAll(this)" value="0">
+        <label for="checkbox"></label>
+    </th>
+	 <th class="line_l">标号</th>
+    <th class="line_l">用户名</th>
+    <th class="line_l">真实姓名</th>
+    <th class="line_l">手机号</th>
+	<!-- <th class="line_l">客服</th> -->
+    <th class="line_l">标题</th>
+    <th class="line_l">借款金额</th>
+    <th class="line_l">已还金额</th>
+    <th class="line_l">借款期限</th>
+	<th class="line_l">借款手续费</th>
+  <th class="line_l">借款利率</th>
+  <th class="line_l">综合服务费利率</th>
+    <th class="line_l">还款方式</th>
+    <th class="line_l">复审时间</th>
+    <th class="line_l">最近还款时间</th>
+    <th class="line_l">操作</th>
+  </tr>
+  <volist id="vo" name="list">
+      <tr overstyle='on' id="list_{$vo.id}">
+        <td><input type="checkbox" name="checkbox" id="checkbox2" onclick="checkon(this)" value="{$vo.id}"></td>
+        <td>{$vo.bid}</td>
+		<td><htmlA:user id="vo.mid" uname="vo.user_name" /></td>
+		<td>{$vo.real_name}</td>
+		<td>{$vo.user_phone}</td>
+        <!-- <td>{$vo.customer_name}</td> -->
+        <td><a href="{$vo.id|getInvestUrl=###}" title="{$vo.borrow_name}" target="_blank">{$vo.borrow_name|cnsubstr=###,12}</a></td>
+        <td>{$vo.borrow_money}</td>
+        <td>{$vo.repayed_money}</td>
+        <td>{$vo.borrow_duration}</td>
+        <td>{$vo.borrow_fee}</td>
+        <td>{$vo.borrow_interest_rate}%</td>
+        <td>{$vo.colligate_fee}%</td>
+        <td>{$vo.repayment_type}</td>
+        <td>{$vo.second_verify_time}</td>
+        <td>{$vo.repayment_time}</td>
+		<td>
+      <a href="/admin/remark/gzindex?user_name={$vo.user_name}&borrow_id={$vo.id}">质押跟踪</a>&nbsp;&nbsp;&nbsp;
+      <a href="/admin/borrow/editxianhuo?id={$vo.id}">转现货质押</a>&nbsp;&nbsp;&nbsp;
+			<a href="/admin/remark/index.html?user_name={$vo.user_name}">备注</a>&nbsp;&nbsp;&nbsp;
+          <a href="javascript:void()" onclick="ui.box.load('/admin/common/sms?tab=1&user_name={$vo.user_name}', {title:'通讯系统'})">通知</a>&nbsp;&nbsp;&nbsp;
+		  <a href="/admin/borrow/doinvest?borrow_id={$vo.id}">投资人记录</a>&nbsp;&nbsp;&nbsp;
+      <a href="javascript:;" onclick="sum({$vo.id},{$vo.sort_order})">查看还款信息</a>
+        </td>
+      </tr>
+  </volist>
+  </table>
+
+  </div>
+  
+  <div class="Toolbar_inbox">
+  	<div class="page right">{$pagebar}</div>
+	<htmlA:commonBtn type="href" action="__URL__/doweek?isShow=1" value="一周内到期标"/>
+	<!--<htmlA:commonBtn type="href" action="__URL__/doWeek_1?time=' '" value="一周内到期标"/>-->
+    <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索/筛选借款" style="search_action" />
+    <htmlA:commonBtn type="href" action="__URL__/repaymenting?{$query}" value="将当前条件下数据导出为Excel"/>
+  </div>
+</div>
+<script type="text/javascript">
+	function SendTip(id) {
+        id = id.toString();
+        if(id == '') return false;
+
+		//提交修改
+		var datas = {'id':id};
+		$.post('__URL__/tip', datas,ResponseF,'json');
+    }
+	
+	function ResponseF(res){
+				if(res.success == '0') {
+					ui.error('邮件提醒发送失败！');
+				}else {
+					ui.success('邮件提醒发送成功！');
+				}
+	}	
+  function sum(bid,sort_order){
+  x = {"borrow_id":bid,"sort_order":sort_order};
+  $.ajax({
+    url: "__URL__/sum",
+    data:x,
+    type:"post",
+    dataType: "json",
+    success: function (d, s, r) {
+      //if(d){
+        alert(d.message);
+      //}
+    }
+  });
+}
+	</script>
+<include file="Public:_footer" />

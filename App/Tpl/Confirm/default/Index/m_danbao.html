@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<include file="default:Pub:header-common" group="M"/>
+	<link rel="stylesheet" href="__ROOT__/Style/Phone/css/service_fee.css">
+</head>
+
+<body>
+	<include file="default:Pub:simple_header" group="M"/>
+	<div class="content">
+	    <div class="mbqr"><div></div>咨询服务费</div>
+        <foreach name="list" item="vo">
+		<div class="list">
+			<div class="anno">{$vo.borrow_name}</div>
+            <div class="text">
+            	<div class="bxq">
+                	<div>标号：{$vo.id}</div>
+                    <div>咨询服务费<span>￥{$vo.vouch_money}</span></div>
+                </div>
+                <div class="count <if condition="$vo.danbaoconfirm_status eq 1">out" onclick="location.href='__APP__/confirm/index/danbao_agreement?bid={$vo.id}'">确认<else/>out1">已确认</if></div>
+            </div>	
+		</div>
+        </foreach>
+        <div class="last_confirm">
+        	<div class="lc_f">共需支付：￥{$sum+$danbao}</div>
+            <div class="<if condition="$count eq 0">lc_l" onclick="pay()"<else/>lc_l1"</if>>去支付</div>
+        
+        </div>
+     
+	</div>
+	<script>
+      function pay(){
+        location.href="__APP__/confirm/index/paydanbao"
+      }
+    </script>
+</body>
+
+</html>

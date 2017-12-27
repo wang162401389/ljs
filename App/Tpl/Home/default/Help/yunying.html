@@ -1,0 +1,422 @@
+<include file="Public:_header_common" />
+<title>{$title}</title>
+<meta http-equiv="keywords" content="{$keyword}" />
+<meta http-equiv="description" content="{$description}" />
+<style type="text/css">
+    *{margin: 0px; padding: 0; font-size: 12px; color:#777; font-family: "microsoft yahei";}
+    h1,h2{font-weight: normal; font-size: 12px;}
+    .clearfix:after {content:".";display:block;height:0;clear:both;visibility:hidden;}
+    *html .clearfix {zoom:1;}
+    *+html .clearfix {zoom:1;}
+    .clear{height:0px; line-height:0px; font-size:0px; clear:both; overflow:hidden}
+    i{font-style: normal;}
+
+    .content-ptit{font-size: 22px; margin: 10px 0px 15px;}
+    .reporth2{height:227px; text-align: center; overflow: hidden; background: url(/Style/H/images/report/reporth2.jpg) no-repeat;}
+    .reporth2 h2{width:460px; height:91px; margin: 64px auto 0px; background: url(/Style/H/images/report/reporth2tit.png) no-repeat; animation: h2slidedown .5s linear;}
+    @keyframes h2slidedown{0%{ margin-top: 0px;}100%{margin-top: 64px;}}
+    @-webkit-@keyframes h2slidedown{0%{ margin-top: 0px;}100%{margin-top: 64px;}}
+    @-moz-@keyframes h2slidedown{0%{ margin-top: 0px;}100%{margin-top: 64px;}}
+
+    .reps-tit1{width:295px; height: 73px; display: block; margin: 60px auto 0; background: url(/Style/H/images/report/reps-tit1.png) no-repeat;}
+    .reps-tit2{width:295px; height: 76px; display: block; margin: 90px auto 40px; background: url(/Style/H/images/report/reps-tit2.png) no-repeat;}
+    .reps-tit3{width:295px; height: 76px; display: block; margin: 90px auto 40px; background: url(/Style/H/images/report/reps-tit3.png) no-repeat;}
+    .reps-tit4{width:247px; height: 30px; display: block; margin: 90px auto 40px; background: url(/Style/H/images/report/reps-tit4.png) no-repeat;}
+
+    .rep-data .r-databox{width:232px; height:232px;  float: left; display: inline; position: relative; text-align: center; margin: 45px 0px 0px 12px;}
+    .datab-c{width:118px; height: 118px; margin: 20px auto 0; border: 1px solid #04aae5; background: #fff;  position: relative; border-radius: 70px; -webkit-border-radius: 70px; -moz-border-radius: 70px;}
+    .datab-c-circle{width:114px; height: 114px; border: 1px solid #04aae5; position: absolute; top:22px; left:58px; border-radius: 70px; -webkit-border-radius: 70px; -moz-border-radius: 70px; transform:scale(1); -webkit-transition: all 0.5s ease; transition: all 0.5s ease;}
+    .r-databox:hover .datab-c-circle{transform:scale(1.3); opacity: 0;}
+    .datab-c-data{display: block; height: 36px; line-height: 36px; margin-top: 20px; font-size: 16px;}
+    .datab-c-data .data-n{font-size: 25px; color:#333; margin-right: 5px;}
+    .datab-c-data em{font-size: 25px; color:#333; font-style: normal;}
+    .datab-c-des{height:26px; line-height: 26px; font-size: 16px;}
+    .datab-c-ico{width:62px; height: 62px; display: block; position: absolute; top:31px; left:31px; background: url(/Style/H/images/report/datab-c-ico.png) no-repeat;}
+    .datab-c-ico1{ background-position: 0px 0px;}
+    .datab-c-ico2{ background-position: -62px 0px;}
+    .datab-c-ico3{ background-position: -124px 0px;}
+    .datab-c-ico4{ background-position: -186px 0px;}
+    .datab-c-ico5{ background-position: 0px -62px;}
+    .datab-c-ico6{ background-position: -62px -62px;}
+    .datab-c-ico7{ background-position: -124px -62px;}
+    .datab-c-ico8{ background-position: -186px -62px;}
+
+    .rep-touzi{width:912px; padding: 60px 54px 40px; box-shadow:0 0 15px rgba(167, 225, 239, .7);  }
+    .rep-prople-tit{height:40px; padding-bottom: 4px; border-bottom:1px dotted #27c3ed}
+    .rep-prople-tit .tep-pt{height:24px; display: block; float: left; background: url(/Style/H/images/report/reps-tit5.png) no-repeat;}
+    .rep-prople-tit .tep-pt-a{width:200px; background-position: 36px 0px;}
+    .rep-prople-tit .tep-pt-b{width:188px; background-position: 76px -27px;}
+    .rep-prople-tit .tep-pt-c{width:260px; background-position: 50px -56px;}
+    .rep-prople-tit .tep-pt-d{width:260px; background-position: 46px -88px;}
+    .rep-prople-tit .tep-pt-e{width:260px; background-position: 46px -119px;}
+    .rep-prople-txt{}
+    .rep-prople-txt .tep-pt-box{height:50px; line-height: 50px; overflow: hidden; border-bottom:1px dotted #27c3ed}
+    .tep-pm{height:50px; display: block; float: left; overflow: hidden; text-align: center; font-size: 16px;}
+    .tep-pm-a{width:200px;}
+    .tep-pm-b{width:188px;}
+    .tep-pm-c{width:260px;}
+    .tep-pm-d{width:260px;}
+
+    .memorabilia{width:1006px; height:1331px; position: relative; margin: 0px auto;}
+    .big-line{width:1px; height: 1223px; position: absolute; top:0px; left:501px; background: #07c3f2;}
+    .bigline-m{width:10px; height: 10px; display: block; position: absolute; top:0px;}
+    .bigline-m .big-span{width:10px; height: 10px; display: block; position: absolute; top:0px; left:0px; background: #05c3f3; z-index: 2; border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px;}
+    .bigline-m .big-circle{width:16px; height: 16px; display: block; background: #c0f1fd; position: absolute; top:-3px; left:-3px; z-index: 1; border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px; opacity: 0; }
+    .bigtime-box:hover .big-circle{animation: bigsmall .8s linear infinite alternate; transform:scale(1);}
+    .bigtime-box:hover .bigtime-tit{color:#04aae5}
+    @keyframes bigsmall{0%{opacity: 0;transform:scale(1);}50%{transform:scale(1.5);opacity: 1;}100%{transform:scale(1);opacity: 0;}}
+    @-webkit-@keyframes bigsmall{0%{opacity: 0;transform:scale(1);}50%{transform:scale(1.5);opacity: 1;}100%{transform:scale(1);opacity: 0;}}
+    @-moz-@keyframes bigsmall{0%{opacity: 0;transform:scale(1);}50%{transform:scale(1.5);opacity: 1;}100%{transform:scale(1);opacity: 0;}}
+    .bigline-m-a{top:6px; left:-47px;}
+    .bigline-m-b{top:6px; right: -45px;}
+    .bigline-m-c{top:6px; left:-47px;}
+    .bigline-m-d{top:6px; right: -45px;}
+    .bigline-m-e{top:6px; left:-47px;}
+    .bigline-m-f{top:6px; right: -45px;}
+    .bigline-m-g{top:6px; left:-47px;}
+    .bigline-m-h{top:6px; right: -45px;}
+    .bigline-m-i{top:6px; left:-47px;}
+    .bigline-m-j{top:6px; right: -45px;}
+    .bigtime-box{width:462px; position: absolute;}
+    .bigtime-box1{ text-align: left; top:-6px; right: 0px;}
+    .bigtime-box2{ text-align: right; top:81px; left: 0px;}
+    .bigtime-box3{ text-align: left; top:242px; right: 0px;}
+    .bigtime-box4{ text-align: right; top:329px; left: 0px;}
+    .bigtime-box5{ text-align: left; top:488px; right: 0px;}
+    .bigtime-box6{ text-align: right; top:585px; left: 0px;}
+    .bigtime-box7{ text-align: left; top:759px; right: 0px;}
+    .bigtime-box8{ text-align: right; top:855px; left: 0px;}
+    .bigtime-box9{ text-align: left; top:1042px; right: 0px;}
+    .bigtime-box10{ text-align: right; top:1120px; left: 0px;}
+    .bigtime-box .bigtime-tit{font-size: 16px; }
+    .bigtime-box .bigtime-img{margin-top: 20px;}
+</style>
+<script type="text/javascript" src="__ROOT__/Style/H/js/common.js" language="javascript"></script>
+<script type="text/javascript" src="__ROOT__/Style/H/js/countUp.js" language="javascript"></script>
+<script type="text/javascript">
+    var Transfer_invest_url = "__APP__/tinvest";
+</script>
+<script type="text/javascript" src="__ROOT__/Style/H/js/area.js"></script>
+<include file="Public:_header_main" />
+<div class="xiantiao"></div>
+<div class="cms_page">
+    <div class="cms_frame cf">
+        <include file="helptop" />
+        <div class="cms_content">
+            <div class="cms-title-1">
+                <span><a href="__APP__/index/">首页</a>&gt</span>运营数据
+            </div>
+            <div class="content-ptit">运营数据</div>
+            <div class="reporth2">
+                <div style="height: 1px; line-height: 1px;"></div>
+                <h2></h2>
+            </div>
+            <span class="reps-tit reps-tit1"></span>
+            <!--数据 start-->
+            <div class="rep-data clearfix">
+                <!--box start-->
+                <div class="r-databox">
+                    <i class="datab-c-circle"></i>
+                    <div class="datab-c">
+                        <i class="datab-c-ico datab-c-ico1"></i>
+                    </div>
+                    <span class="datab-c-data"><i class="data-n" id="data-number">168,820,150.00</i>元</span>
+                    <span class="datab-c-des">累计帮助企业和个人融资</span>
+                </div>
+                <!--box end-->
+                <!--box start-->
+                <div class="r-databox">
+                    <i class="datab-c-circle"></i>
+                    <div class="datab-c">
+                        <i class="datab-c-ico datab-c-ico2"></i>
+                    </div>
+                    <span class="datab-c-data"><i class="data-n" id="rate-number">10.44</i>%</span>
+                    <span class="datab-c-des">平均年化收益率</span>
+                </div>
+                <!--box end-->
+                <!--box start-->
+                <div class="r-databox">
+                    <i class="datab-c-circle"></i>
+                    <div class="datab-c">
+                        <i class="datab-c-ico datab-c-ico3"></i>
+                    </div>
+                    <span class="datab-c-data"><i class="data-n" id="income-number">2,048,810.89</i>元</span>
+                    <span class="datab-c-des">累计为投资人赚取收益</span>
+                </div>
+                <!--box end-->
+                <!--box start-->
+                <div class="r-databox">
+                    <i class="datab-c-circle"></i>
+                    <div class="datab-c">
+                        <i class="datab-c-ico datab-c-ico4"></i>
+                    </div>
+                    <span class="datab-c-data"><i class="data-n" id="people-number">5243</i>人</span>
+                    <span class="datab-c-des">累计加入链金所的投资人</span>
+                </div>
+                <!--box end-->
+                <!--box start-->
+                <div class="r-databox">
+                    <i class="datab-c-circle"></i>
+                    <div class="datab-c">
+                        <i class="datab-c-ico datab-c-ico5"></i>
+                    </div>
+                    <span class="datab-c-data"><i class="data-n" id="transactions-number">8993</i></span>
+                    <span class="datab-c-des">累计成交笔数</span>
+                </div>
+                <!--box end-->
+                <!--box start-->
+                <div class="r-databox">
+                    <i class="datab-c-circle"></i>
+                    <div class="datab-c">
+                        <i class="datab-c-ico datab-c-ico6"></i>
+                    </div>
+                    <span class="datab-c-data"><i class="data-n" id="averagenum-number">18,765.15</i>元</span>
+                    <span class="datab-c-des">平均投资金额</span>
+                </div>
+                <!--box end-->
+                <!--box start-->
+                <div class="r-databox">
+                    <i class="datab-c-circle"></i>
+                    <div class="datab-c">
+                        <i class="datab-c-ico datab-c-ico7"></i>
+                    </div>
+                    <span class="datab-c-data"><i class="data-n" id="averageday-number">46.06</i>天</span>
+                    <span class="datab-c-des">平均借款期限</span>
+                </div>
+                <!--box end-->
+                <!--box start-->
+                <div class="r-databox">
+                    <i class="datab-c-circle"></i>
+                    <div class="datab-c">
+                        <i class="datab-c-ico datab-c-ico8"></i>
+                    </div>
+                    <span class="datab-c-data"><i class="data-n"><em id="safeday-mumber">360</em>天0逾期0坏账</i></span>
+                    <span class="datab-c-des">安全运营时间</span>
+                </div>
+                <!--box end-->
+            </div>
+            <!--数据 end-->
+            <span class="reps-tit reps-tit2"></span>
+            <!--投资排名 start-->
+            <div class="rep-touzi">
+                <div class="rep-prople-tit">
+                    <span class="tep-pt tep-pt-a"></span>
+                    <span class="tep-pt tep-pt-b"></span>
+                    <span class="tep-pt tep-pt-c"></span>
+                    <span class="tep-pt tep-pt-d"></span>
+                </div>
+                <div class="rep-prople-txt">
+                    <div class="tep-pt-box clearfix">
+                        <span class="tep-pm tep-pm-a">冠军</span>
+                        <span class="tep-pm tep-pm-b">135******77</span>
+                        <span class="tep-pm tep-pm-c">￥16,301,300.00</span>
+                        <span class="tep-pm tep-pm-d">￥253,761.70</span>
+                    </div>
+                    <div class="tep-pt-box clearfix">
+                        <span class="tep-pm tep-pm-a">亚军</span>
+                        <span class="tep-pm tep-pm-b">136******06</span>
+                        <span class="tep-pm tep-pm-c">￥7,532,300.00</span>
+                        <span class="tep-pm tep-pm-d">￥113,729.27</span>
+                    </div>
+                    <div class="tep-pt-box clearfix">
+                        <span class="tep-pm tep-pm-a">季军</span>
+                        <span class="tep-pm tep-pm-b">135******88</span>
+                        <span class="tep-pm tep-pm-c">￥6,923,300.00</span>
+                        <span class="tep-pm tep-pm-d">￥82,515.25</span>
+                    </div>
+                    <div class="tep-pt-box clearfix">
+                        <span class="tep-pm tep-pm-a">第四名</span>
+                        <span class="tep-pm tep-pm-b">139******77</span>
+                        <span class="tep-pm tep-pm-c">￥6,120,900.00</span>
+                        <span class="tep-pm tep-pm-d">￥68,281.45</span>
+                    </div>
+                    <div class="tep-pt-box clearfix">
+                        <span class="tep-pm tep-pm-a">第五名</span>
+                        <span class="tep-pm tep-pm-b">135******17</span>
+                        <span class="tep-pm tep-pm-c">￥5,990,800.00</span>
+                        <span class="tep-pm tep-pm-d">￥84,559.32</span>
+                    </div>
+                    <div class="tep-pt-box clearfix">
+                        <span class="tep-pm tep-pm-a">第六名</span>
+                        <span class="tep-pm tep-pm-b">133******55</span>
+                        <span class="tep-pm tep-pm-c">￥5,874,900.00</span>
+                        <span class="tep-pm tep-pm-d">￥65,857.41</span>
+                    </div>
+                    <div class="tep-pt-box clearfix">
+                        <span class="tep-pm tep-pm-a">第七名</span>
+                        <span class="tep-pm tep-pm-b">138******68</span>
+                        <span class="tep-pm tep-pm-c">￥5,716,700.00</span>
+                        <span class="tep-pm tep-pm-d">￥82,625.94</span>
+                    </div>
+                    <div class="tep-pt-box clearfix">
+                        <span class="tep-pm tep-pm-a">第八名</span>
+                        <span class="tep-pm tep-pm-b">138******11</span>
+                        <span class="tep-pm tep-pm-c">￥5,536,900.00</span>
+                        <span class="tep-pm tep-pm-d">￥64,612.74</span>
+                    </div>
+                    <div class="tep-pt-box clearfix">
+                        <span class="tep-pm tep-pm-a">第九名</span>
+                        <span class="tep-pm tep-pm-b">181******99</span>
+                        <span class="tep-pm tep-pm-c">￥5,461,900.00</span>
+                        <span class="tep-pm tep-pm-d">￥48,399.32</span>
+                    </div>
+                    <div class="tep-pt-box clearfix">
+                        <span class="tep-pm tep-pm-a">第十名</span>
+                        <span class="tep-pm tep-pm-b">138******24</span>
+                        <span class="tep-pm tep-pm-c">￥4,967,300.00</span>
+                        <span class="tep-pm tep-pm-d">￥62,401.88</span>
+                    </div>
+                </div>
+            </div>
+            <!--投资排名 end-->
+            <span class="reps-tit reps-tit3"></span>
+            <!--投资排名 start-->
+            <div class="rep-touzi">
+                <div class="rep-prople-tit">
+                    <span class="tep-pt tep-pt-a"></span>
+                    <span class="tep-pt tep-pt-b"></span>
+                    <span class="tep-pt tep-pt-e"></span>
+                    <span class="tep-pt tep-pt-d"></span>
+                </div>
+                <div class="rep-prople-txt">
+                    <div class="tep-pt-box clearfix">
+                        <span class="tep-pm tep-pm-a">冠军</span>
+                        <span class="tep-pm tep-pm-b">135******77</span>
+                        <span class="tep-pm tep-pm-c">224</span>
+                        <span class="tep-pm tep-pm-d">￥253,761.70</span>
+                    </div>
+                    <div class="tep-pt-box clearfix">
+                        <span class="tep-pm tep-pm-a">亚军</span>
+                        <span class="tep-pm tep-pm-b">139******77</span>
+                        <span class="tep-pm tep-pm-c">188</span>
+                        <span class="tep-pm tep-pm-d">￥68,281.45</span>
+                    </div>
+                    <div class="tep-pt-box clearfix">
+                        <span class="tep-pm tep-pm-a">季军</span>
+                        <span class="tep-pm tep-pm-b">135******43</span>
+                        <span class="tep-pm tep-pm-c">146</span>
+                        <span class="tep-pm tep-pm-d">￥28,173.29</span>
+                    </div>
+                    <div class="tep-pt-box clearfix">
+                        <span class="tep-pm tep-pm-a">第四名</span>
+                        <span class="tep-pm tep-pm-b">136******06</span>
+                        <span class="tep-pm tep-pm-c">140</span>
+                        <span class="tep-pm tep-pm-d">￥113,729.27</span>
+                    </div>
+                    <div class="tep-pt-box clearfix">
+                        <span class="tep-pm tep-pm-a">第五名</span>
+                        <span class="tep-pm tep-pm-b">138******68</span>
+                        <span class="tep-pm tep-pm-c">126</span>
+                        <span class="tep-pm tep-pm-d">￥82,625.94</span>
+                    </div>
+                    <div class="tep-pt-box clearfix">
+                        <span class="tep-pm tep-pm-a">第六名</span>
+                        <span class="tep-pm tep-pm-b">139******88</span>
+                        <span class="tep-pm tep-pm-c">124</span>
+                        <span class="tep-pm tep-pm-d">￥32,266.29</span>
+                    </div>
+                    <div class="tep-pt-box clearfix">
+                        <span class="tep-pm tep-pm-a">第七名</span>
+                        <span class="tep-pm tep-pm-b">136******95</span>
+                        <span class="tep-pm tep-pm-c">119</span>
+                        <span class="tep-pm tep-pm-d">￥28,263.23</span>
+                    </div>
+                    <div class="tep-pt-box clearfix">
+                        <span class="tep-pm tep-pm-a">第八名</span>
+                        <span class="tep-pm tep-pm-b">138******53</span>
+                        <span class="tep-pm tep-pm-c">113</span>
+                        <span class="tep-pm tep-pm-d">￥39,659.53</span>
+                    </div>
+                    <div class="tep-pt-box clearfix">
+                        <span class="tep-pm tep-pm-a">第九名</span>
+                        <span class="tep-pm tep-pm-b">137******36</span>
+                        <span class="tep-pm tep-pm-c">112</span>
+                        <span class="tep-pm tep-pm-d">￥12,412.49</span>
+                    </div>
+                    <div class="tep-pt-box clearfix">
+                        <span class="tep-pm tep-pm-a">第十名</span>
+                        <span class="tep-pm tep-pm-b">138******33</span>
+                        <span class="tep-pm tep-pm-c">109</span>
+                        <span class="tep-pm tep-pm-d">￥82,515.25</span>
+                    </div>
+                </div>
+            </div>
+            <!--投资排名 end-->
+            <span class="reps-tit reps-tit4"></span>
+            <!--大事记 start-->
+            <div class="memorabilia">
+                <div class="big-line"></div>
+                <div class="bigtime-box bigtime-box1">
+                    <span class="bigline-m bigline-m-a"><i class="big-span"></i><i class="big-circle"></i></span>
+                    <h2 class="bigtime-tit">2015年10月19日链金所平台正式上线</h2>
+                    <img class="bigtime-img" src="/Style/H/images/report/bigtime-1.jpg" />
+                </div>
+                <div class="bigtime-box bigtime-box2">
+                    <span class="bigline-m bigline-m-b"><i class="big-span"></i><i class="big-circle"></i></span>
+                    <h2 class="bigtime-tit">2015年10月28日与新浪支付签署《资金托管战略合作协议》  </h2>
+                    <img class="bigtime-img" src="/Style/H/images/report/bigtime-2.jpg" />
+                </div>
+                <div class="bigtime-box bigtime-box3">
+                    <span class="bigline-m bigline-m-c"><i class="big-span"></i><i class="big-circle"></i></span>
+                    <h2 class="bigtime-tit">2015年11月18日与中国银行达成了《风险保障金战略合作协议》</h2>
+                    <img class="bigtime-img" src="/Style/H/images/report/bigtime-3.jpg" />
+                </div>
+                <div class="bigtime-box bigtime-box4">
+                    <span class="bigline-m bigline-m-d"><i class="big-span"></i><i class="big-circle"></i></span>
+                    <h2 class="bigtime-tit">2016年1月18日与锦腾小贷达成战略合作关系</h2>
+                    <img class="bigtime-img" src="/Style/H/images/report/bigtime-4.jpg" />
+                </div>
+                <div class="bigtime-box bigtime-box5">
+                    <span class="bigline-m bigline-m-e"><i class="big-span"></i><i class="big-circle"></i></span>
+                    <h2 class="bigtime-tit">2016年3月6日荣获中国互联网优秀企业</h2>
+                    <img class="bigtime-img" src="/Style/H/images/report/bigtime-5.jpg" />
+                </div>
+                <div class="bigtime-box bigtime-box6">
+                    <span class="bigline-m bigline-m-f"><i class="big-span"></i><i class="big-circle"></i></span>
+                    <h2 class="bigtime-tit">2016年3月23日荣获安全联盟信誉企业</h2>
+                    <img class="bigtime-img" src="/Style/H/images/report/bigtime-6.jpg" />
+                </div>
+                <div class="bigtime-box bigtime-box7">
+                    <span class="bigline-m bigline-m-g"><i class="big-span"></i><i class="big-circle"></i></span>
+                    <h2 class="bigtime-tit">2016年4月29日母公司“特速集团”荣获中国木材与木制品流通协会副会长单位</h2>
+                    <img class="bigtime-img" src="/Style/H/images/report/bigtime-7.jpg" />
+                </div>
+                <div class="bigtime-box bigtime-box8">
+                    <span class="bigline-m bigline-m-h"><i class="big-span"></i><i class="big-circle"></i></span>
+                    <h2 class="bigtime-tit">2016年5月25日成交额突破亿元大关</h2>
+                    <img class="bigtime-img" src="/Style/H/images/report/bigtime-8.jpg" />
+                </div>
+                <div class="bigtime-box bigtime-box9">
+                    <span class="bigline-m bigline-m-i"><i class="big-span"></i><i class="big-circle"></i></span>
+                    <h2 class="bigtime-tit">2016年5月31日与安存科技达成战略合作</h2>
+                    <img class="bigtime-img" src="/Style/H/images/report/bigtime-9.jpg" />
+                </div>
+                <div class="bigtime-box bigtime-box10">
+                    <span class="bigline-m bigline-m-j"><i class="big-span"></i><i class="big-circle"></i></span>
+                    <h2 class="bigtime-tit">2016年9月19日链金所全新版本正式发布</h2>
+                    <img class="bigtime-img" src="/Style/H/images/report/bigtime-10.jpg" />
+                </div>
+            </div>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+</div>
+<script>
+    var totalinvestment = new countUp("data-number", 168820150.00, 2, 2);
+    totalinvestment.start();
+    var interestrate = new countUp("rate-number", 10.44, 2, 2);
+    interestrate.start();
+    var income = new countUp("income-number", 2048810.89, 2, 2);
+    income.start();
+    var people = new countUp("people-number", 5243, 0, 2);
+    people.start();
+    var transactions = new countUp("transactions-number", 8993, 0, 2);
+    transactions.start();
+    var averagenum = new countUp("averagenum-number", 18765.15, 2, 2);
+    averagenum.start();
+    var averageday = new countUp("averageday-number", 46.06, 2, 2);
+    averageday.start();
+    var safeday = new countUp("safeday-mumber", 360, 0, 2);
+    safeday.start();
+</script>
+<include file="Public:_footer" />

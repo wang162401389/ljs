@@ -1,0 +1,157 @@
+<include file="Public:_header_common" />
+<title>热烈庆祝链金所成立两周年</title>
+<meta http-equiv="keywords" content="{$glo.web_keywords}" />
+<meta http-equiv="description" content="{$glo.web_descript}" />
+<link rel="stylesheet" href="/Style/H/css/twoanniversary.css" />
+<script type="text/javascript">
+    var imgpath="__ROOT__/Style/M/";
+    var curpath = "__APP__/member/common";
+</script>
+<include file="Public:_header_main" />
+<div class="twoanniver-banner">
+    <div class="tanni-banner anniver1200">
+        <span class="anniver-banner-h2"></span>
+        <span class="anniver-banner-gift"></span>
+    </div>
+</div>
+<div class="twoanniver-page twoanniver-page1">
+    <div class="anniver1096 twoanni-p twoanni-p1">
+        <i class="twoanni-p1-ico1"></i>
+        <i class="twoanni-p1-ico2"></i>
+        <i class="twoanni-p1-ico3"></i>
+        <i class="twoanni-p1-ico4"></i>
+        <i class="twoanni-p1-ico5"></i>
+        <div class="p1-tit"></div>
+        <div class="p1-container">
+            <if condition="$Borrowcount gt 0">
+                <!--有数据 start-->
+                <ul>
+                    <volist name="Borrow.list" id="vo">
+                        <li class="p1-proli clearfix">
+                        <span class="p1-c-jiang"></span>
+                        <span class="p1-con-tit"><a href="{$vo.id|getInvestUrl=###}">{$vo.borrow_name}</a></span>
+                        <span class="p1-con-nhl">{$vo.borrow_interest_rate}%</span>
+                        <span class="p1-con-time">{$vo.borrow_duration_txt}</span>
+                        <if condition="$vo.borrow_status eq 3">
+                            <a href="javascript:;" class="p1-con-btn anniver-tbreview">已流标</a>
+                            <elseif condition="$vo.borrow_status eq 4"/>
+                            <a href="javascript:;" class="p1-con-btn anniver-tbreview">复审中</a>
+                            <elseif condition="$vo.borrow_status eq 6"/>
+                            <a href="javascript:;" class="p1-con-btn anniver-tbreview">还款中</a>
+                            <elseif condition="$vo.borrow_status gt 6"/>
+                            <a href="{$vo.id|getInvestUrl=###}" class="p1-con-btn anniver-tbreview">已完成</a>
+                            <else/>
+                            <a href="{$vo.id|getInvestUrl=###}" class="p1-con-btn anniver-invbtn">我要投标</a>
+                        </if>
+                    </li>
+                    </volist>
+                </ul>
+                <else/>
+                <!--暂无数据 start-->
+                <p class="p1-nodata"></p>
+            </if>
+        </div>
+    </div>
+</div>
+
+<div class="twoanniver-page twoanniver-page2">
+    <div class="anniver1096 twoanni-p twoanni-p2">
+        <i class="twoanni-p2-ico1"></i>
+        <i class="twoanni-p2-ico2"></i>
+        <i class="twoanni-p2-ico3"></i>
+        <i class="twoanni-p2-ico4"></i>
+        <div class="p2-tit"></div>
+        <div class="p2-container">
+            <div class="p2-con-main scroolpifu">
+                <if condition="$Borrowcount gt 0">
+                    <!--有数据 start-->
+                    <volist name="borrow_list" id="bl">
+                    <!--box start-->
+                    <div class="p2-bangdan-box">
+                        <div class="p2-bangdan-title"><a href="{:U('/invest/detail', array('id'=>$bl['id']))}">{$bl.borrow_id}号标的：{$bl.borrow_name}</a></div>
+                        <ul>
+                            <li class="p2-bd-box clearfix">
+                                <span class="bangdan-tit bangdan-tit1"></span>
+                                <span class="bangdan-show bangdan-show1">{$bl.rich_man}</span>
+                                <span class="bangdan-money"><i>奖金1800元</i></span>
+                            </li>
+                            <li class="p2-bd-box clearfix">
+                                <span class="bangdan-tit bangdan-tit2"></span>
+                                <span class="bangdan-show bangdan-show2">{$bl.first_man}</span>
+                                <span class="bangdan-money"><i>奖金800元</i></span>
+                            </li>
+                            <li class="p2-bd-box clearfix">
+                                <span class="bangdan-tit bangdan-tit3"></span>
+                                <span class="bangdan-show bangdan-show3">{$bl.last_man}</span>
+                                <span class="bangdan-money"><i>奖金200元</i></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--box end-->
+                    </volist>
+                    <!--有数据 end-->
+                <else/>
+                    <!--无数据 start-->
+                    <div class="p2-bangdan-box">
+                        <div class="p2-bangdan-title">一号标的：标的正在赶来的路上</div>
+                        <ul>
+                            <li class="p2-bd-box clearfix">
+                                <span class="bangdan-tit bangdan-tit1"></span>
+                                <span class="bangdan-show bangdan-show1">统计中，待公布</span>
+                                <span class="bangdan-money"><i>奖金1800元</i></span>
+                            </li>
+                            <li class="p2-bd-box clearfix">
+                                <span class="bangdan-tit bangdan-tit2"></span>
+                                <span class="bangdan-show bangdan-show2">统计中，待公布</span>
+                                <span class="bangdan-money"><i>奖金800元</i></span>
+                            </li>
+                            <li class="p2-bd-box clearfix">
+                                <span class="bangdan-tit bangdan-tit3"></span>
+                                <span class="bangdan-show bangdan-show3">统计中，待公布</span>
+                                <span class="bangdan-money"><i>奖金200元</i></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--无数据 end-->
+                </if>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="twoanniver-page twoanniver-page3">
+    <div class="anniver1096 twoanni-p twoanni-p1">
+        <i class="twoanni-p3-ico1"></i>
+        <i class="twoanni-p3-ico2"></i>
+        <i class="twoanni-p3-ico3"></i>
+        <div class="p3-tit"></div>
+        <div class="p3-container">
+            <div class="p3-con-left">
+                <p class="p3-left-pre">
+                    <i class="p3-pre-ico1"></i>
+                    （土豪财主奖）单个标的累计投资额最高的用户可获得1800元奖励；
+                </p>
+                <p class="p3-left-pre">
+                    <i class="p3-pre-ico2"></i>
+                    （抢标先锋奖）有奖标的中首位单笔投标金额≥5万元的用户可获得800元现金奖励;
+                </p>
+                <p class="p3-left-pre">
+                    <i class="p3-pre-ico3"></i>
+                    （完美收官奖）最后一位成功满标的用户可获得200元现金奖励。
+                </p>
+            </div>
+            <div class="p3-con-ruletxt">
+                <h2>备注：</h2>
+                <p>
+                    1、活动时间：10月13日-10月20日 ；<br>
+                    2、活动对象：平台全体用户；<br>
+                    3、平台体验标不参与活动；<br>
+                    4、每个标的每位用户不可重复领取奖励，若获得多个奖励则以最高奖励为准；<br>
+                    5、现金奖励于活动结束后24小时内发放到用户账户中，用户可提现可投资；<br>
+                    6、本次活动在法律范围内，链金所保留最终解释权。
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:_footer" />

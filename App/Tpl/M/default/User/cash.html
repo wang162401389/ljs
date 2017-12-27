@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<include file="Pub:header-common" /> 
+	<link rel="stylesheet" href="__ROOT__/Style/Phone/css/withdraw.css">
+	<script type="text/javascript" src="__ROOT__/Style/Js/jquery.js"></script>
+	<script type="text/javascript" src="__ROOT__/Style/Mobile/jquery-global.js"></script> 
+	<script type="text/javascript" src="/Style/apprise/apprise-v2.js"></script>
+	<link rel="stylesheet" href="/Style/apprise/apprise-v2.css" type="text/css">
+	<script language="javascript">
+	$(function() {
+		var i =0;
+	    $("#dobutton").click(function() {
+	        var e = $("#money").val(),
+	            r = "money=" + e ;
+	        if ($.trim(e) == "") return alert("请输入要提取的金额!"), !1;
+	        if ($.trim(e) < {$fee[1]}) return alert("最少提现金额为{$fee[1]}元!"), !1;
+	        if(i == 0){
+	        	i++;
+	        	$("#dobutton").css('background-color','gray');
+	        	$("#dobutton").css('border-color','gray');
+	        	$("#dobutton").html("提交中");
+	        	$("#money").attr("readonly","readonly");
+	        	$.ajax({
+		            type: "POST",
+		            url: "__URL__/cash",
+		            data: r,
+		            success: function(e) {
+		                var code = e;
+		            	if(code.indexOf("form") > 0){
+		            		document.write(code);
+		            	}else{
+		            		i = 0;
+		            		$("#dobutton").css('background-color','#54c1f3');
+		            		$("#dobutton").css('border-color','#46b8da');
+		            		$("#dobutton").html("确认提现");
+		            		$("#money").attr("readnoly",null);
+		            		alert(e);
+		            	}
+		            },
+		            error: function(e) {
+		            	i = 0;
+		            	$("#dobutton").css('background-color','#54c1f3');
+		            	$("#dobutton").css('border-color','#46b8da');
+		            	$("#dobutton").html("确认提现");
+		            	$("#money").attr("readnoly",null);
+		                alert("提交发生错误！请重试");
+		            }
+		        })
+	        }
+	        
+	    });
+	    
+	});
+
+	function cal_fee(){
+		var utype = {$vo.user_regtype};
+		var fee_fee = {$fee[0]};
+		var num = '{$num}';
+		var is_vip = {$vo['is_vip']};
+		var fee_txmoney = parseFloat($('#fee_txmoney').html());
+		var tx_money = $("#money").val();
+		var tx_fee = tx_money-fee_txmoney;
+		if(tx_money == '' || tx_money == null && is_vip ==1){
+			$('#fee1').html("0.00");
+		}else if(is_vip==0 && tx_money>={$fee.1} && tx_money<=parseFloat($("#currentMoeny").html())){
+			if(num <= 3){
+				if(tx_fee>0){
+					var fee_money = parseFloat(tx_fee*fee_fee);
+					fee_money = fee_money.toFixed(2);
+					if(fee_money<2){
+						$('#fee1').html("0.00");
+					}else{
+						$('#fee1').html(fee_money);
+					}
+				}else{
+					$('#fee1').html("0.00");
+				}
+
+			}else{
+				var fee_money = parseFloat(tx_money*fee_fee);
+				fee_money = fee_money.toFixed(2);
+				if(fee_money<2){
+					$('#fee1').html("0.00");
+				}else{
+					$('#fee1').html(fee_money);
+				}
+			}
+		}else if(is_vip==0 && tx_money>={$fee.1} && tx_money>parseFloat($("#currentMoeny").html())){
+			$("#money").val(parseFloat($("#currentMoeny").html()));
+			tx_fee = parseFloat($("#currentMoeny").html())-fee_txmoney;
+			if(num <= 3){
+				if(tx_fee>0){
+					var fee_money = parseFloat(tx_fee*fee_fee);
+					fee_money = fee_money.toFixed(2);
+					if(utype == 1){
+						if(fee_money<2){
+							$('#fee1').html("0.00");
+						}else{
+							$('#fee1').html(fee_money);
+						}
+					}else{
+						if(fee_money>max_fee){
+							$('#fee1').html(max_fee);
+						}else{
+							$('#fee1').html(fee_money);
+						}
+					}
+				}else{
+					$('#fee1').html("0.00");
+				}
+
+			}else{
+				var fee_money = parseFloat($("#currentMoeny").html());
+				fee_money = fee_money.toFixed(2);
+				if(fee_money<2){
+					$('#fee1').html("0.00");
+				}else{
+					$('#fee1').html(fee_money);
+				}
+			}
+		}else if(is_vip==1 && tx_money>={$fee.1} && tx_money>parseFloat($("#currentMoeny").html())){
+			$("#money").val(parseFloat($("#currentMoeny").html()));
+		}
+	}
+	</script>
+	<script>
+	$(function(){
+		var t1 = {$vo['token1']};
+		var t2 = {$vo['token2']};
+		$.ajax({
+			url:"__APP__/member/withdraw/checkfee",
+			data:{token:t2},
+			type: "post"
+		});
+		$.ajax({
+			url:"__APP__/member/withdraw/output",
+			data:{token:t1},
+			type: "post",
+			dataType:"json",
+			success:function(d){
+				$("#currentMoeny").html(d.data["all_money"]);
+				$("#fee_txmoney").html(d.data["fee_txmoney"]+"元");
+				if(d.data["num"] != "∞"){
+					$("#num").html(d.data["num"]);
+				}else{
+					$("#fee_count").html("免费");
+				}
+			}
+		});
+	});
+	</script>
+</head>
+
+<body>
+	<include file="Pub:simple_header" />
+
+	<div class="content">
+		<div class="info">
+			<div class="name">
+				您的真实姓名：{$vo.real_name}
+			</div>
+			<div class="card">
+				可提现金额：￥<span style="color:#9b9393" id="currentMoeny">计算中...</span> <br/><font color=#666>(单笔提现金额会员限制为{$fee[1]}-{$fee[2]}万元)</font>
+			</div>
+		</div>
+		<div class="input-area">
+			<div class="area" >
+				<div style="width:7rem;float:left;">提现金额</div><span><input id="money" type="number" placeholder="请输入数额" onKeyUp="cal_fee()" style="margin-left:5%;"></span>
+			</div>
+			<!-- <div class="area">
+				<div style="width:7rem;float:left;">免费提现额度</div><span id="fee_txmoney" style="margin-left:5%;">计算中...</span>
+				<div style="font-size:1rem; float:right;"> <span id="fee_count">剩余<span id="num" style="color:red"></span>次免费</span></div>
+			</div> -->
+			<div class="area">
+				<div style="width:7rem;float:left;">手续费</div><span id="fee1" style="margin-left:5%;color:red">0.00</span>元
+			</div> 
+		</div>
+		<div class="confirm">
+			<a type="button" class="btn btn-info" id="dobutton">确认提现</a>
+		</div>
+		<div style="text-align:left; margin-top:25px; line-height:1.8rem ">
+			<div style="color:#000; font-weight:bolder;">提现说明：</div><br>
+			<!-- 个人：<br>
+			提现金额在免费提现额度内，每月有3次免费提现机会，超过3次后收取{$fee[0]*1000}‰手续费。<br>
+			提现金额超过免费提现额度时，手续费将按照超过部分的{$fee[0]*1000}‰进行收取，即手续费=（提现金额-免费额度）*{$fee[0]*1000}‰<br>
+			免费提现额度=可用余额+15天内充值未投资金额（手续费最低收取2元）。<br> -->
+			暂不收费，如有收费，另行公告。<br>
+			个人：15点以前提现（T+1）/15点以后提现（T+2）
+			
+
+		</div>
+	</div>
+
+	<include file="Pub:footer" /> 
+
+</body>
+
+</html>

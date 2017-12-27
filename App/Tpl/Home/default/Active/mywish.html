@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<base href="/Style/Phone/" />
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  	<script src="__ROOT__/Style/Phone/js/jquery-2.1.4.min.js"></script>
+  	<link rel="stylesheet" type="text/css" href="__ROOT__/Style/Phone/css/christmas.css">
+  	<title>我的许愿</title>
+  	<!--<style type="text/css">
+	  	*{box-sizing:initial;}
+	  	body{font-size: 18px}
+  	</style>-->
+  	<style type="text/css">
+	  	#header .title{font-size: 1.2rem;}
+  	</style>
+</head>
+<body class="bg-red">
+<include file="default:Pub:simple_header" group="M" />
+	<p class="p-tit">我的许愿</p>
+	<table class="n-table" cellspacing="0">
+		<tr>
+			<td width="20%">期数</th>
+			<td width="25%">许愿奖品</td>
+			<td width="20%">幸运号</td>
+			<td width="35%">愿望达成</td>
+		</tr>
+		<if condition="$wishlist neq null">
+			<volist name="wishlist" id="vo">
+			<tr>
+				<td>{$vo["gift_no"]}期</td>
+				<td>{$vo["gift_name"]}</td>
+				<td <if condition="$vo['have_uid'] eq $uid"> class="cor-orange" </if>><if condition="$vo['have_uid'] gt 0">{$vo["have_number"]}<else/>未开奖</if></td>
+				<td><if condition="$vo['have_uid'] eq $uid">恭喜梦想成真！<elseif condition="$vo['have_uid'] eq 0"/>有机会哦！<else/>换个姿势许愿！</if></td>
+			</tr>
+			</volist>
+			<else/>
+			<tr>
+				<td colspan="4">您还没有许愿！快来许愿吧，万一实现了呢！</td>
+			<tr>
+		</if>
+		
+	</table>
+	
+	<!-- <p style="color:#ff9b9b;text-align:center;margin-top: 3rem;">您还没有许愿！快来许愿吧，万一实现了呢！</p> -->
+	<if condition="$wishlist neq null">
+	<a href="/home/active/myluckynuminfo" class="b-btn" style="margin-top:5rem">查看详情</a>
+	</if>
+</body>
+</html>

@@ -1,0 +1,40 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+	list-style: none;
+}
+body {
+	background-color: #f0f0f0;
+}
+img {
+	max-width:100%;
+	height:auto;
+}
+
+.content .list {
+    overflow: hidden;
+	background-color: #fff;
+	margin-bottom: 1px;
+	padding: 20px;
+}
+.content .list .anno {
+	font-size: 100%;
+}
+.content .list .date {
+	font-size: 80%;
+	color: #919090;
+}
+.content .list .text {
+	font-size: 90%;
+	margin-top: 10px;
+    float: left;
+}
+.content .list .glyphicon {
+    float: right;
+    margin-top: 10px;
+}
+a ,a:link,a:visited,a:hover,a:active{
+    color:#000000;
+    text-decoration:none;
+}

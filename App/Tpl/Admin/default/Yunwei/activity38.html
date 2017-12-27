@@ -1,0 +1,78 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+    var delUrl = '__URL__/doDel';
+    var addUrl = '__URL__/add';
+    var isSearchHidden = 1;
+    var searchName='搜索';
+</script>
+<style>
+#area_list tr th,td{ width:14.3%;text-align: center;}
+</style>
+<div class="so_main">
+    <div class="page_tit">38活动奖品明细表</div>
+    <!--搜索/筛选会员-->
+    <include file="search" />
+    <!-- <div class="Toolbar_inbox" >
+        <div class="page right">{$pagebar}</div>
+        <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索" style="search_action" />
+    </div> -->
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th>序号</th>
+                <th>用户id</th>
+                <th>姓名</th>
+                <th>手机号</th>
+                <th>注册时间</th>
+                <th>活动期间总投资金额</th>
+                <th>所获得奖品</th>
+            </tr>
+            <volist name="list" id="vo">
+            <tr>
+                <td>{$key+1}</td>
+                <td>{$vo.uid}</td>
+                <td>{$vo.real_name}</td>
+                <td>{$vo.user_phone}</td>
+                <td>{$vo.reg_time}</td>
+                <td>{$vo.totalmoney}</td>
+                <td>{$vo.gift}</td>
+            </tr>
+            </volist>
+
+        </table>
+    </div>
+
+</div>
+
+
+<include file="Public:_footer" />
+<script>
+    function do_agreen(object,id){
+       $parent=$(object).parent();
+       $parent.children("input").attr("disabled","disabled");
+        $(object).val("审核中...");
+        $.post("/Admin/Fengkong/answer_borrow",{id:id,status:1},function(result){
+            if(result=="ok"){
+                $(object).val("已审核");
+            }else{
+                $parent.children("input").removeAttr("disabled");
+                $(object).val("审核");
+            }
+        })
+    }
+
+    function do_disagreen(object,id){
+        $parent=$(object).parent();
+        $parent.children("input").attr("disabled","disabled");
+        $(object).val("驳回中...");
+        $.post("/Admin/Fengkong/answer_borrow",{id:id,status:2},function(result){
+            if(result=="ok"){
+                $(object).val("已驳回");
+            }else{
+                $parent.children("input").removeAttr("disabled");
+                $(object).val("驳回");
+            }
+        })
+    }
+</script>

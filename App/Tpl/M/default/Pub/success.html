@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<include file="Pub:header-common" /> 
+    <style>
+        #header {
+            background-color: #54c0f2;
+            text-align: center;
+            height: 50px;
+        }
+        #header .bar{
+            height:20px;
+            padding-top:15px;
+            font-size: 20px;
+        }
+        #header .bar a{
+            color: #fff;
+        }
+        #header .bar a span{
+            float:left;
+            margin-left:1rem;
+        }
+        #header .bar .title {
+            color: #fff;
+            text-align: center;
+        }
+        .main{
+            margin-top: 2rem;
+        }
+        .hint {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 20px;
+            border: 1px solid #e4e4e4;
+            /* position: absolute; */
+            left: 50%;
+            top: 50%;
+            /* margin: -150px 0 0 -150px; */
+            border-radius: 0.6rem;
+            -webkit-border-raduis: 0.6rem;
+        }
+        a ,a:link,a:visited,a:hover,a:active{
+            color:#54c0f2;
+            text-decoration:none;
+        }
+    </style>
+</head>
+<body>
+<div id="header">
+    <div class="bar">
+        <div class="title">提示</div>
+    </div>
+</div>
+<base target="_self" />
+<div class="main">
+     <div class="hint">
+        <img src="/Style/Mobile/images/right.png" /><font>{$message}</font>
+         <p>系统将在 <span style="color:blue;font-weight:bold" class="num">3</span> 秒后自动跳转,如果不想等待,直接点击 <A HREF="{$jumpUrl}">这里</A> 跳转
+              或者 <a href="{:U('/M')}">返回首页</a></p>
+     </div>
+</div>
+</body>
+</html>
+<script>
+    i=3;
+    $(document).ready(function(){
+        setInterval(function(){
+            i--;
+            if(i<0)
+                i=0;
+            $(".num").html(i);
+        },1000);
+    })
+     function Jump(){
+     window.location.href = '{$jumpUrl}';
+     }
+     //document.onload = setTimeout("Jump()" , 3* 1000);
+</script>

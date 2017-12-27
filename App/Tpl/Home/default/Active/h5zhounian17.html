@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="minimal-ui,width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>热烈庆贺链金所成立两周年</title>
+    <script type="text/javascript" src="__ROOT__/Style/Js/jquery-2.2.3.min.js"></script>
+    <link rel="stylesheet" href="/Style/Phone/css/bootstrap.min.css" />
+    <style type="text/css">
+		*{margin: 0;padding: 0;}
+        body{background-color: #ad0a01;margin:0;color: #fff1b2;}
+        ul,li,p{list-style: none;}
+        a{text-decoration: none;}
+        .dis-none{display: none;}
+        .bold{font-weight: bold;}
+        i{font-style: normal;}
+
+        .banner-img{width: 100%;    margin-top: 50px;}
+        .part{margin-bottom: 2rem;padding: 0 .5rem;}
+        .notender-img{display: block;width: 60%;margin: 2rem auto;}
+        .title-img{ margin: 1rem auto;height: 4rem;display: block;}
+        .border{background-color: #c72402;border-radius: 10px;box-shadow: 2px 2px 2px #850600;padding: 1rem .5rem;}
+        .content{background-color: #a20901;border-radius: 10px;box-shadow: 2px 2px 2px #850600;padding: 1rem .5rem;}
+        .tables{width: 100%;}
+        .tables td{padding: .5rem 0;text-align: center;border-bottom: 1px solid #ad2720;}
+        .tables td img{width:90%;}
+        .tables td .overflow{ width: 6rem;display: block;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
+        .tables td .overflow a{color: #fff1b2; padding: 0}
+        .tables td a{border-radius: 3px;padding: .5rem;color:#ad0a01;     width: 82%;display: block;margin: 0 auto;}
+        .tables td .go-invest{    background-color: #fff1b2;}
+        .tables td .wait{background-color: #e3e1e1;color: #666666;}
+        .winning .content{overflow: auto;    height: 29rem;}
+        .item .tenter-p{ padding: 0 .5rem;width: 100%;margin: 1rem auto 0; background: url(/Style/Phone/img/octoberactive/tender_bg.png) no-repeat;font-size: 1.05rem;clear: both;background-size: 100% 100%;line-height: 3rem;text-align: center;}
+        .item .tenter-p a{color: #fff;}
+        .list-item{border-bottom:  1px solid #ad2720;      padding: 1rem 0;  overflow: hidden;}
+        .list-item img{width: 25%;margin-right: 5%;float: left;    margin-left: 10%;}
+        .list-item .info{width: 50%; margin-left: 10%;float: left;margin-top: 1rem;}
+        .list-item .info span{display: block;}
+        .list-item .info .money{margin-top: 1rem;}
+        .rule .list-item{border-bottom: none;    padding: 0;}
+        .rule .list-item img{width: 18%;    margin-left: 2%;}
+        .rule .list-item .info{width: 75%;margin-left: 0;}
+        .rule-text{line-height: 2rem;  clear: both;    padding-left: 1rem;}
+
+        .winning .content::-webkit-scrollbar{
+            width: 8px;
+            background-color: #b30b02;
+            border-radius: 10px;
+        }
+        .winning .content::-webkit-scrollbar-thumb{
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+            background-color: #ca0c02;}
+  
+
+		@media screen and (min-width:320px){html{font-size:12px;}}
+        @media screen and (min-width:360px){html{font-size:14px;}}
+        @media screen and (min-width:414px){html{font-size:16px;}}
+        @media screen and (min-width:640px){html{font-size:24px;}}
+        @media screen and (min-width:720px){html{font-size:26px;}}
+    </style>
+</head>
+<body>
+	<include file="default:Pub:simple_header" group="M" />
+    <section class="banner">
+        <img src="/Style/Phone/img/octoberactive/banner.png" class="banner-img">
+    </section>
+    <section class="part tender">
+        <img src="/Style/Phone/img/octoberactive/title1.png" class="title-img">
+        <div class="border">
+            <div class="content">
+                <if condition="$Borrowcount gt 0">
+                    <!-- 有标 -->
+                    <table border="0" cellspacing="0" class="tables">
+                        <volist name="Borrow.list" id="vo">
+                            <tr>
+                                <td width="12%"><img src="/Style/Phone/img/octoberactive/prize.png"></td>
+                                <td width="25%"><span class="overflow"><a href="{:U('/M/invest/detail', array('id'=>$vo['id']))}">{$vo.borrow_name}</a></span></td>
+                                <td>{$vo.borrow_interest_rate}%</td>
+                                <td>{$vo.borrow_duration_txt}</td>
+                                <if condition="$vo.borrow_status eq 3">
+                                    <td><a  href="{:U('/M/invest/detail', array('id'=>$vo['id']))}" class="wait">已流标</a></td>
+                                    <elseif condition="$vo.borrow_status eq 4"/>
+                                    <td><a  href="{:U('/M/invest/detail', array('id'=>$vo['id']))}" class="wait">复审中</a></td>
+                                    <elseif condition="$vo.borrow_status eq 6"/>
+                                    <td><a  href="{:U('/M/invest/detail', array('id'=>$vo['id']))}" class="wait">还款中</a></td>
+                                    <elseif condition="$vo.borrow_status gt 6"/>
+                                    <td><a  href="{:U('/M/invest/detail', array('id'=>$vo['id']))}" class="wait">已完成</a></td>
+                                    <else/>
+                                     <td><a  href="{:U('/M/invest/detail', array('id'=>$vo['id']))}" class="go-invest">我要投资</a></td>
+                                </if>
+                               
+                            </tr>
+                        </volist>
+                    </table>
+                    <else/>
+                    <!-- 无标 -->
+                    <img src="/Style/Phone/img/octoberactive/no.png" class="notender-img">
+                </if>
+            </div>
+        </div>
+    </section>
+    <section class="part winning">
+        <img src="/Style/Phone/img/octoberactive/title2.png" class="title-img">
+        <div class="border">
+            <div class="content">
+            <if condition="$Borrowcount gt 0">
+                <volist name="borrow_list" id="bl">
+                    <div class="item">
+                        <p class="tenter-p"><a href="{:U('/M/invest/detail', array('id'=>$bl['id']))}">{$bl.borrow_id}号标的：{$bl.borrow_name}</a></p>
+                        <div class="list-item">
+                            <img src="/Style/Phone/img/octoberactive/img1.png">
+                            <p class="info">
+                                <span>{$bl.rich_man}</span>
+                                <span class="money">奖金1800元</span>
+                            </p>
+                        </div>
+                        <div class="list-item">
+                            <img src="/Style/Phone/img/octoberactive/img2.png">
+                            <p class="info">
+                                <span>{$bl.first_man}</span>
+                                <span class="money">奖金800元</span>
+                            </p>
+                        </div>
+                        <div class="list-item">
+                            <img src="/Style/Phone/img/octoberactive/img3.png">
+                            <p class="info">
+                                <span>{$bl.last_man}</span>
+                                <span class="money">奖金200元</span>
+                            </p>
+                        </div>
+                    </div>
+                </volist>
+            <else/>
+                <div class="item">
+                        <p class="tenter-p">一号标的：标的正在赶来的路上</p>
+                        <div class="list-item">
+                            <img src="/Style/Phone/img/octoberactive/img1.png">
+                            <p class="info">
+                                <span>统计中，待公布</span>
+                                <span class="money">奖金1800元</span>
+                            </p>
+                        </div>
+                        <div class="list-item">
+                            <img src="/Style/Phone/img/octoberactive/img2.png">
+                            <p class="info">
+                                <span>统计中，待公布</span>
+                                <span class="money">奖金800元</span>
+                            </p>
+                        </div>
+                        <div class="list-item">
+                            <img src="/Style/Phone/img/octoberactive/img3.png">
+                            <p class="info">
+                                <span>统计中，待公布</span>
+                                <span class="money">奖金200元</span>
+                            </p>
+                        </div>
+                    </div>
+            </if>
+                <!-- <div class="item">
+                    <p class="tenter-p">二号标的：质金链(保)：1754511期</p>
+                    <div class="list-item">
+                        <img src="/style/phone/img/octoberactive/img3.png">
+                        <p class="info">
+                            <span>统计中，待公布</span>
+                            <span class="money">奖金：1700元</span>
+                        </p>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+    <section class="part rule">
+        <img src="/Style/Phone/img/octoberactive/title3.png" class="title-img">
+        <div class="border">
+            <div class="content">
+                <div class="list-item">
+                    <img src="/Style/Phone/img/octoberactive/simg1.png">
+                    <p class="info">
+                        （土豪财主奖）单个标的累计投资额最高的用户可获得1800元奖励；
+                    </p>
+                </div>
+                <div class="list-item">
+                    <img src="/Style/Phone/img/octoberactive/simg2.png">
+                    <p class="info">
+                        （抢标先锋奖）有奖标的中首位单笔投标金额≥5万元的用户可获得800元现金奖励;
+                    </p>
+                </div>
+                <div class="list-item">
+                    <img src="/Style/Phone/img/octoberactive/simg3.png">
+                    <p class="info">
+                        （完美收官奖）最后一位成功满标的用户可获得200元现金奖励。
+                    </p>
+                </div>
+                <div class="rule-text">
+                    备注：<br>
+                    1、活动时间：10月13日-10月20日 ；<br>
+                    2、活动对象：平台全体用户；<br>
+                    3、平台体验标不参与活动；<br>
+                    4、每个标的每位用户不可重复领取奖励，若获得多个奖励则以最高奖励为准；<br>
+                    5、现金奖励于活动结束后24小时内发放到用户账户中，用户可提现可投资；<br>
+                    6、本次活动在法律范围内，链金所保留最终解释权。
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

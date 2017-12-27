@@ -1,0 +1,162 @@
+<include file="Public:_header_common" />
+<title>{$title}</title>
+<meta http-equiv="keywords" content="{$keyword}" />
+<meta http-equiv="description" content="{$description}" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/H/css/detail.css" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/H/css/jiekuan.css" />
+<script type="text/javascript" src="__ROOT__/Style/H/js/common.js" language="javascript"></script>
+<script type="text/javascript" src="__ROOT__/Style/Js/sea.js" language="javascript"></script>
+</head>
+<body>
+<include file="Public:_header_main" />
+<div class="xiantiao"></div>
+<div class="bread wrapper">您所在的位置：<a href="__APP__/index">首页</a> &gt; 我要借款</div>
+<div class="apply-banner">
+	<div class="wrapper">
+        <h2>企业借款申请流程</h2>
+        <div class="apply-step">
+            <p class="icon-line">
+                <i class="jiekuan-spr ic-approve"></i>
+                <i class="jiekuan-spr ic-write ic-write-gray"></i>
+                <i class="jiekuan-spr ic-submit ic-submit-gray"></i>
+            </p>
+            <p class="wire-line cf">
+            	<i class="jiekuan-spr circle circle-on"></i>
+                <i class="wire wire-on"></i>
+                <i class="wire"></i>
+                <i class="jiekuan-spr circle"></i>
+                <i class="wire"></i>
+                <i class="wire"></i>
+                <i class="jiekuan-spr circle"></i>
+            </p>
+            <p class="text-line cf">
+            	<span class="text-on">1、借款信息</span>
+                <span class="m">2、填写资料</span>
+                <span>3、提交申请</span>
+            </p>
+        </div>
+    </div>
+</div>
+<form action="javascript:void(0);" id="applyForm" method="post" autocomplete="off">
+	<div class="apply-bar">
+        <h2>借款信息</h2>
+        <ul class="apply-ul">
+            <li class="cf">
+                <label class="cite" for="purpose"><em class="cor-red">*</em>借款用途：</label>
+                <input type="text" id="purpose" name="purpose" class="inp" placeholder="请填写借款用途，字符及字数不限" />
+                <span class="wrong-text">请填写借款用途</span>
+            </li>
+            <li class="cf">
+                <label class="cite" for="money"><em class="cor-red">*</em>借款金额：</label>
+                <input type="text" id="money" name="money" class="inp js-money" maxlength="8" placeholder="借款范围1000至500000，只能输入1000的整数倍金额。" />
+                <span class="wrong-text">借款范围1000至500000，只能输入1000的整数倍金额。</span>
+            </li>
+            <li class="cf">
+                <label class="cite"><em class="cor-red">*</em>借款时长：</label>
+                <select class="js-requiredSel" name="duration">
+                    <option value="0">请选择借款时长</option>
+                    <option value="1">1个月</option>
+                    <option value="2">3个月</option>
+                    <option value="3">6个月</option>
+                    <option value="4">12个月</option>
+                </select>
+                <span class="wrong-text">请选择借款时长</span>
+            </li>
+        </ul>
+    </div>
+    <div class="btn-line">
+    	<a href="javascript:void(0);" class="apply-btn-info js-nextBtn">下一步</a>
+    </div>
+</form>
+<include file="Public:_footer" />
+<script type="text/javascript">
+(function($){
+    define("jiekuan/borrowinfo",function(require, exports, module){
+		require("layer/layer");
+        var main = require("main");
+        var Module = {
+            init: function(){
+				/*
+                 *借款用途
+                 **/ 
+                $("#purpose").blur(function(){
+                	var val = $(this).val();
+                	if(!val){
+                		$(this).siblings(".wrong-text").show();
+                	}else{
+						$(this).siblings(".wrong-text").hide();
+					}
+                });
+				/*
+                 *借款金额
+                 **/ 
+                $("#money").blur(function(){
+                	var re = /^[0-9]*[0-9]$/i,
+						val = parseFloat($(this).val());
+                	if(!val || val%1000!==0 || val < 1000 || val > 500000){
+                		$(this).siblings(".wrong-text").show();
+                	}else{
+						$(this).siblings(".wrong-text").hide();
+					}
+                });
+				/*
+                 * 下拉框必选框
+                 * */
+				$(".js-requiredSel").on({
+					 "change": function(){
+						if($(this).val() == 0){
+							$(this).siblings(".wrong-text").show();
+						}else{
+							$(this).siblings(".wrong-text").hide();
+						}
+					}
+				});
+				/*
+                 *下一步
+                 **/ 
+                $("body").on("click", ".js-nextBtn", function(){
+                    var me = $(this),
+						re = /^[0-9]*[0-9]$/i,
+						purpose = $.trim($("#purpose").val()),
+						money = $.trim($("#money").val());
+					if(!purpose){
+						$("#purpose").focus();
+						$.wrongMsg("请填写借款用途");
+						return;	
+					}
+					if(!money){
+						$("#money").focus();
+						$.wrongMsg("请填写借款金额");
+						return;	
+					}
+					if(money%1000!==0 || money < 1000 || money > 500000){
+						$("#money").focus();
+						$.wrongMsg("借款范围1000至500000，只能输入1000的整数倍金额");
+						return;	
+					}
+					if($("select[name=duration]").val() == 0){
+                        $("select[name=duration]").focus();
+                        $.wrongMsg("请选择借款时长");
+                        return;
+                    }
+					var data = $("#applyForm").serialize();
+                    data = main.serializeJson(data);
+                    data.usertype=2;
+                    data.duration=$("select[name='duration'] option:selected").text();
+					main.getApi("/home/jiekuan/borrowinfo", data, function(result){
+						var result = result || {},
+							url = result.url || "";
+						setTimeout(function(){
+							location.href = url;
+						},2000);
+					});
+				});
+			}
+        };
+        module.exports = Module;
+    });
+    seajs.use("jiekuan/borrowinfo", function(module){
+        module.init();
+    });
+})($);
+</script>

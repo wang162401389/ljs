@@ -1,0 +1,53 @@
+.c_main{ width:1011px; margin:auto;padding:20px 0 0 0}
+.confirm_main{ width:1009px; margin:auto;padding:20px 0 0 0}
+.c_content{background: url(../images/beijing.png) no-repeat; height:601px; width:1011px; padding:60px 0 0 0}
+.confirm_content{background: url(../images/beijing_03.png) no-repeat; height:754px; width:1009px; padding:44px 0 0 0; color:#666666;}
+.c_content_title{background: url(../images/mbqr.png) no-repeat; height:46px; width:453px; margin:auto ; }
+.c_content_title1{background: url(../images/htxy.png) no-repeat; height:46px; width:626px; margin:auto; }
+.c_content_title2{background: url(../images/mbqrh.png) no-repeat; height:45px; width:505px; margin:auto; }
+.c_content_title3{background: url(../images/zhfw.png) no-repeat; height:46px; width:501px; margin:auto; }
+.c_content_title4{background: url(../images/dbf.png) no-repeat; height:45px; width:501px; margin:auto; }
+.c_content_title5{background: url(../images/dbxy.png) no-repeat; height:34px; width:549px; margin:auto; }
+.confirm_content .confirm_content_title{background: url(../images/maobiao_03.png) no-repeat; height:46px; width:451px; margin:auto; }
+.confirm_content .confirm_content_title_zhaiquan{background: url(../images/zhaiquan.png) no-repeat; height:46px; width:451px; margin:auto; }
+.c_content_middle{ background:#f4f7fb; width:735px; height:430px; margin:60px auto 0; overflow-y:auto; padding:0 18px;}
+.c_content_middle2{ width:734px; height:350px; margin:60px auto 0;}
+.c_content_middle1{width:735px; height:445px; margin:40px auto 0px; overflow-y:auto; padding:0 18px;}
+.c_c_qb{ border-bottom:1px #e5e5e5 solid; width:100%; font-size:16px; color:#666666; padding:18px 0; overflow:hidden;}
+.c_c_0{ float:left; margin-left:15px; margin-top:10px;}
+.c_c_1{ float:right; width:119px; height:35px; line-height:35px; color:#fff; text-align:center; margin-right:15px; border-radius:5px; background:url(../images/yuanquelanxiao.png) no-repeat ; }
+.c_c_2{ float:right; width:119px; height:35px; line-height:35px; color:#fff; text-align:center; margin-right:15px; border-radius:5px; background:url(../images/yuanquehuixiao.png) no-repeat ; }
+.c_content_middle1 p{ font-size:16px; line-height:30px; color:#666666;}
+.c_content_middle2 p{  line-height:35px; }
+.c_c_botton{cursor:pointer;width:228px; height:54px; line-height:54px;color:#fff; font-size:16px; text-align:center; margin:auto;background:url(../images/yuanquelanda.png) no-repeat ; }
+.c_content_middle2 table{ border-collapse: collapse}
+.c_content_middle2 table thead{ width: calc( 100% - 1em );background:#eeeeee; height:50px; line-height:50px; text-align:center; font-size:18px; color:#666666;}
+.c_content_middle2 table td{  border:1px solid #e5e5e5; text-overflow:ellipsis; white-space:nowrap;overflow: hidden; width:25%;}
+/*.c_content_middle2 table thead, tbody tr {display:table; }*/
+
+.c_content_middle2 .c_c_m{ height:300px; overflow-y:auto;}
+.c_content_middle2 table tbody td{ height:70px; line-height:70px; text-align:center; font-size:16px; color:#666666;}
+.c_c_t{width:119px; height:35px; line-height:35px; color:#fff; text-align:center; margin:auto; background:url(../images/yuanquelanxiao.png) no-repeat ; }
+.c_c_t1{width:119px; height:35px; line-height:35px; color:#fff; text-align:center; margin:auto; background:url(../images/yuanquehuixiao.png) no-repeat ; }
+.c_c_d{ text-overflow:ellipsis; white-space:nowrap;overflow: hidden; width:178px;}
+.c_bottom{ margin-top:40px; font-size:16px; color:#666666; float:right; line-height:35px;}
+.c_bottom .c_bottom1{ cursor:pointer;float:right;width:119px; height:35px; line-height:35px; color:#fff; text-align:center; margin:auto; background:url(../images/yuanquelanxiao.png) no-repeat ; margin-left:20px; }
+.c_bottom .c_bottom2{ float:right;width:119px; height:35px; line-height:35px; color:#fff; text-align:center; margin:auto; background:url(../images/yuanquehuixiao.png) no-repeat ; margin-left:20px; }
+
+.confirm_content .confirm_content_middle{ width:95%;  margin:40px auto 0; padding:0 18px;}
+.confirm_content .confirm_content_middle table{width:100%;border-collapse: collapse; }
+.confirm_content .confirm_content_middle table td{padding:10px;border:1px #e5e5e5 solid; text-align:center; font-size:16px;text-overflow:ellipsis; overflow: hidden; font-size:14px; }
+.confirm_content .confirm_content_middle table thead td{background:#eeeeee; font-size:16px;}
+.confirm_content .confirm_content_middle table tbody td{min-height:50px; height:50px;}
+.confirm_content .confirm_content_middle table tfoot td{ font-size:16px;}
+.confirm_tip{ font-size:14px; margin-bottom:10px; margin-left:18px;}
+.confirm_table{height:200px;  overflow-y:auto;}
+.confirm_bottom{ cursor:pointer;/* float:right; */width:119px; /* height:35px; */ line-height:35px; color:#fff; text-align:center; /* margin:auto; */ background:url(../images/yuanquelanxiao.png) no-repeat ; margin-left: 6px;margin-top:5px; }
+.confirm_bottom2{/* float:right; */width:119px; /* height:35px; */ line-height:35px; color:#fff; text-align:center; /* margin:auto; */ background:url(../images/yuanquehuixiao.png) no-repeat ; margin-left: 6px;margin-top:5px; }
+.confirm_do{ background:url(../images/mashang1_07.png) no-repeat ; width:230px; height:45px; margin:auto; margin-top:20px;}
+.confirm_do1{ background:url(../images/mashang_07.png) no-repeat ; width:230px; height:45px; margin:auto; margin-top:20px;}
+.confirm_pro{ text-align:center;font-size: 14px;margin-top: 10px;}
+.confirm_pro a{ color:#33ccff}
+.confirm_pro a:hover{ color:#33ccff}
+.confirm_alarm{ font-size:14px; line-height:26px;}
+.confirm_red{ color:#ff0000}

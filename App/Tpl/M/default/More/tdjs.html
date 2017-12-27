@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<include file="Pub:header-common" /> 
+</head>
+<body>
+    <include file="Pub:simple_header" />
+    <div class="container">
+        {$content}
+    </div>
+	<include file="Pub:footer" />
+</body>
+</html>
+<script>
+    $(function(){
+        $("table").css("width","100%");
+        $tr_list=$(".container").find("tr");
+		html='';
+        $tr_list.each(function(i,item){
+			console.log($(item).children().length);
+			if($(item).children().length==2){
+				src=$(item).children().eq(0).children("img").attr("src");
+				//console.log(src);
+				des=$(item).children().eq(1).html();
+				//console.log(html);
+				
+				html+='<div class="content" style="border-bottom:1px solid #CCC;padding-top:1rem;padding-bottom:1rem" >';
+				html+='<div class="img_container" style="float:left;width:40%;margin-right:2rem">';
+				html+='<img style="width:100%" src='+ src+'>';
+				html+='</div>';
+				html+='<div class="main">';
+				html+=des;
+				html+='</div>'
+				html+='</div>';
+			}
+        })
+		$("table").remove();
+		$(".container").append(html);
+		
+    })
+</script>

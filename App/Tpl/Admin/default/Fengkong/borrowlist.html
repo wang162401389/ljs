@@ -1,0 +1,163 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<script type="text/javascript">
+	var delUrl = '__URL__/doDel';
+	var addUrl = '__URL__/add';
+	var isSearchHidden = 1;
+</script>
+<div class="so_main">
+  <div class="page_tit">还款中的借款</div>
+<!--搜索/筛选会员-->
+    <div id="search_div" style="display:none">
+        <div class="page_tit"><script type="text/javascript">document.write(searchName);</script> [ <a href="javascript:void(0);" onclick="dosearch();">隐藏</a> ]</div>
+
+        <div class="form2">
+            <form method="post" action="__URL__/{$xaction}">
+           <dl class="lineD">
+      <dt>标号类型：</dt>
+      <dd>
+       <if condition="$search.protype eq 1">
+          <input  name="protype"   style="width:10px"  checked="checked"  type="radio"  value="1">质金链ZJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <input  name="protype"   style="width:10px"   type="radio" value="2">融金链RJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+          <input name="protype"  style="width:10px"    type="radio" value="3">信金链XJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="4">优金链YJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="5">保金链BJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="6">质金链(保)ZJB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+         <elseif condition="$search.protype eq 2"/>
+          <input  name="protype"   style="width:10px"  type="radio"  value="1">质金链ZJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input  name="protype"   style="width:10px"  checked="checked"   type="radio" value="2">融金链RJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="3">信金链XJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="4">优金链YJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="5">保金链BJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="6">质金链(保)ZJB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+        <elseif condition="$search.protype eq 3"/>
+          <input  name="protype"   style="width:10px"  type="radio"  value="1">质金链ZJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <input  name="protype"   style="width:10px"   type="radio" value="2">融金链RJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+          <input name="protype"  style="width:10px"   checked="checked"   type="radio" value="3">信金链XJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="4">优金链YJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="5">保金链BJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="6">质金链(保)ZJB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+          <elseif condition="$search.protype eq 4"/>
+          <input  name="protype"   style="width:10px"  type="radio"  value="1">质金链ZJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <input  name="protype"   style="width:10px"   type="radio" value="2">融金链RJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+          <input name="protype"  style="width:10px"    type="radio" value="3">信金链XJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"   checked="checked"   type="radio" value="4">优金链YJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="5">保金链BJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="6">质金链(保)ZJB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+        <else/>
+          <input  name="protype"   style="width:10px"   type="radio"  value="1">质金链ZJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <input  name="protype"   style="width:10px"   type="radio" value="2">融金链RJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+          <input name="protype"  style="width:10px"    type="radio" value="3">信金链XJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="4">优金链YJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="5">保金链BJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="6">质金链(保)ZJB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        </if>
+        <span>不选择则不限制</span>
+      </dd>
+    </dl>
+              <dl class="lineD"><dt>时间从：</dt><dd><htmlA:timer id="start_time" value="{$search.start_time}" tip='时间段' /></dd></dl>
+              <dl class="lineD"><dt>到：</dt><dd><htmlA:timer id="end_time" value="{$search.end_time}"  tip='时间段' /></dd></dl>
+                <dl class="lineD">
+                    <dt>标号ID：</dt>
+                    <dd>
+                        <input name="uid" style="width:190px" id="title" type="text" value="{$search.uid}">
+                        <span>不填则不限制</span>
+                    </dd>
+                </dl>
+                <dl class="lineD">
+                    <dt>会员名：</dt>
+                    <dd>
+                        <input name="uname" style="width:190px" id="title" type="text" value="{$search.uname}">
+                        <span>不填则不限制</span>
+                    </dd>
+                </dl>
+
+                <div class="page_btm">
+                    <input type="submit" class="btn_b" value="确定" />
+                </div>
+            </form>
+        </div>
+    </div>
+<!--搜索/筛选会员-->
+
+  <div class="Toolbar_inbox">
+  	<div class="page right">{$pagebar}</div>
+    <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索/筛选借款" style="search_action" />
+  </div>
+  
+  <div class="list">
+  <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th style="width:30px;">
+        <input type="checkbox" id="checkbox_handle" onclick="checkAll(this)" value="0">
+        <label for="checkbox"></label>
+    </th>
+	 <th class="line_l">标号</th>
+    <th class="line_l">用户名</th>
+    <th class="line_l">手机号</th>
+	<th class="line_l">客服</th>
+    <th class="line_l">标题</th>
+    <th class="line_l">借款金额</th>
+    <th class="line_l">已还金额</th>
+    <th class="line_l">借款期限</th>
+	<th class="line_l">借款手续费</th>
+    <th class="line_l">还款方式</th>
+    <th class="line_l">最近还款时间</th>
+    <th class="line_l">操作</th>
+  </tr>
+  <volist id="vo" name="list">
+      <tr overstyle='on' id="list_{$vo.id}">
+        <td><input type="checkbox" name="checkbox" id="checkbox2" onclick="checkon(this)" value="{$vo.id}"></td>
+        <td>{$vo.bid}</td>
+		<td><htmlA:user id="vo.mid" uname="vo.user_name" /></td>
+		<td>{$vo.user_phone}</td>
+        <td>{$vo.customer_name}</td>
+        <td>
+		<a href="{$vo.id|getInvestUrl=###}" title="{$vo.borrow_name}" target="_blank">{$vo.borrow_name|cnsubstr=###,12}</a>
+		</td>
+        <td>{$vo.borrow_money}</td>
+        <td>{$vo['repayment_money'] + $vo['repayment_interest']}</td>
+        <td>{$vo.borrow_duration}</td>
+        <td>{$vo.borrow_fee}</td>
+        <td>{$vo.repayment_type}</td>
+        <td><if condition="$vo.deadline eq null">--<else/>{$vo.deadline|date="Y-m-d",###}</if></td>
+		<td>
+        <a target="_bank" href="/admin/Fengkong/showhetong?uid={$vo.borrow_uid}&id={$vo.id}">查看合同</a>&nbsp;&nbsp;&nbsp;     
+      </tr>
+  </volist>
+  </table>
+
+  </div>
+  
+  <div class="Toolbar_inbox">
+  	<div class="page right">{$pagebar}</div>
+	<!--<htmlA:commonBtn type="href" action="__URL__/doWeek_1?time=' '" value="一周内到期标"/>-->
+    <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索/筛选借款" style="search_action" />
+    <htmlA:commonBtn type="href" action="__URL__/borrowlist?{$query}" value="将当前条件下数据导出为Excel"/>
+  </div>
+</div>
+<script type="text/javascript">
+	function SendTip(id) {
+        id = id.toString();
+        if(id == '') return false;
+
+		//提交修改
+		var datas = {'id':id};
+		$.post('__URL__/tip', datas,ResponseF,'json');
+    }
+	
+	function ResponseF(res){
+				if(res.success == '0') {
+					ui.error('邮件提醒发送失败！');
+				}else {
+					ui.success('邮件提醒发送成功！');
+				}
+	}	
+	</script>
+<include file="Public:_footer" />

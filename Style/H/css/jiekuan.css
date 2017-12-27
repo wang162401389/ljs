@@ -1,0 +1,159 @@
+h2,h3,h4{font-weight:normal;}
+.fs14{font-size:14px;}
+.fs18{font-size:18px;}
+.ml5{margin-left:5px;}
+.mt25{margin-top:25px;}
+.h50{height:50px;}
+.h100{height:100px;}
+.h150{height:150px;}
+.cf{*zoom:1;}
+.cf:after, .cf:before{display:block;height:0;line-height:0;font-size: 0;clear:both;visibility:hidden;content:".";}
+.cor-red{color:#c40000;}
+.cor-orange{color:#fc8026;}
+.wrapper{width:1200px;margin-left:auto;margin-right:auto;}
+.jiekuan-spr{display:inline-block;font-size:0;line-height:0;text-indent:-999px;background:url(../images/jiekuan/spr.png) no-repeat;vertical-align:middle;overflow:hidden;}
+
+/*借款首页*/
+.j-banner{height:654px;line-height:40px;text-align:center;font-size:17px;color:#fff;background:url(../images/jiekuan/banner.jpg) center top no-repeat #3b7ca3;}
+.j-banner h2{line-height:230px;font-size:80px;}
+.j-banner ul{padding:30px 90px;}
+.j-banner li{float:left;width:50%;}
+.j-banner li .round{width:70px;height:70px;padding:25px;margin:0 auto;border-radius:50%;background-color:#709ce6;}
+.j-banner li .round i{width:70px;height:70px;background-position:-450px 0px;}
+.j-banner li h3{padding:25px;font-size:24px;}
+.j-banner li a{display:inline-block;width:290px;height:63px;line-height:62px;color:#fff;font-size:24px; background-color:#709ce6;}
+.j-banner li a:hover{background-color:#5e98fa;}
+.j-banner .b2 .round, .j-banner .b2 a{background-color:#5cade0;}
+.j-banner .b2 .round i{background-position:-558px 0px;}
+.j-banner .b2 a:hover{background-color:#44b1f5;}
+
+.feature{padding:80px 0 45px;background-color:#f5f6f7;}
+.feature dl{position:relative;float:left;width:236px;height:160px;line-height:40px;margin-left:50px;padding-top:70px;text-align:center;font-size:18px;color:#f9715b;border:solid 1px #f9715b;}
+.feature dt{position:absolute;left:28px;top:-20px;width:180px;height:40px;color:#fff;font-size:18px;background-color:#f9715b;}
+.feature .jiekuan-spr{width:108px;height:70px;margin:0 auto 28px;}
+.feature .f1{color:#49bd9b;border-color:#49bd9b;}
+.feature .f1 dt{background-color:#49bd9b}
+.feature .f1 .jiekuan-spr{background-position:-216px 0;}
+.feature .f2{color:#deb62c;border-color:#deb62c;}
+.feature .f2 dt{background-color:#deb62c}
+.feature .f2 .jiekuan-spr{background-position:-324px 0;}
+.feature .f3{color:#5cade0;border-color:#5cade0;}
+.feature .f3 dt{background-color:#5cade0}
+.feature .f3 .jiekuan-spr{background-position:-110px 0;}
+
+.process{line-height:50px;padding:20px 0;font-size:16px;color:#474747;text-align:center;background-color:#eaf8ff;}
+.process h2{line-height:130px;color:#3385b2;font-size:32px;}
+.apply-step .wire-line{padding:28px 0 0 145px;}
+.apply-step .text-line span{float:left;width:300px;}
+.apply-step .text-line .m{width:590px;}
+.icon-line .jiekuan-spr{width:108px;height:86px;}
+.ic-approve{background-position:0 -70px;}
+.ic-write{margin:0 325px;background-position:-108px -70px;}
+.ic-submit{background-position:-216px -70px;}
+.ic-approve-gray{background-position:-324px -70px;}
+.ic-write-gray{margin:0 325px;background-position:-432px -70px;}
+.ic-submit-gray{background-position:-540px -70px;}
+
+.wire-line .circle{float:left;width:24px;height:24px;background-position:0 -158px;}
+.wire-line .wire{float:left;width:210px;height:2px;line-height:0;margin-top:11px;font-size:0;background-color:#9099a2;overflow:hidden;}
+.wire-line .circle-on{background-position:-26px -158px;}
+.wire-line .wire-on{background-color:#3b9dda;}
+.text-line .text-on{color:#3b9dda;}
+
+/*个人借款-实名认证*/
+.apply-banner{height:289px;line-height:50px;margin:10px 0 50px;text-align:center;font-size:20px;background:url(../images/jiekuan/bg_process.jpg) center top no-repeat #9fd0de;}
+.apply-banner h2{line-height:100px;font-size:26px;color:#3385b2;}
+.apply-banner .apply-step .wire-line{padding-top:10px;}
+
+.apply-bar{width:1196px;margin:40px auto;border:solid 2px #9099a2;border-radius:20px;}
+.apply-bar h2{line-height:75px;font-size:20px;color:#fff;text-align:center;border-radius:16px 16px 0 0;background-color:#9099a2;}
+.apply-bar .hd{padding:10px 30px;}
+.apply-ul{padding:30px;}
+.apply-ul li{padding:12px 0 12px 380px;}
+.apply-ul .cite{float:left;width:375px;line-height:40px;margin-left:-380px;padding-right:5px;font-size:16px;color:#333;text-align:right;}
+.apply-ul .inp{width:350px;padding:10px;font:14px/19px '\5FAE\8F6F\96C5\9ED1','\5b8b\4f53',arial,tahoma, Srial, helvetica, sans-serif;border:solid 1px #cecfcf;}
+.apply-ul select{width:350px;padding:9px 10px;font:14px/19px '\5FAE\8F6F\96C5\9ED1','\5b8b\4f53',arial,tahoma, Srial, helvetica, sans-serif;color:#676767;border:solid 1px #cecfcf;box-sizing:initial;}
+.apply-ul select option{padding-left:10px;}
+.apply-bar .tit-line{line-height:42px;padding:15px 30px 10px;font-size:24px;color:#333;}
+.apply-bar .tit-line .apply-btn-info{width:140px;height:42px;line-height:42px;margin-left:20px;font-size:14px;}
+.apply-bar .wale{line-height:56px;margin:5px 30px; font-size:18px;color:#fff;padding:0 25px;background-color:#afafaf;}
+.apply-bar .explain{line-height:40px;padding:10px 55px 15px;font-size:14px;color:#464646;}
+
+.card-upload{padding:20px 0 20px 75px;font-size:14px;}
+.card-upload li{float:left;width:315px;padding-left:55px;}
+.card-upload li h3{padding:5px 0 0 20px;font-size:16px;color:#333;}
+.card-upload li p{padding-left:5px;}
+.card-upload .apply-btn{margin:10px 0 0 20px;}
+
+.btn-line{margin:50px 0;text-align:center;}
+.apply-btn{position:relative;display:inline-block;width:140px;line-height:42px;font-size:14px;text-align:center;color:#fff;border-radius:5px;background-color:#a6a6a6;}
+.apply-btn:hover{color:#fff;background-color:#7d7d7d;}
+.apply-btn-info{display:inline-block;width:280px;line-height:50px;font-size:20px;text-align:center;color:#fff;border-radius:5px;background-color:#fc8026;}
+.apply-btn-info:hover{color:#fff;background-color:#f16500;}
+.wrong-text{display:none;margin-left:10px;color:#ff0000;font-size:14px;}
+
+/*个人借款-提交申请*/
+.submit-apply{line-height:60px;padding:20px 0 10px;font-size:24px;text-align:center;color:#929191;}
+.submit-apply h2{font-size:30px;color:#333;}
+.submit-apply .tit{padding-top:20px;text-align:left;}
+.credit-confirm{max-height:300px;padding:0 30px;overflow-y:auto;overflow-x:hidden}
+.credit-confirm .file-item{margin-right:15px;}
+
+/*弹窗*/
+.pop-bg{opacity:.8}
+.jiekuan-pop{display:none;z-index:999;position:fixed;top:50%;left:50%;width:530px;min-height:260px;margin:-150px 0 0 -285px;padding:20px;text-align:center;color:#666;font-size:13.5px;border-radius:10px;border:solid 1px #dedede;background-color:#fff;}
+.jiekuan-pop .apply-btn-info{width:100px;height:40px;line-height:40px;font-size:14px;}
+.jiekuan-pop .jiekuan-close{position:absolute;top:20px;right:20px;width:22px;height:22px;background:url(../images/jiekuan/spr.png) -52px -158px no-repeat;}
+.jiekuan-pop .notice{min-height:80px;line-height:35px;padding:60px 100px 0;font-size:18px;color:#fc8026;}
+.jiekuan-pop .btn-line{margin:20px 0 0;}
+
+.credit-pop{line-height:24px;margin-top:-252px;}
+.credit-pop h2{line-height:40px;color:#333;font-size:18px;}
+.credit-pop p{text-indent:2em;text-align:left;}
+
+/*图片上传*/
+.webuploader-element-invisible{position:absolute !important;clip:rect(1px 1px 1px 1px); /* IE6, IE7 */clip:rect(1px,1px,1px,1px);}
+/* ------------ */
+.file-error{position:absolute;top:0px;left:0px;width:100%;background-color:#ff0000;color:white;text-align:center;height:22px;font-size:14px;line-height:20px;}
+.file-progress{z-index:15;position:absolute;left:0px;bottom:0px;width:100%;height:4px;margin:0;padding:0;border-radius:0;background:transparent;overflow:hidden;}
+.file-progress span{display:block;width:0;height:100%;background:#008000 url(progress.png) repeat-x;overflow:hidden;-webit-transition:width 200ms linear;-moz-transition:width 200ms linear;-o-transition:width 200ms linear;-ms-transition: width 200ms linear;transition:width 200ms linear;-webkit-animation:progressmove 2s linear infinite;-moz-animation:progressmove 2s linear infinite;-o-animation:progressmove 2s linear infinite;-ms-animation:progressmove 2s linear infinite;animation:progressmove 2s linear infinite;-webkit-transform:translateZ(0);}
+@-webkit-keyframes progressmove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 17px 0;
+    }
+}
+@-moz-keyframes progressmove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 17px 0;
+    }
+}
+@keyframes progressmove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 17px 0;
+    }
+}
+.file-item{position:relative;float:left;width:200px;height:115px;margin:15px 0;}
+.file-item .info{z-index:10;position:absolute;width:100%;left:0px;bottom:0px;height:30px;line-height:30px;text-indent:5px;text-align:center;background-color:rgba(0, 0, 0, 0.5);*background-color:#000;;color:white;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.upload-state-done:after{z-index:99;position:absolute;bottom:0;right:4px;line-height:1;font-style:normal;font-weight:normal;font-family:FontAwesome;font-size:32px;color:#4cae4c;content:"";-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+.file-item .file-panel{z-index:300;position:absolute;top:0;left:0;width:100%;height:0;padding:0;text-align:right;background:rgba( 0, 0, 0, 0.5 );filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#80000000', endColorstr='#80000000')\0;overflow:hidden;}
+.file-panel a{display:inline-block;width:20px;height:20px;margin:2px 2px;text-indent:-9999px;overflow:hidden;background:url(../images/jiekuan/spr.png) no-repeat;cursor:pointer;}
+.file-panel .icon-view{background-position:-80px -175px;}
+.file-panel .icon-cancel{background-position:-105px -175px;}
+
+.cf-companyinfo-zhizhao{color:#ff0000; font-size: 14px; padding: 5px 0}
+.cf a.photoupload-btn{width:96px; height: 138px; display: block; position: relative; background: #fff; border:1px solid #cbcbcb; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px;}
+.cf a.photoupload-btn:before{width:4px; height: 26px; display: block; content: ""; position: absolute; top:58px; left:45px; background: #929191}
+.cf a.photoupload-btn:after{width:26px; height: 4px; display: block; content: ""; position: absolute; top:68px; left:34px; background: #929191}
+
+.sendcode-button{width:120px; height: 41px; border:1px solid #cecfcf; text-align: center; margin-left: 10px; cursor: not-allowed; color:#878787; vertical-align: top; background: #cecece; font-family: "microsoft yahei" }
+.sendcode-button.button-sure{color:#fff; cursor: pointer; border:1px solid #3b9dda;  background: #3b9dda}
+.cf .imgcode-src{height: 41px; margin-left: 10px}

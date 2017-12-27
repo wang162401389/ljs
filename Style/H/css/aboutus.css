@@ -1,0 +1,23 @@
+.auout_banner img{width: 100%;height: 100%; min-width: 1200px;}
+.about_title{width:1200px;margin-left:auto;margin-right:auto;margin-top:50px;margin-bottom:50px;text-align: center;}
+.about_introduce{width:1200px;margin-left:auto;margin-right:auto;margin-top:50px;margin-bottom:50px;}
+.about_introduce div:first-child{float:left;width:606px;height:484px;font-size:14px;line-height:30px;color:#8c8c8c;}
+.about_introduce .a_i_video{float:right;width:422px;margin-top:10px;}
+.about_introduce .a_i_video .video_content{font-size:17px;margin-top:30px;/* font-weight:bold; */color: #1b1a1a;}
+.about_introduce .a_i_video .video_content1{font-size:14px;line-height: 26px;color:#8c8c8c;margin-top:18px;}
+.about_logo{width:1200px;margin-left:auto;margin-right:auto;margin-top: -51px;}
+.about_logo .a_l_content{float:left; width:643px; /* margin-top:60px; */}
+.about_logo .a_l_content div:first-child{font-size:24px; margin-bottom: 20px;color: #1b1a1a}
+.about_logo .a_l_content .a_l_c1{font-size:14px; color:#8c8c8c;; line-height:35px; margin-top:30px;}
+.about_ptjg{width:100%;background:#f3bf5f;padding-top: 20px; padding-bottom: 70px; overflow: hidden}
+.about_ptjg .a_p_content{width:1200px;margin-left:auto;margin-right:auto;}
+.about_ptjg .a_p_content div:first-child{float:left;width:662px;margin-top: -4px;/* margin-left:-50px; */}
+.about_ptjg .a_p_content .a_p_c1{float:left;width: 386px;font-size:14px;line-height:30px;color:#8c8c8c;margin-left: 97px;margin-top:50px; color:#fff;}
+.about_business{width:1200px;margin-left:auto;margin-right:auto;margin-bottom: 45px;padding-top: 15px;}
+.about_business .a_b_img{background:url(../images/shu.png);float:left;width:353px;height:349px;margin-left: 49px;}
+.about_business .a_b_content{float:right;font-size: 14px;line-height:30px;margin-left:10px;width: 650px;height:200px;margin-top: 28px; color: #656565;}
+.about_pp{width:100%;height:450px;background:#79ca6f; padding-bottom:30px;padding-top: 15px;}
+.about_pp .a_p_content{ width: 1144px; margin: auto;padding-top: 20px;}
+.about_crjh{width:1200px;margin-left:auto;margin-right:auto;overflow: hidden;margin-bottom: 50px;}
+.about_crjh .a_c_content{float:left;font-size:14px;line-height:30px;margin-left:10px;width:650px;margin-top: 38px;color:#656565;/* overflow: hidden; */}
+.about_crjh .a_c_img{float:right;width: 400px;height:249px;margin-top:15px;background:url(../images/an_select.png) no-repeat;}

@@ -1,0 +1,104 @@
+<!-------- 搜索游戏 -------->
+<div id="search_div">
+    <div class="form2">
+        <form method="post" action="__URL__/{$xaction}">
+            <div style="overflow: hidden">
+                <dl class="lineD" style="float: left;width: 33.3%;">
+                    <dt>用户ID：&nbsp;</dt>
+                    <dd>
+                        <input name="uid" style="width:190px" id="uid" type="text" value="{$search.uid}">
+                        <span>不填则不限制</span>
+                    </dd>
+                </dl>
+                <dl class="lineD" style="float: left;width: 33.3%;">
+                    <dt>用户名：</dt>
+                    <dd>
+                        <input name="u_name" style="width:190px" id="u_name" type="text" value="{$search.user_name}">
+                        <span>不填则不限制</span>
+                    </dd>
+                </dl>
+                <dl class="lineD" style="float: left;width: 33.3%;">
+                    <dt>真实姓名：</dt>
+                    <dd>
+                        <input name="real_name" style="width:190px" id="real_name" type="text" value="{$search.t_user_name}">
+                        <span>不填则不限制</span>
+                    </dd>
+                </dl>
+            </div>
+            <div style="overflow: hidden">
+                <dl class="lineD" style="float: left;width: 33.3%;">
+                    <dt>
+                        注册时间：
+                    </dt>
+                    <dd>
+                        <htmlA:timer id="start_reg_time" value="{$search.start_reg_time}"  style="width:100px" />&nbsp;&nbsp;<htmlA:timer id="end_reg_time" value="{$search.end_reg_time}"  style="width:100px"  />
+                    </dd>
+                </dl>
+
+                <dl class="lineD" style="float: left;width: 33.3%;">
+                    <dt>来源渠道：</dt>
+                    <dd>
+                        <input name="from" style="width:190px" id="from" type="text" value="{$search.from}">
+                        <span>不填则不限制</span>
+                    </dd>
+                </dl>
+                <dl class="lineD" style="float: left;width: 33.3%;">
+                    <dt>
+                        借款类型：
+                    </dt>
+                    <dd>
+                        <select name="product_type_num" style="width: 108px">
+                            <option value="0" selected>全部</option>
+                            <option value="3">质金链</option>
+                            <option value="4">融金链</option>
+                            <option value="5">分期购</option>
+                            <option value="6">信金链</option>
+                            <option value="7">优金链</option>
+                            <option value="8">保金链</option>
+                            <option value="10">质金链（保）</option>
+                        </select>
+                    </dd>
+                </dl>
+            </div>
+            <div style="overflow: hidden">
+
+                <dl class="lineD" style="float: left;width: 33.3%;">
+                    <dt>
+                        标号：
+                    </dt>
+                    <dd >
+                        <input name="bid" style="width:190px" id="bid" type="text" value="{$search.bid}">
+                    </dd>
+                </dl>
+                <dl class="lineD" style="float: left;width: 33.3%;">
+                    <dt>
+                        借款时间：
+                    </dt>
+                    <dd >
+                        <htmlA:timer id="start_add_time" value="{$search.start_add_time}"  style="width:100px"  />&nbsp;&nbsp;<htmlA:timer id="end_add_time" value="{$search.end_add_time}"  style="width:100px"  />
+                    </dd>
+                </dl>
+                <dl class="lineD" style="float: left;width: 33.3%;">
+                    <dt>
+                        用户类型：
+                    </dt>
+                    <dd>
+                        <select style="width: 108px">
+                            <option value="0" selected>全部</option>
+                            <option value="3">普通用户</option>
+                            <option value="4">VIP用户</option>
+                        </select>
+                    </dd>
+                </dl>
+            </div>
+
+
+
+
+            <div class="page_btm">
+                <input type="submit" class="btn_2"  value="" />
+                <input type="button"  class="btn_1"  onclick='window.location.href="__URL__/invest_member_info?{$query}"' >
+            </div>
+        </form>
+    </div>
+</div>

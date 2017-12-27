@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <include file="Pub:header-common" />
+    <link rel="stylesheet" href="__ROOT__/Style/Phone/css/cashpledge.css" >
+</head>
+
+<body>
+<include file="Pub:simple_header" />
+<div class="content">
+    <div class="text">您的可用余额：<span id="balance">{$account_money}</span>元<a href="{:U('M/user/pay')}" type="button" class="btn">充值</a></div>
+    <div class="text">可投余额：{$vo.need}元</div>
+    <div class="text">起投金额：100.00元</div>
+    <input type="text" id="invest_money" placeholder="请输入投资金额">&nbsp;
+    <input type="hidden" id="bid" value="{$id}">&nbsp;
+    <div style="height: 30px;"></div>
+    <div class="confirm">
+        <a type="button" class="btn btn-info" id="zq-dobutton">确定投标</a>
+    </div>
+
+</div>
+<div class="pop-bg"></div>
+<div class="pop-tips"></div>
+<!--tosta start-->
+<div class="zr-success">
+    <i class="tick-right js-tickico"></i>
+    <span class="tick-text js-toasttit"></span>
+</div>
+<!--tosta end-->
+
+<script language="javascript">
+$(function(){
+    $("#zq-dobutton").on("click",function(){
+        var investmoney = $("#invest_money").val();
+            investmoney=parseFloat(investmoney);
+        var balance=$("#balance").val();
+            balance=parseFloat(balance);
+        if( investmoney=="" | investmoney == null){
+            $(".pop-bg,.pop-tips").fadeIn().delay(1400).fadeOut();
+            $(".pop-tips").empty().text("对不起，投资金额不能为空！");
+            return;
+        }
+        if(investmoney< 100){
+            $(".pop-bg,.pop-tips").fadeIn().delay(1400).fadeOut();
+            $(".pop-tips").empty().text("对不起，投资金额不能小于可投金额！");
+            return;
+        }
+        if(investmoney > balance){
+            $(".pop-bg,.pop-tips").fadeIn().delay(1400).fadeOut();
+            $(".pop-tips").empty().text("对不起，投资金额不足请充值！");
+            return;
+        }
+        $.ajax({
+            type: "POST",
+            url: "__URL__/investmoney",
+            data: {"borrow_id":$("#bid").val(),"money":investmoney},
+            dataType:"json",
+            beforeSend:function(){
+                supertoast(2,"投标中...",3800);
+             },
+            success: function(e) {
+                $(".zr-success").css("display","none");
+                var code = e;
+                if(typeof code == 'object'){
+                    $(".pop-bg,.pop-tips").fadeIn().delay(1400).fadeOut();
+                    $(".pop-tips").empty().text(e.info);
+                }else{
+                    if(code.indexOf("form") > 0){
+                        document.write(code);
+                    }
+                }
+            },
+            error: function(e) {
+                var code = e;
+                if(typeof code == 'object'){
+                    if(code.responseText && code.responseText.indexOf("form") > 0){
+                        document.write(code.responseText);
+                    }
+                }else{
+                  alert("服务器忙请稍后再试");
+                }
+            }
+        })
+
+    })
+})
+</script>
+</body>
+
+</html>

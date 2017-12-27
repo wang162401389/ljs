@@ -1,0 +1,130 @@
+body{background-color: #ffe56b;}
+.loadingspinner{position: fixed; top:50%; left: 50%; margin-left: -25px; margin-top: -30px;}
+.invite-tips{width:230px; height: 42px; line-height: 42px; text-align: center; color:#fff; background: rgba(0,0,0,.7); position: fixed; top:50%; left:50%; margin-left: -115px; margin-top: -16px; -webkit-border-radius: 7px; -moz-border-radius: 7px; -ms-border-radius: 7px; border-radius: 7px; z-index: 99999; display: none}
+.fina1182{width:1182px; margin: 0 auto; position: relative;}
+.fina-overflow{overflow: hidden;}
+.fin-margintop10{margin-top: 10px;}
+
+.fina-banner{width:100%; height: 857px; background: url(../images/financing/banner.jpg) #e22d0e center top no-repeat;}
+.fina-h2{width:878px; height: 411px; margin:172px auto 0; background: url(../images/financing/fina-h2.png) no-repeat; -webkit-animation:bigtitle 1s ease; -moz-animation:bigtitle 1s ease; -ms-animation:bigtitle 1s ease; animation:bigtitle 1s ease;}
+.fina-time{width:156px; height: 149px; position: absolute; top:267px; left:18px; background: url(../images/financing/fina-time.png) no-repeat; -webkit-animation:gametime 1.8s ease infinite; -ms-animation:gametime 1.8s ease infinite; -ms-animation:gametime 1.8s ease infinite; animation:gametime 1.8s ease infinite;}
+
+.fin-page{padding: 60px 0;}
+.fin-newertit{width:296px; height: 228px; margin: 0 auto; background: url(../images/financing/fin-newertit.gif) no-repeat;}
+.fin-newerdes{width:537px; height: 175px; margin: 0 auto; background: url(../images/financing/fin-newerdes.jpg) no-repeat;}
+.fin-newer-fanli{text-align: center; color: #fb8803; font-size: 30px; margin: 25px 0 40px;}
+.fin-newer-fanli a{margin: 0 5px; text-decoration: underline}
+.fin-newertxt{width:926px; height: 623px; margin: 0 auto; background: url(../images/financing/fin-newertxt.jpg) no-repeat;}
+.fin-newerbtn{width:351px; height: 98px; margin: 50px auto; display: block; background: url(../images/financing/fin-newerbtn.jpg) no-repeat;}
+.fin-newerrule{width:916px; margin: 0 auto; line-height: 40px; font-size: 23px; color:#6f1f0e}
+.fin-newerrule p{font-size: 30px; margin-bottom: 10px;}
+.fin-pagenewer-bottom{width:100%; height: 111px; background: url(../images/financing/fin-pagenew-bottom.jpg) center top repeat-x;}
+
+.fin-page-older{background: #fff0ab;}
+.fin-oldertit{width:296px; height: 228px; margin: 0 auto; background: url(../images/financing/fin-oldertit.gif) no-repeat;}
+.fin-olderdes{width:738px; height: 175px; margin: 0 auto; background: url(../images/financing/fin-olderdes.jpg) no-repeat;}
+.fin-turntable-wrap{width:778px; height: 824px; margin: 35px auto 0; position: relative; overflow: hidden; }
+.fin-turntable-wrap .turntable-circle{width:778px; height: 779px; background: url(../images/financing/turntable-circle.png) no-repeat;}
+.fin-turntable-wrap .turntable-light{width:747px; height: 754px; position: absolute; top:10px; left:12px; background: url(../images/financing/turntable-light.png) no-repeat; opacity:0; -webkit-animation:light 1s ease infinite; -moz-animation:light 1s ease infinite; -ms-animation:light 1s ease infinite; animation:light 1s ease infinite;}
+.fin-turntable-wrap .turntable-main{width:690px; height: 691px; position: absolute; top:43px; left:44px; background: url(../images/financing/turntable-zp.png) no-repeat;}
+.fin-turntable-wrap .turntable-point{width:223px; height: 226px; position: absolute; top:282px; left:273px; cursor: pointer; background: url(../images/financing/turntable-point.png) no-repeat;}
+.platemoving{-webkit-animation:plate 1.5s ease infinite; -moz-animation:plate 1.5s ease infinite; -ms-animation:plate 1.5s ease infinite; animation:plate 1.5s ease infinite;}
+.turntable-shadows{width:523px; height: 89px; position: absolute; left:138px; bottom: 0; background: url(../images/financing/turntable-shadows.png) no-repeat;}
+.fin-olderbtn{width:351px; height: 98px; margin: 50px auto; display: block; background: url(../images/financing/fin-olderbtn.jpg) no-repeat;}
+.fin-pageolder-bottom{width:100%; height: 111px; background: url(../images/financing/fin-pageold-bottom.jpg) center top repeat-x;}
+
+.fin-alltit{width:296px; height: 228px; margin: 0 auto; background: url(../images/financing/fin-alltit.gif) no-repeat;}
+.fin-alldes{width:549px; height: 175px; margin: 0 auto; background: url(../images/financing/fin-alldes.jpg) no-repeat;}
+.fin-page-all .fin-all-recommend{width:914px; height: 600px; margin: 40px auto; border-radius: 43px; background: #fe4d3f; border:2px solid #6f1f0e}
+.fin-page-all .fin-recommend-main{width:838px; height: 516px; color:#333; margin: 38px auto 0; background: #fdf7c6; border-radius: 33px; overflow: hidden;}
+.rec-tabtit{margin-top: 54px; height: 58px; line-height: 58px; font-size: 26px; font-weight: bold; background: #fef6b6; overflow: hidden;}
+.rec-tabtit span,.tab-main-box span{display: block; float: left;}
+.rec-tabtit .r-tabtit-a{width:208px; margin-left: 48px;}
+.rec-tabtit .r-tabtit-b{width:134px; margin-left: 134px;}
+.rec-tabtit .r-tabtit-c{width:174px; margin-left: 130px;}
+.rec-tab-main{height: 356px; overflow: hidden;}
+.rec-tab-main .tab-main-box{height: 58px; line-height: 58px; font-size: 26px; margin: 28px 0;}
+/*.tab-main-box:nth-child(2n){background:#fef6b6;}*/
+.rec-tab-main .tab-main-box2{background: #fef6b6;}
+.tab-main-box .main-box-a{width:208px; margin-left: 48px;}
+.tab-main-box .main-box-b{width:134px; margin-left: 134px;}
+.tab-main-box .main-box-c{width:174px; margin-left: 130px; color: #fe4d3f;}
+.rec-nologin{margin-top: 40px;}
+
+.fin-page-all .fin-rem-tit{font-size: 36px; color:#512111; text-align: center; margin-bottom: 40px;}
+.fin-page-all .fin-rem-content{width:400px; height: 400px;  text-align: center; margin: 0 auto 30px; border:2px solid #6f1f0e; background: #fdf7c6;}
+.remcomend-login{width:100%; color: #512111; font-size: 36px; margin: 50px auto 0; text-align: center;}
+.remcomend-login a{color: #512111; font-size: 36px; margin: 0px 4px; text-decoration: underline;}
+.fin-rem-content .remcomend-loginimg{width:278px; height: 145px; margin: 50px auto 0; background: url(../images/financing/remcomend-loginimg.jpg) no-repeat;}
+.fin-page-all .fin-qcode-wrap{width:400px; height: 400px;  text-align: center; margin: 0 auto 30px; background: #fe4d3f; -webkot-border-radius: 40px; -moz-border-radius: 40px; border-radius: 40px;}
+.fin-qcode-wrap .rec-qcode{width:346px; height: 346px; margin-top: 26px; border:none; background-color: #fff;}
+
+.fin-page-gift{background: #fff0ab;}
+.fin-giftdes{width:584px; height: 175px; margin: 0 auto; background: url(../images/financing/fin-giftdes.jpg) no-repeat;}
+.fin-page-gift .fin-gift-totalinvest{text-align: center; margin: 20px 0 40px; font-size: 30px; color: #fb8803;}
+.fin-page-gift .fin-gift-main{width:1182px; overflow: hidden;}
+.fin-gift-main ul{width:1582px;}
+.fin-gift-main li{width:368px; height: 488px; float: left; margin-right: 32px; display: inline; margin-bottom: 66px; border:2px solid #6f1f0e; background: #fe4d3f;}
+.fin-gift-main li .gift-boxli{width:324px; height: 430px; border:2px solid #6f1f0e; margin: 28px auto; background: #fff;}
+.gift-boxli .gift-boxtxt{height: 118px; overflow: hidden;}
+.gift-boxtxt .gift-boxtit,.gift-boxtxt .gift-investmoney{font-size: 28px; line-height: 36px; color:#512111;  padding: 0 12px;}
+.gift-boxli .gift-price{width:274px; height: 49px; line-height: 45px; overflow: hidden; margin-top: 15px; font-size: 18px; color:#fff; padding-left: 15px; background: url(../images/financing/gift-price.jpg) no-repeat;}
+.gift-price .price-money{font-size: 28px; margin-left: 10px;}
+.fin-giftbtn{width:351px; height: 98px; margin: 20px auto 50px; display: block; background: url(../images/financing/fin-giftbtn.jpg) no-repeat;}
+.fin-giftrule{width:1182px;}
+.fin-pagegift-bottom{width:100%; height: 268px; background: url(../images/financing/fin-pagegift-bottom.jpg) center top #c8220c repeat-x;}
+
+.fin-newer-ul{width:260px; float: left; margin-top: 130px; font-size: 30px; line-height: 66px;}
+.fin-newer-ula{margin-left: 206px; color:#333}
+.fin-newer-ulb{margin-left: 166px; color:#fe4d3f}
+.fin-newer-ul .ula-title{color:#333; font-weight: bold}
+
+.remcomend-login.rec-nologin,.remcomend-login.rec-nologin a{font-size: 24px;}
+.floatlayer{width:164px; height: 299px; position: fixed; top:50%; right: 30px; margin-top: -280px; display: none; background: url(../images/financing/floatlayer.png) no-repeat;}
+.floatlayer .flo-lay{width:100%; height: 52px; display: block; }
+.floatlayer .flo-lay-newer{margin-top: 50px;}
+.floatlayer .flo-lay-older,.floatlayer .flo-lay-all{margin-top: 11px;}
+
+/*弹窗*/
+.financing-pop{display: block; position: fixed; top:50%; left:50%; display: none; z-index: 999;}
+.closebtn{width:46px; height: 46px; display: block; position: absolute; top:-40px; right: -30px; background: url(../images/financing/closebtn.png) no-repeat;}
+.winner-pop{width:571px; height: 527px; margin-top: -285px; margin-left: -263px; background: url(../images/financing/winning-pop.png) no-repeat;}
+.winner-pop .winner-text{color:#fdd835; font-size: 33px; text-align: center; margin-top: 334px;}
+.winner-text .winner-price{font-size: 50px;}
+.dotwin-pop{width:493px; height: 417px; margin-top: -208px; margin-left: -246px; background: url(../images/financing/dotwin-pop.png) no-repeat;}
+.dotwin-pop .dotwin-text{text-align: center; color: #ee1c06; font-size: 27px; margin-top: 25px;}
+.closebtn.dotwin-btn{top:-60px; right: -60px;}
+
+@-webkit-keyframes bigtitle{from{transform:scale(0.2);}to{transform:scale(1);}}
+@-moz-keyframes bigtitle{from{transform:scale(0.2);}to{transform:scale(1);}}
+@-ms-keyframes bigtitle{from{transform:scale(0.2);}to{transform:scale(1);}}
+@keyframes bigtitle{from{transform:scale(0.2);}to{transform:scale(1);}}
+
+@-webkit-keyframes light{from{opacity: 1;}to{opacity: 0;}}
+@-moz-keyframes light{from{opacity: 1;}to{opacity: 0;}}
+@-ms--keyframes light{from{opacity: 1;}to{opacity: 0;}}
+@keyframes light{from{opacity: 1;}to{opacity: 0;}}
+
+@-webkit-keyframes plate{0%{transform:scale(1);}50%{transform:scale(1.08);}100%{transform:scale(1);}}
+@-moz-keyframes plate{0%{transform:scale(1);}50%{transform:scale(1.08);}100%{transform:scale(1);}}
+@-ms-keyframes plate{0%{transform:scale(1);}33%{transform:scale(1.08);}100%{transform:scale(1);}}
+@keyframes plate{0%{transform:scale(1);}50%{transform:scale(1.08);}100%{transform:scale(1);}}
+
+@-webkit-keyframes gametime{0%{transform:translateX(0px) rotate(0deg);}20%{transform:translateX(10px) rotate(10deg);}40%{transform:translateX(-10px) rotate(-10deg);}60%,100%{transform:translateX(0px) rotate(0deg);}}
+@-moz--keyframes gametime{0%{transform:translateX(0px) rotate(0deg);}20%{transform:translateX(10px) rotate(10deg);}40%{transform:translateX(-10px) rotate(-10deg);}60%,100%{transform:translateX(0px) rotate(0deg);}}
+@-ms--keyframes gametime{0%{transform:translateX(0px) rotate(0deg);}20%{transform:translateX(10px) rotate(10deg);}40%{transform:translateX(-10px) rotate(-10deg);}60%,100%{transform:translateX(0px) rotate(0deg);}}
+@keyframes gametime{0%{transform:translateX(0px) rotate(0deg);}20%{transform:translateX(10px) rotate(10deg);}40%{transform:translateX(-10px) rotate(-10deg);}60%,100%{transform:translateX(0px) rotate(0deg);}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

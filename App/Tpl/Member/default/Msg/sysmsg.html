@@ -1,0 +1,135 @@
+<p class="fs14 mt10 cf">
+	<a id="deletebtn1" onclick="delmsg();" class="btn btn-blue fr">删除</a>
+	未读 <span id="spSysMsgCountUn" class="cor-blue">{$unread}</span> 封，已读 <span id="spSysMsgCountRead" class="cor-blue">{$read}</span> 封，共 <span id="spSysMsgCountTotal" class="cor-blue">{$count}</span> 封
+</p>
+<table width="100%" id="listTable" class="memberTable mt20">
+	<colgroup>
+        <col width="10%">
+        <col width="8%">
+        <col width="18%">
+        <col width="45%">
+        <col width="">
+    </colgroup>
+	<thead>
+        <tr>
+            <th style="text-align:left;padding-left:20px;">
+                <input id="selectall" type="checkbox"  class="selectall v-2" onclick="ckall();" />
+                <label for="selectall">全选</label>
+            </th>
+            <th><img src="__ROOT__/Style/M/images/xf1.jpg"></th>
+            <th>发件人</th>
+            <th>主题</th>
+            <th>时间</td>
+        </tr>
+    </thead>
+    <tbody id="opppp">
+        <volist name="list" id="vo">
+            <tr>
+                <td style="text-align:left;padding-left:20px;">
+                    <input class="selectone" type="checkbox" name="checkbox_msg" id="msg_{$vo.id}" value="{$vo.id}">
+                </td>
+                <td>
+                    <img src="__ROOT__/Style/M/images/<if condition='$vo.status eq 1'>read.jpg<else/>unread.jpg</if>" />
+                </td>
+                <td>{$glo.web_name}</td>
+                <td class="read pointer" data="{$vo.id}">{$vo.title}</td>
+                <td>{$vo.send_time|date="Y-m-d",###}</td>
+            </tr>
+        </volist>
+        <tr>
+            <td colspan="6">
+                <div class="yahoo2">
+                    <div class="list_bottom_right">
+                        <ul>{$pagebar}</ul>
+                    </div>
+                </div>
+            </td>
+        </tr>
+	</tbody>
+</table>
+<input type="hidden" id="total_page" value="{$total_page}" />
+<script type="text/javascript">
+var readimg = "__ROOT__/Style/M/images/read.jpg";
+var page=1;
+var total_page=$("#total_page").val();
+
+/**
+ * 全选
+ */
+function ckall(){
+	if($("#selectall").attr("checked")){
+		$('input[name="checkbox_msg"]').prop("checked",true);
+	}else{
+		$('input[name="checkbox_msg"]').prop("checked",false);
+	}
+}
+
+function init(){
+	$(".list_bottom_right ul").find("[page=1]").each(function(){
+		$(this).css({"background-color":"#33aaff","color":"#fff"}).siblings("a").css({"background-color":"#EEEEEE","color":"#848484"});
+	})
+}
+function ajax_show(p){
+	if(p<1){
+		page=1;
+	}else{
+		if(p>total_page){
+			page=total_page;
+		}else{
+			page=p;
+		}
+	}
+	$.get("__URL__/pageinfo?p="+page, function(data){
+		$("#opppp").html(data);
+		$(".list_bottom_right ul").find("[page="+page+"]").each(function(){
+			$(this).css({"background-color":"#33aaff","color":"#fff"}).siblings("a").css({"background-color":"#EEEEEE","color":"#848484"});
+		})
+	});
+}
+
+function delmsg(){
+	var aid =[];
+	var $item=$("#listTable").find('input:checked');
+	if($item.length>0){
+		$item.each(function(){
+			var $this=$(this);
+			if($this.is(":checked")){
+				aid.push($this.val());
+			}
+		});
+	}
+	if(aid.length==0){
+		$.jBox.tip("请先选择要删除的数据");
+		return false;
+	}else{
+		var datas = {'idarr':aid};
+		$.post("__URL__/delmsg", datas, function(res){
+			if(res.status == '0') {
+				$.jBox.tip("删除失败");
+			}else {
+				$.each(aid, function(i,n){
+					$('#msg_'+n).parent().parent().remove();
+				});
+				var total =res.data.total;
+				var read=res.data.read;
+				var  unread=total-read;
+				$('#spSysMsgCountTotal').html(total);
+				$("#spSysMsgCountRead").html(read);
+				$("#spSysMsgCountUn").html(unread);
+				$.jBox.tip("删除成功");
+			}
+		},'json');
+	}
+}
+$(function(){
+    init();
+	$(".read").live("click", function(){
+		var id = $(this).attr('data');
+		$.jBox("get:__URL__/viewmsg/?id="+id, {
+			title: "查看信息",
+			width: "auto",
+			buttons: {'阅读完毕': true }
+		});
+	});
+});
+</script>

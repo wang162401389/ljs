@@ -1,0 +1,224 @@
+/*定投宝开始*/
+.dingtaobaonew{width:978px; height:406px; border:1px solid #E0E0E0; float:left; background:#fff; margin-bottom:10px; margin:0 auto;}
+.dingcenter{ margin:0 auto;}
+.dingfont{font-family:'微软雅黑'; font-size:16px; text-decoration:underline;}
+.dingline{ border-bottom:1px solid #e0e0e0;}
+.dingline1{ border-bottom:1px  dashed #e0e0e0;}
+.dingkuang{ float:none; width:950px; border:1px solid #E0E0E0; height:100px; margin:0 auto; margin-top:10px; background:none; }
+.dingkuang:link { width:950px; border:1px solid #E0E0E0; height:100px; margin:0 auto; margin-top:10px; background-color:#ffffff; }
+.dingkuang:hover { width:950px; border:1px solid #E0E0E0; height:100px; margin:0 auto; margin-top:10px;background-color:#eeeeee; }
+.ding_line_1{ border-left:1px dashed #e0e0e0;}
+.f24 {FONT-SIZE: 24px; font-family:"微软雅黑"; }
+.fya1{ font-family:"微软雅黑"; }
+.blues { color: #0E87D6;}
+.f13 {FONT-SIZE: 13px}
+.f14 {FONT-SIZE: 14px;  font-family:"微软雅黑";}
+.f15 {FONT-SIZE: 15px}
+.f16 {FONT-SIZE: 16px}
+.f18 {FONT-SIZE: 18px}
+.f22 {FONT-SIZE: 22px}
+.f28 {FONT-SIZE: 28px; font-family:"微软雅黑"; }
+.f26 {FONT-SIZE: 24px; font-family:"微软雅黑"; }
+.gay{ color:#737272;}
+.ran{ color:#009ADD;}
+.zhigay{ color:#545353;}
+.zhibai{ color:#ffffff;}
+.fya{ font-family:"微软雅黑"; line-height:25px;}
+.per{height:10px;width:60%;font-size:0;line-height:0;overflow:hidden;float:left;display:inline;background:#e8ecef;margin:10px 0 0 20px;border-radius:15px;  -moz-border-radius:15px; -webkit-border-radius:15px;}
+.mybtn_2t_ok { 
+
+    width:65px;
+
+	height:18px;
+
+    text-align:center;
+
+     line-height:100%;
+
+     padding-top:0.4em;
+
+    padding-right:1em;
+
+     padding-bottom:0.3em;
+
+    padding-left:1em;
+
+     font-family:微软雅黑;
+
+     font-size:16px;
+
+     text-decoration:none;
+
+    margin-top:0px;
+
+     margin-bottom:0px;
+
+     vertical-align:text-bottom;
+
+     display:inline-block;
+
+    cursor:pointer;
+
+     zoom:1;
+
+    outline-width:medium;
+
+    outline-color:invert;
+
+     font-size-adjust:none;
+
+     font-stretch:normal;
+
+     border-top-left-radius:0.5em;
+
+    border-top-right-radius:0.5em;
+
+    border-bottom-left-radius:0.5em;
+
+    border-bottom-right-radius:0.5em;
+
+     color:#ffffff;
+
+     border-top-style:solid;
+
+     border-right-style:solid;
+
+     border-bottom-style:solid;
+
+     border-left-style:solid;
+
+     background-image:none;
+
+    background-attachment:scroll;
+
+     background-repeat:repeat;
+
+    background-position-x:0%;
+
+     background-position-y:0%;
+
+    background-size:auto;
+
+    background-origin:padding-box;
+
+    background-clip:padding-box;
+
+    background-color:#aeaeae;
+
+}
+.mybtn_2t { 
+
+    width:65px;
+
+	height:18px;
+
+    text-align:center;
+
+     line-height:100%;
+
+     padding-top:0.4em;
+
+    padding-right:1em;
+
+     padding-bottom:0.3em;
+
+    padding-left:1em;
+
+     font-family:微软雅黑;
+
+     font-size:16px;
+
+     text-decoration:none;
+
+    margin-top:0px;
+
+     margin-bottom:0px;
+
+     vertical-align:text-bottom;
+
+     display:inline-block;
+
+    cursor:pointer;
+
+     zoom:1;
+
+    outline-width:medium;
+
+    outline-color:invert;
+
+     font-size-adjust:none;
+
+     font-stretch:normal;
+
+     border-top-left-radius:0.5em;
+
+    border-top-right-radius:0.5em;
+
+    border-bottom-left-radius:0.5em;
+
+    border-bottom-right-radius:0.5em;
+
+     color:#ffffff;
+
+     border-top-style:solid;
+
+     border-right-style:solid;
+
+     border-bottom-style:solid;
+
+     border-left-style:solid;
+
+     background-image:none;
+
+    background-attachment:scroll;
+
+     background-repeat:repeat;
+
+    background-position-x:0%;
+
+     background-position-y:0%;
+
+    background-size:auto;
+
+    background-origin:padding-box;
+
+    background-clip:padding-box;
+
+    background-color:#008ed6;
+
+}
+
+.mybtn_2t:hover {
+
+    background: #0279b5;
+
+}
+/*进度条*/
+.investlistspeed{
+display:inline-block; 
+width:120px;
+height:9px;
+border: 1px solid #7CA707;
+border-radius: 5px;
+position:relative;
+text-align:left;
+}
+.isbg{
+display:inline-block; 
+float:left;
+height:9px;
+overflow:hidden;
+background:url(../images/new/speed_3.jpg) repeat-x 0 0;
+}
+.ispoint{
+display:inline-block; 
+width:17px;
+height:16px;
+overflow:hidden;
+position:absolute;
+z-index:2;
+background:url(../images/new/speed-p.png) 0 -16px;
+}
+.percspan{
+display:inline-block; 
+}

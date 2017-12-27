@@ -1,0 +1,568 @@
+<script type="text/javascript" src="__ROOT__/Style/Js/area.js" language="javascript"></script>
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<script type="text/javascript" language="javascript" src="__ROOT__/Style/uploadify/jquery.uploadify.js"></script>
+<link rel="styleheet" type="text/css" href="__ROOT__/Style/uploadify/uploadify.css"/>
+<tagLib name="htmlA" />
+<if condition="$vo.utype eq 2 ">
+<script>
+$(function(){
+    $("#person_id").css("display","none");
+    $("#p_id").removeClass("p_c_active");
+    $("#company_id").css("display","block");
+    $("#c_id").addClass("p_c_active");
+    $("#p_id").click(function(){
+        alert("您已经是企业会员了");
+        $("#c_id").onClick();
+    });
+})
+</script>
+<elseif condition="$vo.utype eq 1 "/>
+<script>
+$(function(){
+    $("#c_id").click(function(){
+        alert("您已经是个人会员了");
+        $("#p_id").onClick();
+    });
+})
+</script>
+</if>
+<if condition="$ids.id_status eq '1' OR $ids.company_status eq '3'">
+<!-- <div style="overflow: auto; width: 594px; height: auto; padding:20px; font-size:18px" id="mybox2_content">
+	<span style="font-size:12px;color:#999999;"><img src="__ROOT__/Style/M/images/zhuce1.gif" style="vertical-align:middle">&nbsp;&nbsp;亲爱的[{:session('u_user_name')}]，您好，您已通过身份认证</span> 
+</div> --><include file="default:Safe:idcard" group="Member"/>
+<elseif condition="$ids.company_status eq '1'"/>
+<style>
+.tip{
+    width:100%;
+    height:101px;
+    text-align: center;
+    padding-top: 19px;
+}
+</style>
+<div class="tip" id="mybox2_content">
+	<img src='__ROOT__/Style/M/images/successtj.png'/>
+</div>
+<else/>
+<div class="tyj_font">为了您的账户安全及收益提现及时到账，完成身份验证后将赠送您600元投资券。</div>
+<if condition="$ids.company_status eq 4 ">
+<h1 style="margin:25px 20px;color:red">审核失败信息：{$vo.result}</h1>
+</if>
+<div class="p_a_c">
+    <span class="tip_s">账户类型：</span>
+    <span id="p_id" class="p_id p_c_active" style=" cursor:pointer;">个人</span>
+    <span id="c_id" class="c_id" style=" cursor:pointer;">企业</span>
+    <span style="margin-left:30px;color:#aaa;">温馨提示：信息填写要求严格，请在客服指导下操作，客服热线400-6626-985</span>
+</div>
+<div id="person_id">
+  
+   
+    <span class="tip_s">真实姓名：</span><input type="text" class="id_input"  id="realname"> <span style="color:red; font-size:12px;" id="realnameErr"></span>
+    <br>
+    <span class="tip_s">身份证号：</span><input type="text" class="id_input" onkeyup="value=this.value.replace(/[^0-9|x|X]+/g,'')" maxlength="18"  id="idcard">
+    <span style="color:red; font-size:12px;" id="idcardErr"></span>
+   
+    <br>
+    <div class="tip_p2">注：以上信息一经填写不可修改，错误的信息将导致无法提现收益！</div>
+    <div><a class="p_sub" onclick="setIdCard();" href="#1">提交</a><br></div>
+    <div class="zhuming">注明：我们将通过全国公民身份信息中心（NCIIC）系统对您提交的身份进行审核。</div>
+   
+</div>
+<div id="company_id" style="display:none;">
+    
+    <div style="margin-top: 10px; margin-bottom: 5px; margin-left: 18px; margin-right:18px;">
+        <form action="__URL__/savecompany" method="post" onsubmit="return check();">
+        <table class="c_table" id="formTb" cellpadding="0" cellspacing="0">
+            <thead>
+                <tr><td colspan="2">企业基本信息</td></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tdTitle1">
+                        公司名称
+                    </td>
+                    <td class="tdContent1">
+                        <input class="text2" name="company_name" id="company_name" type="text" value="{$vo.company_name}">
+                        <span style="color: Red; margin: 0px 5px;" id="companyname">*</span>
+                    </td>
+                </tr>
+                <tr> 
+                    <td class="tdTitle1">
+                        企业地址
+                    </td>
+                    <td class="tdContent1">
+                        <input class="text2" name="address" id="address" type="text" value="{$vo.address}">
+                        <span style="color: Red; margin: 0px 5px;" id="addresstip">*</span> 
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td class="tdTitle1">
+                        执照号
+                    </td>
+                    <td class="tdContent1">
+                        <input class="text2" name="license_no" id="license_no" type="text" value="{$vo.license_no}">
+                        <span style="color: Red; margin: 0px 5px;" id="licenseno">*</span> 
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle1">
+                       执照过期日
+                    </td>
+                    <td class="tdContent1">
+                        <input class="Wdate text2 " style="border:1px #d7d7d7 solid; height:28px;" name="license_expire_date" id="license_expire_date" onClick="WdatePicker()" type="text"  value="{$vo.license_expire_date|date="Y-m-d",###}">
+                        <span style="color: Red; margin: 0px 5px;" id="licenseexpiredate">*</span> 
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle1">
+                       营业执照地址
+                    </td>
+                    <td class="tdContent1">
+                        <input class="text2" name="license_address" id="license_address" type="text" value="{$vo.license_address}">
+                        <span style="color: Red; margin: 0px 5px;" id="licenseaddress">*</span> 
+                    </td>
+                </tr>
+               
+                <tr>
+                    <td class="tdTitle1">
+                       营业范围
+                    </td>
+                    <td class="tdContent1">
+                        <input class="text2" name="business_scope" id="business_scope" type="text" value="{$vo.business_scope}">
+                        <span style="color: Red; margin: 0px 5px;" id="businessscope">*</span> 
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle1">
+                       企业简介
+                    </td>
+                    <td class="tdContent1">
+                        <input class="text2" name="summary" id="summary" type="text" value="{$vo.summary}">
+                        <span style="color: Red; margin: 0px 5px;" id="summarytip">*</span> 
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle1">
+                       企业组织机构代码
+                    </td>
+                    <td class="tdContent1">
+                        <input class="text2" name="organization_no" id="organization_no" type="text" value="{$vo.organization_no}">
+                        <span style="color: Red; margin: 0px 5px;" id="organizationno">*</span> 
+                    </td>
+                </tr>
+                <tr> 
+                    <td class="tdTitle1">
+                        上传企业资质
+                    </td>
+                    <td class="tdContent1">
+                        <input type="hidden" id="file" value="0"/>
+                        <input type="file" style="margin-left: 8px;" id="file_data" accept="application/x-zip-compressed" onchange="readFile();" /> 
+                       <span style="color: Red; margin: 0px 5px;" id="filedata">*</span>(文件小于5M)
+                    </td>
+                </tr>
+                  
+                <tr> 
+                    <td colspan="2" class="tdContent" style="line-height:130%;padding:10px; font-size:14px; color:#979797;">
+                       <!-- <img src="/Style/M/images/start.jpg" style="margin-top: -3px;">-->
+                        <span style=" line-height:24px"><lable style="color:#e60012">上传企业资质要求：</lable>必须上传营业执照，组织机构代码证，税务登记证，单位银行结算账户开户许可证，企业法人证件正面，企业法人证件反面。</span><br>
+                        <span style="margin-left:56px; line-height:24px">图片命名：营业执照（yyzz.jpg）,组织机构代码证（zzjgz.jpg）,税务登记证（swdjz.jpg）,银行结算账户开户许可证（jsxkz.jpg）,企业法人证件正面（frzjz.jpg）,企业法人证件反面（frzjf.jpg）。
+                        <lable style="color:#e60012">所有图片需一起压缩成（.zip）格式并上传。</lable>若未按要求上传的，审核将无法通过。</span>
+                    </td>
+                </tr> 
+                
+                <tr> 
+                    <td colspan="2" style="height:20px;" >
+                        
+                    </td>
+                   
+                </tr> 
+             </tbody>
+             <thead>
+                <tr><td colspan="2">企业银行账户信息</td></tr>
+             </thead>
+             <tbody>
+                <tr>
+                    <td class="tdTitle1">
+                        银行名称
+                    </td>
+                    <td class="tdContent1">
+                    <htmlA:select id="bank_name" value="key|vobank.bank_name" datakey='bank_list' class="selectStyle" addstr='style="width: 221px;"'/>
+                    <span style="color: Red; margin: 0px 5px;" id="bankname">*</span> 
+                    </td>
+                </tr>
+                 <tr> 
+                    <td class="tdTitle1">
+                        银行卡号
+                    </td>
+                    <td class="tdContent1">
+                        <input class="text2"  type="text" name="bank_num" id="bank_num">
+                        <span style="color: Red; margin: 0px 5px;" id="banknum">*</span> 	
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="tdTitle1">
+                        开户行
+                    </td>
+                    <td class="tdContent1">
+                        <select name="province" id="province" style="width: 100px;" class="selectStyle">
+                          <option value="0">请选择省份 </option>
+                        </select> 
+                        <select name="city" id="city" style="width: 110px;" class="selectStyle">
+                            <option value="0">请选择城市</option>
+                        </select>
+                        <span style="color: Red; margin: 0px 5px;" id="provincetip" >*</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle1">
+                     
+                    </td>
+                    <td class="tdContent1">
+                        <input name="txt_bankName" id="txt_bankName"  class="text2" type="text" placeholder="如车公庙支行">
+                        <span style="color: Red; margin: 0px 5px;" id="txtbankName">*</span> (如不能确定，请拨打开户行的客服热线咨询)
+                    </td>
+                </tr>
+                <tr> 
+                    <td colspan="2" style="height:30px;" >
+                        
+                    </td>
+                   
+                </tr> 
+             </tbody>
+             <thead>
+                <tr><td colspan="2">企业联系方式</td></tr>
+             </thead>
+             <tbody>
+               <tr>
+                    <td class="tdTitle1">
+                       企业法定代表人
+                    </td>
+                    <td class="tdContent1">
+                        <input class="text2" name="legal_person" id="legal_person" type="text" value="{$vo.legal_person}">
+                        <span style="color: Red; margin: 0px 5px;" id="legalperson">*</span> 
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle1">
+                       企业电话
+                    </td>
+                    <td class="tdContent1">
+                        <input class="text2" name="telephone" id="telephone" type="text" value="{$vo.telephone}">
+                        <span style="color: Red; margin: 0px 5px;" id="telephonetip">*</span> 
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle1">
+                      法人手机号码
+                    </td>
+                    <td class="tdContent1">
+                        <input class="text2" name="legal_person_phone" id="legal_person_phone" type="text" value="{$vo.legal_person_phone}">
+                        <span style="color: Red; margin: 0px 5px;" id="legalpersonphone">*</span> 
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle1">
+                       企业邮箱
+                    </td>
+                    <td class="tdContent1">
+                        <input class="text2" name="email" id="email" type="text" value="{$vo.email}">
+                        <span style="color: Red; margin: 0px 5px;" id="emailtip">*</span> 
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle1">
+                       企业法人证件号码
+                    </td>
+                    <td class="tdContent1">
+                        <input class="text2" name="cert_no" id="cert_no" type="text" value="{$vo.cert_no}">
+                        <span style="color: Red; margin: 0px 5px;" id="certno">*</span> 
+                    </td>
+                </tr> 
+              
+              <!--  <tr>
+                    <td class="tdTitle1">
+                        开户银行所在市：
+                    </td>
+                    <td class="tdContent1">
+                       
+                        <span style="color: Red; margin: 0px 5px;" id="citytip">*</span>
+                    </td>
+                </tr>-->
+                <tr> 
+                    <td colspan="2" style="height:30px;" >
+                        
+                    </td>
+                   
+                </tr> 
+              
+             </tbody>
+             <thead>
+                <tr><td colspan="2">经办人联系方式</td></tr>
+             </thead>
+             <tbody>
+                <tr>
+                        <td class="tdTitle1">
+                            经办人姓名
+                        </td>
+                        <td class="tdContent1">
+                            <input class="text2" name="agent_name" id="agent_name" type="text" value="{$vo.agent_name}">
+                            <span style="color: Red; margin: 0px 5px;" id="agentname">*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdTitle1">
+                            经办人手机
+                        </td>
+                        <td class="tdContent1">
+                            <input class="text2" name="agent_mobile" id="agent_mobile" type="text" value="{$vo.agent_mobile}">
+                            <span style="color: Red; margin: 0px 5px;" id="agentmobile">*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdTitle1">
+                            经办人身份证
+                        </td>
+                        <td class="tdContent1">
+                            <input class="text2" name="alicense_no" id="alicense_no" type="text" value="{$vo.alicense_no}">
+                            <span style="color: Red; margin: 0px 5px;" id="alicenseno">*</span>
+                        </td>
+                    </tr>
+                   
+                    <tr>
+                        
+                        <td colspan="2" style="text-align:center">
+                            <input value="提交" class="c_sub" id="btn_set" type="submit">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div> 
+</div>
+<script type="text/javascript" src="__ROOT__/Style/Js/area.js" language="javascript"></script>
+<script type="text/javascript">
+$(function(){
+    $("#file_data").uploadify({
+        'formData': { 'session_id' : '{:session_id()}'},
+        'fileTypeExts':'*.zip',
+        'buttonText':'请选择文件',
+        'multi':false,
+        'fileSizeLimit':'5MB',
+        'height':'32px',
+        'swf':'__ROOT__/Style/uploadify/uploadify.swf',
+        'uploader':'__APP__/member/verify/uploadcomfile',
+        'removeCompleted':false,
+        'onSelectError':function(file, errorCode, errorMsg){
+            switch(errorCode) {
+                    case SWFUpload.QUEUE_ERROR.QUEUE_LIMIT_EXCEEDED:
+                        break;
+                    case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
+                        alert("超过文件大小");
+                        break;
+                    case SWFUpload.QUEUE_ERROR.ZERO_BYTE_FILE:
+                        break;
+                    case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
+                        break;
+                }
+        },
+        'onSelect':function(){
+            if($('#filedata').html()=="请选择文件" )$('#filedata').html("*");
+        },
+        'onUploadComplete':function(){
+            $("#file").val(1);
+        },
+        'onFallback': function () {
+            alert("您未安装FLASH控件，无法上传！请安装FLASH控件后再试。");
+        }
+    });
+});
+$("#p_id").click(function(){
+  $("#person_id").show();
+  $("#company_id").hide();
+  $("#p_id").addClass("p_c_active");
+  $("#c_id").removeClass("p_c_active");
+})
+$("#c_id").click(function(){
+  $("#person_id").hide();
+  $("#company_id").show();
+  $("#c_id").addClass("p_c_active");
+  $("#p_id").removeClass("p_c_active");
+})
+var areaurl="__APP__/member/bank/getarea/";
+var s = new GetAreaSelect('#province','#city','#district',<empty name="vobank['bank_province']">2<else/>{$vobank.bank_province}</empty>,<empty name="vobank['bank_city']">52<else/>{$vobank.bank_city}</empty>);
+    
+    $("#company_name").focus(function(){
+        if($('#companyname').html()=="请填写企业名称")$('#companyname').html("*");
+    });
+    $("#address").focus(function(){
+        if($('#addresstip').html()=="请填写企业地址")$('#addresstip').html("*");
+    });
+    $("#license_no").focus(function(){
+        if($('#licenseno').html()=="请填写营业执照号")$('#licenseno').html("*");
+    });
+    $("#license_address").focus(function(){
+        if($('#licenseaddress').html()=="请填写营业执照地址")$('#licenseaddress').html("*");
+    });
+    $("#license_expire_date").focus(function(){
+        if($('#licenseexpiredate').html()=="请填写执照过期日")$('#licenseexpiredate').html("*");
+    });
+    $("#business_scope").focus(function(){
+        if($('#businessscope').html()=="请填写营业范围")$('#businessscope').html("*");
+    });
+    $("#telephone").focus(function(){
+        if($('#telephonetip').html()=="请填写联系电话")$('#telephonetip').html("*");
+    });
+    $("#email").focus(function(){
+        if($('#emailtip').html()=="请填写联系邮箱")$('#emailtip').html("*");
+    });
+    $("#organization_no").focus(function(){
+        if($('#organizationno').html()=="请填写组织机构代码")$('#organizationno').html("*");
+    });
+    $("#summary").focus(function(){
+        if($('#summarytip').html()=="请填写企业简介")$('#summarytip').html("*");
+    });
+    $("#legal_person").focus(function(){
+        if($('#legalperson').html()=="请填写企业法人")$('#legalperson').html("*");
+    });
+    $("#cert_no").focus(function(){
+        if($('#certno').html()=="请填写法人证件号码")$('#certno').html("*");
+    });
+    $("#legal_person_phone").focus(function(){
+        if($('#legalpersonphone').html()=="请填写法人手机号码")$('#legalpersonphone').html("*");
+    });
+    $("#bank_name").click(function(){
+        if($('#bankname').html()=="--请选择--")$('#bankname').html("*");
+    });
+    $("#txt_bankName").focus(function(){
+        if($('#txtbankName').html()=="请填写银开户行支行名称")$('#txtbankName').html("*");
+    });
+    $("#bank_num").focus(function(){
+        if($('#banknum').html()=="请填写银行卡号")$('#banknum').html("*");
+    });
+    $("#file_data").click(function(){
+        if($('#filedata').html()=="请选择文件" )$('#filedata').html("*");
+    });
+    $("#agent_name").focus(function(){
+        if($('#agentname').html()=="请填写经办人姓名")$('#agentname').html("*");
+    });
+    $("#agent_mobile").click(function(){
+        if($('#agentmobile').html()=="请选择经办人手机号")$('#agentmobile').html("*");
+    });
+    $("#alicense_no").focus(function(){
+        if($('#alicenseno').html()=="请填写经办人身份证")$('#alicenseno').html("*");
+    });
+    
+    function check(){
+        if($("#company_name").val() == "" || $("#company_name").val() == null){
+            $('#companyname').html("请填写企业名称");
+            return false;
+        }
+        if($("#address").val() == "" || $("#address").val() == null){
+            $('#addresstip').html("请填写企业地址");
+            return false;
+        }
+        if($("#license_no").val() == "" || $("#license_no").val() == null){
+            $('#licenseno').html("请填写营业执照号");
+            return false;
+        }
+        if($("#license_address").val() == "" || $("#license_address").val() == null){
+            $('#licenseaddress').html("请填写营业执照地址");
+            return false;
+        }
+        if($("#license_expire_date").val() == "" || $("#license_expire_date").val() == null){
+            $('#licenseexpiredate').html("请填写执照过期日");
+            return false;
+        }
+        if($("#business_scope").val() == "" || $("#business_scope").val() == null){
+            $('#businessscope').html("请填写营业范围");
+            return false;
+        }
+        if($("#telephone").val() == "" || $("#telephone").val() == null){
+            $('#telephonetip').html("请填写联系电话");
+            return false;
+        }
+        if($("#email").val() == "" || $("#email").val() == null){
+            $('#emailtip').html("请填写联系邮箱");
+            return false;
+        }
+        if($("#organization_no").val() == "" || $("#organization_no").val() == null){
+            $('#organizationno').html("请填写组织机构代码");
+            return false;
+        }
+        if($("#summary").val() == "" || $("#summary").val() == null){
+            $('#summarytip').html("请填写企业简介");
+            return false;
+        }
+        if($("#legal_person").val() == "" || $("#legal_person").val() == null){
+            $('#legalperson').html("请填写企业法人");
+            return false;
+        }
+        if($("#cert_no").val() == "" || $("#cert_no").val() == null){
+            $('#certno').html("请填写法人证件号码");
+            return false;
+        }
+        if($("#legal_person_phone").val() == "" || $("#legal_person_phone").val() == null){
+            $('#legalpersonphone').html("请填写法人手机号码");
+            return false;
+        }
+        if($("#bank_name").val() == "" || $("#bank_name").val() == null){
+            $('#bankname').html("请选择银行");
+            return false;
+        }
+        if($("#bank_num").val() == "" || $("#bank_num").val() == null){
+            $('#banknum').html("请填写银行卡号");
+            return false;
+        }
+        /*if($("#province").val() == 0){
+            $('#provincetip').html("请选择开户银行省份");
+            return false;
+        }*/
+        if($("#province").val() == 0 || $("#city").val() == "" || $("#city").val() == null){
+            $('#citytip').html("请选择开户银行省市");
+            return false;
+        }
+        if($("#txt_bankName").val() == "" || $("#txt_bankName").val() == null){
+            $('#txtbankName').html("请填写银开户行支行名称");
+            return false;
+        }
+        if($("#file").val() == 0){
+            $('#filedata').html("请选择文件");
+            return false;
+        }
+        if($("#agent_name").val() == "" || $("#agent_name").val() == null){
+            $('#agentname').html("请填写经办人姓名");
+            return false;
+        }
+        if($("#agent_mobile").val() == "" || $("#agent_mobile").val() == null){
+            $('#agentmobile').html("请填写经办人手机号");
+            return false;
+        }
+        if($("#alicense_no").val() == "" || $("#alicense_no").val() == null){
+            $('#alicenseno').html("请填写经办人身份证");
+            return false;
+        }
+    }
+    
+    $(function(){
+    if(!placeholderSupport()){   // 判断浏览器是否支持 placeholder
+        $('[placeholder]').focus(function() {
+            var input = $(this);
+            if (input.val() == input.attr('placeholder')) {
+                input.val('');
+                input.removeClass('placeholder');
+            }
+        }).blur(function() {
+            var input = $(this);
+            if (input.val() == '' || input.val() == input.attr('placeholder')) {
+                input.addClass('placeholder');
+                input.val(input.attr('placeholder'));
+            }
+        }).blur();
+    };
+    })
+    function placeholderSupport() {
+        return 'placeholder' in document.createElement('input');
+    }
+</script>
+</if>

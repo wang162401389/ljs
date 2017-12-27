@@ -1,0 +1,157 @@
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/H/css/coupons.css" />
+<if condition="$coupons neq null OR $coupons neq ''">
+<!-- 活动开始 -->
+<div class="mycoupons">
+<volist name="coupons" id="vo">
+		<dl class="<if condition="$vo.status eq 0">m-now-use<else/>m-invaild</if>">
+			<dt>
+				<if condition="$vo.type neq 3">
+					<div class="coupons_1 js-coupmoney-wrap"><span class="js-coup-money">{$vo.money|intval=###}</span>元</div>
+					<else/>
+					<div class="coupons_1"><span>{:$vo["money"]}</span>%</div>
+				</if>
+				<div class="coupons_2">{$vo.type_name}</div>
+				<if condition="$vo.type eq 1">
+					<div class="coupons_3">· 单笔投资金额≥{$vo.use_money}元<!--{$vo.money}元--></div>
+					<div class="coupons_3">
+						<if condition="$vo['min_investrange'] == 0">
+							· 无投资期限限制
+							<else />
+							· 投资期限≥{$vo.min_investrange}天
+						</if>
+					</div>
+					<div class="coupons_4">有效期至:{$vo.endtime}</div>
+					<div class="coupons_4">来源：<span>{$vo.name|msubstr=0,5,'utf-8',false}</span></div>
+				<elseif condition="$vo.type eq 2"/>
+					<div class="coupons-user-rule">使用规则</div>
+					<div class="coupons-experience">仅限体验标使用</div>
+					<div class="coupons_4" style="margin-top: 76px">有效期至:{$vo.endtime}</div>
+					<div class="coupons_4">来源：<span>{$vo.name|msubstr=0,5,'utf-8',false}</span></div>
+				<else/>
+					<div class="coupons_3">不可用于新手标及债转项目</div>
+					<div class="coupons_3">
+						<if condition="$vo['min_investrange'] == 0">
+							· 无投资期限限制
+							<else />
+							· 投资期限≥{$vo.min_investrange}天
+						</if>
+					</div>
+					<div class="coupons_4">有效期至:{$vo.endtime}</div>
+					<div class="coupons_6">使用规则</div>
+					<div class="coupons_4">来源：<span>{$vo.name|msubstr=0,4,'utf-8',false}</span></div>
+				</if>
+				
+			</dt>
+			<dd>
+			<if condition="$vo.status eq 0">
+			   <if condition="$vo.type eq 2">
+                   <a href="__APP__/home/experience/detail.html">立即使用</a>			       
+			   <else/>
+			       <a href="__APP__/invest/index.html">立即使用</a>
+			   </if>
+			<elseif condition="$vo.status eq 1"/><a>已使用</a>
+			<else/><a>已过期</a>
+			</if>
+			</dd>
+		</dl>
+</volist>
+</div>
+<else/>
+<!-- 活动没开始  -->
+<div class="mycoupons2">
+	<img src="/Style/M/images/mycoupons-loading.png">
+</div>
+</if>
+
+<!-- 首页弹出广告 -->
+<style type="text/css">
+body .advbox{margin-top:-125px;}
+body .advbox .advpic{height:270px;}
+</style>
+<!-- 体验券 -->
+<div class="advbox" id="tiyan">
+	<div class="advpic">
+		<div class="ty_use_main">
+			<div class="ty_use_title">体验券使用规则</div>
+			<div class="ty_use_content">
+				1、体验金是链金所奖励给新注册投资人的虚拟资金，本金不可提现，投资产生的收益归投资人所有。<br>
+				2、体验金投资当日开始计息，投资期限为5天，年化利率12%，到期后体验金本金部分将被链金所收回。<br>
+				3、体验金有效期为领取之日起15天，仅供投资体验标使用，且需1次全额使用，不可拆分。<br>
+				4、本规则解释权归链金所所有，如有疑问请联系在线客服或拨打400-6626-985。
+			</div>
+		</div>
+
+
+		<a href="javascript:void(0);" class="closebtn" id="tyclose"><img src="__ROOT__/Style/H/images/close.png"></a>
+	</div>
+</div>
+<!--弹出层时背景层DIV-->
+<div id="fade" class="black_overlay"></div>
+<div id="MyDiv"></div>
+<!-- 加息券 -->
+<div class="advbox" id="jiaxi">
+	<div class="advpic" style="height:280px">
+		<div class="ty_use_main">
+			<div class="ty_use_title">加息券使用规则</div>
+			<div class="ty_use_content">
+				1、加息券不支持新手体验标、债权转让的项目使用。<br>
+				2、每次投标只能使用一张加息券，加息券一经使用后不能撤回，不得转赠他人。<br>
+				3、使用了加息券的项目发生债权转让，则加息券使用失败，失去享受额外加息收益奖励。<br>
+				4、若使用加息券所产生的额外收益不到1分钱，系统则不会分配收益。<br>
+				5、使用加息券投资成功后，开始计算加息奖励，在标的到期后一次性返还至平台帐户。<br>
+				6、加息券使用期限自获得之日起30天。<br>
+				7、链金所对加息券使用规则享有最终解释权，如有疑问请致电400-6626-985.
+			</div>
+		</div>
+		<a href="javascript:void(0);" class="closebtn" id="jxclose"><img src="__ROOT__/Style/H/images/close.png"></a>
+	</div>
+</div>
+<!--弹出层时背景层DIV-->
+<div id="fade" class="black_overlay"></div>
+<div id="MyDiv"></div>
+<script type="text/javascript">
+	//弹出隐藏层
+	function ShowDiv(show_div,bg_div){
+		document.getElementById(show_div).style.display='block';
+		document.getElementById(bg_div).style.display='block' ;
+		var bgdiv = document.getElementById(bg_div);
+		bgdiv.style.width = document.body.scrollWidth;
+		// bgdiv.style.height = $(document).height();
+		$("#"+bg_div).height($(document).height());
+	};
+	//关闭弹出层
+	function CloseDiv(show_div,bg_div)
+	{
+		document.getElementById(show_div).style.display='none';
+		document.getElementById(bg_div).style.display='none';
+	};
+    $(function () {
+		$(".coupons-user-rule").click(function () {
+			ShowDiv('MyDiv','fade');
+			$("#tiyan").show();
+			$("#tyclose").click(function(){
+				$("#tiyan").hide();
+				CloseDiv('MyDiv','fade');
+			})
+		});
+		$(".coupons_6").click(function () {
+			ShowDiv('MyDiv','fade');
+			$("#jiaxi").show();
+			$("#jxclose").click(function(){
+				$("#jiaxi").hide();
+				CloseDiv('MyDiv','fade');
+			})
+		});
+
+		$(".js-coup-money").each(function(){
+			var thismoney = $(this).text();
+			if( thismoney % 10000 == 0 ){
+				var mon = thismoney / 10000;
+				$(this).text(mon+"万")
+			}
+		})
+
+	})
+</script>
+
+

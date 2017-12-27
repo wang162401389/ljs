@@ -1,0 +1,42 @@
+<div class="first_top">
+    <div class="dv_header top ">
+
+        <!--迷你导航-->
+
+        <div class="dw_bgx dw_mini">
+            <div class="Cmml00">
+                <?php
+ $dws= session('u_user_name');
+?>
+                <div class="fl" style="margin-right:20px; display: none">特速集团旗下品牌</div>
+                <div class="fl dw_Cbg zuo">
+                    <div class="fl" >客服热线：<?php $dw_kefu=get_qq(2);echo("<em>".$dw_kefu[0]["qq_num"]."</em>"); ?>&nbsp;&nbsp;</div>
+                    <!--<span class="d_color"><a href="__APP__/aboutus/zhgl.html">帮助中心</a></span>-->
+                </div>
+                <div class="fr">
+
+                    <div class="fl dw_Cbg kreg">
+                        <span class="d_color"><a href="__APP__/member/common/register/" class="fl" >快速注册</a></span>
+                        <div class="fl dw_Cbg klogo">
+                            <a class="fl" style="border-right: 0px solid #4f4f4f;color:#02a3e7" href="__APP__/member/common/login/">立即登录</a>
+                        </div>
+                        <div class="fl">
+                            <a href="__APP__/Home/bangzhu/phone.html"><img src="__ROOT__/Style/M/images/phone.png" style="height:16px;padding-right: 5px;vertical-align: middle;"/>手机APP</a>
+                        </div>
+                        <div class="fl" style="cursor: pointer;">
+                            <?php $peceptionid = peception(); ?>
+                            <?php $u_name= session('u_user_name'); ?>
+                            <php>$userinfo = getuserinfo($u_name);</php>
+                             <a href="__APP__/aboutus/zhgl.html" style="color:#fc8026;">帮助中心</a>
+                            <!--<a onclick="NTKF.im_openInPageChat('{$peceptionid}')"><img src="__ROOT__/Style/M/images/kefu001.png" style="height:16px;padding-right: 5px; vertical-align:middle;cursor:pointer;margin-top: -2px;"/>在线客服</a>-->
+                        </div>
+                        <!-- <a class="fl" href="__APP__/#market/index/">积分商城</a> -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--迷你导航结束-->
+    </div>
+</div>
+

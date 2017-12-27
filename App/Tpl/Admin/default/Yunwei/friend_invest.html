@@ -1,0 +1,76 @@
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+    var delUrl = '__URL__/doDel';
+    var addUrl = '__URL__/add';
+    var isSearchHidden = 1;
+    var searchName='搜索';
+</script>
+<div class="so_main">
+    <div class="page_tit">邀请人投资记录详情</div>
+    <!--搜索/筛选会员-->
+    <div id="search_div" style="display:none">
+        <div class="page_tit"><script type="text/javascript">document.write(searchName);</script> [ <a href="javascript:void(0);" onclick="dosearch();">隐藏</a> ]</div>
+
+        <div class="form2">
+            <form method="post" action="__URL__/{$xaction}">
+                <dl class="lineD">
+                    <dt>用户ID：</dt>
+                    <dd>
+                        <input name="uid" style="width:190px" id="title" type="text" value="{$search.uid}">
+                        <span>不填则不限制</span>
+                    </dd>
+                </dl>
+                <dl class="lineD">
+                    <dl class="lineD"><dt>投资时间(开始)：</dt><dd><htmlA:timer id="start_time" tip='只选开始时间则查询从开始时间往后所有' arg="{maxDate:'#F{$dp.$D(\\\\'end_time\\\\')||\\\\'2020-10-01\\\\'}',dateFmt:'yyyy-MM-dd 00:00:00',alwaysUseStartDate:true}"  class="Wdate" value="{$search.start_time|mydate='Y-m-d H:i:s',###}"/></dd></dl>
+                    <dl class="lineD"><dt>投资时间(结束)：</dt><dd><htmlA:timer id="end_time" tip='只选结束时间则查询从结束时间往前所有' arg="{minDate:'#F{$dp.$D(\\\\'start_time\\\\')}',maxDate:'2020-10-01',dateFmt:'yyyy-MM-dd 23:59:59',alwaysUseStartDate:true}" class="Wdate" value="{$search.end_time|mydate='Y-m-d H:i:s',###}"/></dd></dl>
+                </dl>
+               <input type="hidden" value={$id} name="id">
+                <div class="page_btm">
+                    <input type="submit" class="btn_b" value="确定" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--搜索/筛选会员-->
+    <div class="Toolbar_inbox" >
+        <div class="page right">{$pagebar}</div>
+        <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索" style="search_action" />
+    </div>
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th>用户ID</th>
+                <th>用户名称</th>
+                <th>注册时间</th>
+                <th>投资标号</th>
+                <th>投资时间</th>
+                <th>投资期限</th>
+                <th>投资金额</th>
+            </tr>
+            <?php foreach($info as $key=>$val) { ?>
+            <tr>
+                <td><?php echo $val['id'] ?></td>
+                <td ><?php echo $val['user_name'] ?></td>
+                <td><?php echo $val['reg_time'] ?></td>
+                <td><a href="/invest/{$val['borrow_id']}.html" ><?php echo $val['borrow_id'] ?></a></td>
+
+                <td><?php echo $val['add_time'] ?></td>
+                <td><?php echo $val['borrow_duration'] ?></td>
+                <td><?php echo $val['investor_capital'] ?></td>
+            </tr>
+            <?php } ?>
+
+        </table>
+        <div class="Toolbar_inbox" style="overflow: hidden">
+            <htmlA:commonBtn type="href"  class="page left"  action="__URL__/friend_invest?{$query}" value="将当前条件下数据导出为Excel"/>
+            <div class="page right">{$pagebar}</div>
+            <div class="page left">投资金额为{$sum}元</div>
+        </div>
+    </div>
+
+</div>
+
+
+<include file="Public:_footer" />

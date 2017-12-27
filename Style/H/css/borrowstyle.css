@@ -1,0 +1,62 @@
+/* list_main */
+.list_main {
+width: 980px;
+overflow: hidden;
+border: #E9E9E9 0px solid;
+margin-top:5px;
+}
+.list_account h2{
+	padding-top: 18px;
+	height: 26px;
+	font-size: 14px;
+}
+.main_list{ width:978px; margin:0 auto; border:1px solid #DEDEDE; height:102px; }
+.main_list ul{padding-left:15px;}
+.main_list ul li{ float:left; height:88px; line-height:102px;padding-left:48px;}
+.main_list ul li img{padding-top:27px;}
+.main_list ul li  a{color:#C3C3C3;font-size:14px;}
+#colr{ color:#B1C959;}
+#padtop{ padding-top:13px;}
+
+.content{width:978px;height:607px;border:1px solid #E8E8E8;margin-top:10px;}
+.c_left{float:left;}
+.c_left ul{float:left;width:145px;}
+.c_left ul li{padding-top:24px;padding-bottom:17px;padding-left:26px;font-size:16px;color:#888; background:#f9f9f9;}
+.c_left ul li.current{background:#FEA34A; background:#B1C959;font-size:18px;color:#fff;font-weight:normal;}
+.c_left img{width:5px;float:right;}
+
+.c_right{width:812px;float:left;margin-left:16px;}
+.c_right p{ margin:20px 30px; color:#46ACDD; font-size:18px;}
+.c_right p a{color:#46ACDD; text-decoration:none;}
+.c_right p.intro{ color:#969696; font-size:14px; line-height:2em;}
+.c_right p span{ float:right; width:130px; height:37px; text-align:center; line-height:37px; background-color:#007EC3}
+.c_right p span a{  color:#FFF; }
+.c_right h4{ height:35px; height:35px; border-bottom:1px solid #CCC; background:url(../images/icon.jpg) no-repeat 5px 0px; padding-left:30px;; font-size:18px; color:#31A9E5; font-weight:normal}
+.c_right ul li{ padding-left:49px; line-height:40px; font-weight:normal}
+/*main_sqtj*/
+.main_sqtj{ margin:0 auto; width:1000px; height:230px; border:1px solid #CCC; margin-top:5px;}
+.main_sqtj dl{ width:300px; float:left;  padding-left:30px;}
+.main_sqtj dl dt{ padding-top:15px; font-weight: bolder; font-size: 16px;}
+.main_sqtj dl dd{ line-height:30px;}
+#dl{ border:none}
+#line,#line1{float:left;margin-top:20px;}
+.main_sqt1{ width: 1000px; height: 332px; border: 1px solid #ccc; margin: 0 auto; margin-top: 12px;}
+
+.main_sqt1 h3{ font-size: 18px; color: #8E8684; font-weight: bolder; padding-top: 20px; padding-left: 22px;}
+
+#h1{ position: relative; left: 190px; }
+
+#h2{ position: relative; left: 300px; }
+
+
+#h3{ position: relative; left: 420px; }
+
+#h4{ position: relative; left: 510px; }
+
+.main_sqt1 p{ position: relative; top: 50px; left: 20px; margin-top: 10px;}
+
+.main_sqt1 p span{ color: #E66A22;}
+
+.main_sqt1 p b{ color: #E66A22; font-size: 20px; font-weight: normal;}
+
+

@@ -1,0 +1,134 @@
+<tagLib name="htmlA" />
+<style type="text/css">
+    .operaframe { width: 600px; text-align: left; overflow: hidden; margin-left: -6px; line-height: 27px; padding-left: 28px; float: left; margin-top: 20px; }
+    .operaframe ul { padding: 0px; margin: 0px; text-align: left; overflow: hidden; line-height: 25px; }
+    .operaframe ul li { float: left; line-height: 25px; }
+    .tdContent { line-height: 28px; border: 1px solid #ccc;text-align: center }
+    .tdHeard { border: 1px solid #ccc; }
+    .txtInput{   background-color: #FFFFFF;
+        background-position: right center;
+        background-repeat: no-repeat;
+        border: 1px solid #CCCCCC;
+        font-size: 12px;
+        height: 15px;
+        margin-right: 4px;
+        padding: 2px;
+        text-align: left;
+        vertical-align: middle;
+        width: 95px;
+    }
+</style>
+<!-- <div style="height: 25px; line-height: 25px; padding: 16px 0px; width: 640px; margin-left: 22px;text-align: left; float: left;">
+    <php>if(!isset($_GET['start_time'])){</php>截止<span class="fontred"><php>echo date("Y-m-d H:i:s",time());</php></span><php>}else{</php>从<span class="fontred"><php>echo date("Y-m-d",$_GET['start_time']);</php></span>到<span class="fontred"><php>echo date("Y-m-d",$_GET['end_time']);</php></span>期间<php>}</php>
+    您的充值成功金额是：<span class="fontred"> ￥{$success_money|default="0.00"}</span>，充值失败金额是：<span class="fontred"> ￥{$fail_money|default="0.00"}</span>。
+</div> -->
+ <div class="operaframe" style="margin-top: 5px;">
+    <table>
+    <tbody><tr><td></td>
+    <td> 时间从：<input type="text" id="start_time" value="<php>if($search['start_time']){echo date('Y-m-d',$search['start_time']);}</php>" readonly="readonly" class="Wdate timeInput_Day" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\\\'end_time\\\')||\\\'2020-10-01\\\'}'})"/><label class="cor-gray">-</label>
+        <input type="text" value="<php>if($search['end_time']){echo date('Y-m-d',$search['end_time']);}</php>" id="end_time" readonly="readonly" class="Wdate timeInput_Day" onFocus="WdatePicker({minDate:'#F{$dp.$D(\\\'start_time\\\')||\\\'2020-10-01\\\'}'})"/>
+    </td>
+    <td><a class="btn btn-blue ml20" id="btn_search" src="__ROOT__/Style/M/images/chakan.jpg" onclick="getBind();" alt="">查看</a></td>
+    <td><!--<span style="margin-left:20px">搜索范围不能大于31天</span>--></td>
+    </tr>
+    </tbody></table>
+  </div>
+<div style="width: 100%;">
+    <table id="content" style="width: 897px; margin-left: 24px; float: left;border-collapse: collapse; margin-top: 20px" cellspacing="0">
+        <tbody><tr id="tdHead">
+            <th scope="col" class="tdHeard" style="width: 180px;">
+                编号
+            </th>
+            <th scope="col" class="tdHeard" style="width: 180px;">
+                充值时间
+            </th>
+            <th scope="col" class="tdHeard" style="width: 180px;">
+                充值金额
+            </th>
+            <th scope="col" class="tdHeard" style="width: 180px;">
+                充值状态
+            </th>
+        </tr>
+    
+    <volist name="list" id="vo">
+    <tr class="nodatashowtr" >
+        <td class="tdContent">{$vo[5]}</td>
+        <td class="tdContent" style="color: rgb(51, 51, 51);">{$vo[3]}</td>
+        <td class="tdContent">{$vo[1]}</td>
+        <td class="tdContent">{$vo[2]}</td>
+    </tr>
+    </volist>
+    </tbody></table>
+    <div data="fragment-2" id="pager" style="float: right; text-align: right; width: 500px; padding-right: 2px;" class="yahoo2 ajaxpagebar">
+        <if condition="$totalpage neq 0">
+            <if condition="$page eq 1 AND $page neq $total_item">
+                <a href="#" onclick = "nextpage({$page + 1})">下一页</a>
+            <elseif condition="$page neq 1 AND $page neq $total_item"/>
+                <a href="#" onclick = "nextpage({$page - 1})">上一页</a><a href="#" onclick = "nextpage({$page + 1})">下一页</a>
+            <elseif condition="$page neq 1 AND $page eq $total_item" />
+                <a href="#" onclick = "nextpage({$page - 1})">上一页</a>
+            </if>
+        </if>
+    </div>
+</div>
+<script type="text/javascript">
+//返回数字
+function NumberCheck(t){
+    var num = t.value;
+    var re=/^\d+\.?\d*$/;
+    if(!re.test(num)){
+        isNaN(parseFloat(num))?t.value=0:t.value=parseFloat(num);
+    }
+}
+
+function getBind(){
+    var start_time=$("#start_time").val();
+    var end_time=$("#end_time").val();
+    $.ajax({
+                url: "__URL__/chargelog",
+                data: {start_time:start_time,end_time:end_time},
+                timeout: 5000,
+                cache: false,
+                type: "get",
+                dataType: "json",
+                success: function (d, s, r) {
+                    if(d) $("#fragment-1").html(d.html);//更新客户端竞拍信息 作个判断，避免报错
+                }
+    });
+}
+
+function nextpage(page){
+    $.ajax({
+        url: "__URL__/chargelog",
+        data: {page:page},
+        timeout: 5000,
+        cache: false,
+        type: "get",
+        dataType: "json",
+        success: function (d, s, r) {
+            if(d) $("#fragment-2").html(d.html);//更新客户端竞拍信息 作个判断，避免报错
+        }
+    });
+}
+
+
+$('.ajaxpagebar a').click(function(){
+    try{    
+        var geturl = $(this).attr('href');
+        var id = $(this).parent().attr('data');
+        var x={};
+        $.ajax({
+            url: geturl,
+            data: x,
+            timeout: 5000,
+            cache: false,
+            type: "get",
+            dataType: "json",
+            success: function (d, s, r) {
+                if(d) $("#"+id).html(d.html);//更新客户端竞拍信息 作个判断，避免报错
+            }
+        });
+    }catch(e){};
+    return false;
+})
+</script>

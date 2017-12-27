@@ -1,0 +1,85 @@
+<tagLib name="htmlA" />
+<style type="text/css">
+.tdHeard, .tdContent { border: solid 1px #ccc; }
+#pager { margin: 10px 4px 3px 0px; }
+.notes_frame {  overflow: hidden; margin: 0 auto; height: 30px; margin-top: 10px; }
+.notes_frame div { padding-top: 13px; }
+.operaframe { overflow: hidden; line-height: 27px; margin-top: 20px; }
+.operaframe ul { padding: 0px; margin: 0px; text-align: left; overflow: hidden; line-height: 25px; }
+.operaframe ul li { float: left; line-height: 25px; font-size: 14px;}
+.Wdate{background:white;border: #ccc 1px solid;}
+</style>
+<div class="notes_frame">
+	<div style="">
+		<span class="fs14">温馨提示：只显示用户最近七天的投资，提现、充值、还款交易明细，要查询七天以前明细请点击资金历史记录。</span>
+	</div>
+</div>
+<div style="margin-top: 20px; overflow: hidden; text-align: left;">
+	<table id="content" class="history-table" style="width: 99%">
+		<tbody><tr>
+			<th scope="col" class="tdHeard" style="width: 130px;">发生日期</th>
+			<th scope="col" class="tdHeard" style="width: 100px;">影响金额</th>
+			<th scope="col" class="tdHeard" style="width: 100px;">可用余额</th>
+			<th scope="col" class="tdHeard" style="width: 80px;">说明</th>
+		</tr>
+	
+	<volist name="list" id="vo">
+		<tr class="nodatashowtr">
+			<td class="tdContent">{$vo.addtime}</td>
+			<td class="tdContent"><if condition="$vo.money lt 0"><font color="#FF0000"><else/><font color="#009900"></if>{$vo.money}</font></td>
+			<td class="tdContent">{$vo.det_yue}</td>
+			<td class="tdContent">{$vo.dec}</td>
+		</tr>
+	</volist>
+	</tbody></table>
+	<div data="fragment-2" id="pager" style="float: right; text-align: right; width: 500px; padding-right: 2px;" class="yahoo2 ajaxpagebar">
+		<if condition="$totalpage neq 0">
+			<if condition="$page eq 1 AND $page neq $totalpage">
+				<a href="javascript:void(0);" onclick = "nextpage({$page + 1})">下一页</a>
+			<elseif condition="$page neq 1 AND $page neq $totalpage"/>
+				<a href="javascript:void(0);" onclick = "nextpage({$page - 1})">上一页</a><a href="javascript:void(0);" onclick = "nextpage({$page + 1})">下一页</a>
+			<elseif condition="$page neq 1 AND $page eq $totalpage" />
+				<a href="javascript:void(0);" onclick = "nextpage({$page - 1})">上一页</a>
+			</if>
+			<div style="float: right;margin-top: 6px;margin-left: 10px;">第{$page}页 共{$totalpage}页</div>
+		</if>
+	</div>
+</div>
+<div style="clear: both; float: none;">
+</div>
+
+<script type="text/javascript">
+$(function(){
+	if({$totalitem}==0 || {$totalitem} == ''){
+		$("#log").click();
+	}
+})
+function sdetail(){
+	
+	x = makevar(['start_time','end_time']);
+	$.ajax({
+		url: "__URL__/detail",
+		data: x,
+		timeout: 5000,
+		cache: false,
+		type: "get",
+		dataType: "json",
+		success: function (d, s, r) {
+			if(d) $("#fragment-6").html(d.html);//更新客户端信息 作个判断，避免报错
+		}
+	});
+}
+function nextpage(page){
+	$.ajax({
+		url: "__URL__/detail",
+		data: {page:page},
+		timeout: 5000,
+		cache: false,
+		type: "get",
+		dataType: "json",
+		success: function (d, s, r) {
+			if(d) $("#fragment-6").html(d.html);//更新客户端竞拍信息 作个判断，避免报错
+		}
+	});
+}
+</script>

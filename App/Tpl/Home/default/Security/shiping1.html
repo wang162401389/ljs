@@ -1,0 +1,85 @@
+<include file="Public:_header_common" />
+<title>视频-{$glo.index_title}</title>
+<meta http-equiv="keywords" content="{$glo.web_keywords}" />
+<meta http-equiv="description" content="{$glo.web_descript}" />
+<script type="text/javascript" src="__ROOT__/Style/H/js/common.js" language="javascript"></script>
+<script type="text/javascript">
+//var Transfer_invest_url = "__APP__/tinvest";
+$(function(){
+//选项卡滑动切换通用
+
+//图库弹出层
+$(".mskeLayBg").height($(document).height());
+$(".mskeClaose").click(function(){
+	$(".mskeLayBg,.mskelayBox").hide();
+});
+$(".msKeimgBox li").click(function(){
+	$(".mske_html").html($(this).find(".hidden").html());
+	$(".mskeLayBg").show();$(".mskelayBox").fadeIn(300);
+	});
+})
+//屏蔽页面错误
+
+
+</script>
+<script type="text/javascript" src="__ROOT__/Style/H/js/area.js"></script>
+<style>
+.msKeimgBox { margin: 0px auto; width: 965px; overflow: hidden; position: relative; padding-top: 30px; height: 93px; }
+.msKeimgBox ul { width: 1000px; }
+.mskeLayBg {margin:auto ; background: #000; width: 100%; position: absolute; left: 0px; top: 0px; z-index: 10; opacity: 0.7; filter: alpha(opacity=70); display: none; _display:none!important }
+.mskelayBox { margin-left:auto ; margin-right:auto; position: fixed;  border: 7px solid #FFF; z-index: 20; background: #FFF; display: none; _display:none!important }
+.mskeImgBg { height: 57px; width: 100%; position: absolute; left: 0px; bottom: 0px; }
+.mskeClaose { position: absolute; top: -17px; right: -17px; cursor: pointer; }
+.mske_downIco { position: absolute; left: 0px; top: 0px; }
+.mske_imgDown { background: url(../images/mke_imgMbg.png) repeat; height: 57px; width: 818px; position: absolute; right: 0px; bottom: 0px; font: 13px/57px "微软雅黑"; color: #FFF; }
+.mske_imgDown a { margin-left: 34px; }
+.msKeimgBox ul li { float: left; height: 93px; margin: 0 10px 10px 0; width: 185px; cursor: pointer; }
+
+/* 效果CSS结束 */
+</style>
+<include file="Public:_header_main" />
+
+
+<body>
+<div class="kePublic">
+<!--效果html开始-->
+<!--图库弹出层 开始-->
+<div class="mskeLayBg"></div>
+<div class="mskelayBox">
+  <div class="mske_html">
+  
+  </div>
+  <img class="mskeClaose" src="images/mke_close.png" width="27" height="27" />
+</div>
+<!--图库弹出层 结束-->
+<div class="msKeimgBox">
+ <ul>
+  <li>
+  <img src="images/skeImg.jpg" width="185" height="93" />
+  <span class="hidden">
+  <img src="images/bkeImg.jpg" width="504" height="700" />
+ 
+  </span>
+  </li>
+  <li>
+  <img src="images/skeImg1.jpg" width="185" height="93" />
+  <span class="hidden">
+  <img src="images/bkeImg1.jpg" width="974" height="488" />
+ 
+  </span>
+  </li>
+ 
+ 
+
+ 
+
+
+
+ </ul>
+
+</div>
+<!--效果html结束-->
+</div>
+
+</body>
+<include file="Public:_footer" />

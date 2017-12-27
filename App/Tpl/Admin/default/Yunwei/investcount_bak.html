@@ -1,0 +1,94 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+    var delUrl = '__URL__/doDel';
+    var addUrl = '__URL__/add';
+    var isSearchHidden = 1;
+    var searchName='搜索';
+</script>
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<div class="so_main">
+    <div class="page_tit">投资用户数据统计</div>
+    <!--搜索/筛选会员-->
+    <div id="search_div" style="display:none">
+        <div class="page_tit"><script type="text/javascript">document.write(searchName);</script> [ <a href="javascript:void(0);" onclick="dosearch();">隐藏</a> ]</div>
+        <div class="form2">
+            <form method="post" action="__URL__/{$xaction}" id="ot">
+                <dl class="lineD">
+                    <dt>用户名：</dt>
+                    <dd>
+                        <input name="username" style="width:190px" id="startdate" type="text"  />
+                    </dd>
+                </dl>
+                <dl class="lineD">
+                  <dt>身份：</dt>
+                  <dd>
+                   <htmlA:radio id="is_vip" value="key|search.is_vip" default="all|全部,yes|借款人,no|投资人" tip="不填则不限制"/>
+                    <span>不填则不限制</span>
+                  </dd>
+                </dl>
+                <dl class="lineD"><dt>注册时间从：</dt><dd><htmlA:timer id="start_time" style="width:190px"  /><span>到：</span><htmlA:timer id="end_time" style="width:190px"/></dd></dl>
+                <dl class="lineD"><dt>提现时间从：</dt><dd><htmlA:timer id="start_time1" style="width:190px" /><span>到：</span><htmlA:timer id="end_time1" style="width:190px"/></dd></dl>
+                <dl class="lineD"><dt>投资时间从：</dt><dd><htmlA:timer id="start_time2" style="width:190px"  /><span>到：</span><htmlA:timer id="end_time2" style="width:190px"/></dd></dl>
+                <div class="page_btm">
+                    <input type="submit" class="btn_b" value="确定" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--搜索/筛选会员-->
+    <div class="Toolbar_inbox" >
+        <div class="page right">{$pagebar}</div>
+        <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索" style="search_action" />
+    </div>
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th>用户编号</th>
+                <th>用户名</th>
+                <th>身份</th>
+                
+                <th>手机号</th>
+                <th>真实姓名</th>
+                
+                <th>注册时间</th>
+                <th>投资次数</th>
+                <th>投资金额</th>
+                
+                <th>充值次数</th>
+                <th>充值金额</th>
+                
+                <th>提现次数</th>
+                <th>提现金额</th>
+                
+                <th>账户余额</th>
+            </tr>
+            <?php foreach($list as $key=>$val) { ?>
+            <tr>
+                <td><?php echo $val['id']; ?></td>
+                <td><?php echo $val['user_name']; ?></td>
+                <td><?php echo $val['is_vip']; ?></td>
+                
+                <td></td>
+                <td></td>
+                
+                <td><?php echo $val['reg_time']; ?></td>
+                <td><?php echo $val['touzicount'];?></td>
+                <td><?php echo $val['totalmoney']?$val['totalmoney']:0; ?></td>
+                
+                <td></td>
+                <td></td>
+                
+                <td><?php echo $val['tixian'] ?></td>
+                <td><?php echo $val['tixianmoney']?$val['tixianmoney']:0; ?></td>
+                <td><a href="javascript:voild(0);">查看</a></td>
+            </tr>
+            <?php } ?>
+        </table>
+        <div class="Toolbar_inbox" style="overflow: hidden">
+            <htmlA:commonBtn type="href" action="__URL__/investcount?{$query}" value="将当前条件下数据导出为Excel"/>
+            <div class="page right">{$pagebar}</div>
+        </div>
+    </div>
+</div>
+<include file="Public:_footer" />

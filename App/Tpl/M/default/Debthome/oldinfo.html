@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>原项目信息</title>
+    <include file="Pub:header-common" />
+    <link rel="stylesheet" href="css/recharge_detail.css" >
+</head>
+<body style="background: #FFFFFF;">
+<include file="Pub:simple_header" />
+<div class="t_allsection">
+    <table class="t_project" border="1">
+        <if condition="$vo.id egt 1660">
+            <tbody>
+            <tr>
+                <td class="t_recharge">借款方</td>
+                {$vo.borrow_info|borrow_info_pares='借款方',###}
+            </tr>
+            <tr>
+                <td class="t_recharge">职业/身份</td>
+                {$vo.borrow_info|borrow_info_pares='职业/身份',###}
+            </tr>
+            <tr>
+                <td class="t_recharge">借款用途</td>
+                {$vo.borrow_info|borrow_info_pares='借款用途',###}
+            </tr>
+            <tr>
+                <td class="t_recharge">担保方式</td>
+                {$vo.borrow_info|borrow_info_pares='担保方式',###}
+            </tr>
+            <tr>
+                <td class="t_title">借款方信息</td>
+                {$vo.borrow_info|borrow_info_pares='借款方信息',###}
+            </tr>
+            <tr>
+                <td class="t_title">质押物信息</td>
+                {$vo.borrow_info|borrow_info_pares='质押物信息',###}
+            </tr>
+            <tr>
+                <td class="t_title">还款来源</td>
+                {$vo.borrow_info|borrow_info_pares='还款来源',###}
+            </tr>
+            <tr>
+                <td class="t_title">还款保障</td>
+                {$vo.borrow_info|borrow_info_pares='还款保障',###}
+            </tr>
+            <tr>
+                <td class="t_title">项目状况</td>
+                {$vo.borrow_info|borrow_info_pares='项目状况',###}
+            </tr>
+            <tr>
+                <td class="t_title">风控措施</td>
+                {$vo.borrow_info|borrow_info_pares='风控措施',###}
+            </tr>
+            <if condition="$vo.product_type eq 7">
+                <tr>
+                    <td class="t_title">产品详情</td>
+                    {$vo.borrow_info|borrow_info_pares='产品详情',###}
+                </tr>
+                <tr>
+                    <td class="t_title">产品优势</td>
+                    {$vo.borrow_info|borrow_info_pares='产品优势',###}
+                </tr>
+            </if>
+            </tbody>
+            <else/>
+            <tbody>
+            <tr>
+                <td class="t_recharge">借款人</td>
+                {$vo.borrow_info|borrow_info_pares='借款人',###}
+            </tr>
+            <tr>
+                <td class="t_recharge">职业/身份</td>
+                {$vo.borrow_info|borrow_info_pares='职业/身份',###}
+            </tr>
+            <tr>
+                <td class="t_recharge">借款用途</td>
+                {$vo.borrow_info|borrow_info_pares='借款用途',###}
+            </tr>
+            <tr>
+                <td class="t_recharge">担保方式</td>
+                {$vo.borrow_info|borrow_info_pares='担保方式',###}
+            </tr>
+            <tr>
+                <td class="t_title">借款人信息</td>
+                {$vo.borrow_info|borrow_info_pares='借款人信息',###}
+            </tr>
+            <tr>
+                <td class="t_title">质押物信息</td>
+                {$vo.borrow_info|borrow_info_pares='质押物信息',###}
+            </tr>
+            <tr>
+                <td class="t_title">还款来源</td>
+                {$vo.borrow_info|borrow_info_pares='还款来源',###}
+            </tr>
+            <tr>
+                <td class="t_title">还款保障</td>
+                {$vo.borrow_info|borrow_info_pares='还款保障',###}
+            </tr>
+            <tr>
+                <td class="t_title">项目状况</td>
+                {$vo.borrow_info|borrow_info_pares='项目状况',###}
+            </tr>
+            <tr>
+                <td class="t_title">风控措施</td>
+                {$vo.borrow_info|borrow_info_pares='风控措施',###}
+            </tr>
+            </tbody>
+        </if>
+    </table>
+</div>
+<include file="Pub:footer" />
+</body>

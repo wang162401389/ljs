@@ -1,0 +1,55 @@
+<include file="Public:_header" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<tagLib name="htmlA" />
+<div class="so_main">
+    <div class="page_tit">拉新投资数据</div>
+    <div id="search_div">
+
+        <div class="form2" style="background-color: #d2dbea;">
+            <form method="post" action="__URL__/recommendAggregate">
+                <table style="width: 80%;height: 80px;">
+                    <tr>
+                        <td>起止时间：</td>
+                        <td><htmlA:timer id="start_time" style="width:90px" value="{$search.start_time}"  />&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;
+          					<htmlA:timer id="end_time" style="width:90px" value="{$search.end_time}"   /></td>
+          					<td>
+                        	<span class='chaxun'><input type="submit" value="查询"/></span>
+                    	</td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th class="line_l">来源</th>
+                <th class="line_l">拉新投资额</th>
+                <th class="line_l">占比</th>
+            </tr>
+            <tr>
+                <td>第三方投资总额</td>
+                <td>{$offline|default=0}</td>
+                <td>{$offline_percent|default=0}%</td>
+            </tr>
+            <tr>
+                <td>员工</td>
+                <td>{$company|default=0}</td>
+                <td>{$company_percent|default=0}%</td>
+            </tr>
+            <tr>
+                <td>其他</td>
+                <td>{$other|default=0}</td>
+                <td>{$other_percent|default=0}%</td>
+            </tr>
+            <tr>
+                <td>合计</td>
+                <td>{$total|default=0}</td>
+                <td>{$other_percent+$company_percent+$offline_percent}%</td>
+            </tr>
+            </volist>
+        </table>
+    </div>
+</div>
+<include file="Public:_footer" />

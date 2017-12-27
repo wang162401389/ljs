@@ -1,0 +1,62 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+	list-style: none;
+}
+body {
+	background-color: #f0f0f0;
+}
+img {
+	max-width:100%;
+	height:auto;
+}
+#header .bar {
+	background-color: #54c0f2;
+	text-align: center;
+	height: 50px;
+}
+#header .bar .title {
+	color: #fff;
+	font-size: 120%;
+	padding-top: 10px;
+	position: relative;
+	left: -25px;
+}
+#header .bar .title a {
+	color: #fff;
+}
+#header .bar i {
+	float: left;
+	color: #fff;
+	padding: 15px;
+	padding-left: 20px;
+	padding-right: 20px;
+	height: 50px;
+}
+.content {
+	padding: 20px;
+}
+.content .info .list {
+	color: #616161;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.content .info .list .text {
+	display: inline-block;
+	width: 45%;
+	font-size: 80%;
+}
+.content .info .list input {
+	display: inline-block;
+	width: 55%;
+	border: 1px solid #e5e5e5;
+	background-color: #f0f0f0;
+}
+.content .confirm .btn {
+	width: 100%;
+	margin-top: 10px;
+}
+.content .confirm a {
+	background-color: #54c1f3;
+}

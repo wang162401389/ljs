@@ -1,0 +1,159 @@
+<include file="Public:_header" />
+<link href="__ROOT__/Style/Swfupload/swfupload.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__ROOT__/Style/Swfupload/handlers.js"></script>
+<script type="text/javascript" src="__ROOT__/Style/Swfupload/swfupload.js"></script>
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+
+<style type="text/css">
+.albCt{height:200px}
+</style>
+<tagLib name="htmlA" />
+<div class="so_main">
+  <div class="page_tit">转现货质押</div>
+  <div class="page_tab"><span data="tab_1" class="active">基本信息</span></div>
+  <div class="form2">
+    <form method="post" action="__URL__/editdoxianhuo" onsubmit="return subcheck();" enctype="multipart/form-data">
+      <input type="hidden" name="id" id="bid" value="{$vo.id}" />
+      <div id="tab_1">
+        <dl class="lineD">
+            <dt>转现货质押：</dt>
+            <dd>
+             <htmlA:radio id="product_type" name="product_type" default="1|提单质押,2|现货质押" value="key|vo.product_type" tip="转现货质押"/>
+            </dd>
+        </dl>
+        <htmlA:radio id="borrow_status" datakey="borrow_status" value="key|vo.borrow_status" />
+        <dl class="lineD">
+          <dt>借款标题：</dt>
+          <dd>
+            <htmlA:input id="borrow_name" value="{$vo.borrow_name}" tip="*"/>
+          </dd>
+        </dl>
+        <dl class="lineD">
+          <dt>借款金额：</dt>
+          <dd>
+            <htmlA:input id="borrow_money" value="{$vo.borrow_money}" tip="*"/>
+          </dd>
+        </dl>
+        <dl class="lineD">
+          <dt>年化利率：</dt>
+          <dd>
+            <htmlA:input id="borrow_interest_rate" value="{$vo.borrow_interest_rate}" tip="*"/>
+          </dd>
+        </dl>
+        <dl class="lineD">
+          <dt>借款期限：</dt>
+          <dd>
+            <htmlA:input id="borrow_duration" value="{$vo.borrow_duration}" tip="*"/>
+          </dd>
+        </dl>
+        <dl class="lineD">
+          <dt>综合服务费利率：</dt>
+          <dd>
+            <htmlA:input id="colligate_fee" value="{$vo.colligate_fee}" tip="*"/>
+          </dd>
+        </dl>
+          <dl class="lineD">
+              <dt>提单转现货时间：</dt>
+              <?php if($vo['product_type']==2){ ?>
+              <dd>
+                  <input onKeyUp="NumberFloatCheck(this)" onchange="timechange()" type="text" id="add_time" name="add_time" value="{$vo['add_time']}" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" size="20" class="date" readonly title="提单转现货时间"/>
+              </dd>
+              <?php }else{?>
+              <dd>
+                  <input onKeyUp="NumberFloatCheck(this);" onchange="timechange()" type="text" id="add_time" name="add_time" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" size="20" class="date" readonly title="提单转现货时间"/>
+              </dd>
+              <?php }?>
+          </dl>
+
+          <dl class="lineD"><dt>附加内容：</dt>
+              <dd>
+                  <include file="./Style/Editor/kissy.html" />
+                  <htmlA:editor id="art_content" w='780px' type='kissy' value="{$vo.extra_info}"/>
+              </dd>
+
+          </dl>
+      </div>
+      <!--tab1-->
+      <div class="page_btm">
+      <?php if($vo['product_type']==2){ ?>
+        <input type="submit" class="btn_b" value="确定" />
+      <?php }else{?>
+      <input type="submit" class="btn_b" value="确定" disabled />
+      <?php }?>
+      </div>
+    </form>
+  </div>
+</div>
+<script type="text/javascript">
+function timechange(){
+  var id = $('#bid').val();
+  var addtime = $('#add_time').val();
+  $.ajax({
+     url:"__URL__/computationtime",
+     type:"post",
+     dataType:"json",
+     data:{"id":id,"addtime":addtime},
+     success:function(res){
+        $('#borrow_duration').val(res.timediff);
+     }
+  });
+}
+function addone(){
+    var htmladd = '<dl class="lineD"><dt>资料名称：</dt>';
+        htmladd+= '<dd><input type="text" name="updata_name[]" value="" />&nbsp;&nbsp;更新时间:<input type="text" name="updata_time[]" onclick="WdatePicker();" class="Wdate" /></dd>';
+        htmladd+= '</dl>';
+    $(htmladd).appendTo("#tab_3");
+}
+var cansub = true;
+function subcheck(){
+    if(!cansub){
+        alert("请不要重复提交，如网速慢，请等待！");
+        return false;   
+    }
+    var deal_info = $("#deal_info").val();
+    var deal_info_2 = $("#deal_info_2").val();
+    var borrow_status = {$vo.borrow_status};
+    var borrow_money = $("#borrow_money").val();
+    var vouch_money = $("#vouch_money").val();
+    var add_time=$("#add_time").val();
+    var product_type=$("#product_type").val();
+    if(vouch_money>borrow_money){
+        vouch_money = borrow_money;
+        $("#vouch_money").val(borrow_money);
+        ui.error("担保金额不能大于借款金额！");
+        return false;
+    }
+
+    if(product_type!=2){
+      if(add_time==""){
+          ui.error("请填写转现货的时间");
+          return false;
+      }
+    }
+    
+    if(borrow_status<=3){
+        if(deal_info ==""){
+            ui.error("初审处理意见不能为空！");
+            return false;
+        }
+    }else{
+        if( deal_info_2 ==""){
+            ui.error("复审处理意见不能为空！");
+            return false;
+        }
+    }
+    cansub = false;
+    return true;
+}
+$(function(){
+    $("input[name=product_type]").click(function(){
+        value=$(this).val();
+        if(value==1){
+            $(".btn_b").attr("disabled","disabled");
+        }else{
+            $(".btn_b").removeAttr("disabled");
+        }
+    })
+})
+</script>
+<include file="Public:_footer" />

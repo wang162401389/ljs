@@ -1,0 +1,152 @@
+<tagLib name="htmlA" />
+<!-- <div class="debt_step_exp cf">
+	<span class="n1">1.选择转让项目</span>
+    <i class="sep"></i>
+    <span class="n2">2.等待审核</span>
+    <i class="sep"></i>
+    <span class="n3">3.审核通过，等待出售</span>
+    <i class="sep"></i>
+    <span class="n4">4.转让成功，回收资金</span>
+</div>
+<table width="100%" class="memberTable mt10">
+	<colgroup>
+        <col width="6%">
+        <col width="12%">
+        <col width="12%">
+        <col width="12%">
+        <col width="12%">
+        <col width="11%">
+        <col width="10%">
+        <col width="10%">
+        <col width="">
+    </colgroup>
+    <thead>
+        <tr>
+            <th>标号</th>
+            <th>项目名称</th>
+            <th>投资金额(元)</th>
+            <th>起息日期</th>
+            <th>下期回款时间</th>
+            <th>已还/总期数</th>
+            <th>年化利率</th>
+            <th>待收本息</th>
+            <th>操作</th>
+        </tr>
+     </thead>
+     <tbody id="dfopppp">
+        <volist name="list" id="vo">
+            <tr>
+                <td>{$vo.id|borrowidlayout1}</td>
+                <td>
+                   <if condition="$vo.type eq 1">
+                       <a target="_blank" href="{$vo.id|getInvestUrl=###}" title="{$vo.borrow_name}">{$vo.borrow_name}</a>
+                       <else />
+                       <a target="_blank" href="/debthome/debtdetail?id=>{$vo.id}" title="{$vo.borrow_name}">{$vo.borrow_name}</a>
+                   </if>
+                   <a target="_blank" href="{$vo.id|getInvestUrl=###}" title="{$vo.borrow_name}">{$vo.borrow_name}</a>
+                </td>
+                <td>{$vo.investor_capital}</td>
+                <td>{$vo.second_verify_time|date="Y-m-d",###}</td>
+                <td class="deadline">{$vo.deadline|date="Y-m-d",###}</td>
+                <td>
+                    <if condition="$vo.repayment_type eq 1 ">
+                        0/1
+                    <else/>
+                  {$vo.has_pay|default="0"}/{$vo.total}
+                  </if>
+                </td>
+                <td>{$vo.borrow_interest_rate}%</td>
+                <td>{$vo.daishou}</td>
+
+                <td class="no_bor_r">
+                    <if condition="$flag eq true">
+                        <a href="javascript:void(0);" onclick="myconfirm(this, {$vo.id},1,<if condition='$vo.repayment_type eq 1'>0<else/>1</if>)" func="__URL__/sellhtml?id={$vo.id}&type=1&investid={$vo.invest_id}">申请转让</a>
+                        <else/>
+                        工作日<br/>
+                        10:00-17:00可申请转让
+                    </if>
+
+                </td>
+            </tr>
+        </volist>
+        <tr>
+            <td colspan="9">
+                <div id="pager" class="yahoo2">
+                    <div class="list_bottom_right">
+                        <ul>{$page}</ul>
+                    </div>
+                    <input type="hidden" id="tendbackingtotal_page" value="{$total_page}" />
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<input type="hidden" value="{$today}" id="today">
+<script type="text/javascript">
+    /**
+     *
+     债权转让确认
+     * @param obj 对象
+     * @param id 债权编号
+     * @param type 债权类型 1 原始债权转让 2 已转让债权再转让
+     */
+    function myconfirm(obj,id,type,fenqi){
+        var $this=$(obj);
+        var url=$this.attr("func");
+        if(fenqi==1){
+            var date=$.trim($this.parent("td").parent("tr").find(".deadline").html());
+            if($("#today").val()==date){
+                alert("当前还款日不可转让");
+                return ;
+            }
+        }
+        $.ajax({
+            url: "__URL__/zhuanrang",
+            data: {"borrow_id":id,"type":type},
+            type: "post",
+            dataType: "json",
+            success: function (d) {
+                if(d.status==0){
+                    window.location.href=url;
+                }else{
+                    alert(d.msg);
+                }
+            }
+        });
+    }
+
+    var ohpage=1;
+    var ohtotal_page=$("#tendbackingtotal_page").val();
+    function init(){
+        $(".list_bottom_right ul").find("[page=1]").each(function(){
+            $(this).css({"background-color":"#33aaff","color":"#fff"}).siblings("a").css({"background-color":"#EEEEEE","color":"#848484"});
+        });
+    }
+
+    function ajax_show(p) {
+        if(p<1){
+            ohpage=1;
+        }else{
+            if(p>ohtotal_page){
+                ohpage=ohtotal_page;
+            }else{
+                ohpage=p;
+            }
+        }
+        $.get("__URL__/changeinfo?p="+ohpage, function(data){
+            $("#dfopppp").html(data);
+            $(".list_bottom_right ul").find("[page="+ohpage+"]").each(function(){
+                $(this).css({"background-color":"#33aaff","color":"#fff"}).siblings("a").css({"background-color":"#EEEEEE","color":"#848484"});
+            })
+        });
+    }
+
+    $(function(){
+        init();
+    });
+</script> -->
+<div class="dzq-over" style="text-align:center;">
+    <span class="dzq-over-ico"></span>
+    <p class="fzq-p1">尊敬的用户您好！</p>
+    <p class="fzq-p2">平台积极响应监管要求，收益权转让功能已暂停使用......</p>
+</div>

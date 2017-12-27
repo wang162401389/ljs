@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <include file="Pub:header-common" />
+    <link rel="stylesheet" href="css/account.css" >
+</head>
+<body>
+<include file="Pub:simple_header" />
+<div class="fxpg_question js_q_1 myog" data-qid="1">
+    <?php foreach($data as $key => $va){?>
+            <dl>
+                <dt data-id="<?php echo $va['id'];?>">Q<?php echo $key+1 ;?>：<?php echo $va['question'];?>？</dt>
+                 <?php foreach($va["answer"] as $mykey=> $value){?>
+                     <dd><input type="radio" name="age<?php echo $va['id'];?>" id="<?php echo $va['answerid'][$mykey]; ?>" value="<?php echo $va['answerid'][$mykey]; ?>"
+                         <?php if($va['answer_id']==$va['answerid'][$mykey]){ echo "checked='checked'";} ?> />
+                         <label for="<?php echo $va['answerid'][$mykey]; ?>"><span stye="font-size:1rem;"><?php echo ($mykey+1); ?></span>.&nbsp;<?php echo $value ;?></label>
+                     </dd>
+                 <?php }?>
+            </dl>
+       <?php } ?>
+    <div style="clear: both;"></div>
+    <!-- <div class="fxpg_btn" onclick="window.location.href='{:U('M/fengxian/index',array('source'=>$source))}'">上一页</div> -->
+    <div class="fxpg_btn" style="margin-left: 32%" onclick="edit()">确认</div>
+</div>
+    <div style="clear: both;"></div>
+<include file="Pub:footer" />
+</body>
+<script type="text/javascript">
+    function edit(){
+        var flag=true;
+        var question=[];
+         $(".myog").find("dl").each(function(){
+             var $this=$(this);
+             var an={};
+             var answer;
+             answer=$this.find("input[type='radio']:checked").val();
+             if(answer){
+                 an.answer=answer;
+                 an.problem_id=$this.find("dt").attr("data-id");
+                 question.push(an);
+             }else{
+                 alert("请选择题目的答案");
+                 flag =false;
+                 return flag;
+             }
+         });
+        if(flag){
+            $.ajax({
+                url: "__URL__/answer",
+                type: "post",
+                dataType: "json",
+                data:{"data":question},
+                success: function (d) {
+                    console.log(d);
+                    if(d.ret==0){
+                      alert(d.message);
+                      location.href="{:U('/m/fengxian/result',array('source'=>$source))}";
+                    }else{
+                        alert(d.message);
+                    }
+                }
+            });
+        }
+    }
+    $().ready(function(){
+        $('.title').css('font-size','1.2rem');
+    });
+</script>
+</html>

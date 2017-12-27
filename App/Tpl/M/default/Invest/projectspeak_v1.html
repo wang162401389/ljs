@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>项目阐述</title>
+    <include file="Pub:header-common" />
+    <link rel="stylesheet" href="css/recharge_detail.css" >
+</head>
+<body style="background: #FFFFFF;">
+<include file="Pub:simple_header" />
+<div class="t_allsection">
+    <table class="t_project" border="1">
+        <tbody>
+        <if condition="$vo.id egt 1660">
+            <tr>
+                <td class="t_title" style="width:5rem;">风控措施</td>
+                {$vo.borrow_info|borrow_info_pares='风控措施',###}
+            </tr>
+            <else/>
+            <tr>
+                <td class="t_title" style="width:5rem;">企业经营状况</td>
+                {$vo.borrow_info|borrow_info_pares='企业经营状况',###}
+            </tr>
+        </if>
+        <tr>
+            <td class="t_title" style="width:5rem;">信息透明度</td>
+            {$vo.borrow_info|borrow_info_pares='信息透明度',###}
+        </tr>
+        <!-- <tr>
+            <td class="t_title" style="width:5rem;">标的要义</td>
+            {$vo.borrow_info|borrow_info_pares='标的要义',###}
+        </tr> -->
+
+        </tbody>
+    </table>
+</div>
+<include file="Pub:footer" />
+</body>

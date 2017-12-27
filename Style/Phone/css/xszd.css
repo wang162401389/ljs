@@ -1,0 +1,117 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+	list-style: none;
+}
+img {
+	max-width:100%;
+	height:auto;
+}
+body {
+	background-color: #fac134;
+}
+.part1 {
+	margin-top: 10px;
+	border: 5px ridge #eeaf14;
+	border-radius: 10px;
+	background-color: #fffbde;
+}
+.header {
+	text-align: center;
+	margin: 10px;
+}
+.header .title {
+	width: 200px;
+}
+.part1 .content {
+	color: #5e551a;
+	margin: 20px;
+	margin-top: 0px;
+	font-size: 70%;
+	font-weight: 600;
+	line-height: 200%;
+}
+.flow ul li {
+  width: 20%;
+  float: left;
+}
+.flow ul li div{
+    height: 2rem;
+    margin:0 0.4rem;
+    background: #e7a80b;
+    font-size: 1rem;
+    text-align: center;
+    font-weight: bold;
+
+    line-height: 100%;
+    color: #fff;
+    padding-top: 5px;
+    padding-bottom: 3px;
+}
+.flow {
+	width: 100%;
+	height: 30px;
+	background: url(../img/xszd-img07.png) no-repeat;
+	background-size: contain;
+}
+.flow ul {
+    width:96%;
+    margin:0 auto;
+}
+.flow ul .current {
+	color: #735f2d;
+	background-color: #feec62;
+}
+.bottom {
+	text-align: center;
+}
+.bottom .view {
+	float: left;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+.bottom .center {
+	width: 70%;
+	border: 5px solid #e7a80b;
+}
+.bottom .pre, .bottom .next {
+	width: 8%;
+	position: relative;
+	top: -100px;
+}
+.part2{
+	height: 400px;
+	position: relative;
+}
+.anniu .left_but {
+    display: block;
+    width: 43px;
+    height: 51px;
+    background: transparent url("../img/xszd-img06-1.png") no-repeat scroll 0px 0px;
+    position: absolute;
+    left: 0px;
+    top: 220px;
+    cursor: pointer;
+}
+.anniu .right_but {
+    display: block;
+    width: 43px;
+    height: 51px;
+    background: transparent url("../img/xszd-img05-1.png") no-repeat scroll 0px 0px;
+    position: absolute;
+    right: 0px;
+    top: 220px;
+    cursor: pointer;
+}
+.view ul li{
+	display: none;
+}
+.view  ul li.cur{
+	display: block;
+}
+.banner { position: relative; overflow: auto;min-height: 241px;width:80%;margin: 1rem auto; }
+.banner ul { list-style: none; }
+.banner ul li {width: 100% }
+.banner ul li img { width: 100%}
+.none_show{display: none}

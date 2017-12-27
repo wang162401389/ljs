@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <include file="Pub:header-common" />
+    <link rel="stylesheet" href="css/list.css">
+</head>
+
+<body>
+<include file="Pub:simple_header" />
+
+<div class="content" style="margin-left:5%;">
+    <ul>
+        <li class="list">
+            <div  style="color:#4a4949;font-size:1.2rem; border-bottom:1px dashed #dcdcdc; height:3.2rem;line-height:3.2rem;width:45%;float:left;text-align:center;">时间</div>
+            <div  style="color:#4a4949;font-size:1.2rem; border-bottom:1px dashed #dcdcdc; height:3.2rem;line-height:3.2rem;width:45%;float:left;text-align:center; ">奖品名称</div>
+        </li>
+    </ul>
+    <div style="clear:both;"></div>
+    <ul>
+        <volist name="list" id="vo">
+            <li class="list">
+                <div style="clear:both;height:3.2rem;line-height:3.2rem;border-bottom:1px dashed #dcdcdc;font-size:1.1rem; color:#4a4949;">
+                    <div  style="float:left;text-align:center;width:45%;">{$vo.time}</div>
+                    <div  style="float:left;text-align:center;width:45%;">{$vo.goodsname}</div>
+               </div>
+            </li>
+        </volist>
+    </ul>
+</div>
+<include file="Pub:footer" />
+</body>
+
+</html>

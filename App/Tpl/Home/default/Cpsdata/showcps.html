@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>CPS隐藏数据</title>
+<style>
+body{margin: 20px auto}
+.search{width: 1280px;margin: 0 auto;text-align: center;}
+.table-c{width: 1280px;margin: 0 auto;}
+.page{width: 1280px;margin: 0 auto;text-align: center;}
+.table-c table{ background:#000;width: 1280px} 
+.table-c table td{ background:#FFF;text-align: center;}
+.table-c table th{ background:#FFF}
+</style>
+</head>
+<body>
+<div class="search">
+	<form method="get">
+	<p>
+	渠道：
+		<select name="code" class="input" id="code" >
+	        <option value="0">请选择</option>
+            <volist id="vo" name="cps">
+                <option value="{$vo.code}" <if condition="$search['code'] eq $vo.code "> selected="selected" </if>>{$vo.name}</option>
+            </volist>
+	    </select>
+	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    <input type="submit" value="查询"/>
+	</p>
+	</form>
+</div>
+	<br>
+<div class="table-c">
+	<table>
+		<tr>
+            <th>会员ID</th>
+            <th>会员名称</th>
+            <th>注册时间</th>
+            <th>投资时间</th>
+            <th>标的名称</th>
+            <th>投标金额</th>
+            <th>投资期限</th>
+            <th>cps</th>
+        </tr>
+        <volist name="info" id="vo">
+            <tr>
+                <td>{$vo.id}</td>
+                <td>{$vo.user_name}</td>
+                <td>{$vo.reg_time|date='Y-m-d H:i:s',###}</td>
+                <td>{$vo.tou_time}</td>
+                <td>{$vo.borrow_name}</td>
+                <td>{$vo.investor_capital}</td>
+                <td>{$vo.borrow_duration_txt}</td>
+                <td>{$vo.equipment}</td>
+            </tr>
+        </volist>
+	</table>
+</div>
+	<br>
+	<div class="page">{$pagebar}</div>
+</body>
+</html>

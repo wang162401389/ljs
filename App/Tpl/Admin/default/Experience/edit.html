@@ -1,0 +1,32 @@
+<include file="Public:_header" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<tagLib name="htmlA" />
+<div class="so_main">
+    <div class="page_tit">添加体验券</div>
+    <div class="page_tab"><span data="tab_1" class="active">基本设置</span></div>
+    <div class="form2">
+        <form method="post" action="__URL__/edit">
+            <input type="hidden" name="id" value="{$list.id}" />
+            <div id="tab_1">
+                <dl class="lineD"><dt>体验券名称：</dt><dd><htmlA:input id="name" tip="*" value="{$list.name}"/></dd></dl>
+                <dl class="lineD"><dt>体验券金额：</dt><dd><htmlA:input id="amount"  tip="*" value="{$list.amount}"/>(元)</dd></dl>
+                <dl class="lineD"><dt>体验券抵达金额：</dt><dd><htmlA:input id="limitamount" value="{$list.limitamount}"/></dd></dl>
+                <dl class="lineD"><dt>是否是体验标使用：</dt><dd>
+                    <if condition="$list.isexperience  eq 1 ">
+                        <htmlA:radio id="isexperience" default="1|否,2|是" />
+                        <else/>
+                        <htmlA:radio id="isexperience" default="2|是,1|否" />
+                    </if>
+                </dd></dd>
+                </dl>
+                <dl class="lineD"><dt>体验券到期时间：</dt>
+                    <dd><input onclick="WdatePicker({dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" value="{$list.time}" name="times" id="time" class="input" type="text"></dd>
+                </dl>
+            </div><!--tab1-->
+            <div class="page_btm">
+                <input type="submit" class="btn_b" value="确定" />
+            </div>
+        </form>
+    </div>
+</div>
+<include file="Public:_footer" />

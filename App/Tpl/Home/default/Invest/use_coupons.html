@@ -1,0 +1,79 @@
+<if condition="($is_use eq 'yes') AND ($is_jiaxi eq 0)">
+<script>
+$(function(){
+	$(".jbox-close").click();
+	location.href="__URL__/investmoney?borrow_id="+{$vo.id|intval=###}+"&money="+{$investMoney|intval=###};
+})
+</script>
+<else/>
+<style type="text/css">
+</style>
+<form class="use-coupons" method="post" name="investForm" id="investForm" action="__URL__/investmoney">
+	<input type="hidden" name="borrow_id" id="borrow_id" value="{$vo.id}" />
+	<input type="hidden" name="money" id="money" value="{$investMoney}" />
+    <h2 class="title">客官，您有可以使用的投资券</h2>
+    <if condition="$is_use eq 'no'">
+    <h3>1. 请选择需要使用的投资券</h3>
+	<ul class="item">
+		<li>
+			<label><input type="radio" name="coupons_money" alt="0" value="0"/> 不使用</label>
+		</li>
+		 <volist name="coupons" id="q">
+			<li>			
+				<span><label><input type = "radio" <eq name="key" value="0">checked</eq>  alt="{$q.use_money}" name="coupons_money" value="{$q.money}|{$q.serial_number}"> 满{$q.use_money}元可抵扣{$q.money}元</label></span>
+			</li>		
+		</volist>
+	</ul>
+    </if>
+    <if condition="$is_jiaxi eq 1">
+    	<h3><?php echo $is_use=='no'?2:1;?>. 请选择需要使用的加息券</h3>
+    	<ul class="item">
+            <li>
+                <label><input type="radio" name="coupons_interest" value="0"/> 不使用</label>
+            </li>
+		 	<volist name="jiaxi" id="q">
+                <li>			
+                    <span><label><input type = "radio" <eq name="key" value="0">checked</eq> alt="{$q.use_money}" name="coupons_interest" value="{$q.serial_number}"> 加息{$q.money}%</label></span>
+                </li>
+			</volist>
+		</ul>
+    </if>
+    <ul class="item">
+    <li style="height:40px;margin-top:30px;text-align:center;">
+        <a href="javascript:void(0);" class="btn" onclick="submitData()">确认</a>
+    </li>
+    </ul>
+</form>
+<script type="text/javascript">
+var money;
+$(function(){
+	money =  parseInt($('#money').val());
+	$('input[name="coupons_money"]').each(function(){
+		if( parseInt($(this).attr("alt")) > money){
+			$(this).parent().parent().parent().hide();
+		}
+	})
+});
+ function submitData() {
+        var flag = validate_enter(),
+    	money =  parseInt($('#money').val());
+    	var borrow_id = $('#borrow_id').val();
+    	var coupons = $('input[name="coupons_money"]:checked').val();
+		var jx = $('input[name="coupons_interest"]:checked').val();
+//		if(!coupons){
+//    		alert("请选择投资券");
+//			return;
+//    	}
+//    	if(!interest){
+//    		alert("请选择加息券");
+//			return;
+//    	}
+		var c_money =  parseInt($('input[name="coupons_money"]:checked').attr("alt"));
+		if(money < c_money){
+			alert("投资金额不满足使用投资卷");
+		}else{
+            location.href="__URL__/investmoney?borrow_id="+borrow_id+"&money="+money+"&coupons="+coupons+"&jx="+jx;
+		}
+    }
+</script>
+</if>

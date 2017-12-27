@@ -1,0 +1,67 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<script type="text/javascript">
+	var delUrl = '__URL__/doDel';
+	var addUrl = '__URL__/add';
+	var editUrl = '__URL__/edit';
+	var editTitle = '投资券搜索';
+	var isSearchHidden = 1;
+	var searchName = "投资券搜索";
+</script>
+<div class="so_main">
+  <div class="page_tit">赠送投资券</div>
+<!--搜索-->
+  <include file="search" />
+<!--搜索-->
+<div class="Toolbar_inbox">
+  </div>
+
+	<form action="__URL__/givecoupons" method="post" onsubmit="return subcheck();">
+		<table id="" width="75%" border="0" height="200" cellspacing="0" cellpadding="0">
+			<tr>
+				<td>时间：</td><td><input type="text" name="regtime" onKeyUp="NumberFloatCheck(this);" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="2016-08-18 23:59:59"><span style="color: red">（用户注册时间）</span></td>
+			</tr>
+			<tr>
+				<td>活动时间：</td><td><input type="text" name="activetime" onKeyUp="NumberFloatCheck(this);" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="2016-08-26 00:00:00">&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
+				<input type="text" name="activetime1" onKeyUp="NumberFloatCheck(this);" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="2016-08-26 23:59:59"></td>
+			</tr>
+			<tr>
+				<td>投资券金额：</td>
+				<td>
+					10元&nbsp;&nbsp;<input class="m" id="m1" onchange="numchange()" name="num[]" style="width: 30px;" type="text" value="1">&nbsp;&nbsp;张&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					20元&nbsp;&nbsp;<input class="m" id="m2" onchange="numchange()" name="num[]" style="width: 30px;" type="text" value="2">&nbsp;&nbsp;张&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					50元&nbsp;&nbsp;<input class="m" id="m3" onchange="numchange()" name="num[]" style="width: 30px;" type="text" value="1">&nbsp;&nbsp;张&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					100元&nbsp;&nbsp;<input class="m" id="m4" onchange="numchange()" name="num[]" style="width: 30px;" type="text" value="1">&nbsp;&nbsp;张&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;共<input type="text" id="m5" style="color: gray;width: 50px;" value="200" readonly>元
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" id="submit" disabled style="width: 100px;height:30px;cursor: pointer;border-radius: 5px;" value="提交"></td>
+			</tr>
+		</table>
+	</form>
+
+  <div class="Toolbar_inbox">
+  </div>
+
+</div>
+<script type="text/javascript">
+var cansub = true;
+function subcheck(){
+  if(!cansub){
+    alert("请不要重复提交，如网速慢，请等待！");
+    return false; 
+  }
+}
+function numchange(){
+ var m1 = document.getElementById('m1').value;
+ var m2 = document.getElementById('m2').value;
+ var m3 = document.getElementById('m3').value;
+ var m4 = document.getElementById('m4').value;
+ m = m1*10+m2*20+m3*50+m4*100;
+ document.getElementById('m5').value = m;
+}
+</script>
+<include file="Public:_footer" />

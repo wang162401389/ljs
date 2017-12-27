@@ -1,0 +1,131 @@
+<include file="default:Public:_header_common" group="Home"/>
+<title>我的账户-- {$glo.web_name}</title>
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/H/css/confirmation.css" />
+<script language=javascript type="text/javascript" src="__ROOT__/Style/Js/jquery.js"></script>
+<script language=javascript type="text/javascript" src="__ROOT__/Style/Js/tablescroll.js"></script>
+<style type="text/css">
+
+.demo{width:920px;margin:auto;}
+
+.tablescroll td,.tablescroll_wrapper,.tablescroll_head,.tablescroll_foot{}
+.tablescroll td{padding:5px;}
+.tablescroll_wrapper{border-left:0;}
+
+.tablescroll thead td{border-right:0;border-bottom:0;}
+.tablescroll tbody td{border-right:0;border-bottom:0;}
+.tablescroll tbody tr.first td{border-top:0;}
+
+.tablescroll tfoot td{border-right:0;border-bottom:0;}
+</style>
+<include file="default:Public:_header_main" group="Home"/>
+<div class="xiantiao"></div>
+
+<div class="confirm_main">
+	<div class="confirm_content">
+    	<div class="confirm_content_title"> </div>
+        
+        <div class="confirm_content_middle">
+        <div class="confirm_tip">*如下标的已满且复审通过，您支付相关费用后即可提现</div>
+           <div class="demo">
+	        <table id="thetable" cellspacing="0" cellpadding="0">
+             <thead>
+              <tr>
+                <td width="149">标名</td>
+                <td width="55">标号</td>
+                <td width="80">借款金额</td>
+                <td width="80">借款期限</td>
+                <td width="80">综合服务费<br>（平台）</td>
+                <td width="130">咨询服务费<br>（第三方合作机构）</td>
+                <td width="80">资金去向</td>
+                <td width="70">小计</td>
+                <td width="73">第三方协议</td>
+               </tr>
+             </thead>
+             <tbody>
+             <foreach name="list" item="vo">
+              <tr>
+                <td class="btitle">{$vo.borrow_name}</td>
+                <td>{$vo.id|borrowidlayout1=###}</td>
+                <td>{$vo.borrow_money|getMoneyFormt=###}元</td>
+                <td>{$vo.borrow_duration_txt}</td>
+                <td>{$vo.fee}元</td>
+                <td>{$vo.danbao}元</td>
+                 <td><if condition="$vo.is_tocard eq 0">余额<else/>绑定卡</if></td>
+                <td>{$vo['fee']+$vo['danbao']}元</td>
+                <td><if condition="$vo.danbao neq 0"><a href="__APP__/confirm/index/danbao_agreement?bid={$vo.id}" target="_blank">协议</a></if></td>
+              </tr>
+              </foreach>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>总计</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td><if condition='$fee_count gt 0'>{$fee}元</if><div class="<if condition='$fee_count eq 0'>confirm_bottom2" style="margin-top:24px">已支付<else/>confirm_bottom" onclick='pay("fee")'>确认支付</if></div></td>
+                <td><if condition='$danbao_count gt 0'>{$danbao}元</if><div class="<if condition='$danbao_count eq 0'>confirm_bottom2" style="margin-top:24px">已支付<else/>confirm_bottom" onclick='pay("danbao")'>确认支付</if></div></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+            </tfoot>
+          </table>
+         
+          </div>
+       
+        	
+		   <!-- <div class="confirm_do"></div> -->
+           <div class="confirm_pro"> <input type="checkbox" id="accept" checked="checked"/>我已阅读并同意<a href="__APP__/confirm/index/protocol" target="_blank">《综合服务费支付协议》</a><if condition='$danbao_count gt 0'>和<a href="__APP__/confirm/index/danbao_agreement?bid={$list[0]['id']}" target="_blank">《咨询服务费支付协议》</a></if></div>
+           <div class="confirm_alarm">
+           <span style="font-size:16px;">注：</span><br />
+           1、请您点击蓝色按钮进行支付，支付成功后方可进行还款或提现。<br />
+           <span class="confirm_red">2、以上服务费将使用账户余额或银行卡支付。</span>
+           </div>
+        </div>
+    </div>
+</div>
+
+ 
+  
+  <div style="clear:both"></div>
+</div>
+
+ <script type="text/javascript">
+$(document).ready(function($){
+	$('#thetable').tableScroll({
+		width:920,
+		height: 285
+		
+	});
+});
+// <if condition="$count gt 3">284<else/>auto</if>
+</script>
+ <script>
+     $(function(){
+        var name=$(".btitle");
+        var lenth = name.length;
+        name.each(function() {
+            var str = $(this).html();
+            var i = str.indexOf("：");
+            var str1 = str.substring(0,i+1);
+            var str2 = str.substring(i+1,str.length);
+            var txt = str1+"<br>"+str2;
+            $(this).html(txt);
+        });
+     })
+    </script>
+<script>
+  function pay(a){
+    var confirm = $("#accept").is(':checked');
+    if(confirm){
+      if(a == 'fee'){
+        location.href="__APP__/confirm/index/payfee";
+      }else{
+        location.href="__APP__/confirm/index/paydanbao";
+     }  
+    }else{
+      alert("请同意协议后再进行支付");
+    }
+  }
+</script>
+<include file="default:Public:_footer" group="Home" />

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<include file="Pub:header-common" /> 
+	<link rel="stylesheet" href="css/czwt.css" >
+    <script type="text/javascript">
+	$(document).ready(
+	function() 
+	{
+		$(".menuTitle").click(function(){
+			$(this).next("div").slideToggle("slow")
+			.siblings(".menuContent:visible").slideUp("slow");
+			$(this).toggleClass("activeTitle");
+			$(this).siblings(".activeTitle").removeClass("activeTitle");
+		});
+	});
+
+	
+</script>
+</head>
+
+<body>
+<include file="Pub:simple_header" />
+
+
+<div class="content">
+
+  <div class="menuTitle">
+		用户提现额度和到账时间分别是？
+	</div>
+	<div class="menuContent">
+		<div class="bank1">用户最大提现限额</div>
+        <div style=" clear:both; "></div>
+        <div class="bank_content1">
+        【个人】 单笔5万元 每日50万元<br/>
+        【企业】 单笔100万元 日累计无限额
+        </div>
+        <div style="clear:both; height:15px;"></div>
+        <div class="bank1">到账时间</div>
+        <div style=" clear:both; "></div>
+        <div class="bank_content1">
+        1、15:00前申请T+1日到账，即如果在当天15:00点前提现的，则次日到账；<br/>
+2、15:00后申请T+2日到账，即当天15:00后提现，则第三日到账。<br/>
+注：用户申请提现，链金所会实时向第三方资金托管平台新浪支付发送提现请求，具体资金到账时间以银行处理为准。
+        </div>
+        <div style="clear:both; height:15px;"></div>
+        <div class="bank1">所支持银行</div>
+        <div style=" clear:both; "></div>
+        <div class="bank_content1">
+        中国银行、农业银行、建设银行、工商银行、招商银行、中信银行、民生银行、广发银行、兴业银行、光大银行、交通银行、浦发银行、北京银行、上海银行、邮政储蓄银行、华夏银行、平安银行
+        </div>
+       
+	</div>
+	<div class="menuTitle">
+		提现手续费怎么收取？ 
+	</div>
+	<div class="menuContent">
+	链金所平台目前提现手续费暂不收取，后续如有变动，平台将另行公告
+	</div>
+    
+	<div class="menuTitle">
+		添加银行卡，为什么要填写省市和开户行字段？
+	</div>
+	<div class="menuContent">
+		链金所是通过新浪支付第三方支付平台为用户提供付款服务，新浪支付将用户银行卡信息上传至银行做付款操作时，可能会进行省市和开户行字段的校验，如果为空或不正确可能会导致付款失败。
+所以为了您提现的便利和安全，请您认真填写省市和开户行。
+	</div>
+     <div class="menuTitle">
+		如果所填写的银行卡信息不正确，能否提现成功？
+	</div>
+	<div class="menuContent">
+		1. 如果您填写的银行卡号有误或该银行卡开户名不是您实名认证的姓名，是无法提现的；<br/>
+2. 如果您填写的银行、开户行、开户行所在地信息不正确，则该笔提现在提交到银行做处理时，有可能由于信息校验不正确而提现失败。
+	</div>
+     <div class="menuTitle">
+		提现未到账怎么办？
+	</div>
+	<div class="menuContent">
+		1. 可能是银行卡信息填写有误，银行做退票操作，大概会在7个工作日内完成退票，请用户耐心等候。<br/>
+2. 您可以与在线客服取得联系或致电客服中心400-6626-985。
+	</div>
+     
+</div>
+  </div>
+
+  <include file="Pub:footer" />
+
+</body>
+
+</html>

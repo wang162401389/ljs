@@ -1,0 +1,39 @@
+<include file="Pub:header" />
+<tagLib name="htmlA" />
+<div class="main">
+ <div class="box7">
+   <div class="box7_title"><a href="javascript:history.back()"><img src="/style/mobile/images/table_but.png"/></a>绑定银行卡</div>
+  <form action="" method="post" name="cashForm" id="cashForm">
+   <table cellpadding="0" cellspacing="0" border="0">
+    <tr align="left" height="28"><td>请输入验证码：</td><td><input type="text" name='code' id="code" class="box7_wbk" /><input type="hidden"  id="ticket" class="box7_wbk" value="{$ticket}" /></td></tr>
+    <tr align="center" height="54"><td colspan="2"><input type="button" id="dobutton" class="butt" value="提交"/></td></tr>
+   </table>
+   </form>
+ </div>
+ 
+</div>
+
+<script language="javascript">
+$(function() {
+    $("#dobutton").click(function() {
+        var e = $("#code").val(),
+            t = $("#ticket").val(),
+            r = "code=" + e + "&ticket=" + t;
+        if ($.trim(e) == "") return Apprise("<font color=red>请输入验证码!</font>"), !1;         
+        $.ajax({
+            type: "POST",
+            url: "",
+            data: r,
+            success: function(e) {
+                e == "TRUE" ? (Apprise("恭喜您成功绑定银行卡！"), $("#apprise-btn-confirm").click(function() {
+                    window.location.href = "{:U('M/user/index')}"
+                })) : Apprise("<font color=red>" + e + "</font>")
+            },
+            error: function(e) {
+                Apprise("<font color=red>提交发生错误！请重试</font>")
+            }
+        })
+    })
+})
+</script>
+<include file="Pub:footer" /> 

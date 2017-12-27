@@ -1,0 +1,107 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+    var delUrl = '__URL__/doDel';
+    var addUrl = '__URL__/add';
+    var isSearchHidden = 1;
+    var searchName='搜索';
+</script>
+<div class="so_main">
+    <div class="page_tit">邀请人投资记录</div>
+    <!--搜索/筛选会员-->
+    <div id="search_div" style="display:none">
+        <div class="page_tit"><script type="text/javascript">document.write(searchName);</script> [ <a href="javascript:void(0);" onclick="dosearch();">隐藏</a> ]</div>
+
+        <div class="form2">
+            <form method="post" action="__URL__/{$xaction}">
+            <dl class="lineD">
+                    <dt>是否为内部员工：</dt>
+                    <dd>
+                        <if condition="$search.status eq 1">
+                        <input  name="status"   style="width:10px"  checked="checked"  type="radio"  value="1">是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input  name="status"   style="width:10px"  type="radio"  value="2">否&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <else condition="$search.status eq 2"/>
+                        <input  name="status"   style="width:10px"   type="radio"  value="1">是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input  name="status"   style="width:10px"  checked="checked"  type="radio"  value="2">否&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <else/>
+                        <input  name="status"   style="width:10px"   type="radio"  value="1">是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input  name="status"   style="width:10px"   type="radio"  value="2">否&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </if>
+                        <span>不填则不限制</span>
+                    </dd>
+                </dl>
+                <dl class="lineD">
+                    <dt>用户ID：</dt>
+                    <dd>
+                        <input name="uid" style="width:190px" id="title" type="text" value="{$search.uid}">
+                        <span>不填则不限制</span>
+                    </dd>
+                </dl>
+                <dl class="lineD">
+                    <dt>手机号码：</dt>
+                    <dd>
+                        <input name="mobile" style="width:190px" id="mobile" type="text" value="{$search.mobile}">
+                        <span>不填则不限制</span>
+                    </dd>
+                </dl>
+                <dl class="lineD">
+                    <dt>真实姓名：</dt>
+                    <dd>
+                        <input name="real_name" style="width:190px" id="real_name" type="text" value="{$search.real_name}">
+                        <span>不填则不限制</span>
+                    </dd>
+                </dl>
+                <div class="page_btm">
+                    <input type="submit" class="btn_b" value="确定" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--搜索/筛选会员-->
+    <div class="Toolbar_inbox" >
+        <div class="page right">{$pagebar}</div>
+        <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索" style="search_action" />
+    </div>
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th>会员ID</th>
+                <th>手机号</th>
+                <th>会员名称</th>
+                <th>真实姓名</th>
+                <th>是否为内部员工</th>
+                <th>注册人数</th>
+                <th>实名人数</th>
+                <th>投资人数</th>
+                <th>邀请人投资</th>
+                <th>本人投资</th>
+                <th>共投资</th>
+
+            </tr>
+            <?php foreach($info as $key => $val) { ?>
+            <tr>
+                <td><?php echo $key; ?></td>
+                <td><?php echo $val['user_phone'] ?></td>
+                <td><?php echo $val['user_name'] ?></td>
+                <td><?php echo $val['real_name'] ?></td>
+                <td><?php if($val['staff_type']==1){echo '是';}else {echo '否';}?></td>
+                <td><a href="{:U('admin/yunwei/registerlist',array('id'=>$key))}"><?php echo $val['register_num'] ?></a></td>
+                <td><a href="{:U('admin/yunwei/reallist',array('id'=>$key))}"><?php echo $val['real_num'] ?></a></td>
+                <td><?php echo $val['investor_num'] ?></td>
+                <td><a href="{:U('admin/yunwei/recommendinvest',array('id'=>$key))}"><?php echo $val['friend_investor'] ?></a></td>
+                <td><a href="{:U('admin/yunwei/selfinvest',array('id'=>$key))}"><?php echo $val['mine_capital'] ?></a></td>
+                <td><?php echo getFloatValue(($val['mine_capital']+$val['friend_investor']),2) ?></td>
+            </tr>
+            <?php } ?>
+
+        </table>
+        <div class="Toolbar_inbox" style="overflow: hidden">
+            <htmlA:commonBtn type="href"  class="page left"  action="__URL__/friend?{$query}" value="将当前条件下数据导出为Excel"/>
+            <div class="page right">{$pagebar}</div>
+        </div>
+    </div>
+
+</div>
+
+
+<include file="Public:_footer" />

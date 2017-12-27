@@ -1,0 +1,33 @@
+<volist name="list" id="vo">
+    <tr data-id="{$vo.id}">
+        <td>ZQ{$vo.id}</td>
+        <td>
+                <a target="_blank" href="/debthome/debtdetail?id={$vo.id}" title="{$vo.borrow_name}">{$vo.borrow_name}</a>
+        </td>
+        <td>{$vo.debt_captial}</td>
+        <td>{$vo.totalmoney}</td>
+        <td>{$vo.borrow_money}</td>
+        <td>{$vo.debt_rate}%</td>
+        <td>{$vo.add_time|date="Y-m-d",###}</td>
+        <td>
+            <if condition="$vo.borrow_status eq 0">
+                审核中
+                <elseif condition="$vo.borrow_status eq 2"/>
+                募集中
+                <elseif condition="$vo.borrow_status eq 4"/>
+                待复审
+            </if>
+        </td>
+        <td class="no_bor_r"><a href="javascript:void(0)" class="js-undo" onclick="cancel({$vo.id})">撤销转让</a></td>
+    </tr>
+</volist>
+<tr>
+    <td colspan="9">
+        <div id="mypager" class="yahoo2">
+            <div class="list_bottom_right">
+                <ul>{$page}</ul>
+            </div>
+            <input type="hidden" id="tendbackingtotal_page" value="{$total_page}" />
+        </div>
+    </td>
+</tr>

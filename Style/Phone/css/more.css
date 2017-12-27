@@ -1,0 +1,92 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+	list-style: none;
+}
+body {
+	margin-bottom: 50px;
+	background-color: #f0f0f0;
+}
+img {
+	max-width:100%;
+	height:auto;
+}
+.bottom {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+#bottomNav a {
+	color: #727171;
+	font-size: 80%;
+}
+#bottomNav a.active {
+	color: #25b4e9;
+}
+#header .bar {
+	background-color: #54c0f2;
+	text-align: center;
+}
+#header .bar .title {
+	color: #fff;
+	font-size: 2rem;
+	padding-top: 10px;
+}
+.content ul {
+	margin-top: 10px;
+}
+.content div {
+	background-color: #fff;
+	height: 50px;
+	padding: 12px;
+	padding-left: 20px;
+	margin-bottom: 2px;
+}
+.content div a {
+	color: #4d4d4d;
+	text-decoration: none;
+	font-size: 120%;
+}
+.content div a i {
+	padding-right: 5%;
+    color: #888686;
+    float: right;
+    top:5;
+}
+hr {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.phone {
+	position: relative;
+	left: 40%;
+	top: -25px;
+	padding-left: 35px;
+	background: url("../img/phone.png") no-repeat; 
+	background-size: contain;
+	color: #54c0f2;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.version {
+	position: relative;
+	left: 35%;
+	top: -25px;
+	padding-left: 35px;
+	color: #54c0f2;
+}
+
+/*安存*/
+.ancun_main .ancun_banner img{width: 100%;}
+.ancun_main .ancun_content1{background: url(../img/ancun2.png) no-repeat #fff; background-size: 100%}
+.ancun_main .ancun_content2{background: url(../img/ancun4.png) ; background-size: 100%}
+.ancun_main .ancun_content3{background: url(../img/ancun5.png) ; background-size: 100%; padding: 1rem 0rem;}
+.ancun_main .ancun_title{ font-size: 1.5rem; color: #27055d; line-height: 3rem; width: 90%;margin: auto;}
+.ancun_main .ancun_title span{border-left: 0.5rem solid #27055d; margin-right: 0.5rem;}
+.ancun_main .ancun_font{width: 90%; margin: auto}
+.ancun_main .ancun_font p{font-size: 1.2rem; color: #27055d; line-height: 2rem; margin-bottom: 10px; display: inline-block;}
+.ancun_main .ancun_font img{margin-bottom: 10px;}
+.ancun_main .ancun_title2{ font-size: 1.5rem; color: #fff; line-height: 3rem; ;margin: auto; margin-right:5%;float: right}
+.ancun_main .ancun_title2 span{border-left: 0.5rem solid #fff; margin-left: 0.5rem;}
+.ancun_main .ancun_font2{width: 90%; margin: auto}
+.ancun_main .ancun_font2 p{font-size: 1.2rem; color: #fff; line-height: 2rem; margin-bottom: 10px; display: inline-block;}

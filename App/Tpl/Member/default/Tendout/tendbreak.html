@@ -1,0 +1,99 @@
+<tagLib name="htmlA" />
+<style type="text/css">
+.question{position:relative;width:20px;height:20px;margin-left:10px;background:url(__ROOT__/Style/H/images/question.png) no-repeat center;vertical-align:middle;}
+.question span{display:none;position:absolute;top:-12px;left:19px;width:100px;line-height:18px;padding:2px 10px;border:solid 1px #dedede;background-color:#e7e7e7;}
+.question:hover span{display:inline;}
+</style>
+<table width="100%" class="memberTable mt20">
+	<colgroup>
+        <col width="10%">
+        <col width="16%">
+        <col width="13%">
+        <col width="12%">
+        <col width="17%">
+        <col width="17%">
+        <col width="">
+    </colgroup>
+    <thead>
+        <tr>
+            <th>借款标号</th>
+            <th>项目名称</th>
+            <th>预期年化收益率</th>
+            <th>逾期天数</th>
+            <th>待收本金</th>
+            <th>待收利息</th>
+            <th>当前/总(期)</th>
+        </tr>
+    </thead>
+    <tbody id="myopppp">
+        <volist name="list" id="vo">
+            <tr>
+                <td>
+                     <if condition="$vo.bid eq 'TY1'">
+                        <a href="__APP__/home/experience/detail" title="{$vo.borrow_name}" target="_blank">{$vo.bid}</a>
+                    <else/>
+                        <if condition="$vo.debt_id eq 0">
+                            <a href="{$vo.borrow_id|getInvestUrl=###}" title="{$vo.borrow_name}" target="_blank">{$vo.borrow_id|borrowidlayout1}</a>
+                            <else/>
+                            <a href="/debthome/debtdetail?id={$vo.debt_id}" title="{$vo.debt_name}" target="_blank">ZQ{$vo.debt_id}</a>
+                        </if>
+
+                    </if>
+                </td>
+                <td>
+                <if condition="$vo.debt_id eq 0">
+                        <a href="{$vo.borrow_id|getInvestUrl=###}" title="{$vo.borrow_name}" target="_blank">{$vo.borrow_name}</a>【{$vo.is_auto}】
+                        <else/>
+                        <a href="/debthome/debtdetail?id={$vo.debt_id}" title="{$vo.debt_name}" target="_blank">{$vo.debt_name}</a>【{$vo.is_auto}】
+                    </if>
+                </td>
+                <td>{$vo['borrow_interest_rate']+$vo['jx_rate']+$vo['jiaxi_rate']}%<if condition="($vo.jx_rate gt 0) OR ($vo.jiaxi_rate gt 0)"><span class="question"><span><if condition="$vo.jx_rate gt 0">平台加息{$vo.jx_rate}%<br /></if><if condition="$vo.jiaxi_rate gt 0">使用加息券{$vo.jiaxi_rate}%</if></span></span></if></td>
+                <td>{$vo.breakday}</td>
+                <td>¥{$vo.capital}元</td>
+                <td>¥{$vo['interest']+$vo['jiaxi_money']}元</td>
+                <td>{$vo.sort_order}/{$vo.total}</td>
+            </tr>
+        </volist>
+        <tr>
+            <td colspan="6">
+                <div id="pager" class="yahoo2">
+                    <div class="list_bottom_right">
+                        <ul>{$pagebar}</ul>
+                    </div>
+                </div>
+				<input type="hidden" id="tendbreaktotal_page" value="{$total_page}" />
+            </td>
+        </tr>
+	</tbody>
+</table>
+<script type="text/javascript">
+var qwpage=1;
+var qwtotal_page=$("#tendbreaktotal_page").val();
+function init(){
+	$(".list_bottom_right ul").find("[page=1]").each(function(){
+		$(this).css({"background-color":"#33aaff","color":"#fff"}).siblings("a").css({"background-color":"#EEEEEE","color":"#848484"});
+   });
+}
+
+function ajax_show(p) {
+	if(p<1){
+		qwpage=1;
+	}else{
+		if(p>qwtotal_page){
+			qwpage=qwtotal_page;
+		}else{
+			qwpage=p;
+		}
+	}
+	$.get("__URL__/tendbreakinfo?p="+qwpage, function(data){
+		$("#myopppp").html(data);
+		$(".list_bottom_right ul").find("[page="+qwpage+"]").each(function(){
+			$(this).css({"background-color":"#33aaff","color":"#fff"}).siblings("a").css({"background-color":"#eee","color":"#848484"});
+		});
+   });
+}
+
+$(function(){
+	init();
+});
+</script>

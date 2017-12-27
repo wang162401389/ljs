@@ -1,0 +1,92 @@
+<include file="Public:_header_common" />
+<title>{$title}</title>
+<meta http-equiv="keywords" content="{$keyword}" />
+<meta http-equiv="description" content="{$description}" />
+<script>
+$(function(){
+$(".mskeClaose").hide();
+$(".mskeLayBg").height($(document).height());
+$(".mskeClaose").click(function(){
+	$(".mskeLayBg,.mskelayBox").hide();
+});
+$(".msKeimgBox li").click(function(){
+	$(".mske_html").html($(this).find(".hidden").html());
+	$(".mskeClaose").show();
+	$(".mskeLayBg").show();$(".mskelayBox").fadeIn(300);
+	showDiv($(".mskelayBox"));
+	});
+$(".mske_html").click(function(){
+		$(".mskeLayBg").hide();$(".mskelayBox").fadeOut(300);
+	});
+	
+function showDiv(obj){
+ $(obj).show();
+ center(obj);
+ $(window).scroll(function(){
+  center(obj);
+ });
+ $(window).resize(function(){
+  center(obj);
+ }); 
+}
+function center(obj){
+ var windowWidth = document.documentElement.clientWidth;   
+ var windowHeight = document.documentElement.clientHeight;   
+ var popupHeight = $(obj).height();   
+ var popupWidth = $(obj).width(); 
+ $(obj).css({ 
+
+  "position": "absolute",   
+  "top": (windowHeight-popupHeight)/2+$(document).scrollTop(),   
+  "left": (windowWidth-popupWidth)/2   
+ });  
+}
+})
+
+</script>
+<style type="text/css">
+.artcontent li{
+list-style-type:disc;
+}
+.cjwt_a_01{text-indent:20px}
+.msKeimgBox { margin: 0px auto; width:965px; overflow: hidden; position: relative; padding-top: 30px; height:355px; }
+.msKeimgBox ul { width: 1000px; }
+.mskeLayBg { background: #000; width: 100%; position: absolute; left: 0px; top: 0px; z-index: 10; opacity: 0.7; filter: alpha(opacity=70); display: none; _display:none!important }
+.mskelayBox {margin-left:auto ;  position: absolute; border: 7px solid #FFF; z-index: 20; background: #FFF; display: none; _display:none!important }
+.mskeImgBg { height: 57px; width: 100%; position: absolute; left: 0px; bottom: 0px; }
+.mskeClaose { position: absolute; top: -17px; right: -17px; cursor: pointer; }
+.mske_downIco { position: absolute; left: 0px; top: 0px; }
+.mske_imgDown { background: url(../images/mke_imgMbg.png) repeat; height: 57px; width: 818px; position: absolute; right: 0px; bottom: 0px; font: 13px/57px "微软雅黑"; color: #FFF; }
+.mske_imgDown a { margin-left: 34px; }
+.msKeimgBox ul li { float: left; height:355px; margin: 0 10px 10px 0; width:220px; cursor: pointer; }
+/* 效果CSS结束 */
+</style>
+<include file="Public:_header_main" />
+<div class="xiantiao"></div>
+<div class="cms_page">
+  <div class="cms_frame cf">
+      <if condition="$type eq 1">
+          <include file="helptop" />
+          <else />
+          <include file="leftnavigate" />
+      </if>
+
+    <div class="cms_content">
+      <div class="cms-title-1">
+          <span><a href="__APP__/index/">首页</a>&gt</span>
+          <span>{$vo.type_name}</span>
+      </div>
+      <div class="cms-details">
+        <div class="article-list-wrap mgt">
+          <table width="980" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td>{$vo.type_content}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div style="clear:both"></div>
+  </div>
+</div>
+<include file="Public:_footer" />

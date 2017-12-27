@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>债权转让-项目详情</title>
+    <include file="Pub:header-common" />
+    <link rel="stylesheet" href="css/detail.css">
+    <style>
+        body{background: #f0f0f0}
+
+    </style>
+</head>
+<body>
+<include file="Pub:simple_header" />
+
+<div class="content">
+    <div class="list">
+
+        <div>
+            <div class="cost">
+                <div>转让金额（元）</div>
+                <div>{$info.borrow_money}</div>
+            </div>
+            <div class="price11">
+                <div class="price_sx">
+                    <div>可投金额(元)</div>
+                    <div>{$info.need}</div>
+                </div>
+                <div class="price_yj">
+                    <div>债权价值</div>
+                    <div>{$info.totalmoney}</div>
+                </div>
+            </div>
+            <div class="price12">
+                <div class="price_sx">
+                    <div>预期年化收益率</div>
+                    <div>{$info.borrow_interest_rate}<span style="font-size:1rem">%</span></div>
+                </div>
+                <div class="price_yj">
+                    <div>借款期限</div>
+                    <div>{$info.borrow_duration_txt}</div>
+                </div>
+
+            </div>
+            <div class="ts">申请转让日起息，坐收稳健收益</div>
+            <if condition = "$info['borrow_status'] eq 2">
+                <div class="mine_btn lj_btn" data-id="/M/debthome/invest?bid={$info['id']}" id="invest"> 立即投资</div>
+                <elseif condition = "$info['borrow_status'] eq 4"/>
+                <div class="lj_btn" style="background:#ccc;border-color:#ccc" > 复审中</div>
+                <elseif condition = "$info['borrow_status'] eq 6"/>
+                <div class="lj_btn" style="background:#ccc;border-color:#ccc" > 还款中</div>
+                <elseif condition = "$info['borrow_status'] eq 7"/>
+                <div class="lj_btn" style="background:#ccc;border-color:#ccc" > 已完成</div>
+            </if>
+            <div style="overflow:hidden">
+                <div class="spx"></div>
+                <div class="content_detail">
+                    <div><img src="__ROOT__/Style/Phone/img/xmmc.png" /></div>
+                    <div class="d_middle">项目名称</div>
+                    <div> {$info.borrow_name}</div>
+                </div>
+                <div class="spx"></div>
+                <div class="content_detail mine_btn" data-id="{:U('M/invest/detail', array('id'=>$info['old_borrow_id']))}" id="oldinfo">
+                    <div><img src="__ROOT__/Style/Phone/img/xmxx.png" /></div>
+                    <div class="d_middle">原项目信息</div>
+                    <i class="glyphicon glyphicon-menu-right c_d_i"></i>
+                </div>
+                <div class="spx"></div>
+                <div class="content_detail mine_btn" data-id="/M/Debthome/recode?id={$info.id}" id="recode">
+                    <div><img src="__ROOT__/Style/Phone/img/tbjl.png" /></div>
+                    <div class="d_middle">投资记录</div>
+                    <i class="glyphicon glyphicon-menu-right c_d_i"></i>
+                </div>
+                <div class="spx"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <include file="Pub:footer" />
+    <script>
+       $(function(){
+           //投标
+          $("#invest,#oldinfo,#recode").click(function(){
+              var url=$(this).attr("data-id");
+              location.href=url;
+          });
+       });
+    </script>
+</body>
+</html>
+

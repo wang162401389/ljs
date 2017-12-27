@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <include file="Pub:header-common" />
+	<link rel="stylesheet" href="__ROOT__/Style/Phone/css/certsuccess.css" >
+</head>
+
+<body>
+	<div id="header">
+		<div class="bar">
+			<div class="title">实名认证</div>
+		</div>
+	</div>
+
+	<div class="content certcon">
+		<div class="success">
+			<div class="text red">恭喜您，实名认证成功</div>
+		</div>
+		<img src="img/certsuccess.png" class="packetimg">
+
+		<table>
+			<tr>
+				<td>
+					<img src="img/certsuccess-img02.png" />
+					<p class="finished">用户注册</p>
+				</td>
+				<td>
+					<img src="img/certsuccess-img03.png" />
+					<p class="finished">实名认证</p>
+				</td>
+				<td>
+					<img src="img/certsuccess-img04.png" onclick="location.href='{:U('M/user/sinapass')}'"/>
+					<p>新浪支付密码</p>
+				</td>
+			</tr>
+		</table>
+		<br />
+		<div class="confirm">
+			<a type="button" class="btn btn-info" onclick="location.href='{:U('M/index/index')}'">开始理财</a>
+		</div>
+		<div class="text3">
+			牢记特速金融 · 链金所的官方网址<a href="http://www.ccfax.cn/">http://www.ccfax.cn/</a>
+		</div>
+	</div>
+
+	<!--弹窗-->
+    <div class="alldiv">
+        <div class="box">
+            <span class="close-btn js-close">×</span>
+            <div class="btn-div">
+                <a href="/M/user/mycoupons.html" class="btn">立即查看</a>
+            </div>
+        </div>
+    </div>
+
+	<include file="Pub:footer" />
+    <script type="text/javascript">
+        $(function(){
+            $('.js-close').click(function(){
+                $('.alldiv').hide();
+                $('.box').hide();
+            });
+        })
+    </script>
+</body>
+
+</html>

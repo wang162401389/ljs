@@ -1,0 +1,66 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<style>
+    #area_list {padding-left: 15px;text-align: center;}
+    .quan tr th,input{text-align:center}
+</style>
+<div class="so_main">
+    <div class="page_tit">奖品概率设置</div>
+    <form method="post" action="__URL__/config/{$num}" id="touzi_form">
+        <div id="search_div">
+            <div class="form2" style="background-color: #d2dbea;">
+                <table style="width: 80%;height: 80px;">
+                    <tr>
+                        <td style="width: 330px;">总数：{$num_total}</td>
+                        <td>剩余数：{$num_left}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="list">
+            <table class="quan" id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            	<tr>
+	                <th><if condition="$num eq 3">加息券额度<else/>奖品名称</if></th>
+	                <th>详情</th>
+	                <th>总数</th>
+	                <th>剩余数量</th>
+	                <th>概率</th>
+	            </tr>
+	            <volist id="vo" name="list">
+		            <tr>
+		                <td><if condition="$num eq 3">{$vo.value}%<else/>{$vo.info}</if></td>
+		                <td>
+			                <if condition="$num eq 1">
+		                		现金
+	                		<elseif condition="$num eq 2"/>
+	                			<switch name="vo.type">
+									<case value="0">投资券</case>
+									<case value="1">快乐豆</case>
+									<case value="2">体验金</case>
+									<case value="3">现金</case>
+									<case value="4">实物</case>
+									<case value="5">加息券</case>
+									<case value="6">谢谢参与</case>
+									<default />无
+								</switch>
+	                		<elseif condition="$num eq 3"/>
+	                			加息券
+	               			</if>
+			                <input type="hidden" name="id[]" value="{$vo.id}">
+		                </td>
+		                <td>{$vo.num_total}</td>
+		                <td><input type="text" name="num_left[]" value="{$vo.num_left}"></td>
+		                <td><input type="text" name="odds_0[]" value="{:$vo['odds_0']}">%</td>
+		            </tr>
+	            </volist>
+                <tr>
+                    <td colspan="5">
+                    <input id="sendBt" style="margin-left:45%;float:left;width:100px;height:25px;font-size:14px" type="submit" value="确认修改">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+<include file="Public:_footer" />

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>项目内容</title>
+    <include file="Pub:header-common" />
+    <link rel="stylesheet" href="css/recharge_detail.css" >
+</head>
+<body style="background: #FFFFFF;">
+<include file="Pub:simple_header" />
+<div class="t_allsection">
+    <table class="t_project" border="1">
+    <if condition="$vo.id egt 1660">
+            <tbody>
+            <tr>
+                <td class="t_recharge">借款方</td>
+                {$vo.borrow_info|borrow_info_pares='借款方',###}
+            </tr>
+            <tr>
+                <td class="t_recharge">借款金额</td>
+                {$vo.borrow_info|borrow_info_pares='借款金额',###}
+            </tr>
+            <tr>
+                <td class="t_recharge">借款期限</td>
+                {$vo.borrow_info|borrow_info_pares='借款期限',###}
+            </tr>
+            <tr>
+                <td class="t_recharge">还款来源</td>
+                {$vo.borrow_info|borrow_info_pares='还款来源',###}
+            </tr>
+            <tr>
+                <td class="t_title">借款方信息</td>
+                {$vo.borrow_info|borrow_info_pares='借款方信息',###}
+            </tr>
+            <tr>
+                <td class="t_title">项目状况</td>
+                {$vo.borrow_info|borrow_info_pares='项目状况',###}
+            </tr>
+            
+            </tbody>
+            <else/>
+                <tbody>
+                <tr>
+                    <td class="t_recharge">借款方</td>
+                    {$vo.borrow_info|borrow_info_pares='借款方',###}
+                </tr>
+                <tr>
+                    <td class="t_recharge">借款金额</td>
+                    {$vo.borrow_info|borrow_info_pares='借款金额',###}
+                </tr>
+                <tr>
+                    <td class="t_recharge">借款期限</td>
+                    {$vo.borrow_info|borrow_info_pares='借款期限',###}
+                </tr>
+                <tr>
+                    <td class="t_recharge">还款来源</td>
+                    {$vo.borrow_info|borrow_info_pares='还款来源',###}
+                </tr>
+                <tr>
+                    <td class="t_title">借款方信息</td>
+                    {$vo.borrow_info|borrow_info_pares='借款方信息',###}
+                </tr>
+                <tr>
+                    <td class="t_title">项目状况</td>
+                    {$vo.borrow_info|borrow_info_pares='项目状况',###}
+                </tr>
+                
+                </tbody>
+            </if>
+    </table>
+</div>
+<include file="Pub:footer" />
+</body>

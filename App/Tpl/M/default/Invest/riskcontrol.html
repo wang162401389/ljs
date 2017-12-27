@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>风险控制</title>
+		 <include file="Pub:header-common" />
+		 <link rel="stylesheet" href="css/recharge_detail.css" >
+	</head>
+	<body style="background:#fff;">
+		<include file="Pub:simple_header" />
+		<div class="t_allsection">
+    	<table class="t_project" border="1">
+    		<tbody>
+    			<tr>
+    				<td class="f_risk" style="width:7.3rem;">托管机构</td>
+    				{$vo.borrow_info|borrow_info_pares='托管机构',###}
+    			</tr>
+                <tr>
+	                <if condition="$vo.id egt 1660">
+	                	<if condition="$vo.product_type eq 10">
+	                		<td class="f_risk">项目类型</td>
+		                    <td>借款项目由核心授信企业、线上线下O2O平台和第三方提供保证的融资项目，主要为红木家具产业链上的优质企业及个人解决资金周转难题。</td>
+	                	<else/>
+		                	<td class="f_risk">质押物信息</td>
+		                    {$vo.borrow_info|borrow_info_pares='质押物信息',###}
+	                	</if>
+	                <else/>
+	      				<td class="f_risk">提单质押信息</td>
+	      				{$vo.borrow_info|borrow_info_pares='提单质押信息',###}
+	                </if>
+                </tr>
+    			<tr>
+    				<td class="f_risk">风控措施描述</td>
+    				{$vo.borrow_info|borrow_info_pares='风控措施描述',###}
+    			</tr>
+    			<tr>
+    				<td colspan="2">
+    					<if condition="$vo.product_type eq 10">
+		                    <img alt="" style="float:none;margin:0px;" src="/UF/Uploads/Article/20171026113859.png">
+		                <else/>
+		      				<img alt="" style="float:none;margin:0px;" src="/UF/Uploads/Article/20151010160540.png">
+		                </if>
+    				</td>
+    			</tr>
+    		</tbody>
+    	</table>
+    </div>
+    <include file="Pub:footer" />
+	</body>
+</html>

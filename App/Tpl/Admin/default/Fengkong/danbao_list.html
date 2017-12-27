@@ -1,0 +1,55 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+    var delUrl = '__URL__/doDel';
+    var addUrl = '__URL__/add';
+    var isSearchHidden = 1;
+</script>
+<div class="so_main">
+    <div class="page_tit">担保账号列表</div>
+    <!--搜索/筛选会员-->
+    <!--搜索/筛选会员-->
+    <div class="Toolbar_inbox" style="overflow: hidden" >
+        <div class="page right">{$pagebar}</div>
+    </div>
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th>公司ID</th>
+                <th>公司名称</th>
+                <th>公司地址</th>
+                <th>联系电话</th>
+                <th>法人</th>
+                <th>担保额度</th>
+                <th>已使用担保额度</th>
+                <th>获取保费用</th>
+                <th>操作</th>
+            </tr>
+            <?php foreach($info as $key=>$val) { ?>
+            <tr>
+                <td><?php echo $val['uid'] ?></td>
+                <td><?php echo $val['company_name'] ?></td>
+                <td><?php echo $val['address'] ?></td>
+                <td><?php echo $val['telephone'] ?></td>
+                <td><?php echo $val['legal_person'] ?></td>
+                <td><?php echo $val['max_money'] ?></td>
+                <td ><?php echo $val['borrow_money'] ?></td>
+                <td ><?php echo $val['vouch_money'] ?></td>
+                <td>
+                    <a href="__URL__/danbo_des?type=1&uid={$val['uid']}">正在担保标</a>
+                    <a href="__URL__/danbo_des?type=2&uid={$val['uid']}">完成担保标</a>
+                    <a href="__URL__/danbo_des?uid={$val['uid']}">全部担保标</a>
+                </td>
+            </tr>
+            <?php } ?>
+
+        </table>
+
+    </div>
+    <div class="Toolbar_inbox" style="overflow: hidden" >
+        <div class="page right">{$pagebar}</div>
+    </div>
+</div>
+
+
+<include file="Public:_footer" />

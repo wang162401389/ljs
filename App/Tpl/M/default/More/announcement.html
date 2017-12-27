@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<include file="Pub:header-common" /> 
+	<link rel="stylesheet" href="css/announcement.css" >
+</head>
+
+<body>
+	<include file="Pub:simple_header" />
+
+	<div class="content">
+        <php>foreach($noticeList['list'] as $kx => $vn){</php>
+		<div class="list"><a href="{$vn.arturl|setUrl=###}">
+            <div class="glyphicon glyphicon-menu-right" style="float: right"></div>
+			<div>{$vn.title|cnsubstr=###,18}</div>
+            <div class="date">{$vn.art_time|date="Y-m-d H:i",###}</div>
+
+		</a></div>
+        <php>};$noticeList=NULL;</php>
+	</div>
+	
+	 <include file="Pub:footer" />
+</body>
+
+</html>

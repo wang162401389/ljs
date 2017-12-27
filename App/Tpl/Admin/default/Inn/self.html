@@ -1,0 +1,53 @@
+<include file="Public:_header" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<tagLib name="htmlA" />
+<div class="so_main">
+    <div class="page_tit">内部在职员工自身投资返利2%</div>
+    <div id="search_div">
+        <div class="form2" style="background-color: #d2dbea;">
+            <form method="get" action="__URL__/self">
+                <table style="width: 80%;height: 80px;">
+                    <tr>
+                        <td>id：</td>
+                        <td> <input name="id" style="width:190px" id="tui_phone" type="text" value="{$search.id}"></td>
+                        <td>手机号：</td>
+                        <td> <input name="user_phone" style="width:190px" id="tui_phone" type="text" value="{$search.user_phone}"></td>
+                    </tr>
+                    <tr style="text-align: right;">
+                        <td colspan="6">
+                        <span class='chaxun'><input type="submit" value="查询"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th class="line_l">id</th>
+                <th class="line_l">手机号码</th>
+                <th class="line_l">真实姓名</th>
+                <th class="line_l">注册时间</th>
+                <th class="line_l">活动期间累计投资</th>
+                <th class="line_l">活动自身累计返利</th>
+            </tr>
+            <volist id="vo" name="list">
+                <tr>
+                    <td>{$vo.id}</td>
+                    <td>{$vo.user_phone}</td>
+                    <td>{$vo.real_name}</td>
+                    <td>{$vo.reg_date}</td>
+                    <td>{$vo.total_invest}</td>
+                    <td>{$vo.return}</td>
+                </tr>
+            </volist>
+        </table>
+        <div class="Toolbar_inbox" style="overflow: hidden">
+            <htmlA:commonBtn type="href" action="__URL__/{$xaction}?{$query}" value="将当前条件下数据导出为Excel"/>
+            <div class="page right">{$pagebar}</div>
+        </div>
+    </div>
+</div>
+<include file="Public:_footer" />

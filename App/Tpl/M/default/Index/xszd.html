@@ -1,0 +1,55 @@
+<html>
+<head>
+<include file="Pub:header-common" />
+
+<link rel="stylesheet" href="css/xszd.css">
+<script>
+    $(function() {
+        $("#content li").click(function(){
+            num=parseInt($(this).attr("data-toggle"));
+            $("#content li").find("div").attr("class","");
+            $(this).children("div").attr("class","current");
+            $(".banner").find("li").attr("class","none_show");
+            console.log(num);
+            $(".banner").children("ul").children("li").eq(num-1).attr("class","");
+        })
+    });
+</script>
+</head>
+<body>
+	<include file="Pub:simple_header" />
+	<img src="img/xszd-img01.png" />
+	<div class="part1">
+		<div class="header">
+			<img class="title" src="img/xszd-img02.png"/>
+		</div>
+		<div class="content">
+			链金所 ( www.ccfax.cn ) 是基于供应链 “物流、商流、信息流、资金流” 四流合一的产业链融通体系，以 “产融结合” 为基本指导理念，集齐解决投资、融资双向需求，创新性提出以国际货运提单为质押担保物的互联网金融投融平台。平台一木材为核心，依托高效的互联网信息发布渠道，为数以万家木材贸易商及家具工厂提供专业、个性化的金融服务，同时为网贷投资人提供搭建了一个安全、高效、便捷的互联网金融投资理财中心。
+		</div>
+	</div>
+	<div class="part2">
+		<div class="header">
+			<img class="title" src="img/xszd-img03.png"/>
+		</div>
+		<div class="flow">
+		<ul id="content">
+			<li data-toggle="1"><div class="current">注 册</div></li>
+			<li data-toggle="2"><div>实名认证</div></li>
+			<li data-toggle="3"><div>充 值</div></li>
+			<li data-toggle="4"><div>投 资</div></li>
+			<li data-toggle="5"><div>获得收益</div></li>
+		</ul>
+		</div>
+        <div class="banner">
+            <ul>
+                <li><a href="/M/pub/regist.html"><img src="img/new_person/01.jpg"></a></li>
+                <li class="none_show"><img src="img/new_person/02.jpg"></li>
+                <li class="none_show"><img src="img/new_person/03.jpg"></li>
+                <li class="none_show"><img src="img/new_person/04.jpg"></li>
+                <li class="none_show"><img src="img/new_person/05.jpg"></li>
+            </ul>
+        </div>
+	</div>
+	<include file="Pub:footer" />
+</body>
+</html>

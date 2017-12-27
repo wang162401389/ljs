@@ -1,0 +1,472 @@
+<include file="Public:_header_common" />
+<title>{$title}-{$glo.index_title}</title> 
+<meta http-equiv="keywords" content="{$glo.web_keywords}" />
+<meta http-equiv="description" content="{$glo.web_descript}" />
+<script type="text/javascript" src="__ROOT__/Style/H/js/common.js" language="javascript"></script>
+<script type="text/javascript">
+var Transfer_invest_url = "__APP__/tinvest";
+
+</script>
+<!-- <script type="text/javascript" src="__ROOT__/Style/H/js/area.js"></script> -->
+<!-- <script type="text/javascript" src="__ROOT__/Style/H/js/ScrollPic.js"></script> -->
+<style type="text/css"> 
+.con{overflow:hidden; margin:30px auto; width:442px; height:100%; padding:10px 15px; border:solid 1px #FCBA79; background-color:#FFFBEC;} 
+#carousel_container{position:relative; height:100px; overflow:hidden;} 
+#carousel_inner{width:300px; height:95px; overflow: hidden; position:absolute;left:25px; top:5px;} 
+#carousel_ul{width:9999px; height:82px; position:relative;} 
+#carousel_ul li{float: left;width:80px; height:80px; } 
+#carousel_ul li img{width:60px; height:60px;}
+ 
+</style> 
+<link rel="stylesheet" href="__ROOT__/Style/H/css/activity.css" />
+<include file="Public:_header_main" />
+<tagLib name="htmlA" />
+    <div class="auout_banner"><img src="__ROOT__/Style/H/images/security/banner2_02.png"></div>
+    <!-- 新手指引 -->
+    <div class="divcenter" style="background:url(__ROOT__/Style/H/images/security/huangdiBJ_04.png);">
+        <div class="divwk">
+            <img src="__ROOT__/Style/H/images/security/huodongjiangping_05.png">
+        </div>
+     <div style="background:url(__ROOT__/Style/H/images/security/xuxian.png); width:1001px; height:1px; margin:auto; margin-bottom:30px; margin-top:30px;"></div>
+     <div style="text-align:center; background:#f26700; padding:20px 0px; border-radius:5px; width:230px; margin:auto; color:#fff; font-size:26px; cursor:pointer" onclick="location.href='<if condition='$login eq 1'>__APP__/invest/index.html<else/>__APP__/member/common/login</if>'" >立即参加</div>
+     <div style="height:30px;"></div>
+     </div>
+    <!-- 黄色分隔线 -->
+   
+    <!-- 解析平台模式 -->
+    <div class="divcenter" style="background:url(__ROOT__/Style/H/images/security/chengsebj_04.png);">
+        <div class="divwk">
+            <img src="__ROOT__/Style/H/images/security/huodongxj.png" style="margin-top:50px;">
+        </div>
+        <div class="divwk b_k">
+        <div style="margin-bottom:10px;font-size:22px; color:#313131;">投资排名</div>
+        <div style="width:570px;float:left;height:300px;overflow-y:scroll;">
+            <div style="width:550px; float:left;">
+                <div class="b_k_d">
+                	<div class="s_1">用户名</div>
+                    <div class="s_2">投资金额</div>
+                    <div class="s_3">获得奖励</div>
+                </div>
+                <volist name="info" id="i">
+                    <div class="b_k_d">
+                        <div class="s_1">{$i.user_name}</div>
+                        <div class="s_2">{$i.totalmoney}</div>
+                        <div class="s_3">{$i.gift}</div>
+                    </div>
+                </volist>
+            </div> 
+        </div>      
+        <div style="float:left;">  <img src="__ROOT__/Style/H/images/security/shuxian.png" style="margin-left:47px; margin-right:13px;"></div>    
+        <div class="hj_content" >
+        	<div class="c_1">投资获奖记录</div>
+            <div class="c_2">
+            	<span>用户名：</span>
+                <span><input type="text" id="uname" class="c_2_input"/></span>
+            </div>
+            <div class="c_3" id="aa"><input style="cursor:pointer;" type="button" value="立即查看" class=" c_3_button"/></div>
+            <div style="  width:275px; margin:auto;margin-top:35px;"><img src="__ROOT__/Style/H/images/security/katongrw.png"  ></div>    
+        </div> 
+        
+        </div>
+         <div class="divwk" style=" margin-top:20px; padding-bottom:30px;">
+         <div style="font-size:20px; color:#313131; line-height:40px; font-weight:500">活动规则：</div>
+         <div style="font-size:16px; color:#313131; line-height:35px;">
+         	1、活动时间：2016年1月1日~2016年2月1日；<br />
+            2、奖励说明：仅限活动期间新进和续投的投资总额，单个用户仅有一次获奖机会，奖品不可折成现金返还，奖品以实物为主图片仅供参考；<br />
+            3、兑奖方式：活动结束后的3个工作日内公布获奖结果；春节假期结束后的15个工作日内寄出奖品、而奖励红包由系统发至链金所用户账户；<br />
+            4、售后说明：所有奖品由第三方合作提供售后保障，链金所不负责奖品的任何维修、退换服务及其它赔付；<br />
+            5、如有疑问请致电客服电话400－6626－985反馈您的意见及建议，感谢您的理解；<br/>
+            6、本次活动最终解释权归链金所理财平台所有。<br />    
+         </div> 
+         </div>
+    </div>
+<!--弹出框-->
+<div class="advbox">
+  <div class="advpic" style="background:url(__ROOT__/Style/H/images/security/tankuan_03.png);" >
+    
+        <div class="divcenter" style="height:170px;">
+        	<!--<div class="header">
+            	<img src="__ROOT__/Style/H/images/security/touxiang.png" height="80" width="80">
+            </div>-->
+            <div class="h_content">
+            <div id="username" class="h_c_1">尊敬的张先生:</div>
+            <div id="info" class="h_c_2">您已投资***元，获得大米一袋奖励，距离下一个大奖还需投资***元</div>
+            
+            </div>
+    </div>
+        <div >
+            
+            <div class="prev" id="left_scroll"><a href="javascript:void(0)"></a></div>
+            <input type="hidden" id="money" value=""/>
+            <div class="v_show">
+            </div>
+            <div class="next" id="right_scroll"><a href="javascript:void(0)"></a> </div>
+           
+           
+        </div>
+      
+        <div style="width:401px; overflow:hidden; margin-left:137px;">
+    <ul  class="choice_img jiang" id="carousel_ul">
+    	
+     
+        
+    
+    </ul>
+    </div>
+    <a href="javascript:void(0);" class="closebtn" style="">X</a>
+  </div>
+</div>
+<div id="fade" class="black_overlay"></div>
+<div id="MyDiv"></div>
+
+<include file="Public:_footer" />
+<script type="text/javascript">
+
+//弹出隐藏层
+function ShowDiv(show_div,bg_div){
+    document.getElementById(show_div).style.display='block';
+    document.getElementById(bg_div).style.display='block' ;
+    var bgdiv = document.getElementById(bg_div);
+    bgdiv.style.width = document.body.scrollWidth;
+    // bgdiv.style.height = $(document).height();
+    $("#"+bg_div).height($(document).height());
+};
+//关闭弹出层
+function CloseDiv(show_div,bg_div)
+{
+    document.getElementById(show_div).style.display='none';
+    document.getElementById(bg_div).style.display='none';
+};
+//回车事件
+
+    $('#uname').keydown(function(e){ 
+        if(e.keyCode==13){ 
+        $('#aa').click(); //处理事件 
+        } 
+    });
+
+function change(num,id){
+    var name="";
+    var gift="";
+    var m = "";
+    var money = $("#money").val();
+    $(".v_show").empty();
+    if(money<10000){
+        gift = "春节红包";
+    }else if(money>=10000 && money < 50000){
+        gift = "实惠奖";
+    }else if(money>=50000 && money < 100000){
+        gift = "超值奖";
+    }else if(money>=100000 && money < 500000){
+        gift = "超值奖";
+    }else if(money>=500000 && money < 1000000){
+        gift = "精品奖";
+    }else{
+        gift = "至尊奖";
+    }
+    if(id == 1){
+        $(".v_show").append("<img src='__ROOT__/Style/H/images/security/mi.png'>");
+    }else if(id == 2){
+        $(".v_show").append("<img src='__ROOT__/Style/H/images/security/you.png'>");
+    }else if(id == 3){
+        $(".v_show").append("<img src='__ROOT__/Style/H/images/security/jianguo.png'>");
+    }else if(id == 4){
+        $(".v_show").append("<img src='__ROOT__/Style/H/images/security/feilipu.png'>");
+    }else if(id == 5){
+        $(".v_show").append("<img src='__ROOT__/Style/H/images/security/xiangshui.png'>");
+    }else if(id == 6){
+        $(".v_show").append("<img src='__ROOT__/Style/H/images/security/jiaopen.png'>");
+    }else if(id == 10){
+        $(".v_show").append("<img src='__ROOT__/Style/H/images/security/hongbao.png'>");
+    }
+    if(num == 1){
+        m = 10000-money;
+        if(m<=0){
+            if(money < 50000){
+                $("#info").html("此奖与您所获得奖品同级别，只能选其一噢！");
+            }else{
+                $("#info").html("您所获得奖品价值更高，如需调换，请联系在线客服或拨打400-6626-985！");
+            }
+        }else{
+            name = "实惠奖";
+            $("#info").html("您已投资"+money+"元，获得"+gift+"，距离"+name+"，只差"+m+"元噢！");  
+        }
+       
+    }else if(num == 2){
+        m = 50000-money;
+        if(m<=0){
+            if(money < 100000){
+                $("#info").html("此奖与您所获得奖品同级别，只能选其一噢！");
+            }else{
+                $("#info").html("您所获得奖品价值更高，如需调换，请联系在线客服或拨打400-6626-985！");
+            }
+        }else{
+            name = "超值奖";
+            $("#info").html("您已投资"+money+"元，获得"+gift+"，距离"+name+"，只差"+m+"元噢！");  
+        }
+    }else if(num == 3){
+        m = 100000-money;
+        if(m<=0){
+             if(id == 7){
+                $("#info").html("您已获得该奖品！");  
+            }else{
+                $("#info").html("您所获得奖品价值更高，如需调换，请联系在线客服或拨打400-6626-985！");  
+            }
+        }else{
+            name = "精品奖";
+            $("#info").html("您已投资"+money+"元，获得"+gift+"，距离"+name+"，只差"+m+"元噢！");  
+        }
+        $(".v_show").append("<img src='__ROOT__/Style/H/images/security/iwatch.png'>");
+    }else if(num == 4){
+        m = 500000-money;
+        if(m<=0){
+            if(id == 8){
+                $("#info").html("您已获得该奖品！");  
+            }else{
+                $("#info").html("您所获得奖品价值更高，如需调换，请联系在线客服或拨打400-6626-985！");  
+            }
+        }else{
+            name = "豪华奖";
+            $("#info").html("您已投资"+money+"元，获得"+gift+"，距离"+name+"，只差"+m+"元噢！");  
+        }
+        $(".v_show").append("<img src='__ROOT__/Style/H/images/security/shouji.png'>");
+    }else if(num == 5){
+        m = 1000000-money;
+        name = "至尊奖";
+        $(".v_show").append("<img src='__ROOT__/Style/H/images/security/maerdaifu.png'>");
+        $("#info").html("您已投资"+money+"元，获得"+gift+"，距离"+name+"，只差"+m+"元噢！");  
+    }
+	var liindex = $('#carousel_ul li').index(this);  //元素的索引值
+		$(this).addClass('on').siblings().removeClass('on'); //兄弟节点去掉on这个类
+		$('#img li').eq(liindex).fadeIn(150).siblings('#img li').hide();  //得到的索引值找到li是哪一个 然后隐藏兄弟
+	$('#carousel_ul li').click(function(){
+	var liindex = $('#carousel_ul li').index(this);  //元素的索引值
+		$(this).addClass('on').siblings().removeClass('on'); //兄弟节点去掉on这个类
+		$('#img li').eq(liindex).fadeIn(150).siblings('#img li').hide();  //得
+	});
+}
+
+$("#aa").click(function(){
+	
+    if($("#uname").val()=="" || $("#uname").val()== null){
+        alert("请输入用户名");
+    }else{
+        $.ajax({
+            type:"post",
+            url:"__URL__/checkuser",
+            data:{uname:$("#uname").val()},
+            dataType:"json",
+            success:function(d){
+                if(d.status == 1){
+                    $("#username").html("尊敬的"+$("#uname").val()+":");
+                    $(".v_show").empty();
+                    $(".jiang").empty();
+                    $("#money").val(d.data["totalmoney"]);
+                    var num = parseInt(Math.random()*2); 
+                    if(d.data["totalmoney"]<10000){
+                        $(".prev").show();
+                        $(".next").show();
+                        $("#info").html("您已投资"+d.data["totalmoney"]+"元，获得"+d.data["gift"]+"，距离实惠奖，只差"+d.data["money"]+"元噢！");
+                        $(".v_show").append("<img src='__ROOT__/Style/H/images/security/hongbao.png'>");
+                        $(".jiang").append("<li onclick='change(1,1)'><img src='__ROOT__/Style/H/images/security/mi.png'></li>");
+                        $(".jiang").append("<li onclick='change(1,2)'><img src='__ROOT__/Style/H/images/security/you.png'></li>");
+                        $(".jiang").append("<li onclick='change(1,3)'><img src='__ROOT__/Style/H/images/security/jianguo.png'></li>");
+                        $(".jiang").append("<li onclick='change(2,4)'><img src='__ROOT__/Style/H/images/security/feilipu.png'></li>");
+                        $(".jiang").append("<li onclick='change(2,5)'><img src='__ROOT__/Style/H/images/security/xiangshui.png'></li>");
+                        $(".jiang").append("<li onclick='change(2,6)'><img src='__ROOT__/Style/H/images/security/jiaopen.png'></li>");
+                        $(".jiang").append("<li onclick='change(3,7)'><img src='__ROOT__/Style/H/images/security/iwatch.png'></li>");
+                        $(".jiang").append("<li onclick='change(4,8)'><img src='__ROOT__/Style/H/images/security/shouji.png'></li>");
+                        $(".jiang").append("<li onclick='change(5,9)'><img src='__ROOT__/Style/H/images/security/maerdaifu.png'></li>");
+						$(".jiang").append("<li onclick='change(0,10)'><img src='__ROOT__/Style/H/images/security/hongbao.png'></li>");
+                    }
+                    if(d.data["totalmoney"]>=10000 && d.data["totalmoney"] < 50000){
+                        $(".prev").show();
+                        $(".next").show();
+                        $("#info").html("您已投资"+d.data["totalmoney"]+"元，获得"+d.data["gift"]+"，距离超值奖，只差"+d.data["money"]+"元噢！");
+                        $(".jiang").append("<li onclick='change(2,4)'><img src='__ROOT__/Style/H/images/security/feilipu.png'></li>");
+                        $(".jiang").append("<li onclick='change(2,5)'><img src='__ROOT__/Style/H/images/security/xiangshui.png'></li>");
+                        $(".jiang").append("<li onclick='change(2,6)'><img src='__ROOT__/Style/H/images/security/jiaopen.png'></li>");
+                        $(".jiang").append("<li onclick='change(3,7)'><img src='__ROOT__/Style/H/images/security/iwatch.png'></li>");
+                        $(".jiang").append("<li onclick='change(4,8)'><img src='__ROOT__/Style/H/images/security/shouji.png'></li>");
+                        $(".jiang").append("<li onclick='change(5,9)'><img src='__ROOT__/Style/H/images/security/maerdaifu.png'></li>");
+                        $(".jiang").append("<li onclick='change(1,1)'><img src='__ROOT__/Style/H/images/security/mi.png'></li>");
+                        $(".jiang").append("<li onclick='change(1,2)'><img src='__ROOT__/Style/H/images/security/you.png'></li>");
+                        $(".jiang").append("<li onclick='change(1,3)'><img src='__ROOT__/Style/H/images/security/jianguo.png'></li>");
+                        if(num == 0){
+                            $(".v_show").append("<img src='__ROOT__/Style/H/images/security/mi.png'>");
+                        }else if(num == 1){
+                            $(".v_show").append("<img src='__ROOT__/Style/H/images/security/you.png'>");
+                        }else{
+                            $(".v_show").append("<img src='__ROOT__/Style/H/images/security/jianguo.png'>");
+                        }
+                    }
+                    if (d.data["totalmoney"] >=50000 && d.data["totalmoney"] < 100000) {
+                        $(".prev").show();
+                        $(".next").show();
+                        $("#info").html("您已投资"+d.data["totalmoney"]+"元，获得"+d.data["gift"]+"，距离精品奖，只差"+d.data["money"]+"元噢！");
+                        $(".jiang").append("<li onclick='change(3,7)'><img src='__ROOT__/Style/H/images/security/iwatch.png'></li>");
+                        $(".jiang").append("<li onclick='change(4,8)'><img src='__ROOT__/Style/H/images/security/shouji.png'></li>");
+                        $(".jiang").append("<li onclick='change(5,9)'><img src='__ROOT__/Style/H/images/security/maerdaifu.png'></li>");
+                        $(".jiang").append("<li onclick='change(1,1)'><img src='__ROOT__/Style/H/images/security/mi.png'></li>");
+                        $(".jiang").append("<li onclick='change(1,2)'><img src='__ROOT__/Style/H/images/security/you.png'></li>");
+                        $(".jiang").append("<li onclick='change(1,3)'><img src='__ROOT__/Style/H/images/security/jianguo.png'></li>");
+                        $(".jiang").append("<li onclick='change(2,4)'><img src='__ROOT__/Style/H/images/security/feilipu.png'></li>");
+                        $(".jiang").append("<li onclick='change(2,5)'><img src='__ROOT__/Style/H/images/security/xiangshui.png'></li>");
+                        $(".jiang").append("<li onclick='change(2,6)'><img src='__ROOT__/Style/H/images/security/jiaopen.png'></li>");
+                        if(num == 0){
+                            $(".v_show").append("<img src='__ROOT__/Style/H/images/security/feilipu.png'>");
+                        }else if(num == 1){
+                            $(".v_show").append("<img src='__ROOT__/Style/H/images/security/xiangshui.png'>");
+                        }else{
+                            $(".v_show").append("<img src='__ROOT__/Style/H/images/security/jiaopen.png'>");
+                        }
+                    }
+                    if (d.data["totalmoney"] >=100000 && d.data["totalmoney"] < 500000) {
+                        $(".prev").show();
+                        $(".next").show();
+                        $("#info").html("您已投资"+d.data["totalmoney"]+"元，获得"+d.data["gift"]+"，距离豪华奖，只差"+d.data["money"]+"元噢！");
+                        $(".v_show").append("<li><img src='__ROOT__/Style/H/images/security/iwatch.png'></li>");
+                        $(".jiang").append("<li onclick='change(4,8)'><img src='__ROOT__/Style/H/images/security/shouji.png'></li>");
+                        $(".jiang").append("<li onclick='change(5,9)'><img src='__ROOT__/Style/H/images/security/maerdaifu.png'></li>");
+                        $(".jiang").append("<li onclick='change(1,1)'><img src='__ROOT__/Style/H/images/security/mi.png'></li>");
+                        $(".jiang").append("<li onclick='change(1,2)'><img src='__ROOT__/Style/H/images/security/you.png'></li>");
+                        $(".jiang").append("<li onclick='change(1,3)'><img src='__ROOT__/Style/H/images/security/jianguo.png'></li>");
+                        $(".jiang").append("<li onclick='change(2,4)'><img src='__ROOT__/Style/H/images/security/feilipu.png'></li>");
+                        $(".jiang").append("<li onclick='change(2,5)'><img src='__ROOT__/Style/H/images/security/xiangshui.png'></li>");
+                        $(".jiang").append("<li onclick='change(2,6)'><img src='__ROOT__/Style/H/images/security/jiaopen.png'></li>");
+                        $(".jiang").append("<li onclick='change(3,7)'><img src='__ROOT__/Style/H/images/security/iwatch.png'></li>");
+                    }
+                    if (d.data["totalmoney"] >=500000 && d.data["totalmoney"] < 1000000) {
+                        $(".prev").show();
+                        $(".next").show();
+                        $("#info").html("您已投资"+d.data["totalmoney"]+"元，获得"+d.data["gift"]+"，距离至尊奖，只差"+d.data["money"]+"元噢！");
+                        $(".v_show").append("<li><img src='__ROOT__/Style/H/images/security/shouji.png'></li>");
+                        $(".jiang").append("<li onclick='change(5,9)'><img src='__ROOT__/Style/H/images/security/maerdaifu.png'></li>");
+                        $(".jiang").append("<li onclick='change(1,1)'><img src='__ROOT__/Style/H/images/security/mi.png'></li>");
+                        $(".jiang").append("<li onclick='change(1,2)'><img src='__ROOT__/Style/H/images/security/you.png'></li>");
+                        $(".jiang").append("<li onclick='change(1,3)'><img src='__ROOT__/Style/H/images/security/jianguo.png'></li>");
+                        $(".jiang").append("<li onclick='change(2,4)'><img src='__ROOT__/Style/H/images/security/feilipu.png'></li>");
+                        $(".jiang").append("<li onclick='change(2,5)'><img src='__ROOT__/Style/H/images/security/xiangshui.png'></li>");
+                        $(".jiang").append("<li onclick='change(2,6)'><img src='__ROOT__/Style/H/images/security/jiaopen.png'></li>");
+                        $(".jiang").append("<li onclick='change(3,7)'><img src='__ROOT__/Style/H/images/security/iwatch.png'></li>");
+                        $(".jiang").append("<li onclick='change(4,8)'><img src='__ROOT__/Style/H/images/security/shouji.png'></li>");
+                    }
+                    if (d.data["totalmoney"] >= 1000000 && d.data["gift"] == "至尊奖") {
+                        $(".prev").hide();
+                        $(".next").hide();
+                        $(".v_show").append("<li><img src='__ROOT__/Style/H/images/security/maerdaifu.png'></li>");
+                        $("#info").html("您已投资"+d.data["totalmoney"]+"元，获得"+d.data["gift"]+"!");
+                    }
+                    if (d.data["totalmoney"] >= 1000000 && d.data["gift"] == "豪华奖") {
+                        $(".prev").hide();
+                        $(".next").hide();
+                        $(".v_show").append("<li><img src='__ROOT__/Style/H/images/security/shouji.png'></li>");
+                        $("#info").html("您已投资"+d.data["totalmoney"]+"元，获得"+d.data["gift"]+"!");
+                    }
+                    $("#img").append("<input type='hidden' id='money' value='"+d.data["totalmoney"]+"'/>");
+                    ShowDiv('MyDiv','fade');
+                    $(".advbox").show();
+                    $(".advbox").animate({top:"40%"},1000);
+                    $(".closebtn").click(function(){
+                    $(".advbox").fadeOut(500);
+                        CloseDiv('MyDiv','fade');
+                    })
+                }else if(d.status == 2){
+                    alert(d.data);
+                }else{
+                    alert("您还未注册呢，请注册之后再参加活动吧");
+                    location.href="__APP__/member/common/register";
+                }
+            }
+        });
+       
+    }
+})
+</script>
+
+<script type="text/javascript"> 
+var SellerScroll = function(options){ 
+this.SetOptions(options); 
+this.lButton = this.options.lButton; 
+this.rButton = this.options.rButton; 
+this.oList = this.options.oList; 
+this.showSum = this.options.showSum; 
+
+this.iList = $("#" + this.options.oList + " > li"); 
+this.iListSum = this.iList.length; 
+this.iListWidth = this.iList.outerWidth(true); 
+this.moveWidth = this.iListWidth * this.showSum; 
+
+this.dividers = Math.ceil(this.iListSum / this.showSum);//Ϊٿ 
+this.moveMaxOffset = (this.dividers - 1) * this.moveWidth; 
+this.LeftScroll(); 
+this.RightScroll(); 
+}; 
+SellerScroll.prototype = { 
+SetOptions: function(options){ 
+this.options = { 
+lButton: "left_scroll", 
+rButton: "right_scroll", 
+oList: "carousel_ul", 
+showSum: 5//һιٸitems 
+}; 
+$.extend(this.options, options || {}); 
+}, 
+ReturnLeft: function(){ 
+return isNaN(parseInt($("#" + this.oList).css("left"))) ? 0 : parseInt($("#" + this.oList).css("left")); 
+}, 
+LeftScroll: function(){ 
+if(this.dividers == 1) return; 
+var _this = this, currentOffset; 
+$("#" + this.lButton).click(function(){ 
+currentOffset = _this.ReturnLeft(); 
+if(currentOffset == 0){ 
+for(var i = 1; i <= _this.showSum; i++){ 
+$(_this.iList[_this.iListSum - i]).prependTo($("#" + _this.oList)); 
+} 
+$("#" + _this.oList).css({ left: -_this.moveWidth }); 
+$("#" + _this.oList + ":not(:animated)").animate( { left: "+=" + _this.moveWidth }, { duration: "slow", complete: function(){ 
+for(var j = _this.showSum + 1; j <= _this.iListSum; j++){ 
+$(_this.iList[_this.iListSum - j]).prependTo($("#" + _this.oList)); 
+} 
+$("#" + _this.oList).css({ left: -_this.moveWidth * (_this.dividers - 1) }); 
+} } ); 
+}else{ 
+$("#" + _this.oList + ":not(:animated)").animate( { left: "+=" + _this.moveWidth }, "slow" ); 
+} 
+}); 
+}, 
+RightScroll: function(){ 
+if(this.dividers == 1) return; 
+var _this = this, currentOffset; 
+$("#" + this.rButton).click(function(){ 
+currentOffset = _this.ReturnLeft(); 
+if(Math.abs(currentOffset) >= _this.moveMaxOffset){ 
+for(var i = 0; i < _this.showSum; i++){ 
+$(_this.iList[i]).appendTo($("#" + _this.oList)); 
+} 
+$("#" + _this.oList).css({ left: -_this.moveWidth * (_this.dividers - 2) }); 
+
+$("#" + _this.oList + ":not(:animated)").animate( { left: "-=" + _this.moveWidth }, { duration: "slow", complete: function(){ 
+for(var j = _this.showSum; j < _this.iListSum; j++){ 
+$(_this.iList[j]).appendTo($("#" + _this.oList)); 
+} 
+$("#" + _this.oList).css({ left: 0 }); 
+} } ); 
+}else{ 
+$("#" + _this.oList + ":not(:animated)").animate( { left: "-=" + _this.moveWidth }, "slow" ); 
+} 
+}); 
+} 
+}; 
+$(".next a").click(function(){ 
+var ff = new SellerScroll(); 
+}); 
+$(".prev a").click(function(){ 
+var ff = new SellerScroll(); 
+}); 
+function aa1(){		
+	//设计案例切换
+	
+	} 
+</script> 

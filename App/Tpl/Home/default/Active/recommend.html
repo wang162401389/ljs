@@ -1,0 +1,114 @@
+<include file="Public:_header_common" />
+<title>链金所推荐有奖</title>
+<meta http-equiv="keywords" content="{$glo.web_keywords}" />
+<meta http-equiv="description" content="{$glo.web_descript}" />
+<include file="Public:_header_main" />
+<style>
+    body{background: #fff4b4}
+    .g-recommend-banner{height: 600px; background: url(__ROOT__/Style/H/images/recommend/g-recommend-banner.jpg) center top scroll #fff4b4 no-repeat;}
+
+    .rec-banmain{width:1200px; height: 600px; position: relative; margin: 0px auto;}
+    .rec-banmain .rec-bcar{width:706px; height: 568px; display: block; position: absolute; top:28px; left:3px; background: url(__ROOT__/Style/H/images/recommend/rec-bcar.png) no-repeat; -webkit-animation:carmove 1s ease;  -moz-animation:carmove 1s ease; -ms- animation:carmove 1s ease;  animation:carmove 1s ease; z-index: 7;}
+    .rec-banmain .rec-bgood{width:97px; height: 145px; display: block; position: absolute; top:129px; left: -8px; background: url(__ROOT__/Style/H/images/recommend/rec-bgood.png) no-repeat; -webkit-animation:goodmove 1s ease forwards; -moz-animation:goodmove 1s ease forwards; -ms-animation:goodmove 1s ease forwards; animation:goodmove 1s ease forwards; -webkit-animation-delay: .8s; -moz-animation-delay:.8s; -ms-animation-delay:.8s; animation-delay:.8s; opacity: 0; z-index: 5;}
+    .rec-banmain .rec-btitle{width:697px; height: 188px; display: block; position: absolute; top:109px; left: 386px; background: url(__ROOT__/Style/H/images/recommend/rec-btitle.png) no-repeat; -webkit-animation:titlemove 1s ease forwards;  -moz-animation:titlemove 1s ease forwards; -ms- animation:titlemove 1s ease forwards;  animation:titlemove .8s ease forwards; -webkit-animation-delay: .7s; -moz-animation-delay:.7s; -ms-animation-delay:.7s; animation-delay:.7s; opacity: 0; z-index: 4;}
+    .rec-p1{width:1186px; height: 420px; color:#501300; position: relative; margin: 0px auto; background: url(__ROOT__/Style/H/images/recommend/rec-p1.jpg) no-repeat}
+    .rec-p1-tit{position: absolute; top:136px; left:30px; font-size: 27px;}
+    .rec-p1-des{width:928px; position: absolute; top:216px; left: 116px; line-height: 49px; font-size: 26px;}
+    .rec-p2{width:1110px; margin:0px auto; color:#501300; padding: 60px 0; position: relative;}
+    .rec-p2 .rec-star{width:63px; height: 59px; display: block; position: absolute; top:100px; left: 747px; background: url(__ROOT__/Style/H/images/recommend/rec-star.png) no-repeat}
+    .rec-p2 .rec-p2-tit{width:246px; height:59px; margin-bottom: 40px; background: url(__ROOT__/Style/H/images/recommend/rec-p2-tit.png) no-repeat;}
+    .rec-p2 .rec-p2-des1{font-size: 32px; margin-bottom: 30px;}
+    .rec-p2 .rec-p2-des2{font-size: 26px; color:#501300}
+    .rec-p2-des2 a,.rec-p2-des2 a:hover{color:#eb5f4b; margin-left: 5px; font-size: 26px; text-decoration: underline;}
+    .rec-p3{width:1110px; margin:0px auto; color:#501300; padding: 0; position: relative;}
+    .rec-p3 .rec-p3-tit{width:499px; height: 146px; position: absolute; top:-135px; left:0px; background: url(__ROOT__/Style/H/images/recommend/rec-p3-tit.png) no-repeat;}
+    .r-p3table{border:1px solid #eb5f4b; text-align:center;border-collapse:collapse;}
+    .rec-p3table-wrap{margin-top: 130px;}
+    .r-p3table td{border:1px solid #eb5f4b; padding: 30px; font-size: 26px;}
+    .rec-p3-des{margin-top: 30px; font-size: 26px; line-height: 46px;}
+    .rec-p3-company{text-align: right; font-size: 26px; margin-top: 30px; line-height: 46px;}
+    .rec-p3-company p{padding-right: 274px;}
+
+    /*动画*/
+    @-webkit-keyframes carmove{from{transform:translateX(-600px) translateY(-100px) scale(0.3);}to{transform:translateX(0px)transform:translateY(0px) scale(1);}}
+    @-moz-keyframes carmove{from{transform:translateX(-600px) translateY(-100px) scale(0.3);}to{transform:translateX(0px)transform:translateY(0px) scale(1);}}
+    @-ms-keyframes carmove{from{transform:translateX(-600px) translateY(-100px) scale(0.3);}to{transform:translateX(0px)transform:translateY(0px) scale(1);}}
+    @keyframes carmove{from{transform:translateX(-600px) translateY(-100px) scale(0.3);}to{transform:translateX(0px)transform:translateY(0px) scale(1);}}
+    @-webkit-keyframes goodmove{from{opacity:0}to{opacity:1}}
+    @-moz-keyframes goodmove{from{opacity:0}to{opacity:1}}
+    @-ms-keyframes goodmove{from{opacity:0}to{opacity:1}}
+    @keyframes goodmove{from{opacity:0}to{opacity:1}}
+    @-webkit-keyframes titlemove{from{transform:translateX(-400px) translateY(40px) scale(0.2);opacity:0}to{transform:translateX(0px)transform:translateY(0px) scale(1);opacity:1}}
+    @-moz-keyframes titlemove{from{transform:translateX(-400px) translateY(40px) scale(0.2);opacity:0}to{transform:translateX(0px)transform:translateY(0px) scale(1);opacity:1}}
+    @-ms-keyframes titlemove{from{transform:translateX(-400px) translateY(40px) scale(0.2);opacity:0}to{transform:translateX(0px)transform:translateY(0px) scale(1);opacity:1}}
+    @keyframes titlemove{from{transform:translateX(-400px) translateY(40px) scale(0.2);opacity:0}to{transform:translateX(0px)transform:translateY(0px) scale(1);opacity:1}}
+
+</style>
+<div class="g-recommend-banner">
+    <div class="rec-banmain">
+        <span class="rec-bcar"></span>
+        <span class="rec-bgood"></span>
+        <span class="rec-btitle"></span>
+    </div>
+</div>
+<div class="rec-p1">
+    <p class="rec-p1-tit">2017年1月9日-2017年1月22日</p>
+    <div class="rec-p1-des">
+        尊敬的老司机们（链金所用户）：<br>
+        <span style="padding-left: 2em;"></span>平台年终第一波福利“新年好彩头，许愿梦成真”正在热辣进行，第二弹平台好礼又火辣来袭。天上掉下的馅饼，赶快卷起袖子一起撸。嘿嘿嘿！！！
+    </div>
+</div>
+
+<div class="rec-p2">
+    <div class="rec-p2-tit"></div>
+    <span class="rec-star"></span>
+    <p class="rec-p2-des1">所有（除内部员工）的注册用户</p>
+    <p class="rec-p2-des2">备注：新手福利详情请点击 <a href="/security/tiyanjin" target="_blank">https://www.ccfax.cn/security/tiyanjin</a></p>
+</div>
+
+<div class="rec-p3">
+    <div class="rec-p3-tit"></div>
+    <div class="rec-p3table-wrap">
+        <table class="r-p3table" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td>邀请人数</td>
+                <td>投资要求</td>
+                <td>奖励标准</td>
+                <td>发放模式</td>
+            </tr>
+            <tr>
+                <td>1-5人</td>
+                <td>15天内每人投资1000元</td>
+                <td>8元/人</td>
+                <td>线上发放至链金所账户</td>
+            </tr>
+            <tr>
+                <td>6-10人</td>
+                <td>15天内每人投资1000元</td>
+                <td>15元/人</td>
+                <td>线上发放至链金所账户</td>
+            </tr>
+            <tr>
+                <td>11-20人</td>
+                <td>15天内每人投资1000元</td>
+                <td>20元/人</td>
+                <td>线上发放至链金所账户</td>
+            </tr>
+            <tr>
+                <td>20人以上</td>
+                <td>15天内每人投资1000元</td>
+                <td>25元/人</td>
+                <td>线上发放至链金所账户</td>
+            </tr>
+        </table>
+    </div>
+    <div class="rec-p3-des">
+        现金将在活动结束后15个工作日内以充值的方式充入链金所账户；<br>
+        本活动最终解释权归链金所所有，如有疑问请咨询在线客服或拨打服务热线400－6626－985.
+    </div>
+    <div class="rec-p3-company">
+        深圳市链金所互联网金融服务有限公司<br>
+        <p>2017年1月8日</p>
+    </div>
+</div>
+<include file="Public:_footer" />

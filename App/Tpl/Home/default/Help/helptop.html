@@ -1,0 +1,13 @@
+<div class="cms_nav">
+  <ul class="cn-nav-1-1ist">
+    <php>$typelist = getTypeList(array('type_id'=>7,'order'=>"sort_order asc")); 
+         foreach($typelist as $vtype=> $va){ 
+            $xurl_tmp = explode("/",str_replace(array("index.html",".html"),array('',''),$va['turl']));
+         </php>
+        <li class="cn1l-item <if condition="$typename eq $xurl_tmp[2] OR $typename eq $xurl_tmp[1]">current</if>">
+            <a href="{$va.turl}" title="{$va.type_name}" class="cn1l-item-name"  style=" background-image:none;">{$va.type_name}</a>
+        </li>
+    <php>}</php>
+  </ul>
+
+</div>

@@ -1,0 +1,98 @@
+<include file="Public:_header_common" />
+<title>{$title}</title>
+<meta http-equiv="keywords" content="{$keyword}" />
+<meta http-equiv="description" content="{$description}" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/H/css/detail.css" />
+<script type="text/javascript" src="__ROOT__/Style/H/js/common.js" language="javascript"></script>
+<script type="text/javascript">
+    var Transfer_invest_url = "__APP__/tinvest";
+</script>
+</head>
+<body>
+<include file="Public:_header_main" />
+<div class="xiantiao"></div>
+<div class="bread wrapper">您所在的位置：<a href="__APP__/index">首页</a> > 我要投资</div>
+
+<!--  筛选理财项目  -->
+<div class="list_filter wrapper">
+    <div class="p-list-top clearfix">
+        <span class="plist-timg"></span>
+        <a href="/invest/index.html" class="plist-ta plist-ta-a ">散标投资<i class="plist-right-line"></i></a>
+        <a href="javascript:void(0)" class="plist-ta plist-ta-b plist-ta-curr">收益权转让区<i class="plist-ta-line"></i></a>
+    </div>
+    <h2>筛选理财项目</h2>
+    <ul id="borrow_status">
+        <li class="saixuanlx">标的状态</li>
+        {$borrow_status}
+    </ul>
+    <ul id="borrow_duration">
+        <li class="saixuanlx">借款期限</li>
+        {$borrow_duration}
+    </ul>
+    <ul id="product_type">
+        <li class="saixuanlx">标的类型</li>
+        {$product_type}
+    </ul>
+    <ul id="borrow_interest_rate">
+        <li class="saixuanlx">预期年化收益率</li>
+        {$borrow_interest_rate}
+    </ul>
+</div>
+<div class="list_content wrapper">
+    <div class="attribute"><span>项目名称</span><span>转让金额(元)</span><span>年利率</span><span>剩余期限</span><span>进度</span><span>操作</span></div>
+    <div class="list_box">
+            <volist name="zhaiquanlist" id="vb">
+                <ul>
+                    <li class="titles">
+                        <img src="__ROOT__/Style/H/images/index/new_zhuan.png">
+                        <a href="__ROOT__/debthome/debtdetail?id={$vb.id}" title="{$vb.borrow_name}">{$vb.borrow_name}</a> </li>
+                    <li class="total">{$vb.borrow_money}元</li>
+                    <li class="interest">{$vb.borrow_interest_rate}%</li>
+                    <li class="deadline">
+                        <?php if($vb['borrow_duration_txt']!=''){ ?>
+                        {$vb.borrow_duration_txt}
+                        <?php } else { ?>
+                        {$vb.borrow_duration}<if condition="$vb.repayment_type eq 1">天<else/>个月</if>
+                        <?php } ?></li>
+                    <li class="schedule">
+                        <?php
+                          $progress = intval($vb['progress']);
+                        if($progress >= 0 and $progress <= 19){
+                        echo "<div class='index_jindu_mid midd1'><div class='middtext'>".$progress."%</div></div>";
+                        }elseif ($progress >= 20 and $progress <= 39) {
+                        echo "<div class='index_jindu_mid midd2'><div class='middtext'>".$progress."%</div></div>";
+                        }elseif ($progress >= 40 and $progress <= 59) {
+                        echo "<div class='index_jindu_mid midd3'><div class='middtext'>".$progress."%</div></div>";
+                        }elseif ($progress >= 60 and $progress <= 79) {
+                        echo "<div class='index_jindu_mid midd4'><div class='middtext'>".$progress."%</div></div>";
+                        }elseif ($progress >= 80 and $progress <= 99) {
+                        echo "<div class='index_jindu_mid midd5'><div class='middtext'>".$progress."%</div></div>";
+                        }elseif ($progress = 100) {
+                        echo "<div class='index_jindu_mid midd6'><div class='middtext'>".$progress."%</div></div>";
+                        }
+                        ?>
+                    </li>
+                    <li class="operate">
+                         <if condition="$vb.borrow_status eq 3">
+                            <a class="inoperable" href="javascript:;">已流标</a>
+                            <elseif condition="$vb.borrow_status eq 4"/>
+                            <a class="inoperable" href="javascript:;">复审中</a>
+                            <elseif condition="$vb.borrow_status eq 6"/>
+                            <a  class="inoperable" href="javascript:;">还款中</a>
+                           <elseif condition="$vb.borrow_status gt 6"/>
+                            <a href="#" style="background-color: gray;">已完成</a>
+                            <else/>
+                            <a href="__ROOT__/debthome/debtdetail?id={$vb.id}">我要投标</a>
+                        </if>
+                    </li>
+                </ul>
+            </volist>
+    </div>
+    <div class="list_bottom_right">
+        <ul>
+            {$page}
+        </ul>
+    </div>
+</div>
+<!--中部结束-->
+<include file="Public:_footer" />

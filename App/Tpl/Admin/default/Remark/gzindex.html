@@ -1,0 +1,92 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+  var addUrl = '__URL__/gzedit';
+  var editUrl = '__URL__/gzedit';
+  var isSearchHidden = 1;
+  var searchName = "搜索信息";
+  var addTitle = '添加跟踪信息';
+  var editTitle = '添加跟踪信息';
+</script>
+<div class="so_main">
+  <div class="page_tit">跟踪信息</div>
+  <include file="search" />
+  <div class="Toolbar_inbox">
+    <div class="pages" style="float:right; padding:0px;">{$pagebar}</div>
+    <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索/筛选记录"/>
+
+    <if condition="$search['user_name'] eq null ">
+    <htmlA:commonBtn type="jsfun" action="add();" value="添加记录"/>
+    <else/>
+    <!-- <htmlA:commonBtn type="jsfun" action="edit('?user_name={$search['user_name']}');" value="添加记录"/> -->
+    <a href="javascript:;" onclick="showurl('__URL__/gzedit&?user_name={$search['user_name']}&borrow_id={$borrow_id}','添加记录');">添加记录</a>
+    </if>
+  </div>
+  
+  <div class="list">
+  <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th style="width:30px;">
+        <input type="checkbox" id="checkbox_handle" onclick="checkAll(this)" value="0">
+        <label for="checkbox"></label>
+    </th>
+    <th class="line_l">ID</th>
+    <th class="line_l">标号</th>
+    <th class="line_l">当前站点</th>
+    <th class="line_l">用户名</th>
+    <th class="line_l">备注信息</th>
+    <th class="line_l">备注人</th>
+    <th class="line_l">备注时间</th>
+    <th class="line_l">操作</th>
+  </tr>
+
+  <if condition="$list eq null ">
+    <tr><td colspan="7"><p style="text-align:center;font-size:18px;">无相关记录</p></td></tr>
+  <else />
+  <volist id="vo" name="list">
+      <tr overstyle='on' id="list_{$vo.id}">
+        <td><input type="checkbox" name="checkbox" id="checkbox2" onclick="checkon(this)" value="{$vo.id}"></td>
+        <td>{$vo.id}</td>
+        <td>{$vo.borrow_id|borrowidlayout1=###}</td>
+        <td>
+          <if condition="$vo.remark_type eq 1"> 
+                提单签收
+              <elseif condition="$vo.remark_type eq 2"/>
+                到达中转港
+              <elseif condition="$vo.remark_type eq 3"/>
+                目的港清关
+              <elseif condition="$vo.remark_type eq 4"/>
+                提柜
+              <elseif condition="$vo.remark_type eq 5"/>
+                入仓
+              <else/>
+                --
+          </if>
+        </td>
+        <td><htmlA:user id="vo.user_id" uname="vo.user_name" /></td>
+        <td>{$vo.remark}</td>
+        <td>{$vo.admin_real_name}</td>
+        <td>{$vo.add_time|date="Y-m-d H:i",###}</td>
+        <td>
+            <a href="javascript:;" onclick="showurl('__URL__/gzedit&id={$vo.id}','编辑跟踪记录');">编辑</a>
+        </td>
+      </tr>
+  </volist>
+  </if>
+  </table>
+  </div>
+  
+  <div class="Toolbar_inbox">
+    <div class="pages" style="float:right; padding:0px;">{$pagebar}</div>
+    <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索/筛选记录"/>
+    <!-- <htmlA:commonBtn type="jsfun" action="add();" value="添加记录"/> -->
+    <a href="javascript:;" onclick="showurl('__URL__/gzedit&?user_name={$search['user_name']}&borrow_id={$borrow_id}','添加记录');">添加记录</a>
+  </div>
+</div>
+<script type="text/javascript">
+function showurl(url,Title){
+  ui.box.load(url, {title:Title});
+}
+</script>
+
+<include file="Public:_footer" />

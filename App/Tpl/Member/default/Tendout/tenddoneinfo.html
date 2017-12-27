@@ -1,0 +1,39 @@
+<volist name="list" id="vo">
+    <tr>
+       <td>
+                    <if condition="$vo.bid eq 'TY1'">
+                        <a href="__APP__/home/experience/detail" title="{$vo.borrow_name}" target="_blank">{$vo.bid}</a>
+                    <else/>
+                        <if condition="$vo.debt_id eq 0">
+                            <a href="{$vo.borrow_id|getInvestUrl=###}" title="{$vo.borrow_name}" target="_blank">{$vo.borrow_id|borrowidlayout1}</a>
+                            <else/>
+                            <a href="/debthome/debtdetail?id={$vo.debt_id}" title="{$vo.debt_name}" target="_blank">ZQ{$vo.debt_id}</a>
+                        </if>
+
+                    </if>
+                </td>
+                <td>
+                    <if condition="$vo.debt_id eq 0">
+                        <a href="{$vo.borrow_id|getInvestUrl=###}" title="{$vo.borrow_name}" target="_blank">{$vo.borrow_name}</a>【{$vo.is_auto}】
+                        <else/>
+                        <a href="/debthome/debtdetail?id={$vo.debt_id}" title="{$vo.debt_name}" target="_blank">{$vo.debt_name}</a>【{$vo.is_auto}】
+                    </if>
+
+                </td>
+        <td>{$vo['borrow_interest_rate']+$vo['jx_rate']+$vo['jiaxi_rate']}%<if condition="($vo.jx_rate gt 0) OR ($vo.jiaxi_rate gt 0)"><span class="question"><span><if condition="$vo.jx_rate gt 0">平台加息{$vo.jx_rate}%<br /></if><if condition="$vo.jiaxi_rate gt 0">使用加息券{$vo.jiaxi_rate}%</if></span></span></if></td>
+        <td>¥{$vo.receive_capital}元</td>
+        <td>¥{$vo['receive_interest']+$vo['jiaxi_money']}元</td>
+        <td><?php if(empty($vo['repaytime'])){ echo "";}else{echo date('Y-m-d',$vo['repaytime']);}?></td>
+        <td>{$vo.myexpired_money}</td>
+    </tr>
+</volist>
+<tr>
+    <td colspan="6">
+        <div id="pager" class="yahoo2 ajaxpagebar">
+            <div class="list_bottom_right">
+                <ul>{$pagebar}</ul>
+            </div>
+        </div>
+        <input type="hidden" id="tendonetotal_page" value="{$total_page}" />
+    </td>
+</tr>

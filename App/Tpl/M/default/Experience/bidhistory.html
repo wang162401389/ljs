@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>投标记录</title>
+    <include file="Pub:header-common" />
+    <link rel="stylesheet" href="css/recharge_detail.css" >
+</head>
+<body style="background: #FFFFFF;">
+    <include file="Pub:simple_header" />
+    <section>
+			<header class="money_count">
+				<div  class="money_countDiv">
+					<h3 class="h3left">&nbsp;</h3>
+					
+				</div>
+			</header>
+			<div class="t_allsection">
+				<table border="1" cellspacing="0" class="money_type ">
+                  <thead>     
+        			 <tr>
+         				<td width="32%" class="money_title">投标人</td>
+         				
+         				<td width="32%" class="money_title">投标金额</td>
+         				<td width="36%" style="border-right:1px solid #54c0f2;" class="money_title">投标时间</td>
+       				  </tr>   
+             	 </thead>
+                 <tbody>
+       				 {$list}
+                 </tbody>        
+             	  </table>
+                
+			</div>
+            <div style="text-align:center; margin-top:12px; font-size:1rem;">{$page}</div>
+		</section>
+    <include file="Pub:footer" />
+</body>

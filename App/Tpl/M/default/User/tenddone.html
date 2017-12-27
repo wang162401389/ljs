@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <include file="Pub:header-common" />
+    <link rel="stylesheet" href="css/invest_list_detail.css" >
+</head>
+
+<body>
+<include file="Pub:simple_header" />
+
+<div class="container">
+	<div class="divtitle" style="width: 100%;">
+		您目前已回收的投资总额是：<span class="fontred">￥{$total|default="0.00"}元</span>，共<span class="fontred">{$num|default="0"}</span>笔投标。
+	</div>
+    <!-- <div style="color: red; margin-left:5%;margin-top:5px;"> 不包含以债转的借款，查看债转项目请点击 <a href="/M/Debtmember/index" style="color:red;">债权转让</a>></div> -->
+    <ul>
+		<volist name="list" id="vo">
+        <li>
+            <div class="title">
+                <if condition="$vo.bid eq 'TY1'">
+                    <a href="/M/experience/detail.html" target="_blank">
+                    借款标号：{$vo.bid}</a>
+                <elseif condition="$vo.bid eq 'TY2'" />
+                    借款标号：{$vo.bid}
+
+                <else/>
+                    <if condition="$vo.debt_id eq 0">
+                        <a href="/M/invest/detail/id/{$vo.borrow_id}" title="{$vo.borrow_name|borrowidlayout1=###}" target="_blank">借款标号：{$vo.borrow_id|borrowidlayout1}</a>
+                    <else/>
+                        <a href="/M/debthome/detail/id/{$vo.debt_id}.html" title="{$vo.debt_name}" target="_blank">借款标号：ZQ{$vo.debt_id}</a>
+                    </if>
+                </if>
+            </div>
+           <!-- <div class="info">借款人:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$vo.borrow_user}</div>-->
+            <div class="info">年化利率:&nbsp;&nbsp;&nbsp;{$vo['borrow_interest_rate']+$vo['jx_rate']+$vo['jiaxi_rate']}%/年<if condition="($vo.jx_rate gt 0) OR ($vo.jiaxi_rate gt 0)"><span class="notes">(<if condition="$vo.jx_rate gt 0">平台加息{$vo.jx_rate}%&nbsp;&nbsp;</if><if condition="$vo.jiaxi_rate gt 0">使用加息券{$vo.jiaxi_rate}%</if>)</span></if></div>
+            <div class="info">已收本金:&nbsp;&nbsp;&nbsp;¥{$vo.receive_capital}元</div>
+            <div class="info">已收利息:&nbsp;&nbsp;&nbsp;¥{$vo['receive_interest']+$vo['jiaxi_money']}元</div>
+            <div class="info">还款时间:&nbsp;&nbsp;&nbsp;{$vo.repaytime|date='Y-m-d',###}</div>
+            <div class="info">逾期罚息:&nbsp;&nbsp;&nbsp;¥{$vo.myexpired_money}元</div>
+        </li>
+		</volist>
+    </ul>
+
+</div>
+
+<include file="Pub:footer" />
+
+</body>
+
+</html>

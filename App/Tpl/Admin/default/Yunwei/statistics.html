@@ -1,0 +1,63 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+    var delUrl = '__URL__/doDel';
+    var addUrl = '__URL__/add';
+    var isSearchHidden = 1;
+    var searchName = "搜索/筛选";
+</script>
+<div class="so_main">
+    <div class="page_tit">数据统计列表</div>
+    <!--搜索/筛选会员-->
+   <div id="search_div" style="display:none">
+  <script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+    <div class="page_tit"><script type="text/javascript">document.write(searchName);</script> [ <a href="javascript:void(0);" onclick="dosearch();">隐藏</a> ]</div>
+    
+    <div class="form2">
+    <form method="post" action="__URL__/{$xaction}">
+    <dl class="lineD"><dt>时间从：</dt><dd><htmlA:timer id="start_time" style="width:190px" value="{$search.start_time}"  /></dd></dl>
+    <dl class="lineD"><dt>到</dt><dd><htmlA:timer id="end_time" style="width:190px" value="{$search.end_time}"   /></dd></dl>
+    <div class="page_btm">
+      <input type="submit" class="btn_b" value="确定" />
+    </div>
+    </form>
+  </div>
+  </div>
+    <!--搜索/筛选会员-->
+    <div class="Toolbar_inbox" >
+        <div class="page right">{$pagebar}</div>
+        <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索" style="search_action" />
+    </div>
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th>注册量/人</th>
+                <th>PC注册/人</th>
+                <th>APP注册/人</th>
+                <th>微信注册/人</th>
+                <th>实名量/人</th>
+                <th>使用体验金/人</th>
+                <th>投资量/人</th>
+                <th>投资金额/元</th>
+            </tr>
+            <tr>
+                <td><?php echo $regnum ?></td>
+                <td><?php echo $pcnum ?></td>
+                <td><?php echo $appnum ?></td>
+                <td><?php echo $wechatnum ?></td>
+                <td><?php echo $realnum ?></td>
+                <td>{$experienced_count}</td>
+                <td><?php echo $investnum ?></td>
+                <td><?php echo $investmoney ?></td>
+            </tr>
+        </table>
+        <div class="Toolbar_inbox" style="overflow: hidden">
+            <htmlA:commonBtn type="href"  class="page left"  action="__URL__/statistics?{$query}" value="将当前条件下数据导出为Excel"/>
+            <div class="page right">{$pagebar}</div>
+        </div>
+    </div>
+
+</div>
+
+
+<include file="Public:_footer" />

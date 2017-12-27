@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<base href="/Style/Phone/" />
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  	<script src="__ROOT__/Style/Phone/js/jquery-2.1.4.min.js"></script>
+  	<script src="__ROOT__/Style/Phone/js/marquee.js"></script>
+  	<link rel="stylesheet" type="text/css" href="__ROOT__/Style/Phone/css/dream.css">
+</head>
+<body>
+    <include file="default:Pub:simple_header" group="M" />
+
+    <ul class="tab">
+        <li data-name="quota"><span class="active">我的额度</span></li>
+        <li data-name="seed"><span>我的种子</span></li>
+        <li data-name="prize"><span>我的奖品</span></li>
+    </ul>
+    <div class="tab-con">
+        <div class="quota" style="display:block;">
+            <p>
+                活动期间内您的总圆梦额度为<span class="red">{$dream_investmoney_total}</span>元<br>
+                还剩<span class="red">{$dream_investmoney}</span>元的额度可以圆梦<br>
+                还剩余<span class="red">{$dream_feed}</span>个追梦种子
+            </p>
+        </div>
+        <div class="seed" style="display:none;">
+            <div class="table-box" >
+                <if condition="sizeof($dream_investhistory) neq 0">
+                <table border="0" cellspacing="0">
+                    <tr>
+                        <th width="30%">参与的奖品</th>
+                        <th width="15%">期号</th>
+                        <th width="30%">种子号码</th>
+                        <th>幸运种子</th>
+                    </tr>
+                    <volist id="vo" name="dream_investhistory">
+                        <volist id="vo1" name="vo">
+                            <tr>
+                                <td><span class="overflow">{$vo1.prize_name}</span></td>
+                                <td>{$vo1.qishu}</td>
+                                <td class="seeds-num">
+                                    <p>
+                                        <volist id="vo2" name="vo1.arr">
+                                            <span>{$vo2}</span>
+                                        </volist>
+                                    </p>
+                                    <span class="unfolded">展开<i></i></span>
+                                </td>
+                                <td><span class="red">{$vo1.luck}</span></td>
+                            </tr>
+                        </volist>
+                    </volist>
+                </table>
+                <else />
+                    <div class="no-join">您还没有参与圆梦哦！</div>
+                </if>
+            </div>
+        </div>
+        <div class="prize" style="display:none;">
+            <div class="table-box">
+                <if condition="sizeof($dream_true) neq 0">
+                <table border="0" cellspacing="0">
+                    <tr>
+                        <th style="width:50%">参与的奖品</th>
+                        <th style="width:20%">期号</th>
+                        <th style="width:30%">幸运种子</th>
+                    </tr>
+                    <volist id="vo" name="dream_true">
+                        <tr>
+                            <td><span class="overflow">{$vo.prize_name}</span></td>
+                            <td>{$vo.qishu}</td>
+                            <td><span class="red">{$vo.feed_no}</span></td>
+                        </tr>
+                    </volist>
+                </table>
+                <else />
+                    <div class="no-join">暂无获奖信息！</div>
+                </if>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(function(){
+            $('.tab li').click(function(){
+                var name = $(this).data("name");
+                $(this).find('span').addClass('active');
+                $(this).siblings().find('span').removeClass('active');
+                $('.' + name).show();
+                $('.' + name).siblings().hide();
+            });
+
+            $('.seeds-num p').each(function(){
+                if($(this).find('span').length > 2){
+                    console.log($(this).find('span').length)
+                    $(this).next().show();
+                }else{
+                    $(this).next().hide();
+                }
+            });
+            
+            //展开种子号码
+            var i = 0;
+            $('.unfolded').click(function(){
+                if(i == 0){
+                    $(this).prev().css('height', 'initial');
+                    $(this).html("收起<i></i>");
+                    $(this).find('i').css({'transform': 'rotate(45deg)', 'top': '.5rem'});
+                    i = 1;
+                }else{
+                    $(this).prev().css('height','2.5rem');
+                    $(this).html("展开<i></i>");
+                    $(this).find('i').css({'transform': 'rotate(-135deg)', 'top': '.2rem'});
+                    i = 0;
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

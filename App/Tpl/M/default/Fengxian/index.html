@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <include file="Pub:header-common" />
+    <link rel="stylesheet" href="css/account.css" >
+    <script type="text/javascript" src="__ROOT__/Style/Js/jquery.cookie.js"></script>
+    <script type="text/javascript">
+    	var fxpg_popup_status = '{$fxpg_popup_status}';
+    	var source = '{$source}';
+    
+        $(function(){
+            $('.title').css('font-size','1.2rem');
+            $("#oggg").click(function(){
+                var url="{:U('M/invest/invest',array('bid' => $bid))}";
+                $.cookie("touzitype",2,{ expires: 7,path:'/' });
+                
+                if(fxpg_popup_status != 2){
+                	if(fxpg_popup_status == 1){
+                		status = 0;
+                	}else if(fxpg_popup_status == 0){
+                		status = 2;
+                	}
+                	$.ajax({url: "__ROOT__/member/index/cancelPopupStatus/status/" + status});
+                }
+                
+                if(source == 3){
+                	url = "{:U('M/user/index')}";
+                }
+                
+                window.location.href = url;
+            })
+        });
+    </script>
+</head>
+<body>
+<include file="Pub:simple_header" />
+<div class="fxpg_accept js_accept">
+    <span>填写须知</span>
+    <p>依据《网络借贷信息中介机构业务活动管理暂行办法》第二十六条之规定，链金所需对投资者进行风险承受能力评估。以下问题可在您选择合适的产品前，协助评估您的风险承受能力、理财方式及投资目标。</p>
+    <p>本人已经认真阅读了上述调查问卷填写须知，并决定：</p>
+    <div style="clear: both;"></div>
+    <div class="fxpg_btn " onclick="window.location.href='{:U('M/fengxian/detail',array('source'=>$source))}'">接受</div>
+    <?php if($source == 1){ ?>
+    <div class="fxpg_btn" onclick="window.location.href='/M/user/index.html'">跳过</div>
+    <?php }else{ ?>
+    <div class="fxpg_btn" id="oggg">跳过</div>
+    <?php } ?>
+</div>
+    <div style="clear: both;"></div>
+<include file="Pub:footer" />
+</body>
+
+</html>

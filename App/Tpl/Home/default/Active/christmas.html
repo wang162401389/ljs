@@ -1,0 +1,790 @@
+<include file="Public:_header_common" />
+<title>新年好彩头，许愿梦成真-链金所</title>
+<meta http-equiv="keywords" content="{$glo.web_keywords}" />
+<meta http-equiv="description" content="{$glo.web_descript}" />
+<link rel="stylesheet" href="/Style/H/css/christmas.css" />
+<script type="text/javascript">
+var imgpath="__ROOT__/Style/M/";
+var curpath = "__APP__/member/common";
+</script>
+<include file="Public:_header_main" />
+
+<!--banner start-->
+<div class="christmas-banner">
+    <div class="width1200 christmas-bmain">
+        <span class="chr-bannertime">活动时间：12月13日—1月18日</span>
+    </div>
+</div>
+<!--banner end-->
+
+<!--投资送好礼 start-->
+<div class="money-product">
+    <h2 class="width1200 money-productit">活动期间累计投资即可获得相应礼品</h2>
+    <div class="width1200 maoneypro-main clearfix">
+        <div class="maoneypro-box maoneypro-box1 <if condition='$first_gift eq 1 OR $first_gift eq 0 OR $first_gift eq 6'>maoneypro-box1<else/>maoneypro-box1grey</if>">
+            <span class="monpro-tit">1‰返现</span>
+            <span class="monpro-des">5万元以下</span>
+        </div>
+        <div class="maoneypro-box <if condition='$first_gift eq 2 OR $first_gift eq 0'>maoneypro-jdcard<else/>maoneypro-jdcardrey</if> maoneypro-box2">
+            <span class="monpro-money">50</span>
+            <span class="monpro-tit">京东50元E卡1张</span>
+            <span class="monpro-des">5万元（含）</span>
+        </div>
+        <div class="maoneypro-box <if condition='$first_gift eq 3 OR $first_gift eq 0'>maoneypro-jdcard<else/>maoneypro-jdcardrey</if> maoneypro-box3">
+            <span class="monpro-money">100</span>
+            <span class="monpro-tit">京东100元E卡1张</span>
+            <span class="monpro-des">10万元（含）</span>
+        </div>
+        <div class="maoneypro-box <if condition='$first_gift eq 4 OR $first_gift eq 0'>maoneypro-jdcard<else/>maoneypro-jdcardrey</if> maoneypro-box4">
+            <span class="monpro-money">200</span>
+            <span class="monpro-tit">京东200元E卡1张</span>
+            <span class="monpro-des">20万元（含）</span>
+        </div>
+        <div class="maoneypro-box <if condition='$first_gift eq 5 OR $first_gift eq 0'>maoneypro-jdcard<else/>maoneypro-jdcardrey</if> maoneypro-box5">
+            <span class="monpro-money">500</span>
+            <span class="monpro-tit">京东500元E卡1张</span>
+            <span class="monpro-des">50万元（含）</span>
+        </div>
+    </div>
+    <if condition="$is_login eq 1">
+    <!--已登录 start-->
+    <div class="login-touzibut">
+        <p class="touzibut-content">
+            您已累计投资总额：{$invest_money}元<br />
+            <if condition="$next_have neq 0 AND $next_have neq 1">
+            离下一礼品还差 <span class="">{$next_have}</span><span class="">元</span>
+            <elseif condition="$next_have eq 1"/>
+            暂未获得礼品，新年礼物在向您招手！
+            <else/>
+            获得{$first_have}
+            </if>
+        </p>
+        <span class="but-touzi"><a href="__APP__/invest/index.html"></a></span>
+    </div>
+    <!--已登陆 end-->
+    <else/>
+    <!--未登陆 start-->
+    <div class="nologin-touzibut">
+        <p>您好！<a href="javascript:void(0)" class="nologin-loginbutton js-loginLink">登录</a>后可查看获得的礼品</p>
+        <span class="but-touzi"><a href="__APP__/invest/index.html"></a></span>
+    </div>
+    <!--未登陆 end-->
+    </if>
+</div>
+<!--投资送好礼 start-->
+
+<!--许愿梦成真 start-->
+<div class="wish-wrap">
+    <h2 class="width1200 money-productit" style="margin-top:167px">每投资1000元您可以获得1次许愿机会！</h2>
+    <div class="width1200 wish-main clearfix">
+        <p class="wish-mainh2">每许愿1次可以获得1个许愿码<br>达到许愿人次即时开出幸运号获得礼物</p>
+        <span class="wishfont wishfont1 wishfont-yellow">梦想</span>
+        <span class="wishfont wishfont2">还是要有的</span>
+        <span class="wishfont wishfont3">万一</span>
+        <span class="wishfont wishfont4 wishfont-yellow">实现</span>
+        <span class="wishfont wishfont5">了呢</span>
+        <span class="wishfont wishfont6">剩余许愿机会</span>
+        <if condition="$is_login eq 1">
+        <!--已登录 start-->
+        <span class="wishfont wishfont-change">{$xu_count}</span>
+        <span class="wishfont wishfont7">次</span>
+        <!--已登录 end-->
+        <else/>
+        <!--未登陆 start-->
+        <span class="wishfont wishfont8">暂无数据</span>
+        <span class="wishfont wishfont9"><a href="javascript:void(0)" class="js-loginLink">立即登录</a></span>
+        <!--未登陆 end-->
+        </if>
+        <div class="wish-giftcontent clearfix">
+            <ul>
+                <li class="wgift-box1">
+                    <img src="/Style/H/images/christmas/gift1.jpg" class="wgift-bimg" />
+                    <span class="wgift-btit">颈部腰部肩部按摩椅垫  <if condition="$kaodian['is_open'] eq 1">第{$kaodian.qi}期</if></span>
+                    <div class="wgift-bot clearfix">
+                        
+                        <if condition="$kaodian['is_open'] eq 0">
+                        <div class="wgift-progress">
+                            <div class="wprogess-wai"><span class="wprogess-number" style="width:100%"></span></div>
+                            <span class="wprogess-ci">{$kaodian.gift_number}/{$kaodian.gift_number}人次</span>
+                        </div>
+                        <!--gameover start-->
+                        <span class="gameover-ico"></span>
+                        <a href="javascript:void(0)" class="wgift-button game-wgiftbutton">向TA许愿</a>
+                        <!--gameover start-->
+                        <else/>
+                        <div class="wgift-progress">
+                            <div class="wprogess-wai"><span class="wprogess-number" style="width:{$kaodian.jindu}%"></span></div>
+                            <span class="wprogess-ci">{$kaodian.send_number}/{$kaodian.gift_number}人次</span>
+                        </div>
+                        <a href="javascript:void(0)" class="wgift-button js-wishBtn" data="{$kaodian.gift_id}">向TA许愿</a>
+                        </if>
+                    </div>
+                </li>
+                <li class="wgift-box2">
+                    <img src="/Style/H/images/christmas/gift2.jpg" class="wgift-bimg" />
+                    <span class="wgift-btit">小米空气净化器  <if condition="$xiaomi['is_open'] eq 1">
+第{$xiaomi.qi}期</if></span>
+                    <div class="wgift-bot clearfix">
+                        
+                        <if condition="$xiaomi['is_open'] eq 0">
+                        <div class="wgift-progress">
+                            <div class="wprogess-wai"><span class="wprogess-number" style="width:100%"></span></div>
+                            <span class="wprogess-ci">{$xiaomi.gift_number}/{$xiaomi.gift_number}人次</span>
+                        </div>
+                        <!--gameover start-->
+                        <span class="gameover-ico"></span>
+                        <a href="javascript:void(0)" class="wgift-button game-wgiftbutton">向TA许愿</a>
+                        <!--gameover start-->
+                        <else/>
+                        <div class="wgift-progress">
+                            <div class="wprogess-wai"><span class="wprogess-number" style="width:{$xiaomi.jindu}%"></span></div>
+                            <span class="wprogess-ci">{$xiaomi.send_number}/{$xiaomi.gift_number}人次</span>
+                        </div>
+                        <a href="javascript:void(0)" class="wgift-button js-wishBtn" data="{$xiaomi.gift_id}">向TA许愿</a>
+                        </if>
+                    </div>
+                </li>
+                <li class="wgift-box3">
+                    <img src="/Style/H/images/christmas/gift3.jpg" class="wgift-bimg" />
+                    <span class="wgift-btit">佳能EOS 700D 单反套机  <if condition="$jianeng['is_open'] eq 1">第{$jianeng.qi}期</if></span>
+                    <div class="wgift-bot clearfix">
+                        
+                        <if condition="$jianeng['is_open'] eq 0">
+                        <div class="wgift-progress">
+                            <div class="wprogess-wai"><span class="wprogess-number" style="width:100%"></span></div>
+                            <span class="wprogess-ci">{$jianeng.gift_number}/{$jianeng.gift_number}人次</span>
+                        </div>
+                        <!--gameover start-->
+                        <span class="gameover-ico"></span>
+                        <a href="javascript:void(0)" class="wgift-button game-wgiftbutton">向TA许愿</a>
+                        <!--gameover start-->
+                        <else/>
+                        <div class="wgift-progress">
+                            <div class="wprogess-wai"><span class="wprogess-number" style="width:{$jianeng.jindu}%"></span></div>
+                            <span class="wprogess-ci">{$jianeng.send_number}/{$jianeng.gift_number}人次</span>
+                        </div>
+                        <a href="javascript:void(0)" class="wgift-button js-wishBtn" data="{$jianeng.gift_id}">向TA许愿</a>
+                        </if>
+                    </div>
+                </li>
+                <li class="wgift-box4">
+                    <img src="/Style/H/images/christmas/gift4.jpg" class="wgift-bimg" />
+                    <span class="wgift-btit">iPhone 7 （128g颜色随机）  <if condition="$apple['is_open'] eq 1">第{$apple.qi}期</if></span>
+                    <div class="wgift-bot clearfix">
+                        
+                        <if condition="$apple['is_open'] eq 0">
+                        <div class="wgift-progress">
+                            <div class="wprogess-wai"><span class="wprogess-number" style="width:100%"></span></div>
+                            <span class="wprogess-ci">{$apple.gift_number}/{$apple.gift_number}人次</span>
+                        </div>
+                        <!--gameover start-->
+                        <span class="gameover-ico"></span>
+                        <a href="javascript:void(0)" class="wgift-button game-wgiftbutton">向TA许愿</a>
+                        <!--gameover start-->
+                        <else/>
+                        <div class="wgift-progress">
+                            <div class="wprogess-wai"><span class="wprogess-number" style="width:{$apple.jindu}%"></span></div>
+                            <span class="wprogess-ci">{$apple.send_number}/{$apple.gift_number}人次</span>
+                        </div>
+                        <a href="javascript:void(0)" class="wgift-button js-wishBtn" data="{$apple.gift_id}">向TA许愿</a>
+                        </if>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--许愿梦成真 end-->
+
+<div class="cometrue-wrap">
+    <div class="width1200 wish-main clearfix">
+        <a href="__APP__/invest/index.html" class="cometrue-button">获取许愿机会</a>
+        <div id="cometrueRoll" class="cometrue-list">
+            <ul>
+                <volist name="zhonglist" id="vo">
+                <li class="clearfix">
+                    <span class="tzmoney-number">{$vo.have_invest_money}</span>
+                    <span class="tzmoney-telphone">{:hidecard($vo['user_phone'], 2)}</span>
+                    <div class="tzmoney-list">
+                        <span class="mlist-li">{$vo.gift_name}<if condition="$vo.is_xu eq 1">（{$vo.gift_no}期  幸运号{$vo.have_number}）</if></span>
+                    </div>
+                </li>
+                </volist>
+            </ul>
+        </div>
+        <div class="prize-box">
+        	<h2>后续积分兑换投资款与奖品价值如下表</h2>
+            <table width="100%">
+            	<thead>
+                	<tr>
+                		<th width="25%">投资金额</th>
+                        <th width="25%">奖项价值</th>
+                        <th width="25%">许愿份额</th>
+                        <th width="25%">级别</th>
+                    </tr>
+                </thead>
+                <tbody>
+                	<tr>
+                    	<td>1万以下</td>
+                        <td>58元</td>
+                        <td>40份</td>
+                        <td>普通</td>
+                    </tr>
+                    <tr>
+                    	<td>1万~5万</td>
+                        <td>88元</td>
+                        <td>80份</td>
+                        <td>高级</td>
+                    </tr>
+                    <tr>
+                    	<td>5万~10万</td>
+                        <td>128元</td>
+                        <td>100份</td>
+                        <td>钻石</td>
+                    </tr>
+                    <tr>
+                    	<td>10万以上</td>
+                        <td>168元</td>
+                        <td>120份</td>
+                        <td>皇冠</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="mt20 tl">备注：许愿的资格与投资金额相对应，级别高的可以许愿对应奖项或以下奖项，具体以平台公告为主，敬请关注。</p>
+        </div>
+        <h2 class="rule-h2">活动规则</h2>
+        <div class="rule-text">
+            1、用户投资每达到1000元，可获得一次许愿机会，多投多得；<br>
+            2、用户向心仪的商品许愿，同一商品可许愿多次，许愿1次将获得1个许愿码。许愿码构成规则：4位随机码+用户手机号末位2位；<br>
+            3、每期礼物达到规定的许愿人次时即时开出幸运号，可在【新年幸运号】查看；<br>
+            4、幸运号计算规则：许愿码平均值=当期许愿码累加总和/许愿人次,取与许愿码平均值最接近的许愿码为幸运号，如出现与许愿码平均值差额均等情况，则以许愿时间先者为幸运号；<br>
+            5、如在活动结束时许愿人次未满额，则在已许愿的许愿码中按第4条规则计算出幸运号；<br>
+            6、我获得的礼物及我的许愿码可登录活动页查看；<br>
+            7、活动结束后未使用的许愿机会自动清零；<br>
+            8、奖品安排在活动结束15个工作日内统一发放；<br>
+            9、返现金在活动结束15个工作日以充值的方式充入投资者账户；<br>
+            10、在法律允许范围内，链金所保留对此次活动的最终解释权，如有疑问请联系客服400-6626-985。
+        </div>
+    </div>
+</div>
+<!--愿望实现了 end-->
+
+<!--浮动栏 start-->
+<div class="floatlayer">
+    <div class="floatl-box floatl-box1" data-type="1">
+        <div class="f_laytext"><span class="flay-span1">我的</span>新年礼物</div>
+        <!--礼物 start-->
+        <div class="f_laybox mygift-pop">
+            <if condition="$is_login eq 1">
+        	<!--已登陆 start-->
+            <h2 class="mygiftit"></h2>
+            <div class="mygift-txt">
+                <span class="mygift-tou"></span>
+                <ul class="mygiftlist">
+                    <li></li>
+                </ul>
+            </div>
+            <!--已登陆 end-->
+            <else/>
+            <!--未登陆 start-->
+            <p class="nologin-bar">您好！ <a href="javascript:void(0)" class="js-loginLink">登录</a> 后可查看获得的礼品。</p>
+            <!--未登陆 end-->
+            </if>
+        </div>
+        <!--礼物 end-->
+    </div>
+    <div class="floatl-box floatl-box2" data-type="2">
+        <div class="f_laytext f_laytext2">我的许愿</div>
+        <!--许愿 start-->
+        <div class="f_laybox xuyuan-pop" <if condition="$is_login neq 1">style="top:0;"</if>>
+            <if condition="$is_login eq 1">
+        	<!--已登陆 start-->
+            <div class="xuyuan-tit clearfix">
+                <span class="xuyuan-tspan xuyuan-tspan-a">期数</span>
+                <span class="xuyuan-tspan xuyuan-tspan-b">许愿奖品</span>
+                <span class="xuyuan-tspan xuyuan-tspan-c">幸运号</span>
+                <span class="xuyuan-tspan xuyuan-tspan-d">愿望达成</span>
+            </div>
+            <div class="xuyuan-txt slidbar-mywishlist scroolpifu">
+                <ul id="mywishlist">
+                </ul>
+            </div>
+            <!--<a href="javascript:void(0)" class="xuyuan-button js-xyhpop" onclick="myluckynum()">查看详情</a>-->
+            <!--已登陆 end-->
+            <else/>
+            <!--未登陆 start-->
+            <p class="nologin-bar"><a href="javascript:void(0)" class="js-loginLink">登录</a> 后查看许愿机会，去许下新年愿望吧！</p>
+            <!--未登陆 end-->
+            </if>
+        </div>
+        <!--许愿 start-->
+    </div>
+    <div class="floatl-box floatl-box3" data-type="3">
+        <div class="f_laytext"><span class="flay-span1">新年</span>幸运号</div>
+        <!--幸运号 start-->
+        <div class="f_laybox xuyuan-pop">
+            <div class="xyh-tabtit clearfix">
+                <a href="javascript:void(0)" id="kaodian" class="xyh-tab-a" onclick="newsyearlucky(1);">按摩椅垫</a>
+                <a href="javascript:void(0)" id="xiaomi" class="xyh-tab-a" onclick="newsyearlucky(2);">空气净化器</a>
+                <a href="javascript:void(0)" id="jianeng" class="xyh-tab-a" onclick="newsyearlucky(3);">单反套机</a>
+                <a href="javascript:void(0)" id="apple" class="xyh-tab-a" onclick="newsyearlucky(4);">iPhone 7</a>
+            </div>
+            <!--选项卡content start-->
+            <div class="xyh-tabtxt clearfix">
+                <div class="xuyuan-tit clearfix">
+                    <span class="xuyuan-tspan xuyuan-tspan-a">期数</span>
+                    <span class="xuyuan-tspan xuyuan-tspan-b">幸运号</span>
+                    <span class="xuyuan-tspan xuyuan-tspan-c">梦想成真用户</span>
+                    <span class="xuyuan-tspan xuyuan-tspan-d">操作</span>
+                </div>
+                <div class="xuyuan-txt slidbar-xyhlist scroolpifu">
+                    <ul id="newsluckynum">
+                    </ul>
+                </div>
+            </div>
+            <!--选项卡content end-->
+        </div>
+        <!--幸运号 end-->
+    </div>
+    <div class="floatl-qrcode">
+        <img src="/Style/H/images/christmas/morecodeimg.jpg" />
+        <span class="">扫一扫 更多活动</span>
+    </div>
+</div>
+<!--浮动栏 end-->
+
+<div class="pop-bg"></div>
+<!--我的许愿码详情 start-->
+<div class="sd-pop xyhdes-pop js-pop js-xyhdesPop">
+    <a href="javascript:void(0)" class="topsd-close sd-close js-popclose"></a>
+    <h2 class="xyhdes-h2">我的许愿码详情</h2>
+    <div class="xyhdes-content">
+        <div class="xyhp-tit">
+            <span class="xyhp-tspan xyhp-tspan-a">期数</span>
+            <span class="xyhp-tspan xyhp-tspan-b">礼物名称</span>
+            <span class="xyhp-tspan xyhp-tspan-c">幸运号</span>
+            <span class="xyhp-tspan xyhp-tspan-d">我的许愿码</span>
+        </div>
+        <div class="xyhp-txt myxym-poplist scroolpifu">
+            <ul id="myluckynum">
+                
+            </ul>
+        </div>
+    </div>
+    <a href="javascript:void(0)" class="botsd-close js-popclose">关闭</a>
+</div>
+<!--我的许愿码详情 end-->
+
+<!--幸运号计算详情 start-->
+<div class="sd-pop xyhdes-pop lookmore-pop js-pop js-lookmorePop">
+    <h2 class="xyhdes-h2">幸运号计算详情</h2>
+    <h3 class="lookmore-h3">
+    	<span id="info_no"></span>
+    	<span id="info_name"></span>
+        <spanid="info_luckyno"></span>
+    </h3>
+    <p class="pl100">用户许愿码</p>
+    <div class="xyhdes-content">
+        <div class="xyhp-tit">
+            <span class="xyhp-tspan xyhp-tspan-a">用户手机</span>
+            <span class="xyhp-tspan xyhp-tspan-b">许愿时间</span>
+            <span class="xyhp-tspan xyhp-tspan-d">许愿码</span>
+        </div>
+        <div class="xyhp-txt xyh-poplist scroolpifu">
+            <ul id="user_luck">
+             
+            </ul>
+        </div>
+    </div>
+    <p class="pl120 mt20">许愿码平均值=当期许愿码累加总和/许愿人次=<span id="avg_num"></span></p>
+    <p class="pl120 mt10">取与平均值最接近的许愿码为幸运号：<span id="info_luckyno1"></span></p>
+    <p class="pl120 mt10 xyh-lookmore">如出现与许愿码平均值差额均等，则以许愿时间先的为幸运号</p>
+    <a href="javascript:void(0)" class="botsd-close js-popclose">关闭</a>
+</div>
+<!--幸运号计算详情 end-->
+
+<!--我要许愿 start-->
+<div class="wish-pop js-pop js-wishPop">
+	<a href="javascript:void(0)" class="topsd-close sd-close js-popclose"></a>
+	<h2>我要许愿</h2>
+    <h3 id="towish_name">佳能EOS 700D 单反套机 （1001期）</h3>
+    <p class="mt10">
+    	许愿次数：
+        <input type="text" class="inp js-wishNum" autocomplete="off" />
+     	次
+    </p>
+        <input id="towish_giftid" type="hidden" value="" />
+
+    <p class="wish-count">您当前有<span class="js-maxNum" id="towish_num">10</span>次许愿机会</p>
+    <a href="javascript:void(0)" class="xuyuan-button js-wish">愿望成真</a>
+</div>
+<!--我要许愿 end-->
+
+<!--我的许愿码 start-->
+<div class="wish-pop js-pop js-wishcodePop">
+	<h2>我的许愿码</h2>
+    <h3 id="wish_giftname">佳能EOS 700D 单反套机 （1001期）</h3>
+    <h4>许愿码</h4>
+    <div class="wish-code scroolpifu" id="wish_luckycode">123456, 000001, 256321, 123456, 000001, 256321, 256321, 256321, 256321, 256321</div>
+    <a href="javascript:void(0)" class="xuyuan-button js-popclose" onclick="location.reload()">知道了</a>
+</div>
+<!--我的许愿码 end-->
+
+<!--登录框 start-->
+<div class="wish-pop js-pop js-loginPop">
+	<a href="javascript:void(0)" class="topsd-close sd-close js-popclose"></a>
+	<h2>登录</h2>
+    <div id="dvUser" class="wrong-tip"></div>
+    <form action="javascript:void(0);" id="form" class="login-form" method="post">
+    	<input type="hidden" id="logintype" value="{$logintype}" name="logintype" />
+    	<p>
+        	<span>用户名&nbsp;:</span>
+            <input type="text" id="txtUser" class="inp" />
+		</p>
+        <p>
+        	<span>密&nbsp;&nbsp;&nbsp;码&nbsp;:</span>
+            <input type="password" id="txtPwd" class="inp" />
+        </p>
+        <p> 
+        	<span>验证码&nbsp;:</span>
+            <input type="text" class="inp short" id="txtCode" placeholder="计算结果" />
+            <img onclick="this.src=this.src+'?t='+Math.random()" class="im-vcode" width="110px" height="30px" alt="点击换一个校验码" id="vcode" src="__APP__/member/common/verify2">
+            <a href="javascript:document.getElementById('vcode').click();" class="refresh">刷新</a>
+         </p>
+        <input type="submit" id="btnReg" class="xuyuan-button js-loginBtn" style="margin-left: 120px" value="立即登录" onclick="LoginSubmit(this);" />
+        <a href="__APP__/member/common/register/" class="register">注册新用户 &gt;</a>
+    </form>
+</div>
+<!--登录框 end-->
+
+<input type="hidden" id="islogin" value="{$is_login}" />
+<include file="Public:_footer" /> 
+<script type="text/javascript" src="__ROOT__/Style/layer/layer.min.js"></script>
+<script type="text/javascript" src="__ROOT__/Style/Js/jquery.mCustomScrollbar.js"></script>
+<script type="text/javascript" src="__ROOT__/Style/Js/roll.js"></script>
+<script type="text/javascript" src="__ROOT__/Style/M/js/login.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+		var islogin = $("#islogin").val();
+		//礼品上下滚动
+		new Marquee("cometrueRoll",0,1,850,258,30,0,0);
+		
+        //侧边导航-鼠标移动效果
+        $(".floatl-box").hover(function(){
+            if($(this).attr("data-type") == 1 && islogin == 1){
+                $(".mygift-tou").html("");
+                $(".mygiftlist").html("");
+                $.ajax({
+                    url:"__URL__/mynewyears",
+                    type:"post",
+                    dataType:"json",
+                    success:function(d){
+                        $(".mygift-pop .loadingspinner").remove();
+                        $(".mygiftit").html(d.data[1]["user_name"]+"用户，您好！");
+                        $(".mygift-tou").html("您已累计投资"+d.data[1]["invest_money"]+"元");
+                        var giftlist = "";
+                        if(d.data[1]["invest_money"] == 0){
+                            giftlist += "<p class='pnoda-data'>暂未获得礼品，新年礼物在向你招手！</p>";
+                        }else{
+                            for (var i = 0; i < d.data[0].length; i++) {
+                                if(d.data[0][i]["gift_no"] == 0){
+                                    giftlist += "<li>获得"+d.data[0][i]["gift_name"]+"</li>";
+                                }else{
+                                    giftlist += "<li>"+d.data[0][i]["gift_name"]+"（"+d.data[0][i]["gift_no"]+"期  幸运号"+d.data[0][i]["have_number"]+"）</li>";
+                                }
+                            }
+                        }
+                        $(".mygiftlist").html(giftlist);
+                    },
+                    beforeSend:function(){
+                        $(".mygift-pop .loadingspinner").remove();
+                        $(".mygift-pop").append('<div class="loadingspinner"><div class="lrect1"></div><div class="lrect2"></div><div class="lrect3"></div><div class="lrect4"></div><div class="lrect5"></div></div>');
+                    }
+                });
+            }else if($(this).attr("data-type") == 2 && islogin == 1){
+                $("#mywishlist").html("");
+                $.ajax({
+                    url:"__URL__/mywish",
+                    type:"post",
+                    dataType:"json",
+                    success:function(d){
+                        $(".slidbar-mywishlist .loadingspinner").remove();
+                        $(".xuyuan-pop .xuyuan-button").remove();
+                        // if(d.data[1] != null){
+                            var wishlist = "";
+                            if(d.data[1]==null){
+                                wishlist += "<p class='pnoda-data'>您还没有许愿！快来许愿吧，万一实现了呢！</p>";
+                            }else{
+                                $(".xuyuan-pop").append('<a href="javascript:void(0)" class="xuyuan-button js-xyhpop" onclick="myluckynum()">查看详情</a>');
+                                for (var i = 0; i < d.data[1].length; i++) {
+                                    if(d.data[1][i]["have_uid"] == d.data[0]["uid"]){
+                                        wishlist += "<li class='clearfix'>";
+                                        wishlist += "<span class='xuyuan-pspan xuyuan-pspan-a'>"+d.data[1][i]["gift_no"]+"期</span>";
+                                        wishlist += "<span class='xuyuan-pspan xuyuan-pspan-b'>"+d.data[1][i]["gift_name"]+"</span>";
+                                        wishlist += "<span class='xuyuan-pspan xuyuan-pspan-c'><i class='xy-success'>"+d.data[1][i]["have_number"]+"</i></span>";
+                                        wishlist += "<span class='xuyuan-pspan xuyuan-pspan-d'>恭喜梦想成真！</span>";
+                                        wishlist += "</li>";
+                                    }else if(d.data[1][i]["have_uid"] == 0){
+                                        wishlist += "<li class='clearfix'>";
+                                        wishlist += "<span class='xuyuan-pspan xuyuan-pspan-a'>"+d.data[1][i]["gift_no"]+"期</span>";
+                                        wishlist += "<span class='xuyuan-pspan xuyuan-pspan-b'>"+d.data[1][i]["gift_name"]+"</span>";
+                                        wishlist += "<span class='xuyuan-pspan xuyuan-pspan-c'>未开奖</span>";
+                                        wishlist += "<span class='xuyuan-pspan xuyuan-pspan-d'>有机会哦！</span>";
+                                        wishlist += "</li>";
+                                    }else{
+                                        wishlist += "<li class='clearfix'>";
+                                        wishlist += "<span class='xuyuan-pspan xuyuan-pspan-a'>"+d.data[1][i]["gift_no"]+"期</span>";
+                                        wishlist += "<span class='xuyuan-pspan xuyuan-pspan-b'>"+d.data[1][i]["gift_name"]+"</span>";
+                                        wishlist += "<span class='xuyuan-pspan xuyuan-pspan-c'>"+d.data[1][i]["have_number"]+"</span>";
+                                        wishlist += "<span class='xuyuan-pspan xuyuan-pspan-d'>换个姿势许愿！</span>";
+                                        wishlist += "</li>";
+                                    }
+                                }
+                            }
+                             $("#mywishlist").html(wishlist);
+                        // }
+                    },
+                    beforeSend:function(){
+                        $(".slidbar-mywishlist .loadingspinner").remove();
+                        $(".slidbar-mywishlist").append('<div class="loadingspinner"><div class="lrect1"></div><div class="lrect2"></div><div class="lrect3"></div><div class="lrect4"></div><div class="lrect5"></div></div>');
+                    }
+                });
+            }else if($(this).attr("data-type") == 3){
+                newsyearlucky(1);
+            }
+            $(this).find(".f_laybox").show();
+        },function(){
+            $(this).find(".f_laybox").hide();
+        });
+
+        //查看我的更多许愿码-弹窗
+		$("body").on("click", ".js-xyhpop", function(){
+            $(".pop-bg").show();
+            $(".js-xyhdesPop").show();
+        });
+		
+		 //查看幸运号计算详情-弹窗
+		$("body").on("click", ".js-lookmore", function(){
+            $(".pop-bg").show();
+            $(".js-lookmorePop").show();
+        });
+
+        //关闭弹窗
+		$("body").on("click", ".js-popclose", function(){
+            $(this).closest(".js-pop").hide();
+            $(".pop-bg").hide();
+        });
+		
+		/** 
+		*登录-弹窗
+		*/
+		$("body").on("click", ".js-loginLink", function(){
+			$("#dvUser").empty();
+			$(".pop-bg").show();
+			$(".js-loginPop").show();
+		});
+		
+		/** 
+		*向TA许愿-弹窗
+		*/
+		$("body").on("click", ".js-wishBtn", function(){
+			if(islogin == 0){ //未登录
+				$("#dvUser").empty();
+				$(".pop-bg").show();
+				$(".js-loginPop").show();
+			}else{
+                $.ajax({
+                    url:"__URL__/wishtoit",
+                    type:"post",
+                    data:{"gift_id":$(this).attr("data")},
+                    dataType:"json",
+                    success:function(d){
+                        $("#towish_name").html(d.data["gift_name"]);
+                        $("#towish_num").html(d.data["xu_count"]);
+                        $("#towish_giftid").val(d.data["gift_id"]);
+                        $(".pop-bg").show();
+                        $(".js-wishPop").show();
+                    }
+                });
+				
+			}
+		});
+		
+		/** 
+		*输入许愿次数
+		*/
+		$("body").on("keyup", ".js-wishNum", function(){
+			var val = $(this).val(),
+				maxNum = parseInt($(this).data("max")) || "";
+			if(maxNum && parseInt(val) > maxNum){
+				$(this).val(val.substr(0,val.length-1));
+				return;
+			}
+			$(this).val(val.replace(/[^\d]/g,""));
+		});
+		
+		/** 
+		*愿望成真按钮-弹窗
+		*/
+		$("body").on("click", ".js-wish", function(){
+			var maxNum = parseInt($(".js-maxNum").text()),
+				num = parseInt($(".js-wishNum").val());
+			if(!num || num < 1){
+				layer.tips("许愿次数不能为空且大于0", ".js-wishNum", {
+					time: 2,	
+				});
+				return;
+			}
+			if(num > maxNum){
+				layer.tips("许愿次数不能大于" + maxNum, ".js-wishNum", {
+					time: 2,	
+				});
+				return;
+			}
+            $.ajax({
+                url:"__URL__/wish",
+                type:"post",
+                data:{"gift_id":$("#towish_giftid").val(),"wish_count":num},
+                dataType:"json",
+                success:function(d){
+                    if(d.status == -1){
+                        alert(d.data);
+                    }else{
+                        $("#wish_giftname").html(d.data["gift_name"]);
+                        $("#wish_luckycode").html(d.data["luckynum"]);
+                        $(".js-wishPop").hide();
+                        $(".js-wishcodePop").show();
+                        $(".js-wishNum").val("");
+                        $(".js-maxNum").text(maxNum-num);
+                    }
+                }
+            });
+			
+		});
+
+
+
+        //侧边滚动条
+        $(window).scroll(function() {
+            if ($(window).scrollTop() >= 300) { //向下滚动像素大于这个值时，即出现小火箭~
+                $('.floatlayer').fadeIn(300); //火箭淡入的时间，越小出现的越快~
+            } else {
+                $('.floatlayer').fadeOut(300); //火箭淡出的时间，越小消失的越快~
+            }
+        });
+	});
+
+    function newsyearlucky(id){
+        $("#newsluckynum").html("");
+        if(id == 1){
+            $("#kaodian").addClass("xyh-tab-curron");
+            $("#xiaomi").removeClass("xyh-tab-curron");
+            $("#jianeng").removeClass("xyh-tab-curron");
+            $("#apple").removeClass("xyh-tab-curron");
+        }else if(id == 2){
+            $("#kaodian").removeClass("xyh-tab-curron");
+            $("#xiaomi").addClass("xyh-tab-curron");
+            $("#jianeng").removeClass("xyh-tab-curron");
+            $("#apple").removeClass("xyh-tab-curron");
+        }else if(id == 3){
+            $("#kaodian").removeClass("xyh-tab-curron");
+            $("#xiaomi").removeClass("xyh-tab-curron");
+            $("#jianeng").addClass("xyh-tab-curron");
+            $("#apple").removeClass("xyh-tab-curron");
+        }else if(id == 4){
+            $("#kaodian").removeClass("xyh-tab-curron");
+            $("#xiaomi").removeClass("xyh-tab-curron");
+            $("#jianeng").removeClass("xyh-tab-curron");
+            $("#apple").addClass("xyh-tab-curron");
+        }
+        $.ajax({
+            url:"__URL__/myluckynum",
+            data:{"gift_set":id},
+            type:"post",
+            dataType:"json",
+            success:function(d){
+                $(".slidbar-xyhlist .loadingspinner").remove();
+                if(d.data != null){
+                    var lucknumlist = "";
+                    for (var i = 0; i < d.data.length; i++) {
+                        if(d.data[i]["have_number"] != null){
+                            lucknumlist += "<li class='clearfix'>";
+                            lucknumlist += "<span class='xuyuan-pspan xuyuan-pspan-a'>"+d.data[i]["gift_no"]+"期</span>";
+                            lucknumlist += "<span class='xuyuan-pspan xuyuan-pspan-b'>"+d.data[i]["have_number"]+"</span>";
+                            lucknumlist += "<span class='xuyuan-pspan xuyuan-pspan-c'>"+d.data[i]["user_phone"]+"</i></span>";
+                            lucknumlist += "<span class='xuyuan-pspan xuyuan-pspan-d giftluck-span-d'><a href='javascript:void(0)' class='xyh-lookmore js-lookmore' onclick='giftluck("+d.data[i]["id"]+")'>查看详情</a></span>";
+                            lucknumlist += "</li>";
+                        }
+                    }
+                    $("#newsluckynum").html(lucknumlist);
+                }
+            },
+            beforeSend:function(){
+                $(".slidbar-xyhlist .loadingspinner").remove();
+                $(".slidbar-xyhlist").append('<div class="loadingspinner"><div class="lrect1"></div><div class="lrect2"></div><div class="lrect3"></div><div class="lrect4"></div><div class="lrect5"></div></div>');
+            }
+        });
+    }
+
+    function myluckynum(){
+        $("#myluckynum").html("");
+        $.ajax({
+            url:"__URL__/myluckynuminfo",
+            type:"post",
+            dataType:"json",
+            success:function(d){
+                $(".myxym-poplist .loadingspinner").remove();
+                if(d.data != null){
+                    var mynumlist = "";
+                    for (var i = 0; i < d.data.length; i++) {
+                        mynumlist += "<li class='clearfix'>";
+                        mynumlist += "<span class='xyhp-pspan xyhp-pspan-a'>"+d.data[i]["gift_no"]+"期</span>";
+                        mynumlist += "<span class='xyhp-pspan xyhp-pspan-b'>"+d.data[i]["gift_name"]+"</span>";
+                        mynumlist += "<span class='xyhp-pspan xyhp-pspan-c'>"+d.data[i]["zhong_num"]+"</i></span>";
+                        mynumlist += "<span class='xyhp-pspan xyhp-pspan-d'>"+d.data[i]["luckynum"]+"</span>";
+                        mynumlist += "</li>";
+                    }
+                    $("#myluckynum").html(mynumlist);
+                }
+            },
+            beforeSend:function(){
+                $(".myxym-poplist .loadingspinner").remove();
+                $(".myxym-poplist").append('<div class="loadingspinner"><div class="lrect1"></div><div class="lrect2"></div><div class="lrect3"></div><div class="lrect4"></div><div class="lrect5"></div></div>');
+            }
+
+        });
+    }
+
+    function giftluck(id){
+        $("#user_luck").html("");
+        $.ajax({
+            url:"__URL__/luckyhnuminfo",
+            data:{"gift_set":id},
+            type:"post",
+            dataType:"json",
+            success:function(d){
+                $(".xyh-poplist .loadingspinner").remove();
+                if(d.data != null){
+                    $("#info_no").html(d.data[0]["gift_no"]+"期");
+                    $("#info_luckyno").html("幸运号："+d.data[0]["have_number"]);
+                    $("#info_name").html(d.data[0]["gift_name"]);
+                    $("#info_luckyno1").html(d.data[0]["have_number"]);
+                    $("#avg_num").html(d.data[0]["avg_number"]);
+                    var info_list = "";
+                    for (var i = 0; i < d.data[1].length; i++) {
+                        info_list += "<li class='clearfix'>";
+                        info_list += "<span class='xyhp-pspan xyhp-pspan-a'>"+d.data[1][i]["user_phone"]+"</span>";
+                        info_list += "<span class='xyhp-pspan xyhp-pspan-b'>"+d.data[1][i]["add_time"]+"</span>";
+                        info_list += "<div class='xyhp-pspan xyhp-pspan-d'>"+d.data[1][i]["xu_num"]+"</div>";
+                        info_list += "</li>";
+                    }
+                    $("#user_luck").html(info_list);
+                }
+            },
+            beforeSend:function(){
+                $(".xyh-poplist .loadingspinner").remove();
+                $(".xyh-poplist").append('<div class="loadingspinner"><div class="lrect1"></div><div class="lrect2"></div><div class="lrect3"></div><div class="lrect4"></div><div class="lrect5"></div></div>');
+            }
+        });
+    }
+</script>

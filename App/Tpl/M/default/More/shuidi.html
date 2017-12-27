@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>水滴直播</title>
+    <include file="Pub:header-common" />
+    <link rel="stylesheet" href="css/more.css" >
+    <style type="text/css">
+	.shuide{padding:10px 5px;}
+	.shuide-hd{display:block;border:solid 1px #eee;}
+	.shuide-hd a{float:left; display:block; min-width:100px;height:30px;line-height:30px;padding:0 5px;text-align:center;font-size:12px;color:#666;background-color:#fff;}
+	.shuide-hd a.curr, .shuide-hd a.curr:hover{color:#fff;background-color:#fc8026;}
+	.shuide-cont{width:100%;height:250px;margin-top:20px;}
+	iframe{width:100%; margin: 0; padding: 0; border:0}
+	</style>
+</head>
+<body>
+<include file="Pub:simple_header" />
+<div class="shuide">
+    <span class="shuide-hd clearfix">
+        <a href="javascript:void(0);" class="curr" data-sn="/M/more/shuidia">链金所监管仓大门</a>
+        <a href="javascript:void(0);" data-sn="/M/more/shuidib">链金所监管仓A</a>
+        <a href="javascript:void(0);" data-sn="/M/more/shuidic">链金所监管仓B</a>
+    </span>
+    <div class="shuide-cont">
+        <!--<object name="qh_sd_player_1_swf" width="100%" height="640px" id="qh_sd_player_1_swf" data="http://jia.360.cn/player/flash/QihooPlayer.swf?ver=201610051011" type="application/x-shockwave-flash">
+            <param name="allowfullscreen" value="true">
+            <param name="wmode" value="transparent">
+            <param name="allowscriptaccess" value="always">
+            <param name="flashvars" value="sn=36061781376&amp;buffertime=3&amp;streamversion=2&amp;ctrbarhide=true&amp;autostart=true&amp;channel=32773&amp;_init_player=sd_evt_1_init&amp;_play_start=sd_evt_1_start&amp;_play_pause=sd_evt_1_pause&amp;_play_resume=sd_evt_1_resume&amp;_play_end=sd_evt_1_end">
+        </object>-->
+    </div>
+</div>
+<include file="Pub:footer" />
+<script type="text/javascript">
+$(document).ready(function(){
+	$.get("/M/more/shuidia",function(data){ //初始將a.html include div#iframe
+		$(".shuide-cont").html(data);
+	});
+})
+$(function(){
+	$(".shuide-hd a").on("click",function(){
+		var links = $(this).attr("data-sn");
+		$(this).addClass("curr").siblings("a").removeClass("curr");
+		$.get(links,function(data){
+			$(".shuide-cont").html(data);
+		});
+	});
+})
+</script>
+</body>
+</html>

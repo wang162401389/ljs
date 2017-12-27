@@ -1,0 +1,85 @@
+  <!-------- 搜索游戏 -------->
+  <div id="search_div" style="display:none">
+  	<div class="page_tit"><script type="text/javascript">document.write(searchName);</script> [ <a href="javascript:void(0);" onclick="dosearch();">隐藏</a> ]</div>
+	
+	<div class="form2">
+	<form method="post" action="__URL__/{$xaction}">
+	
+	<dl class="lineD">
+      <dt>标号类型：</dt>
+     <dd>
+       <if condition="$search.protype eq 1">
+          <input  name="protype"   style="width:10px"  checked="checked"  type="radio"  value="1">质金链ZJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <input  name="protype"   style="width:10px"   type="radio" value="2">融金链RJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+          <input name="protype"  style="width:10px"    type="radio" value="3">信金链XJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="4">优金链YJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="5">保金链BJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="6">质金链(保)ZJB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+         <elseif condition="$search.protype eq 2"/>
+          <input  name="protype"   style="width:10px"  type="radio"  value="1">质金链ZJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input  name="protype"   style="width:10px"  checked="checked"   type="radio" value="2">融金链RJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="3">信金链XJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="4">优金链YJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="5">保金链BJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="6">质金链(保)ZJB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+        <elseif condition="$search.protype eq 3"/>
+          <input  name="protype"   style="width:10px"  type="radio"  value="1">质金链ZJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <input  name="protype"   style="width:10px"   type="radio" value="2">融金链RJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+          <input name="protype"  style="width:10px"   checked="checked"   type="radio" value="3">信金链XJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="4">优金链YJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="5">保金链BJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="6">质金链(保)ZJB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+          <elseif condition="$search.protype eq 4"/>
+          <input  name="protype"   style="width:10px"  type="radio"  value="1">质金链ZJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <input  name="protype"   style="width:10px"   type="radio" value="2">融金链RJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+          <input name="protype"  style="width:10px"    type="radio" value="3">信金链XJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"   checked="checked"   type="radio" value="4">优金链YJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="5">保金链BJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="6">质金链(保)ZJB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+        <else/>
+          <input  name="protype"   style="width:10px"   type="radio"  value="1">质金链ZJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <input  name="protype"   style="width:10px"   type="radio" value="2">融金链RJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+          <input name="protype"  style="width:10px"    type="radio" value="3">信金链XJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="4">优金链YJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="5">保金链BJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input name="protype"  style="width:10px"    type="radio" value="6">质金链(保)ZJB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        </if>
+        <span>不选择则不限制</span>
+      </dd>
+    </dl>
+	<dl class="lineD">
+      <dt>会员ID：</dt>
+      <dd>
+        <input name="uid" style="width:190px" id="title" type="text" value="{$search.uid}">
+        <span>不填则不限制</span>
+      </dd>
+    </dl>
+    <dl class="lineD">
+      <dt>会员名：</dt>
+      <dd>
+        <input name="uname" style="width:190px" id="title" type="text" value="{$search.uname}">
+        <span>不填则不限制</span>
+      </dd>
+    </dl>
+      <dl class="lineD">
+      <dt>标号：</dt>
+      <dd>
+        <input name="borrow_id" style="width:190px" id="title" type="text" value="{$search.borrow_id}">
+        <span>不填则不限制</span>
+      </dd>
+    </dl>
+
+    
+
+   
+    <div class="page_btm">
+      <input type="submit" class="btn_b" value="确定" />
+    </div>
+	</form>
+  </div>
+  </div>

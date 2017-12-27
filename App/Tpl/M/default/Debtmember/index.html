@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>债权转让</title>
+    <include file="Pub:header-common" />
+    <style>
+        h2{font-size: 1.4rem;  margin: 0px; padding: 0px; }
+        body{background: #f0f0f0}
+        .zqzr-list{width:92%; margin: 1.5rem auto; display: none}
+        .zqzr-box{color:#fff; padding: 1.5rem; margin-top: 1.5rem; border-radius: 5px; background: #52c1f1; position: relative}
+        .zqzr-box h2{text-align: center; margin: 0px 0px 14px; padding: 0px; color:#2c7eab}
+        .zqzr-bcontent ul li{line-height: 2rem}
+        .zqzr-box .zqzr-box-link{display: block; padding: 0.5rem 0.6rem; font-size: 1.2rem; position: absolute; top:6rem; right: 1.4rem; color:#2c7eab; background: #fff; border-radius: 5px;}
+
+        .header{position:relative;height:4rem;background:#54c0f2;vertical-align:middle;margin-top:auto;margin-bottom:auto; position: relative}
+        .header ul{text-align:center;margin:auto;width:68%;background:#54c0f2;height:2.3rem;line-height:2.3rem;background:#54c0f2;border-bottom:1px solid #fff;border-top:1px solid #fff;border-radius:2px;border-left:1px solid #fff;border-right:1px solid #fff}
+        .header .tab{float:left;width:33.33%;font-size:1.2rem;color:#fff;border-left:1px solid #fff}
+        .header .current{background-color:#fff;color:#54c0f2;height:2.2rem}
+        .navleft{width:4rem; height: 4rem; display: block; line-height: 4rem; font-size: 2rem; color:#fff; position: absolute; top:0px; left:0px; text-align: center; background:url(/Style/Phone/img/arrowleft.png) center center no-repeat; z-index: 222 }
+
+        .pop-bg{background:url(/Style/M/images/anniversary/popbg.png) repeat; position: fixed; width:100%; height:100%; top:0; left:0; bottom:0; right:0;  z-index:100; display: none;}
+        .pop-confirm{width:86%; height: 14rem; background: #fff; border-radius: 5px; position: fixed; top:50%; left: 50%; margin-left: -43%; margin-top: -7rem; display: none; z-index: 999}
+        .pop-confirm h2{ padding: 4.5rem 0 2rem; text-align: center}
+        .pop-confirmcontent{text-align: center; }
+        .pop-confirmcontent .pconf-button{padding: 0.5rem 2rem; color:#fff; border-radius: 5px; display: inline-block; margin: 0 2rem; background: #54c0f2}
+        .popclose-button{width:2.8rem; height: 2.8rem; line-height: 2.4rem; font-size:2.8rem;  border-radius: 2rem; text-align: center; color:#fff; display: block; position:absolute; top:1.2rem; right: 1.2rem; background: #626262}
+        .pop-tips{width:220px; height: 36px; line-height: 36px; text-align: center; background: #fff; position: fixed; top:50%; left:50%; margin-left: -100px; margin-top: -15px; border-radius: 5px; color:#414141; display: none; z-index: 102;}
+
+    </style>
+</head>
+<body>
+<div class="header">
+    <a class="navleft js-backgo" href="javascript:history.back(-1);"></a>
+    <div class="js-zqzrtab" style="padding-top: 0.9rem;" >
+        <ul>
+            <li name="tab1" class="tab current" data-id="1"><div class="li11">可转让</div></li>
+            <li name="tab3" class="tab" data-id="2"><div class="li33">转让中</div></li>
+            <li name="tab4" class="tab" data-id="3"><div class="li44">已转让</div></li>
+        </ul>
+    </div>
+</div>
+
+<div class="content">
+    <!--可转让 start-->
+    <div class="zqzr-list" style="display: block" id="type1">
+        {$html}
+    </div>
+    <!--可转让 end-->
+    <!--转让中 start-->
+    <div class="zqzr-list" id="type2">
+
+    </div>
+    <!--转让中 end-->
+    <!--已转让 start-->
+    <div class="zqzr-list" id="type3">
+
+    </div>
+    <!--已转让 end-->
+</div>
+<div class="pop-bg"></div>
+<div class="pop-tips"></div>
+<div class="pop-confirm">
+    <span class="popclose-button js-pop-close">×</span>
+    <h2>确定撤销转让吗？</h2>
+    <div class="pop-confirmcontent">
+        <input type="hidden" name="bid" class="og"/>
+        <a class="pconf-button js-surebutton" href="javascript:void(0)" onclick="sureconfirm()">确定</a>
+        <a class="pconf-button js-cancelbutton js-pop-close" href="javascript:void(0)">取消</a>
+    </div>
+</div>
+<include file="Pub:footer" />
+<script>
+//债权-弹窗
+function cxconfirm(id){
+    $(".og").val(id);
+    $(".pop-bg,.pop-confirm").show();
+}
+//债权取消-确定状态
+function sureconfirm(){
+    $(".pop-confirm").hide();
+    $(".pop-bg,.pop-tips").fadeIn().delay(1800).fadeOut();
+    var id=$(".og").val();
+    $.ajax({
+        url: "__URL__/cancel",
+        data: {"borrow_id":id},
+        type: "post",
+        dataType: "json",
+        success: function (d) {
+            if(d.status==0){
+                window.location.reload();
+            }else{
+                alert(d.msg);
+            }
+        }
+    });
+    $(".pop-tips").empty().text("您已取消该债权转让！");
+}
+$(document).ready(function(){
+    //选项卡
+    $(".js-zqzrtab .tab").on("click",function(){
+        var flg = $(this).index();
+        var type=$(this).attr("data-id");
+        var data={};
+        $(this).addClass("current").siblings(".tab").removeClass("current");
+        $(".zqzr-list").eq(flg).show().siblings(".zqzr-list").hide();
+        myajax(type);
+    });
+
+    /**
+     * 渲染可转让，转让中 ，已转让
+     * @param id
+     * @param data
+     * @param type  1可转让，2转让中 ，3已转让
+     */
+    function  myajax(type){
+        $.ajax({
+            url: "/M/debtmember/mylists",
+            type: "post",
+            dataType: "json",
+            data: {"type":type},
+            success: function (d) {
+                $("#type"+type).html(d.data);
+            }
+        });
+    };
+
+
+    //债权取消-取消状态
+    $(".js-pop-close").on("click",function(){
+        $(".pop-bg,.pop-confirm").hide();
+    });
+})
+</script>
+</body>
+
+</html>
+

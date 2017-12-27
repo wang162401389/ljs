@@ -1,0 +1,30 @@
+<include file="Public:_header" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<tagLib name="htmlA" />
+<div class="so_main">
+    <div class="page_tit">追梦活动 </div>
+    <div id="search_div">
+
+        <div class="form2" style="background-color: #d2dbea;">
+            <form method="post" action="__URL__/dream">
+                <div id="tab_3" style="">
+                <dl class="lineD"><dt>是否启用：</dt><dd><htmlA:radio id="dream_valid" value="key|dream_valid" default="1|是,0|否" /></dd></dl>
+                <dl class="lineD"><dt>开始时间：</dt><dd><htmlA:timer id="start_time" style="width:90px" value="{$start_time}"  /></dd></dl>
+                <dl class="lineD"><dt>终止时间：</dt><dd><htmlA:timer id="end_time" style="width:90px" value="{$end_time}"  /></dd></dl>
+                <if condition="$dream_is_over eq 1">
+                    <dl class="lineD"><dt>mark：</dt><dd><label>over</label></dd></dl>
+                <else />
+                    <dl class="lineD"><dt>mark：</dt><dd><label>not over</label></dd></dl>
+                </if>
+                <dl class="lineD"><dt>time:</dt><dd><label>{$stime|date='Y-m-d H:i:s',###} --- {$etime|date='Y-m-d H:i:s',###}</label></dd></dl>
+                </div><!--tab3-->
+                <div class="page_btm">
+                    <input type="submit" class="btn_b" value="确定" /><span style="color:#CCCCCC">(所有方式修改提交一次即可)</span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+   
+</div>
+<include file="Public:_footer" />

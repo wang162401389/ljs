@@ -1,0 +1,64 @@
+<include file="Public:_header_common" />
+<title>{$title}</title>
+<meta http-equiv="keywords" content="{$keyword}" />
+<meta http-equiv="description" content="{$description}" />
+<include file="Public:_header_main" />
+<div class="xiantiao"></div>
+<!--中部开始-->
+<!--中部结束-->
+<div class="cms_page"> <!--{:get_ad(5)}-->
+  <div class="cms_frame cf"> 
+    <if condition="$type eq 1">
+            <include file="helptop" />
+            <else />
+      <include file="left" />
+    </if>
+    <div class="cms_content">
+      <div class="cms-title-1">
+          <div style="margin-bottom: 60px;">
+              <span><a href="__APP__/index/">首页</a>&gt</span>
+              <span>{$vo.type_name}</span>
+          </div>
+      </div>
+      <div class="cms-details">
+        <div class="article-list-wrap mgt">
+          <div class="article-list mgt">
+            <ul>
+              <volist name="list" id="vl">
+                <li class="changecolor">
+                    <span class="item-title">
+                        <a href="{$vl.arturl}">{$vl.title}</a>
+                   </span>
+                   <span class="release-time">{$vl.art_time|date="Y.m.d",###}</span>
+                </li>
+              </volist>
+            </ul>
+          </div>
+          <div class="list_bottom">
+            <div class="list_bottom_right">
+              <ul>
+                {$pagebar}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="clear:both"></div>
+  </div>
+</div>
+<include file="Public:_footer" />
+<script language="javascript">
+	$(function() {
+		$(".changecolor").bind("mouseover", function(){
+			$(this).css("background", "#f8f8f8");
+			$(this).css("color", "#007EB9");
+		})
+
+		$(".changecolor").bind("mouseout", function(){
+			$(this).css("background", "#fff");
+			$(this).css("color", "#737272");
+		})
+	});
+
+</script>

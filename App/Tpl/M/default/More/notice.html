@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<include file="Pub:header-common" /> 
+		<link rel="stylesheet" href="css/about.css" >
+	</head>
+    <style>
+        .content{
+            width:100%;
+        }
+        img{
+            width:100%;
+        }
+    </style>
+    <script>
+
+        $(function(){
+            //删除除空格
+            $list=$(".content").children("p");
+            //修改table的参数
+            $(".content table").removeAttr("width");
+            $(".content table").css("width","100%");
+            /*
+            $list.each(function(i,item){
+                if($(item).html().indexOf("&nbsp")!=-1)
+                    $(item).remove();
+            })*/
+            //修改td
+            
+            $("p").each(function(i,item){
+                $(item).css("width","");
+            })
+
+            $tr_list=$(".content").find("tr");
+            $tr_list.each(function(i,item){
+                $td_list=$(item).children();
+                count=$td_list.length;
+                if(count==4){
+                    console.log($(item)[0]);
+                    $item2=$(item).children().eq(2);
+                    $item3=$(item).children().eq(3);
+                    $item2.remove();
+                    $item3.remove();
+                    td_style='style="background: rgb(244, 244, 244); text-align: center; color: rgb(128, 128, 128); letter-spacing: 1px; font-family: 微软雅黑; border-top-color: rgb(238, 238, 238); border-right-color: rgb(238, 238, 238); border-bottom-color: rgb(238, 238, 238); border-left-style: none;"';
+                    td_style2='style="color: rgb(128, 128, 128); letter-spacing: 1px; padding-top: 10px; padding-bottom: 10px; padding-left: 7px; font-family: 微软雅黑; border-right-color: rgb(238, 238, 238); border-bottom-color: rgb(238, 238, 238); border-top-style: none; border-left-style: none;"';
+                    html='<tr><td  '+td_style+ '>'+$item2.html()+'</td><td '+td_style2+'>'+$item3.html()+'</td></tr>';
+                    console.log(html);
+                    $(item).after(html);
+
+                }
+            })
+            //修改比例
+           $tr_list.each(function(i,item){
+               $td_list=$(item).children();
+               $td_list.removeAttr("width");
+               $(item).children().eq(0).css("width","40%");
+               $(item).children().eq(1).css("width","60%");
+           })
+        })
+    </script>
+	<body>
+		<include file="Pub:simple_header" />
+		<div class="content">
+             {$vo.art_content}
+		</div>
+		
+		<include file="Pub:footer" />
+	</body>
+</html>

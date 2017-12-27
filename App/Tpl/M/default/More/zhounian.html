@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <include file="Pub:actheader-common" />
+    <link rel="stylesheet" href="css/more.css" >
+    <title>福利多多，心意满满 - 链金所一周年庆</title>
+    <style>
+        *{margin:0;padding:0;}
+        h2{font-size: 12px; margin: 0px; padding: 0px}
+        img {width:auto!important; height: !important;}
+        body{background: #10132e;}
+        .act-container{width:320px;  margin: 0px auto; overflow: hidden; font-size: 12px}
+        .anniversary-header{width:320px; height: 492px; background: url(/Style/M/images/anniversary/anniversary-header.jpg) no-repeat; background-size: 320px 492px;}
+        .anniver-h2{width:257px; height: 122px; display: block; margin: 0px 0px 0px 30px; position: relative; background: url(/Style/M/images/anniversary/fuli.png) no-repeat; background-size: 257px 122px;}
+        .ico-phone{width:9.5px; height: 16.5px; display: block; position: absolute; top:27px; left: 61px; background: url(/Style/M/images/anniversary/ico-phone.png) no-repeat; background-size:9.5px 16.5px; animation:movephone 1.8s infinite ease; -webkit-animation:movephone 1.8s infinite ease; -moz-animation:movephone 1.8s infinite ease}
+        .ico-money{width:10.5px; height: 23.5px; display: block; position: absolute; top:22px; left: 101px; background: url(/Style/M/images/anniversary/ico-money.png) no-repeat; background-size:10.5px 23.5px; animation:movemoney 3.6s  ease; -webkit-animation:movemoney 3.6s  ease; -moz-animation:movemoney 3.6s  ease}
+        .ico-tj{width:18.5px; height: 21px; display: block; position: absolute; top:76px; right: 33px; background: url(/Style/M/images/anniversary/ico-tj.png) no-repeat; background-size:18.5px 21px; animation:movetj 5.6s ease; -webkit-animation:movetj 5.6s ease; -moz-animation:movetj 5.6s ease;}
+        .ico-dotmoney{width:5px; height: 5.5px; display: block; position: absolute; background: url(/Style/M/images/anniversary/ico-dotmoney.png) no-repeat; background-size:5px 5.5px; animation:movedotmoney 1.8s infinite ease; -webkit-animation:movedotmoney 1.8s infinite ease; -moz-animation:movedotmoney 1.8s infinite ease}
+        .ico-dotmoney1{top:35px; right:102px;}
+        .ico-dotmoney2{top:12px; right:46px;}
+        @keyframes movephone{0%{transform:rotate(0deg);}8%{transform:rotate(-25deg);}16%{transform:rotate(25deg);}24%{transform:rotate(-25deg);}32%{transform:rotate(25deg);}40%{transform:rotate(-25deg);}48%{transform:rotate(25deg);}56%,100%{transform:rotate(0deg);}}
+        @-webkit-keyframes movephone{0%{transform:rotate(0deg);}8%{transform:rotate(-25deg);}16%{transform:rotate(25deg);}24%{transform:rotate(-25deg);}32%{transform:rotate(25deg);}40%{transform:rotate(-25deg);}48%{transform:rotate(25deg);}56%,100%{transform:rotate(0deg);}}
+        @-moz-keyframes movephone{0%{transform:rotate(0deg);}8%{transform:rotate(-25deg);}16%{transform:rotate(25deg);}24%{transform:rotate(-25deg);}32%{transform:rotate(25deg);}40%{transform:rotate(-25deg);}48%{transform:rotate(25deg);}56%,100%{transform:rotate(0deg);}}
+        @keyframes movemoney{0%{height:0px;}40%,100%{height: 52px;}}
+        @-webkit-keyframes movemoney{0%{height:0px;}40%,100%{height: 52px;}}
+        @-moz-keyframes movemoney{0%{height:0px;}40%,100%{height: 52px;}}
+        @keyframes movetj{0%{opacity: 0;}60%,100%{opacity: 1;}}
+        @-webkit-keyframes movetj{0%{opacity: 0;}60%,100%{opacity: 1;}}
+        @-moz-keyframes movetj{0%{opacity: 0;}60%,100%{opacity: 1;}}
+        @keyframes movedotmoney{0%{transform: translateX(0px)}60%{transform: translateX(0px)}70%{transform: translateX(-3px)}75%{transform: translateX(3px)}80%{transform: translateX(-3px)}85%{transform: translateX(3px)}100%{transform: translateX(0px)}}
+        @-webkit-keyframes movedotmoney{0%{transform: translateX(0px)}60%{transform: translateX(0px)}70%{transform: translateX(-3px)}75%{transform: translateX(3px)}80%{transform: translateX(-3px)}85%{transform: translateX(3px)}100%{transform: translateX(0px)}}
+        @-moz-keyframes movedotmoney{0%{transform: translateX(0px)}60%{transform: translateX(0px)}70%{transform: translateX(-3px)}75%{transform: translateX(3px)}80%{transform: translateX(-3px)}85%{transform: translateX(3px)}100%{transform: translateX(0px)}}
+
+
+        .anniversary-main{width:320px; height: 1136px; position: relative; background: url(/Style/M/images/anniversary/anniversary-main.jpg) no-repeat; background-size: 320px 1136px;}
+        .anniversary-aclick{width:106px; height: 30px; display: block; position: absolute; bottom:31px; left:107px;}
+
+        .touzi-wrap{height:486px; padding: 17px 15px; color:#fff; position: relative; text-shadow: 1px 0 0 #7f2c85, 0 1px 0 #7f2c85, 0 -1px 0 #7f2c85, -1px 0 0 #7f2c85,  1px 0 1px #7f2c85, 0 1px 1px #7f2c85, 0 -1px 1px #7f2c85, -1px 0 1px #7f2c85; background: -webkit-linear-gradient(#2a0649, #0c0a1f); background: linear-gradient(#2a0649, #0c0a1f); box-shadow:0px 9px 13px #340d37; border-radius: 8px;}
+        .touzi-h2{font-size: 16px;}
+        .tz-ltit{height:32px; line-height: 32px; margin-top: 5px;}
+        .tz-ltit .tz-lt{float: left; display: block; height:32px; overflow: hidden;}
+        .tz-ltit .tz-lt-a{width:92px; text-indent: 10px;}
+        .tz-ltit .tz-lt-b{width:92px; text-indent: 10px;}
+        .tz-ltit .tz-lt-c{width:106px; text-align: center;}
+        .awards-listname{ height: 180px; overflow: hidden; font-size: 10px; -webkit-text-size-adjust:none;}
+        .awards-listname ul li{height:30px; line-height: 30px; border-top:1px solid #fdeaea}
+        .awards-box .awards-b{float: left; display: block; height:30px; overflow: hidden; font-size: 10px; -webkit-text-size-adjust: none;}
+        .awards-box .awards-b-name{width:92px; text-indent: 10px;}
+        .awards-box .awards-b-money{width:92px;}
+        .awards-box .awards-b-product{width:106px; }
+        .a-line{height:1px; background: #f42c70; margin: 30px 0px;}
+
+        .touzi-recording{}
+        .touzi-recording .touzi-rh2{font-size: 16px; text-align: center; margin-bottom: 10px;}
+        .tz-recform{width:454px;}
+        .tz-recform .recform-tit{ display: block; height: 26px; line-height: 28px; margin-left: 35px; float: left;}
+        .tz-recform .recform-text{ display: block; width: 140px; color:#fff; height: 22px; margin: 3px 0px 3px 5px; border:none; outline: none; border-radius: 3px; -webkit-border-radius: 3px; background: transparent}
+        .recform-input{width: 167.5px; height: 31px; float: left; background: url(/Style/M/images/anniversary/recform-text.png) no-repeat; background-size:157.5px 28px;}
+        .recform-submit{width:112.5px; height: 36.5px; cursor: pointer; border: none; margin: 10px 0px 0px 86px; background: url(/Style/M/images/anniversary/recform-submit.png) no-repeat; background-size:112.5px 36.5px;}
+        .renwu{width:113.5px; height: 63px; display: block; position: absolute; right: 0px; bottom: 0px; background: url(/Style/M/images/anniversary/renwu.png) no-repeat; background-size:113.5px 63px;}
+        .anniversary-rule{padding: 30px 10px; color:#fdeaea; text-shadow: 1px 0 0 #7f2c85, 0 1px 0 #7f2c85, 0 -1px 0 #7f2c85, -1px 0 0 #7f2c85,  1px 0 1px #7f2c85, 0 1px 1px #7f2c85, 0 -1px 1px #7f2c85, -1px 0 1px #7f2c85; background: #170d21;}
+        .rule-tit{font-size: 16px; margin-bottom: 10px;}
+        .rule-text{ line-height: 22px;}
+
+        .pop-bg{background:url(/Style/M/images/anniversary/popbg.png) repeat; position: fixed; width:100%; height:100%; top:0; left:0; bottom:0; right:0;  z-index:100; display: none;}
+        .pop-tips{width:200px; height: 36px; line-height: 36px; text-align: center; background: #fff; position: fixed; top:50%; left:50%; margin-left: -100px; margin-top: -15px; border-radius: 5px; color:#260743; display: none; z-index: 102;}
+        .awards-pop{width:310.5px; height: 296.5px; color:#fff; position: fixed; top:50%; left:50%; margin-left: -155px; margin-top: -148px; background: url(/Style/M/images/anniversary/awards-pop.png) no-repeat; background-size:310.5px 296.5px; display: none; z-index: 101;}
+        .award-top{width:273px; height: 84px; margin: 20px auto 10px;}
+        .award-top .awam-touxiang{width:36px; height: 36px; float: left; display: block;}
+        .award-top .awam-info{width:225px; float: left; margin: 10px 0px 0px 10px;}
+        .awam-info h2{ margin-bottom: 6px;}
+        .awam-info .awam-infotxt{line-height: 20px; font-size: 10px; -webkit-text-size-adjust: none;}
+        .award-product{width:134px; height: 134px; border-radius: 50%; background: #fff; margin: 0px auto;}
+        .award-product img{width:134px; height:134px; visibility: visible; animation:smallbig 1s ease; -webkit-animation:smallbig 1s ease; -moz-animation:smallbig 1s ease; }
+        @keyframes smallbig{0%{opacity: 0; transform:scale(0)}100%{transform:scale(1); opacity: 1;}}
+        @-moz-keyframes smallbig{0%{opacity: 0; transform:scale(0)}100%{transform:scale(1); opacity: 1;}}
+        @-webkit-keyframes smallbig{0%{opacity: 0; transform:scale(0)}100%{transform:scale(1); opacity: 1;}}
+        .awards-pclose{width:30px; height: 30px; display: block; position: absolute; top:15px; right: 23px;}
+        .nodata{width:131px; height: 131px; margin: 0px auto; background: url(/Style/M/images/anniversary/nodata.png) no-repeat; background-size:131px 131px;}
+
+        .navbar{zoom:1;}
+        .navbar{min-height:2.5rem; height:2.5rem; line-height: 2.5rem}
+        .navbar .title{height:2.5rem!important; line-height: 2.5rem!important;}
+        #header .bar div span{ height:2.5rem!important;line-height: 2.5rem!important; }
+        .title{font-size: 14px;}
+        .row{margin:0;}
+        #footer .bottom{padding: 8px 0px}
+        .col-xs-3 .footer_img_container{width:2.5rem}
+        .col-xs-3 div:last-child{font-size:12px;}
+        .seg_footer{height:0px;}
+    </style>
+</head>
+<body>
+<include file="Pub:simple_header" />
+<div class="act-container" id="activity-wrap">
+    <div class="anniversary-header">
+        <div style="height: 30px;"></div>
+		<span class="anniver-h2">
+			<i class="ico-phone"></i>
+			<i class="ico-money"></i>
+			<i class="ico-tj"></i>
+			<i class="ico-dotmoney ico-dotmoney1"></i>
+			<i class="ico-dotmoney ico-dotmoney2"></i>
+		</span>
+    </div>
+    <div class="anniversary-main">
+        <a href="{:U('m/invest/lists')} " class="anniversary-aclick"></a>
+    </div>
+    <div class="touzi-wrap">
+        <h2 class="touzi-h2">投资获奖排名</h2>
+        <div class="tz-ltit clearfix">
+            <span class="tz-lt tz-lt-a">用户名</span>
+            <span class="tz-lt tz-lt-b">投资金额</span>
+            <span class="tz-lt tz-lt-c">获得奖励</span>
+        </div>
+        <!--列表 start-->
+        <div class="awards-listname" id="listdemo">
+            <ul>
+                <volist name="list" id="vo">
+                    <li class="awards-box clearfix">
+                        <span class="awards-b awards-b-name">{$vo.uname|cnsubstr=###,1,0,"utf-8",true,"*"}</span>
+                        <span class="awards-b awards-b-money">{$vo.money}元</span>
+                        <span class="awards-b awards-b-product">{$vo.goodsname}</span>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+        <!--列表 end-->
+        <div class="a-line"></div>
+        <!--投资获奖记录 start-->
+        <div class="touzi-recording">
+            <h2 class="touzi-rh2">投资获奖记录</h2>
+            <div class="tz-recform clearfix">
+                <span class="recform-tit">用户名：</span>
+                <div class="recform-input"><input type="text" class="recform-text" id="js-username" placeholder="请输入用户名" /></div>
+            </div>
+            <input type="submit" class="recform-submit" id="usersibmit" value="&nbsp" />
+            <span class="renwu"></span>
+        </div>
+        <!--投资获奖记录 end-->
+    </div>
+    <div class="anniversary-rule">
+        <h2 class="rule-tit">活动规则：</h2>
+        <div class="rule-text">
+            1、仅限活动期间的投资金额，且每个账户只可享受1次获奖机会。<br />
+            2、境外旅游的奖项获得者，办理签证、护照、个人所得税（若有）的费用敬请自理。<br />
+            3、奖品不可折现，获得者拥有该奖品最终的使用权，图片仅为参考，以实物为准。<br />
+            4、活动结束后3个工作日内公布获奖结果，15个工作日内将奖品寄出。<br />
+            5、所有奖项均由第三方合作商提供售后保障以及物流配送，链金所不负责奖品任何维修、退换和赔付。<br />
+            6、新手标和新手体验金均不在本次活动计算范围之内。<br />
+            7、在法律允许范围之内，链金所保留本规则最终解释权，如有疑问请联系在线客服或拨打400-6626-985。<br />
+        </div>
+    </div>
+    <!--弹窗 start-->
+    <div class="pop-bg"></div>
+    <div class="pop-tips"></div>
+    <div class="awards-pop">
+        <a href="javascript:void(0)" class="awards-pclose js-close"></a>
+        <div class="awards-pmain">
+            <div class="award-top clearfix">
+                <span class="awam-touxiang"><img src="/Style/M/images/anniversary/touxiang.png" width="36" height="36" /></span>
+                <div class="awam-info">
+                    <h2>尊敬的 <span class="usernameid">张先生</span>：</h2>
+                    <div class="awam-infotxt">您已投资**万元，获得一个****奖励。距离下一个大奖还需投资*****元。</div>
+                </div>
+            </div>
+            <div class="award-product"></div>
+        </div>
+    </div>
+    <!--弹窗 end-->
+</div>
+<include file="Pub:footer" />
+<script>
+    if(navigator.appVersion.indexOf('Android') != -1){
+        document.addEventListener("DOMContentLoaded",function(e){
+            document.getElementById('activity-wrap').style.zoom = e.target.activeElement.clientWidth/320;
+        });
+    }
+    //投资排行版滚动
+    function AutoScroll(obj) {
+        $(obj).find("ul:first").animate({
+            marginTop: "-30px"
+        }, 500, function() {
+            $(this).css({ marginTop: "0px" }).find("li:first").appendTo(this);
+        });
+    }
+
+    $(document).ready(function(){
+        //滚动调用
+        $('#listdemo').mouseleave(function(){
+            a = setInterval('AutoScroll("#listdemo")', 2000);
+        })
+        $('#listdemo').mouseenter(function(){
+            clearInterval(a);
+        })
+        var a = setInterval('AutoScroll("#listdemo")', 2000);
+
+        //弹窗关闭按钮
+        $(".js-close").on("click",function(){
+            $(".pop-bg,.awards-pop").hide();
+        });
+        //提交按钮
+        $("#usersibmit").on("click",function(){
+            if($("#js-username").val()=="" || $("#js-username").val()==null){
+                $(".pop-bg,.pop-tips").fadeIn().delay(1500).fadeOut();
+                $(".pop-tips").empty().text("对不起，用户名不能为空！")
+                return false;
+            }
+            else{
+
+
+                $.ajax({
+                    type: 'get',
+                    data:{"name":$("#js-username").val()},
+                    url:"__URL__/zhounianinfo",
+                    dataType:"json",
+                    success:function(d) {
+                        $(".awam-infotxt,.award-product").empty();
+                        $(".nodata,.award-product").remove();
+                        if (d.status == 0) {
+
+                            $(".usernameid").html(d.data["name"]);
+                            var m = d.data["totalmoney"];
+                            var money=parseInt(m);
+                            var chae=0;
+                            if (m < 5000) {
+                                chae=5000-money;
+                                $(".awam-infotxt").html("您已投资" + m + "元，暂无获得任何奖品，距离下一个大奖，还需投资"+chae+"元！");
+                                $(".awards-pop").append("<div class='nodata'></div>");
+                            }
+                            if (m >= 5000 && m < 10000) {
+                                chae=10000-money;
+                                $(".awam-infotxt").html("您已投资" + m + "元，获得一个小米充电宝10000mAh奖励。距离下一个大奖，还需投资"+chae+"元！");
+                                $(".awards-pop").append("<div class='award-product'><img src='/Style/M/images/anniversary/1xiaomi1000.png'></div>");
+                            }
+                            if (m >= 10000 && m < 100000) {
+                                chae=100000-money;
+                                $(".awam-infotxt").html("您已投资" + m + "元，获得一个小米20000mAh超大容量充电宝奖励。距离下一个大奖，还需投资"+chae+"元！");
+                                $(".awards-pop").append("<div class='award-product'><img src='/Style/M/images/anniversary/2xiaomi2000.png'></div>");
+                            }
+                            if (m >= 100000 && m < 200000) {
+                                chae=200000-money;
+                                $(".awam-infotxt").html("您已投资" + m + "元，获得一个小米空气净化器2代奖励。距离下一个大奖，还需投资"+chae+"元！");
+                                $(".awards-pop").append("<div class='award-product'><img src='/Style/M/images/anniversary/3xiaomijhq.png'></div>");
+                            }
+                            if (m >= 200000 && m < 300000) {
+                                chae=300000-money;
+                                $(".awam-infotxt").html("您已投资" + m + "元，获得一个IPAD mini2奖励。距离下一个大奖，还需投资"+chae+"元！");
+                                $(".awards-pop").append("<div class='award-product'><img src='/Style/M/images/anniversary/4ipadmini2.png'></div>");
+                            }
+                            if (m >= 300000 && m < 500000) {
+                                chae=500000-money;
+                                $(".awam-infotxt").html("您已投资" + m + "元，获得一个Apple Watch 运动版奖励。距离下一个大奖，还需投资"+chae+"元！");
+                                $(".awards-pop").append("<div class='award-product'><img src='/Style/M/images/anniversary/5applewatch.png'></div>");
+                            }
+                            if (m >= 500000 && m < 600000) {
+                                chae=600000-money;
+                                $(".awam-infotxt").html("您已投资" + m + "元，获得一个Iphone6s(64G 颜色随机）奖励。距离下一个大奖，还需投资"+chae+"元！");
+                                $(".awards-pop").append("<div class='award-product'><img src='/Style/M/images/anniversary/6iphone6s.png'></div>");
+                            }
+                            if (m >= 600000 && m < 800000) {
+                                chae=800000-money;
+                                $(".awam-infotxt").html("您已投资" + m + "元，获得一个Iphone7 (32G 颜色随机）奖励。距离下一个大奖，还需投资"+chae+"元！");
+                                $(".awards-pop").append("<div class='award-product'><img src='/Style/M/images/anniversary/7iphone7.png'></div>");
+                            }
+                            if (m >= 800000 && m < 1500000) {
+                                chae=1500000-money;
+                                $(".awam-infotxt").html("您已投资" + m + "元，获得一个Iphone 7plus(32G 颜色随机）奖励。距离下一个大奖，还需投资"+chae+"元！");
+                                $(".awards-pop").append("<div class='award-product'><img src='/Style/M/images/anniversary/8iphone7plus.png'></div>");
+                            }
+                            if (m >= 1500000) {
+                                $(".awam-infotxt").html("您已投资" + m + "元，获得塞班岛至尊行5晚7日双人游奖励。");
+                                $(".awards-pop").append("<div class='award-product'><img src='/Style/M/images/anniversary/9sbdzzx.png'></div>");
+                            }
+                            $(".pop-bg,.awards-pop").show();
+                        }else{
+                            $(".pop-bg,.pop-tips").fadeIn().delay(1500).fadeOut();
+                            $(".pop-tips").empty().text(d.msg)
+                        }
+                    }
+                })
+            }
+        })
+    })
+</script>
+</body>
+</html>

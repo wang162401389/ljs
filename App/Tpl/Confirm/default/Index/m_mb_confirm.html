@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<include file="default:Pub:header-common" group="M"/>
+	<link rel="stylesheet" href="__ROOT__/Style/Phone/css/confirm.css">
+</head>
+
+<body>
+	<include file="default:Pub:simple_header" group="M"/>
+	<div class="content">
+	    <div class="mbqr"><div></div>满标确认</div>
+	    <foreach name="list" item="vo">
+			<div class="list">
+				<div><span class="anno">标号：{$vo.bid}</span><span class="count <if condition="$vo.firstconfirm_status eq 1">out" onclick="location.href='__APP__/confirm/index/confirmation?bid={$vo.bid}'">确认<else/>out1">已确认</if></span></div>
+			</div>
+		</foreach>	
+	</div>
+	<!--<div class="page">{$pagebar}</div>-->
+</body>
+
+</html>

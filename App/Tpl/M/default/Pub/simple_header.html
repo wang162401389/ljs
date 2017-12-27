@@ -1,0 +1,61 @@
+<style>
+    #header {
+        background-color: #54c0f2;
+        text-align: center;
+      
+    }
+    #header .bar{
+     
+     
+		float:left;
+    }
+    #header .bar div{
+        color: #fff;
+    }
+    #header .bar div span{
+        float:left;
+        margin-left:1rem;
+		height:3rem;
+		line-height:3rem;
+    }
+    #header .title {
+		color: #fff;
+		text-align: center;
+	    height:3rem;
+		line-height:3rem;
+        width:70%;
+        margin:0 auto;
+    }
+</style>
+<nav class="navbar navbar-default navbar-fixed-top" id="header">
+    <if condition="$phone neq 'yes'">
+        <div class="bar">
+            <div onclick="go_back()"  ><span class="glyphicon glyphicon-menu-left"  ></span></div>
+        </div>
+    	<input type="hidden" id="next_url" value="{$simple_header_info.url}" >
+    </if>
+	<div class="title">{$simple_header_info.title}</div>
+</nav>
+<div class="seg_top"></div>
+<script>
+	var fxpg_popup_status = '{$fxpg_popup_status}';
+
+    function go_back(){
+        next_url=$("#next_url").val();
+        if(fxpg_popup_status != '' && fxpg_popup_status != 2){
+        	if(fxpg_popup_status == 1){
+        		status = 0;
+        	}else if(fxpg_popup_status == 0){
+        		status = 2;
+        	}
+        	$.ajax({url: "__ROOT__/member/index/cancelPopupStatus/status/" + status});
+        }
+        //是否做特殊处理
+        cur_url=window.location.pathname;
+        if(cur_url.indexOf("/M/invest/detail")!=-1){
+            history.back(-1);
+        }else{
+            window.location.href=next_url;
+        }
+    }
+</script>

@@ -1,0 +1,69 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<div class="so_main">
+    <div class="page_tit">存钱罐</div>
+    <div id="search_div">
+
+        <div class="form2" style="background-color: #d2dbea;">
+            <form method="post" action="__URL__/cunqianguan">
+                <table style="width: 60%;height: 80px;">
+                    <tr>
+                        <td>开始时间：</td>
+                        <td> <input name="starttime" style="width:190px" id="starttime" type="text" value="{$search.starttime}" onclick="WdatePicker();"></td>
+                        <td>结束时间：</td>
+                        <td><input name="endtime" style="width:190px" id="endtime" type="text" value="{$search.endtime}" onclick="WdatePicker();"></td>
+                    </tr>
+                    <tr style="text-align: right;">
+                        <td colspan="4">
+                            <span class='chaxun'><input type="submit" value="查询"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th class="line_l">ID</th>
+                <th class="line_l">提示信息</th>
+                <th class="line_l">状态</th>
+                <th class="line_l">添加时间</th>
+                <th class="line_l">操作</th>
+            </tr>
+            <volist id="vo" name="list">
+                <tr>
+                    <td>{$vo.id}</td>
+                    <td>{$vo.content}</td>
+                    <td>{$vo.status}</td>
+                    <td>{$vo.addtime}</td>
+                    <td>
+                        <span func="{$vo.addtime}">{$vo.op}</span>
+                    </td>
+                </tr>
+            </volist>
+        </table>
+        <div class="Toolbar_inbox" style="overflow: hidden">
+            <div class="page right">{$pagebar}</div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+         $(".download").on("click",function(){
+             var date=$(this).parent("span").attr("func");
+             $.ajax({
+                 url: "__URL__/cunqianguan_download",
+                 type: "post",
+                 dataType: "json",
+                 data: {"date":date},
+                 success: function (d) {
+                    alert(d.msg);
+                 }
+             });
+         });
+    });
+</script>
+<include file="Public:_footer" />

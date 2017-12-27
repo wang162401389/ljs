@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="minimal-ui,width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>国资背景入股、豪礼享不停</title>
+    <script type="text/javascript" src="__ROOT__/Style/Js/jquery-2.2.3.min.js"></script>
+    <style type="text/css">
+		*{margin: 0;padding: 0;}
+        body{background-color: #2d034f;margin:0;}
+        ul,li,p{list-style: none;}
+        a{text-decoration: none;}
+        .dis-none{display: none;}
+        .text{ text-align: center;color: #fff;}
+        .text a{color: #f2dc16;}
+        .bold{font-weight: bold;}
+        .yellow{color: #f2dc16;}
+        i{font-style: normal;}
+
+        /*banner*/
+        .banner .banner-img{width: 100%;}
+        .banner .active-time{width: 55%;margin: 1rem auto;background: url(/Style/Phone/img/Septemberactive/time_bg.png) no-repeat;background-size: 100% 100%; color: #fff;line-height: 2.5rem; margin-top: -3.8rem; position: relative;   text-align: center;}
+        .banner .banner-item{background: url(/Style/Phone/img/Septemberactive/ul_bg.jpg) no-repeat;background-size: 100% 100%; }
+        .banner .banner-item ul{display: flex; width: 80%; padding: 4rem 0 0;margin: 0 auto;}
+        .banner .banner-item ul li{margin-left: 1rem;}
+        .banner .banner-item ul li img{width: 100%;}
+                
+        /*公共部分*/
+        .item{}
+        .item .main{margin: 6rem 1rem;}
+        .item .con{}
+        .item .con .con-item{width: 100%;background-color: #591e8b;padding-bottom: 1rem;margin-top: 2rem;}
+        .play .con .con-item, .catch .con .con-item{background-color: #7509d5;}
+        .item .con .con-item .title-img{width: 100%;margin-top: -3.5rem;}
+        .item .look-rule, .item .look-rules{color: #f2dc16;text-decoration: underline;margin: 2rem;font-size: 1.2rem;}
+        .item .rule{margin: 2rem 1rem 0;color: #555;line-height: 2rem;text-align: left;border-radius: 5px;position: fixed;top:50%;transform: translate(0,-50%);background-color: #fff;z-index: 20;}
+        .item .rule div{padding: 1rem;}
+        .item .rule img{width: 98%;display: block;margin-top: -1rem;}
+        .item .rule p{color: #fff;background-color: #743299;text-align: center;padding: .8rem 0;font-size: 1.2rem;border-top-left-radius: 5px;border-top-right-radius: 5px;}
+        .item .text .logspan{}
+        /*.item .text .look-rule{color: #333;background-color: #fff;text-decoration: underline;margin: 2rem;}*/
+
+        /*送*/
+        .redpacket{background: url(/Style/Phone/img/Septemberactive/song_bg.png) no-repeat;background-size: 100% 100%;}
+        .redpacket .redpacket-img{width: 70%;margin: 2rem auto;display: block;}
+        .opened, .packet-detail{width: 70%;border-radius: 8px;box-shadow: 2px 2px 2px #2d034f;text-align: center;padding: 2rem 0;background-color: #ca2016;margin: 2rem auto;display: none;}
+        .opened span, .opened img, .opened a{display: block;}
+        .opened a, .packet-detail a{text-decoration: underline;color: #f2dc16;font-size: 1.2rem;}
+        .opened span{color: #fff;}
+        .logo-img{width: 30%;margin: 1rem auto;}
+        .big-font{font-size: 1.2rem;color: #fff;display: block;}
+        .opened .money{color: #f2dc16;font-size: 2rem;font-weight: bold;margin: 4rem 0;}
+        .packet-detail div{margin: 2rem 1rem 1rem;text-align: left;}
+        .packet-detail div p{line-height: 2.5rem;}
+        .packet-detail div span{color: #fff;}
+        .packet-detail div .yellow{color: #f2dc16;}
+
+        /*耍*/
+        .play .ice-animation{margin-top: 1rem;overflow: hidden;}
+        .play .ice-animation img{float: left;display: block;width: 50%;}
+        .play .ice-animation .img1{width: 50%;margin-left: 15%;}
+        .play .ice-animation .img2{width: 20%;margin-left: -2rem; animation:moves .5s infinite;}
+         @keyframes moves{
+            0%{transform: translate(-15px,0px);}
+            50%{transform: translate(0px,0px);}
+            100%{transform: translate(15px,0px);}
+        }
+
+        .play .text{margin: 1rem 0 1.5rem;}
+        .play .my-box{display: flex;margin: 1rem;min-height: 12rem;}
+        .play .code{width: 37%;background: url(/Style/Phone/img/Septemberactive/code_bg.png) no-repeat;background-size: 100% 100%;}
+        .play .code span{margin: 2rem 1rem 6rem;text-align: center;display: block;color: #555;}
+        .play .con .gift{margin-top: 6rem;}
+        .play .my-gift{width: 60%;margin-left: 3%;}
+        .play .my-gift .p-tit span{background-color: #5704a1;color: #f2dc16;text-align: center;line-height: 2.5rem;display: inline-block;}
+        .play .my-gift .table{border: none;line-height: 2.5rem;text-align: center;width: 100%;}
+        .play .my-gift .table td{background-color: #933ae2;color: #fff;border-bottom: 1px solid #7509d5;border-right: 1px solid #7509d5;}
+        .play .my-gift .table .login-no td{    border-right: none;}
+        .play .my-gift .table .login-yes tr td:nth-child(even){    border-right: none;}
+        .play .my-gift-box{margin-bottom: 3.5rem;}
+        .play .my-gift-box span{margin: .8rem 0;color: #fff;display: block;text-align: center;}
+        .play .my-gift-box a{display: block;border-radius: 3px;color: #5704a1;width: 40%;background-color: #f7e306;margin: 0 auto;    line-height: 2rem;}
+        .play .gift-item-box{position: relative;margin: 2rem 1rem;position: relative;}
+        .play .gift-item-box .bg_img{z-index: 0;width: 100%;position: absolute;bottom: -.5rem;left: 0;}
+        .play .gift-item{width: 30%;display: inline-block;position: relative;z-index: 1;margin-left: 13%;}
+        .play .gift-item p{text-align: center;line-height: 2rem;}
+        .play .gift-item .picture{background-color: #fff;padding:1rem;}
+        .play .gift-item .picture img{width: 100%;}
+        .play .gift-item .name{background-color: #7509d5;color: #fff;}
+        .play .gift-item .price{color: #f3302c;}
+        .play .ice-animation .aftergift{display: none;margin-left: 20%;}
+        .play .qrcode{ width: 60%; margin-left: 21%;margin-top: 7%;}
+
+        /*抢*/
+        .catch .text span{display: block;margin: 1rem 0;}
+        .catch .gold-img{width: 80%;margin: 1rem auto;display: block;}
+        .catch .btn{margin: 2rem auto;display: block;font-size: 2rem;color: #fff;background-color: #ffb401;border-radius: 50%;width: 5rem;height: 5rem;text-align: center;line-height: 5rem;box-shadow: 2px 2px 2px #cb6c06;}
+
+        /*战*/
+        .war .con .con-item{padding: 0 2%;width: 96%;}
+        .war .tit-text{width: 80%;margin: 2rem auto;}
+        .war .tit-text span{display: inline-block;font-weight: bold;font-size: 1.2rem;color: #f7e306;background-color: #7300d5;}
+        .war .tit-text .num{position: relative;width: 3rem;text-align: center;height: 3rem;line-height: 3rem;border-radius: 50%;box-shadow: 3px 2px 10px #591e8b;}
+        .war .tit-text .text{padding: .3rem .5rem .3rem 1.5rem;border-radius: 3px;margin-left: -1rem;}
+        .war .war-img{width: 100%;}
+        .war .big-text, .war .big-text .look-rules{font-size: 1.1rem;margin: 1rem 0;}
+        .war .anking{width: 65%;display: block;margin: 1rem auto;}
+        .war .list{padding-bottom: 2rem;}
+        .war .list .table{text-align: center;width: 100%;}
+        .war .table th{background-color: #410a6f;color: #fcf101;padding: .5rem 0;font-weight: normal;}
+        .war .table td{color: #fff;background-color: #521289;}
+        .marquee-con{overflow: hidden;min-height: 7rem;}
+        .marquee-con ul li{overflow: hidden;    padding: .2rem 0;    border-bottom: 1px solid #591e8b;}
+        .marquee-con2 ul li{padding: .9rem 0;}
+        .marquee-con ul .myinvite-cla{color: #ff223c; font-weight: bold;}
+        .marquee-con ul li span{ float: left; display: inline-block;}
+        .marquee-con ul li .span1{width: 15%;}
+        .marquee-con ul li .span2{width: 35%;}
+        .marquee-con ul li .span3{width: 25%;}
+        .marquee-con ul li .span1,.marquee-con ul li .span2,.marquee-con ul li .span3{margin-top: 0.6rem;}
+        .marquee-con ul li .span4{width: 25%;}
+        .war .up-result{display: inline-block;text-decoration: underline;}
+
+        /*弹窗*/
+        .alldiv{z-index: 10; display: none; position: fixed;top: 0;left: 0;width: 100%;height:100%;background-color: rgba(0,0,0,.4);}
+        .box{display: none; text-align: center;margin: 0 auto;border-radius: 8px;position: relative;top:50%;padding: 1rem 0;transform: translate(0,-50%);width: 80%;}
+        .close-btn{font-size: 1.5rem;background-color: transparent;color: #fff;border: 1px solid #fff;display: block;position: absolute;width: 2rem;height: 2rem;line-height: 1.8rem;border-radius: 50%;top: -3rem;right: 0;text-align: center;}
+        .box .show-img{width: 35%;margin-top: 2rem;}
+        .box .p1{font-size: 1.2rem;margin: 2rem 0;}
+        .box .p2{width: 90%;background: url(/Style/Phone/img/Septemberactive/tit_bg.png) no-repeat;background-size: 100% 100%;position: relative;font-size: 1.5rem;font-weight: bold;line-height: 4rem;margin: 0 auto;}
+        .box .p3{font-size: 1.2rem;margin: 2rem;line-height: 2.5rem;}
+        .box .p4{margin: 1.5rem 0;}
+        .box .p5{font-size: 2rem;color: #fff;padding-top: 3rem;}
+        .send-box{background-color: #fff;}
+        .send-btn{display: block;border-radius: 3px;width: 50%;margin: 0 auto;text-align: center;color: #fff;background-color: #591e8b;line-height: 2.5rem;}
+        .play-box{color: #ff3a65;}
+        .play-box .con-div{margin-top: -1.5rem;overflow: hidden;min-height: 15rem;background-color: #fff4de;border-radius: 10px;text-align: center;}
+        .play-box .in-con-div{height: 18rem;border-radius: 10px;border: 1px dotted #cbb08c;margin: 1rem;}
+        .play-box .play-btn{background-color: #ffc025;color: #ff3a65;font-size: 1.5rem;border-radius: 40px;width: 100%;font-weight: bold;text-align: center;display: block;line-height: 3.5rem;margin-top: 1.5rem;}
+        .play-box .go{font-size: 1.5rem;color: #ffb925;}
+        .catch-box{top: 40%;}
+        .catch-box .p1{color: #fff;margin: 0;padding: 1rem 0;}
+        .catch-box .title-img{width: 80%;position: relative;display: block;}
+        .catch-box .title-no{width: 50%;}
+        .catch-box .catch-div{background: url(/Style/Phone/img/Septemberactive/catch_bg.png) no-repeat;background-size: 100% 100%;margin-top: -2rem;padding: 1rem;width: 96%;}
+        .catch-box .top_div{margin-top: 3rem;}
+        .catch-box .top_div .ticket{background: url(/Style/Phone/img/Septemberactive/ticket_bg.png) no-repeat;background-size: 100% 100%;overflow: hidden;width: 96%;min-height: 7rem;}
+        .catch-box .ticket span{display: block;}
+        .catch-box .ticket .big-font{color:#ff4d22;}
+        .catch-box .ticket .left{float: left;width: 30%;color: #ff4d22;margin-top: 2rem;}
+        .catch-box .ticket .right{float: right;width: 70%;color: #a88074;text-align: left;margin-top: 2.2rem;}
+        .catched .bottom-div,.no-start .bottom-div,.catchnum-none .bottom-div{margin-top: 3rem;}
+        .catch-box .catch-btn{background-color: #ff5532;color: #fff;width: 40%;border-radius: 20px;border: 2px solid #000;box-shadow: 2px 2px 2px #ff5532;margin-top: 3rem;display: inline-block;margin: 2rem auto 1rem;line-height: 2.5rem;}
+        .catchnum-none .catch-btn{margin-left: 1rem;width: 30%;margin-top: 4rem;}
+        .catch-box .catch-div img{width: 35%;margin: 1rem auto 0;}
+
+        .invest-empty {text-align: center; margin-top: 20px;color: #bb8fe2;}
+        .more{    display: block;
+    color: #fff;
+    text-align: center;
+    margin-top: 1rem;}
+    .more-box{ background-color: #fff;}
+    .more-boxs{max-height: 28rem;overflow: auto;}
+    .more-boxs::-webkit-scrollbar-track{
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        border-radius: 15px;
+        background-color: #F5F5F5;}
+    .more-boxs::-webkit-scrollbar{
+        width: 5px;
+        background-color: #F5F5F5;
+    }
+    .more-boxs::-webkit-scrollbar-thumb{
+        border-radius: 15px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        background-color: #999;}
+   .more-box table{ border: none;   line-height: 2.5rem;
+    text-align: center;
+    width: 94%;
+    margin: 0 3%;}
+    .more-box table th{border-bottom: 2px solid #7509d5;}
+    .more-box table td{border-bottom: 1px solid #efefef;}
+
+		@media screen and (min-width:320px){html{font-size:12px;}}
+        @media screen and (min-width:360px){html{font-size:13px;}}
+        @media screen and (min-width:480px){html{font-size:18px;}}
+        @media screen and (min-width:640px){html{font-size:24px;}}
+        @media screen and (min-width:720px){html{font-size:26px;}}
+
+    </style>
+</head>
+<body>
+	<section class="banner">
+        <img src="/Style/Phone/img/Septemberactive/banner.png" class="banner-img">
+        <p class="active-time">活动时间：2017.9.5-2017.9.30</p>
+        <div class="banner-item">
+        	<ul>
+        		<li style="margin-left:0;"><img src="/Style/Phone/img/Septemberactive/song.png"></li>
+        		<li><img src="/Style/Phone/img/Septemberactive/shua.png"></li>
+        		<li><img src="/Style/Phone/img/Septemberactive/qiang.png"></li>
+        		<li><img src="/Style/Phone/img/Septemberactive/zhan.png"></li>
+        	</ul>
+        </div>
+    </section>
+
+    <!-- 送 -->
+    <section class="item item0 send">
+		<div class="main">
+        	<div class="con">
+        		<div class="con-item redpacket">
+        			<img src="/Style/Phone/img/Septemberactive/title1.png" class="title-img">
+
+                    <if condition="$mypacket[0]['time'] eq null">
+                        <!-- 未开红包 -->
+            			<img src="/Style/Phone/img/Septemberactive/redpacket.png" class="redpacket-img js-open">
+                    <else/>
+                        <!-- 红包详情 -->
+                        <div class="packet-detail" style="display: block">
+                            <img src="/Style/Phone/img/Septemberactive/logo.png" class="logo-img">
+                            <span class="big-font">链金所</span>
+                            <div>
+                                <p>
+                                    <span class="yellow">红包金额：</span>
+                                    <span class="money1">{$mypacket[0]['value']}元</span>
+                                </p>
+                                <p>
+                                    <span class="yellow">红包来源：</span>
+                                    <span class="resource">开通新浪支付赠送</span>
+                                </p>
+                                <p>
+                                    <span class="yellow">开启时间：</span>
+                                    <span class="time1">{$mypacket[0]['time']}</span>
+                                </p>
+                                <p>
+                                    <span class="yellow">奖励发放条件：</span>
+                                    <span>需在活动期间任意投资一次</span>
+                                </p>
+                            </div>
+                            <a href="/M/invest/lists/ptype/10.html" class="go-btn">立即投资</a>
+                        </div>
+                    </if>
+
+                    <!-- 已开红包 -->
+                    <div class="opened">
+                        <span class="big-font">恭喜您</span>
+                        <img src="/Style/Phone/img/Septemberactive/logo.png" class="logo-img">
+                        <span>链金所的红包</span>
+                        <span class="money">--</span>
+                        <a class="go-btn js-packet">查看我的红包</a>
+                    </div>
+                    <!-- 红包详情 -->
+                    <div class="packet-detail">
+                        <img src="/Style/Phone/img/Septemberactive/logo.png" class="logo-img">
+                        <span class="big-font">链金所</span>
+                        <div>
+                            <p>
+                                <span class="yellow">红包金额：</span>
+                                <span class="money1">--</span>
+                            </p>
+                            <p>
+                                <span class="yellow">红包来源：</span>
+                                <span class="resource">开通新浪支付赠送</span>
+                            </p>
+                            <p>
+                                <span class="yellow">开启时间：</span>
+                                <span class="time1">--</span>
+                            </p>
+                            <p>
+                                <span class="yellow">奖励发放条件：</span>
+                                <span>需在活动期间任意投资一次</span>
+                            </p>
+                        </div>
+                        <a href="/M/invest/lists/ptype/10.html" class="go-btn">立即投资</a>
+                    </div>
+                    
+        		</div>
+        	</div>
+        	<p class="text look-rule">查看活动规则</p>
+        	<div class="rule dis-none">
+        		<span class="close-btn js-close">×</span>
+        		<img src="/Style/Phone/img/Septemberactive/rule.png">
+        		<p>活动规则</p>
+        		<div>
+					1、活动时间：9月5日-9月30日；<br>
+					2、活动对象：本活动只针对以下用户开放（活动期间新注册用户、已经注册但未开通新浪支付用户）；<br>
+					3、活动期间未开通新浪支付的用户开通新浪支付后，可瓜分百万现金红包，现金奖励面额随机分发，最高可达199元，领完为止；<br>
+					4、在完成一笔投资后，活动期间用户开通新浪支付后所获得的现金红包，将于活动结束后15个工作日内发放至您的账户中；<br>
+					5、获得红包奖励且在活动期间未投资的用户，活动结束后奖励金额清0；<br>
+					6、本次活动在法律范围内，链金所保留最终解释权。
+				</div>
+        	</div>
+        </div>
+    </section>
+
+    <!-- 耍 -->
+    <section class="item item1 play dis-none">
+    	<div class="main">
+        	<div class="con">
+        		<div class="con-item animate">
+        			<img src="/Style/Phone/img/Septemberactive/title2.png" class="title-img">
+        			<div class="ice-animation">
+        				<img src="/Style/Phone/img/Septemberactive/gift.jpg" class="gifts img1 js-img">
+        				<img src="/Style/Phone/img/Septemberactive/hammer1.png" class="gifts img2">
+                        <img src="/Style/Phone/img/Septemberactive/after_gift.jpg" class="aftergift" >
+        			</div>
+        			<p class="text login-no"><a href="/M/pub/login.html">登录</a>查看我的砸冰次数</p>
+                    <p class="text login-yes">我的剩余砸冰次数：<span class="zleft">{$zleft}</span> 次</p>
+        			<div class="my-box">
+        				<div class="code">
+        					<span class="login-no">登录查看<br>我的邀请码</span>
+                            <!-- 我的邀请码 -->
+                            <img src="/home/active/create_qr" class="qrcode login-yes">
+        				</div>
+        				<div class="my-gift">
+							<p class="p-tit">
+								<span style="width:60%">我获得的奖品</span><span style="width:40%">状态</span>
+        					</p>
+        					<table class="table" border="0" cellspacing="0">
+                                <tbody  class="login-no">
+            						<tr>
+            							<td colspan="2">
+            								<div class="my-gift-box">
+    			        						<span>请登录后查看</span>
+    			        						<a href="/M/pub/login.html">立即登录</a>
+    			        					</div>
+    			        				</td>
+            						</tr>
+                                </tbody>
+                                <!-- 我的奖品 -->
+                                <tbody  class="login-yes">
+                                    <volist name="myprize" id="v" offset="0" length='3' empty="$empty">
+                                        <tr>
+                                            <td width="40%">{$v.name}</td>
+                                            <td width="60%">{$v.status}</td>
+                                        </tr>
+                                    </volist>
+                                </tbody>
+        					</table>
+                            <span class="login-yes more js-more">查看更多>></span>
+        				</div>
+        			</div>
+        		</div>
+				<div class="con-item gift">
+        			<img src="/Style/Phone/img/Septemberactive/title3.png" class="title-img">
+					<div class="gift-item-box">
+						<div class="gift-item">
+							<p class="picture"><img src="/Style/Phone/img/Septemberactive/ipad.jpg"></p>
+							<p class="name">iPad pro</p>
+							<p class="price">价值：4800元</p>
+						</div>
+						<div class="gift-item">
+							<p class="picture"><img src="/Style/Phone/img/Septemberactive/headset.jpg"></p>
+							<p class="name">索尼立体耳机</p>
+							<p class="price">价值：799元</p>
+						</div>
+                        <img src="/Style/Phone/img/Septemberactive/bottom.png" class="bg_img">
+					</div>
+					<div class="gift-item-box">
+						<div class="gift-item">
+							<p class="picture"><img src="/Style/Phone/img/Septemberactive/madie.jpg"></p>
+							<p class="name">美的榨汁机</p>
+							<p class="price">价值：300元</p>
+						</div>
+						<div class="gift-item">
+							<p class="picture"><img src="/Style/Phone/img/Septemberactive/mi.jpg"></p>
+							<p class="name">小米手环</p>
+							<p class="price">价值：150元</p>
+						</div>
+						<img src="/Style/Phone/img/Septemberactive/bottom.png" class="bg_img">
+					</div>
+					<div class="gift-item-box">
+						<div class="gift-item">
+							<p class="picture"><img src="/Style/Phone/img/Septemberactive/towel.jpg"></p>
+							<p class="name">运动毛巾</p>
+							<p class="price">价值：60元</p>
+						</div>
+						<div class="gift-item">
+							<p class="picture"><img src="/Style/Phone/img/Septemberactive/fan.jpg"></p>
+							<p class="name">手持小风扇</p>
+							<p class="price">价值：50元</p>
+						</div>
+						<img src="/Style/Phone/img/Septemberactive/bottom.png" class="bg_img">
+					</div>
+					<div class="gift-item-box">
+						<div class="gift-item">
+							<p class="picture"><img src="/Style/Phone/img/Septemberactive/ticket.jpg"></p>
+							<p class="name">投资券</p>
+							<p class="price">价值：随机不等</p>
+						</div>
+						<div class="gift-item">
+							<p class="picture"><img src="/Style/Phone/img/Septemberactive/money.jpg"></p>
+							<p class="name">现金</p>
+							<p class="price">价值：随机不等</p>
+						</div>
+						<img src="/Style/Phone/img/Septemberactive/bottom.png" class="bg_img">
+					</div>
+        		</div>
+        	</div>
+        	<p class="text look-rule">查看活动规则</p>
+        	<div class="rule dis-none">
+				<span class="close-btn js-close">×</span>
+        		<img src="/Style/Phone/img/Septemberactive/rule.png">
+        		<p>活动规则</p>
+        		<div>
+					1、活动时间：9月5日-9月30日；<br>
+					2、活动对象：新用户（活动期间新注册的用户、已注册但未投资的用户）；<br>
+					3、为了方便部分奖励能实时发放至您的账户中，在砸冰块之前需开通新浪支付；<br>
+					4、新用户单笔每投资满2000元即可增加一次砸冰块机会；<br>
+					5、邀请一个好友成功开通新浪支付后也可增加一次机会砸冰块机会；<br>
+					6、活动期间，每人每天限砸冰块5次,砸冰块机会必须在活动期间内用完，活动结束后失效；<br>
+					7、投资券及现金奖品立即发放，其他实物奖品将在活动结束后15个工作日内发放；<br>
+					8、获得的投资券及现金奖励自动发放至平台账户中；<br>
+					9、本次活动在法律范围内，链金所保留最终解释权。
+				</div>
+        	</div>
+    </section>
+
+    <!-- 抢 -->
+    <section class="item item2 catch dis-none">
+    	<div class="main">
+        	<div class="con">
+        		<div class="con-item catch-box">
+        			<img src="/Style/Phone/img/Septemberactive/title4.png" class="title-img" style="display: inline;">
+        			<p class="text">
+        				<span class="bold">今日剩余加息券数量：<i class="icleft">{$icleft}</i> 张</span>
+        				<span class="logspan login-no"><a href="/M/pub/login.html">登录</a>查看我的抢券次数</span>
+                        <span class="logspan login-yes">我的抢券次数：<i class="qcount">{$qcount}</i> 次</span>
+        			</p>
+        			<img src="/Style/Phone/img/Septemberactive/gold.jpg" class="gold-img">
+        			<a href="javascript:void(0)" class="btn js-catch">抢</a>
+        		</div>
+        	</div>
+        	<p class="text look-rule">查看活动规则</p>
+        	<div class="rule dis-none">
+        		<span class="close-btn js-close">×</span>
+        		<img src="/Style/Phone/img/Septemberactive/rule.png">
+        		<p>活动规则</p>
+        		<div>
+					1、活动时间：9月5日-9月30日<br>
+					2、活动对象：新用户（活动期间新注册的用户、已注册但未投资的用户）；<br>
+					3、活动期间每日10:00开抢，加息额度最高年化2%，先到先得，抢完为止；<br>
+					4、活动期间新用户充值成功1次，即可获取1次抢加息券机会，但每位用户每日仅限抢1次，每天100份，抢完即止，先到先得；<br>
+					5、所有加息券请在其到期日之前使用；<br>
+					6、活动期间所获得的抢券次数，若在活动结束后还未用完，则将自动清0；<br>
+					7、获得的加息券自动发放至平台账户-我的赠券中；<br>
+                    8、本次活动在法律范围内，链金所保留最终解释权。
+				</div>
+        	</div>
+        </div>
+    </section>
+
+    <!-- 战 -->
+    <section class="item item3 war dis-none">
+    	<div class="main">
+        	<div class="con">
+        		<div class="con-item war1-box">
+        			<img src="/Style/Phone/img/Septemberactive/title5.png" class="title-img">
+        			<p class="tit-text">
+        				<span class="num">01</span>
+        				<span class="text">第一重：单笔投资、荣耀之争</span>
+        			</p>
+        			<img src="/Style/Phone/img/Septemberactive/scale_map1.png" class="war-img">
+        			<p class="text">单笔投资排名奖励</p>
+        			<p class="text big-text">
+        				<span class="logspan login-no"><a href="/M/pub/login.html">登录</a>查看我的单笔最高投资额</span>
+                        <span class="logspan login-yes">我的单笔最高投资额：{$zhanMaxInvest} 元</span> 
+        				<span class="look-rules">查看活动规则</span>
+                        <a href="/M/invest/lists/ptype/10.html" class="up-result login-yes">提升我的战绩>></a>
+        			</p>
+                    <div class="rule dis-none">             
+                        <span class="close-btn js-close">×</span>
+                        <img src="/Style/Phone/img/Septemberactive/rule.png">
+                        <p>活动规则</p>
+                        <div>
+                            1、活动时间：9月5日-9月30日；<br>
+                            2、活动对象：新用户（活动期间新注册的用户、已注册但未投资的用户）；<br>
+                            3、活动期间，单笔投资金额最高的前10名用户（参与本活动的单笔投资金额1万元以上），荣登荣耀榜，可获得相应奖励；<br>
+                            4、现金奖励将在活动结束15个工作日内发放至你的账户中；<br>
+                            5、单笔最高投资额度相同的用户，名次先后顺序按投资完成的时间先后为准；<br>
+                            6、本次活动在法律范围内，链金所保留最终解释权。
+                        </div>
+                    </div>
+        			<img src="/Style/Phone/img/Septemberactive/anking1.png" class="anking">
+
+                    <div class="list">
+                        <table class="table" border="0" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th width="15%">排名</th>
+                                    <th width="35%">用户</th>
+                                    <th>单笔最高投资</th>
+                                    <th width="25%">达成时间</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="4">
+                                        <div class="marquee-con">
+                                            <div  class="marquee1">
+                                                <ul>
+                                                   <volist name="singleinvest" id="ti" offset="0" length='10' empty="$empty">
+                                                        <li class="{$ti.red}">
+                                                            <span class="span1">{$key + 1}</span>
+                                                            <span class="span2">{$ti.user_phone}</span>
+                                                            <span class="span3">{$ti.invest}</span>
+                                                            <span class="span4">{$ti.time}</span>
+                                                        </li>
+                                                    </volist>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+        			<p class="tit-text">
+        				<span class="num">02</span>
+        				<span class="text">第二重：累计投资、荣耀之争</span>
+        			</p>
+        			<img src="/Style/Phone/img/Septemberactive/scale_map2.png" class="war-img">
+        			<p class="text">个人累计投资排名奖励</p>
+        			<p class="text big-text">
+        				<span class="logspan login-no"><a href="/M/pub/login.html">登录</a>查看我的累计投资额</span>
+                        <span class="logspan login-yes">我的累计投资额：{$zhanTotalInvest} 元</span>
+        				<span class="look-rules">查看活动规则</span>
+                        <a href="/M/invest/lists/ptype/10.html" class="up-result login-yes">提升我的战绩>></a>
+        			</p>
+                    <div class="rule dis-none">             
+                        <span class="close-btn js-close">×</span>
+                        <img src="/Style/Phone/img/Septemberactive/rule.png">
+                        <p>活动规则</p>
+                        <div>
+                            1、活动时间：9月5日-9月30日；<br>
+                            2、活动对象：新用户（活动期间新注册的用户、已注册但未投资的用户）；<br>
+                            3、活动期间，累计投资金额最高前5名的用户，荣登荣耀榜，可获得神秘实物礼品；<br>
+                            4、神秘实物礼品将在活动结束15个工作日内邮寄给您，届时请注意物流动态信息；<br>
+                            5、累计最高投资额度相同的用户，名次先后顺序按投资完成的时间先后为准；<br>
+                            6、本次活动在法律范围内，链金所保留最终解释权。
+                        </div>
+                    </div>
+        			<img src="/Style/Phone/img/Septemberactive/anking2.png" class="anking">
+        			<div class="list">
+        				<table class="table" border="0" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th width="20%">排名</th>
+                                    <th width="35%">用户</th>
+                                    <th width="45%">累计投资金额</th>
+                                    <!--<th width="25%">达成时间</th>-->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="4">
+                                        <div class="marquee-con marquee-con2">
+                                            <div  class="marquee2">
+                                                <ul>
+                                                    <volist name="totalinvest" id="si" offset="0" length='5' empty="$empty">
+                                                        <li class="{$si.red}">
+                                                            <span class="span1" style="width: 20%">{$key + 1}</span>
+                                                            <span class="span2" style="width: 35%">{$si.user_phone}</span>
+                                                            <span class="span3" style="width: 45%">{$si.invest}</span>
+                                                        </li>
+                                                    </volist>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+        			</div>
+        		</div>
+        	</div>
+        	
+        </div>
+    </section>
+
+	<!--弹窗-->
+    <div class="alldiv">
+        <!-- 耍 查看更多礼物 -->
+        <div class="box more-box"> 
+            <span class="close-btn js-close">×</span>
+            <div class="more-boxs">
+            <table class="table" border="0" cellspacing="0">
+                <tbody  class="login-yes">
+                    <tr>
+                        <th>我获得的奖品</th>
+                        <th>状态</th>
+                    </tr>
+                    <volist name="myprize" id="v" empty="$empty">
+                        <tr>
+                            <td>{$v.name}</td>
+                            <td>{$v.status}</td>
+                        </tr>
+                    </volist>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        <!--送 活动只对新用户开启 -->
+        <div class="box send-box"> 
+            <span class="close-btn js-close">×</span>
+            <p class="p1">此活动只对新用户开启哦！</p>
+            <a class="send-btn js-close">知道了</a>
+        </div>
+        <!--耍 开通新浪支付-->
+        <div class="box go-sinapay play-box"> 
+            <p class="p2">温馨提示</p>
+            <div class="con-div">
+                <div class="in-con-div">
+                    <p class="p3" style="margin: 6rem 2rem 2rem;">您需要开通新浪支付后才能砸冰块哦！</p>
+                </div>
+            </div>
+            <a href="M/user/sinapass" class="play-btn">去开通</a>
+        </div>
+        <!--耍 砸冰次数为0-->
+        <div class="box playnum-none play-box"> 
+            <p class="p2">啊哦~</p>
+            <div class="con-div">
+                <div class="in-con-div">
+                    <p class="p3">您的砸冰块次数为0！</p>
+                    <p class="p4">邀请好友开通新浪支付可增加砸冰机会</p>
+                    <a href="" class="go">立即邀请</a>
+                    <p class="p4">单笔每投资2000元可增加一次砸冰机会</p>
+                    <a href="/M/invest/lists/ptype/10.html" class="go">立即投资</a>
+                </div>
+            </div>
+            <a class="play-btn js-close">知道了</a>
+        </div>
+        <!--耍 砸冰次数达到上限-->
+        <div class="box play-maxnum play-box"> 
+            <p class="p2">啊哦~</p>
+            <div class="con-div">
+                <div class="in-con-div">
+                    <p class="p3" style="margin: 6rem 2rem 2rem;">您今日的砸冰次数以达到上限，请明日再来！</p>
+                </div>
+            </div>
+            <a class="play-btn js-close">知道了</a>
+        </div>
+        <!--耍 没中奖-->
+        <div class="box play-none play-box"> 
+            <p class="p2">很遗憾</p>
+            <div class="con-div">
+                <div class="in-con-div">
+                    <p class="p3" style="margin: 6rem 2rem 2rem;">差一点点，没有砸中哦！</p>
+                </div>
+            </div>
+            <a class="play-btn js-playclose">再砸一次</a>
+        </div>
+        <!--耍 中奖了-->
+        <div class="box play-yes play-box"> 
+            <p class="p2">中奖啦</p>
+            <div class="con-div">
+                <div class="in-con-div">
+                    <img src="/Style/Phone/img/Septemberactive/prize_ipad.jpg" class="show-img">
+                    <p class="p3">恭喜您<br> 获得 <span class="prize-name">Ipad Pro一部</span></p>
+                </div>
+            </div>
+            <a class="play-btn js-playclose">再砸一次</a>
+        </div>
+        <!--抢 获得加息券-->
+        <div class="box catch-box get-ticket"> 
+            <img src="/Style/Phone/img/Septemberactive/tit_yes.png" class="title-img">
+            <div class="catch-div">
+                <div class="top_div">
+                    <div class="ticket">
+                        <p class="left">
+                            <span class="big-font ticket-rate">1.5%</span>
+                            <span>加息券</span>
+                        </p>
+                        <p class="right">
+                            <!-- <span>投资金额：<i class="range">50001~30000</i>元</span> -->
+                            <span style="margin-top: .5rem;margin-left: 4rem;">有效期：<i class="days">7</i>天</span>
+                        </p>
+                    </div>
+                    <p class="p1">获得一张<i class="ticket-rate">1.5%</i>的加息券</p>
+                </div>
+                <div class="bottom-div">
+                    <a class="catch-btn js-close">收下了</a>
+                </div>
+            </div>
+        </div>
+        <!--抢 加息券已抢完-->
+        <div class="box catch-box ticket-none"> 
+            <img src="/Style/Phone/img/Septemberactive/tit_no.png" class="title-no">
+            <div class="catch-div">
+                <img src="/Style/Phone/img/Septemberactive/img_cry.png">
+                <p class="p1">今日加息券已全部抢完<br>明天早点来哦！</p>
+
+                <div class="bottom-div">
+                    <a class="catch-btn js-close">知道了</a>
+                </div>
+            </div>
+        </div>
+        <!--抢 今日已抢过-->
+        <div class="box catch-box catched"> 
+            <div class="catch-div">
+                <p class="p5">温馨提示</p>
+                <p class="p1">您今日已经抢过加息券了哦<br>请明日再来！</p>
+                <div class="bottom-div">
+                    <a class="catch-btn js-close">知道了</a>
+                </div>
+            </div>
+        </div>
+        <!--抢 抢券还未开始-->
+        <div class="box catch-box no-start"> 
+            <div class="catch-div">
+                <p class="p5">温馨提示</p>
+                <p class="p1">抢加息券还未开始<br>每日<span class="yellow">10:00</span>开抢哦！</p>
+                <div class="bottom_div">
+                    <a class="catch-btn js-close">知道了</a>
+                </div>
+            </div>
+        </div>
+        <!--抢 没有抢券次数-->
+        <div class="box catchnum-none catch-box "> 
+            <div class="catch-div">
+                <p class="p5">啊哦~</p>
+                <p class="p1">您没有抢券次数了<br>充值成功可获取抢券次数哦！</p>
+                <div class="bottom_div">
+                    <a class="catch-btn js-close" style="margin-left: -.5rem;">知道了</a>
+                    <a href="/M/user/pay.html" class="catch-btn">立即充值</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<input type="hidden" value="{$uid}" id="uid" name="uid">
+    <input type="hidden" value="{$userstatus}" id="userstatus" name="userstatus">
+    <input type="hidden" value="{$isSongNew}" id="isSongNew" name="isSongNew">
+    <input type="hidden" value="{$isZaNew}" id="isZaNew" name="isZaNew">
+    <input type="hidden" value="{$isQiangNew}" id="isQiangNew" name="isQiangNew">
+
+
+	<script type="text/javascript">
+		$(function(){
+            /*
+            **弹窗
+            */
+            $('.js-close').click(function(){
+                $('.alldiv').hide();
+                $('.box').hide();
+                $('.rule').hide();
+            });
+            $('.js-playclose').click(function(){
+                $('.ice-animation .aftergift').hide();
+                $('.ice-animation .gifts').show();
+                $('.alldiv').hide();
+                $('.box').hide();
+            });
+
+            /*
+            **tab切换
+            */ 
+            $('.banner-item li').click(function(){
+                var index = $(this).index();
+                $('.item' + index).show();
+                $('.item' + index).siblings('.item').hide();
+            });
+
+            /*
+            **耍 查看更多礼物
+            */ 
+            $('.js-more').click(function(){
+                $('.alldiv').show();
+                $('.more-box').show();
+            });
+            
+
+            /*
+            **查看活动规则
+            */
+            $('.look-rule').click(function(){
+                $('.alldiv').show();
+                $(this).parents('.main').find('.rule').show();
+            });
+            $('.look-rules').click(function(){
+                $('.alldiv').show();
+                $(this).parent().next().show();
+            });
+
+            var uid = $('#uid').val(),
+                status = $('#userstatus').val(),
+                qtimes = $('#qtimes').val(),
+                isSongNew  = $('#isSongNew ').val(),
+                isZaNew  = $('#isZaNew ').val(),
+                isQiangNew = $('#isQiangNew').val();
+
+            /*
+            **是否登录
+            */
+            if (uid == 0) {
+                $('.login-yes').hide();
+                $('.login-no').show();
+                $('.my-gift .invest-empty').hide();
+
+            }else{
+                $('.login-yes').show();
+                $('.login-no').hide();
+            }
+
+            /*
+            **送 开红包
+            */
+            $('.js-open').click(function(){
+                /*未登录*/
+                if (uid == 0) {
+                    window.location.href = "/M/pub/login.html";
+                    return;
+                }
+
+                /*未开通新浪支付和实名认证*/
+                if (status == 0 || status == 4) {
+                    window.location.href = "/M/user/verify.html";
+                    return;
+                }else if(status == 2){
+                    window.location.href = "/M/user/sinapass";
+                    return;
+                }
+
+                /*非新用户*/
+                if (isSongNew == 0) {
+                    $('.alldiv').show();
+                    $('.send-box').show();
+                    return;
+                }
+
+                $.ajax({
+                    url: '/home/pro9/getsongresult',
+                    type: 'get',
+                    dataType: 'json',
+                    success: function(d){
+                        var data = d || {};
+                        if (data.code == 1) {
+                            $('.js-open').hide();
+                            $('.opened').show();
+                            $('.money').text(data.data.value + '元');
+                            $('.js-packet').click(function(){
+                                $('.opened').hide();
+                                $('.packet-detail').show();
+                                $('.money1').text(data.data.value + '元');
+                                $('.time1').text(data.data.datettime);
+                            });
+                        }else{
+                            alert(data.msg);
+                        }
+                    }
+                });
+            });
+            
+            /*
+            **耍 砸冰块
+            */
+            if($('.my-gift .table .login-yes tr').length < 3){
+                $('.my-gift .js-more').hide();
+            }
+            //var number = 0;
+            $('.js-img').click(function(){
+                /*未登录*/
+                if (uid == 0) {
+                    window.location.href = "/M/pub/login.html";
+                    return;
+                }
+
+                /*未开通新浪支付*/
+                // if (status == 0 || status == 4) {
+                //     $('.alldiv').show();
+                //     $('.go-sinapay').show();
+                //     return;
+                // }
+                /*未开通新浪支付和实名认证*/
+                if (status == 0 || status == 4) {
+                    window.location.href = "/M/user/verify.html";
+                    return;
+                }else if(status == 2){
+                    window.location.href = "/M/user/sinapass";
+                    return;
+                }
+
+                /*非新用户*/
+                if (isZaNew  == 0) {
+                    $('.alldiv').show();
+                    $('.send-box').show();
+                    return;
+                }
+
+                /*砸冰次数为0*/
+                if($('.zleft').text() == '0'){
+                    $('.alldiv').show();
+                    $('.playnum-none').show();
+                    return;
+                }
+
+                $.ajax({
+                    url: '/home/pro9/getzaresult',
+                    type: 'get',
+                    dataType: 'json',
+                    success: function(d){
+                        var data = d || {};
+                        if (data.data.errorcode == 3) {
+                            /*砸冰次数达到5次*/
+                            $('.alldiv').show();
+                            $('.play-maxnum').show();
+
+                        }
+                        if (data.code == 1) {
+                            $('.ice-animation .aftergift').show();
+                            $('.ice-animation .gifts').hide();
+                            $('.zleft').text(data.data.left);
+                            
+                            if (data.data.angle == '0') {
+                                //没中奖
+                                $('.alldiv').show();
+                                $('.play-no').show();
+                            }else{
+                                //中奖
+                                var status = data.data.release_status == 0 ? "活动结束后发放" : "已发放";
+                                $('.my-gift .invest-empty').hide();
+                                if($('.my-gift .table .login-yes tr').length < 3){
+                                    $('.my-gift .table .login-yes').append('<tr><td>'+ data.data.name +'</td><td>'+ status +'</td></tr>');
+                                }else{
+                                    $('.my-gift .js-more').show();
+                                }
+
+                                if(data.data.angle == '7' || data.data.angle == '8' || data.data.angle == '9'){
+                                    $('.play-yes .show-img').attr('src','/Style/Phone/img/Septemberactive/7.jpg');
+                                }else if(data.data.angle == '10' || data.data.angle == '11' || data.data.angle == '12'){
+                                    $('.play-yes .show-img').attr('src','/Style/Phone/img/Septemberactive/8.jpg');
+                                }else{
+                                    $('.play-yes .show-img').attr('src','/Style/Phone/img/Septemberactive/' + data.data.angle +'.jpg');
+                                }
+                                $('.play-yes .prize-name').text(data.data.name);
+                                $('.alldiv').show();
+                                $('.play-yes').show();
+                            }
+                            
+                            //localStorage.setItem("number", parseInt(localStorage.getItem("number")) + 1);
+                            
+                        }
+                    }
+                });
+            });
+
+            /*
+            **抢 加息券
+            */
+            $('.js-catch').click(function(){
+                /*未登录*/
+                if (uid == 0) {
+                    window.location.href = "/M/pub/login.html";
+                    return;
+                }
+
+                /*非新用户*/
+                if (isQiangNew  == 0) {
+                    $('.alldiv').show();
+                    $('.send-box').show();
+                    return;
+                }
+
+                /*加息券已抢完*/
+                if($('.icleft').text() == '0'){
+                    $('.alldiv').show();
+                    $('.ticket-none').show();
+                    return;
+                }
+
+                /*抢券次数用完*/
+                if($('.qcount').text() == '0'){
+                    $('.alldiv').show();
+                    $('.catchnum-none').show();
+                    return;
+                }
+
+                /*抢券未开始（每日10点）*/
+                var d = new Date();
+                var hours = d.getHours();
+                if(hours < 10){
+                    $('.alldiv').show();
+                    $('.no-start').show();
+                    return;
+                }
+
+                $.ajax({
+                    url: '/home/pro9/getqiangresult',
+                    type: 'get',
+                    dataType: 'json',
+                    data: {},
+                    success: function(d){
+                        var data = d || {};
+                        
+                        if( data.data.errorcode == 6 ){
+                            //每天只能抢一次
+                            $('.alldiv').show();
+                            $('.catched').show();
+                            return;
+                        }
+                        if( data.data.errorcode == 7 ){
+                            //加息券已被抢完
+                            $('.alldiv').show();
+                            $(".ticket-none").show();
+                            return;
+                        }
+                        //奖品已抽光了，还有剩余次数
+                        if( data.code == 0 ){
+                            alert("奖品已经送完，下次再来哦~");
+                            return;
+                        }
+                        //抽中奖品了
+                        if(data.code == 1) {
+                            $('.catch-box .icleft').text(data.data.icleft);
+                            $('.catch-box .qcount').text(data.data.left);
+                            $('.get-ticket .ticket-rate').text(data.data.value + "%");
+                            if(data.data.value == 0.5){
+                                // $('.get-ticket .range').text('500~1000');
+                                $('.get-ticket .days').text('30');
+                            }else if(data.data.value == 1){
+                                // $('.get-ticket .range').text('1001~5000');
+                                $('.get-ticket .days').text('30');
+                            }else if(data.data.value == 1.5){
+                                // $('.get-ticket .range').text('5001~30000');
+                                $('.get-ticket .days').text('7');
+                            }else{
+                                 // $('.get-ticket .range').text('30001以上');
+                                $('.get-ticket .days').text('7');
+                            }
+                            $('.alldiv').show();
+                            $('.get-ticket').show(); 
+                        }
+                    }
+                });
+            });
+		})
+	</script>
+</body>
+</html>

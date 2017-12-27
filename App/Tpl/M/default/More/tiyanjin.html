@@ -1,0 +1,353 @@
+    <!DOCTYPE html>
+<html>
+<head>
+<include file="Pub:header-common" />
+<title>红包嘉年华，百万福利欢乐送</title>
+
+<style>
+    body{background-color: #ffe5ce;}
+    .banner img,.part1 img, .part2 img{pointer-events: none;}
+    .dis-none{display: none;}
+    .banner img{width:100%;}
+    .part3{padding: 2rem 1rem 0;}
+    .part .btn{background-color: #f9bb00;font-size: 1.3rem;color: #ed463e;box-shadow: 1px 2px 15px #fde6a0;text-align: center;border-radius: 25px;display: block;width: 50%;margin: 2rem auto;}
+   
+    .title{width: 50%;margin: 0 auto;display: block;    margin-bottom: -.5rem;}
+    .part1 .con{width: 100%;background: url(/Style/M/images/mtyj/part1_bg.png) no-repeat;background-size: 100% 100%;padding: 2.5rem 2rem;margin-bottom: 2rem;}
+    .part1 ul{overflow: hidden;text-align: center;}
+    .part1 ul li{width: 49%;background: url(/Style/M/images/mtyj/part1_libg.png) no-repeat;background-size: 100% 100%;display: inline-block;margin-top: 1.5rem;}
+    .part1 li span{display: block;}
+    .part1 li .span1{font-size: 1.5rem;color: #fd4054;font-weight: bold;margin-top: 2rem;line-height: 1.8rem;}
+    .part1 li .span2{font-size: 1.1rem;color: #fd4054;}
+    .part1 li .span3{font-size: 1.1rem;color: #ed463e;background-color: #fdfc01;width: 50%;border-radius: 10px;margin: 1.5rem auto 0;}
+    .part1 li .span4{font-size: 1.1rem;color: #fff;margin: .5rem 0 0;}
+    .part1 li .span5{font-size: 1.1rem;color: #bc1407;margin-bottom: 1rem;}
+    .part2{margin-top: 1rem;}
+    .part2 .con{width: 100%;background: url(/Style/M/images/mtyj/part2_bg.jpg) no-repeat;background-size: 100% 100%;padding: 2.5rem 2rem;}
+    .part2 ul{overflow: hidden;text-align: center;}
+    .part2 ul li{width: 40%;display: inline-block;margin-top: 1rem;}
+    .part2 ul li.first{margin: 0 auto;display: block;}
+    .part2 ul li .div_bg{background: url(/Style/M/images/mtyj/part2_libg.png) no-repeat;background-size: 100% 100%;}
+    .part2 li span{display: block;font-size:1.2rem;color: #fff;}
+    .part2 li .span1{font-weight: bold;color:#e74e3e;padding: 4rem 0 2rem;}
+    .part2 li .span2{padding-bottom: .8rem;padding-top: 3rem;}
+    .part2 li .span3{}
+    .part3 .btn{width: 55%;margin: 1rem auto;box-shadow: 1px 2px 15px #f79267;}
+    .part3{background-color: #ffcb99;padding-bottom: 1rem;}
+    .part3 .titimg{width: 100%}
+    .part3 .text, .part1 .text, .part2 .text{color: #b25604;line-height: 1.8rem;font-size: 1.1rem;margin: 1rem 0 1rem 1rem;}
+    .part3 .ftooter{width: 70%;margin: -2.5rem auto 0;display: block;}
+    .zhuanpan_main{width:100%;position:relative;}
+    .zhuanpan_content{width: 80%;margin: 0px auto;position: relative;}
+    .zhuanpan_content .zpzz_content{width: 100%;position: absolute;left: 0rem;top: 23%;}
+    .zhuanpan_content img{width: 100%;}
+    .zp-dzp{width:100%}
+    .dzp-changes{text-align: center;font-size: 1.2rem;color: #642c0e;margin-top: 1.5rem;}
+    .rule-btn{background-color: #f9bb00;font-size: 1.3rem;color: #b25604;text-align: center;border-radius: 5px;display: block;width: 90%;margin: 2rem auto;line-height: 3rem;}
+    .mtyj-rule{padding: 2rem;font-size: 1.2rem;color:#642c0e;}
+    .mtyj-rule h2{text-align: center;margin-top: 0;}
+    .mtyj-rule h2 img{height: 6rem;}
+    .mtyj-ruletext{line-height: 1.8rem;padding: 1rem;text-align: left;}
+    .alldiv{display: none; position: fixed;top: 0;left: 0;width: 100%;height:100%;background-color: rgba(0,0,0,.4);z-index: 1050;}
+    .box{ text-align: center;width: 90%;margin: 0 auto;background-color: #fff;border-radius: 5px;position: relative;top:50%;padding: 1rem 0;transform: translate(0,-50%);    max-height: 40rem;overflow: auto;}
+    .box::-webkit-scrollbar-track
+    {
+        -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+        border-radius: 10px;
+        background-color: #F5F5F5;
+    }
+
+    .box::-webkit-scrollbar
+    {
+        width: 6px;
+        background-color: #F5F5F5;
+    }
+
+    .box::-webkit-scrollbar-thumb
+    {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        background-color: #ccc;
+    }
+
+    @media screen and (min-width:320px){html{font-size:12px;}}
+    @media screen and (min-width:360px){html{font-size:13px;}}
+    @media screen and (min-width:480px){html{font-size:18px;}}
+    @media screen and (min-width:640px){html{font-size:24px;}}
+    @media screen and (min-width:720px){html{font-size:26px;}}
+</style>
+</head>
+<body>
+<include file="Pub:simple_header" />
+
+<div class="banner"><img src="/Style/M/images/mtyj/banner.png" /></div>
+
+<div class="mtyj-wrap">
+    <div class="part part1">
+        <img src="/Style/M/images/mtyj/tit1.png" class="title"/>
+        <div class="con">
+            <p class="text">
+                活动规则：<br>
+                ①、新用户注册立享68元红包，直接充当现金用；<br>
+                ②、5次抽奖机会，惊天豪礼等你来。
+            </p>
+            <ul>
+                <li>
+                    <span class="span1">3元</span>
+                    <span class="span2">投资券</span>
+                    <span class="span3">起投100</span>
+                    <span class="span4">有效期3天</span>
+                    <span class="span5">投资期限≥30天</span>
+                </li><li>
+                    <span class="span1">5元</span>
+                    <span class="span2">投资券</span>
+                    <span class="span3">起投300</span>
+                    <span class="span4">有效期7天</span>
+                    <span class="span5">投资期限≥30天</span>
+                </li><li>
+                    <span class="span1">10元</span>
+                    <span class="span2">投资券</span>
+                    <span class="span3">起投1000</span>
+                    <span class="span4">有效期30天</span>
+                    <span class="span5">投资期限≥30天</span>
+                </li><li>
+                    <span class="span1">20元</span>
+                    <span class="span2">投资券</span>
+                    <span class="span3">起投2000</span>
+                    <span class="span4">有效期30天</span>
+                    <span class="span5">投资期限≥30天</span>
+                </li><li>
+                    <span class="span1">30元</span>
+                    <span class="span2">投资券</span>
+                    <span class="span3">起投3000</span>
+                    <span class="span4">有效期30天</span>
+                    <span class="span5">投资期限≥30天</span>
+                </li>
+                <!-- <li>
+                    <span class="span1">3万</span>
+                    <span class="span2">体验金</span>
+                    <span class="span3" style="width: 61%;">预期年化12%</span>
+                    <span class="span4">有效期15天</span>
+                    <span class="span5">投资期限=5天</span>
+                </li> -->
+            </ul>
+            <a href="/M/pub/regist.html" class="btn">立即领取</a>
+        </div>        
+    </div>
+
+    <div class="part part3" id="part3">
+        <img src="/Style/M/images/mtyj/tit2.png" class="title"/>
+        <p class="text">        幸运大抽奖，拿奖拿到手软。新用户注册后，即送5次抽奖机会，Iphone8、金条等豪礼等你带回家。
+        </p>
+        <div class="dzp-wrap">
+            <!--转盘 start-->
+            <div class="zhuanpan_main zp_js" >
+                <div class="zhuanpan_content ">
+                    <img src="/Style/M/images/mtyj/zhuanpan.png" class="zp-dzp" id="pointer">
+                    <div class="zpzz_content zpzz_js" id='pointer_container'>
+                        <div style='margin: 0 auto;width:40%;' >
+                            <img src='/Style/M/images/mtyj/zpzz.png' id="p_click">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--转盘 end-->
+            <img src='/Style/M/images/mtyj/tfooter.png' class="ftooter">
+            <div class="dzp-changes login-on dis-none">您还有的抽奖机会：<span id="count">{$left}</span> 次</div>
+            <div class="dzp-changes login-off"><a href="/M/pub/login.html">登录</a>查看抽奖次数</div>
+            <a class="btn dzp-chabutton" href="__URL__/getrecode.html">查看我的中奖记录</a>
+        </div>
+    </div>
+
+    <div class="part part2">
+        <img src="/Style/M/images/mtyj/tit3.png" class="title"/>
+        <div class="con">
+            <p class="text">
+               新用户完成实名认证后即可获得600元红包，投资时抵现金用。
+            </p>
+            <ul>
+                <li class="first">
+                    <div class="div_bg">
+                        <span class="span1">100元</span>
+                        <span class="span2">起投10000元</span>
+                    </div>
+                    <span class="span3">
+                        投资期限≥40天<br>
+                        有效期90天
+                    </span>
+                </li>
+                <li>
+                    <div class="div_bg">
+                        <span class="span1">200元</span>
+                        <span class="span2">起投20000元</span>
+                    </div>
+                    <span class="span3">
+                        投资期限≥90天<br>
+                        有效期90天
+                    </span>
+                </li>
+                <li style="margin-left:2rem;">
+                    <div class="div_bg">
+                        <span class="span1">300元</span>
+                        <span class="span2">起投50000元</span>
+                    </div>
+                    <span class="span3">
+                        投资期限≥180天<br>
+                        有效期90天
+                    </span>
+                </li>
+            </ul>
+            <a href="/M/user/verify.html" class="btn">立即领取</a>
+        </div>
+    </div>
+</div>
+
+<a class="rule-btn js-rule">活动规则</a>
+
+<div class="alldiv">
+    <div class="mtyj-rule box">                                                                 
+        <h2><img src="/Style/M/images/mtyj/ruleimg.jpg" /></h2>
+        <div class="mtyj-ruletext">
+            <!--1、活动时间：本活动若无另行通知终止，则视为长期有效；<br />-->
+            1、活动时间：活动时间：本活动为长期活动，若无新的通知则视为一直有效；<br />
+            2、活动对象：活动期间链金所注册的所有新用户；<br />
+            3、投资券不能直接提现，只能在投资时直接抵扣现金使用，具体使用规则以券面描述为准；<br />
+            4、实物奖品不可折现，中奖后将在15个工作日内为您派送，图片请供参考，请以实物为准；<br />
+            5、在法律允许范围之内，链金所保留本活动最终解释权，如有疑问可关注链金所官方公众号(ccfax2015）后直接咨询，或直接与客服中心联系：<span style="color:#ff5555">400-6626-985</span>。
+        </div>
+    </div>
+</div>
+
+<input type="hidden" value="{$token}" id="token" name="token">
+<input type="hidden" value="{$uid}" id="uid" name="uid">
+
+<include file="Pub:footer" />
+
+<script type="text/javascript" src="__ROOT__/Style/js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="__ROOT__/Style/Js/jquery.rotate.min.js "></script>
+<script type="text/javascript" src="__ROOT__/Style/layer/layer.js"></script>
+
+<script>
+    $(function() {
+        var timeout = 8000;
+        var show_message = "";
+        var flag = true;
+
+        $('.js-rule').click(function(){
+            $('.alldiv').show();
+        });
+        $('.alldiv').click(function(){
+            $(this).hide();
+        });
+
+        /*
+        **layer弹窗提示
+        */
+        function tip(message){
+            layer.open({
+                content: message,
+                closeBtn: [0, false],
+                btn: ['确定'],
+                yes: function(index){
+                    layer.close(index);
+                }
+            });
+        }
+
+        /*
+        ** 大转盘
+        */
+        function stop_rotate(angle) {
+            var cur = $("#pointer").getRotateAngle();
+            var num = Math.floor(cur / 360);
+            var target = (num + 2) * 360 + angle;
+            $("#pointer").rotate({animateTo: target});
+        }
+
+        var click = true;
+        var uid = $("#uid").val();
+
+        //用户未登录
+        if (uid == -1) {
+            $('.login-off').show();
+            $('.login-on').hide();
+        }else{
+            $('.login-off').hide();
+            $('.login-on').show();
+        }
+
+        $("#p_click").click(function () {
+            if(click){
+                var $this=$("#pointer");
+                var uid = $("#uid").val();
+
+                //用户未登录
+                if (uid == -1) {
+                    flag = false;
+                    window.location.href = "{$login_url}";
+                    return false;
+                }
+
+                var count = $("#count").html();
+                if (count <= 0) {
+                    flag = false;
+                    tip("您没有抽奖机会！");
+                    return false;
+                }
+
+                if (flag) {
+                    click = false;
+                    var token = $("#token").val();
+                    $.ajax({
+                        url: "__URL__/getResult",
+                        cache: false,
+                        type: "post",
+                        data: {token: token},
+                        dataType: "json",
+                        success: function (d) {
+                            //layer.closeAll('loading');
+                            var data = d || {};
+                            if (data.status == 1) {
+                                //未登录
+                                show_message = "请先登录";
+
+                            }else if (data.status == 2 || data.status==3) {
+                                //活动已经结束或者要刷新
+                                show_message = data.message;
+
+                            } else if(data.status == 4) {
+                                show_message = data.message;
+
+                            }else if(data.status == 5){
+                                show_message = data.message;
+
+                                $this.rotate({
+                                    duration: timeout,//转动时间间隔（转动速度）
+                                    angle: 0,  //开始角度
+                                    animateTo: 3600 + parseInt(data.data.angle), //转动角度，10圈
+                                    callback: function () { //回调函数
+                                        if (show_message) {
+                                            tip(show_message);
+                                        } else {
+                                            tip("正好没抽到，再来一次");
+                                        }
+                                        //token 随机数
+                                        $("#token").val(data.data.token);
+                                        //抽奖次数
+                                        $("#count").html(data.data.count);
+                                        click = true;
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
+            }else{
+                click = false;
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

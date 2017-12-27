@@ -1,0 +1,65 @@
+<include file="Public:_header_common" />
+<title>『链金所官网』-网络贷款,网络借贷,网络理财,P2P理财,P2P网贷平台</title>
+<meta http-equiv="keywords" content="{$glo.web_keywords}" />
+<meta http-equiv="description" content="{$glo.web_descript}" />
+<script type="text/javascript">
+var Transfer_invest_url = "__APP__/tinvest";
+</script>
+<style type="text/css">
+.mid{width:1200px;margin:0 auto;}
+.shuide{min-height:800px;padding-top:12px;background-color:#f5f6f7;}
+.shuide-hd{display:inline-block;border:solid 1px #eee;}
+.shuide-hd a{float:left;min-width:120px;height:48px;line-height:48px;padding:0 20px;text-align:center;font-size:16px;color:#666;background-color:#fff;}
+.shuide-hd a.curr, .shuide-hd a.curr:hover{color:#fff;background-color:#fc8026;}
+.shuide-cont{width:100%;height:640px;margin-top:30px;background-color:#6f6f6f; overflow: hidden}
+iframe{width:100%; margin: 0; padding: 0; border:0}
+</style>
+<include file="Public:_header_main" />
+<div class="shuide">
+	<div class="mid">
+        <span class="shuide-hd clearfix">
+            <a href="javascript:void(0);" class="curr" data-sn="/home/index/shuidia">链金所监管仓大门</a>
+            <a href="javascript:void(0);" data-sn="/home/index/shuidib">链金所监管仓A</a>
+            <a href="javascript:void(0);" data-sn="/home/index/shuidic">链金所监管仓B</a>
+            <a href="javascript:void(0);" data-sn="/home/index/shuidid">链金所前台</a>
+        </span>
+        <div class="shuide-cont">
+
+        </div>
+    </div>
+</div>
+<include file="Public:_footer" />
+<script type="text/javascript">
+$(document).ready(function(){
+	$.get("/home/index/shuidia",function(data){ //初始將a.html include div#iframe
+		$(".shuide-cont").html(data);
+	});
+})
+$(function(){
+	$(".shuide-hd a").on("click",function(){
+		var links = $(this).attr("data-sn");
+		$(this).addClass("curr").siblings("a").removeClass("curr");
+		$.get(links,function(data){
+			$(".shuide-cont").html(data);
+		});
+	});
+})
+/*$(function(){
+	$(".shuide-hd a").click(function(){
+		var sn = $(this).data("sn");
+		$(this).addClass("curr").siblings("a").removeClass("curr");
+		//setvideo(sn);
+		
+	});
+	function setvideo(sn) {
+		var htmlstr = '<object name="qh_sd_player_1_swf" width="100%" height="640px" id="qh_sd_player_1_swf" data="http://jia.360.cn/player/flash/QihooPlayer.swf?ver=201610051011" type="application/x-shockwave-flash">';
+		htmlstr += '<param name="allowfullscreen" value="true">';
+		htmlstr += '<param name="wmode" value="transparent">';
+		htmlstr += '<param name="allowscriptaccess" value="always">';
+		htmlstr += '<param name="flashvars" value="sn=' + sn + '&amp;buffertime=3&amp;streamversion=2&amp;ctrbarhide=true&amp;autostart=true&amp;channel=32773&amp;_init_player=sd_evt_1_init&amp;_play_start=sd_evt_1_start&amp;_play_pause=sd_evt_1_pause&amp;_play_resume=sd_evt_1_resume&amp;_play_end=sd_evt_1_end">';
+		htmlstr += "</object>";   
+		$(".shuide-cont").html(htmlstr)
+	};
+	setvideo("36061781376");
+})*/
+</script>

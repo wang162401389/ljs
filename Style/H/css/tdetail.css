@@ -1,0 +1,30 @@
+/*定投宝开始*/
+/*进度条*/
+.investlistspeed{
+display:inline-block; 
+width:120px;
+height:9px;
+border: 1px solid #7CA707;
+border-radius: 5px;
+position:relative;
+text-align:left;
+}
+.isbg{
+display:inline-block; 
+float:left;
+height:9px;
+overflow:hidden;
+background:url(../images/new/speed_3.jpg) repeat-x 0 0;
+}
+.ispoint{
+display:inline-block; 
+width:17px;
+height:16px;
+overflow:hidden;
+position:absolute;
+z-index:2;
+background:url(../images/new/speed-p.png) 0 -16px;
+}
+.percspan{
+display:inline-block; 
+}

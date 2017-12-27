@@ -1,0 +1,39 @@
+<include file="Public:_header" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<tagLib name="htmlA" />
+<div class="so_main">
+    <div class="page_tit">中奖信息 </div>
+    <div id="search_div">
+
+        <div class="form2" style="background-color: #d2dbea;">
+        </div>
+    </div>
+
+    <div class="list">
+        <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+            <!-- mi.real_name,o.mobile,o.create_time,o.feed_no,h.prize_name,h.qishu -->
+            <th class="line_l">type</th>
+                <th class="line_l">qishu</th>
+                <th class="line_l">prizename</th>
+                <th class="line_l">feed_no</th>
+                <th class="line_l">real_name</th>
+                <th class="line_l">mobile</th>
+                <th class="line_l">time</th>
+
+            </tr>
+            <volist id="vo" name="list">
+                <tr>
+                    <td>{$vo.prize_type}</td>
+                    <td>{$vo.qishu}</td>
+                    <td>{$vo.prize_name}</td>
+                    <td>{$vo.feed_no}</td>
+                    <td>{$vo.real_name}</td>
+                    <td>{$vo.mobile}</td>
+                    <td>{$vo.create_time|date='Y-m-d H:i:s',###}</td>
+                </tr>
+            </volist>
+        </table>
+    </div>
+</div>
+<include file="Public:_footer" />

@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<include file="Pub:header-common" /> 
+	<link rel="stylesheet" href="css/czwt.css" >
+    <script type="text/javascript">
+	$(document).ready(
+	function() 
+	{
+		$(".menuTitle").click(function(){
+			$(this).next("div").slideToggle("slow")
+			.siblings(".menuContent:visible").slideUp("slow");
+			$(this).toggleClass("activeTitle");
+			$(this).siblings(".activeTitle").removeClass("activeTitle");
+		});
+	});
+	
+</script>
+</head>
+
+<body>
+    <include file="Pub:simple_header" />
+
+
+<div class="content">
+
+  <div class="menuTitle">
+		如何在链金所充值？
+	</div>
+	<div class="menuContent">
+		链金所用户可以通过与链金所合作的第三方支付平台、网上银行以及快捷支付给链金所账户充值，成功后可以用链金所账户的余额进行理财。<br/>
+温馨提示：如果通过网上银行支付，需要先开通网上银行功能。
+	</div>
+	<div class="menuTitle">
+		使用网银支付进行充值有限额吗？
+	</div>
+	<div class="menuContent">
+		注：此限额表只提供参考，具体充值限额以银行为准。
+        <div style="height:10px;"></div>
+     <div class="bank">中国银行</div><div class="bank_style">银行卡类型：储蓄/借记卡</div>
+       
+      <table width="100%">
+          <tr class="bank_header">
+            <td>用户类型</td>
+            <td>单笔限额</td>
+            <td>每日限额</td>
+          </tr>
+          <tr class="bank_content">
+            <td>网银 </td>
+            <td>5万元</td>
+            <td>50万元</td>
+          </tr>
+          <tr class="bank_content">
+            <td>中银快付</td>
+            <td>1000元</td>
+            <td>5000元</td>
+          </tr>
+      </table>
+       <div style="height:15px;"></div>
+
+
+
+  <div class="bank">工商银行</div><div class="bank_style">银行卡类型：储蓄/借记卡</div>
+       
+      <table width="100%">
+          <tr class="bank_header">
+            <td style="width:141px">用户类型</td>
+            <td>单笔限额</td>
+            <td>每日限额</td>
+          </tr>
+ <tr class="bank_content">
+            <td>U盾</td>
+            <td>100万元</td>
+            <td>100万元</td>
+          </tr>
+          <tr class="bank_content">
+            <td>电子银行口令卡（未开通手机短信认证）</td>
+            <td>500元</td>
+            <td>1000元</td>
+          </tr>
+          <tr class="bank_content">
+            <td>电子银行口令卡（已开通手机短信认证）</td>
+            <td>2000元</td>
+            <td>5000元</td>
+          </tr>
+      </table>
+       <div style="height:15px;"></div>
+
+
+  <div class="bank">招商银行</div><div class="bank_style">银行卡类型：储蓄/借记卡</div>
+       
+      <table width="100%">
+          <tr class="bank_header">
+            <td>用户类型</td>
+            <td>单笔限额</td>
+            <td>每日限额</td>
+          </tr>
+          <tr class="bank_content">
+            <td>大众版</td>
+            <td>500元</td>
+            <td>5000元</td>
+          </tr>
+          <tr class="bank_content">
+            <td>专业版</td>
+            <td>无限额，自行设定 </td>
+            <td>无限额，自行设定  </td>
+          </tr>
+      </table>
+       <div style="height:15px;"></div>
+
+
+
+  <div class="bank">农业银行</div><div class="bank_style">银行卡类型：储蓄/借记卡</div>
+       
+      <table width="100%">
+          <tr class="bank_header">
+            <td>用户类型</td>
+            <td>单笔限额</td>
+            <td>每日限额</td>
+          </tr>
+          <tr class="bank_content">
+            <td>K宝 </td>
+            <td>无限额，自行设定</td>
+            <td>无限额，自行设定</td>
+          </tr>
+          <tr class="bank_content">
+            <td>动态口令卡</td>
+            <td>1000元</td>
+            <td>3000元</td>
+          </tr>
+ <tr class="bank_content">
+            <td>K码 </td>
+            <td>1000元</td>
+            <td>1000元</td>
+          </tr>
+      </table>
+       <div style="height:15px;"></div>
+
+
+
+ <div class="bank">建设银行</div><div class="bank_style">银行卡类型：储蓄/借记卡</div>
+       
+      <table width="100%">
+          <tr class="bank_header">
+            <td>用户类型</td>
+            <td>单笔限额</td>
+            <td>每日限额</td>
+          </tr>
+          <tr class="bank_content">
+            <td>一代网银盾 </td>
+            <td>5万元</td>
+            <td>5万元</td>
+          </tr>
+          <tr class="bank_content">
+            <td>二代网银盾</td>
+            <td>50万元</td>
+            <td>50万元</td>
+          </tr>
+ <tr class="bank_content">
+            <td>刮刮卡</td>
+            <td>5000元</td>
+            <td>5000元</td>
+          </tr>
+ <tr class="bank_content">
+            <td>账号支付</td>
+            <td>1000元</td>
+            <td>1000元</td>
+          </tr>
+      </table>
+       <div style="height:15px;"></div>
+
+
+ <!--  <div class="bank">交通银行</div><div class="bank_style">银行卡类型：储蓄/借记卡</div>
+       
+      <table width="100%">
+          <tr class="bank_header">
+            <td>用户类型</td>
+            <td>单笔限额</td>
+            <td>每日限额</td>
+          </tr>
+          <tr class="bank_content">
+            <td>短信密码版 </td>
+            <td>5万元</td>
+            <td>5万元</td>
+          </tr>
+          <tr class="bank_content">
+            <td>个人网银证书版</td>
+            <td>100万元</td>
+            <td>100万元</td>
+          </tr>
+      </table>
+       <div style="height:15px;"></div> -->
+
+
+  <div class="bank">浦发银行</div><div class="bank_style">银行卡类型：储蓄/借记卡</div>
+       
+      <table width="100%">
+          <tr class="bank_header">
+            <td>用户类型</td>
+            <td>单笔限额</td>
+            <td>每日限额</td>
+          </tr>
+          <tr class="bank_content">
+            <td>手机动态密码</td>
+            <td>20万元</td>
+            <td>20万元</td>
+          </tr>
+          <tr class="bank_content">
+            <td>数字证书（浏览器证书或U盾）</td>
+            <td>无限额，自行设定</td>
+            <td>无限额，自行设定</td>
+          </tr>
+      </table>
+       <div style="height:15px;"></div>
+
+
+
+  <div class="bank">民生银行</div><div class="bank_style">银行卡类型：储蓄/借记卡</div>
+       
+      <table width="100%">
+          <tr class="bank_header">
+            <td>用户类型</td>
+            <td>单笔限额</td>
+            <td>每日限额</td>
+          </tr>
+          <tr class="bank_content">
+            <td>浏览器证书</td>
+            <td>5000元</td>
+            <td>5000元</td>
+          </tr>
+          <tr class="bank_content">
+            <td>U宝</td>
+            <td>2万</td>
+            <td>10万</td>
+          </tr>
+      </table>
+       <div style="height:15px;"></div>
+
+
+
+  <div class="bank">兴业银行</div><div class="bank_style">银行卡类型：储蓄/借记卡</div>
+       
+      <table width="100%">
+          <tr class="bank_header">
+            <td>用户类型</td>
+            <td>单笔限额</td>
+            <td>每日限额</td>
+          </tr>
+          <tr class="bank_content">
+            <td>手机动态密码版</td>
+            <td>5000元</td>
+            <td>5000元</td>
+          </tr>
+          <tr class="bank_content">
+            <td>U盾</td>
+            <td>柜面/证书开通：自行设定</td>
+            <td>柜面/证书开通：自行设定</td>
+          </tr>
+      </table>
+       <div style="height:15px;"></div>
+
+
+  <div class="bank">邮政储蓄</div><div class="bank_style">银行卡类型：储蓄/借记卡</div>
+       
+      <table width="100%">
+          <tr class="bank_header">
+            <td>用户类型</td>
+            <td>单笔限额</td>
+            <td>每日限额</td>
+          </tr>
+          <tr class="bank_content">
+            <td>手机短信用户</td>
+            <td>1万元</td>
+            <td>1万元</td>
+          </tr>
+          <tr class="bank_content">
+            <td>电子令牌用户</td>
+            <td>10万元</td>
+            <td>10万元</td>
+          </tr>
+  <tr class="bank_content">
+            <td>Ukey+短信用户</td>
+            <td>100万元</td>
+            <td>100万元</td>
+          </tr>
+      </table>
+       <div style="height:15px;"></div>
+
+
+
+ <div class="bank">平安银行</div><div class="bank_style">银行卡类型：借记卡</div>
+       
+      <table width="100%">
+          <tr class="bank_header">
+            <td>用户类型</td>
+            <td>单笔限额</td>
+            <td>每日限额</td>
+          </tr>
+          <tr class="bank_content">
+            <td>开通网上支付功能</td>
+            <td>5万元</td>
+            <td>5万元</td>
+          </tr>
+        </table>
+       <div style="height:15px;"></div>
+
+
+<!--   <div class="bank">华夏银行</div><div class="bank_style">银行卡类型：储蓄/借记卡</div>
+       
+      <table width="100%">
+          <tr class="bank_header">
+            <td>用户类型</td>
+            <td>单笔限额</td>
+            <td>每日限额</td>
+          </tr>
+          
+          <tr class="bank_content">
+            <td>有数字证书</td>
+            <td>5000元</td>
+            <td>2万元</td>
+          </tr>
+  <tr class="bank_content">
+            <td>无数字证书</td>
+            <td>1000元</td>
+            <td>5000元</td>
+          </tr>
+      </table>
+       <div style="height:15px;"></div> -->
+
+
+  <div class="bank">广发银行</div><div class="bank_style">银行卡类型：储蓄/借记卡</div>
+       
+      <table width="100%">
+          <tr class="bank_header">
+            <td>用户类型</td>
+            <td>单笔限额</td>
+            <td>每日限额</td>
+          </tr>
+          <tr class="bank_content">
+            <td>动态口令卡</td>
+            <td>1000元</td>
+            <td>5000元</td>
+          </tr>
+          <tr class="bank_content">
+            <td>移动证书</td>
+            <td>100万元</td>
+            <td>100万元</td>
+          </tr>
+      </table>
+       <div style="height:15px;"></div>
+
+
+
+  <div class="bank">中信银行</div><div class="bank_style">银行卡类型：储蓄/借记卡</div>
+       
+      <table width="100%">
+          <tr class="bank_header">
+            <td>用户类型</td>
+            <td>单笔限额</td>
+            <td>每日限额</td>
+          </tr>
+          <tr class="bank_content">
+            <td>手机动态验证码</td>
+            <td>3000元</td>
+            <td>3000元</td>
+          </tr>
+          <tr class="bank_content">
+            <td>KEY盾</td>
+            <td>5000元</td>
+            <td>5000元</td>
+          </tr>
+          <tr class="bank_content">
+            <td>KEY令</td>
+            <td>5000元</td>
+            <td>5000元</td>
+          </tr>      
+          <tr class="bank_content">
+            <td>卡密</td>
+            <td>1000元</td>
+            <td>1000元</td>
+          </tr>
+</table>
+       <div style="height:15px;"></div>
+
+
+
+
+  <div class="bank">光大银行</div><div class="bank_style">银行卡类型：储蓄/借记卡</div>
+       
+      <table width="100%">
+          <tr class="bank_header">
+            <td>用户类型</td>
+            <td>单笔限额</td>
+            <td>每日限额</td>
+          </tr>
+          <tr class="bank_content">
+            <td>手机动态密码</td>
+            <td>5000元</td>
+            <td>5000元</td>
+          </tr>
+          <tr class="bank_content">
+            <td>令牌动态密码</td>
+            <td>50万元</td>
+            <td>50万元</td>
+          </tr>
+      <tr class="bank_content">
+            <td>阳光网盾</td>
+            <td>50万元</td>
+            <td>50万元</td>
+          </tr>
+      </table>
+       <div style="height:15px;"></div>
+
+
+<!--
+  <div class="bank">北京银行</div><div class="bank_style">银行卡类型：储蓄/借记卡</div>
+       
+      <table width="100%">
+          <tr class="bank_header">
+            <td>用户类型</td>
+            <td>单笔限额</td>
+            <td>每日限额</td>
+          </tr>
+          <tr class="bank_content">
+            <td>动态密码版</td>
+            <td>1000元</td>
+            <td>5000元</td>
+          </tr>
+          <tr class="bank_content">
+            <td>证书版</td>
+            <td>100万元</td>
+            <td>100万元</td>
+          </tr>
+      </table>
+        <div style="height:15px;"></div>-->
+
+
+  <!-- <div class="bank">北京银行</div><div class="bank_style">银行卡类型：储蓄/借记卡</div>
+       
+      <table width="100%">
+          <tr class="bank_header">
+            <td>用户类型</td>
+            <td>单笔限额</td>
+            <td>每日限额</td>
+          </tr>
+          <tr class="bank_content">
+            <td>动态密码版</td>
+            <td>1000元</td>
+            <td>5000元</td>
+          </tr>
+          <tr class="bank_content">
+            <td>证书版</td>
+            <td>100万元</td>
+            <td>100万元</td>
+          </tr>
+      </table> 
+      <div style="height:15px;"></div>
+     <div class="bank">渤海银行</div><div class="bank_style">银行卡类型：储蓄/借记卡</div>
+       
+      <table width="100%">
+          <tr class="bank_header">
+            <td>用户类型</td>
+            <td>单笔限额</td>
+            <td>每日限额</td>
+          </tr>
+          <tr class="bank_content">
+            <td>/</td>
+            <td>2万元</td>
+            <td>10万元</td>
+          </tr>     
+      </table>
+       <div style="height:15px;"></div>
+    <div class="bank">南京银行</div><div class="bank_style">银行卡类型：储蓄/借记卡</div>
+       
+      <table width="100%">
+          <tr class="bank_header">
+            <td>用户类型</td>
+            <td>单笔限额</td>
+            <td>每日限额</td>
+          </tr>
+          <tr class="bank_content">
+            <td>/</td>
+            <td>10万元</td>
+            <td>1000万元</td>
+          </tr>     
+      </table> -->
+      <!-- <div style="height:15px;"></div>
+
+     <div class="bank">浙商银行</div><div class="bank_style">银行卡类型：储蓄/借记卡</div>
+       
+      <table width="100%">
+          <tr class="bank_header">
+            <td>用户类型</td>
+            <td>单笔限额</td>
+            <td>每日限额</td>
+          </tr>
+          <tr class="bank_content">
+            <td>自助注册</td>
+            <td>200元</td>
+            <td>200元</td>
+          </tr>
+          <tr class="bank_content">
+            <td>大众版</td>
+            <td>1000元</td>
+            <td>1000元</td>
+          </tr>
+      </table>-->
+      
+
+	</div>
+	<div class="menuTitle">
+		使用快捷支付进行充值有限额吗？ 
+	</div>
+	<div class="menuContent">
+		<table width="100%">
+          <tr class="bank_header1">
+            <td colspan="4">交通银行</td>
+          </tr>
+          <tr class="bank_content">
+            <td>首次绑卡支付限额 </td>
+            <td>单笔限额</td>
+            <td>每日限额</td>
+            <td>最低充值金额</td>
+          </tr>
+          <tr class="bank_content">
+            <td>20000</td>
+            <td>50000</td>
+            <td>500000</td>
+            <td>0.01</td>
+          </tr>
+        </table>
+		<table width="100%">
+          <tr class="bank_header1">
+            <td colspan="4">中国银行</td>
+          </tr>
+          <tr class="bank_content">
+            <td>首次绑卡支付限额 </td>
+            <td>单笔限额</td>
+            <td>每日限额</td>
+            <td>最低充值金额</td>
+          </tr>
+          <tr class="bank_content">
+            <td>50000</td>
+            <td>50000</td>
+            <td>500000</td>
+            <td>0.01</td>
+          </tr>
+        </table>
+        <table width="100%" style="margin-top:10px;">
+          <tr class="bank_header1">
+            <td colspan="4">农业银行</td>
+          </tr>
+          <tr class="bank_content">
+            <td>首次绑卡支付限额 </td>
+            <td>单笔限额</td>
+            <td>每日限额</td>
+            <td>最低充值金额</td>
+          </tr>
+          <tr class="bank_content">
+            <td>20000</td>
+            <td>20000</td>
+            <td>50000</td>
+            <td>1.01</td>
+          </tr>
+        </table>
+        <table width="100%" style="margin-top:10px;">
+              <tr class="bank_header1">
+                <td colspan="4">建设银行</td>
+              </tr>
+              <tr class="bank_content">
+                <td>首次绑卡支付限额 </td>
+                <td>单笔限额</td>
+                <td>每日限额</td>
+                <td>最低充值金额</td>
+              </tr>
+              <tr class="bank_content">
+                <td>50000</td>
+                <td>50000</td>
+                <td>1000000</td>
+                <td>0.01</td>
+              </tr>
+            </table>
+            
+             <table width="100%" style="margin-top:10px;">
+              <tr class="bank_header1">
+                <td colspan="4">工商银行</td>
+              </tr>
+              <tr class="bank_content">
+                <td>首次绑卡支付限额 </td>
+                <td>单笔限额</td>
+                <td>每日限额</td>
+                <td>最低充值金额</td>
+              </tr>
+              <tr class="bank_content">
+                <td>50000</td>
+                <td>50000</td>
+                <td>50000</td>
+                <td>0.01</td>
+              </tr>
+            </table>
+             <!-- <table width="100%" style="margin-top:10px;">
+              <tr class="bank_header1">
+                <td colspan="4">招商银行</td>
+              </tr>
+              <tr class="bank_content">
+                <td>首次绑卡支付限额 </td>
+                <td>单笔限额</td>
+                <td>每日限额</td>
+                <td>最低充值金额</td>
+              </tr>
+              <tr class="bank_content">
+                <td>5000</td>
+                <td>50000</td>
+                <td>200000</td>
+                <td>1.01</td>
+              </tr>
+            </table> -->
+             <table width="100%" style="margin-top:10px;">
+              <tr class="bank_header1">
+                <td colspan="4">中信银行</td>
+              </tr>
+              <tr class="bank_content">
+                <td>首次绑卡支付限额 </td>
+                <td>单笔限额</td>
+                <td>每日限额</td>
+                <td>最低充值金额</td>
+              </tr>
+              <tr class="bank_content">
+                <td>50000</td>
+                <td>50000</td>
+                <td>1000000</td>
+                <td>0.01</td>
+              </tr>
+            </table>
+             <table width="100%" style="margin-top:10px;">
+              <tr class="bank_header1">
+                <td colspan="4">民生银行</td>
+              </tr>
+              <tr class="bank_content">
+                <td>首次绑卡支付限额 </td>
+                <td>单笔限额</td>
+                <td>每日限额</td>
+                <td>最低充值金额</td>
+              </tr>
+              <tr class="bank_content">
+                <td>50000</td>
+                <td>50000</td>
+                <td>1000000</td>
+                <td>1.01</td>
+              </tr>
+            </table>
+             <!-- <table width="100%" style="margin-top:10px;">
+              <tr class="bank_header1">
+                <td colspan="4">广发银行</td>
+              </tr>
+              <tr class="bank_content">
+                <td>首次绑卡支付限额 </td>
+                <td>单笔限额</td>
+                <td>每日限额</td>
+                <td>最低充值金额</td>
+              </tr>
+              <tr class="bank_content">
+                <td>5000</td>
+                <td>50000</td>
+                <td>1000000</td>
+                <td>1.01</td>
+              </tr> -->
+            </table>
+             <table width="100%" style="margin-top:10px;">
+              <tr class="bank_header1">
+                <td colspan="4">兴业银行</td>
+              </tr>
+              <tr class="bank_content">
+                <td>首次绑卡支付限额 </td>
+                <td>单笔限额</td>
+                <td>每日限额</td>
+                <td>最低充值金额</td>
+              </tr>
+              <tr class="bank_content">
+                <td>50000</td>
+                <td>50000</td>
+                <td>50000</td>
+                <td>0.01</td>
+              </tr>
+            </table> <table width="100%" style="margin-top:10px;">
+              <tr class="bank_header1">
+                <td colspan="4">光大银行</td>
+              </tr>
+              <tr class="bank_content">
+                <td>首次绑卡支付限额 </td>
+                <td>单笔限额</td>
+                <td>每日限额</td>
+                <td>最低充值金额</td>
+              </tr>
+              <tr class="bank_content">
+                <td>50000</td>
+                <td>50000</td>
+                <td>500000</td>
+                <td>0.01</td>
+              </tr>
+            </table>
+             <table width="100%" style="margin-top:10px;">
+              <tr class="bank_header1">
+                <td colspan="4">上海银行</td>
+              </tr>
+              <tr class="bank_content">
+                <td>首次绑卡支付限额 </td>
+                <td>单笔限额</td>
+                <td>每日限额</td>
+                <td>最低充值金额</td>
+              </tr>
+              <tr class="bank_content">
+                <td>5000</td>
+                <td>5000</td>
+                <td>50000</td>
+                <td>0.01</td>
+              </tr>
+            </table>
+             <table width="100%" style="margin-top:10px;">
+              <tr class="bank_header1">
+                <td colspan="4">邮政储蓄</td>
+              </tr>
+              <tr class="bank_content">
+                <td>首次绑卡支付限额 </td>
+                <td>单笔限额</td>
+                <td>每日限额</td>
+                <td>最低充值金额</td>
+              </tr>
+              <tr class="bank_content">
+                <td>5000</td>
+                <td>5000</td>
+                <td>5000</td>
+                <td>0.01</td>
+              </tr>
+            </table>
+             <!-- <table width="100%" style="margin-top:10px;">
+              <tr class="bank_header1">
+                <td colspan="4">华夏银行</td>
+              </tr>
+              <tr class="bank_content">
+                <td>首次绑卡支付限额 </td>
+                <td>单笔限额</td>
+                <td>每日限额</td>
+                <td>最低充值金额</td>
+              </tr>
+              <tr class="bank_content">
+                <td>5000</td>
+                <td>5000</td>
+                <td>50000</td>
+                <td>1.01</td>
+              </tr>
+            </table> -->
+             <table width="100%" style="margin-top:10px;">
+              <tr class="bank_header1">
+                <td colspan="4">平安银行</td>
+              </tr>
+              <tr class="bank_content">
+                <td>首次绑卡支付限额 </td>
+                <td>单笔限额</td>
+                <td>每日限额</td>
+                <td>最低充值金额</td>
+              </tr>
+              <tr class="bank_content">
+                <td>5000</td>
+                <td>5000</td>
+                <td>5000</td>
+                <td>0.01</td>
+              </tr>
+            </table>
+             <table width="100%" style="margin-top:10px;">
+              <tr class="bank_header1">
+                <td colspan="4">浦发银行</td>
+              </tr>
+              <tr class="bank_content">
+                <td>首次绑卡支付限额 </td>
+                <td>单笔限额</td>
+                <td>每日限额</td>
+                <td>最低充值金额</td>
+              </tr>
+              <tr class="bank_content">
+                <td>20000</td>
+                <td>20000</td>
+                <td>50000</td>
+                <td>0.01</td>
+              </tr>
+            </table>
+
+	</div>
+     <div class="menuTitle">
+		使用信用卡是否可以给账户充值？
+	</div>
+	<div class="menuContent">
+		目前不支持信用卡充值。
+	</div>
+     <div class="menuTitle">
+		充值会不会扣手续费？
+	</div>
+	<div class="menuContent">
+		充值不会扣取任何手续费。
+	</div>
+     <div class="menuTitle">
+		充值限额是多少？
+	</div>
+	<div class="menuContent">
+		最小充值金额为100元，上限金额以您银行卡支付限额为准。
+	</div>
+     <div class="menuTitle">
+		充值成功后会有短信通知吗？
+	</div>
+	<div class="menuContent">
+		您在链金所每笔充值，都会收到充值成功的短信。
+	</div>
+     <div class="menuTitle">
+		为什么银行已扣款，但平台账户余额没有增加？
+	</div>
+	<div class="menuContent">
+		（1）由于网络不稳定造成的显示不同步；<br/>
+        （2）在无提示关闭或交易成功的情况下关闭页面，导致充值资金延迟到账或掉单；<br/>
+        （3）同一时间使用同一个第三方充值端口的用户较多，第三方支付平台偶有延迟，造成网银显示与平台账户金额不同步。如出现充值未到账情况，请保留网银充值截图，稍后刷新网页。如还未到账，请致电客服为您服务400-6626-985。
+	</div>
+     <div class="menuTitle">
+		为什么充值提示成功，查询链金所账户却未显示？
+	</div>
+	<div class="menuContent">
+		链金所充值是即时到账的，也会出现到账延迟等个别情况，请刷新页面稍候查看即可。或者请确认以下信息后，联系在线客服或致电400-6626-985咨询。<br/>
+          （1）首先确认是否收到链金所发送的充值成功提醒短信；<br/>
+          （2）返回【我的账户】→【资金管理】→【资金统计】，选择【资金历史明细】查询是否有该充值记录；<br/>
+          （3）请核实您的充值银行卡金额是否划出，或是否已经收到银行扣款短信。
+	</div>
+     <div class="menuTitle">
+		为什么我在银行卡快捷支付绑定/首次充值时，提示校验失败？
+	</div>
+	<div class="menuContent">
+		如果您使用招商银行、民生银行、广发银行、华夏银行、平安银行、浦发银行等6家银行进行银行卡快捷支付绑定/首次充值时，提示校验失败，请首先确认银行卡信息及手机预留号码是否正确。如果仍未绑定成功，建议换另一张银行卡尝试绑定。
+	</div>
+</div>
+  </div>
+
+  <include file="Pub:footer" />
+
+</body>
+
+</html>
